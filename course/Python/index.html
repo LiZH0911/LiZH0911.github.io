@@ -1405,9 +1405,6 @@ else:
 <li><code>sort()</code>：排序列表</li>
 <li><code>copy()</code>：复制列表</li>
 <li><code>len()</code>：返回列表的长度</li>
-<li><code>max()</code>：返回列表中的最大值</li>
-<li><code>min()</code>：返回列表中的最小值</li>
-<li><code>sum()</code>：返回列表中的所有元素的和</li>
 <li><code>enumerate()</code>：返回一个枚举对象，枚举对象包含索引和元素</li>
 <li><code>zip()</code>：返回一个迭代器，迭代器中包含两个列表中对应位置的元素</li>
 <li><code>map()</code>：返回一个迭代器，迭代器中包含两个列表中对应位置的元素</li>
@@ -1482,20 +1479,14 @@ else:
 <p><strong>注意事项</strong>：value任意类型，key不能为可修改类型，如不能为列表、元组、字典等</p>
 <p><strong>字典常用方法</strong>：</p>
 <ul>
+<li>增：<code>字典名称[key] = value</code></li>
+<li>删：<code>del 字典名称[key]</code>或<code>字典名称.pop(key)</code></li>
+<li>改：<code>字典名称[key] = value</code></li>
+<li>查：<code>字典名称[key]</code>或<code>字典名称.get(key)</code></li>
+<li>遍历：<code>for key, value in 字典名称.items():</code></li>
 <li><code>keys()</code>：返回字典中所有键的列表</li>
 <li><code>values()</code>：返回字典中所有值的列表</li>
 <li><code>items()</code>：返回字典中所有键值对的列表</li>
-<li><code>enumerate()</code>：返回一个枚举对象，枚举对象包含索引和元素</li>
-<li><code>get()</code>：返回指定键对应的值，如果键不存在则返回None</li>
-<li><code>pop()</code>：删除指定键对应的键值对并返回值</li>
-<li><code>setdefault()</code>：返回指定键对应的值，如果键不存在则创建键值对并返回None</li>
-<li><code>update()</code>：更新字典，将传入的字典中的键值对添加到当前字典中</li>
-<li><code>clear()</code>：清空字典</li>
-<li><code>len()</code>：返回字典的长度</li>
-<li><code>max()</code>：返回字典中的最大值</li>
-<li><code>min()</code>：返回字典中的最小值</li>
-<li><code>sum()</code>：返回字典中的所有值之和</li>
-<li></li>
 </ul>
 <h2 id="_4">四、函数</h2>
 <h2 id="_5">五、面向对象基础</h2>
