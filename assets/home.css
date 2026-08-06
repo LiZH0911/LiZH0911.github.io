@@ -1,0 +1,113 @@
+.hero-wrapper {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  display: inline-block;
+  padding: 0.65rem 2.2rem;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(102, 126, 234, 0.4);
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.55);
+  color: #fff !important;
+}
+
+.hero-btn-secondary {
+  display: inline-block;
+  padding: 0.65rem 2.2rem;
+  border-radius: 2rem;
+  border: 2px solid var(--md-primary-fg-color);
+  color: var(--md-primary-fg-color) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+.hero-btn-secondary:hover {
+  transform: translateY(-2px);
+  background: var(--md-primary-fg-color);
+  color: #fff !important;
+}
+
+.section-divider {
+  max-width: 800px;
+  margin: 1rem auto 2.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+}
+
+.grid-cards-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-cta {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-top: 1rem;
+}
+
+.footer-cta h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footer-cta p {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
