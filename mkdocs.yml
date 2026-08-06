@@ -1,0 +1,53 @@
+site_name: LiZH0911的学习笔记
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - search.suggest
+    - content.code.copy
+
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换至深色模式
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换至浅色模式
+
+  icon:
+    logo: material/book-open-page-variant
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - assets/home.css
+
+nav:
+  - 主页: index.md
+  - 课程:
+    - 首页: course/index.md
+    - 示例: course/example.md
+    - Python 基础: course/Python/index.md
+    - PythonWeb:
+        - FastAPI: course/PythonWeb/FastAPI/index.md
+    - LangChain: course/LangChain/index.md
+    - Java 基础: course/Java/index.md
+    - JavaWeb: course/JavaWeb/index.md
+  - 关于: about/index.md
