@@ -1489,7 +1489,38 @@ else:
 <li><code>items()</code>：返回字典中所有键值对的列表</li>
 </ul>
 <h2 id="_4">四、函数</h2>
-<p><strong>定义</strong>：</p>
+<div class="highlight"><pre><span></span><code># 定义函数
+def 函数名(参数列表):
+   函数体
+   return 返回值
+
+#调用函数
+函数名(参数)
+</code></pre></div>
+<p><strong>函数的说明文档</strong>：函数开头用三个引号包裹的字符串，用于解释函数的功能、参数、返回值等信息，方便调用者清楚函数的具体作用及细节</p>
+<p><strong>函数的嵌套调用</strong>：遵循栈结构，LIFO后进先出</p>
+<p><strong>变量的作用域</strong>：</p>
+<ul>
+<li>局部变量：在函数内部定义的变量，只在函数内部有效</li>
+<li>全局变量：在函数外部定义的变量，可以在整个程序中使用</li>
+</ul>
+<p><strong>传参方式</strong>：</p>
+<ol>
+<li>位置参数：按照参数定义的顺序传递参数</li>
+<li>关键字参数：按照参数名称传递参数 </li>
+<li>默认参数：在参数定义时赋默认值，调用时可不传递该参数 </li>
+<li>不定长参数（可变参数）：<code>def function(*args,**kwargs)</code><ul>
+<li>位置传递<code>*args</code>，元组类型</li>
+<li>关键字传递<code>**kwargs</code>，字典类型</li>
+</ul>
+</li>
+</ol>
+<p><strong>函数的参数类型</strong>：</p>
+<ul>
+<li>普通参数：数字、布尔、列表等</li>
+<li>特殊参数：函数</li>
+</ul>
+<p><strong>匿名函数</strong>：</p>
 <h2 id="_5">五、面向对象基础</h2>
 <h2 id="_6">总结</h2>
 
