@@ -47,7 +47,18 @@ nav:
     - Python 基础: course/Python/index.md
     - PythonWeb:
         - FastAPI: course/PythonWeb/FastAPI/index.md
-    - LangChain: course/LangChain/index.md
-    - Java 基础: course/Java/index.md
-    - JavaWeb: course/JavaWeb/index.md
+#    - LangChain: course/LangChain/index.md
+#    - Java 基础: course/Java/index.md
+    - JavaWeb:
+#        - JavaWeb开发首页: course/JavaWeb/index.md
+        - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
+#        - JavaScript: course/JavaWeb/JavaScript/index.md
+#        - Vue: course/JavaWeb/Vue/index.md
+#        - Ajax: course/JavaWeb/Ajax/index.md
+#        - Maven: course/JavaWeb/Maven/index.md
+#        - Web基础: course/JavaWeb/Web基础/index.md
+#        - MySQL: course/JavaWeb/MySQL/index.md
+#        - JDBL: course/JavaWeb/JDBL/index.md
+#        - Mybatis: course/JavaWeb/Mybatis/index.md
+#        - Docker: course/JavaWeb/Docker/index.md
   - 关于: about/index.md

@@ -50,7 +50,7 @@
 
 **包括**：
 
-- 字符串str
+- 字符串：str
 - 整数：int
 - 浮点数：float
 - 布尔值：bool
@@ -492,6 +492,150 @@ finally:
     # 无论是否发生异常，都会执行（通常用于释放资源，如关闭文件）
     print("程序执行结束。")
 ```
+
+
+## 八、数据分析
+
+### 8.1 **概述**
+
+**数据分析**：从一堆看似杂乱的数据中，通过数据清洗、分析、可视化等手段，找出有价值的信息和结论，从而帮我们解决实际的问题（如:用户订单数据的分析、电影榜单数据分析、学校学生成绩分析等）
+
+**基本流程**：
+
+1. 数据收集：从各种渠道收集数据，如文件、数据库、网络等
+2. 数据清洗：对数据进行清洗，如去除重复数据、处理缺失值、处理异常值、一致性检查等（基于Pandas库）
+3. 数据分析：对数据进行分析，如统计分析、数据挖掘、机器学习等
+4. 数据可视化：将数据可视化，如绘制图表、生成报告等（基于Matplotlib库）
+
+**环境准备**：Jupyter Notebook
+
+**Jupyter Notebook**：一个基于Web网页的、交互式的编程笔记本，可以把代码、运行结果、图表和笔记全部都放在一个文件里（在数据分析、机器学习、教学和科研等领域的数据实验室）
+
+### 8.2 **Pandas**
+
+**Pandas介绍**：Pandas是一个功能强大的结构化数据分析的工具集，底层是基于Numpy构建的，无论是在数据分析领域、还是大数据开发场景中都有显著的优势。
+
+**Pandas安装**：`pip install pandas` 或 `conda install pandas`
+
+[Pandas官方文档](https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides)
+
+**核心类**： Series（一维数据），DataFrame（二维数据）
+
+**DataFrame**：
+
+```
+# 实例化DataFrame
+import pandas as pd
+df = pd.DataFrame({
+    'A': [1, 2, 3],
+    'B': [4, 5, 6]
+})
+print(df)
+```
+
+**Series**：
+
+```
+# 实例化Series
+import pandas as pd
+s = pd.Series([1, 3, 5, 7, 9])
+print(s)
+```
+
+**数据读取和写入**：基于Pandas中提供的API，可以很方便地读取和写入各类数据文件，如CSV、Excel、数据库、网络数据等。
+
+```
+# 数据读取，以csv文件为例
+import pandas as pd
+df = pd.read_csv('data.csv')
+# 数据写入
+df.to_csv('data.csv', index=False)
+```
+
+**数据查看**：
+
+- `df.head(n)`：查看前n行
+- `df.tail(n)`：查看后n行
+- `df.info()`：查看数据信息（列名、非空计数、数据类型、内存使用情况）
+- `df.describe()`：查看数据统计信息（计数、均值、标准差、最小值、四分位数、最大值）
+- `df.shape`：返回数据维度（行数、列数）
+- `df.columns`：返回数据的列名
+
+**数据选择**：
+
+- `df['列名']`：选择单列
+- `df[['列1','列2']]`：选择多列
+- `df.loc[start:stop:step]`：选择行
+- `df.iloc[start:stop:step]`：选择行，基于索引
+
+**数据过滤**：
+
+- `df[df['列名']条件]`：单条件过滤，常用条件：`>值`、`isin(['值1', '值2'])`、`between(值1, 值2)`
+- `df[(条件1) & (条件2)]`：多条件过滤，与关系
+- `df[(条件1) | (条件2)]`：多条件过滤，或关系
+
+**数据清洗**：数据清洗是指发现并纠正数据中可识别的错误的过程，包括处理缺失值、重复值、异常值，统一数据格式，保证数据的一致性。
+
+```
+# 数据清洗
+# 1. 缺失值处理
+# 检查缺失值
+df.isnull() # 检查缺失值，返回布尔值矩阵，True表示缺失值，False表示非缺失值
+# 删除缺失值
+df_new = df.dropna(axis=0, inplace=False)  # 删除包含缺失值的行，默认inplace=False表示返回一个新的表格
+# 填充缺失值
+df.fillna(0)  # 用0填充缺失值
+
+# 2. 重复值处理
+# 检查重复值
+df.duplicated() # 检查重复值，返回布尔值矩阵，True表示重复值，False表示非重复值
+df.duplicated(subset=['列1', '列2']) # 检查指定列的重复值
+# 删除重复值
+df.drop_duplicates(subset=['列1', '列2'], keep='first')  # 删除重复值，保留第一个
+
+# 3. 异常值处理
+# 检查异常值
+df[(df['列名'] > 值1) & (df['列名'] < 值2)] # 检查异常值
+# 删除异常值
+df.drop(df[(df['列名'] > 值1) & (df['列名'] < 值2)].index)
+# 修复异常值，根据具体需求灵活处理
+df['列名'] = df['列名'].abs # 取绝对值
+
+# 4. 数据格式统一
+df['列名'].astype(数据类型) # 将列数据类型转换为指定数据类型
+df['列名'].str.lower() # 将列数据转换为小写
+df['列名'].str.upper() # 将列数据转换为大写
+df['列名'].str.capitalize() # 将列数据转换为首字母大写
+df['列名'].str.strip() # 将列数据两端的空格去掉
+df['列名'].str.replace(旧值, 新值) # 将列数据中的旧值替换为新值
+df['列名'].str.split(分隔符) # 将列数据按分隔符分割成列表
+```
+
+**数据排序**：
+
+```
+# 数据排序
+df.sort_values(by='列名', ascending=False) # 按列名排序，ascending=False表示降序
+# 多列排序
+df.sort_values(by=['列1', '列2'], ascending=[True, False]) # 按多列排序，ascending=[True, False]表示按列1升序，列2降序
+```
+
+**数据分组**：
+
+```
+# 根据‘分组列名’分组，计算每个类别 某个统计列名的统计值
+df.groupby('分组列名').['统计列名'].sum() # 分组统计，返回每个组的统计值
+df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'}) # 分组统计，返回每个组的统计值，如：销售量总和、销售额总和
+```
+
+### 8.3 **Matplotlib**
+
+**Matplotlib介绍**：Matplotlib是一个功能强大的数据可视化开源Python库，也是Python中使用的最多的图形绘图库，可以创建静态、动态、交互式的图表。
+
+**Matplotlib安装**：`pip install matplotlib` 或 `conda install matplotlib`
+
+[Matplotlib官方文档](https://matplotlib.org/stable/contents.html)
+
 
 ## 总结
 
