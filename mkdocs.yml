@@ -43,7 +43,7 @@ nav:
   - 主页: index.md
   - 课程:
     - 首页: course/index.md
-    - 示例: course/example.md
+    # - 示例: course/example.md
     - Python 基础: course/Python/index.md
     - PythonWeb:
         - FastAPI: course/PythonWeb/FastAPI/index.md
