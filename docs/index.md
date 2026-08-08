@@ -45,7 +45,7 @@
 
     使用 FastAPI 构建高性能、易维护的 Web API 服务
 
-    [:octicons-arrow-right-24: 前往学习](course/PythonWeb/FastAPI/index.md)
+    [:octicons-arrow-right-24: 前往学习](course/PythonWeb/index.md)
 
 -   :material-robot-outline:{ .lg .middle } **LangChain**
 

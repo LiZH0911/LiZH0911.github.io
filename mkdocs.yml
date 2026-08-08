@@ -45,8 +45,8 @@ nav:
     - 首页: course/index.md
     # - 示例: course/example.md
     - Python 基础: course/Python/index.md
-    - PythonWeb:
-        - FastAPI: course/PythonWeb/FastAPI/index.md
+    - PythonWeb: course/PythonWeb/index.md
+        # - FastAPI: course/PythonWeb/FastAPI/index.md
 #    - LangChain: course/LangChain/index.md
 #    - Java 基础: course/Java/index.md
     - JavaWeb:
