@@ -12,7 +12,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../PythonWeb/FastAPI/">
+        <link rel="next" href="../PythonWeb/">
       
       
         
@@ -977,67 +977,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    PythonWeb
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    PythonWeb
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../PythonWeb/FastAPI/" class="md-nav__link">
+      <a href="../PythonWeb/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FastAPI
+    PythonWeb
   
 
     
@@ -1046,14 +994,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1713,8 +1653,10 @@
 
 
 <h1 id="python">Python 基础</h1>
-<p>该笔记参考的课程链接：
-<a href="https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员Python+AI</a></p>
+<p>该笔记参考的课程链接：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员Python+AI</a></li>
+</ul>
 <h2 id="_1">一、数据存储与运算</h2>
 <h3 id="11">1.1 <strong>字面量</strong></h3>
 <p><strong>定义</strong>：字面量是程序中直接书写的固定值(数据)</p>
@@ -1912,7 +1854,7 @@ else:
 </code></pre></div>
 <p><strong>特点</strong>：元素类型可不同，元素无序（不支持索引访问、切片）、不可重复、可修改</p>
 <blockquote>
-<p>注意：<code>{}</code>表示空字典，而非空集合</p>
+<p>注意：<code>{}</code>表示空字典，而不是空集合</p>
 </blockquote>
 <p><strong>集合常用方法</strong>：</p>
 <ul>
@@ -1935,7 +1877,7 @@ else:
 </code></pre></div>
 <p><strong>特点</strong>：</p>
 <ul>
-<li>键值对（key:value）存储</li>
+<li>键值对（key : value）存储</li>
 <li>通过键来查找值，且查询速度极快，内部使用了哈希表（Hash Table）技术</li>
 <li>键不可重复且不可修改（键不能为列表、元组、字典等）</li>
 <li>值可以是任意类型且可重复</li>
@@ -1964,7 +1906,7 @@ def 函数名(参数列表):
 函数名(参数)
 </code></pre></div></p>
 <p><strong>函数的说明文档</strong>：函数开头用三个引号包裹的字符串，用于解释函数的功能、参数、返回值等信息，方便调用者清楚函数的具体作用及细节。</p>
-<p><strong>函数的嵌套调用</strong>：遵循栈结构，LIFO后进先出</p>
+<p><strong>函数的嵌套调用</strong>：遵循栈结构，LIFO（后进先出）</p>
 <h3 id="42">4.2 <strong>函数进阶</strong></h3>
 <p><strong>变量的作用域</strong>：</p>
 <ul>
@@ -1987,7 +1929,7 @@ def 函数名(参数列表):
 <li>普通参数：数字、布尔、列表等</li>
 <li>特殊参数：函数</li>
 </ul>
-<p><strong>匿名函数</strong>：匿名函数指的是没有名称的函数，需要通过lambda表达式来声明函数，可以简化函数的编写（单行表达式）。</p>
+<p><strong>匿名函数</strong>：匿名函数指的是没有名称的函数，需要通过 lambda 表达式来声明函数，可以简化函数的编写（单行表达式）。</p>
 <div class="highlight"><pre><span></span><code># 定义匿名函数
 lambda 参数列表 : 函数体
 
@@ -1995,7 +1937,7 @@ add = lambda x, y : x + y
 print(add(3, 4))
 </code></pre></div>
 <h3 id="42_1">4.2 <strong>类型注解</strong></h3>
-<p><strong>类型注解</strong>：类型注解是Python的一种语法特性，用于明确标识变量、函数参数和返回值的数据类型，但不会进行类型检查，只是作为代码的提示，从而使代码更清晰、更安全、更易维护。</p>
+<p><strong>类型注解</strong>：类型注解是 Python 的一种语法特性，用于明确标识变量、函数参数和返回值的数据类型，但不会进行类型检查，只是作为代码的提示，从而使代码更清晰、更安全、更易维护。</p>
 <div class="highlight"><pre><span></span><code># 变量类型注解
 a: int = 100
 # 函数类型注解
@@ -2005,9 +1947,9 @@ def calc(scores: list[int]) -&gt; float
 <blockquote>
 <p>常见类型：int、float、str、bool、None、list、tuple、dict、set、int | str</p>
 </blockquote>
-<p><strong>类型推断</strong>：类型推断是指Python解释器自动推断出变量、表达式或函数返回值的数据类型的能力，而无需开发者显式声明。</p>
+<p><strong>类型推断</strong>：类型推断是指 Python 解释器自动推断出变量、表达式或函数返回值的数据类型的能力，而无需开发者显式声明。</p>
 <h2 id="_5">五、模块</h2>
-<p><strong>模块（module）</strong>：一个.py文件就是一个模块，模块是Python程序的基本组织单位。在模块中可以定义函数、类，以及可执行的代码。</p>
+<p><strong>模块（module）</strong>：一个.py 文件就是一个模块，模块是 Python 程序的基本组织单位。在模块中可以定义函数、类，以及可执行的代码。</p>
 <ul>
 <li>使代码结构清晰，便于维护</li>
 <li>提高代码复用性</li>
@@ -2021,7 +1963,7 @@ def calc(scores: list[int]) -&gt; float
 <li><code>from 模块名 import 功能名 as 别名</code></li>
 <li><code>from 模块名 import *</code>：从模块中导入所有函数，使用时不需要加模块名</li>
 </ol>
-<p><strong>包（package）</strong>：包即文件夹，包含若干python模块(.py文件)，还包含了一个_init__.py。包用来管理多个模块（包本质也是一个模块）。</p>
+<p><strong>包（package）</strong>：包即文件夹，包含若干 python 模块(.py 文件)，还包含了一个_init__.py。包用来管理多个模块（包本质也是一个模块）。</p>
 <p><strong>包的导入方式</strong>：</p>
 <ol>
 <li><code>import 包名.模块名</code></li>
@@ -2064,7 +2006,7 @@ class 类名：
 <li>保护方法（Protected）：命名以单下划线开头（如 _method），只能在类的内部和子类中访问</li>
 <li>私有方法（Private）：命名以双下划线开头（如 __method），只能在类的内部访问</li>
 </ul>
-<p><strong>魔法方法</strong>：魔法方法是指Python中提供的以双下划线开头和结尾的特殊方法，用于定义类的特殊行为。</p>
+<p><strong>魔法方法</strong>：魔法方法是指 Python 中提供的以双下划线开头和结尾的特殊方法，用于定义类的特殊行为。</p>
 <ul>
 <li><code>__init__</code>：初始化方法，用于初始化对象的属性</li>
 <li><code>__str__</code>：默认输出对象的内存地址</li>
@@ -2085,7 +2027,7 @@ class 类名：
 </ul>
 <h2 id="_7">七、异常</h2>
 <h3 id="71">7.1 <strong>概述</strong></h3>
-<p><strong>异常（Exception）</strong>：异常（也称为Bug）是程序运行过程中出现的错误，如果异常没有被“捕获”并处理，它就会中断程序的正常执行流程。异常有助于开发者在开发阶段发现问题并解决问题，保障程序正常运行。</p>
+<p><strong>异常（Exception）</strong>：异常（也称为 Bug）是程序运行过程中出现的错误，如果异常没有被“捕获”并处理，它就会中断程序的正常执行流程。异常有助于开发者在开发阶段发现问题并解决问题，保障程序正常运行。</p>
 <h3 id="72">7.2 <strong>常见异常</strong></h3>
 <ul>
 <li>BaseException：所有异常的基类</li>
@@ -2120,7 +2062,7 @@ finally:
 <h2 id="_8">八、面向对象高级</h2>
 <h3 id="81">8.1 <strong>封装</strong></h3>
 <p><strong>封装</strong>：封装就是把数据（属性）和操作数据的函数（方法）捆绑在一起，形成一个独立的单元（类），并隐藏内部的实现细节（私有属性、私有方法），只对外暴露必要的功能（公共属性、公共方法）。</p>
-<p><strong>私有</strong>：私有的属性和方法只能在类的内部使用；<span style="color: red;">Python中并没有真正的私有机制</span>。约定在私有属性名和方法名前加__（两个下划线），Python会将<code>__var</code>偷偷改名为<code>_ClassName__var</code></p>
+<p><strong>私有</strong>：私有的属性和方法只能在类的内部使用；<span style="color: red;">Python 中并没有真正的私有机制</span>。约定在私有属性名和方法名前加<code>__</code>（两个下划线），Python 会将<code>__var</code>偷偷改名为<code>_ClassName__var</code></p>
 <h3 id="82">8.2 <strong>继承</strong></h3>
 <p><strong>继承</strong>：继承描述的是两个类之间的关系，子类继承父类，就可以获取到父类的属性和方法（非私有）。</p>
 <div class="highlight"><pre><span></span><code># 定义父类
@@ -2194,7 +2136,7 @@ make_it_quack(d)  # 输出：呱呱呱
 make_it_quack(p)  # 输出：我在模仿鸭子叫！（完全没问题，不会报错）
 </code></pre></div>
 <blockquote>
-<p>Python多态的特殊性：不需要继承。在Java中，多态必须建立在继承或接口实现的基础上。但在Python中，只要两个类有同名方法，它们就是“多态的”，哪怕毫无继承关系。</p>
+<p>Python 多态的特殊性：不需要继承。在 Java 中，多态必须建立在继承或接口实现的基础上。但在 Python 中，只要两个类有同名方法，它们就是“多态的”，哪怕毫无继承关系。</p>
 </blockquote>
 <h2 id="_9">九、数据分析</h2>
 <h3 id="91">9.1 <strong>概述</strong></h3>
@@ -2202,20 +2144,21 @@ make_it_quack(p)  # 输出：我在模仿鸭子叫！（完全没问题，不会
 <p><strong>基本流程</strong>：</p>
 <ol>
 <li>数据收集：从各种渠道收集数据，如文件、数据库、网络等</li>
-<li>数据清洗：对数据进行清洗，如去除重复数据、处理缺失值、处理异常值、一致性检查等（基于Pandas库）</li>
+<li>数据清洗：对数据进行清洗，如去除重复数据、处理缺失值、处理异常值、一致性检查等（基于 Pandas 库）</li>
 <li>数据分析：对数据进行分析，如统计分析、数据挖掘、机器学习等</li>
-<li>数据可视化：将数据可视化，如绘制图表、生成报告等（基于Matplotlib库）</li>
+<li>数据可视化：将数据可视化，如绘制图表、生成报告等（基于 Matplotlib 库）</li>
 </ol>
 <p><strong>环境准备</strong>：Jupyter Notebook</p>
-<p><strong>Jupyter Notebook</strong>：一个基于Web网页的、交互式的编程笔记本，可以把代码、运行结果、图表和笔记全部都放在一个文件里（在数据分析、机器学习、教学和科研等领域的数据实验室）</p>
+<p><strong>Jupyter Notebook</strong>：一个基于 Web 网页的、交互式的编程笔记本，可以把代码、运行结果、图表和笔记全部都放在一个文件里（在数据分析、机器学习、教学和科研等领域的数据实验室）</p>
 <h3 id="92-pandas">9.2 <strong>Pandas</strong></h3>
-<p><strong>Pandas介绍</strong>：Pandas是一个功能强大的结构化数据分析的工具集，底层是基于Numpy构建的，无论是在数据分析领域、还是大数据开发场景中都有显著的优势。</p>
-<p><strong>Pandas安装</strong>：<code>pip install pandas</code> 或 <code>conda install pandas</code></p>
-<p><a href="https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides">Pandas官方文档</a></p>
+<p><strong>Pandas 介绍</strong>：Pandas 是一个功能强大的结构化数据分析的工具集，底层是基于 Numpy 构建的，无论是在数据分析领域、还是大数据开发场景中都有显著的优势。</p>
+<p><strong>Pandas 安装</strong>：<code>pip install pandas</code> 或 <code>conda install pandas</code></p>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides">Pandas官方文档</a></li>
+</ul>
 <p><strong>核心类</strong>： Series（一维数据），DataFrame（二维数据）</p>
 <p><strong>DataFrame</strong>：</p>
-<div class="highlight"><pre><span></span><code># 实例化DataFrame
-import pandas as pd
+<div class="highlight"><pre><span></span><code>import pandas as pd
 df = pd.DataFrame({
     &#39;A&#39;: [1, 2, 3],
     &#39;B&#39;: [4, 5, 6]
@@ -2223,13 +2166,12 @@ df = pd.DataFrame({
 print(df)
 </code></pre></div>
 <p><strong>Series</strong>：</p>
-<div class="highlight"><pre><span></span><code># 实例化Series
-import pandas as pd
+<div class="highlight"><pre><span></span><code>import pandas as pd
 s = pd.Series([1, 3, 5, 7, 9])
 print(s)
 </code></pre></div>
-<p><strong>数据读取和写入</strong>：基于Pandas中提供的API，可以很方便地读取和写入各类数据文件，如CSV、Excel、数据库、网络数据等。</p>
-<div class="highlight"><pre><span></span><code># 数据读取，以csv文件为例
+<p><strong>数据读取和写入</strong>：基于 Pandas 中提供的 API，可以很方便地读取和写入各类数据文件，如 CSV、Excel、数据库、网络数据等。</p>
+<div class="highlight"><pre><span></span><code># 数据读取，以 csv 文件为例
 import pandas as pd
 df = pd.read_csv(&#39;data.csv&#39;)
 # 数据写入
@@ -2298,14 +2240,16 @@ df.sort_values(by=&#39;列名&#39;, ascending=False) # 按列名排序，ascendi
 df.sort_values(by=[&#39;列1&#39;, &#39;列2&#39;], ascending=[True, False]) # 按多列排序，ascending=[True, False]表示按列1升序，列2降序
 </code></pre></div>
 <p><strong>数据分组</strong>：</p>
-<div class="highlight"><pre><span></span><code># 根据‘分组列名’分组，计算每个类别 某个统计列名的统计值
-df.groupby(&#39;分组列名&#39;).[&#39;统计列名&#39;].sum() # 分组统计，返回每个组的统计值
-df.groupby(&#39;产品类别&#39;).agg({&#39;销售量&#39;: &#39;sum&#39;, &#39;销售额&#39;: &#39;sum&#39;}) # 分组统计，返回每个组的统计值，如：销售量总和、销售额总和
+<div class="highlight"><pre><span></span><code># 分组统计：根据‘分组列名’分组，计算每个类别 某个统计列名的统计值
+df.groupby(&#39;分组列名&#39;).[&#39;统计列名&#39;].sum() 
+df.groupby(&#39;产品类别&#39;).agg({&#39;销售量&#39;: &#39;sum&#39;, &#39;销售额&#39;: &#39;sum&#39;}) 
 </code></pre></div>
 <h3 id="93-matplotlib">9.3 <strong>Matplotlib</strong></h3>
-<p><strong>Matplotlib介绍</strong>：Matplotlib是一个功能强大的数据可视化开源Python库，也是Python中使用的最多的图形绘图库，可以创建静态、动态、交互式的图表。</p>
-<p><strong>Matplotlib安装</strong>：<code>pip install matplotlib</code> 或 <code>conda install matplotlib</code></p>
-<p><a href="https://matplotlib.org/stable/contents.html">Matplotlib官方文档</a></p>
+<p><strong>Matplotlib 介绍</strong>：Matplotlib 是一个功能强大的数据可视化开源 Python 库，也是 Python 中使用的最多的图形绘图库，可以创建静态、动态、交互式的图表。</p>
+<p><strong>Matplotlib 安装</strong>：<code>pip install matplotlib</code> 或 <code>conda install matplotlib</code></p>
+<ul>
+<li><a href="https://matplotlib.org/stable/contents.html">Matplotlib官方文档</a></li>
+</ul>
 
 
 
