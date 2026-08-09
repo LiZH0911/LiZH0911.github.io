@@ -2,7 +2,7 @@
 
 该笔记参考的课程链接：
 
-- [黑马程序员Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
+- [黑马程序员 Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
 
 ## 一、数据存储与运算
 
@@ -132,7 +132,7 @@
 
 ### 2.1 **if 条件判断**
 
-```
+```Python
 if 条件表达式1:
     执行操作1
 elif 条件表达式2:
@@ -143,14 +143,14 @@ else:
 
 ### 2.2 **while 循环**
 
-```
+```Python
 while 条件表达式:
     循环体
 ```
 
 ### 2.3 **for 循环**
 
-```
+```Python
 for 元素 in 数据集:
     循环体
 ```
@@ -159,7 +159,7 @@ for 元素 in 数据集:
 
 ### 3.1 **列表 list**
 
-```
+```Python
 # 定义列表
 列表名称 = [元素1, 元素2, ...]
 ```
@@ -168,7 +168,7 @@ for 元素 in 数据集:
 
 **切片**：对有序序列进行切片，返回一个新的有序序列。<span style="color: red;">左闭右开，步长为负表示逆向切片</span>。
 
-```
+```Python
 序列数据[开始索引:结束索引:步长]
 ```
 
@@ -190,7 +190,7 @@ for 元素 in 数据集:
 
 ### 3.2 **字符串 str**
 
-```
+```Python
 # 定义字符串
 字符串名称 = "字符串内容"
 ```
@@ -218,7 +218,7 @@ for 元素 in 数据集:
 
 ### 3.3 **元组 tuple**
 
-```
+```Python
 # 定义元组
 元组名称 = (元素1, 元素2, ...)
 # 定义空元组
@@ -242,7 +242,7 @@ for 元素 in 数据集:
 
 ### 3.4 **集合 set**
 
-```
+```Python
 # 定义集合
 集合名称 = {元素1, 元素2, ...}
 ```
@@ -263,7 +263,7 @@ for 元素 in 数据集:
 
 ### 3.5 **字典 dict**
 
-```
+```Python
 # 定义字典
 字典名称 = {key:value, key:value, ...}
 # 定义空字典
@@ -298,7 +298,7 @@ for 元素 in 数据集:
 **函数介绍**：函数是组织好的、可重复使用的、用来实现特定功能的代码片段。
 
 **函数的定义与调用**：
-```
+```Python
 # 定义函数
 def 函数名(参数列表):
    函数体
@@ -335,7 +335,7 @@ def 函数名(参数列表):
 
 **匿名函数**：匿名函数指的是没有名称的函数，需要通过 lambda 表达式来声明函数，可以简化函数的编写（单行表达式）。
 
-```
+```Python
 # 定义匿名函数
 lambda 参数列表 : 函数体
 
@@ -347,7 +347,7 @@ print(add(3, 4))
 
 **类型注解**：类型注解是 Python 的一种语法特性，用于明确标识变量、函数参数和返回值的数据类型，但不会进行类型检查，只是作为代码的提示，从而使代码更清晰、更安全、更易维护。
 
-```
+```Python
 # 变量类型注解
 a: int = 100
 # 函数类型注解
@@ -401,7 +401,7 @@ def calc(scores: list[int]) -> float
 
 **类的定义**：
 
-```
+```Python
 # 定义类
 class 类名：
    def __init__(self, 参数列表):
@@ -470,7 +470,7 @@ class 类名：
 
 **异常捕获**：使用 try-except 语句捕获异常
 
-```
+```Python
 try:
     # 可能抛出异常的代码
     num = int(input("请输入数字: "))
@@ -504,7 +504,7 @@ finally:
 
 **继承**：继承描述的是两个类之间的关系，子类继承父类，就可以获取到父类的属性和方法（非私有）。
 
-```
+```Python
 # 定义父类
 class ParentClass:
     def __init__(self, attr1, attr2):
@@ -532,7 +532,7 @@ class ChildClass(ParentClass):
 
 **多继承**：多继承指的是一个子类同时继承了多个父类的情况（会将多个父类中的非私有的属性和方法都继承下来）。
 
-```
+```Python
 # 多继承
 class 子类名(父类名1, 父类名2, 父类名3, ...)
 ```
@@ -542,7 +542,7 @@ class 子类名(父类名1, 父类名2, 父类名3, ...)
 
 **多态**：多态是指同一个方法，具有不同的形态、行为、表现。如：定义函数时，参数类型指定为父类类型，在执行的时候传入不同的子类对象，就具有不同的形态。
 
-```
+```Python
 class Animal:
     def speak(self):
         pass  # 父类不实现具体逻辑
@@ -565,7 +565,7 @@ animal_talk(Cat())  # 输出：喵喵
 
 **鸭子类型**：鸭子类型是一种动态类型，它关注对象的属性和方法，而不关注对象的类型。
 
-```
+```Python
 class Duck:
     def quack(self):
         print("呱呱呱")
@@ -609,13 +609,13 @@ make_it_quack(p)  # 输出：我在模仿鸭子叫！（完全没问题，不会
 
 **Pandas 安装**：`pip install pandas` 或 `conda install pandas`
 
-- [Pandas官方文档](https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides)
+- [Pandas 官方文档](https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides)
 
 **核心类**： Series（一维数据），DataFrame（二维数据）
 
 **DataFrame**：
 
-```
+```Python
 import pandas as pd
 df = pd.DataFrame({
     'A': [1, 2, 3],
@@ -626,7 +626,7 @@ print(df)
 
 **Series**：
 
-```
+```Python
 import pandas as pd
 s = pd.Series([1, 3, 5, 7, 9])
 print(s)
@@ -634,7 +634,7 @@ print(s)
 
 **数据读取和写入**：基于 Pandas 中提供的 API，可以很方便地读取和写入各类数据文件，如 CSV、Excel、数据库、网络数据等。
 
-```
+```Python
 # 数据读取，以 csv 文件为例
 import pandas as pd
 df = pd.read_csv('data.csv')
@@ -666,7 +666,7 @@ df.to_csv('data.csv', index=False)
 
 **数据清洗**：数据清洗是指发现并纠正数据中可识别的错误的过程，包括处理缺失值、重复值、异常值，统一数据格式，保证数据的一致性。
 
-```
+```Python
 # 数据清洗
 # 1. 缺失值处理
 # 检查缺失值
@@ -703,7 +703,7 @@ df['列名'].str.split(分隔符) # 将列数据按分隔符分割成列表
 
 **数据排序**：
 
-```
+```Python
 # 数据排序
 df.sort_values(by='列名', ascending=False) # 按列名排序，ascending=False表示降序
 # 多列排序
@@ -712,7 +712,7 @@ df.sort_values(by=['列1', '列2'], ascending=[True, False]) # 按多列排序�
 
 **数据分组**：
 
-```
+```Python
 # 分组统计：根据‘分组列名’分组，计算每个类别 某个统计列名的统计值
 df.groupby('分组列名').['统计列名'].sum() 
 df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'}) 
@@ -724,7 +724,7 @@ df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'})
 
 **Matplotlib 安装**：`pip install matplotlib` 或 `conda install matplotlib`
 
-- [Matplotlib官方文档](https://matplotlib.org/stable/contents.html)
+- [Matplotlib 官方文档](https://matplotlib.org/stable/contents.html)
 
 
 
