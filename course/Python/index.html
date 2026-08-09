@@ -1655,7 +1655,7 @@
 <h1 id="python">Python 基础</h1>
 <p>该笔记参考的课程链接：</p>
 <ul>
-<li><a href="https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员Python+AI</a></li>
+<li><a href="https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员 Python+AI</a></li>
 </ul>
 <h2 id="_1">一、数据存储与运算</h2>
 <h3 id="11">1.1 <strong>字面量</strong></h3>
@@ -1765,29 +1765,29 @@
 <p><strong>逻辑运算符</strong>：<code>and, or, not</code></p>
 <h2 id="_2">二、流程控制语句</h2>
 <h3 id="21-if">2.1 <strong>if 条件判断</strong></h3>
-<div class="highlight"><pre><span></span><code>if 条件表达式1:
-    执行操作1
-elif 条件表达式2:
-    执行操作2
-else:
-    执行操作3
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">条件表达式1</span><span class="p">:</span>
+    <span class="n">执行操作1</span>
+<span class="k">elif</span> <span class="n">条件表达式2</span><span class="p">:</span>
+    <span class="n">执行操作2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">执行操作3</span>
 </code></pre></div>
 <h3 id="22-while">2.2 <strong>while 循环</strong></h3>
-<div class="highlight"><pre><span></span><code>while 条件表达式:
-    循环体
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">条件表达式</span><span class="p">:</span>
+    <span class="n">循环体</span>
 </code></pre></div>
 <h3 id="23-for">2.3 <strong>for 循环</strong></h3>
-<div class="highlight"><pre><span></span><code>for 元素 in 数据集:
-    循环体
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">元素</span> <span class="ow">in</span> <span class="n">数据集</span><span class="p">:</span>
+    <span class="n">循环体</span>
 </code></pre></div>
 <h2 id="_3">三、数据容器</h2>
 <h3 id="31-list">3.1 <strong>列表 list</strong></h3>
-<div class="highlight"><pre><span></span><code># 定义列表
-列表名称 = [元素1, 元素2, ...]
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义列表</span>
+<span class="n">列表名称</span> <span class="o">=</span> <span class="p">[</span><span class="n">元素1</span><span class="p">,</span> <span class="n">元素2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
 </code></pre></div>
 <p><strong>特点</strong>：元素类型可不同，元素有序（支持索引访问、切片）、可重复、可修改</p>
 <p><strong>切片</strong>：对有序序列进行切片，返回一个新的有序序列。<span style="color: red;">左闭右开，步长为负表示逆向切片</span>。</p>
-<div class="highlight"><pre><span></span><code>序列数据[开始索引:结束索引:步长]
+<div class="highlight"><pre><span></span><code><span class="n">序列数据</span><span class="p">[</span><span class="n">开始索引</span><span class="p">:</span><span class="n">结束索引</span><span class="p">:</span><span class="n">步长</span><span class="p">]</span>
 </code></pre></div>
 <p><strong>列表常用方法</strong>：</p>
 <ul>
@@ -1806,8 +1806,8 @@ else:
 <li><code>map()</code>：返回一个迭代器，迭代器中包含两个列表中对应位置的元素</li>
 </ul>
 <h3 id="32-str">3.2 <strong>字符串 str</strong></h3>
-<div class="highlight"><pre><span></span><code># 定义字符串
-字符串名称 = &quot;字符串内容&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义字符串</span>
+<span class="n">字符串名称</span> <span class="o">=</span> <span class="s2">&quot;字符串内容&quot;</span>
 </code></pre></div>
 <p><strong>特点</strong>：元素均为字符，元素有序（支持索引访问、切片）、可重复、不可修改</p>
 <p><strong>切片</strong>：同列表</p>
@@ -1828,11 +1828,11 @@ else:
 <li><code>count()</code>：返回字符串中指定的子串出现的次数</li>
 </ul>
 <h3 id="33-tuple">3.3 <strong>元组 tuple</strong></h3>
-<div class="highlight"><pre><span></span><code># 定义元组
-元组名称 = (元素1, 元素2, ...)
-# 定义空元组
-元组名称 = ()
-元组名称 = tuple()
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义元组</span>
+<span class="n">元组名称</span> <span class="o">=</span> <span class="p">(</span><span class="n">元素1</span><span class="p">,</span> <span class="n">元素2</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="c1"># 定义空元组</span>
+<span class="n">元组名称</span> <span class="o">=</span> <span class="p">()</span>
+<span class="n">元组名称</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
 </code></pre></div>
 <p><strong>特点</strong>：元素类型可不同，元素有序（支持索引访问、切片）、可重复、不可修改</p>
 <p><strong>元组常用方法</strong>：</p>
@@ -1849,8 +1849,8 @@ else:
 <li>解包（Unpacking）：<code>x, y, *z = t1</code>，其中<code>*</code>表示收集剩余元素并存储为列表<code>z</code></li>
 </ul>
 <h3 id="34-set">3.4 <strong>集合 set</strong></h3>
-<div class="highlight"><pre><span></span><code># 定义集合
-集合名称 = {元素1, 元素2, ...}
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义集合</span>
+<span class="n">集合名称</span> <span class="o">=</span> <span class="p">{</span><span class="n">元素1</span><span class="p">,</span> <span class="n">元素2</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
 </code></pre></div>
 <p><strong>特点</strong>：元素类型可不同，元素无序（不支持索引访问、切片）、不可重复、可修改</p>
 <blockquote>
@@ -1867,13 +1867,13 @@ else:
 <li><code>issubset()</code>：判断一个集合是否是另一个集合的子集</li>
 </ul>
 <h3 id="35-dict">3.5 <strong>字典 dict</strong></h3>
-<div class="highlight"><pre><span></span><code># 定义字典
-字典名称 = {key:value, key:value, ...}
-# 定义空字典
-字典名称 = {}
-字典名称 = dict{}
-# 访问字典元素
-值 = 字典名称[key]
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义字典</span>
+<span class="n">字典名称</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+<span class="c1"># 定义空字典</span>
+<span class="n">字典名称</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">字典名称</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">{}</span>
+<span class="c1"># 访问字典元素</span>
+<span class="n">值</span> <span class="o">=</span> <span class="n">字典名称</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 </code></pre></div>
 <p><strong>特点</strong>：</p>
 <ul>
@@ -1897,13 +1897,13 @@ else:
 <h3 id="41">4.1 <strong>函数基础</strong></h3>
 <p><strong>函数介绍</strong>：函数是组织好的、可重复使用的、用来实现特定功能的代码片段。</p>
 <p><strong>函数的定义与调用</strong>：
-<div class="highlight"><pre><span></span><code># 定义函数
-def 函数名(参数列表):
-   函数体
-   return 返回值 # 返回值根据需求可有可无
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义函数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">函数名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">):</span>
+   <span class="n">函数体</span>
+   <span class="k">return</span> <span class="n">返回值</span> <span class="c1"># 返回值根据需求可有可无</span>
 
-#调用函数
-函数名(参数)
+<span class="c1">#调用函数</span>
+<span class="n">函数名</span><span class="p">(</span><span class="n">参数</span><span class="p">)</span>
 </code></pre></div></p>
 <p><strong>函数的说明文档</strong>：函数开头用三个引号包裹的字符串，用于解释函数的功能、参数、返回值等信息，方便调用者清楚函数的具体作用及细节。</p>
 <p><strong>函数的嵌套调用</strong>：遵循栈结构，LIFO（后进先出）</p>
@@ -1930,19 +1930,19 @@ def 函数名(参数列表):
 <li>特殊参数：函数</li>
 </ul>
 <p><strong>匿名函数</strong>：匿名函数指的是没有名称的函数，需要通过 lambda 表达式来声明函数，可以简化函数的编写（单行表达式）。</p>
-<div class="highlight"><pre><span></span><code># 定义匿名函数
-lambda 参数列表 : 函数体
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义匿名函数</span>
+<span class="k">lambda</span> <span class="n">参数列表</span> <span class="p">:</span> <span class="n">函数体</span>
 
-add = lambda x, y : x + y
-print(add(3, 4))
+<span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="42_1">4.2 <strong>类型注解</strong></h3>
 <p><strong>类型注解</strong>：类型注解是 Python 的一种语法特性，用于明确标识变量、函数参数和返回值的数据类型，但不会进行类型检查，只是作为代码的提示，从而使代码更清晰、更安全、更易维护。</p>
-<div class="highlight"><pre><span></span><code># 变量类型注解
-a: int = 100
-# 函数类型注解
-def calc(scores: list[int]) -&gt; float
-   return sum(scores) / len(scores)
+<div class="highlight"><pre><span></span><code><span class="c1"># 变量类型注解</span>
+<span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># 函数类型注解</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc</span><span class="p">(</span><span class="n">scores</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+   <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>常见类型：int、float、str、bool、None、list、tuple、dict、set、int | str</p>
@@ -1980,17 +1980,17 @@ def calc(scores: list[int]) -&gt; float
 <p><strong>类（class）</strong>：描述的是一组具有相同属性（特征）和方法（功能/行为）的模板。</p>
 <p><strong>对象（object）</strong>：对象是类的实例，是基于类创建出来的（实例对象）。</p>
 <p><strong>类的定义</strong>：</p>
-<div class="highlight"><pre><span></span><code># 定义类
-class 类名：
-   def __init__(self, 参数列表):
-      self.属性名 = 参数值
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义类</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">类名</span><span class="err">：</span>
+   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">参数列表</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">属性名</span> <span class="o">=</span> <span class="n">参数值</span>
 
-   def 方法名(self, 参数列表):
-      方法体
+   <span class="k">def</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">参数列表</span><span class="p">):</span>
+      <span class="n">方法体</span>
 
-# 创建对象
-对象名 = 类名(参数列表)
-对象名.方法名(参数列表)
+<span class="c1"># 创建对象</span>
+<span class="n">对象名</span> <span class="o">=</span> <span class="n">类名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span>
+<span class="n">对象名</span><span class="o">.</span><span class="n">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>类的命名规范</strong>：类名应该使用大驼峰命名法（Camel Case），即每个单词的首字母大写，不使用下划线。</p>
 <h3 id="63">6.3 <strong>方法</strong></h3>
@@ -2039,25 +2039,25 @@ class 类名：
 </ul>
 <h3 id="73">7.3 <strong>异常处理</strong></h3>
 <p><strong>异常捕获</strong>：使用 try-except 语句捕获异常</p>
-<div class="highlight"><pre><span></span><code>try:
-    # 可能抛出异常的代码
-    num = int(input(&quot;请输入数字: &quot;))
-    result = 10 / num
-    print(result)
-except ZeroDivisionError:
-    # 捕获特定类型的异常
-    print(&quot;错误：不能除以零！&quot;)
-except ValueError:
-    print(&quot;错误：请输入有效的数字！&quot;)
-except Exception as e:
-    # 捕获所有其他未知异常，并打印错误信息
-    print(f&quot;发生了未知错误: {e}&quot;)
-else:
-    # 如果没有发生异常，执行此块（可选）
-    print(&quot;计算成功！&quot;)
-finally:
-    # 无论是否发生异常，都会执行（通常用于释放资源，如关闭文件）
-    print(&quot;程序执行结束。&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 可能抛出异常的代码</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入数字: &quot;</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">num</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="c1"># 捕获特定类型的异常</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：不能除以零！&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：请输入有效的数字！&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># 捕获所有其他未知异常，并打印错误信息</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发生了未知错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># 如果没有发生异常，执行此块（可选）</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;计算成功！&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># 无论是否发生异常，都会执行（通常用于释放资源，如关闭文件）</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;程序执行结束。&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="_8">八、面向对象高级</h2>
 <h3 id="81">8.1 <strong>封装</strong></h3>
@@ -2065,75 +2065,75 @@ finally:
 <p><strong>私有</strong>：私有的属性和方法只能在类的内部使用；<span style="color: red;">Python 中并没有真正的私有机制</span>。约定在私有属性名和方法名前加<code>__</code>（两个下划线），Python 会将<code>__var</code>偷偷改名为<code>_ClassName__var</code></p>
 <h3 id="82">8.2 <strong>继承</strong></h3>
 <p><strong>继承</strong>：继承描述的是两个类之间的关系，子类继承父类，就可以获取到父类的属性和方法（非私有）。</p>
-<div class="highlight"><pre><span></span><code># 定义父类
-class ParentClass:
-    def __init__(self, attr1, attr2):
-        self.attr1 = attr1
-        self.attr2 = attr2
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义父类</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParentClass</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">attr1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">attr2</span>
 
-    def method1(self):
-        print(&quot;Parent method1&quot;)
+    <span class="k">def</span><span class="w"> </span><span class="nf">method1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent method1&quot;</span><span class="p">)</span>
 
-    def method2(self):
-        print(&quot;Parent method2&quot;)
-# 定义子类
-class ChildClass(ParentClass):
-    def __init__(self, attr1, attr2, attr3):
-        super().__init__(attr1, attr2)
-        self.attr3 = attr3
+    <span class="k">def</span><span class="w"> </span><span class="nf">method2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent method2&quot;</span><span class="p">)</span>
+<span class="c1"># 定义子类</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ChildClass</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">,</span> <span class="n">attr3</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr3</span> <span class="o">=</span> <span class="n">attr3</span>
 
-    def method3(self):
-        print(&quot;Child method3&quot;)
+    <span class="k">def</span><span class="w"> </span><span class="nf">method3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Child method3&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>重写</strong>：重写是指子类继承父类后，如果父类中的方法不满足需求，可以在子类中重新定义父类中已有的方法（方法名相同），从而用子类的实现替换父类的实现。</p>
 <blockquote>
 <p>在子类中调用父类方法：<code>父类名.方法名(self)</code> 或 <code>super().方法名()</code></p>
 </blockquote>
 <p><strong>多继承</strong>：多继承指的是一个子类同时继承了多个父类的情况（会将多个父类中的非私有的属性和方法都继承下来）。</p>
-<div class="highlight"><pre><span></span><code># 多继承
-class 子类名(父类名1, 父类名2, 父类名3, ...)
+<div class="highlight"><pre><span></span><code><span class="c1"># 多继承</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">子类名</span><span class="p">(</span><span class="n">父类名1</span><span class="p">,</span> <span class="n">父类名2</span><span class="p">,</span> <span class="n">父类名3</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>注意：当一个类继承了多个父类时，默认优先使用第一个父类中的同名属性或方法，可以使用<code>类名.__mro__</code>属性或<code>类名.mro()</code>方法（方法解析顺序）查看调用顺序。</p>
 </blockquote>
 <h3 id="83">8.3 <strong>多态</strong></h3>
 <p><strong>多态</strong>：多态是指同一个方法，具有不同的形态、行为、表现。如：定义函数时，参数类型指定为父类类型，在执行的时候传入不同的子类对象，就具有不同的形态。</p>
-<div class="highlight"><pre><span></span><code>class Animal:
-    def speak(self):
-        pass  # 父类不实现具体逻辑
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># 父类不实现具体逻辑</span>
 
-class Dog(Animal):
-    def speak(self):
-        return &quot;汪汪&quot;
+<span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;汪汪&quot;</span>
 
-class Cat(Animal):
-    def speak(self):
-        return &quot;喵喵&quot;
+<span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;喵喵&quot;</span>
 
-def animal_talk(animal: Animal):  # 传入任何Animal的子类
-    print(animal.speak())
+<span class="k">def</span><span class="w"> </span><span class="nf">animal_talk</span><span class="p">(</span><span class="n">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="p">):</span>  <span class="c1"># 传入任何Animal的子类</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
 
-# 同一个函数，传入不同对象，表现不同
-animal_talk(Dog())  # 输出：汪汪
-animal_talk(Cat())  # 输出：喵喵
+<span class="c1"># 同一个函数，传入不同对象，表现不同</span>
+<span class="n">animal_talk</span><span class="p">(</span><span class="n">Dog</span><span class="p">())</span>  <span class="c1"># 输出：汪汪</span>
+<span class="n">animal_talk</span><span class="p">(</span><span class="n">Cat</span><span class="p">())</span>  <span class="c1"># 输出：喵喵</span>
 </code></pre></div>
 <p><strong>鸭子类型</strong>：鸭子类型是一种动态类型，它关注对象的属性和方法，而不关注对象的类型。</p>
-<div class="highlight"><pre><span></span><code>class Duck:
-    def quack(self):
-        print(&quot;呱呱呱&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Duck</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;呱呱呱&quot;</span><span class="p">)</span>
 
-class Person:
-    def quack(self):
-        print(&quot;我在模仿鸭子叫！&quot;)
+<span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我在模仿鸭子叫！&quot;</span><span class="p">)</span>
 
-def make_it_quack(thing):
-    # 我不关心 thing 是 Duck 还是 Person，我只关心它能不能 quack()
-    thing.quack()
+<span class="k">def</span><span class="w"> </span><span class="nf">make_it_quack</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+    <span class="c1"># 我不关心 thing 是 Duck 还是 Person，我只关心它能不能 quack()</span>
+    <span class="n">thing</span><span class="o">.</span><span class="n">quack</span><span class="p">()</span>
 
-d = Duck()
-p = Person()
-make_it_quack(d)  # 输出：呱呱呱
-make_it_quack(p)  # 输出：我在模仿鸭子叫！（完全没问题，不会报错）
+<span class="n">d</span> <span class="o">=</span> <span class="n">Duck</span><span class="p">()</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">()</span>
+<span class="n">make_it_quack</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># 输出：呱呱呱</span>
+<span class="n">make_it_quack</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># 输出：我在模仿鸭子叫！（完全没问题，不会报错）</span>
 </code></pre></div>
 <blockquote>
 <p>Python 多态的特殊性：不需要继承。在 Java 中，多态必须建立在继承或接口实现的基础上。但在 Python 中，只要两个类有同名方法，它们就是“多态的”，哪怕毫无继承关系。</p>
@@ -2154,28 +2154,28 @@ make_it_quack(p)  # 输出：我在模仿鸭子叫！（完全没问题，不会
 <p><strong>Pandas 介绍</strong>：Pandas 是一个功能强大的结构化数据分析的工具集，底层是基于 Numpy 构建的，无论是在数据分析领域、还是大数据开发场景中都有显著的优势。</p>
 <p><strong>Pandas 安装</strong>：<code>pip install pandas</code> 或 <code>conda install pandas</code></p>
 <ul>
-<li><a href="https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides">Pandas官方文档</a></li>
+<li><a href="https://pandas.pydata.org/docs/user_guide/index.html#how-to-read-these-guides">Pandas 官方文档</a></li>
 </ul>
 <p><strong>核心类</strong>： Series（一维数据），DataFrame（二维数据）</p>
 <p><strong>DataFrame</strong>：</p>
-<div class="highlight"><pre><span></span><code>import pandas as pd
-df = pd.DataFrame({
-    &#39;A&#39;: [1, 2, 3],
-    &#39;B&#39;: [4, 5, 6]
-})
-print(df)
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Series</strong>：</p>
-<div class="highlight"><pre><span></span><code>import pandas as pd
-s = pd.Series([1, 3, 5, 7, 9])
-print(s)
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>数据读取和写入</strong>：基于 Pandas 中提供的 API，可以很方便地读取和写入各类数据文件，如 CSV、Excel、数据库、网络数据等。</p>
-<div class="highlight"><pre><span></span><code># 数据读取，以 csv 文件为例
-import pandas as pd
-df = pd.read_csv(&#39;data.csv&#39;)
-# 数据写入
-df.to_csv(&#39;data.csv&#39;, index=False)
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据读取，以 csv 文件为例</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+<span class="c1"># 数据写入</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>数据查看</strong>：</p>
 <ul>
@@ -2200,55 +2200,55 @@ df.to_csv(&#39;data.csv&#39;, index=False)
 <li><code>df[(条件1) | (条件2)]</code>：多条件过滤，或关系</li>
 </ul>
 <p><strong>数据清洗</strong>：数据清洗是指发现并纠正数据中可识别的错误的过程，包括处理缺失值、重复值、异常值，统一数据格式，保证数据的一致性。</p>
-<div class="highlight"><pre><span></span><code># 数据清洗
-# 1. 缺失值处理
-# 检查缺失值
-df.isnull() # 检查缺失值，返回布尔值矩阵，True表示缺失值，False表示非缺失值
-# 删除缺失值
-df_new = df.dropna(axis=0, inplace=False)  # 删除包含缺失值的行，默认inplace=False表示返回一个新的表格
-# 填充缺失值
-df.fillna(0)  # 用0填充缺失值
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据清洗</span>
+<span class="c1"># 1. 缺失值处理</span>
+<span class="c1"># 检查缺失值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="c1"># 检查缺失值，返回布尔值矩阵，True表示缺失值，False表示非缺失值</span>
+<span class="c1"># 删除缺失值</span>
+<span class="n">df_new</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># 删除包含缺失值的行，默认inplace=False表示返回一个新的表格</span>
+<span class="c1"># 填充缺失值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 用0填充缺失值</span>
 
-# 2. 重复值处理
-# 检查重复值
-df.duplicated() # 检查重复值，返回布尔值矩阵，True表示重复值，False表示非重复值
-df.duplicated(subset=[&#39;列1&#39;, &#39;列2&#39;]) # 检查指定列的重复值
-# 删除重复值
-df.drop_duplicates(subset=[&#39;列1&#39;, &#39;列2&#39;], keep=&#39;first&#39;)  # 删除重复值，保留第一个
+<span class="c1"># 2. 重复值处理</span>
+<span class="c1"># 检查重复值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span> <span class="c1"># 检查重复值，返回布尔值矩阵，True表示重复值，False表示非重复值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">])</span> <span class="c1"># 检查指定列的重复值</span>
+<span class="c1"># 删除重复值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>  <span class="c1"># 删除重复值，保留第一个</span>
 
-# 3. 异常值处理
-# 检查异常值
-df[(df[&#39;列名&#39;] &gt; 值1) &amp; (df[&#39;列名&#39;] &lt; 值2)] # 检查异常值
-# 删除异常值
-df.drop(df[(df[&#39;列名&#39;] &gt; 值1) &amp; (df[&#39;列名&#39;] &lt; 值2)].index)
-# 修复异常值，根据具体需求灵活处理
-df[&#39;列名&#39;] = df[&#39;列名&#39;].abs # 取绝对值
+<span class="c1"># 3. 异常值处理</span>
+<span class="c1"># 检查异常值</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span> <span class="c1"># 检查异常值</span>
+<span class="c1"># 删除异常值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1"># 修复异常值，根据具体需求灵活处理</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span> <span class="c1"># 取绝对值</span>
 
-# 4. 数据格式统一
-df[&#39;列名&#39;].astype(数据类型) # 将列数据类型转换为指定数据类型
-df[&#39;列名&#39;].str.lower() # 将列数据转换为小写
-df[&#39;列名&#39;].str.upper() # 将列数据转换为大写
-df[&#39;列名&#39;].str.capitalize() # 将列数据转换为首字母大写
-df[&#39;列名&#39;].str.strip() # 将列数据两端的空格去掉
-df[&#39;列名&#39;].str.replace(旧值, 新值) # 将列数据中的旧值替换为新值
-df[&#39;列名&#39;].str.split(分隔符) # 将列数据按分隔符分割成列表
+<span class="c1"># 4. 数据格式统一</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">数据类型</span><span class="p">)</span> <span class="c1"># 将列数据类型转换为指定数据类型</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># 将列数据转换为小写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># 将列数据转换为大写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="c1"># 将列数据转换为首字母大写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># 将列数据两端的空格去掉</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">旧值</span><span class="p">,</span> <span class="n">新值</span><span class="p">)</span> <span class="c1"># 将列数据中的旧值替换为新值</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">分隔符</span><span class="p">)</span> <span class="c1"># 将列数据按分隔符分割成列表</span>
 </code></pre></div>
 <p><strong>数据排序</strong>：</p>
-<div class="highlight"><pre><span></span><code># 数据排序
-df.sort_values(by=&#39;列名&#39;, ascending=False) # 按列名排序，ascending=False表示降序
-# 多列排序
-df.sort_values(by=[&#39;列1&#39;, &#39;列2&#39;], ascending=[True, False]) # 按多列排序，ascending=[True, False]表示按列1升序，列2降序
+<div class="highlight"><pre><span></span><code><span class="c1"># 数据排序</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;列名&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 按列名排序，ascending=False表示降序</span>
+<span class="c1"># 多列排序</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span> <span class="c1"># 按多列排序，ascending=[True, False]表示按列1升序，列2降序</span>
 </code></pre></div>
 <p><strong>数据分组</strong>：</p>
-<div class="highlight"><pre><span></span><code># 分组统计：根据‘分组列名’分组，计算每个类别 某个统计列名的统计值
-df.groupby(&#39;分组列名&#39;).[&#39;统计列名&#39;].sum() 
-df.groupby(&#39;产品类别&#39;).agg({&#39;销售量&#39;: &#39;sum&#39;, &#39;销售额&#39;: &#39;sum&#39;}) 
+<div class="highlight"><pre><span></span><code><span class="c1"># 分组统计：根据‘分组列名’分组，计算每个类别 某个统计列名的统计值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;分组列名&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">[</span><span class="s1">&#39;统计列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;产品类别&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;销售量&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;销售额&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span> 
 </code></pre></div>
 <h3 id="93-matplotlib">9.3 <strong>Matplotlib</strong></h3>
 <p><strong>Matplotlib 介绍</strong>：Matplotlib 是一个功能强大的数据可视化开源 Python 库，也是 Python 中使用的最多的图形绘图库，可以创建静态、动态、交互式的图表。</p>
 <p><strong>Matplotlib 安装</strong>：<code>pip install matplotlib</code> 或 <code>conda install matplotlib</code></p>
 <ul>
-<li><a href="https://matplotlib.org/stable/contents.html">Matplotlib官方文档</a></li>
+<li><a href="https://matplotlib.org/stable/contents.html">Matplotlib 官方文档</a></li>
 </ul>
 
 
