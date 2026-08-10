@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
 ## 三、AI汉字迷盒案例
 
-### 2.1 **开发规范**
+### 3.1 **开发规范**
 
 **Restful**：Restful 指的是遵循 REST 架构风格的 API 接口服务。REST（REpresentational State Transfer，表述性状态转换）是一种软件架构风格。
 
@@ -93,7 +93,7 @@ PUT https://localhost:8000/users 修改用户
 
 >描述功能模块通常使用复数形式（加s），表示此类资源，而非单个资源。如：users、books、items
 
-### 2.2 **基础环境搭建**
+### 3.2 **基础环境搭建**
 
 **步骤**：
 
@@ -127,7 +127,7 @@ if __name__ == "__main__":
 - [FastAPI 教程-静态文件](https://fastapi.org.cn/tutorial/static-files/)
 
 
-### 2.3 **核心功能开发**
+### 3.3 **核心功能开发**
 
 **功能1——新建会话**：在打开该项目页面时，如果之前没有会话，则要自动创建一个会话。
 
@@ -306,7 +306,7 @@ def delete_session(session_id: str) -> ApiResponse:
     return ApiResponse(code=200, message="删除会话成功", data=None)
 ```
 
-### 2.4 **程序优化**
+### 3.4 **程序优化**
 
 **日志记录**：为了能够灵活的控制项目中日志的输出，我们可以通过官方提供的 logging 模块来输出日志。
 
