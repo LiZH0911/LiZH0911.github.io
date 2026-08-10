@@ -3,7 +3,8 @@
 该笔记参考的课程链接：
 
 - [黑马程序员 Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne?spm_id_from=333.788.videopod.episodes&vd_source=46f99c7c1ed609a31f70615a4551767f&p=173)
-- [黑马程序员 PythonWeb 开发](https://www.bilibili.com/video/BV1zV2QBtE39/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
+
+[//]: # (- [黑马程序员 PythonWeb 开发]&#40;https://www.bilibili.com/video/BV1zV2QBtE39/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f&#41;)
 
 ## 一、Web 初识
 
@@ -36,7 +37,7 @@
 
 **FastAPI 使用步骤**：
 
-```
+```Python
 # 1. 导入 FastAPI
 from fastapi import FastAPI
 
@@ -128,7 +129,7 @@ if __name__ == "__main__":
 
 ### 2.3 **核心功能开发**
 
-**新建会话**：
+**功能1——新建会话**：在打开该项目页面时，如果之前没有会话，则要自动创建一个会话。
 
 ```Python
 import os
@@ -140,7 +141,7 @@ if not os.path.exists("sessions"):
 # 新建会话
 @app.post("/api/sessions")
 def create_session() -> ApiResponse:
-    print("创建会话")
+
     # 1. 生成会话的标识（名字）
     session_id = generate_session_id()
 
@@ -172,21 +173,24 @@ class ApiResponse(BaseModel):
 ```
 
 >BaseModel：是Pydantic库提供的父类（FastAPI 深度集成了 Pydantic），用于定义 FastAPI 数据模型和数据验证规则。
+
 >返回的数据会被 Pydantic 自动序列化为 JSON 格式。Pydantic 是用 Rust 编写的，因此速度会快得多。
 
 - [FastAPI 教程-响应模型-返回类型](https://fastapi.org.cn/tutorial/response-model/)
 
-**与AI交互（接收 POST 请求体中传递的 json 格式数据）**：在与AI进行交互时，前端传递给服务端参数（本案例中为 session_id 与 message），以json格式在请求体（请求载荷）中传递到服务端。
+**功能2——与AI交互**：在会话页面，用户输入问题或者答案后，请求服务端与AI进行交互。
+
+**获取请求数据**：在与AI进行交互时，前端通过 POST 请求体向服务端传递 json 格式数据（本案例中为 session_id 与 message）。
 
 ```Python
 # 定义请求数据模型
 class ChatRequest(BaseModel):
     session_id: str
     message: str
-# 与AI交互
+# 与AI交互（获取请求数据）
 @app.post("/api/chat")
 def chat(request: ChatRequest) -> ApiResponse:
-    print(f"与AI交互: {request.session_id} : {request.message}")
+    print(f"与AI交互的请求数据: {request.session_id} : {request.message}")
     return ApiResponse(code=200, message="请求成功", data="AI大模型返回的数据")
 ```
 
@@ -199,3 +203,138 @@ def chat(request: ChatRequest) -> ApiResponse:
 5. 更新新的消息列表
 6. 保存消息到 json 文件
 7. 响应数据
+
+```Python
+from openai import OpenAI
+# 创建与AI大模型交互的客户端对象（提前在环境变量中新建DEEPSEEK_API_KEY，其值设置为DeepSeek的API_KEY）
+client = OpenAI(api_key=os.environ.get('DEEPSEEK_API_KEY'), base_url="https://api.deepseek.com")
+
+# 根据session_id获取文件名
+def get_session_file_name(session_id):
+    return f"sessions/{session_id}.json"
+
+# 与AI交互（逻辑实现）
+@app.post("/api/chat")
+def chat(request: ChatRequest) -> ApiResponse:
+
+    # 1. 加载json文件中的会话数据
+    session_path = get_session_file_name(request.session_id)
+    with open(session_path, "r", encoding="utf-8") as f:
+        session_data = json.load(f)
+
+    # 2. 构建消息列表 messages（列表的每个元素为字典）
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}] # 系统提示词
+    for message in session_data["messages"]: # 历史消息内容
+        messages.append(message)
+    messages.append({"role": "user", "content": request.message}) # 本次消息内容
+
+    # 3. 调用AI大模型 DeepSeek
+    response = client.chat.completions.create(
+        model="deepseek-v4-flash", # 调用的模型
+        messages=messages,
+        stream=False, # 非流式响应
+        temperature=1.0 # 温度参数，即模型生成结果的随机性、多样性默认1.0，范围 [0.0, 2.0]，不同使用场景可调；思考模式下不生效
+    )
+
+    # 4. 获取响应的数据
+    ai_response = response.choices[0].message.content
+
+    # 5. 更新新的消息列表，移除系统提示词并添加AI的响应
+    messages.pop(0)
+    messages.append({"role": "assistant", "content": ai_response})
+    session_data["messages"] = messages
+
+    # 6. 保存会话信息到json文件中
+    with open(session_path, "w", encoding="utf-8") as f:
+        json.dump(session_data, f, ensure_ascii=False, indent=2)
+
+    # 7. 返回数据
+    return ApiResponse(code=200, message="请求成功", data=ai_response)
+```
+
+**功能3——会话列表**：将所有会话名称展示在页面的左侧侧边栏，并且根据时间倒序排序。
+
+```Python
+# 获取会话列表
+@app.get("/api/sessions")
+def get_sessions() -> ApiResponse:
+    
+    # 1. 获取 sessions 目录下的所有文件名
+    session_files = os.listdir("sessions")
+
+    # 2. 获取文件名中的会话ID
+    session_ids = [file.split(".")[0] for file in session_files]
+    session_ids.sort(reverse=True) # 排序, 降序排列
+
+    # 3. 返回数据
+    return ApiResponse(code=200, message="获取会话列表成功", data=session_ids)
+```
+
+**功能4——加载指定会话**：在点击左侧的会话名称之后，就要查询出该会话对应的会话信息，并在消息展示栏将其展示出来。
+
+```Python
+# 获取指定的会话信息 ---> /api/sessions/2026-04-21_22-20-30 , /api/sessions/2026-04-21_22-20-55 [路径参数]
+@app.get("/api/sessions/{session_id}")
+def get_session(session_id: str) -> ApiResponse:
+
+    # 1. 获取会话文件名
+    session_file = get_session_file_name(session_id)
+
+    # 2. 读取会话文件
+    with open(session_file, "r", encoding="utf-8") as f:
+        session_data = json.load(f)
+
+    # 3. 返回数据
+    return ApiResponse(code=200, message="获取会话信息成功", data=session_data)
+```
+
+**功能5——删除会话**：在点击左侧会话名称之后的x，就要将当前的会话信息直接删除掉。
+
+```Python
+# 删除指定的会话
+@app.delete("/api/sessions/{session_id}")
+def delete_session(session_id: str) -> ApiResponse:
+
+    # 1. 获取会话文件名
+    session_file = get_session_file_name(session_id)
+
+    # 2. 删除会话文件
+    if os.path.exists(session_file):
+        os.remove(session_file)
+
+    # 3. 返回数据
+    return ApiResponse(code=200, message="删除会话成功", data=None)
+```
+
+### 2.4 **程序优化**
+
+**日志记录**：为了能够灵活的控制项目中日志的输出，我们可以通过官方提供的 logging 模块来输出日志。
+
+```Python
+import logging
+# 配置日志的基本信息
+# %(asctime)s :  时间 ;  %(levelname)s: 日志级别； %(filename)s: 文件名; %(lineno)d: 行数;  %(message)s: 日志信息
+logging.basicConfig(
+    level=logging.ERROR,  # 日志级别，level=logging.ERROR表示现在只想看ERROR及以上级别的日志
+    format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s" # 日志格式
+)
+# 定义路径操作函数
+@app.get("/")
+def root():
+    logging.info("访问项目首页")
+    return FileResponse("static/index.html")
+```
+
+>日志级别：给日志信息贴上的"重要性标签"，常见的级别有:DEBUG、INFO、WARNING、ERROR、FATAL（日志级别依次升高）
+
+**异常处理**：
+
+```Python
+# 定义异常处理器, 捕获所有异常 ---> 返回的对象的类型得是 Response
+@app.exception_handler(Exception)
+def handle_exception(request: Request, exc: Exception):
+    logging.error(f"处理异常, 请求路径: {request.url},  捕获到异常: {exc}")
+    return JSONResponse(content={"code": 500, "message": "服务器内部错误, 请联系管理员~", "data": None})
+```
+
+- [FastAPI 教程-异常处理](https://fastapi.org.cn/tutorial/handling-errors/)

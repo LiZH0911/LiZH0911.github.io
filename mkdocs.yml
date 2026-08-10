@@ -48,9 +48,9 @@ nav:
     - PythonWeb: course/PythonWeb/index.md
         # - FastAPI: course/PythonWeb/FastAPI/index.md
 #    - LangChain: course/LangChain/index.md
-#    - Java 基础: course/Java/index.md
+    - Java 基础: course/Java/index.md
     - JavaWeb:
-#        - JavaWeb开发首页: course/JavaWeb/index.md
+        - JavaWeb首页: course/JavaWeb/index.md
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
 #        - JavaScript: course/JavaWeb/JavaScript/index.md
 #        - Vue: course/JavaWeb/Vue/index.md

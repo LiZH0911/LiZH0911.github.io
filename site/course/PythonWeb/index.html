@@ -575,6 +575,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#22_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 基础环境搭建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 核心功能开发
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -810,6 +832,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#22_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 基础环境搭建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 核心功能开发
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -835,8 +879,8 @@
 <h1 id="pythonweb">PythonWeb</h1>
 <p>该笔记参考的课程链接：</p>
 <ul>
-<li><a href="https://www.bilibili.com/video/BV1sHU9BmEne?spm_id_from=333.788.videopod.episodes&amp;vd_source=46f99c7c1ed609a31f70615a4551767f&amp;p=173">黑马程序员Python+AI</a></li>
-<li><a href="https://www.bilibili.com/video/BV1zV2QBtE39/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员PythonWeb开发</a></li>
+<li><a href="https://www.bilibili.com/video/BV1sHU9BmEne?spm_id_from=333.788.videopod.episodes&amp;vd_source=46f99c7c1ed609a31f70615a4551767f&amp;p=173">黑马程序员 Python+AI</a></li>
+<li><a href="https://www.bilibili.com/video/BV1zV2QBtE39/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员 PythonWeb 开发</a></li>
 </ul>
 <h2 id="web">一、Web 初识</h2>
 <p><strong>Web</strong>：Web网站由三个核心部分组成：前端程序、服务端程序、数据库。</p>
@@ -856,8 +900,8 @@
 <h3 id="21">2.1 <strong>概述</strong></h3>
 <p><strong>FastAPI 介绍</strong>：FastAPI 是一个用于构建 API 的现代、快速（高性能）的 Web 框架，基于标准 Python 类型提示。</p>
 <ul>
-<li><a href="https://fastapi.org.cn/">FastAPI官方网站</a></li>
-<li><a href="https://fastapi.org.cn/tutorial/">FastAPI用户指南</a></li>
+<li><a href="https://fastapi.org.cn/">FastAPI 网站</a></li>
+<li><a href="https://fastapi.org.cn/tutorial/">FastAPI 教程</a></li>
 </ul>
 <p><strong>API 接口</strong>：应用程序编程接口（Application Programming Interface），即对外提供的功能入口，供别人来调用。</p>
 <h3 id="22">2.2 <strong>入门</strong></h3>
@@ -885,19 +929,124 @@ if __name__ == &quot;__main__&quot;:
 </code></pre></div>
 <h2 id="ai">三、AI汉字迷盒案例</h2>
 <h3 id="21_1">2.1 <strong>开发规范</strong></h3>
-<p><strong>Restful</strong>：Restful 指的是遵循 REST 架构风格的 API 接口服务</p>
-<p><strong>REST</strong>：REST（REpresentational State Transfer，表述性状态转换）是一种软件架构风格</p>
-<p><strong>传统风格 URL（RPC 风格）</strong>：远程过程调用风格</p>
-<div class="highlight"><pre><span></span><code>GET /user/getInfo?userId=123
-POST /product/delete?productId=456
+<p><strong>Restful</strong>：Restful 指的是遵循 REST 架构风格的 API 接口服务。REST（REpresentational State Transfer，表述性状态转换）是一种软件架构风格。</p>
+<p><strong>传统风格 URL（RPC 远程过程调用风格）</strong>：</p>
+<div class="highlight"><pre><span></span><code>GET https://localhost:8000/users/getInfo?userId=123
 </code></pre></div>
 <ul>
-<li>URL 的设计核心是“执行某个操作”</li>
-<li>用问号传参，动词写在路径里</li>
+<li><span style="color: red;">动词写在路径里，用问号传参</span></li>
 <li>优点：简单直观，浏览器地址栏直接输入就能访问，调试方便，对新手友好</li>
 <li>缺点：接口数量会爆炸（增删改查各需要一个不同路径）；无法充分利用 HTTP 协议语义；时间久了 URL 混乱，难以维护</li>
 </ul>
-<p><strong>REST 风格 URL</strong>：用 HTTP 方法做动词，路径只表示资源</p>
+<p><strong>REST 风格 URL</strong>：</p>
+<div class="highlight"><pre><span></span><code>GET https://localhost:8000/users/1 查询用户
+DELETE https://localhost:8000/users/1 删除用户
+POST https://localhost:8000/users 新增用户
+PUT https://localhost:8000/users 修改用户
+</code></pre></div>
+<ul>
+<li><span style="color: red;">URL 定位资源，HTTP 动词描述操作</span></li>
+<li>简洁、规范、优雅</li>
+</ul>
+<blockquote>
+<p>注意：REST是风格，是约定方式，约定不是规定，可以打破。</p>
+<p>描述功能模块通常使用复数形式（加s），表示此类资源，而非单个资源。如：users、books、items</p>
+</blockquote>
+<h3 id="22_1">2.2 <strong>基础环境搭建</strong></h3>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>创建项目文件夹，创建静态文件目录 static，用于存放 HTML、CSS、JS等静态资源</li>
+<li>编写 Python 文件，挂载静态文件目录，定义路径操作函数，访问前端 HTML 页面</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.staticfiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticFiles</span>
+
+<span class="c1"># 创建FastAPI实例</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;汉字谜盒&quot;</span><span class="p">)</span>
+
+<span class="c1"># 挂载静态文件的存放目录，当用户访问 /static 路径时，去 static 文件夹里找文件</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/static&quot;</span><span class="p">,</span> <span class="n">StaticFiles</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;static&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;static&quot;</span><span class="p">)</span>
+
+<span class="c1"># 定义路径操作函数 ---&gt; http://localhost:8000/</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="s2">&quot;static/index.html&quot;</span><span class="p">)</span>
+
+<span class="c1"># 启动项目</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">uvicorn</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span> <span class="c1"># access_log=False : 关闭访问日志</span>
+</code></pre></div>
+<p><strong>挂载静态文件</strong>：在特定路径中添加一个完整的“独立”应用程序，然后它将负责处理所有子路径。主应用程序的 OpenAPI 和文档不会包含挂载应用程序中的任何内容。</p>
+<ul>
+<li><a href="https://fastapi.org.cn/tutorial/static-files/">FastAPI 教程-静态文件</a></li>
+</ul>
+<h3 id="23">2.3 <strong>核心功能开发</strong></h3>
+<p><strong>新建会话</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="c1"># 创建会话存放的目录 sessions</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">)</span>
+
+<span class="c1"># 新建会话</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/sessions&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_session</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;创建会话&quot;</span><span class="p">)</span>
+    <span class="c1"># 1. 生成会话的标识（名字）</span>
+    <span class="n">session_id</span> <span class="o">=</span> <span class="n">generate_session_id</span><span class="p">()</span>
+
+    <span class="c1"># 2. 组装会话信息, 保存到文件</span>
+    <span class="n">session_data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;current_session&quot;</span><span class="p">:</span> <span class="n">session_id</span><span class="p">,</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+    <span class="c1"># with open(os.path.join(&quot;sessions&quot;, session_id + &quot;.json&quot;), &quot;w&quot;) as f:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sessions/</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">session_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># ensure_ascii=False 表示中文不转义，indent=2 表示缩进为2个空格</span>
+
+    <span class="c1"># 3. 返回数据</span>
+    <span class="c1"># return {&quot;code&quot;: 200, &quot;message&quot;: &quot;创建会话成功&quot;, &quot;data&quot;: session_id} # 直接返回字典容易把 key 写错，建议使用响应模型返回封装好的对象</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;创建会话成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>响应模型</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+<span class="c1"># 定义响应数据模型</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ApiResponse</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">code</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">Any</span>  <span class="c1"># 任意类型的数据</span>
+</code></pre></div>
+<blockquote>
+<p>BaseModel：是Pydantic库提供的父类（FastAPI 深度集成了 Pydantic），用于定义 FastAPI 数据模型和数据验证规则。
+返回的数据会被 Pydantic 自动序列化为 JSON 格式。Pydantic 是用 Rust 编写的，因此速度会快得多。</p>
+</blockquote>
+<ul>
+<li><a href="https://fastapi.org.cn/tutorial/response-model/">FastAPI 教程-响应模型-返回类型</a></li>
+</ul>
+<p><strong>与AI交互（接收 POST 请求体中传递的 json 格式数据）</strong>：在与AI进行交互时，前端传递给服务端参数（本案例中为 session_id 与 message），以json格式在请求体（请求载荷）中传递到服务端。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 定义请求数据模型</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ChatRequest</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
+<span class="c1"># 与AI交互</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/chat&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">ChatRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;与AI交互: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;请求成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s2">&quot;AI大模型返回的数据&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>与AI交互的逻辑</strong>：</p>
+<ol>
+<li>加载 json 文件会话数据</li>
+<li>构建消息列表</li>
+<li>调用 Deepseek</li>
+<li>获取响应数据</li>
+<li>更新新的消息列表</li>
+<li>保存消息到 json 文件</li>
+<li>响应数据</li>
+</ol>
 
 
 
