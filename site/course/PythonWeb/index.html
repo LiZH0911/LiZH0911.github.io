@@ -565,10 +565,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21_1" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 开发规范
+        3.1 开发规范
       
     </span>
   </a>
@@ -576,10 +576,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22_1" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 基础环境搭建
+        3.2 基础环境搭建
       
     </span>
   </a>
@@ -587,10 +587,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+  <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 核心功能开发
+        3.3 核心功能开发
       
     </span>
   </a>
@@ -598,10 +598,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
+  <a href="#34" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 程序优化
+        3.4 程序优化
       
     </span>
   </a>
@@ -889,10 +889,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21_1" class="md-nav__link">
+  <a href="#31" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 开发规范
+        3.1 开发规范
       
     </span>
   </a>
@@ -900,10 +900,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22_1" class="md-nav__link">
+  <a href="#32" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.2 基础环境搭建
+        3.2 基础环境搭建
       
     </span>
   </a>
@@ -911,10 +911,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23" class="md-nav__link">
+  <a href="#33" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 核心功能开发
+        3.3 核心功能开发
       
     </span>
   </a>
@@ -922,10 +922,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#24" class="md-nav__link">
+  <a href="#34" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.4 程序优化
+        3.4 程序优化
       
     </span>
   </a>
@@ -1005,7 +1005,7 @@
     <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>  <span class="c1"># host=&quot;127.0.0.1&quot; 表示只允许本机访问</span>
 </code></pre></div>
 <h2 id="ai">三、AI汉字迷盒案例</h2>
-<h3 id="21_1">2.1 <strong>开发规范</strong></h3>
+<h3 id="31">3.1 <strong>开发规范</strong></h3>
 <p><strong>Restful</strong>：Restful 指的是遵循 REST 架构风格的 API 接口服务。REST（REpresentational State Transfer，表述性状态转换）是一种软件架构风格。</p>
 <p><strong>传统风格 URL（RPC 远程过程调用风格）</strong>：</p>
 <div class="highlight"><pre><span></span><code>GET https://localhost:8000/users/getInfo?userId=123
@@ -1029,7 +1029,7 @@ PUT https://localhost:8000/users 修改用户
 <p>注意：REST是风格，是约定方式，约定不是规定，可以打破。</p>
 <p>描述功能模块通常使用复数形式（加s），表示此类资源，而非单个资源。如：users、books、items</p>
 </blockquote>
-<h3 id="22_1">2.2 <strong>基础环境搭建</strong></h3>
+<h3 id="32">3.2 <strong>基础环境搭建</strong></h3>
 <p><strong>步骤</strong>：</p>
 <ol>
 <li>创建项目文件夹，创建静态文件目录 static，用于存放 HTML、CSS、JS等静态资源</li>
@@ -1059,7 +1059,7 @@ PUT https://localhost:8000/users 修改用户
 <ul>
 <li><a href="https://fastapi.org.cn/tutorial/static-files/">FastAPI 教程-静态文件</a></li>
 </ul>
-<h3 id="23">2.3 <strong>核心功能开发</strong></h3>
+<h3 id="33">3.3 <strong>核心功能开发</strong></h3>
 <p><strong>功能1——新建会话</strong>：在打开该项目页面时，如果之前没有会话，则要自动创建一个会话。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -1216,7 +1216,7 @@ PUT https://localhost:8000/users 修改用户
     <span class="c1"># 3. 返回数据</span>
     <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;删除会话成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="24">2.4 <strong>程序优化</strong></h3>
+<h3 id="34">3.4 <strong>程序优化</strong></h3>
 <p><strong>日志记录</strong>：为了能够灵活的控制项目中日志的输出，我们可以通过官方提供的 logging 模块来输出日志。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="c1"># 配置日志的基本信息</span>
