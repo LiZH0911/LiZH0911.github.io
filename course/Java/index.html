@@ -1157,6 +1157,61 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 集合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Math
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-biginteger-bigdecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 BigInteger 和 BigDecimal
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1968,6 +2023,61 @@
     <span class="md-ellipsis">
       
         11.2 字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 集合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Math
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 System
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 Object
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-biginteger-bigdecimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 BigInteger 和 BigDecimal
       
     </span>
   </a>
@@ -2983,6 +3093,21 @@
 <p><strong>API（Application Programming Interface）</strong>：应用程序编程接口。就是 JDK 提供的各种功能的 Java 类。</p>
 <p><strong>API帮助文档</strong>：帮助开发人员更好的使用API和查询API的一个工具。</p>
 <p><strong>导包</strong>：用于定位 API 位置。本包中的类和 java.lang 包下的类不需要导入。</p>
+<p><strong>Java 常见API</strong>：</p>
+<ul>
+<li>Scanner：键盘录入</li>
+<li>Random：获取随机数</li>
+<li>String：字符串</li>
+<li>ArrayList：集合</li>
+<li>Math</li>
+<li>System</li>
+<li>Object 和 Objects</li>
+<li>包装类</li>
+<li>BigInteger 和 BigDecimal</li>
+<li>时间日期相关类</li>
+<li>Arrays</li>
+<li>正则表示式</li>
+</ul>
 <h3 id="112">11.2 <strong>字符串</strong></h3>
 <p><strong>字符串概述</strong>：</p>
 <ul>
@@ -2990,7 +3115,7 @@
 <li>Java 中的所有字符串文字（如<code>"hello"</code>）都为此类的对象。</li>
 <li>字符串是不可变的，一旦创建，就不能改变其内容。</li>
 </ul>
-<p><strong>创建字符串对象的方式</strong>：</p>
+<p><strong>字符串对象的创建</strong>：</p>
 <ol>
 <li>直接赋值（最简单、最常用）：<code>String str = "hello";</code></li>
 <li>使用 new + 构造方法：<ul>
@@ -3002,6 +3127,202 @@
 </li>
 </ol>
 <p><strong>两种方式的区别</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Memory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 直接赋值，代码简单，节省内存</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">str2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">str2</span><span class="p">);</span><span class="w"> </span><span class="c1">// true</span>
+<span class="w">        </span><span class="c1">// new 创建字符串对象</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">str3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">str4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">str4</span><span class="p">);</span><span class="w"> </span><span class="c1">// false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>双引号直接赋值的时候会检查串池。不存在则创建新的，存在则复用</p>
+<p>new 表示在堆内存开辟新空间，new 出来的字符串对象的内存地址不同</p>
+</blockquote>
+<p><strong>字符串的比较</strong>：</p>
+<ul>
+<li><code>==</code>：比较的是内存地址而不是字符串内容</li>
+<li><code>public boolean equals(要比较的字符串)</code>：字符串的内容完全一样才返回 true</li>
+<li><code>public boolean equalsIgnoreCase(要比较的字符串)</code>：忽略大小写的比较</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;zhangsan&quot;</span>
+<span class="n">String</span><span class="w"> </span><span class="n">rightUsername</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ZhangSan&quot;</span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">b1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">username</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">rightUsername</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b1</span><span class="p">)</span><span class="w"> </span><span class="c1">// false</span>
+</code></pre></div>
+<p><strong>字符串的遍历</strong>：</p>
+<ul>
+<li><code>public char charAt(int index)</code>：根据索引返回字符</li>
+<li><code>public int length()</code>：返回字符串的长度</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">hello</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">str</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>字符串的拼接</strong>：<code>+</code></p>
+<p><strong>字符串的截取</strong>：</p>
+<ul>
+<li><code>public String substring(int beginIndex, int endIndex)</code>：截取指定范围，左闭右开</li>
+<li><code>public String substring(int beginIndex)</code>：截取到末尾</li>
+</ul>
+<p><strong>字符串的替换</strong>：<code>public String replace(旧值, 新值)</code>：返回值是替代后的结果</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1. 定义一个敏感词库</span>
+<span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;TMD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SB&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NMD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LJ&quot;</span><span class="p">};</span>
+<span class="c1">// 2. 键盘录入</span>
+<span class="n">Scanner</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入你想说的话：&quot;</span><span class="p">);</span>
+<span class="n">String</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sc</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<span class="c1">// 3. 替换敏感词</span>
+<span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">    </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;***&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>StringBuilder</strong>：StringBuilder 是字符串的一个工具类，使拼接字符串的时候效率更高</p>
+<p><strong>StringBuilder 构造方法</strong>：</p>
+<ul>
+<li><code>public StringBuilder()</code>：创建 StringBuilder 容器，不含任何内容</li>
+<li><code>public StringBuilder(String str)</code>：创建 StringBuilder 容器，包含指定的内容</li>
+</ul>
+<p><strong>StringBuilder 常用方法</strong>：</p>
+<ul>
+<li><code>public StringBuilder append(任意类型)</code>：添加数据</li>
+<li><code>public StringBuilder reverse()</code>：反转容器中的内容</li>
+<li><code>public int length()</code>：返回长度（容器中字符的个数）</li>
+<li><code>public String toString()</code>：转换为 String 字符串对象</li>
+</ul>
+<h3 id="113">11.3 <strong>集合</strong></h3>
+<p><strong>集合</strong>：长度可变的容器</p>
+<p><strong>Java 中的集合</strong>：</p>
+<ul>
+<li><code>ArrayList</code></li>
+<li><code>HashSet</code></li>
+<li>……</li>
+</ul>
+<p><strong>ArrayList</strong>：</p>
+<ul>
+<li><code>ArrayList</code> 是 <code>List</code> 接口的一个实现类，基于数组实现，允许存储重复元素，有序（索引），可变长。</li>
+<li>只能存引用数据类型，不能存基本数据类型</li>
+<li>空参构造：<ul>
+<li><code>ArrayList()</code></li>
+</ul>
+</li>
+<li>常见方法：<ul>
+<li><code>boolean add(E e)</code>：添加元素</li>
+<li><code>void add(int index, E e)</code>：添加元素到指定位置</li>
+<li><code>boolean remove(E e)</code>：删除元素</li>
+<li><code>E remove(int index)</code>：删除指定位置的元素</li>
+<li><code>E set(int index, E e)</code>：修改指定位置的元素</li>
+<li><code>E get(int index)</code>：获取元素</li>
+<li><code>int size()</code>：集合长度</li>
+<li>返回值的设计：跟其他集合保持统一（面向对象的思想）</li>
+</ul>
+</li>
+</ul>
+<p><strong>泛型</strong>：限定集合中的数据类型</p>
+<div class="highlight"><pre><span></span><code><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>基本数据类型的包装类</strong>：用对象把基本数据类型包装起来</p>
+<ul>
+<li><code>Byte</code></li>
+<li><code>Short</code></li>
+<li><code>Integer</code></li>
+<li><code>Long</code></li>
+<li><code>Float</code></li>
+<li><code>Double</code></li>
+<li><code>Character</code></li>
+<li><code>Boolean</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Integer</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="c1">// 等价于 Integer a = new Integer(10);</span>
+</code></pre></div>
+<h3 id="114-math">11.4 <strong>Math</strong></h3>
+<p><strong>Math</strong>：用于数学计算的工具类。构造方法私有化，方法都为静态，通过<code>Math.方法名(参数)</code>调用</p>
+<ul>
+<li><code>public static int abs(int a)</code>：获取参数绝对值</li>
+<li><code>public static double ceil(double a)</code>：向上取整</li>
+<li><code>public static double floor(double a)</code>：向下取整</li>
+<li><code>public static int round(float a)</code>：四舍五入</li>
+<li><code>public static int max(int a, int b)</code>：获取两个 int 值中的较大值</li>
+<li><code>public static double pow(double a, double b)</code>：返回 a 的 b 次幂的值</li>
+<li><code>public static double sqrt(double a)</code>：返回参数的平方根</li>
+<li><code>public static double cbrt(double a)</code>：返回参数的立方根</li>
+<li><code>public static double random()</code>：返回随机值，范围 [0.0, 1.0)</li>
+</ul>
+<h3 id="115-system">11.5 <strong>System</strong></h3>
+<p><strong>System</strong>：系统相关的工具类</p>
+<ul>
+<li><code>public static void exit(int status)</code>：终止当前运行的 Java 虚拟机</li>
+<li><code>public static long currentTimeMillis()</code>：返回当前系统的时间（毫秒）</li>
+<li><code>public static void arraycopy(数据源数组, 起始索引, 目的地数组, 起始索引, 拷贝个数)</code>：数组拷贝</li>
+</ul>
+<h3 id="116-object">11.6 <strong>Object</strong></h3>
+<p><strong>Object</strong>：Object 是 Java 中的顶级父类。所有类都直接或间接继承于 Object 类。Object 类中的方法可以被所有类访。</p>
+<ul>
+<li><code>public String toString()</code>：返回对象的字符串表示形式。<ul>
+<li>默认返回对象的内存地址。</li>
+<li>通常不满足需求，一般会在子类中重写，打印对象时打印属性</li>
+<li><code>System.out.println(obj)</code>：本质调用了<code>obj.toString()</code>方法</li>
+</ul>
+</li>
+<li><code>public boolean equals(Object obj)</code>：比较两个对象是否相等。<ul>
+<li><code>return (this == obj)</code>，对象属于引用数据类型，因此<code>==</code>表示比较内存地址</li>
+<li>通常不满足需求，一般会在子类中重写，比较对象时比较属性值</li>
+<li>重写快捷键：alt + insert</li>
+</ul>
+</li>
+</ul>
+<h3 id="117-biginteger-bigdecimal">11.7 <strong>BigInteger 和 BigDecimal</strong></h3>
+<p><strong>BigInteger</strong>：Java 中的大整数</p>
+<p><strong>BigInteger 获取对象</strong>：</p>
+<ul>
+<li><code>public BigInteger(String val)</code>：构造方法（可超出<code>long</code>范围）</li>
+<li><code>public static BigInteger valueOf(long val)</code>：静态方法（<code>long</code>范围内），内部有优化（当 BigInteger 加载到内存的时候，提前创建了 -16 ~ 16 共33个对象，放入数组中，用<code>BigInteger.valueOf(16)</code>不会重复创建对象）</li>
+</ul>
+<p><strong>BigInteger 常用成员方法</strong>：</p>
+<ul>
+<li><code>public BigInteger add(BigInteger val)</code>：加法</li>
+<li><code>public BigInteger subtract(BigInteger val)</code>：减法</li>
+<li><code>public BigInteger multiply(BigInteger val)</code>：乘法</li>
+<li><code>public BigInteger divide(BigInteger val)</code>：除法</li>
+<li><code>public BigInteger[] divideAndRemainder(BigInteger val)</code>：除法和取余</li>
+<li><code>public boolean equals(Object x)</code>：比较两个对象是否相等</li>
+<li><code>public BigInteger pow(int exponent)</code>：次方</li>
+<li><code>public BigInteger max/min(BigInteger val)</code>：最大值/最小值</li>
+</ul>
+<blockquote>
+<p>对象一旦创建，BigInteger 内部记录的值不能发生改变</p>
+<p>只要进行计算就会产生新的 BigInteger 对象</p>
+</blockquote>
+<p><strong>BigDecimal</strong>：Java 中的大小数</p>
+<ul>
+<li>用来表示很大的小数</li>
+<li>用于小数的精确计算</li>
+<li>根本原因：修改了小数的存储规则（每位转 AscII 码再存储到数组中）</li>
+</ul>
+<p><strong>计算机中的小数</strong>：用有限位数的二进制存储时可能不精确，因此小数参与计算可能会有误差。</p>
+<p><strong>BigDecimal 获取对象</strong>：</p>
+<ul>
+<li><code>public BigDecimal(String val)</code>：构造方法（可超出<code>double</code>范围）</li>
+<li><code>public static BigDecimal valueOf(double val)</code>：静态方法（<code>double</code>范围内），内部有优化（当 BigDecimal 加载到内存的时候，提前创建了 0 ~ 10 的对象）</li>
+<li><code>public static BigDecimal valueOf(long val, int scale)</code>：静态方法。<code>scale</code>表示小数点往前移多少位（用的不多）</li>
+</ul>
+<p><strong>BigDecimal 常用成员方法</strong>：</p>
+<ul>
+<li><code>public BigDecimal add(BigDecimal val)</code>：加法</li>
+<li><code>public BigDecimal subtract(BigDecimal val)</code>：减法</li>
+<li><code>public BigDecimal multiply(BigDecimal val)</code>：乘法</li>
+<li><code>public BigDecimal divide(BigDecimal val)</code>：除法</li>
+<li><code>public BigDecimal[] divideAndRemainder(BigDecimal val)</code>：除法和取余</li>
+<li><code>public BigDecimal divide(BigDecimal val, 精确几位, 舍入模式)</code>：除法</li>
+</ul>
 
 
 
