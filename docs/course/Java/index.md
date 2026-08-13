@@ -1129,6 +1129,21 @@ public class Test {
 
 **导包**：用于定位 API 位置。本包中的类和 java.lang 包下的类不需要导入。
 
+**Java 常见API**：
+
+- Scanner：键盘录入
+- Random：获取随机数
+- String：字符串
+- ArrayList：集合
+- Math
+- System
+- Object 和 Objects
+- 包装类
+- BigInteger 和 BigDecimal
+- 时间日期相关类
+- Arrays
+- 正则表示式
+
 ### 11.2 **字符串**
 
 **字符串概述**：
@@ -1137,7 +1152,7 @@ public class Test {
 - Java 中的所有字符串文字（如`"hello"`）都为此类的对象。
 - 字符串是不可变的，一旦创建，就不能改变其内容。
 
-**创建字符串对象的方式**：
+**字符串对象的创建**：
 
 1. 直接赋值（最简单、最常用）：`String str = "hello";`
 2. 使用 new + 构造方法：
@@ -1147,3 +1162,215 @@ public class Test {
     - new + 有参构造（字节数组）：`String str = new String(byte[] array);`，根据ASCII表进行转换
 
 **两种方式的区别**：
+
+```Java
+public class Memory {
+    public static void main(String[] args) {
+        // 直接赋值，代码简单，节省内存
+        String str1 = "hello";
+        String str2 = "hello";
+        System.out.println(str1 == str2); // true
+        // new 创建字符串对象
+        String str3 = new String("hello");
+        String str4 = new String("hello");
+        System.out.println(str3 == str4); // false
+    }
+}
+```
+
+> 双引号直接赋值的时候会检查串池。不存在则创建新的，存在则复用
+> 
+> new 表示在堆内存开辟新空间，new 出来的字符串对象的内存地址不同
+
+**字符串的比较**：
+
+- `==`：比较的是内存地址而不是字符串内容
+- `public boolean equals(要比较的字符串)`：字符串的内容完全一样才返回 true
+- `public boolean equalsIgnoreCase(要比较的字符串)`：忽略大小写的比较
+
+```Java
+String username = "zhangsan"
+String rightUsername = "ZhangSan"
+boolean b1 = username.equals(rightUsername);
+System.out.println(b1) // false
+```
+
+**字符串的遍历**：
+
+- `public char charAt(int index)`：根据索引返回字符
+- `public int length()`：返回字符串的长度
+
+```Java
+String str = 'hello';
+for(int i = 0;i < str.length();i++){
+    System.out.println(str.charAt(i));
+}
+```
+
+**字符串的拼接**：`+`
+
+**字符串的截取**：
+
+- `public String substring(int beginIndex, int endIndex)`：截取指定范围，左闭右开
+- `public String substring(int beginIndex)`：截取到末尾
+
+**字符串的替换**：`public String replace(旧值, 新值)`：返回值是替代后的结果
+
+```Java
+// 1. 定义一个敏感词库
+String[] arr = {"TMD", "SB", "NMD", "LJ"};
+// 2. 键盘录入
+Scanner sc = new Scanner(System.in);
+System.out.println("请输入你想说的话：");
+String msg = sc.next();
+// 3. 替换敏感词
+for(int i = 0;i < arr.length();i++){
+    msg = msg.replace(arr[i], "***");
+}
+System.out.println(msg);
+```
+
+**StringBuilder**：StringBuilder 是字符串的一个工具类，使拼接字符串的时候效率更高
+
+**StringBuilder 构造方法**：
+
+- `public StringBuilder()`：创建 StringBuilder 容器，不含任何内容
+- `public StringBuilder(String str)`：创建 StringBuilder 容器，包含指定的内容
+
+**StringBuilder 常用方法**：
+
+- `public StringBuilder append(任意类型)`：添加数据
+- `public StringBuilder reverse()`：反转容器中的内容
+- `public int length()`：返回长度（容器中字符的个数）
+- `public String toString()`：转换为 String 字符串对象
+
+### 11.3 **集合**
+
+**集合**：长度可变的容器
+
+**Java 中的集合**：
+
+- `ArrayList`
+- `HashSet`
+- ……
+
+**ArrayList**：
+
+- `ArrayList` 是 `List` 接口的一个实现类，基于数组实现，允许存储重复元素，有序（索引），可变长。
+- 只能存引用数据类型，不能存基本数据类型
+- 空参构造：
+    - `ArrayList()`
+- 常见方法：
+    - `boolean add(E e)`：添加元素
+    - `void add(int index, E e)`：添加元素到指定位置
+    - `boolean remove(E e)`：删除元素
+    - `E remove(int index)`：删除指定位置的元素
+    - `E set(int index, E e)`：修改指定位置的元素
+    - `E get(int index)`：获取元素
+    - `int size()`：集合长度
+    - 返回值的设计：跟其他集合保持统一（面向对象的思想）
+
+**泛型**：限定集合中的数据类型
+
+```Java
+ArrayList<String> list = new ArrayList<>();
+list.add("hello");
+```
+
+**基本数据类型的包装类**：用对象把基本数据类型包装起来
+
+- `Byte`
+- `Short`
+- `Integer`
+- `Long`
+- `Float`
+- `Double`
+- `Character`
+- `Boolean`
+
+```Java
+Integer a = 10;
+// 等价于 Integer a = new Integer(10);
+```
+
+### 11.4 **Math**
+
+**Math**：用于数学计算的工具类。构造方法私有化，方法都为静态，通过`Math.方法名(参数)`调用
+
+- `public static int abs(int a)`：获取参数绝对值
+- `public static double ceil(double a)`：向上取整
+- `public static double floor(double a)`：向下取整
+- `public static int round(float a)`：四舍五入
+- `public static int max(int a, int b)`：获取两个 int 值中的较大值
+- `public static double pow(double a, double b)`：返回 a 的 b 次幂的值
+- `public static double sqrt(double a)`：返回参数的平方根
+- `public static double cbrt(double a)`：返回参数的立方根
+- `public static double random()`：返回随机值，范围 [0.0, 1.0)
+
+### 11.5 **System**
+
+**System**：系统相关的工具类
+
+- `public static void exit(int status)`：终止当前运行的 Java 虚拟机
+- `public static long currentTimeMillis()`：返回当前系统的时间（毫秒）
+- `public static void arraycopy(数据源数组, 起始索引, 目的地数组, 起始索引, 拷贝个数)`：数组拷贝
+
+### 11.6 **Object**
+
+**Object**：Object 是 Java 中的顶级父类。所有类都直接或间接继承于 Object 类。Object 类中的方法可以被所有类访。
+
+- `public String toString()`：返回对象的字符串表示形式。
+    - 默认返回对象的内存地址。
+    - 通常不满足需求，一般会在子类中重写，打印对象时打印属性
+    - `System.out.println(obj)`：本质调用了`obj.toString()`方法
+- `public boolean equals(Object obj)`：比较两个对象是否相等。
+    - `return (this == obj)`，对象属于引用数据类型，因此`==`表示比较内存地址
+    - 通常不满足需求，一般会在子类中重写，比较对象时比较属性值
+    - 重写快捷键：alt + insert
+
+### 11.7 **BigInteger 和 BigDecimal**
+
+**BigInteger**：Java 中的大整数
+
+**BigInteger 获取对象**：
+
+- `public BigInteger(String val)`：构造方法（可超出`long`范围）
+- `public static BigInteger valueOf(long val)`：静态方法（`long`范围内），内部有优化（当 BigInteger 加载到内存的时候，提前创建了 -16 ~ 16 共33个对象，放入数组中，用`BigInteger.valueOf(16)`不会重复创建对象）
+
+**BigInteger 常用成员方法**：
+
+- `public BigInteger add(BigInteger val)`：加法
+- `public BigInteger subtract(BigInteger val)`：减法
+- `public BigInteger multiply(BigInteger val)`：乘法
+- `public BigInteger divide(BigInteger val)`：除法
+- `public BigInteger[] divideAndRemainder(BigInteger val)`：除法和取余
+- `public boolean equals(Object x)`：比较两个对象是否相等
+- `public BigInteger pow(int exponent)`：次方
+- `public BigInteger max/min(BigInteger val)`：最大值/最小值
+
+> 对象一旦创建，BigInteger 内部记录的值不能发生改变
+> 
+> 只要进行计算就会产生新的 BigInteger 对象
+
+**BigDecimal**：Java 中的大小数
+
+- 用来表示很大的小数
+- 用于小数的精确计算
+- 根本原因：修改了小数的存储规则（每位转 AscII 码再存储到数组中）
+
+**计算机中的小数**：用有限位数的二进制存储时可能不精确，因此小数参与计算可能会有误差。
+
+**BigDecimal 获取对象**：
+
+- `public BigDecimal(String val)`：构造方法（可超出`double`范围）
+- `public static BigDecimal valueOf(double val)`：静态方法（`double`范围内），内部有优化（当 BigDecimal 加载到内存的时候，提前创建了 0 ~ 10 的对象）
+- `public static BigDecimal valueOf(long val, int scale)`：静态方法。`scale`表示小数点往前移多少位（用的不多）
+
+**BigDecimal 常用成员方法**：
+
+- `public BigDecimal add(BigDecimal val)`：加法
+- `public BigDecimal subtract(BigDecimal val)`：减法
+- `public BigDecimal multiply(BigDecimal val)`：乘法
+- `public BigDecimal divide(BigDecimal val)`：除法
+- `public BigDecimal[] divideAndRemainder(BigDecimal val)`：除法和取余
+- `public BigDecimal divide(BigDecimal val, 精确几位, 舍入模式)`：除法

@@ -1089,7 +1089,7 @@
   <a href="#103" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.3 接口
+        10.3 抽象类和抽象方法
       
     </span>
   </a>
@@ -1100,7 +1100,18 @@
   <a href="#104" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.4 内部类
+        10.4 接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 内部类
       
     </span>
   </a>
@@ -1120,6 +1131,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="十一、常见 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-api-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 API 和 API 帮助文档
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1867,7 +1906,7 @@
   <a href="#103" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.3 接口
+        10.3 抽象类和抽象方法
       
     </span>
   </a>
@@ -1878,7 +1917,18 @@
   <a href="#104" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.4 内部类
+        10.4 接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 内部类
       
     </span>
   </a>
@@ -1898,6 +1948,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="十一、常见 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-api-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 API 和 API 帮助文档
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 字符串
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2484,16 +2562,446 @@
 <p><strong>继承</strong>：继承是类与类之间的一种父子关系，Java中提供关键字extends，用于建立类与类之间的关系</p>
 <p><strong>继承的好处</strong>：</p>
 <ul>
-<li>父类可以抽取子类中的重复代码，提高代码的可复用性</li>
-<li>子类可以在父类基础上增加其他功能，提高代码的扩展性</li>
+<li><span style="color: red;">父类可以抽取子类中的重复代码</span>，提高代码的可复用性</li>
+<li><span style="color: red;">子类可以在父类基础上增加其他功能</span>，提高代码的扩展性</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">子类</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">父类</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 <p><strong>继承结构设计</strong>：当类与类之间，存在相同（共性）的内容，并满足子类是父类中的一种，就可以考虑使用继承，来优化代码</p>
+<ul>
+<li>画图法：从下往上画，先画子类，再画父类，抽取子类共性</li>
+<li>写代码：从上往下，先定义父类，再定义子类</li>
+</ul>
+<p><strong>继承的特点</strong>：</p>
+<ol>
+<li>Java 只支持单继承，不支持多继承，即一个子类只能继承一个父类，但支持多层继承</li>
+<li>直接继承的父类叫做直接父类，间接继承的爷爷叫做间接父类</li>
+<li>Java 中的顶级父类是 Object，即所有类都直接或间接继承自 Object</li>
+</ol>
+<p><strong>继承中的成员特点——成员变量的查找顺序</strong>：就近原则。先找局部变量，再找本类成员变量，然后逐级往上找父类成员变量。</p>
+<ul>
+<li>指定本类属性：<code>this.本类属性</code></li>
+<li>指定父类属性：<code>super.父类属性</code></li>
+</ul>
+<p><strong>继承中的成员特点——成员方法的查找顺序</strong>：就近原则。先找本类成员方法，然后逐级往上找父类成员方法。</p>
+<ul>
+<li>指定本类方法：<code>this.本类方法</code></li>
+<li>指定父类方法：<code>super.父类方法</code></li>
+</ul>
+<p><strong>继承中的成员特点——子类方法重写（Override）</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">子类</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">父类</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>注意事项：</p>
+<ol>
+<li>
+<p>重写方法的名称、形参列表必须与父类中的一致，方法体按照实际需求书写。</p>
+</li>
+<li>
+<p>了解：子类重写父类方法时，访问权限 子类必须大于等于父类（空着不写 &lt; protected &lt; public）</p>
+</li>
+<li>
+<p>了解：子类重写父类方法时，返回值类型（返回对象） 子类必须小于等于父类</p>
+</li>
+<li>
+<p>建议：重写的方法申明和父类保持一致即可</p>
+</li>
+<li>
+<p>final 修饰的类为最终类（不能被继承），里面所有的方法不能被重写</p>
+</li>
+<li>
+<p>private 私有方法、static 静态方法、final 最终方法不能被重写</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>继承中的成员特点——构造方法</strong>：</p>
+<ul>
+<li>父类中的构造方法不会被子类继承，但是可以通过<code>super</code>关键字调用</li>
+<li>子类构造方法的第一行，有一个默认的<code>super()</code>，不写也有</li>
+<li>如果想要访问父类有参构造，必须手动书写<code>super(参数)</code></li>
+<li><code>super()</code>必须写在构造方法第一行，先执行父类的构造，再执行子类的构造</li>
+</ul>
+<p><strong>this 和 super 关键字</strong>：用于区分当前对象和父类对象的成员变量和成员方法。</p>
+<ul>
+<li><code>this.成员变量</code></li>
+<li><code>this.成员方法</code></li>
+<li><code>this()</code>：调用当前类的构造方法。可在空参构造方法中用<code>this(参数)</code>调用有参构造方法，从而给成员变量赋默认值</li>
+<li><code>super.成员变量</code></li>
+<li><code>super.成员方法</code></li>
+<li><code>super()</code>：调用父类的构造方法</li>
+</ul>
+<p><strong>子类真正能继承父类的是什么</strong>：</p>
+<ul>
+<li>构造方法：不能被子类继承，可以用<code>super()</code>调用父类的构造方法</li>
+<li>成员变量：能被子类继承，private 私有的也可以，但是无法直接调用，得用 set/get 方法调用</li>
+<li>成员方法：<ul>
+<li>虚方法可以被继承</li>
+<li>final 修饰的最终方法不能被继承，可以被调用</li>
+<li>static 修饰的静态方法不能被继承，可以被调用</li>
+<li>private 修饰的静态方法不能被继承，不可以被调用</li>
+<li>方法重写：子类替换虚方法表里面方法的地址值</li>
+</ul>
+</li>
+</ul>
+<p><strong>虚方法</strong>：普通的成员方法，即非 final、非 static、非 private 修饰的方法。</p>
+<p><strong>虚方法的继承规则</strong>：父类将所有虚方法的内存地址值汇总成虚方法表，传给子类，子类可添加或修改（方法重写）虚方法表中的内存地址</p>
+<p><strong>虚方法表的作用</strong>：用空间换时间，直接查找虚方法的内存地址，避免自下而上逐级查找</p>
+<p><strong>Java 中的权限修饰符</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th style="text-align: center;">同一个类</th>
+<th style="text-align: center;">本包中其他类</th>
+<th style="text-align: center;">不同包下的子类</th>
+<th style="text-align: center;">不同包下的无关类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>private</strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td><strong>default</strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td><strong>protected</strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">❌</td>
+</tr>
+<tr>
+<td><strong>public</strong></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>作用范围由小到大：private &lt; default（空着/缺省/默认）&lt; protected &lt; public</li>
+<li>最常用的是 private 和 public </li>
+</ul>
 <h3 id="102">10.2 <strong>多态</strong></h3>
-<h3 id="103">10.3 <strong>接口</strong></h3>
-<h3 id="104">10.4 <strong>内部类</strong></h3>
+<p><strong>多态</strong>：事物的多种形态</p>
+<p><strong>多态的使用场景</strong>：需要<span style="color: red;">处理不同类型的对象，但它们有共同的父类或接口</span></p>
+<p><strong>多态的表现形式</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="n">父类类型</span><span class="w"> </span><span class="n">对象名称</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">子类对象</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>多态的前提</strong>：</p>
+<ol>
+<li>存在继承或实现关系（必须）</li>
+<li>父类引用指向子类对象（必须）</li>
+<li>有方法重写（可选）</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定义一个方法实现用户注册</span>
+<span class="c1">// 参数person：此时可以传递父类Person的对象，也可以传递Person所有的子类对象</span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">register</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">person</span><span class="p">){</span>
+<span class="w">    </span><span class="c1">// 方法体</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>多态调用成员的特点</strong>：</p>
+<ul>
+<li>变量调用：<span style="color: red;">编译看左边</span>（看父类有没有该成员变量），<span style="color: red;">运行也看左边</span>（调用父类的成员变量）</li>
+<li>方法调用：<span style="color: red;">编译看左边</span>（看父类有没有该成员方法），<span style="color: red;">运行看右边</span>（调用子类的成员方法）</li>
+<li>编译：java 文件 ——&gt; class 字节码文件</li>
+<li>运行：class 字节码文件 ——&gt; 结果</li>
+<li>多态的弊端：无法调用子类特有的成员</li>
+</ul>
+<h3 id="103">10.3 <strong>抽象类和抽象方法</strong></h3>
+<p><strong>抽象方法</strong>：多个子类抽取共性的方法，<span style="color: red;">但不能确定具体的方法体时</span>，就把父类中中的方法定义为抽象方法。</p>
+<p><strong>抽象类</strong>：如果一个<span style="color: red;">类中存在抽象方法</span>，那么该类就<span style="color: red;">必须声明为抽象类</span>。</p>
+<p><strong>抽象类和抽象方法的定义格式</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定义抽象类</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">类名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 声明抽象方法</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义实现类</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">子类</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">抽象类名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 重写抽象类中的所有抽象方法</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>抽象类不能被实例化（因为调用抽象类的抽象方法没有意义），只能被继承</li>
+<li>抽象类中不一定有抽象方法（为了不让外界创建本类的对象），有抽象方法的类一定是抽象类（正常的内容）</li>
+<li>抽象类中可以有构造方法（为了给成员变量赋值）</li>
+<li>抽象类的子类要么重写所有抽象方法（强制子类必须按照父类格式进行重写），要么子类也是抽象类（这种意义不大）</li>
+</ol>
+</blockquote>
+<p><strong>抽象类和抽象方法的意义</strong>：<span style="color: red;">强制子类必须按照父类格式进行重写</span></p>
+<h3 id="104">10.4 <strong>接口</strong></h3>
+<p><strong>接口</strong>：接口就是一个规则，而且是独立于继承体系以外的规则（可以理解为干爹）。</p>
+<p><strong>格式</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定义接口</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">接口名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 接口中的方法默认是 public abstract 的</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义实现类</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">类名</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">接口名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 重写接口中的所有抽象方法</span>
+<span class="w">    </span><span class="nd">@override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>接口不能实例化</li>
+<li>接口的子类（实现类），要么重写接口中所有抽象方法，要么实现类是抽象类</li>
+<li>一个类可以实现多个接口，也可以在继承最多一个类的同时实现多个接口</li>
+</ol>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">// 定义实现类</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">类名</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">父类</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">接口名1</span><span class="p">,</span><span class="w"> </span><span class="n">接口名2</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 重写所有接口的所有抽象方法</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>接口中成员的特点</strong>：</p>
+<ul>
+<li>成员变量：只能是常量。默认修饰符是<code>public static final</code></li>
+<li>构造方法：没有</li>
+<li>成员方法：只能是抽象方法。默认修饰符是<code>public abstract</code>。<ul>
+<li>JDK7 以前：接口中只能定义抽象方法</li>
+<li>JDK8 新特性：接口中可以定义有方法体的方法（默认、静态）</li>
+<li>JDK9 新特性：接口中可以定义私有方法</li>
+</ul>
+</li>
+</ul>
+<p><strong>接口和类之间的关系</strong>：</p>
+<ul>
+<li>类和类的关系：继承关系（只能单继承，不能多继承，但可以多层继承）</li>
+<li>类和接口的关系：实现关系（可以单实现，也可以多实现，还可以继承类的同时多实现）</li>
+<li>接口和接口的关系：继承关系（可以单继承，也可以多继承）</li>
+</ul>
+<blockquote>
+<p><strong>实现多个接口的注意事项</strong>：</p>
+<ol>
+<li>要重写所有接口中的抽象方法</li>
+<li>如果多个接口中出现了重复的抽象方法，只需要在实现类中重写一次</li>
+<li>一个接口继承了多个接口，相当于把多个接口的抽象方法全部继承，且都需要在实现类中重写</li>
+</ol>
+</blockquote>
+<p><strong>接口的新特性</strong>：</p>
+<ul>
+<li>JDK7 以前：接口中只能定义抽象方法</li>
+<li>JDK8 新特性：为了接口升级时向下兼容，接口中可以定义有方法体的方法（默认、静态）</li>
+<li>JDK9 新特性：为了抽取默认方法或静态方法中的重复代码，接口中可以定义私有方法（私有普通方法，私有静态方法）</li>
+</ul>
+<p><strong>JDK8 以后接口中新增的默认方法</strong>：</p>
+<ul>
+<li>允许在接口中定义默认方法，需要使用关键字<code>default</code>修饰</li>
+<li>作用：为了接口升级时，代码不报错</li>
+</ul>
+<p><strong>接口中默认方法的定义格式</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">接口名</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 新增的默认方法</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 默认方法的使用方式</span>
+<span class="n">实现类</span><span class="p">.</span><span class="na">方法名</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>接口的默认方法不会强制被重写，需要在实现类中重写的时候要去掉<code>default</code></li>
+<li><code>public</code>可以省略，<code>default</code>不能省略</li>
+<li>如果多个接口中存在相同名字的默认方法，这些接口的实现类就必须重写该方法</li>
+</ol>
+</blockquote>
+<p><strong>JDK8 以后接口中新增的静态方法</strong>：</p>
+<ul>
+<li>允许在接口中定义静态方法，需要使用关键字<code>static</code>修饰</li>
+<li>作用：为了接口升级时，代码不报错</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">接口名</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 新增的静态方法</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 静态方法的使用方式</span>
+<span class="n">接口名</span><span class="p">.</span><span class="na">方法名</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>静态方法只能通过接口名调用，不能通过实现类名或者对象名调用</li>
+<li><code>public</code>可以省略，<code>static</code>不能省略</li>
+</ol>
+</blockquote>
+<p><strong>JDK9 新增的私有方法</strong>：</p>
+<ul>
+<li>作用：为了抽取多个默认方法或多个静态方法中的重复代码，仅服务于接口内部</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">接口名</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 普通的私有方法：为了抽取默认方法的重复代码</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 2. 静态的私有方法：为了抽取静态方法的重复代码</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">返回值类型</span><span class="w"> </span><span class="nf">方法名</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 方法体</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 私有方法服务于接口内部，外部不可调用</span>
+</code></pre></div>
+<h3 id="105">10.5 <strong>内部类</strong></h3>
+<p><strong>内部类</strong>：定义在类里面的类</p>
+<ul>
+<li>内部类表示的事物是外部类的一部分</li>
+<li>内部类单独出现没有意义，比如汽车的发动机，人的心脏等</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">外部类名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外部类的成员</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">内部类名</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 内部类的成员</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>内部类的分类</strong>：</p>
+<ol>
+<li>成员内部类（了解）</li>
+<li>静态内部类（了解）</li>
+<li>局部内部类（了解）</li>
+<li>匿名内部类（重点掌握，是 Lambda表达式、方法引用的前提）</li>
+</ol>
+<p><strong>成员内部类</strong>：</p>
+<ul>
+<li>写在成员位置的，属于外部类的成员</li>
+<li>成员内部类可以被一些修饰符所修饰，比如：<code>private</code>，<code>default</code>，<code>protected</code>，<code>public</code>，<code>static</code>等</li>
+<li>在成员内部类里面，JDK16 之前不能定义静态变量，JDK16 开始才可以定义静态变量</li>
+</ul>
+<p><strong>创建成员内部类的对象</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 方式一：外部类编写方法，对外提供内部类对象（适用于用`private`修饰成员内部类的情况）</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Outer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外部类的成员</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Inner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 内部类的成员</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 外部类编写方法，对外提供内部类对象</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Inner</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Inner</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 创建成员内部类的对象</span>
+<span class="n">Outer</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Outer</span><span class="p">();</span>
+<span class="n">Outer</span><span class="p">.</span><span class="na">Inner</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+
+<span class="c1">// 方式二：直接创建（private修饰内部类就会报错）</span>
+<span class="n">外部类名</span><span class="p">.</span><span class="na">内部类名</span><span class="w"> </span><span class="n">对象名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">外部类对象</span><span class="p">.</span><span class="na">内部类对象</span><span class="p">;</span>
+<span class="n">Outer</span><span class="p">.</span><span class="na">Inner</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Outer</span><span class="p">().</span><span class="na">new</span><span class="w"> </span><span class="n">Inner</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>成员内部类获取外部类的成员变量</strong>：通过<code>外部类名.this.成员变量</code>方式获取（<code>外部类名.this</code>获取的是外部类对象的内存地址）</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Outer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Inner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">show</span><span class="p">(){</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 30</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 20</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Outer</span><span class="p">.</span><span class="na">this</span><span class="p">.</span><span class="na">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// 10</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>静态内部类</strong>：</p>
+<ul>
+<li>定义：用<code>static</code>关键字修饰的内部类</li>
+<li>静态内部类只能访问外部类中的静态变量和静态方法</li>
+<li>如果在静态内部类中，想要访问外部类非静态的内容，需要创建外部类的对象</li>
+</ul>
+<p><strong>创建静态内部类的对象</strong>：<code>外部类名.内部类名 对象名 = new 外部类名.内部类名();</code></p>
+<p><strong>调用静态内部类中非静态方法的格式</strong>：先创建对象，用对象调用</p>
+<p><strong>调用静态内部类中静态方法的格式:</strong>：<code>外部类名.内部类名.方法名();</code></p>
+<p><strong>局部内部类</strong>：</p>
+<ul>
+<li>定义：定义在方法里面的内部类，类似于方法里面的局部变量</li>
+<li>外界无法直接使用，需要在方法内部创建对象并使用</li>
+<li>该类可以直接访问外部类的成员，也可以访问方法内的局部变量</li>
+</ul>
+<p><strong>匿名内部类</strong>：</p>
+<ul>
+<li>定义：没有名字的内部类</li>
+<li>作用：在继承一个类或者实现一个接口的时候少写一个文件，也是 <span style="color: red;">lambda 的前置知识点</span></li>
+<li>本质：<span style="color: red;">没有名字的 java 类的对象</span></li>
+</ul>
+<p><strong>匿名内部类的定义格式</strong>：没有名字的 java 类 + 继承/实现 + 重写方法 + 创建对象</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 创建匿名内部类对象</span>
+<span class="w">        </span><span class="n">父类</span><span class="o">/</span><span class="n">接口</span><span class="w"> </span><span class="n">对象名</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">父类</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span><span class="o">/</span><span class="n">接口</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span><span class="w"> </span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">method</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;重写方法&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="api">十一、常见 API</h2>
+<h3 id="111-api-api">11.1 <strong>API 和 API 帮助文档</strong></h3>
+<p><strong>API（Application Programming Interface）</strong>：应用程序编程接口。就是 JDK 提供的各种功能的 Java 类。</p>
+<p><strong>API帮助文档</strong>：帮助开发人员更好的使用API和查询API的一个工具。</p>
+<p><strong>导包</strong>：用于定位 API 位置。本包中的类和 java.lang 包下的类不需要导入。</p>
+<h3 id="112">11.2 <strong>字符串</strong></h3>
+<p><strong>字符串概述</strong>：</p>
+<ul>
+<li>String 类定义在 java.lang 包下，无需导包。</li>
+<li>Java 中的所有字符串文字（如<code>"hello"</code>）都为此类的对象。</li>
+<li>字符串是不可变的，一旦创建，就不能改变其内容。</li>
+</ul>
+<p><strong>创建字符串对象的方式</strong>：</p>
+<ol>
+<li>直接赋值（最简单、最常用）：<code>String str = "hello";</code></li>
+<li>使用 new + 构造方法：<ul>
+<li>new + 空参构造：<code>String str = new String();</code></li>
+<li>new + 有参构造：<code>String str = new String(s);</code></li>
+<li>new + 有参构造（字符数组）：<code>String str = new String(char[] array);</code></li>
+<li>new + 有参构造（字节数组）：<code>String str = new String(byte[] array);</code>，根据ASCII表进行转换</li>
+</ul>
+</li>
+</ol>
+<p><strong>两种方式的区别</strong>：</p>
 
 
 
