@@ -61,4 +61,5 @@ nav:
 #        - JDBL: course/JavaWeb/JDBL/index.md
 #        - Mybatis: course/JavaWeb/Mybatis/index.md
 #        - Docker: course/JavaWeb/Docker/index.md
+    - Agent 基础: course/Agent/index.md
   - 关于: about/index.md
