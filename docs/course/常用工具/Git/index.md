@@ -1,6 +1,6 @@
 # Git
 
-详细教程：
+相关教程：
 
 - [菜鸟教程-Git](https://www.runoob.com/git/git-workspace-index-repo.html)
 

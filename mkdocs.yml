@@ -64,5 +64,7 @@ nav:
     - Agent 基础: course/Agent/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
+        - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
         - Git: course/常用工具/Git/index.md
+
   - 关于: about/index.md
