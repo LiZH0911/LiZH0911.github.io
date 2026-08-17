@@ -1,4 +1,9 @@
-# Web前端
+# HTML-CSS
+
+该笔记参考的课程链接：
+
+- [黑马程序员 AI+JavaWeb](https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=46f99c7c1ed609a31f70615a4551767f&p=2)
+
 
 ## 一、HTML-CSS
 
@@ -47,6 +52,9 @@
 
 **超链接标签**：`<a href="https://www.cctv.com">央视网</a>`
 
+<details>
+<summary>点击展开完整代码</summary>
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +81,8 @@
 </html>
 ```
 
+</details>
+
 **1.2.2 标题样式**：
 
 **CSS 样式**：
@@ -80,6 +90,9 @@
 1. 行内样式：body 内定义`<span style="color: gray;">2024年05月15日 20:07</span>`
 2. 内部样式：head 内定义`<style>span{color: gray;}</style>`
 3. 外部样式：.css 文件内定义，然后 head 内引入该文件 `<link rel="stylesheet" href="css/news.css">`
+
+<details>
+<summary>点击展开完整代码</summary>
 
 ```html
 <!DOCTYPE html>
@@ -123,12 +136,17 @@
 </html>
 ```
 
+</details>
+
 **CSS 选择器**：
 
-- 元素选择器
-- 类选择器
-- ID选择器
+- 元素选择器：`元素名{}`
+- 类选择器：`.类名{}`
+- ID选择器：`#ID名{}`
 - ……
+
+<details>
+<summary>点击展开完整代码</summary>
 
 ```html
 <!DOCTYPE html>
@@ -170,6 +188,8 @@
 </body>
 </html>
 ```
+
+</details>
 
 **1.2.3 正文排版**：
 
@@ -233,6 +253,9 @@
 
 **表单标签**：`<form>表单内容</form>`
 
+<details>
+<summary>点击展开完整代码</summary>
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -264,6 +287,8 @@
 </html>
 ```
 
+</details>
+
 **表单项标签**：
 
 - `<input>`：通过`type`属性定义不同类型的表单项。`type`属性可取：
@@ -271,6 +296,9 @@
     - 按钮类型`"button"`、`"reset"`、`"submit"`
 - `<select></select>`：定义下拉列表
 - `<textarea></textarea>`：定义文本域
+
+<details>
+<summary>点击展开完整代码</summary>
 
 ```html
 <!DOCTYPE html>
@@ -330,6 +358,8 @@
 </body>
 </html>
 ```
+
+</details>
 
 ### 1.3 **Vibe Coding 案例-员工管理页面制作**
 
@@ -645,9 +675,4 @@
 
 **效果**：
 
-![图片占位](./images/html-1.png)
-
-
-## 二、JavaScript
-
-**JavaScript**：
+![员工管理页面](./images/html-1.png)

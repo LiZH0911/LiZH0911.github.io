@@ -3,6 +3,7 @@
 相关教程：
 
 - [菜鸟教程-Git](https://www.runoob.com/git/git-workspace-index-repo.html)
+- [廖雪峰-Git](https://liaoxuefeng.com/books/git/introduction/index.html)
 
 ## 一、提交与修改
 
