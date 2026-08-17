@@ -5,7 +5,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
-    - navigation.expand
+    # - navigation.expand
     - search.suggest
     - content.code.copy
 
@@ -51,7 +51,7 @@ nav:
     - Java 基础: course/Java/index.md
     - JavaWeb:
         - JavaWeb首页: course/JavaWeb/index.md
-        - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
+        - Web前端: course/JavaWeb/Web前端/index.md
 #        - JavaScript: course/JavaWeb/JavaScript/index.md
 #        - Vue: course/JavaWeb/Vue/index.md
 #        - Ajax: course/JavaWeb/Ajax/index.md
@@ -62,4 +62,7 @@ nav:
 #        - Mybatis: course/JavaWeb/Mybatis/index.md
 #        - Docker: course/JavaWeb/Docker/index.md
     - Agent 基础: course/Agent/index.md
+    - 常用工具:
+        - 工具列表: course/常用工具/index.md
+        - Git: course/常用工具/Git/index.md
   - 关于: about/index.md

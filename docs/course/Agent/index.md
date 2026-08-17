@@ -4,6 +4,7 @@
 
 - [Hello-Agents](https://github.com/datawhalechina/hello-agents)
 
+
 ## 一、初识智能体
 
 ### 1.1 **什么是智能体？**
@@ -115,6 +116,8 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 
 ### 3.1 **语言模型与 Transformer 架构**
 
+- 参考 [Hello-Agents 第三章](https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter3/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80.md)
+- 
 ### 3.2 **与大语言模型交互**
 
 **3.2.1 提示工程**：提示工程就是研究如何设计出精准的提示，从而引导模型产生期望输出的回复。
