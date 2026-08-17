@@ -3,6 +3,7 @@
 该笔记参考的课程链接：
 
 - [黑马程序员 AI+Java](https://www.bilibili.com/video/BV1TJxCzSEEZ?spm_id_from=333.788.videopod.episodes&vd_source=46f99c7c1ed609a31f70615a4551767f&p=2)
+- [廖雪峰 Java 教程](https://liaoxuefeng.com/books/java/introduction/index.html)
 
 ## 一、Java 入门
 
