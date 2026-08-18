@@ -60,11 +60,11 @@ nav:
 #        - MySQL: course/JavaWeb/MySQL/index.md
 #        - JDBL: course/JavaWeb/JDBL/index.md
 #        - Mybatis: course/JavaWeb/Mybatis/index.md
-#        - Docker: course/JavaWeb/Docker/index.md
+
     - Agent 基础: course/Agent/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
         - Git: course/常用工具/Git/index.md
-
+        - Docker: course/常用工具/Docker/index.md
   - 关于: about/index.md

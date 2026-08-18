@@ -3,6 +3,7 @@
 该笔记参考的课程链接：
 
 - [Hello-Agents](https://github.com/datawhalechina/hello-agents)
+- [菜鸟教程-AI Agent](https://www.runoob.com/ai-agent/ai-agent-tutorial.html)
 
 
 ## 一、初识智能体
