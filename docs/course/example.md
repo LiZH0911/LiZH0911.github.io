@@ -14,9 +14,15 @@
 
 如果你要贴代码，用三个反引号包起来：
 
+<details>
+<summary>点击展开完整代码</summary>
+
 ```python
 print("Hello, World!")
 ```
+
+</details>
+
 
 ## 第三部分：链接与图片
 

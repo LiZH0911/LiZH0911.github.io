@@ -50,10 +50,10 @@ nav:
 #    - LangChain: course/LangChain/index.md
     - Java 基础: course/Java/index.md
     - JavaWeb:
-        - JavaWeb 首页: course/JavaWeb/index.md
+#         - JavaWeb 首页: course/JavaWeb/index.md
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
         - JavaScript: course/JavaWeb/JavaScript/index.md
-#        - Vue: course/JavaWeb/Vue/index.md
+        - Vue: course/JavaWeb/Vue/index.md
 #        - Ajax: course/JavaWeb/Ajax/index.md
 #        - Maven: course/JavaWeb/Maven/index.md
 #        - Web基础: course/JavaWeb/Web基础/index.md
@@ -63,7 +63,7 @@ nav:
 
     - Agent 基础: course/Agent/index.md
     - 常用工具:
-        - 工具列表: course/常用工具/index.md
+#         - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
         - Git: course/常用工具/Git/index.md
         - Docker: course/常用工具/Docker/index.md
