@@ -41,8 +41,8 @@ extra_css:
 
 nav:
   - 主页: index.md
-  - 课程:
-    - 首页: course/index.md
+  - 技术栈:
+    - 目录: course/index.md
     # - 示例: course/example.md
     - Python 基础: course/Python/index.md
     - PythonWeb: course/PythonWeb/index.md
@@ -50,7 +50,7 @@ nav:
 #    - LangChain: course/LangChain/index.md
     - Java 基础: course/Java/index.md
     - JavaWeb:
-#         - JavaWeb 首页: course/JavaWeb/index.md
+        - JavaWeb 目录: course/JavaWeb/index.md
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
         - JavaScript: course/JavaWeb/JavaScript/index.md
         - Vue: course/JavaWeb/Vue/index.md
@@ -63,8 +63,10 @@ nav:
 
     - Agent 基础: course/Agent/index.md
     - 常用工具:
-#         - 工具列表: course/常用工具/index.md
+        - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
         - Git: course/常用工具/Git/index.md
+        - Codex: course/常用工具/Codex/index.md
         - Docker: course/常用工具/Docker/index.md
+
   - 关于: about/index.md
