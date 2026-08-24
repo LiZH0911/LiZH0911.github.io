@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" style="background-color:#F8FAFC;font-family:system-ui,-apple-system,'PingFang SC','Microsoft YaHei',sans-serif">
+<defs>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+<path d="M30 0 L0 0 0 30" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+</pattern>
+<filter id="cs">
+<feDropShadow dx="2" dy="6" stdDeviation="10" flood-color="#005D7B" flood-opacity="0.08"/>
+</filter>
+<clipPath id="c1"><rect x="29" y="78" width="188" height="240" rx="10"/></clipPath>
+<clipPath id="c2"><rect x="247" y="78" width="188" height="240" rx="10"/></clipPath>
+<clipPath id="c3"><rect x="465" y="78" width="188" height="240" rx="10"/></clipPath>
+<clipPath id="c4"><rect x="683" y="78" width="188" height="240" rx="10"/></clipPath>
+</defs>
+
+<rect width="100%" height="100%" fill="url(#grid)"/>
+
+<text x="450" y="48" text-anchor="middle" font-size="24" font-weight="bold" fill="#005D7B">Prompt 四要素框架</text>
+
+<!-- Card 1: Role -->
+<rect x="29" y="78" width="188" height="240" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="29" y="78" width="188" height="36" fill="#4CA497" clip-path="url(#c1)"/>
+<text x="123" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">Role · 角色</text>
+<text x="44" y="132" font-size="12" fill="#64748B">激活模型的</text>
+<text x="44" y="149" font-size="12" fill="#64748B">相关知识领域</text>
+<line x1="44" y1="163" x2="202" y2="163" stroke="#E2E8F0" stroke-width="1"/>
+<text x="123" y="184" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">"你是一位 10 年经验的</text>
+<text x="123" y="201" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">Java 架构师"</text>
+<rect x="48" y="278" width="150" height="24" rx="12" fill="#E6F7ED"/>
+<text x="123" y="294" text-anchor="middle" font-size="10" font-weight="bold" fill="#4CA497">放在 Prompt 开头</text>
+
+<!-- Arrow 1→2 -->
+<line x1="219" y1="198" x2="243" y2="198" stroke="#94A3B8" stroke-width="2"/>
+<polygon points="243,198 233,193 233,203" fill="#94A3B8"/>
+
+<!-- Card 2: Task -->
+<rect x="247" y="78" width="188" height="240" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="247" y="78" width="188" height="36" fill="#005D7B" clip-path="url(#c2)"/>
+<text x="341" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">Task · 任务</text>
+<text x="262" y="132" font-size="12" fill="#64748B">明确要完成的</text>
+<text x="262" y="149" font-size="12" fill="#64748B">具体动作</text>
+<line x1="262" y1="163" x2="420" y2="163" stroke="#E2E8F0" stroke-width="1"/>
+<text x="341" y="184" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">"请评审以下代码的</text>
+<text x="341" y="201" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">性能问题"</text>
+<rect x="266" y="278" width="150" height="24" rx="12" fill="#E0F2F8"/>
+<text x="341" y="294" text-anchor="middle" font-size="10" font-weight="bold" fill="#005D7B">紧跟角色定义</text>
+
+<!-- Arrow 2→3 -->
+<line x1="437" y1="198" x2="461" y2="198" stroke="#94A3B8" stroke-width="2"/>
+<polygon points="461,198 451,193 451,203" fill="#94A3B8"/>
+
+<!-- Card 3: Context -->
+<rect x="465" y="78" width="188" height="240" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="465" y="78" width="188" height="36" fill="#E99151" clip-path="url(#c3)"/>
+<text x="559" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">Context · 上下文</text>
+<text x="480" y="132" font-size="12" fill="#64748B">提供任务相关的</text>
+<text x="480" y="149" font-size="12" fill="#64748B">背景信息</text>
+<line x1="480" y1="163" x2="638" y2="163" stroke="#E2E8F0" stroke-width="1"/>
+<text x="559" y="184" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">"线上 QPS 2000，</text>
+<text x="559" y="201" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">响应时间超 500ms"</text>
+<rect x="484" y="278" width="150" height="24" rx="12" fill="#FFF3E0"/>
+<text x="559" y="294" text-anchor="middle" font-size="10" font-weight="bold" fill="#E99151">放在中间位置</text>
+
+<!-- Arrow 3→4 -->
+<line x1="655" y1="198" x2="679" y2="198" stroke="#94A3B8" stroke-width="2"/>
+<polygon points="679,198 669,193 669,203" fill="#94A3B8"/>
+
+<!-- Card 4: Format -->
+<rect x="683" y="78" width="188" height="240" rx="10" fill="#FFF" filter="url(#cs)"/>
+<rect x="683" y="78" width="188" height="36" fill="#7C3AED" clip-path="url(#c4)"/>
+<text x="777" y="102" text-anchor="middle" font-size="14" font-weight="bold" fill="#FFF">Format · 格式</text>
+<text x="698" y="132" font-size="12" fill="#64748B">指定输出的</text>
+<text x="698" y="149" font-size="12" fill="#64748B">结构要求</text>
+<line x1="698" y1="163" x2="856" y2="163" stroke="#E2E8F0" stroke-width="1"/>
+<text x="777" y="184" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">"输出 JSON，含</text>
+<text x="777" y="201" text-anchor="middle" font-size="11" fill="#94A3B8" font-style="italic">bottleneck、solution"</text>
+<rect x="702" y="278" width="150" height="24" rx="12" fill="#EDE9FE"/>
+<text x="777" y="294" text-anchor="middle" font-size="10" font-weight="bold" fill="#7C3AED">放在 Prompt 结尾</text>
+
+<!-- Bottom note -->
+<text x="450" y="350" text-anchor="middle" font-size="13" fill="#94A3B8">Role 放在开头、Format 放在结尾 — 利用 "Lost in the Middle" 效应提升关键信息召回率</text>
+
+<!-- Watermark -->
+<g transform="translate(735,385) rotate(-5)">
+<text x="0" y="0" font-size="14" font-weight="bold" fill="#94A3B8">公众号：<tspan fill="#005D7B">JavaGuide</tspan></text>
+<text x="0" y="20" font-size="14" font-weight="bold" fill="#94A3B8">网站：<tspan fill="#005D7B">javaguide.cn</tspan></text>
+</g>
+
+</svg>
