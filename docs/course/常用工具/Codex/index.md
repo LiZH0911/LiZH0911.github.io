@@ -3,8 +3,6 @@
 该笔记参考的课程链接：
 
 - [ChatGPT 橙皮书](https://bozhoudev.github.io/codex-orange-book/)
-- [CC Switch + Codex 使用方案](https://www.bilibili.com/video/BV112ge6KEmX/?spm_id_from=333.337.search-card.all.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
-
 
 ## 一、Codex 基础认知
 
@@ -64,7 +62,7 @@ Codex CLI 是 Codex 的命令行版本。
 node -v
 npm -v
 
-2. 安装 Codex CLI
+# 2. 安装 Codex CLI
 npm install -g @openai/codex
 codex --version
 ```
@@ -304,7 +302,6 @@ git commit -m "完成任务"
 
 在网页里使用的云端 Codex。不需要一直开着本地电脑，也不一定要在终端里操作，而是可以连接 GitHub 仓库，让 Codex 在云端环境里读取代码、执行任务、修改文件，并生成可 review 的结果
 
-与入门
 
 ## 三、核心功能详解
 
@@ -637,9 +634,9 @@ Codex 负责把网站做出来，Sites 负责把网站变成可以访问和分�
 
 ### 3.7 **代码管理 （Git 与 GitHub 工作流）**
 
-Git = 本地代码版本管理工具
-GitHub = 把代码放到网上协作的平台
-Codex = 帮你读代码、改代码、跑命令的 AI 编程助手
+- Git = 本地代码版本管理工具
+- GitHub = 把代码放到网上协作的平台
+- Codex = 帮你读代码、改代码、跑命令的 AI 编程助手
 
 ### 3.8 **云端运行**
 
@@ -784,6 +781,11 @@ Chrome 插件连接的是你当前使用的 Chrome Profile，也就是包含现�
 ## 四、标准工作流
 
 ## 五、实战案例库
+
+**5.1 实战案例一：制作一个宠物零食售卖的前端页面网站**
+
+在本地创建一个文件夹，命名为 Pet treats
+
 
 ## 附录 A、第三方模型接入
 

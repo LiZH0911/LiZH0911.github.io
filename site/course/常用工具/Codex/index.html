@@ -1,0 +1,2211 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Git/">
+      
+      
+        <link rel="next" href="../Docker/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Codex - LiZH0911的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/home.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#codex" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="LiZH0911的学习笔记" class="md-header__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiZH0911的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Codex
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  技术栈
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LiZH0911的学习笔记" class="md-nav__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    LiZH0911的学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技术栈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技术栈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PythonWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PythonWeb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaWeb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb 目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/HTML-CSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML-CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/JavaScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/Vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python%20%E5%8C%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包与环境管理工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codex_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、Codex 基础认知
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Codex 安装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Codex 安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 安装前准备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-codex-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Codex App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-codex-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Codex CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-codex-ide-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Codex IDE Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-codex-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Codex Web
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、核心功能详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、核心功能详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Skill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 MCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 站点（sites）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-git-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 代码管理 （Git 与 GitHub 工作流）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 云端运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 记忆系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-chrome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 Chrome 插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、标准工作流
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、实战案例库
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A、第三方模型接入
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#codex_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、Codex 基础认知
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codex_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Codex 安装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Codex 安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 安装前准备
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-codex-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Codex App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-codex-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Codex CLI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-codex-ide-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Codex IDE Extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-codex-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Codex Web
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、核心功能详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、核心功能详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 自动化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Skill
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 MCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-sites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 站点（sites）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-git-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 代码管理 （Git 与 GitHub 工作流）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 云端运行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 记忆系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-chrome" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 Chrome 插件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、标准工作流
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、实战案例库
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A、第三方模型接入
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="codex">Codex</h1>
+<p>该笔记参考的课程链接：</p>
+<ul>
+<li><a href="https://bozhoudev.github.io/codex-orange-book/">ChatGPT 橙皮书</a></li>
+<li><a href="https://www.bilibili.com/video/BV112ge6KEmX/?spm_id_from=333.337.search-card.all.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">CC Switch + Codex 使用方案</a></li>
+</ul>
+<h2 id="codex_1">一、Codex 基础认知</h2>
+<p><strong>AI 编程工具的四次进化</strong></p>
+<p><img alt="AI 编程工具的四次进化.png" src="image/AI%20%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9B%9B%E6%AC%A1%E8%BF%9B%E5%8C%96.png" /></p>
+<p><strong>Codex 能做什么</strong></p>
+<p><img alt="Codex 能做什么.png" src="image/Codex%20%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88.png" /></p>
+<p>Codex 是一个可以进入项目现场的 AI 工程助手。</p>
+<p><strong>Codex 与 ChatGPT 的区别</strong></p>
+<p><img alt="Codex 与 ChatGPT 的区别.png" src="image/Codex%20%E4%B8%8E%20ChatGPT%20%E7%9A%84%E5%8C%BA%E5%88%AB.png" /></p>
+<p><strong>Codex 与 Cursor 的区别</strong></p>
+<p><img alt="Codex 与 Cursor 的区别.png" src="image/Codex%20%E4%B8%8E%20Cursor%20%E7%9A%84%E5%8C%BA%E5%88%AB.png" /></p>
+<p><strong>Codex 与 Claude Code 的区别</strong></p>
+<p><img alt="Codex 与 Claude Code 的区别.png" src="image/Codex%20%E4%B8%8E%20Claude%20Code%20%E7%9A%84%E5%8C%BA%E5%88%AB.png" /></p>
+<p><strong>Codex 的使用入口</strong></p>
+<p><img alt="Codex 的使用入口.png" src="image/Codex%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%85%A5%E5%8F%A3.png" /></p>
+<h2 id="codex_2">二、Codex 安装</h2>
+<h3 id="21">2.1 <strong>安装前准备</strong></h3>
+<p><strong>账号准备</strong></p>
+<p><strong>系统准备</strong></p>
+<p><strong>软件工具准备</strong></p>
+<p><strong>项目目录准备</strong></p>
+<p><strong>权限与安全准备</strong></p>
+<h3 id="22-codex-app">2.2 <strong>Codex App</strong></h3>
+<h3 id="23-codex-cli">2.3 <strong>Codex CLI</strong></h3>
+<p>Codex CLI 是 Codex 的命令行版本。</p>
+<p>它适合愿意打开终端的人使用，比如 PowerShell、Terminal、iTerm、Windows Terminal。</p>
+<p><strong>Windows 安装</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 安装 Node.js</span>
+node<span class="w"> </span>-v
+npm<span class="w"> </span>-v
+
+<span class="m">2</span>.<span class="w"> </span>安装<span class="w"> </span>Codex<span class="w"> </span>CLI
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@openai/codex
+codex<span class="w"> </span>--version
+</code></pre></div>
+<p><strong>第一次运行</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 打开 powershell，进入项目目录</span>
+<span class="nb">cd</span><span class="w"> </span>项目目录
+<span class="c1"># 运行 codex</span>
+codex
+
+<span class="c1"># 登陆方式</span>
+<span class="c1"># 1. 使用 ChatGPT 账号登录</span>
+<span class="c1"># 2. 使用 OpenAI API Key 登录</span>
+</code></pre></div>
+<p><strong>CLI 基础命令</strong></p>
+<ul>
+<li>终端命令：<ul>
+<li>PowerShell / Terminal 里输入</li>
+<li>启动、登录、更新、诊断、管理 Codex</li>
+</ul>
+</li>
+<li>斜杠命令<ul>
+<li>进入 Codex 后输入</li>
+<li>切模型、调权限、看 diff、生成规则、退出会话</li>
+</ul>
+</li>
+</ul>
+<p><strong>CLI 常用终端命令</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 启动 Codex</span>
+codex
+<span class="c1"># 只读模式</span>
+codex<span class="w"> </span>--sandbox<span class="w"> </span>read-only
+<span class="c1"># 当前项目可读写，敏感操作先请求批准</span>
+codex<span class="w"> </span>--sandbox<span class="w"> </span>workspace-write<span class="w"> </span>--ask-for-approval<span class="w"> </span>on-request
+
+<span class="c1"># 接着上次任务继续</span>
+codex<span class="w"> </span>resume<span class="w"> </span>--last
+<span class="c1"># 归档不用的任务</span>
+codex<span class="w"> </span>archive
+<span class="c1"># 一次性执行任务</span>
+codex<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="s2">&quot;任务&quot;</span>
+
+<span class="c1"># 登录 Codex（默认打开浏览器，用 ChatGPT 账号登录）</span>
+codex<span class="w"> </span>login
+<span class="c1"># Windows PowerShell 使用 API Key 登录</span>
+<span class="nv">$env</span>:OPENAI_API_KEY<span class="w"> </span><span class="p">|</span><span class="w"> </span>codex<span class="w"> </span>login<span class="w"> </span>--with-api-key
+
+<span class="c1"># 查看登录状态</span>
+codex<span class="w"> </span>login<span class="w"> </span>status
+
+<span class="c1"># 退出登录</span>
+codex<span class="w"> </span><span class="nb">logout</span>
+
+<span class="c1"># 检查环境问题</span>
+codex<span class="w"> </span>doctor
+
+<span class="c1"># 更新 Codex</span>
+codex<span class="w"> </span>update
+
+<span class="c1"># 打开 Codex App</span>
+codex<span class="w"> </span>app
+
+<span class="c1"># 把 Codex Cloud 生成的 diff 应用到本地，用 Cloud 后再学</span>
+codex<span class="w"> </span>apply
+</code></pre></div>
+<p><strong>CLI 常用斜杠命令</strong></p>
+<details>
+<summary>点击展开命令手册</summary>
+
+模型、权限与安全
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 切换模型和推理强度</span>
+/model
+
+<span class="c1"># 查看当前状态，看模型、权限、上下文、token 等信息</span>
+/status
+
+<span class="c1"># 调整权限</span>
+/permissions
+
+<span class="c1"># 进入计划模式</span>
+/plan
+</code></pre></div>
+
+代码检查与 Review 相关
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看代码改动（修改后必看）</span>
+/diff
+
+<span class="c1"># 让 Codex review 当前改动（提交前检查）</span>
+/review
+</code></pre></div>
+
+会话管理相关
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 开始新对话（当前任务结束，想开始新任务）</span>
+/new
+
+<span class="c1"># 清空终端并开始新聊天（界面太乱、想重新开始）</span>
+/clear
+
+<span class="c1"># 恢复之前的会话（上次任务没做完）</span>
+/resume
+
+<span class="c1"># 归档当前会话并退出（任务完成或方案不要了）</span>
+/archive
+
+<span class="c1"># 复制当前会话成新 thread（保留原思路，另开分支尝试）</span>
+/fork
+
+<span class="c1"># 开一个临时侧边对话（不影响主任务地问个小问题）</span>
+/side
+
+<span class="c1"># 退出 Codex CLI</span>
+/quit
+/exit
+</code></pre></div>
+
+上下文与长对话相关
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 压缩当前对话（把长对话总结成重点）</span>
+/compact
+
+<span class="c1"># 查看上下文使用情况</span>
+/status
+
+<span class="c1"># 指定 Codex 重点看某个文件</span>
+/mention
+</code></pre></div>
+
+项目规则与能力相关
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建项目规则文件</span>
+/init
+
+<span class="c1"># 浏览和使用 Skills（选择专项技能，用于做 UI、写文档、review 等专项任务时）</span>
+/skills
+
+<span class="c1"># 配置记忆（想管理长期偏好时）</span>
+/memories
+
+<span class="c1"># 设置任务目标</span>
+/goal
+
+<span class="c1"># 浏览可连接的应用</span>
+/apps
+
+<span class="c1"># 管理插件</span>
+/plugins
+
+<span class="c1"># 查看 MCP 工具</span>
+/mcp
+</code></pre></div>
+
+终端和后台任务相关
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 查看后台终端任务</span>
+/ps
+
+<span class="c1"># 停止后台终端任务</span>
+/stop
+</code></pre></div>
+
+</details>
+
+<p>新手推荐使用流程</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 0. 启动 Codex</span>
+<span class="nb">cd</span><span class="w"> </span>项目目录
+Codex
+<span class="c1"># 1. 生成项目规则</span>
+/init
+<span class="c1"># 2. 确认权限不要太大</span>
+/permissions
+<span class="c1"># 3. 确认模型和推理强度</span>
+/model
+<span class="c1"># 4. 复杂任务先规划</span>
+/plan
+<span class="c1"># 5. 让 Codex 开始工作</span>
+输入任务
+<span class="c1"># 6. 检查代码改动</span>
+/diff
+<span class="c1"># 7. 让 Codex 再检查一遍</span>
+/review
+<span class="c1"># 8. 查看当前状态和上下文</span>
+/status
+<span class="c1"># 9. 对话太长时压缩</span>
+/compact
+<span class="c1"># 10. 退出 Codex</span>
+/quit
+<span class="c1"># 11. 满意后保存版本</span>
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;完成任务&quot;</span>
+</code></pre></div>
+<p><strong>任务写法模板</strong></p>
+<div class="highlight"><pre><span></span><code>请帮我完成【具体任务】。
+
+要求：
+<span class="m">1</span>.
+<span class="m">2</span>.
+<span class="m">3</span>.
+
+限制：
+<span class="m">1</span>.<span class="w"> </span>不要修改无关文件
+<span class="m">2</span>.<span class="w"> </span>不要删除已有功能
+<span class="m">3</span>.<span class="w"> </span>完成后告诉我改了哪些文件
+</code></pre></div>
+<h3 id="24-codex-ide-extension">2.4 <strong>Codex IDE Extension</strong></h3>
+<p>把 Codex 直接装进代码编辑器里，不用单独打开 Codex App，也不用一直切到终端，而是可以在 VS Code、Cursor、Windsurf 这类编辑器侧边栏里直接使用 Codex。</p>
+<p><strong>Codex IDE支持</strong></p>
+<ul>
+<li>VS Code</li>
+<li>Cursor</li>
+<li>JetBrains IDE</li>
+<li>...</li>
+</ul>
+<h3 id="25-codex-web">2.5 <strong>Codex Web</strong></h3>
+<p>在网页里使用的云端 Codex。不需要一直开着本地电脑，也不一定要在终端里操作，而是可以连接 GitHub 仓库，让 Codex 在云端环境里读取代码、执行任务、修改文件，并生成可 review 的结果</p>
+<p>与入门</p>
+<h2 id="_1">三、核心功能详解</h2>
+<h3 id="31">3.1 <strong>自动化</strong></h3>
+<p>Codex 自动化 = 让 Codex 不只是“听你指挥”，而是能按规则定期帮你巡查项目、发现问题、处理问题。</p>
+<p>示例提示词可以这样写：</p>
+<div class="highlight"><pre><span></span><code>请检索并复盘最近一周的 Codex 会话记录与执行日志，维护一份“Codex 会话复盘与个人风格档案”。
+
+要求：
+1. 优先使用可用的会话历史检索能力；如果需要读取日志，只做搜索、元数据提取和相关片段抽取，不要整文件载入大型 session 文件。
+2. 不要复现原始日志、隐私内容、密钥、内部 reasoning 或长对话原文。
+3. 总结执行经验：哪些做法导致了问题，最终正确做法是什么，适合什么场景复用。
+4. 总结我的偏好：UI 设计偏好、产品理念、交互原则、内容系统偏好和工作流偏好。
+5. 整理可复用规则清单：把复盘结论改写成后续 Codex 会话可以遵循的简洁规则。
+6. 更新文档时去重、合并相近规则，保留日期范围或任务类型作为来源线索。
+7. 如有适合长期复用的规则，请建议是否加入项目级或用户级 AGENTS.md。
+</code></pre></div>
+<h3 id="32">3.2 <strong>插件</strong></h3>
+<p>Codex 本身已经能读代码、改代码、运行命令；插件是在这个基础上，让它连接更多工具、使用固定流程，或者获得某些专项能力。</p>
+<h3 id="33-skill">3.3 <strong>Skill</strong></h3>
+<p>给 Codex 准备的一套「固定工作方法」。</p>
+<p>Codex 本身会读代码、改代码、运行命令。</p>
+<p>但如果你经常让它做同一类任务，比如写 README、做代码 Review、生成网页、整理文档，就可以把这套流程做成 Skill。</p>
+<p><strong>Skill 和普通提示词的区别</strong></p>
+<ul>
+<li>只做一次的任务 = 直接写提示词</li>
+<li>经常重复做的任务 = 适合做 Skill</li>
+</ul>
+<p><strong>Skill 通常包含什么</strong></p>
+<ul>
+<li>instructions：告诉 Codex 怎么做</li>
+<li>resources：放参考资料、模板、标准</li>
+<li>scripts：可选脚本，用来自动处理任务</li>
+<li>examples：示例输入和示例输出</li>
+<li>checklist：检查清单，防止漏步骤</li>
+</ul>
+<p><strong>Skill 的基本结构</strong></p>
+<div class="highlight"><pre><span></span><code># Skill 名称
+
+## 适用场景
+这个 Skill 适合用来做什么。
+
+## 工作目标
+Codex 最终要交付什么结果。
+
+## 工作流程
+1. 先分析输入内容
+2. 再确认任务类型
+3. 然后按固定步骤处理
+4. 最后输出结果和检查清单
+
+## 输出格式
+规定 Codex 最后应该怎么输出。
+
+## 注意事项
+哪些事情不能做，哪些风险要提醒。
+</code></pre></div>
+<p>比如 README Skill：</p>
+<div class="highlight"><pre><span></span><code># README 生成 Skill
+
+## 适用场景
+用于根据当前项目生成 README 文档。
+
+## 工作目标
+输出一份结构清晰、适合新手阅读的 README。
+
+## 工作流程
+1. 阅读项目结构
+2. 查看 package.json 或主要入口文件
+3. 判断项目类型
+4. 生成项目介绍
+5. 补充安装步骤和启动命令
+6. 说明文件结构
+7. 输出常见问题
+
+## 输出格式
+使用 Markdown 格式。
+
+## 注意事项
+不要编造不存在的功能。
+不确定的地方要明确标注。
+</code></pre></div>
+<p><strong>Codex App 里怎么添加 Skill</strong> 点击插件-技能</p>
+<ol>
+<li>使用已有 Skill</li>
+<li>创建自己的 Skill</li>
+</ol>
+<p><strong>创建自己的 Skill</strong> </p>
+<ol>
+<li>打开 Codex App</li>
+<li>选择一个项目</li>
+<li>新建一个 thread</li>
+<li>输入 <code>$skill-creator</code></li>
+<li>告诉它你想创建什么 Skill</li>
+<li>提供使用场景、规则、示例输出</li>
+<li>让 Codex 生成 Skill 文件</li>
+<li>检查生成结果</li>
+<li>之后在新 thread 里使用这个 Skill</li>
+</ol>
+<p>示例提示词：</p>
+<div class="highlight"><pre><span></span><code>请帮我创建一个 README Skill。
+
+这个 Skill 的作用：
+根据当前项目自动生成适合小白阅读的 README。
+
+触发场景：
+当我说“生成 README”“写项目说明”“整理项目文档”时使用。
+
+工作流程：
+1. 先阅读项目结构
+2. 查看 package.json、README、入口文件
+3. 判断项目类型
+4. 生成项目简介
+5. 写安装步骤
+6. 写启动命令
+7. 说明主要文件夹作用
+8. 补充常见问题
+9. 不确定的地方不要编造
+
+输出格式：
+使用 Markdown。
+
+必须包含：
+- 项目简介
+- 功能特点
+- 安装步骤
+- 启动命令
+- 文件结构
+- 常见问题
+- 后续优化方向
+</code></pre></div>
+<p><strong>推荐安装的 Skill</strong></p>
+<ul>
+<li><a href="https://github.com/obra/superpowers">superpowers</a>：给 Coding Agent 加一整套“软件开发方法论”</li>
+<li>skill-creator：创建 Skill 的辅助 Skill</li>
+<li><a href="https://github.com/JimLiu/baoyu-skills">baoyu-skills</a>：偏内容创作和日常效率</li>
+<li><a href="https://github.com/Panniantong/Agent-Reach">Agent-Reach</a>：给 Agent 装“联网能力”</li>
+<li><a href="https://github.com/vercel-labs/skills/tree/main/skills/find-skills">find-skills</a>：“找 Skill 的 Skill”。</li>
+</ul>
+<p><strong>在 Codex CLI 里添加 Skill 的三种方式</strong></p>
+<ol>
+<li>使用已有 Skill</li>
+<li>$skill-creator 创建（最推荐）</li>
+<li>手动创建 SKILL.md</li>
+</ol>
+<h3 id="34-mcp">3.4 <strong>MCP</strong></h3>
+<p><strong>只有进阶AI编程才需要了解，普通人可以直接跳过</strong></p>
+<p>让 Codex 连接外部工具的接口。</p>
+<p>Codex 本身可以读代码、改代码、运行命令。</p>
+<p>MCP 的作用是让 Codex 连接更多外部工具、数据源或服务。</p>
+<p><strong>MCP 概念</strong></p>
+<ul>
+<li>MCP：连接外部工具的标准接口</li>
+<li>MCP Server：提供工具能力的服务</li>
+<li>Tool：Codex 可以调用的具体功能</li>
+<li>Config：MCP 的配置文件</li>
+<li>STDIO Server：通过本地命令启动的 MCP 服务</li>
+<li>HTTP Server：通过网址连接的 MCP 服务</li>
+<li>Context：外部工具提供给 Codex 的上下文信息</li>
+</ul>
+<p><strong>在 Codex App 里怎么使用 MCP</strong></p>
+<ol>
+<li>打开 Codex App</li>
+<li>进入 Settings</li>
+<li>找到 MCP servers</li>
+<li>查看 recommended servers</li>
+<li>添加 custom server</li>
+<li>按提示完成授权</li>
+<li>回到项目 thread</li>
+<li>查看结果和权限请求</li>
+</ol>
+<p><strong>添加 MCP 时通常需要填什么</strong></p>
+<ul>
+<li>Name：MCP 名称：MCP 名称</li>
+<li>Command / URL：启动命令或服务地址</li>
+<li>Type：MCP 类型</li>
+<li>Env：环境变量</li>
+<li>Auth：授权方式</li>
+<li>Enabled tools：启用哪些工具</li>
+</ul>
+<p><img alt="Codex MCP.png" src="image/Codex%20MCP.png" /></p>
+<p><strong>添加 MCP 后怎么使用</strong></p>
+<p>添加完成后，回到 Codex App 的 thread，直接描述任务即可。</p>
+<p>示例提示词：</p>
+<div class="highlight"><pre><span></span><code>请使用可用的 MCP 文档工具，
+查询 Next.js App Router 的最新用法，
+然后告诉我当前项目应该怎么修改。
+</code></pre></div>
+<p>或者：</p>
+<div class="highlight"><pre><span></span><code>请用 Figma MCP 读取这个设计稿，
+分析页面结构，并给我生成前端实现计划。
+</code></pre></div>
+<p><strong>在 Codex CLI 里怎么使用 MCP</strong></p>
+<ol>
+<li>打开终端</li>
+<li>进入项目目录</li>
+<li>添加 MCP server</li>
+<li>检查 MCP 是否添加成功</li>
+<li>启动 Codex CLI</li>
+<li>用 /mcp 查看工具</li>
+<li>在任务里调用 MCP</li>
+<li>查看结果和权限提示</li>
+</ol>
+<p><strong>常用 MCP 终端命令</strong></p>
+<div class="highlight"><pre><span></span><code>codex<span class="w"> </span>mcp<span class="w"> </span>--help
+
+codex<span class="w"> </span>mcp<span class="w"> </span>list
+
+codex<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>名称<span class="w"> </span>--<span class="w"> </span>启动命令
+<span class="c1"># 给 Codex 添加一个叫 context7 的 MCP。它通过 npx 启动 @upstash/context7-mcp 这个工具。</span>
+codex<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>context7<span class="w"> </span>--<span class="w"> </span>npx<span class="w"> </span>-y<span class="w"> </span>@upstash/context7-mcp
+
+codex<span class="w"> </span>mcp<span class="w"> </span>remove<span class="w"> </span>名称
+
+<span class="c1"># 查看某个 MCP server 详情</span>
+codex<span class="w"> </span>mcp<span class="w"> </span>get
+
+<span class="c1"># 登录需要授权的 MCP</span>
+codex<span class="w"> </span>mcp<span class="w"> </span>login
+
+codex<span class="w"> </span>mcp<span class="w"> </span><span class="nb">logout</span>
+
+/mcp
+</code></pre></div>
+<p><strong>MCP 配置文件在哪里</strong></p>
+<p>~/.codex/config.toml 里面可能会有类似这样的配置：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.context7]</span>
+<span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@upstash/context7-mcp&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>这表示：有一个 MCP server 叫 context7。 </p>
+<p>启动命令是 npx -y @upstash/context7-mcp。</p>
+<p><strong>添加远程 MCP</strong></p>
+<p>有些 MCP 不是本地命令启动，而是通过网址连接。</p>
+<p>这类一般叫远程 MCP / HTTP MCP。</p>
+<p>可能会需要：</p>
+<ul>
+<li>URL：远程 MCP 服务地址</li>
+<li>Auth：是否需要登录</li>
+<li>Token：访问凭证</li>
+<li>OAuth：浏览器授权登录</li>
+</ul>
+<h3 id="35-work">3.5 <strong>Work</strong></h3>
+<p>很多人第一次看到 ChatGPT Work，会产生一个很自然的疑问：</p>
+<p>它的界面和 Codex 很像，也可以读文件、查资料、使用工具、生成内容。</p>
+<p>那为什么还要单独做一个 Work？</p>
+<p>如果只看底层能力，两者确实有很多相似之处。它们都不是只能回答问题的聊天工具，而是可以围绕目标持续执行任务的 Agent。</p>
+<p>但两者面对的工作环境不同，默认使用的工具不同，最终交付的结果也不同。</p>
+<p>一句话总结：</p>
+<p><strong>Work 擅长把资料变成可以直接使用的成果，Codex 擅长把需求变成经过验证的代码改动。</strong></p>
+<p><strong>Work 和 Codex 的核心区别</strong></p>
+<p><img alt="Work 和 Codex 的核心区别.png" src="image/Work%20%E5%92%8C%20Codex%20%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB.png" /></p>
+<p><strong>同一个任务应该选择 Work 还是 Codex？</strong></p>
+<p>最简单的判断方法是看最终要交付什么。</p>
+<ul>
+<li>最终需要文档、表格或 PPT：优先选择 Work。</li>
+<li>最终需要修改代码或验证项目：优先选择 Codex。</li>
+<li>既要研究，又要开发：可以把任务拆成两个阶段，第一阶段使用 Work，第二阶段使用 Codex</li>
+</ul>
+<h3 id="36-sites">3.6 <strong>站点（sites）</strong></h3>
+<p><strong>让 Codex 把网站直接发布成可访问链接</strong></p>
+<p>Codex 负责把网站做出来，Sites 负责把网站变成可以访问和分享的线上成果。</p>
+<p><strong>Sites 和 Vercel、Netlify 有什么区别？</strong></p>
+<p><img alt="Sites 和 Vercel、Netlify 有什么区别？.png" src="image/Sites%20%E5%92%8C%20Vercel%E3%80%81Netlify%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.png" /></p>
+<p>如果只是想快速发布一个活动页、内部看板或产品原型，Sites 通常更省步骤。</p>
+<p>如果项目依赖特殊框架、私有网络、复杂数据库、后台服务或自定义基础设施，就应该先检查兼容性，必要时继续使用专业部署平台。</p>
+<h3 id="37-git-github">3.7 <strong>代码管理 （Git 与 GitHub 工作流）</strong></h3>
+<p>Git = 本地代码版本管理工具
+GitHub = 把代码放到网上协作的平台
+Codex = 帮你读代码、改代码、跑命令的 AI 编程助手</p>
+<h3 id="38">3.8 <strong>云端运行</strong></h3>
+<p>Codex 的云端任务适合在你不方便一直开着本地电脑时继续处理工作；如果你的账号和客户端支持移动端入口，也可以在外出时查看或推进部分任务。</p>
+<ul>
+<li>Local：Codex 直接改你电脑里的代码</li>
+<li>Worktree：Codex 在安全副本里改代码</li>
+<li>Cloud：Codex 在云端拉取 GitHub 仓库并处理任务</li>
+</ul>
+<p><strong>云端运行和本地运行的区别</strong></p>
+<p><img alt="云端运行和本地运行的区别.png" src="image/%E4%BA%91%E7%AB%AF%E8%BF%90%E8%A1%8C%E5%92%8C%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8C%E7%9A%84%E5%8C%BA%E5%88%AB.png" /></p>
+<h3 id="39">3.9 <strong>记忆系统</strong></h3>
+<p>让 Codex 记住一些长期有用的信息，方便以后继续工作。</p>
+<p><strong>项目级AGENTS.md</strong>：写给 Codex 看的项目规则说明书。</p>
+<p><strong>AGENTS.md 放在哪里</strong></p>
+<p><img alt="AGENTS.md 放在哪里.png" src="image/AGENTS.md%20%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C.png" /></p>
+<p><strong>如何写 AGENTS.md</strong></p>
+<p>可以直接交给AI来写，让AI总结这个项目的核心内容制作成 AGENTS.md</p>
+<p><strong>项目级 AGENTS.md</strong>：~/xxx项目/AGENTS.md</p>
+<p>前端项目 AGENTS.md 模板</p>
+<details>
+<summary>点击展开完整模板</summary>
+
+<div class="highlight"><pre><span></span><code><span class="gh"># AGENTS.md</span>
+
+<span class="gu">## 项目说明</span>
+
+这是一个前端网页项目，用于构建产品页面、工具页面或个人作品展示页面。
+
+<span class="gu">## 技术栈</span>
+
+<span class="k">-</span><span class="w"> </span>React
+<span class="k">-</span><span class="w"> </span>Vite
+<span class="k">-</span><span class="w"> </span>Tailwind CSS
+<span class="k">-</span><span class="w"> </span>JavaScript / TypeScript
+
+<span class="gu">## 常用命令</span>
+
+<span class="k">-</span><span class="w"> </span>安装依赖：`npm install`
+<span class="k">-</span><span class="w"> </span>启动项目：`npm run dev`
+<span class="k">-</span><span class="w"> </span>构建项目：`npm run build`
+
+<span class="gu">## 项目结构</span>
+
+<span class="k">-</span><span class="w"> </span><span class="sb">`src/`</span>：主要源代码
+<span class="k">-</span><span class="w"> </span><span class="sb">`src/components/`</span>：通用组件
+<span class="k">-</span><span class="w"> </span><span class="sb">`src/pages/`</span>：页面文件
+<span class="k">-</span><span class="w"> </span><span class="sb">`src/assets/`</span>：图片、图标等静态资源
+<span class="k">-</span><span class="w"> </span><span class="sb">`public/`</span>：公开静态文件
+
+<span class="gu">## 代码规范</span>
+
+<span class="k">-</span><span class="w"> </span>优先使用 React 函数组件
+<span class="k">-</span><span class="w"> </span>优先使用 Tailwind CSS 写样式
+<span class="k">-</span><span class="w"> </span>不要引入 Bootstrap
+<span class="k">-</span><span class="w"> </span>不要大范围重构无关代码
+<span class="k">-</span><span class="w"> </span>修改时保持文件结构清晰
+<span class="k">-</span><span class="w"> </span>中文文案要自然、简洁、适合普通用户阅读
+
+<span class="gu">## UI 规则</span>
+
+<span class="k">-</span><span class="w"> </span>页面要有清晰的信息层级
+<span class="k">-</span><span class="w"> </span>按钮、卡片、标题、留白要统一
+<span class="k">-</span><span class="w"> </span>移动端要基本可用
+<span class="k">-</span><span class="w"> </span>不要过度渐变、阴影和 AI 模板感
+<span class="k">-</span><span class="w"> </span>优先做真实产品感，而不是 Demo 感
+
+<span class="gu">## 禁止事项</span>
+
+<span class="k">-</span><span class="w"> </span>不要修改 <span class="sb">`.env`</span>、<span class="sb">`.env.local`</span>
+<span class="k">-</span><span class="w"> </span>不要输出 API Key、token、密码
+<span class="k">-</span><span class="w"> </span>不要删除已有核心功能
+<span class="k">-</span><span class="w"> </span>不要随意新增大型依赖
+<span class="k">-</span><span class="w"> </span>不要直接改动和当前任务无关的文件
+
+<span class="gu">## 完成任务后</span>
+
+每次修改完成后，请输出：
+
+<span class="k">1.</span> 修改了哪些文件
+<span class="k">2.</span> 每个文件改了什么
+<span class="k">3.</span> 为什么这样改
+<span class="k">4.</span> 是否需要运行 <span class="sb">`npm run build`</span>
+<span class="k">5.</span> 提醒我检查 diff
+</code></pre></div>
+
+</details>
+
+<p><strong>全局级 AGENTS.md</strong>：~/.codex/AGENTS.md</p>
+<p>打开Codex的设置，找到个性化</p>
+<p>输入指令，这里的指令会作为你的个人通用偏好影响后续 Codex 会话</p>
+<p><img alt="全局级AGENTS.md.png" src="image/%E5%85%A8%E5%B1%80%E7%BA%A7AGENTS.md.png" /></p>
+<p><strong>Codex记忆的最佳使用方法</strong></p>
+<p><img alt="Codex记忆的最佳使用方法.png" src="image/Codex%E8%AE%B0%E5%BF%86%E7%9A%84%E6%9C%80%E4%BD%B3%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95.png" /></p>
+<ul>
+<li>当前会话 / prompt：最适合放“这次任务”的要求</li>
+<li>Memories：适合放“稳定偏好”和“常见背景”：~/.codex/memories/</li>
+<li>AGENTS.md：最适合放“必须遵守的项目规则”：<ul>
+<li>全局级：~/.codex/AGENTS.md</li>
+<li>项目级：~/xxx项目/AGENTS.md</li>
+</ul>
+</li>
+<li>Skills：适合放“可复用工作流”</li>
+</ul>
+<h3 id="310-chrome">3.10 <strong>Chrome 插件</strong></h3>
+<p>Chrome 插件带来的变化，不只是让 Codex 多了一个打开网页的入口。</p>
+<p>它解决了过去浏览器任务中的三个问题。</p>
+<p><strong>第一个变化：可以使用现有登录状态</strong></p>
+<p>很多真实工作都发生在需要登录的网站里。</p>
+<p>Chrome 插件连接的是你当前使用的 Chrome Profile，也就是包含现有登录状态和浏览器环境的用户配置。</p>
+<p>因此，Codex 可以在获得网站权限后，操作你已经登录的网站。</p>
+<p>需要注意： 使用登录状态不等于把所有密码直接交给 Codex。</p>
+<p>更准确的理解是： Chrome 扩展在用户授权的 Chrome Profile 中执行网页任务，网站权限和敏感操作仍然受到 ChatGPT 的确认机制控制。</p>
+<p><strong>第二个变化：浏览器任务可以跨多个标签页</strong></p>
+<p><strong>第三个变化：可以处理浏览器下载和文件上传</strong></p>
+<h2 id="_2">四、标准工作流</h2>
+<h2 id="_3">五、实战案例库</h2>
+<h2 id="a">附录 A、第三方模型接入</h2>
+<p>本节介绍第三方模型接入的非官方思路，并以 CC Switch + DeepSeek 为例。它不属于 OpenAI 官方功能，模型兼容性、稳定性、隐私和费用规则以对应第三方工具与模型服务商为准。</p>
+<p><strong>什么是 CC Switch</strong></p>
+<p>它不是 Claude Code 本体，也不是 Codex 本体，而是一个第三方开源桌面工具，用来统一管理不同 Agent 工具。</p>
+<blockquote>
+<p>以前你要手动改 Claude Code、Codex、Gemini CLI 的配置文件。 现在 CC Switch 给你做成一个可视化面板，一键切换。</p>
+</blockquote>
+<p>它最核心的用途有 3 个：</p>
+<p><img alt="CC Switch的核心功能.png" src="image/CC%20Switch%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD.png" /></p>
+<p><a href="https://ccswitch.io/zh/">CC Switch 官网</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
