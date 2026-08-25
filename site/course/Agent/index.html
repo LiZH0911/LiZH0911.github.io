@@ -1236,8 +1236,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 本章小结
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、记忆与检索
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2044,8 +2066,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#76" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 本章小结
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、记忆与检索
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4102,10 +4146,10 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <p>（2）从使用者到构建者的能力跃迁</p>
 <p>（3）定制化需求与深度掌握的必要性</p>
 <p><strong>7.1.2 HelloAgents框架的设计理念</strong></p>
-<p>构建一个新的Agent框架，关键不在于功能的多少，而在于设计理念是否能真正解决现有框架的痛点。</p>
-<p>当你初次接触任何成熟的框架时，可能会被其丰富的功能所吸引，但很快就会发现一个问题：要完成一个简单的任务，往往需要理解Chain、Agent、Tool、Memory、Retriever等十几个不同的概念。每个概念都有自己的抽象层，学习曲线变得异常陡峭。</p>
+<p>构建一个新的 Agent 框架，关键不在于功能的多少，而在于设计理念是否能真正解决现有框架的痛点。</p>
+<p>当你初次接触任何成熟的框架时，可能会被其丰富的功能所吸引，但很快就会发现一个问题：要完成一个简单的任务，往往需要理解 Chain、Agent、Tool、Memory、Retriever 等十几个不同的概念。每个概念都有自己的抽象层，学习曲线变得异常陡峭。</p>
 <p>这种复杂性虽然带来了强大的功能，但也成为了初学者的障碍。</p>
-<p>HelloAgents框架试图在功能完整性和学习友好性之间找到平衡点，形成了四个核心的设计理念。</p>
+<p>HelloAgents 框架试图在功能完整性和学习友好性之间找到平衡点，形成了四个核心的设计理念。</p>
 <p>（1）轻量级与教学友好的平衡</p>
 <p>（2）基于标准API的务实选择</p>
 <p>（3）渐进式学习路径的精心设计</p>
@@ -4142,9 +4186,48 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <span class="c1"># Python 版本需要&gt;=3.10</span>
 pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;hello-agents==0.1.1&quot;</span>
 </code></pre></div>
-<p><strong>体验使用Hello-agents构建简单智能体</strong></p>
+<p><strong>体验使用 Hello-agents 构建简单智能体</strong></p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter7/.env</summary>
+
+<div class="highlight"><pre><span></span><code># ============================================================================
+# HelloAgents 统一环境变量配置文件
+# ============================================================================
+# 复制此文件为 .env 并填入你的API密钥
+# 系统要求：Python 3.10+ （必需）
+
+# ============================================================================
+# 🚀 统一配置格式（推荐）- 框架自动检测provider
+# ============================================================================
+# 只需配置以下4个通用环境变量，框架会自动识别LLM提供商：
+
+# 模型名称
+LLM_MODEL_ID=your-model-name
+
+# API密钥
+LLM_API_KEY=your-api-key-here
+
+# 服务地址
+LLM_BASE_URL=your-api-base-url
+
+# 超时时间（可选，默认60秒）
+LLM_TIMEOUT=60
+
+# ============================================================================
+# 🛠️ 工具配置（可选）
+# ============================================================================
+
+# Tavily搜索（推荐）- 获取API密钥：https://tavily.com/
+# TAVILY_API_KEY=tvly-your_tavily_key_here
+
+# SerpApi搜索（备选）- 获取API密钥：https://serpapi.com/
+# SERPAPI_API_KEY=your_serpapi_key_here
+</code></pre></div>
+
+</details>
+
+<details>
+<summary>chapter7/example.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 配置好同级文件夹下.env中的大模型API, 可参考code文件夹配套的.env.example，也可以拿前几章的案例的.env文件复用。</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
@@ -4195,6 +4278,11 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </ol>
 <p><strong>7.2.1 支持多提供商</strong></p>
 <p>（1）创建自定义LLM类并<strong>继承</strong></p>
+<p>（2）<strong>重写</strong> <code>__init__</code> 方法以支持新供应商</p>
+<p>当用户传入 <code>provider="modelscope"</code> 时，执行我们自定义的逻辑；否则，就调用父类 <code>HelloAgentsLLM</code> 的原始逻辑，使其能够继续支持 OpenAI 等其他内置的供应商。</p>
+<details>
+<summary>chapter7/my_llm.py</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1"># my_llm.py</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
@@ -4205,11 +4293,6 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    一个自定义的LLM客户端，通过继承增加了对ModelScope的支持。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">pass</span> <span class="c1"># 暂时留空</span>
-</code></pre></div>
-<p>（2）<strong>重写</strong> <code>__init__</code> 方法以支持新供应商</p>
-<p>当用户传入 <code>provider="modelscope"</code> 时，执行我们自定义的逻辑；否则，就调用父类 <code>HelloAgentsLLM</code> 的原始逻辑，使其能够继续支持 OpenAI 等其他内置的供应商。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MyLLM</span><span class="p">(</span><span class="n">HelloAgentsLLM</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -4244,7 +4327,13 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
             <span class="c1"># 如果不是 modelscope, 则完全使用父类的原始逻辑来处理</span>
             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">,</span> <span class="n">provider</span><span class="o">=</span><span class="n">provider</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<p>（3）使用自定义的 <code>MyLLM</code> 类</p>
+
+</details>
+
+<p>（3）测试自定义的 <code>MyLLM</code> 类</p>
+<details>
+<summary>chapter7/my_main.py</summary>
+
 <div class="highlight"><pre><span></span><code><span class="c1"># my_main.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">my_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyLLM</span> <span class="c1"># 注意:这里导入我们自己的类</span>
@@ -4268,6 +4357,9 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
     <span class="c1"># print(chunk, end=&quot;&quot;, flush=True)</span>
     <span class="k">pass</span>
 </code></pre></div>
+
+</details>
+
 <p>通过以上步骤，我们就在不修改 <code>hello-agents</code> 库源码的前提下，成功为其扩展了新的功能。这种方法不仅保证了代码的整洁和可维护性，也使得未来升级 <code>hello-agents</code> 库时，我们的定制化功能不会丢失。</p>
 <p><strong>7.2.2 本地模型调用</strong></p>
 <p>为了在本地实现高性能、生产级的模型推理服务，社区涌现出了 VLLM 和 Ollama 等优秀工具。它们通过连续批处理、PagedAttention 等技术，显著提升了模型的吞吐量和运行效率，并将模型封装为兼容 OpenAI 标准的 API 服务。这意味着，我们可以将它们无缝地集成到 <code>HelloAgentsLLM</code> 中。</p>
@@ -4332,6 +4424,11 @@ ollama<span class="w"> </span>run<span class="w"> </span>llama3
 </li>
 <li><strong>辅助判断</strong>：<strong>分析 API 密钥的格式</strong>。可能存在模糊性，因此它的优先级较低，仅作为辅助手段。</li>
 </ol>
+<p>其部分关键代码如下：</p>
+<details>
+<summary>hello_agents/core/llm.py 中 HelloAgentsLLM 类的 _auto_detect_provider 私有函数</summary>
+
+
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_auto_detect_provider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    自动检测LLM提供商</span>
@@ -4364,8 +4461,14 @@ ollama<span class="w"> </span>run<span class="w"> </span>llama3
     <span class="c1"># 4. 默认返回 &#39;auto&#39;，使用通用配置</span>
     <span class="k">return</span> <span class="s2">&quot;auto&quot;</span>
 </code></pre></div>
+
+</details>
+
 <p>一旦 provider 被确定（无论是用户指定还是自动检测），<code>_resolve_credentials</code> 方法便会接手处理服务商的差异化配置。</p>
 <p>它会根据 <code>provider</code> 的值，去主动查找对应的环境变量，并为其设置默认的 <code>base_url</code>。其部分关键实现如下：</p>
+<details>
+<summary>hello_agents/core/llm.py 中 HelloAgentsLLM 类的 _resolve_credentials 私有函数</summary>
+
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_resolve_credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;根据provider解析API密钥和base_url&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
@@ -4380,6 +4483,9 @@ ollama<span class="w"> </span>run<span class="w"> </span>llama3
 
     <span class="c1"># ... 其他服务商的逻辑</span>
 </code></pre></div>
+
+</details>
+
 <p>让我们通过一个简单的例子来感受自动检测带来的便利。假设一个用户想要使用本地的 Ollama 服务，他只需在 .env 文件中进行如下配置：</p>
 <div class="highlight"><pre><span></span><code>LLM_BASE_URL=&quot;http://localhost:11434/v1&quot;
 LLM_MODEL_ID=&quot;llama3&quot;
@@ -4409,7 +4515,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p><strong>7.3.1 Message 类</strong></p>
 <p>在智能体与大语言模型的交互中，对话历史是至关重要的上下文。为了规范地管理这些信息，我们设计了一个简易 <code>Message</code> 类。</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>hello_agents/core/message.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;消息系统&quot;&quot;&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span>
@@ -4454,7 +4560,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p><strong>7.3.2 Config 类</strong></p>
 <p><strong>Config</strong> 类的职责是将代码中硬编码配置参数集中起来，并支持从环境变量中读取。</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>hello_agents/core/config.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;配置管理&quot;&quot;&quot;</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
@@ -4501,7 +4607,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p><code>Agent</code> 类是整个框架的顶层抽象。它定义了一个智能体应该具备的通用行为和属性，但并不关心具体的实现方式。</p>
 <p>我们通过 Python 的 <code>abc</code> (Abstract Base Classes) 模块来实现它，这强制所有具体的智能体实现（如后续章节的 <code>SimpleAgent</code>, <code>ReActAgent</code> 等）都必须遵循同一个“接口”。</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>hello_agents/core/agent.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Agent基类&quot;&quot;&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
@@ -4567,7 +4673,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>我们将通过继承框架中已有的 SimpleAgent 类并重写其核心方法，来实现一个可扩展的版本。</p>
 <p>在项目目录中创建一个<code>my_simple_agent.py</code>文件：</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter7/my_simple_agent.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># my_simple_agent.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterator</span>
@@ -4825,7 +4931,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 
 <p>创建一个测试文件<code>test_simple_agent.py</code>：</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter7/my_simple_agent.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># test_simple_agent.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
@@ -4893,7 +4999,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>保持了原有的格式要求，强调"每次只能执行一个步骤"，避免混乱，并明确了两种Action的使用场景。</p>
 <p>（2）重写 ReActAgent 的完整实现</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter7/my_react_agent.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="n">MY_REACT_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;你是一个具备推理和行动能力的AI助手。你可以通过思考分析问题，然后调用合适的工具来获取信息，最终给出准确的答案。</span>
 
@@ -5003,7 +5109,23 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>核心改进在于利用了统一的 <code>ToolRegistry</code> 接口，并通过一个可配置、格式更严谨的提示词模板，提升了智能体执行思考-行动循环的稳定性。</p>
 <p>对于 ReAct 的测试案例，由于需要调用工具，所以统一放在文末提供测试代码。</p>
 <p><strong>7.4.3 ReflectionAgent</strong></p>
+<details>
+<summary>chapter7/my_reflection_agent.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="n">略</span>
+</code></pre></div>
+
+</details>
+
 <p><strong>7.4.4 PlanAndSolveAgent</strong></p>
+<details>
+<summary>chapter7/my_plan_solve_agent.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="n">略</span>
+</code></pre></div>
+
+</details>
+
 <p>通过这种框架化的重构，我们不仅保持了第四章中各种Agent范式的核心功能，还大幅提升了代码的组织性、可维护性和扩展性。</p>
 <p>所有Agent现在都共享统一的基础架构，同时保持了各自的特色和优势。</p>
 <p><img alt="Agent不同章节实现对比.png" src="images/Agent%E4%B8%8D%E5%90%8C%E7%AB%A0%E8%8A%82%E5%AE%9E%E7%8E%B0%E5%AF%B9%E6%AF%94.png" /></p>
@@ -5088,6 +5210,9 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>在构建可扩展的工具系统时，我们需要首先建立一套标准化的基础设施。这套基础设施包括Tool基类、ToolRegistry注册表，以及工具管理机制。</p>
 <p>（1）<code>Tool</code> 基类的抽象设计</p>
 <p><code>Tool</code> 基类是整个工具系统的核心抽象，它定义了所有工具必须遵循的<strong>接口规范</strong>：</p>
+<details>
+<summary>hello_agents/tools/base.py 中的 Tool 类</summary>
+
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Tool</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;工具基类&quot;&quot;&quot;</span>
 
@@ -5105,11 +5230,17 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;获取工具参数定义&quot;&quot;&quot;</span>
         <span class="k">pass</span>
 </code></pre></div>
+
+</details>
+
 <p>这个设计体现了面向对象设计的核心思想：通过统一的<code>run</code>方法接口，所有工具都能以一致的方式执行，接受字典参数并返回字符串结果，确保了框架的一致性。</p>
 <p>同时，工具具备了自描述能力，通过<code>get_parameters</code>方法能够清晰地告诉调用者自己需要什么参数，这种内省机制为自动化文档生成和参数验证提供了基础。</p>
 <p>而<code>name</code>和<code>description</code>等元数据的设计，则让工具系统具备了良好的可发现性和可理解性。</p>
 <p>（2）<code>ToolParameter</code> 参数定义系统</p>
 <p>为了支持复杂的参数验证和文档生成，我们设计了 <code>ToolParameter</code> 类：</p>
+<details>
+<summary>hello_agents/tools/base.py 中的 ToolParameter 类</summary>
+
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ToolParameter</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;工具参数定义&quot;&quot;&quot;</span>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
@@ -5118,11 +5249,14 @@ LLM_MODEL_ID=&quot;llama3&quot;
     <span class="n">required</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
+
+</details>
+
 <p>这种设计让工具能够精确描述自己的参数需求，支持类型检查、默认值设置和文档自动生成。</p>
 <p>（3）<code>ToolRegistry</code> 注册表的实现</p>
 <p><code>ToolRegistry</code> 是工具系统的管理中枢，它提供了<strong>工具的注册、发现、执行</strong>等核心功能，在这一节我们主要用到以下功能：</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>hello_agents/tools/registry.py 中的 ToolRegistry 类</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ToolRegistry</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;HelloAgents工具注册表&quot;&quot;&quot;</span>
@@ -5164,6 +5298,743 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <li><strong><code>Tool</code> 对象注册</strong>：适合复杂工具，支持完整的参数定义和验证</li>
 <li><strong>函数直接注册</strong>：适合简单工具，快速集成现有函数</li>
 </ol>
+<p>（4）工具发现与管理机制</p>
+<p>注册表提供了丰富的工具管理功能：</p>
+<details>
+<summary>hello_agents/tools/registry.py 中 ToolRegistry 类的 get_tools_description 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_tools_description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取所有可用工具的格式化描述字符串&quot;&quot;&quot;</span>
+    <span class="n">descriptions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Tool对象描述</span>
+    <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">descriptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 函数工具描述</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_functions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">descriptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">descriptions</span><span class="p">)</span> <span class="k">if</span> <span class="n">descriptions</span> <span class="k">else</span> <span class="s2">&quot;暂无可用工具&quot;</span>
+</code></pre></div>
+
+</details>
+
+<p>这个方法生成的描述字符串可以直接用于构建 Agent 的提示词，让 Agent 了解可用的工具。</p>
+<details>
+<summary>点击展开完整代码</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_openai_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;转换为 OpenAI function calling schema 格式</span>
+
+<span class="sd">        用于 FunctionCallAgent，使工具能够被 OpenAI 原生 function calling 使用</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            符合 OpenAI function calling 标准的 schema</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+
+        <span class="c1"># 构建 properties</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">required</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+            <span class="c1"># 基础属性定义</span>
+            <span class="n">prop</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">param</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">param</span><span class="o">.</span><span class="n">description</span>
+            <span class="p">}</span>
+
+            <span class="c1"># 如果有默认值，添加到描述中（OpenAI schema 不支持 default 字段）</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">prop</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">param</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2"> (默认: </span><span class="si">{</span><span class="n">param</span><span class="o">.</span><span class="n">default</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+            <span class="c1"># 如果是数组类型，添加 items 定义</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;array&quot;</span><span class="p">:</span>
+                <span class="n">prop</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">}</span>  <span class="c1"># 默认字符串数组</span>
+
+            <span class="n">properties</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">prop</span>
+
+            <span class="c1"># 收集必需参数</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">required</span><span class="p">:</span>
+                <span class="n">required</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="n">properties</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="n">required</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre></div>
+
+</details>
+
+<p>这个方法生成的 schema 可以直接用于原生的 OpenAI SDK 的工具调用。</p>
+<p><strong>7.5.2 自定义工具开发</strong></p>
+<p>有了基础设施后，我们来看看如何开发一个完整的自定义工具。数学计算工具是一个很好的例子，因为它简单直观，最直接的方式是使用 <code>ToolRegistry</code> 的函数注册功能。</p>
+<p>让我们创建一个自定义的数学计算工具。首先，在你的项目目录中创建<code>my_calculator_tool.py</code>：</p>
+<details>
+<summary>chapter7/my_calculator_tool.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_calculator_tool.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">operator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_calculate</span><span class="p">(</span><span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;简单的数学计算函数&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">expression</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;计算表达式不能为空&quot;</span>
+
+    <span class="c1"># 支持的基本运算</span>
+    <span class="n">operators</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">ast</span><span class="o">.</span><span class="n">Add</span><span class="p">:</span> <span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">,</span>      <span class="c1"># +</span>
+        <span class="n">ast</span><span class="o">.</span><span class="n">Sub</span><span class="p">:</span> <span class="n">operator</span><span class="o">.</span><span class="n">sub</span><span class="p">,</span>      <span class="c1"># -</span>
+        <span class="n">ast</span><span class="o">.</span><span class="n">Mult</span><span class="p">:</span> <span class="n">operator</span><span class="o">.</span><span class="n">mul</span><span class="p">,</span>     <span class="c1"># *</span>
+        <span class="n">ast</span><span class="o">.</span><span class="n">Div</span><span class="p">:</span> <span class="n">operator</span><span class="o">.</span><span class="n">truediv</span><span class="p">,</span>  <span class="c1"># /</span>
+    <span class="p">}</span>
+
+    <span class="c1"># 支持的基本函数</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;sqrt&#39;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">,</span>
+        <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;eval&#39;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_eval_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;计算失败，请检查表达式格式&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_eval_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">functions</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;简化的表达式求值&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Constant</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">BinOp</span><span class="p">):</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">_eval_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">_eval_node</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="n">operators</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">op</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Call</span><span class="p">):</span>
+        <span class="n">func_name</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">if</span> <span class="n">func_name</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_eval_node</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">operators</span><span class="p">,</span> <span class="n">functions</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">args</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">functions</span><span class="p">[</span><span class="n">func_name</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">ast</span><span class="o">.</span><span class="n">Name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">functions</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">id</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_calculator_registry</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建包含计算器的工具注册表&quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+
+    <span class="c1"># 注册计算器函数</span>
+    <span class="n">registry</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;简单的数学计算工具，支持基本运算(+,-,*,/)和sqrt函数&quot;</span><span class="p">,</span>
+        <span class="n">func</span><span class="o">=</span><span class="n">my_calculate</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">registry</span>
+</code></pre></div>
+
+</details>
+
+<p>工具不仅支持基本的四则运算，还涵盖了常用的数学函数和常数，满足了大多数计算场景的需求。你也可以自己扩展这个文件，制作一个更加完备的计算函数。我们提供一个测试文件<code>test_my_calculator.py</code>帮助你验证功能实现：</p>
+<details>
+<summary>chapter7/test_my_calculator.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># test_my_calculator.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_calculator_tool</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_calculator_registry</span>
+
+<span class="c1"># 加载环境变量</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_calculator_tool</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试自定义计算器工具&quot;&quot;&quot;</span>
+
+    <span class="c1"># 创建包含计算器的注册表</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">create_calculator_registry</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🧪 测试自定义计算器工具</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 简单测试用例</span>
+    <span class="n">test_cases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;2 + 3&quot;</span><span class="p">,</span>           <span class="c1"># 基本加法</span>
+        <span class="s2">&quot;10 - 4&quot;</span><span class="p">,</span>          <span class="c1"># 基本减法</span>
+        <span class="s2">&quot;5 * 6&quot;</span><span class="p">,</span>           <span class="c1"># 基本乘法</span>
+        <span class="s2">&quot;15 / 3&quot;</span><span class="p">,</span>          <span class="c1"># 基本除法</span>
+        <span class="s2">&quot;sqrt(16)&quot;</span><span class="p">,</span>        <span class="c1"># 平方根</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">expression</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_cases</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;测试 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">expression</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">execute_tool</span><span class="p">(</span><span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span> <span class="n">expression</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_with_simple_agent</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试与SimpleAgent的集成&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+
+    <span class="c1"># 创建LLM客户端</span>
+    <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+
+    <span class="c1"># 创建包含计算器的注册表</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">create_calculator_registry</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🤖 与SimpleAgent集成测试:&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 模拟SimpleAgent使用工具的场景</span>
+    <span class="n">user_question</span> <span class="o">=</span> <span class="s2">&quot;请帮我计算 sqrt(16) + 2 * 3&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;用户问题: </span><span class="si">{</span><span class="n">user_question</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 使用工具计算</span>
+    <span class="n">calc_result</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">execute_tool</span><span class="p">(</span><span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt(16) + 2 * 3&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;计算结果: </span><span class="si">{</span><span class="n">calc_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 构建最终回答</span>
+    <span class="n">final_messages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;计算结果是 </span><span class="si">{</span><span class="n">calc_result</span><span class="si">}</span><span class="s2">，请用自然语言回答用户的问题:</span><span class="si">{</span><span class="n">user_question</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🎯 SimpleAgent的回答:&quot;</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">think</span><span class="p">(</span><span class="n">final_messages</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test_calculator_tool</span><span class="p">()</span>
+    <span class="n">test_with_simple_agent</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+
+<p>通过这个简化的数学计算工具案例，我们学会了如何快速开发自定义工具：编写一个简单的计算函数，通过<code>ToolRegistry</code>注册，然后与<code>SimpleAgent</code>集成使用。</p>
+<p>这里给出了基于<code>HelloAgents</code>的<code>SimpleAgent</code>运行工作流</p>
+<p><img alt="基于HelloAgents的SimpleAgent运行工作流.png" src="images/%E5%9F%BA%E4%BA%8EHelloAgents%E7%9A%84SimpleAgent%E8%BF%90%E8%A1%8C%E5%B7%A5%E4%BD%9C%E6%B5%81.png" /></p>
+<p><strong>7.5.3 多源搜索工具</strong></p>
+<p>在实际应用中，我们经常需要整合多个外部服务来提供更强大的功能。搜索工具就是一个典型的例子，它整合多个搜索引擎，能提供更加完备的真实信息。</p>
+<p>在第一章我们使用过Tavily的搜索API，在第四章我们使用过SerpApi的搜索API。因此这次我们使用这两个API来实现多源搜索功能。</p>
+<p>如果没安装对应的python依赖可以运行下面这条脚本：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;hello-agents[search]==0.1.1&quot;</span>
+</code></pre></div>
+<p>（1）搜索工具的统一接口设计</p>
+<p>HelloAgents 框架内置的<code>SearchTool</code>展示了如何设计一个高级的多源搜索工具：</p>
+<details>
+<summary>hello_agents/tools/builtin/search.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SearchTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    智能混合搜索工具</span>
+
+<span class="sd">    支持多种搜索引擎后端，智能选择最佳搜索源:</span>
+<span class="sd">    1. 混合模式 (hybrid) - 智能选择TAVILY或SERPAPI</span>
+<span class="sd">    2. Tavily API (tavily) - 专业AI搜索</span>
+<span class="sd">    3. SerpApi (serpapi) - 传统Google搜索</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;hybrid&quot;</span><span class="p">,</span> <span class="n">tavily_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">serpapi_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;一个智能网页搜索引擎。支持混合搜索模式，自动选择最佳搜索源。&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">backend</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tavily_key</span> <span class="o">=</span> <span class="n">tavily_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">serpapi_key</span> <span class="o">=</span> <span class="n">serpapi_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERPAPI_API_KEY&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">available_backends</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_backends</span><span class="p">()</span>
+</code></pre></div>
+</details>
+
+<p>这个设计的核心思想是根据可用的API密钥和依赖库，自动选择最佳的搜索后端。</p>
+<p>（2）TAVILY 与 SERPAPI 搜索源的整合策略</p>
+<details>
+<summary>SearchTool 类的 _search_hybrid 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_search_hybrid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;混合搜索 - 智能选择最佳搜索源&quot;&quot;&quot;</span>
+    <span class="c1"># 优先使用Tavily（AI优化的搜索）</span>
+    <span class="k">if</span> <span class="s2">&quot;tavily&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_backends</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_tavily</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Tavily搜索失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="c1"># 如果Tavily失败，尝试SerpApi</span>
+            <span class="k">if</span> <span class="s2">&quot;serpapi&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_backends</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔄 切换到SerpApi搜索&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_serpapi</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+    <span class="c1"># 如果Tavily不可用，使用SerpApi</span>
+    <span class="k">elif</span> <span class="s2">&quot;serpapi&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_backends</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_serpapi</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ SerpApi搜索失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 如果都不可用，提示用户配置API</span>
+    <span class="k">return</span> <span class="s2">&quot;❌ 没有可用的搜索源，请配置TAVILY_API_KEY或SERPAPI_API_KEY环境变量&quot;</span>
+</code></pre></div>
+
+</details>
+
+<p>这种设计体现了高可用系统的核心理念：通过降级机制，系统能够从最优的搜索源逐步降级到可用的备选方案。</p>
+<p>当所有搜索源都不可用时，明确提示用户配置正确的 API 密钥。</p>
+<p>（3）搜索结果的统一格式化</p>
+<p>不同搜索引擎返回的结果格式不同，框架通过统一的格式化方法来处理：</p>
+<details>
+<summary>SearchTool 类的 _search_tavily 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_search_tavily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;使用Tavily搜索&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tavily_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+        <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+        <span class="n">search_depth</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">,</span>
+        <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">max_results</span><span class="o">=</span><span class="mi">3</span>
+    <span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;🎯 Tavily AI搜索结果:</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;未找到直接答案&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="p">[])[:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)[:</span><span class="mi">200</span><span class="p">]</span><span class="si">}</span><span class="s2">...</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    来源: </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+
+</details>
+
+<p>基于框架的设计思想，我们可以创建自己的高级搜索工具。这次我们使用类的方式来展示不同的实现方法，创建<code>my_advanced_search.py</code>：</p>
+<details>
+<summary>chapter7/my_advanced_search.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># my_advanced_search.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyAdvancedSearchTool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    自定义高级搜索工具类</span>
+<span class="sd">    展示多源整合和智能选择的设计模式</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;my_advanced_search&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;智能搜索工具，支持多个搜索源，自动选择最佳结果&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setup_search_sources</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_search_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;设置可用的搜索源&quot;&quot;&quot;</span>
+        <span class="c1"># 检查Tavily可用性</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span><span class="w"> </span><span class="nn">tavily</span><span class="w"> </span><span class="kn">import</span> <span class="n">TavilyClient</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tavily_client</span> <span class="o">=</span> <span class="n">TavilyClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;tavily&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Tavily搜索源已启用&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Tavily库未安装&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 检查SerpApi可用性</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERPAPI_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">serpapi</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;serpapi&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ SerpApi搜索源已启用&quot;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ SerpApi库未安装&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔧 可用搜索源: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ 没有可用的搜索源，请配置API密钥&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;执行智能搜索&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">query</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="k">return</span> <span class="s2">&quot;❌ 错误:搜索查询不能为空&quot;</span>
+
+        <span class="c1"># 检查是否有可用的搜索源</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;&quot;❌ 没有可用的搜索源，请配置以下API密钥之一:</span>
+
+<span class="s2">1. Tavily API: 设置环境变量 TAVILY_API_KEY</span>
+<span class="s2">   获取地址: https://tavily.com/</span>
+
+<span class="s2">2. SerpAPI: 设置环境变量 SERPAPI_API_KEY</span>
+<span class="s2">   获取地址: https://serpapi.com/</span>
+
+<span class="s2">配置后重新运行程序。&quot;&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔍 开始智能搜索: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 尝试多个搜索源，返回最佳结果</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_sources</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="s2">&quot;tavily&quot;</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_with_tavily</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="s2">&quot;未找到&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;📊 Tavily AI搜索结果:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span>
+
+                <span class="k">elif</span> <span class="n">source</span> <span class="o">==</span> <span class="s2">&quot;serpapi&quot;</span><span class="p">:</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_with_serpapi</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">result</span> <span class="ow">and</span> <span class="s2">&quot;未找到&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🌐 SerpApi Google搜索结果:</span><span class="se">\n\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2"> 搜索失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+        <span class="k">return</span> <span class="s2">&quot;❌ 所有搜索源都失败了，请检查网络连接和API密钥配置&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_search_with_tavily</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;使用Tavily搜索&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tavily_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;answer&#39;</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;💡 AI直接答案:</span><span class="si">{</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">result</span> <span class="o">+=</span> <span class="s2">&quot;🔗 相关结果:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;results&#39;</span><span class="p">,</span> <span class="p">[])[:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)[:</span><span class="mi">150</span><span class="p">]</span><span class="si">}</span><span class="s2">...</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_search_with_serpapi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;使用SerpApi搜索&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">serpapi</span>
+
+        <span class="n">search</span> <span class="o">=</span> <span class="n">serpapi</span><span class="o">.</span><span class="n">GoogleSearch</span><span class="p">({</span>
+            <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+            <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SERPAPI_API_KEY&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;num&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">})</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">get_dict</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🔗 Google搜索结果:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;organic_results&quot;</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;organic_results&quot;</span><span class="p">][:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;snippet&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_advanced_search_registry</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建包含高级搜索工具的注册表&quot;&quot;&quot;</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+
+    <span class="c1"># 创建搜索工具实例</span>
+    <span class="n">search_tool</span> <span class="o">=</span> <span class="n">MyAdvancedSearchTool</span><span class="p">()</span>
+
+    <span class="c1"># 注册搜索工具的方法作为函数</span>
+    <span class="n">registry</span><span class="o">.</span><span class="n">register_function</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;advanced_search&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;高级搜索工具，整合Tavily和SerpAPI多个搜索源，提供更全面的搜索结果&quot;</span><span class="p">,</span>
+        <span class="n">func</span><span class="o">=</span><span class="n">search_tool</span><span class="o">.</span><span class="n">search</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">registry</span>
+</code></pre></div>
+
+</details>
+
+<p>接下来可以测试我们自己编写的工具，创建<code>test_advanced_search.py</code>：</p>
+<details>
+<summary>chapter7/test_advanced_search.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># test_advanced_search.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">my_advanced_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_advanced_search_registry</span><span class="p">,</span> <span class="n">MyAdvancedSearchTool</span>
+
+<span class="c1"># 加载环境变量</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_advanced_search</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试高级搜索工具&quot;&quot;&quot;</span>
+
+    <span class="c1"># 创建包含高级搜索工具的注册表</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">create_advanced_search_registry</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 测试高级搜索工具</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 测试查询</span>
+    <span class="n">test_queries</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;Python编程语言的历史&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;人工智能的最新发展&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2024年科技趋势&quot;</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">query</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_queries</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;测试 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">execute_tool</span><span class="p">(</span><span class="s2">&quot;advanced_search&quot;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_api_configuration</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试API配置检查&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔧 测试API配置检查:&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 直接创建搜索工具实例</span>
+    <span class="n">search_tool</span> <span class="o">=</span> <span class="n">MyAdvancedSearchTool</span><span class="p">()</span>
+
+    <span class="c1"># 如果没有配置API，会显示配置提示</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">search_tool</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;机器学习算法&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;搜索结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_with_agent</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试与Agent的集成&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🤖 与Agent集成测试:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;高级搜索工具已准备就绪，可以与Agent集成使用&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 显示工具描述</span>
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">create_advanced_search_registry</span><span class="p">()</span>
+    <span class="n">tools_desc</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get_tools_description</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;工具描述:</span><span class="se">\n</span><span class="si">{</span><span class="n">tools_desc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test_advanced_search</span><span class="p">()</span>
+    <span class="n">test_api_configuration</span><span class="p">()</span>
+    <span class="n">test_with_agent</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+
+<p>通过这个高级搜索工具的设计实践，我们学会了如何使用类的方式来构建复杂的工具系统。相比函数方式，类方式更适合需要维护状态（如 API 客户端、配置信息）的工具。</p>
+<p><strong>7.5.4 工具系统的高级特性</strong></p>
+<p>在掌握了基础的工具开发和多源整合后，我们来探讨工具系统的高级特性。这些特性能够让工具系统在复杂的生产环境中稳定运行，并为 Agent 提供更强大的能力。</p>
+<p>（1）工具链式调用机制</p>
+<p>在实际应用中，Agent 经常需要组合使用多个工具来完成复杂任务。我们可以设计一个工具链管理器来支持这种场景，这里借鉴了第六章中提到的图的概念：</p>
+<details>
+<summary>hello_agents/tools/chain.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># tool_chain_manager.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ToolChain</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;工具链 - 支持多个工具的顺序执行&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">input_template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">output_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        添加工具执行步骤</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            tool_name: 工具名称</span>
+<span class="sd">            input_template: 输入模板，支持变量替换</span>
+<span class="sd">            output_key: 输出结果的键名，用于后续步骤引用</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="n">tool_name</span><span class="p">,</span>
+            <span class="s2">&quot;input_template&quot;</span><span class="p">:</span> <span class="n">input_template</span><span class="p">,</span>
+            <span class="s2">&quot;output_key&quot;</span><span class="p">:</span> <span class="n">output_key</span> <span class="ow">or</span> <span class="sa">f</span><span class="s2">&quot;step_</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span><span class="si">}</span><span class="s2">_result&quot;</span>
+        <span class="p">})</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry</span><span class="p">:</span> <span class="n">ToolRegistry</span><span class="p">,</span> <span class="n">initial_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;执行工具链&quot;&quot;&quot;</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">context</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">context</span><span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">initial_input</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔗 开始执行工具链: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">tool_name</span> <span class="o">=</span> <span class="n">step</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]</span>
+            <span class="n">input_template</span> <span class="o">=</span> <span class="n">step</span><span class="p">[</span><span class="s2">&quot;input_template&quot;</span><span class="p">]</span>
+            <span class="n">output_key</span> <span class="o">=</span> <span class="n">step</span><span class="p">[</span><span class="s2">&quot;output_key&quot;</span><span class="p">]</span>
+
+            <span class="c1"># 替换模板中的变量</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">tool_input</span> <span class="o">=</span> <span class="n">input_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 工具链执行失败:模板变量 </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2"> 未找到&quot;</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  步骤 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: 使用 </span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2"> 处理 &#39;</span><span class="si">{</span><span class="n">tool_input</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="si">}</span><span class="s2">...&#39;&quot;</span><span class="p">)</span>
+
+            <span class="c1"># 执行工具</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">execute_tool</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">tool_input</span><span class="p">)</span>
+            <span class="n">context</span><span class="p">[</span><span class="n">output_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✅ 步骤 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> 完成，结果长度: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="si">}</span><span class="s2"> 字符&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 返回最后一步的结果</span>
+        <span class="n">final_result</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;output_key&quot;</span><span class="p">]]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎉 工具链 &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; 执行完成&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">final_result</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ToolChainManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;工具链管理器&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry</span><span class="p">:</span> <span class="n">ToolRegistry</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registry</span> <span class="o">=</span> <span class="n">registry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chains</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ToolChain</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chain</span><span class="p">:</span> <span class="n">ToolChain</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;注册工具链&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chains</span><span class="p">[</span><span class="n">chain</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">chain</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ 工具链 &#39;</span><span class="si">{</span><span class="n">chain</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; 已注册&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute_chain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chain_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">input_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;执行指定的工具链&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">chain_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">chains</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 工具链 &#39;</span><span class="si">{</span><span class="n">chain_name</span><span class="si">}</span><span class="s2">&#39; 不存在&quot;</span>
+
+        <span class="n">chain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chains</span><span class="p">[</span><span class="n">chain_name</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">chain</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_chains</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;列出所有工具链&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chains</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># 使用示例</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_research_chain</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ToolChain</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建一个研究工具链:搜索 -&gt; 计算 -&gt; 总结&quot;&quot;&quot;</span>
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">ToolChain</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;research_and_calculate&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;搜索信息并进行相关计算&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 步骤1:搜索信息</span>
+    <span class="n">chain</span><span class="o">.</span><span class="n">add_step</span><span class="p">(</span>
+        <span class="n">tool_name</span><span class="o">=</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
+        <span class="n">input_template</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{input}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">output_key</span><span class="o">=</span><span class="s2">&quot;search_result&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># 步骤2:基于搜索结果进行计算（如果需要）</span>
+    <span class="n">chain</span><span class="o">.</span><span class="n">add_step</span><span class="p">(</span>
+        <span class="n">tool_name</span><span class="o">=</span><span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span>
+        <span class="n">input_template</span><span class="o">=</span><span class="s2">&quot;根据以下信息计算相关数值:</span><span class="si">{search_result}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">output_key</span><span class="o">=</span><span class="s2">&quot;calculation_result&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">chain</span>
+</code></pre></div>
+
+</details>
+
+<p>（2）异步工具执行支持</p>
+<p>对于耗时的工具操作，我们可以提供异步执行支持：</p>
+<details>
+<summary>hello_agents/tools/async_executor.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># async_tool_executor.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">concurrent.futures</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncToolExecutor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;异步工具执行器&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry</span><span class="p">:</span> <span class="n">ToolRegistry</span><span class="p">,</span> <span class="n">max_workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registry</span> <span class="o">=</span> <span class="n">registry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">max_workers</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">execute_tool_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">input_data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;异步执行单个工具&quot;&quot;&quot;</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">_execute</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">execute_tool</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="p">,</span> <span class="n">_execute</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">execute_tools_parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;并行执行多个工具&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🚀 开始并行执行 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个工具任务&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 创建异步任务</span>
+        <span class="n">async_tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+            <span class="n">tool_name</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;tool_name&quot;</span><span class="p">]</span>
+            <span class="n">input_data</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;input_data&quot;</span><span class="p">]</span>
+            <span class="n">async_task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_tool_async</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
+            <span class="n">async_tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">async_task</span><span class="p">)</span>
+
+        <span class="c1"># 等待所有任务完成</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">async_tasks</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ 所有工具任务执行完成&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;清理资源&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;executor&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 使用示例</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_parallel_execution</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;测试并行工具执行&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+    <span class="n">registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+    <span class="c1"># 假设已经注册了搜索和计算工具</span>
+
+    <span class="n">executor</span> <span class="o">=</span> <span class="n">AsyncToolExecutor</span><span class="p">(</span><span class="n">registry</span><span class="p">)</span>
+
+    <span class="c1"># 定义并行任务</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="s2">&quot;Python编程&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="s2">&quot;机器学习&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span> <span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="s2">&quot;2 + 2&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_calculator&quot;</span><span class="p">,</span> <span class="s2">&quot;input_data&quot;</span><span class="p">:</span> <span class="s2">&quot;sqrt(16)&quot;</span><span class="p">},</span>
+    <span class="p">]</span>
+
+    <span class="c1"># 并行执行</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">executor</span><span class="o">.</span><span class="n">execute_tools_parallel</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;任务 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> 结果: </span><span class="si">{</span><span class="n">result</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>基于以上的设计和实现经验，我们可以总结出工具系统开发的核心理念：</p>
+<ul>
+<li>在设计层面，每个工具都应该遵循单一职责原则，专注于特定功能的同时保持接口的统一性，并将完善的异常处理和安全优先的输入验证作为基本要求。</li>
+<li>在性能优化方面，利用异步执行提高并发处理能力，同时合理管理外部连接和系统资源。</li>
+</ul>
+<h3 id="76">7.6 <strong>本章小结</strong></h3>
+<p>回顾本章，我们完成了一项富有挑战的任务：一步步构建了一个基础的智能体框架——HelloAgents。这个过程始终遵循着“分层解耦、职责单一、接口统一”的核心原则。</p>
+<p>在框架的具体实现中，我们再次实现了<strong>四种经典的 Agent 范式</strong>。</p>
+<ul>
+<li>SimpleAgent 的基础对话模式</li>
+<li>ReActAgent 的推理与行动结合</li>
+<li>ReflectionAgent 的自我反思与迭代优化</li>
+<li>PlanAndSolveAgent 的分解规划与逐步执行</li>
+</ul>
+<p>而<strong>工具系统</strong>作为 Agent 能力延伸的核心，其构建过程则是一次完整的工程实践。</p>
+<p>我们所建立的<strong>统一 LLM 接口</strong>、<strong>标准化消息系统</strong>、<strong>工具注册机制</strong>，共同构成了一个完备的技术底座。</p>
+<p>第八章的记忆与 RAG 系统将基于此扩展 Agent 的能力边界</p>
+<p>第九章的上下文工程将深入我们已经建立的消息处理机制</p>
+<p>第十章的智能体协议则需要扩展新的工具。</p>
+<h2 id="_8">八、记忆与检索</h2>
+<p>在前面的章节中，我们构建了 HelloAgents 框架的基础架构，实现了多种智能体范式和工具系统。</p>
+<p>不过，我们的框架还缺少一个关键能力：<strong>记忆</strong>。如果智能体无法记住之前的交互内容，也无法从历史经验中学习，那么在连续对话或复杂任务中，其表现将受到极大限制。</p>
+<p>本章将在第七章构建的框架基础上，为 HelloAgents 增加两个核心能力：<strong>记忆系统（Memory System）</strong>和<strong>检索增强生成（Retrieval-Augmented Generation, RAG）</strong>。</p>
 
 
 
