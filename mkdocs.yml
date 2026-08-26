@@ -63,7 +63,20 @@ nav:
     - 大模型基础:
         - course/大模型基础/index.md
         - 面试题: course/大模型基础/面试题/index.md
-    - Agent 基础-Hello-Agents: course/Agent/index.md
+    - Agent 基础-Hello-Agents:
+        - 相关原文: course/Agent/index.md
+        - 第一章 初识智能体: course/Agent/第一章 初识智能体/index.md
+        - 第二章 智能体发展史: course/Agent/第二章 智能体发展史/index.md
+        - 第三章 大语言模型基础: course/Agent/第三章 大语言模型基础/index.md
+        - 第四章 智能体经典范式构建: course/Agent/第四章 智能体经典范式构建/index.md
+        - 第五章 基于低代码平台的智能体搭建: course/Agent/第五章 基于低代码平台的智能体搭建/index.md
+        - 第六章 框架开发实践: course/Agent/第六章 框架开发实践/index.md
+        - 第七章 构建你的 Agent 框架: course/Agent/第七章 构建你的 Agent 框架/index.md
+        - 第八章 记忆与检索: course/Agent/第八章 记忆与检索/index.md
+        - 第九章 上下文工程: course/Agent/第九章 上下文工程/index.md
+        - 第十章 智能体通信协议: course/Agent/第十章 智能体通信协议/index.md
+        - 第十一章 Agentic-RL: course/Agent/第十一章 Agentic-RL/index.md
+        - 第十二章 智能体性能评估: course/Agent/第十二章 智能体性能评估/index.md
     - Agent 基础-JavaGuide:
         - course/AI Agent/index.md
         - 面试题: course/AI Agent/面试题/index.md

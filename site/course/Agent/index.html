@@ -1261,6 +1261,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="八、记忆与检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 从认知科学到智能体记忆
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 记忆系统：让智能体拥有记忆
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 RAG系统：知识检索增强
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 构建智能文档问答助手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2090,6 +2140,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="八、记忆与检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 从认知科学到智能体记忆
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 记忆系统：让智能体拥有记忆
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 RAG系统：知识检索增强
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 构建智能文档问答助手
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6035,6 +6135,1317 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>在前面的章节中，我们构建了 HelloAgents 框架的基础架构，实现了多种智能体范式和工具系统。</p>
 <p>不过，我们的框架还缺少一个关键能力：<strong>记忆</strong>。如果智能体无法记住之前的交互内容，也无法从历史经验中学习，那么在连续对话或复杂任务中，其表现将受到极大限制。</p>
 <p>本章将在第七章构建的框架基础上，为 HelloAgents 增加两个核心能力：<strong>记忆系统（Memory System）</strong>和<strong>检索增强生成（Retrieval-Augmented Generation, RAG）</strong>。</p>
+<h3 id="81">8.1 <strong>从认知科学到智能体记忆</strong></h3>
+<p><strong>8.1.1 人类记忆系统的启发</strong></p>
+<p>根据认知心理学的研究，人类记忆可以分为以下几个层次：</p>
+<ol>
+<li><strong>感觉记忆（Sensory Memory）</strong>：持续时间极短（0.5-3秒），容量巨大，负责暂时保存感官接收到的所有信息</li>
+<li><strong>工作记忆（Working Memory）</strong>：持续时间短（15-30秒），容量有限（7±2个项目），负责当前任务的信息处理</li>
+<li><strong>长期记忆（Long-term Memory）</strong>：持续时间长（可达终生），容量几乎无限，进一步分为：<ul>
+<li><strong>程序性记忆</strong>：技能和习惯（如骑自行车）</li>
+<li><strong>陈述性记忆</strong>：可以用语言表达的知识</li>
+</ul>
+</li>
+</ol>
+<p><strong>8.1.2 为何智能体需要记忆与RAG</strong></p>
+<p>对于基于LLM的智能体而言，通常面临两个根本性局限：对话状态的遗忘和内置知识的局限。</p>
+<p>（1）局限一：无状态导致的对话遗忘</p>
+<p>当前的大语言模型虽然强大，但设计上是无状态的。这意味着，每一次用户请求（或API调用）都是一次独立的、无关联的计算。模型本身不会自动“记住”上一次对话的内容。这带来了几个问题：</p>
+<ol>
+<li><strong>上下文丢失</strong>：在长对话中，早期的重要信息可能会因为上下文窗口限制而丢失</li>
+<li><strong>个性化缺失</strong>：Agent无法记住用户的偏好、习惯或特定需求</li>
+<li><strong>学习能力受限</strong>：无法从过往的成功或失败经验中学习改进</li>
+<li><strong>一致性问题</strong>：在多轮对话中可能出现前后矛盾的回答</li>
+</ol>
+<p>让我们通过一个具体例子来理解这个问题：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 第七章的Agent使用方式</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;学习助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+
+<span class="c1"># 第一次对话</span>
+<span class="n">response1</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;我叫张三，正在学习Python，目前掌握了基础语法&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response1</span><span class="p">)</span>  <span class="c1"># &quot;很好！Python基础语法是编程的重要基础...&quot;</span>
+
+<span class="c1"># 第二次对话（新的会话，例如重启程序后重新创建Agent）</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;学习助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+<span class="n">response2</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;你还记得我的学习进度吗？&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response2</span><span class="p">)</span>  <span class="c1"># &quot;抱歉，我不知道您的学习进度...&quot;</span>
+</code></pre></div>
+<p>需要注意的是，第七章中的 <code>SimpleAgent</code> 会在同一个实例的 <code>_history</code> 中暂存当前对话，因此同一进程、同一实例内的连续对话可以携带最近上下文。但这种历史只是临时消息列表，不会跨会话持久化，也不能进行长期检索、遗忘和整合。</p>
+<p>要解决这个问题，我们的框架需要引入<strong>记忆系统</strong>。</p>
+<p>（2）局限二：模型内置知识的局限性</p>
+<p>除了遗忘对话历史，LLM 的另一个核心局限在于其知识是静态的、有限的。这些知识完全来自于它的训练数据，并因此带来一系列问题：</p>
+<ol>
+<li><strong>知识时效性</strong>：大模型的训练数据有时间截止点，无法获取最新信息</li>
+<li><strong>专业领域知识</strong>：通用模型在特定领域的深度知识可能不足</li>
+<li><strong>事实准确性</strong>：通过检索验证，减少模型的幻觉问题</li>
+<li><strong>可解释性</strong>：提供信息来源，增强回答的可信度</li>
+</ol>
+<p>为了克服这一局限，<strong>RAG</strong> 技术应运而生。它的核心思想是在模型生成回答之前，先从一个外部知识库（如文档、数据库、API）中检索出最相关的信息，并将这些信息作为上下文一同提供给模型。</p>
+<p><strong>8.1.3 记忆与RAG系统架构设计</strong></p>
+<p>基于第七章建立的框架基础和认知科学的启发，我们设计了一个分层的记忆与 RAG 系统架构。</p>
+<p>这个架构不仅借鉴了人类记忆系统的层次结构，还充分考虑了工程实现的可扩展性。</p>
+<p>在实现上，我们将记忆和 RAG 设计为两个独立的工具：</p>
+<ul>
+<li><code>memory_tool</code>负责存储和维护对话过程中的交互信息</li>
+<li><code>rag_tool</code>则负责从用户提供的知识库中检索相关信息作为上下文，并可将重要的检索结果自动存储到记忆系统中。</li>
+</ul>
+<p><img alt="HelloAgents记忆与RAG系统整体架构.png" src="images/HelloAgents%E8%AE%B0%E5%BF%86%E4%B8%8ERAG%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png" /></p>
+<p>记忆系统采用了四层架构设计：</p>
+<div class="highlight"><pre><span></span><code>HelloAgents记忆系统
+├── 基础设施层 (Infrastructure Layer)
+│   ├── MemoryManager - 记忆管理器（统一调度和协调）
+│   ├── MemoryItem - 记忆数据结构（标准化记忆项）
+│   ├── MemoryConfig - 配置管理（系统参数设置）
+│   └── BaseMemory - 记忆基类（通用接口定义）
+├── 记忆类型层 (Memory Types Layer)
+│   ├── WorkingMemory - 工作记忆（临时信息，TTL管理）
+│   ├── EpisodicMemory - 情景记忆（具体事件，时间序列）
+│   ├── SemanticMemory - 语义记忆（抽象知识，图谱关系）
+│   └── PerceptualMemory - 感知记忆（多模态数据）
+├── 存储后端层 (Storage Backend Layer)
+│   ├── QdrantVectorStore - 向量存储（高性能语义检索）
+│   ├── Neo4jGraphStore - 图存储（知识图谱管理）
+│   └── SQLiteDocumentStore - 文档存储（结构化持久化）
+└── 嵌入服务层 (Embedding Service Layer)
+    ├── DashScopeEmbedding - 通义千问嵌入（云端API）
+    ├── LocalTransformerEmbedding - 本地嵌入（离线部署）
+    └── TFIDFEmbedding - TFIDF嵌入（轻量级兜底）
+</code></pre></div>
+<p>RAG系统专注于外部知识的获取和利用：</p>
+<div class="highlight"><pre><span></span><code>HelloAgents RAG系统
+├── 文档处理层 (Document Processing Layer)
+│   ├── DocumentProcessor - 文档处理器（多格式解析）
+│   ├── Document - 文档对象（元数据管理）
+│   └── Pipeline - RAG管道（端到端处理）
+├── 嵌入表示层 (Embedding Layer)
+│   └── 统一嵌入接口 - 复用记忆系统的嵌入服务
+├── 向量存储层 (Vector Storage Layer)
+│   └── QdrantVectorStore - 向量数据库（命名空间隔离）
+└── 智能问答层 (Intelligent Q&amp;A Layer)
+    ├── 多策略检索 - 向量检索 + MQE + HyDE
+    ├── 上下文构建 - 智能片段合并与截断
+    └── LLM增强生成 - 基于上下文的准确问答
+</code></pre></div>
+<p><strong>8.1.4 本章学习目标与快速体验</strong></p>
+<div class="highlight"><pre><span></span><code>hello-agents/
+├── hello_agents/
+│   ├── memory/                   # 记忆系统模块
+│   │   ├── base.py               # 基础数据结构（MemoryItem, MemoryConfig, BaseMemory）
+│   │   ├── manager.py            # 记忆管理器（统一协调调度）
+│   │   ├── embedding.py          # 统一嵌入服务（DashScope/Local/TFIDF）
+│   │   ├── types/                # 记忆类型实现
+│   │   │   ├── working.py        # 工作记忆（TTL管理，纯内存）
+│   │   │   ├── episodic.py       # 情景记忆（事件序列，SQLite+Qdrant）
+│   │   │   ├── semantic.py       # 语义记忆（知识图谱，Qdrant+Neo4j）
+│   │   │   └── perceptual.py     # 感知记忆（多模态，SQLite+Qdrant）
+│   │   ├── storage/              # 存储后端实现
+│   │   │   ├── qdrant_store.py   # Qdrant向量存储（高性能向量检索）
+│   │   │   ├── neo4j_store.py    # Neo4j图存储（知识图谱管理）
+│   │   │   └── document_store.py # SQLite文档存储（结构化持久化）
+│   │   └── rag/                  # RAG系统
+│   │       ├── pipeline.py       # RAG管道（端到端处理）
+│   │       └── document.py       # 文档处理器（多格式解析）
+│   └── tools/builtin/            # 扩展内置工具
+│       ├── memory_tool.py        # 记忆工具（Agent记忆能力）
+│       └── rag_tool.py           # RAG工具（智能问答能力）
+└──
+</code></pre></div>
+<p><strong>快速开始：安装HelloAgents框架</strong></p>
+<p>可以通过以下命令安装本章对应的版本：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 0.2.0版本若遇到模型不可用，查看issue#320或切换0.2.9版本进行测试</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;hello-agents[all]==0.2.0&quot;</span>
+python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>zh_core_web_sm
+python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm
+</code></pre></div>
+<p>除此之外，还需要在<code>.env</code>配置图数据库，向量数据库，LLM 以及 Embedding 方案的 API，若没有 API 可切换为本地部署模型方案。本教程中：</p>
+<ul>
+<li>向量数据库采用 Qdrant</li>
+<li>图数据库采用Neo4J</li>
+<li>Embedding 首选百炼平台</li>
+</ul>
+<details>
+<summary>chapter8/.env</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># ================================</span>
+<span class="c1"># Qdrant 向量数据库配置 - 获取API密钥：https://cloud.qdrant.io/</span>
+<span class="c1"># ================================</span>
+<span class="c1"># 使用Qdrant云服务 (推荐)</span>
+<span class="n">QDRANT_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">cluster</span><span class="o">.</span><span class="n">qdrant</span><span class="o">.</span><span class="n">tech</span><span class="p">:</span><span class="mi">6333</span>
+<span class="n">QDRANT_API_KEY</span><span class="o">=</span><span class="n">your_qdrant_api_key_here</span>
+
+<span class="c1"># 或使用本地Qdrant (需要Docker)</span>
+<span class="c1"># QDRANT_URL=http://localhost:6333</span>
+<span class="c1"># QDRANT_API_KEY=</span>
+
+<span class="c1"># Qdrant集合配置</span>
+<span class="n">QDRANT_COLLECTION</span><span class="o">=</span><span class="n">hello_agents_vectors</span>
+<span class="n">QDRANT_VECTOR_SIZE</span><span class="o">=</span><span class="mi">384</span>
+<span class="n">QDRANT_DISTANCE</span><span class="o">=</span><span class="n">cosine</span>
+<span class="n">QDRANT_TIMEOUT</span><span class="o">=</span><span class="mi">30</span>
+
+<span class="c1"># ================================</span>
+<span class="c1"># Neo4j 图数据库配置 - 获取API密钥：https://neo4j.com/cloud/aura/</span>
+<span class="c1"># ================================</span>
+<span class="c1"># 使用Neo4j Aura云服务 (推荐)</span>
+<span class="n">NEO4J_URI</span><span class="o">=</span><span class="n">neo4j</span><span class="o">+</span><span class="n">s</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">instance</span><span class="o">.</span><span class="n">databases</span><span class="o">.</span><span class="n">neo4j</span><span class="o">.</span><span class="n">io</span>
+<span class="n">NEO4J_USERNAME</span><span class="o">=</span><span class="n">neo4j</span>
+<span class="n">NEO4J_PASSWORD</span><span class="o">=</span><span class="n">your_neo4j_password_here</span>
+
+<span class="c1"># 或使用本地Neo4j (需要Docker)</span>
+<span class="c1"># NEO4J_URI=bolt://localhost:7687</span>
+<span class="c1"># NEO4J_USERNAME=neo4j</span>
+<span class="c1"># NEO4J_PASSWORD=hello-agents-password</span>
+
+<span class="c1"># Neo4j连接配置</span>
+<span class="n">NEO4J_DATABASE</span><span class="o">=</span><span class="n">neo4j</span>
+<span class="n">NEO4J_MAX_CONNECTION_LIFETIME</span><span class="o">=</span><span class="mi">3600</span>
+<span class="n">NEO4J_MAX_CONNECTION_POOL_SIZE</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">NEO4J_CONNECTION_TIMEOUT</span><span class="o">=</span><span class="mi">60</span>
+
+<span class="c1"># ==========================</span>
+<span class="c1"># 嵌入（Embedding）配置示例 - 可从阿里云控制台获取：https://dashscope.aliyun.com/</span>
+<span class="c1"># ==========================</span>
+<span class="c1"># - 若为空，dashscope 默认 text-embedding-v3；local 默认 sentence-transformers/all-MiniLM-L6-v2</span>
+<span class="n">EMBED_MODEL_TYPE</span><span class="o">=</span><span class="n">dashscope</span>
+<span class="n">EMBED_MODEL_NAME</span><span class="o">=</span>
+<span class="n">EMBED_API_KEY</span><span class="o">=</span>
+<span class="n">EMBED_BASE_URL</span><span class="o">=</span>
+</code></pre></div>
+
+</details>
+
+<p>遵循第七章确立的设计原则，我们将记忆和 RAG 能力封装为标准工具，而不是创建新的 Agent 类。</p>
+<p>在开始之前，体验使用 Hello-agents 构建具有记忆和 RAG 能力的智能体！</p>
+<details>
+<summary>chapter8/example</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 配置好同级文件夹下.env中的大模型API</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span> <span class="n">ToolRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemoryTool</span><span class="p">,</span> <span class="n">RAGTool</span>
+
+<span class="c1"># 创建LLM实例</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+
+<span class="c1"># 创建工具注册表</span>
+<span class="n">tool_registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+
+<span class="c1"># 添加记忆工具</span>
+<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">&quot;user123&quot;</span><span class="p">)</span>
+<span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">memory_tool</span><span class="p">)</span>
+
+<span class="c1"># 添加RAG工具</span>
+<span class="n">rag_tool</span> <span class="o">=</span> <span class="n">RAGTool</span><span class="p">(</span><span class="n">knowledge_base_path</span><span class="o">=</span><span class="s2">&quot;./knowledge_base&quot;</span><span class="p">)</span>
+<span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">rag_tool</span><span class="p">)</span>
+
+<span class="c1"># 创建Agent并配置工具</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;智能助手&quot;</span><span class="p">,</span>
+    <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;你是一个有记忆和知识检索能力的AI助手&quot;</span><span class="p">,</span>
+    <span class="n">tool_registry</span><span class="o">=</span><span class="n">tool_registry</span>
+<span class="p">)</span>
+
+<span class="c1"># 开始对话</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;你好！请记住我叫张三，我是一名Python开发者&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>如果一切配置完毕，可以看到以下内容。</p>
+<details>
+<summary>点击展开运行结果</summary>
+
+<div class="highlight"><pre><span></span><code>[OK] SQLite 数据库表和索引创建完成
+[OK] SQLite 文档存储初始化完成: ./memory_data\memory.db
+INFO:hello_agents.memory.storage.qdrant_store:✅ 成功连接到Qdrant云服务: https://0c517275-2ad0-4442-8309-11c36dc7e811.us-east-1-1.aws.cloud.qdrant.io:6333
+INFO:hello_agents.memory.storage.qdrant_store:✅ 使用现有Qdrant集合: hello_agents_vectors
+INFO:hello_agents.memory.types.semantic:✅ 嵌入模型就绪，维度: 1024
+INFO:hello_agents.memory.types.semantic:✅ Qdrant向量数据库初始化完成
+INFO:hello_agents.memory.storage.neo4j_store:✅ 成功连接到Neo4j云服务: neo4j+s://851b3a28.databases.neo4j.io      NFO:hello_agents.memory.types.semantic:✅ Neo4j图数据库初始化完成
+INFO:hello_agents.memory.storage.neo4j_store:✅ Neo4j索引创建完成
+INFO:hello_agents.memory.types.semantic:✅ Neo4j图数据库初始化完成
+INFO:hello_agents.memory.types.semantic:🏥 数据库健康状态: Qdrant=✅, Neo4j=✅
+INFO:hello_agents.memory.types.semantic:✅ 加载中文spaCy模型: zh_core_web_sm
+INFO:hello_agents.memory.types.semantic:✅ 加载英文spaCy模型: en_core_web_sm
+INFO:hello_agents.memory.types.semantic:📚 可用语言模型: 中文, 英文
+INFO:hello_agents.memory.types.semantic:增强语义记忆初始化完成（使用Qdrant+Neo4j专业数据库）
+INFO:hello_agents.memory.manager:MemoryManager初始化完成，启用记忆类型: [&#39;working&#39;, &#39;episodic&#39;, &#39;semantic&#39;]      
+✅ 工具 &#39;memory&#39; 已注册。
+INFO:hello_agents.memory.storage.qdrant_store:✅ 成功连接到Qdrant云服务: https://0c517275-2ad0-4442-8309-11c36dc7eNFO:hello_agents.memory.storage.qdrant_store:✅ 使用现有Qdrant集合: rag_knowledge_base
+811.us-east-1-1.aws.cloud.qdrant.io:6333
+INFO:hello_agents.memory.storage.qdrant_store:✅ 使用现有Qdrant集合: rag_knowledge_base
+✅ RAG工具初始化成功: namespace=default, collection=rag_knowledge_base
+✅ 工具 &#39;rag&#39; 已注册。
+你好，张三！很高兴认识你。作为一名Python开发者，你一定对编程很有热情。如果你有任何技术问题或者需要讨论Python相关 
+的话题，随时可以找我。我会尽力帮助你。有什么我现在就能帮到你的吗？
+</code></pre></div>
+
+</details>
+
+<h3 id="82">8.2 <strong>记忆系统：让智能体拥有记忆</strong></h3>
+<p><strong>8.2.1 记忆系统的工作流程</strong></p>
+<p>在进入代码实现阶段前，我们需要先定义记忆系统的工作流程。</p>
+<p>该流程参考了认知科学中的记忆模型，并将每个认知阶段映射为具体的技术组件和操作。理解这一映射关系，有助于我们后续的代码实现。</p>
+<p><img alt="记忆形成的认知过程.png" src="images/%E8%AE%B0%E5%BF%86%E5%BD%A2%E6%88%90%E7%9A%84%E8%AE%A4%E7%9F%A5%E8%BF%87%E7%A8%8B.png" /></p>
+<p>根据认知科学的研究，人类记忆的形成经历以下几个阶段：</p>
+<ol>
+<li><strong>编码（Encoding）</strong>：将感知到的信息转换为可存储的形式</li>
+<li><strong>存储（Storage）</strong>：将编码后的信息保存在记忆系统中</li>
+<li><strong>检索（Retrieval）</strong>：根据需要从记忆中提取相关信息</li>
+<li><strong>整合（Consolidation）</strong>：将短期记忆转化为长期记忆</li>
+<li><strong>遗忘（Forgetting）</strong>：删除不重要或过时的信息</li>
+</ol>
+<p>基于该启发，为 HelloAgents 设计了一套完整的记忆系统。</p>
+<p>其核心思想是模仿人类大脑处理不同类型信息的方式，将记忆划分为多个专门的模块，并建立一套智能化的管理机制。</p>
+<p><img alt="HelloAgents记忆系统的完整工作流程.png" src="images/HelloAgents%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%8C%E6%95%B4%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png" /></p>
+<p>记忆系统由四种不同类型的记忆模块构成，每种模块都针对特定的应用场景和生命周期进行了优化：</p>
+<ol>
+<li>工作记忆 (Working Memory)：存储智能体“短期记忆”，主要用于存储当前对话的上下文信息。为确保高速访问和响应，其容量被有意限制（例如，默认50条），并且生命周期与单个会话绑定，会话结束后便会自动清理。</li>
+<li>情景记忆 (Episodic Memory)：长期存储具体的交互事件和智能体的学习经历。与工作记忆不同，情景记忆包含了丰富的上下文信息，并支持按时间序列或主题进行回顾式检索，是智能体“复盘”和学习过往经验的基础。</li>
+<li>语义记忆 (Semantic Memory)：存储的是更为抽象的知识、概念和规则。例如，通过对话了解到的用户偏好、需要长期遵守的指令或领域知识点，都适合存放在这里。这部分记忆具有高度的持久性和重要性，是智能体形成“知识体系”和进行关联推理的核心。</li>
+<li>感知记忆 (Perceptual Memory)：专门处理图像、音频等多模态信息，并支持跨模态检索。其生命周期会根据信息的重要性和可用存储空间进行动态管理。</li>
+</ol>
+<p><strong>8.2.2 快速上手记忆功能</strong></p>
+<details>
+<summary>chapter8/memory_example</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span> <span class="n">ToolRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemoryTool</span>
+
+<span class="c1"># 创建LLM实例</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+
+<span class="c1"># 创建记忆工具</span>
+<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">&quot;user123&quot;</span><span class="p">)</span>
+<span class="n">tool_registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+<span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">memory_tool</span><span class="p">)</span>
+
+<span class="c1"># 创建具有记忆能力的Agent</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;记忆助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">tool_registry</span><span class="o">=</span><span class="n">tool_registry</span><span class="p">)</span>
+
+<span class="c1"># 体验记忆功能</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 添加多个记忆 ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># 添加第一个记忆</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户张三是一名Python开发者，专注于机器学习和数据分析&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆1: </span><span class="si">{</span><span class="n">result1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 添加第二个记忆</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;李四是前端工程师，擅长React和Vue.js开发&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆2: </span><span class="si">{</span><span class="n">result2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 添加第三个记忆</span>
+<span class="n">result3</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;王五是产品经理，负责用户体验设计和需求分析&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆3: </span><span class="si">{</span><span class="n">result3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 搜索特定记忆 ===&quot;</span><span class="p">)</span>
+<span class="c1"># 搜索前端相关的记忆</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 搜索 &#39;前端工程师&#39;:&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&quot;前端工程师&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 记忆摘要 ===&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p><strong>8.2.3 MemoryTool详解</strong></p>
+<p>现在让我们采用自顶向下的方式，从 MemoryTool 支持的具体操作开始，逐步深入到底层实现。</p>
+<p>MemoryTool 作为记忆系统的统一接口，其设计遵循了"统一入口，分发处理"的架构模式：</p>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 execute 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;执行记忆操作</span>
+
+<span class="sd">    支持的操作：</span>
+<span class="sd">    - add: 添加记忆（支持4种类型: working/episodic/semantic/perceptual）</span>
+<span class="sd">    - search: 搜索记忆</span>
+<span class="sd">    - summary: 获取记忆摘要</span>
+<span class="sd">    - stats: 获取统计信息</span>
+<span class="sd">    - update: 更新记忆</span>
+<span class="sd">    - remove: 删除记忆</span>
+<span class="sd">    - forget: 遗忘记忆（多种策略）</span>
+<span class="sd">    - consolidate: 整合记忆（短期→长期）</span>
+<span class="sd">    - clear_all: 清空所有记忆</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_memory</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;search&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_memory</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;summary&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_summary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="c1"># ... 其他操作</span>
+</code></pre></div>
+
+</details>
+
+<p>这种统一的<code>execute</code>接口设计简化了 Agent 的调用方式，通过<code>action</code>参数指定具体操作，使用<code>**kwargs</code>允许每个操作有不同的参数需求。在这里我们会将比较重要的几个操作罗列出来：</p>
+<p>（1）操作1：add</p>
+<p><code>add</code>操作是记忆系统的基础，它模拟了人类大脑将感知信息编码为记忆的过程。在实现中，我们不仅要存储记忆内容，还要为每个记忆添加丰富的上下文信息，这些信息将在后续的检索和管理中发挥重要作用。</p>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _add_memory 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_add_memory</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;working&quot;</span><span class="p">,</span>
+    <span class="n">importance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">modality</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">metadata</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;添加记忆&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 确保会话ID存在</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;session_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># 感知记忆文件支持</span>
+        <span class="k">if</span> <span class="n">memory_type</span> <span class="o">==</span> <span class="s2">&quot;perceptual&quot;</span> <span class="ow">and</span> <span class="n">file_path</span><span class="p">:</span>
+            <span class="n">inferred</span> <span class="o">=</span> <span class="n">modality</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_infer_modality</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;modality&quot;</span><span class="p">,</span> <span class="n">inferred</span><span class="p">)</span>
+            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;raw_data&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+
+        <span class="c1"># 添加会话信息到元数据</span>
+        <span class="n">metadata</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s2">&quot;session_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span><span class="p">,</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+        <span class="p">})</span>
+
+        <span class="n">memory_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">add_memory</span><span class="p">(</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
+            <span class="n">memory_type</span><span class="o">=</span><span class="n">memory_type</span><span class="p">,</span>
+            <span class="n">importance</span><span class="o">=</span><span class="n">importance</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+            <span class="n">auto_classify</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;✅ 记忆已添加 (ID: </span><span class="si">{</span><span class="n">memory_id</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">...)&quot;</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 添加记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+</details>
+
+<p>这里主要实现了三个关键任务：</p>
+<ul>
+<li>会话ID的自动管理（确保每个记忆都有明确的会话归属）</li>
+<li>多模态数据的智能处理（自动推断文件类型并保存相关元数据）</li>
+<li>以及上下文信息的自动补充（为每个记忆添加时间戳和会话信息）</li>
+</ul>
+<p>其中，importance参数（默认0.5）用于标记记忆的重要程度，取值范围0.0-1.0，这个机制模拟了人类大脑对不同信息重要性的评估。这种设计让 Agent 能够自动区分不同时间段的对话，并为后续的检索和管理提供丰富的上下文信息。</p>
+<p>其中，对每个记忆类型，我们提供了不同的使用示例：</p>
+<details>
+<summary>不同类型记忆的使用示例</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 工作记忆 - 临时信息，容量有限</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户刚才问了关于Python函数的问题&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;working&quot;</span><span class="p">,</span>
+    <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. 情景记忆 - 具体事件和经历</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;2024年3月15日，用户张三完成了第一个Python项目&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+    <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;milestone&quot;</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;在线学习平台&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. 语义记忆 - 抽象知识和概念</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Python是一种解释型、面向对象的编程语言&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span>
+    <span class="n">importance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">knowledge_type</span><span class="o">=</span><span class="s2">&quot;factual&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 4. 感知记忆 - 多模态信息</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户上传了一张Python代码截图，包含函数定义&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;perceptual&quot;</span><span class="p">,</span>
+    <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;./uploads/code_screenshot.png&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>（2）操作2：search</p>
+<p><code>search</code>操作是记忆系统的核心功能，它需要在大量记忆中快速找到与查询最相关的内容。它涉及语义理解、相关性计算和结果排序等多个环节。</p>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _search_memory 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_search_memory</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">memory_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_importance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;搜索记忆&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># 参数标准化处理</span>
+        <span class="k">if</span> <span class="n">memory_type</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">memory_types</span><span class="p">:</span>
+            <span class="n">memory_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">memory_type</span><span class="p">]</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">retrieve_memories</span><span class="p">(</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
+            <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span>
+            <span class="n">memory_types</span><span class="o">=</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">min_importance</span><span class="o">=</span><span class="n">min_importance</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🔍 未找到与 &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39; 相关的记忆&quot;</span>
+
+        <span class="c1"># 格式化结果</span>
+        <span class="n">formatted_results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔍 找到 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> 条相关记忆:&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">memory_type_label</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;working&quot;</span><span class="p">:</span> <span class="s2">&quot;工作记忆&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;episodic&quot;</span><span class="p">:</span> <span class="s2">&quot;情景记忆&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;semantic&quot;</span><span class="p">:</span> <span class="s2">&quot;语义记忆&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;perceptual&quot;</span><span class="p">:</span> <span class="s2">&quot;感知记忆&quot;</span>
+            <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">memory_type</span><span class="p">,</span> <span class="n">memory</span><span class="o">.</span><span class="n">memory_type</span><span class="p">)</span>
+
+            <span class="n">content_preview</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">80</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="k">else</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span>
+            <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. [</span><span class="si">{</span><span class="n">memory_type_label</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">content_preview</span><span class="si">}</span><span class="s2"> (重要性: </span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">importance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 搜索记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+</details>
+
+<p>搜索操作在设计上支持单数和复数两种参数形式（<code>memory_type</code>和<code>memory_types</code>），让用户以最自然的方式表达需求。</p>
+<p>其中，<code>min_importance</code>参数（默认0.1）用于过滤低质量记忆。</p>
+<details>
+<summary>搜索功能的使用示例</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 基础搜索</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&quot;Python编程&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># 指定记忆类型搜索</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;学习进度&quot;</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+    <span class="n">limit</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+
+<span class="c1"># 多类型搜索</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;函数定义&quot;</span><span class="p">,</span>
+    <span class="n">memory_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="s2">&quot;episodic&quot;</span><span class="p">],</span>
+    <span class="n">min_importance</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>（3）操作3：forget</p>
+<p>遗忘机制是最具认知科学色彩的功能，它模拟人类大脑的选择性遗忘过程，支持三种策略：</p>
+<ul>
+<li>基于重要性（删除不重要的记忆）</li>
+<li>基于时间（删除过时的记忆）</li>
+<li>基于容量（当存储接近上限时删除最不重要的记忆）</li>
+</ul>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _forget 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_forget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;importance_based&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">max_age_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;遗忘记忆（支持多种策略）&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">forget_memories</span><span class="p">(</span>
+            <span class="n">strategy</span><span class="o">=</span><span class="n">strategy</span><span class="p">,</span>
+            <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
+            <span class="n">max_age_days</span><span class="o">=</span><span class="n">max_age_days</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🧹 已遗忘 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆（策略: </span><span class="si">{</span><span class="n">strategy</span><span class="si">}</span><span class="s2">）&quot;</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 遗忘记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+</details>
+
+<details>
+<summary>三种遗忘策略的使用示例</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 基于重要性的遗忘 - 删除重要性低于阈值的记忆</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;importance_based&quot;</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. 基于时间的遗忘 - 删除超过指定天数的记忆</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;time_based&quot;</span><span class="p">,</span>
+    <span class="n">max_age_days</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+
+<span class="c1"># 3. 基于容量的遗忘 - 当记忆数量超限时删除最不重要的</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;capacity_based&quot;</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>（4）操作4：consolidate</p>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _consolidate 私有函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_consolidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;working&quot;</span><span class="p">,</span> <span class="n">to_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;episodic&quot;</span><span class="p">,</span> <span class="n">importance_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;整合记忆（将重要的短期记忆提升为长期记忆）&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">consolidate_memories</span><span class="p">(</span>
+            <span class="n">from_type</span><span class="o">=</span><span class="n">from_type</span><span class="p">,</span>
+            <span class="n">to_type</span><span class="o">=</span><span class="n">to_type</span><span class="p">,</span>
+            <span class="n">importance_threshold</span><span class="o">=</span><span class="n">importance_threshold</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🔄 已整合 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆为长期记忆（</span><span class="si">{</span><span class="n">from_type</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">to_type</span><span class="si">}</span><span class="s2">，阈值=</span><span class="si">{</span><span class="n">importance_threshold</span><span class="si">}</span><span class="s2">）&quot;</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 整合记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+</details>
+
+<p>consolidate 操作借鉴了神经科学中的记忆固化概念，模拟人类大脑将短期记忆转化为长期记忆的过程。默认设置是将重要性超过0.7的工作记忆转换为情景记忆，这个阈值确保只有真正重要的信息才会被长期保存。</p>
+<p>整个过程是自动化的，用户无需手动选择具体的记忆，系统会智能地识别符合条件的记忆并执行类型转换。</p>
+<details>
+<summary>记忆整合的使用示例</summary>
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 将重要的工作记忆转为情景记忆</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;consolidate&quot;</span><span class="p">,</span>
+    <span class="n">from_type</span><span class="o">=</span><span class="s2">&quot;working&quot;</span><span class="p">,</span>
+    <span class="n">to_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+    <span class="n">importance_threshold</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
+
+<span class="c1"># 将重要的情景记忆转为语义记忆</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;consolidate&quot;</span><span class="p">,</span>
+    <span class="n">from_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+    <span class="n">to_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span>
+    <span class="n">importance_threshold</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>通过以上几个核心操作协作，MemoryTool 构建了一个完整的记忆生命周期管理体系。从记忆的创建、检索、摘要到遗忘、整合和管理，形成了一个闭环的智能记忆管理系统，让 Agent 真正具备了类人的记忆能力。</p>
+<p><strong>8.2.4 MemoryManager详解</strong></p>
+<p>理解了 MemoryTool 的接口设计后，让我们深入到底层实现，看看 MemoryTool 是如何与 MemoryManager 协作的。</p>
+<p>这种分层设计体现了软件工程中的关注点分离原则，MemoryTool 专注于用户接口和参数处理，而 MemoryManager 则负责核心的记忆管理逻辑。</p>
+<p>MemoryTool 在初始化时会创建一个 MemoryManager 实例，并根据配置启用不同类型的记忆模块。这种设计让用户可以根据具体需求选择启用哪些记忆类型，既保证了功能的完整性，又避免了不必要的资源消耗。</p>
+<details>
+<summary>hello_agents/tools/builtin/memory_tool.py 中的 MemoryTool 类</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MemoryTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;记忆工具 - 为Agent提供记忆功能&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default_user&quot;</span><span class="p">,</span>
+        <span class="n">memory_config</span><span class="p">:</span> <span class="n">MemoryConfig</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">memory_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;记忆工具 - 可以存储和检索对话历史、知识和经验&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 初始化记忆管理器</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_config</span> <span class="o">=</span> <span class="n">memory_config</span> <span class="ow">or</span> <span class="n">MemoryConfig</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span> <span class="o">=</span> <span class="n">memory_types</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;working&quot;</span><span class="p">,</span> <span class="s2">&quot;episodic&quot;</span><span class="p">,</span> <span class="s2">&quot;semantic&quot;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span> <span class="o">=</span> <span class="n">MemoryManager</span><span class="p">(</span>
+            <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_config</span><span class="p">,</span>
+            <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span>
+            <span class="n">enable_working</span><span class="o">=</span><span class="s2">&quot;working&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_episodic</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_semantic</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_perceptual</span><span class="o">=</span><span class="s2">&quot;perceptual&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>MemoryManager 作为记忆系统的核心协调者，负责管理不同类型的记忆模块，并提供统一的操作接口。具体的存储与检索能力由各记忆类型在内部实现。</p>
+<details>
+<summary>hello_agents/memory/manager.py 中的 MemoryManager 类</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MemoryManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;记忆管理器 - 统一的记忆操作接口&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MemoryConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default_user&quot;</span><span class="p">,</span>
+        <span class="n">enable_working</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">enable_episodic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">enable_semantic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">enable_perceptual</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="ow">or</span> <span class="n">MemoryConfig</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user_id</span>
+
+        <span class="c1"># 存储和检索功能由各记忆类型内部实现</span>
+
+        <span class="c1"># 初始化各类型记忆</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">enable_working</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;working&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">WorkingMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">enable_episodic</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;episodic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">EpisodicMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">enable_semantic</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;semantic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SemanticMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">enable_perceptual</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;perceptual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PerceptualMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p><strong>8.2.5 四种记忆类型</strong></p>
+<p>记忆类的抽象基类 BaseMemory 参考 <code>hello_agents/memory/base.py</code></p>
+<p>（1）工作记忆（WorkingMemory）</p>
+<p>工作记忆是记忆系统中最活跃的部分，它负责存储当前对话会话中的临时信息。工作记忆的设计重点在于快速访问和自动清理，这种设计确保了系统的响应速度和资源效率。</p>
+<p>工作记忆采用了纯内存存储方案，配合TTL（Time To Live）机制进行自动清理。这种设计的优势在于访问速度极快，但也意味着工作记忆的内容在系统重启后会丢失。这种特性正好符合工作记忆的定位，存储临时的、易变的信息。</p>
+<details>
+<summary>hello_agents/memory/types/working.py 中的 WorkingMemory 类</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WorkingMemory</span><span class="p">(</span><span class="n">BaseMemory</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;工作记忆实现</span>
+
+<span class="sd">    特点：</span>
+<span class="sd">    - 容量有限（通常10-20条记忆）</span>
+<span class="sd">    - 时效性强（会话级别）</span>
+<span class="sd">    - 优先级管理</span>
+<span class="sd">    - 自动清理过期记忆</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MemoryConfig</span><span class="p">,</span> <span class="n">storage_backend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">storage_backend</span><span class="p">)</span>
+
+        <span class="c1"># 工作记忆特定配置</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">working_memory_capacity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">working_memory_tokens</span>
+        <span class="c1"># 纯内存TTL（分钟），可通过在 MemoryConfig 上挂载 working_memory_ttl_minutes 覆盖</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_age_minutes</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s1">&#39;working_memory_ttl_minutes&#39;</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session_start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+        <span class="c1"># 内存存储（工作记忆不需要持久化）</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memories</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">MemoryItem</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># 使用优先级队列管理记忆</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_heap</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># (priority, timestamp, memory_item)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory_item</span><span class="p">:</span> <span class="n">MemoryItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;添加工作记忆&quot;&quot;&quot;</span>
+        <span class="c1"># 过期清理</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_expire_old_memories</span><span class="p">()</span>
+        <span class="c1"># 计算优先级（重要性 + 时间衰减）</span>
+        <span class="n">priority</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_priority</span><span class="p">(</span><span class="n">memory_item</span><span class="p">)</span>
+
+        <span class="c1"># 添加到堆中</span>
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_heap</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">priority</span><span class="p">,</span> <span class="n">memory_item</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">memory_item</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">memory_item</span><span class="p">)</span>
+
+        <span class="c1"># 更新token计数</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_tokens</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">memory_item</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+        <span class="c1"># 检查容量限制</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_enforce_capacity_limits</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">memory_item</span><span class="o">.</span><span class="n">id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MemoryItem</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;检索工作记忆 - 混合语义向量检索和关键词匹配&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+</details>
+
+<p>（2）情景记忆（EpisodicMemory）</p>
+<p>情景记忆负责存储具体的事件和经历，它的设计重点在于保持事件的完整性和时间序列关系。</p>
+<p>情景记忆采用了 SQLite+Qdrant 的混合存储方案，SQLite 负责结构化数据的存储和复杂查询，Qdrant 负责高效的向量检索。</p>
+<p>情景记忆的检索实现展现了复杂的多因素评分机制。它不仅考虑了语义相似度，还加入了时间近因性的考量，最终通过重要性权重进行调节。</p>
+<p>评分公式为：<code>(向量相似度 × 0.8 + 时间近因性 × 0.2) × (0.8 + 重要性 × 0.4)</code>，确保检索结果既语义相关又时间相关。</p>
+<p>（3）语义记忆（SemanticMemory）</p>
+<p>语义记忆是记忆系统中最复杂的部分，它负责存储抽象的概念、规则和知识。</p>
+<p>语义记忆的设计重点在于知识的结构化表示和智能推理能力。</p>
+<p>语义记忆采用了 Neo4j 图数据库和 Qdrant 向量数据库的混合架构，这种设计让系统既能进行快速的语义检索，又能利用知识图谱进行复杂的关系推理。</p>
+<p>语义记忆的评分公式为：<code>(向量相似度 × 0.7 + 图相似度 × 0.3) × (0.8 + 重要性 × 0.4)</code>。这种设计的核心思想是：</p>
+<ul>
+<li><strong>向量检索权重（0.7）</strong>：语义相似度是主要因素，确保检索结果与查询语义相关</li>
+<li><strong>图检索权重（0.3）</strong>：关系推理作为补充，发现概念间的隐含关联</li>
+<li><strong>重要性权重范围[0.8, 1.2]</strong>：避免重要性过度影响相似度排序，保持检索的准确性</li>
+</ul>
+<p>（4）感知记忆（PerceptualMemory）</p>
+<p><strong>感知记忆</strong>支持<strong>文本、图像、音频等多种模态的数据存储和检索</strong>。</p>
+<p>采用模态分离的存储策略，为不同模态的数据创建独立的向量集合，这种设计避免了维度不匹配的问题，同时保证了检索的准确性：</p>
+<p><strong>感知记忆的检索</strong>支持<strong>同模态</strong>和<strong>跨模态</strong>两种模式。同模态检索利用专业的编码器进行精确匹配，而跨模态检索则需要更复杂的语义对齐机制：</p>
+<p><strong>感知记忆的评分公式</strong>为：<code>(向量相似度 × 0.8 + 时间近因性 × 0.2) × (0.8 + 重要性 × 0.4)</code>。</p>
+<p>感知记忆的评分机制还支持跨模态检索，通过统一的向量空间实现文本、图像、音频等不同模态数据的语义对齐。</p>
+<p>当进行跨模态检索时，系统会自动调整评分权重，确保检索结果的多样性和准确性。此外，感知记忆中的时间近因性计算采用了指数衰减模型：</p>
+<p>这种时间衰减模型模拟了人类记忆中的遗忘曲线，确保了感知记忆系统能够优先检索到时间上更相关的记忆内容。</p>
+<h3 id="83-rag">8.3 <strong>RAG系统：知识检索增强</strong></h3>
+<p><strong>8.3.1 RAG的基础知识</strong></p>
+<p>（1）什么是RAG？</p>
+<p>检索增强生成（Retrieval-Augmented Generation，RAG）是一种结合了信息检索和文本生成的技术。</p>
+<p>它的核心思想是：在生成回答之前，先从外部知识库中检索相关信息，然后将检索到的信息作为上下文提供给大语言模型，从而生成更准确、更可靠的回答。</p>
+<p>因此，检索增强生成可以拆分为三个词汇：</p>
+<ul>
+<li><strong>检索</strong>：指从知识库中查询相关内容；</li>
+<li><strong>增强</strong>：将检索结果融入提示词，辅助模型生成；</li>
+<li><strong>生成</strong>：输出兼具准确性与透明度的答案。</li>
+</ul>
+<p>（2）基本工作流程</p>
+<p>一个完整的 RAG 应用流程主要分为两大核心环节：</p>
+<ol>
+<li>在数据准备阶段，系统通过数据提取、文本分割和向量化，将外部知识构建成一个可检索的数据库</li>
+<li>随后在应用阶段，系统会响应用户的提问，从数据库中检索相关信息，将其注入 Prompt，并最终驱动大语言模型生成答案。</li>
+</ol>
+<p>（3）发展历程</p>
+<ul>
+<li>朴素RAG（Naive RAG, 2020-2021）</li>
+<li>高级RAG（Advanced RAG, 2022-2023）</li>
+<li>模块化RAG（Modular RAG, 2023-至今）</li>
+</ul>
+<p><strong>8.3.2 RAG系统工作原理</strong></p>
+<p><img alt="RAG系统的核心工作原理.png" src="images/RAG%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" /></p>
+<p>RAG系统的两个主要工作模式：</p>
+<ol>
+<li>数据处理流程：处理和存储知识文档，在这里我们采取工具 Markitdown，设计思路是将传入的一切外部知识源统一转化为 Markdown 格式进行处理。</li>
+<li>查询与生成流程：根据查询检索相关信息并生成回答。</li>
+</ol>
+<p><strong>8.3.3 快速上手 RAG 功能</strong></p>
+<p><strong>8.3.4 RAG系统架构设计</strong></p>
+<p>在这一节中，我们采取与记忆系统不同的方式讲解。因为 <code>Memory_tool</code> 是系统性的实现，而 RAG 在我们的设计中被定义为一种工具，可以梳理为一条 pipeline。</p>
+<p>RAG系统的核心架构可以概括为"五层七步"的设计模式：</p>
+<div class="highlight"><pre><span></span><code>用户层：RAGTool统一接口
+  ↓
+应用层：智能问答、搜索、管理
+  ↓  
+处理层：文档解析、分块、向量化
+  ↓
+存储层：向量数据库、文档存储
+  ↓
+基础层：嵌入模型、LLM、数据库
+</code></pre></div>
+<p>这种分层设计的优势在于每一层都可以独立优化和替换，同时保持整体系统的稳定性。</p>
+<p>例如，可以轻松地将嵌入模型从 sentence-transformers 切换到百炼 API，而不影响上层的业务逻辑。</p>
+<p>同样的，这些处理的流程代码是完全可复用的，也可以选取自己需要的部分放进自己的项目中。RAGTool 作为 RAG 系统的统一入口，提供了简洁的 API 接口。</p>
+<details>
+<summary>hello_agents/tools/builtin/rag_tool.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;RAG工具</span>
+
+<span class="sd">    提供完整的 RAG 能力：</span>
+<span class="sd">    - 添加多格式文档（PDF、Office、图片、音频等）</span>
+<span class="sd">    - 智能检索与召回</span>
+<span class="sd">    - LLM 增强问答</span>
+<span class="sd">    - 知识库管理</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">knowledge_base_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;./knowledge_base&quot;</span><span class="p">,</span>
+        <span class="n">qdrant_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">qdrant_api_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">collection_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rag_knowledge_base&quot;</span><span class="p">,</span>
+        <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+    <span class="p">):</span>
+        <span class="c1"># 初始化RAG管道</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pipelines</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+
+        <span class="c1"># 创建默认管道</span>
+        <span class="n">default_pipeline</span> <span class="o">=</span> <span class="n">create_rag_pipeline</span><span class="p">(</span>
+            <span class="n">qdrant_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">qdrant_url</span><span class="p">,</span>
+            <span class="n">qdrant_api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">qdrant_api_key</span><span class="p">,</span>
+            <span class="n">collection_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">collection_name</span><span class="p">,</span>
+            <span class="n">rag_namespace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rag_namespace</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pipelines</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rag_namespace</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pipeline</span>
+</code></pre></div>
+
+</details>
+
+<p>整个处理流程如下所示：</p>
+<div class="highlight"><pre><span></span><code>任意格式文档 → MarkItDown转换 → Markdown文本 → 智能分块 → 向量化 → 存储检索
+</code></pre></div>
+<p>（1）多模态文档载入</p>
+<p>RAG 系统的核心优势之一是其强大的多模态文档处理能力。系统使用 MarkItDown 作为统一的文档转换引擎，支持几乎所有常见的文档格式。</p>
+<p>MarkItDown 是微软开源的通用文档转换工具，它是 HelloAgents RAG 系统的核心组件，负责将任意格式的文档统一转换为结构化的 Markdown 文本。</p>
+<p>无论输入是 PDF、Word、Excel、图片还是音频，最终都会转换为标准的 Markdown 格式，然后进入统一的分块、向量化和存储流程。</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _convert_to_markdown 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_convert_to_markdown</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Universal document reader using MarkItDown with enhanced PDF processing.</span>
+<span class="sd">    核心功能：将任意格式文档转换为Markdown文本</span>
+
+<span class="sd">    支持格式：</span>
+<span class="sd">    - 文档：PDF、Word、Excel、PowerPoint</span>
+<span class="sd">    - 图像：JPG、PNG、GIF（通过OCR）</span>
+<span class="sd">    - 音频：MP3、WAV、M4A（通过转录）</span>
+<span class="sd">    - 文本：TXT、CSV、JSON、XML、HTML</span>
+<span class="sd">    - 代码：Python、JavaScript、Java等</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="c1"># 对PDF文件使用增强处理</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;.pdf&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_enhanced_pdf_processing</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># 其他格式使用MarkItDown统一转换</span>
+    <span class="n">md_instance</span> <span class="o">=</span> <span class="n">_get_markitdown_instance</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">md_instance</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_fallback_text_reader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">md_instance</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">markdown_text</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">&quot;text_content&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">markdown_text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] MarkItDown转换成功: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> chars Markdown&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">markdown_text</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] MarkItDown转换失败 </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_fallback_text_reader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>（2）智能分块策略</p>
+<p>经过 MarkItDown 转换后，所有文档都统一为标准的 Markdown 格式。这为后续的智能分块提供了结构化的基础。</p>
+<p>HelloAgents 实现了专门针对 Markdown 格式的智能分块策略，充分利用 Markdown 的结构化特性进行精确分割。</p>
+<p>Markdown 结构感知的分块流程：</p>
+<div class="highlight"><pre><span></span><code>标准Markdown文本 → 标题层次解析 → 段落语义分割 → Token计算分块 → 重叠策略优化 → 向量化准备
+       ↓                ↓              ↓            ↓           ↓            ↓
+   统一格式          #/##/###        语义边界      大小控制     信息连续性    嵌入向量
+   结构清晰          层次识别        完整性保证    检索优化     上下文保持    相似度匹配
+</code></pre></div>
+<p>由于所有文档都已转换为 Markdown 格式，系统可以利用 Markdown 的标题结构（#、##、###等）进行精确的<strong>语义分割</strong>：</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _split_paragraphs_with_headings 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_split_paragraphs_with_headings</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据标题层次分割段落，保持语义完整性&quot;&quot;&quot;</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="n">heading_stack</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">paragraphs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">buf</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">char_pos</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">flush_buf</span><span class="p">(</span><span class="n">end_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">buf</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">content</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">paragraphs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+            <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="s2">&quot; &gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">heading_stack</span><span class="p">)</span> <span class="k">if</span> <span class="n">heading_stack</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_pos</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)),</span>
+            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end_pos</span><span class="p">,</span>
+        <span class="p">})</span>
+
+    <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">raw</span> <span class="o">=</span> <span class="n">ln</span>
+        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+            <span class="c1"># 处理标题行</span>
+            <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">))</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heading_stack</span><span class="p">):</span>
+                <span class="n">heading_stack</span> <span class="o">=</span> <span class="n">heading_stack</span><span class="p">[:</span><span class="n">level</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">heading_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+            <span class="n">char_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># 段落内容累积</span>
+        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
+            <span class="n">buf</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">buf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="n">char_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">paragraphs</span><span class="p">:</span>
+        <span class="n">paragraphs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)}]</span>
+
+    <span class="k">return</span> <span class="n">paragraphs</span>
+</code></pre></div>
+
+</details>
+
+<p>在 Markdown 段落分割的基础上，系统进一步根据 Token 数量进行<strong>智能分块</strong>。</p>
+<p>由于输入已经是结构化的 Markdown 文本，系统可以更精确地控制分块边界，确保每个分块既适合向量化处理，又保持 Markdown 结构的完整性：</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _chunk_paragraphs 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_chunk_paragraphs</span><span class="p">(</span><span class="n">paragraphs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">chunk_tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">overlap_tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于Token数量的智能分块&quot;&quot;&quot;</span>
+    <span class="n">chunks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cur</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cur_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">paragraphs</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">paragraphs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">p_tokens</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">cur_tokens</span> <span class="o">+</span> <span class="n">p_tokens</span> <span class="o">&lt;=</span> <span class="n">chunk_tokens</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">cur</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">cur_tokens</span> <span class="o">+=</span> <span class="n">p_tokens</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 生成当前分块</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+            <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;heading_path&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading_path&quot;</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
+
+            <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+                <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+                <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+                <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
+            <span class="p">})</span>
+
+            <span class="c1"># 构建重叠部分</span>
+            <span class="k">if</span> <span class="n">overlap_tokens</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">cur</span><span class="p">:</span>
+                <span class="n">kept</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">kept_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">):</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="n">kept_tokens</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">overlap_tokens</span><span class="p">:</span>
+                        <span class="k">break</span>
+                    <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                    <span class="n">kept_tokens</span> <span class="o">+=</span> <span class="n">t</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">kept</span><span class="p">))</span>
+                <span class="n">cur_tokens</span> <span class="o">=</span> <span class="n">kept_tokens</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cur</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">cur_tokens</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 处理最后一个分块</span>
+    <span class="k">if</span> <span class="n">cur</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+        <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;heading_path&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading_path&quot;</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+            <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
+        <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">chunks</span>
+</code></pre></div>
+
+</details>
+
+<p>同时为了兼容不同语言，系统实现了<strong>针对中英文混合文本的 Token 估算算法</strong>，这对于准确控制分块大小至关重要：</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _approx_token_len 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_approx_token_len</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;近似估计Token长度，支持中英文混合&quot;&quot;&quot;</span>
+    <span class="c1"># CJK字符按1 token计算</span>
+    <span class="n">cjk</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">_is_cjk</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span>
+    <span class="c1"># 其他字符按空白分词计算</span>
+    <span class="n">non_cjk_tokens</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">if</span> <span class="n">t</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">cjk</span> <span class="o">+</span> <span class="n">non_cjk_tokens</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_cjk</span><span class="p">(</span><span class="n">ch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;判断是否为CJK字符&quot;&quot;&quot;</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="mh">0x4E00</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x9FFF</span> <span class="ow">or</span>  <span class="c1"># CJK统一汉字</span>
+        <span class="mh">0x3400</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x4DBF</span> <span class="ow">or</span>  <span class="c1"># CJK扩展A</span>
+        <span class="mh">0x20000</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x2A6DF</span> <span class="ow">or</span> <span class="c1"># CJK扩展B</span>
+        <span class="mh">0x2A700</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x2B73F</span> <span class="ow">or</span> <span class="c1"># CJK扩展C</span>
+        <span class="mh">0x2B740</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x2B81F</span> <span class="ow">or</span> <span class="c1"># CJK扩展D</span>
+        <span class="mh">0x2B820</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x2CEAF</span> <span class="ow">or</span> <span class="c1"># CJK扩展E</span>
+        <span class="mh">0xF900</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0xFAFF</span>      <span class="c1"># CJK兼容汉字</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p>（3）统一嵌入与向量存储</p>
+<p>嵌入模型是 RAG 系统的核心，它负责将文本转换为高维向量，使得计算机能够理解和比较文本的语义相似性。RAG 系统的检索能力很大程度上取决于嵌入模型的质量和向量存储的效率。</p>
+<p>HelloAgents 实现了统一的嵌入接口。在这里为了演示，使用百炼 API，如果尚未配置可以切换为本地的 all-MiniLM-L6-v2 模型，如果两种方案都不支持，也配置了 TF-IDF 算法来兜底。实际使用可以替换为自己想要的模型或者 API，也可以尝试去扩展框架内容~</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 index_chunks 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">index_chunks</span><span class="p">(</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="n">chunks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="n">cache_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Index markdown chunks with unified embedding and Qdrant storage.</span>
+<span class="sd">    Uses百炼 API with fallback to sentence-transformers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[RAG] No chunks to index&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># 使用统一嵌入模型</span>
+    <span class="n">embedder</span> <span class="o">=</span> <span class="n">get_text_embedder</span><span class="p">()</span>
+    <span class="n">dimension</span> <span class="o">=</span> <span class="n">get_dimension</span><span class="p">(</span><span class="mi">384</span><span class="p">)</span>
+
+    <span class="c1"># 创建默认Qdrant存储</span>
+    <span class="k">if</span> <span class="n">store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">_create_default_vector_store</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Created default Qdrant store with dimension </span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 预处理Markdown文本以获得更好的嵌入质量</span>
+    <span class="n">processed_texts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+        <span class="n">raw_content</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+        <span class="n">processed_content</span> <span class="o">=</span> <span class="n">_preprocess_markdown_for_embedding</span><span class="p">(</span><span class="n">raw_content</span><span class="p">)</span>
+        <span class="n">processed_texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_content</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Embedding start: total_texts=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2"> batch_size=</span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 批量编码</span>
+    <span class="n">vecs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="n">processed_texts</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 使用统一嵌入器（内部处理缓存）</span>
+            <span class="n">part_vecs</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+
+            <span class="c1"># 标准化为List[List[float]]格式</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">,</span> <span class="s2">&quot;tolist&quot;</span><span class="p">):</span>
+                    <span class="n">part_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_vecs</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">part_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">)]</span>
+
+            <span class="c1"># 处理向量格式和维度</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part_vecs</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;tolist&quot;</span><span class="p">):</span>
+                        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+                    <span class="n">v_norm</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
+
+                    <span class="c1"># 维度检查和调整</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span> <span class="o">!=</span> <span class="n">dimension</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] 向量维度异常: 期望</span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">, 实际</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dimension</span><span class="p">:</span>
+                            <span class="n">v_norm</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dimension</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">v_norm</span> <span class="o">=</span> <span class="n">v_norm</span><span class="p">[:</span><span class="n">dimension</span><span class="p">]</span>
+
+                    <span class="n">vecs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] 向量转换失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, 使用零向量&quot;</span><span class="p">)</span>
+                    <span class="n">vecs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dimension</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] Batch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> encoding failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="c1"># 实现重试机制</span>
+            <span class="c1"># ... 重试逻辑 ...</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Embedding progress: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">))</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<p><strong>8.3.5 高级检索策略</strong></p>
+<p>RAG 系统的检索能力是其核心竞争力。在实际应用中，用户的查询表述与文档中的实际内容可能存在用词差异，导致相关文档无法被检索到。</p>
+<p>为了解决这个问题，HelloAgents 实现了三种互补的高级检索策略：</p>
+<ul>
+<li>多查询扩展（MQE）</li>
+<li>假设文档嵌入（HyDE）</li>
+<li>统一的扩展检索框架</li>
+</ul>
+<p>（1）多查询扩展（MQE）</p>
+<p>多查询扩展（Multi-Query Expansion）是一种通过生成语义等价的多样化查询来提高检索召回率的技术。</p>
+<p>这种方法的核心洞察是：同一个问题可以有多种不同的表述方式，而不同的表述可能匹配到不同的相关文档。</p>
+<p>例如，"如何学习Python"可以扩展为"Python入门教程"、"Python学习方法"、"Python编程指南"等多个查询。</p>
+<p>通过并行执行这些扩展查询并合并结果，系统能够覆盖更广泛的相关文档，避免因用词差异而遗漏重要信息。</p>
+<p>MQE 的优势在于它能够自动理解用户查询的多种可能含义，特别是对于模糊查询或专业术语查询效果显著。系统使用 LLM 生成扩展查询，确保扩展的多样性和语义相关性：</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _prompt_mqe 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_prompt_mqe</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;使用LLM生成多样化的查询扩展&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">...core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+        <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;你是检索查询扩展助手。生成语义等价或互补的多样化查询。使用中文，简短，避免标点。&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;原始查询：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请给出</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">个不同表述的查询，每行一个。&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;- </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span>
+        <span class="n">outs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="n">ln</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">outs</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">query</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">query</span><span class="p">]</span>
+</code></pre></div>
+
+</details>
+
+<p>（2）假设文档嵌入（HyDE）</p>
+<p>假设文档嵌入（Hypothetical Document Embeddings，HyDE）是一种创新的检索技术，它的核心思想是"用答案找答案"。</p>
+<p>传统的检索方法是用问题去匹配文档，但问题和答案在语义空间中的分布往往存在差异——问题通常是疑问句，而文档内容是陈述句。</p>
+<p>HyDE 通过<strong>让 LLM 先生成一个假设性的答案段落</strong>，然后用这个答案段落去检索真实文档，从而缩小了查询和文档之间的语义鸿沟。</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 _prompt_hyde 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_prompt_hyde</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成假设性文档用于改善检索&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">...core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+        <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;根据用户问题，先写一段可能的答案性段落，用于向量检索的查询文档（不要分析过程）。&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;问题：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请直接写一段中等长度、客观、包含关键术语的段落。&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+
+</details>
+
+<p>（3）扩展检索框架</p>
+<p>HelloAgents 将 MQE 和 HyDE 两种策略整合到统一的扩展检索框架中。</p>
+<p>系统通过 enable_mqe 和 enable_hyde 参数让用户可以根据具体场景选择启用哪些策略：对于需要高召回率的场景可以同时启用两种策略，对于性能敏感的场景可以只使用基础检索。</p>
+<p>扩展检索的核心机制是"扩展-检索-合并"三步流程</p>
+<ul>
+<li>首先，系统根据原始查询生成多个扩展查询（包括MQE生成的多样化查询和HyDE生成的假设文档）</li>
+<li>然后，对每个扩展查询并行执行向量检索，获取候选文档池；</li>
+<li>最后，通过去重和分数排序合并所有结果，返回最相关的top-k文档。</li>
+</ul>
+<p>这种设计的巧妙之处在于，它通过<code>candidate_pool_multiplier</code>参数（默认为4）扩大候选池，确保有足够的候选文档进行筛选，同时通过智能去重避免返回重复内容。</p>
+<details>
+<summary>hello_agents/memory/rag/pipeline.py 中的 search_vectors_expanded 函数</summary>
+
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search_vectors_expanded</span><span class="p">(</span>
+    <span class="n">store</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">rag_namespace</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">only_rag_data</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">score_threshold</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">enable_mqe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">mqe_expansions</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">enable_hyde</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">candidate_pool_multiplier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Search with query expansion using unified embedding and Qdrant.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">query</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="c1"># 创建默认存储</span>
+    <span class="k">if</span> <span class="n">store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">_create_default_vector_store</span><span class="p">()</span>
+
+    <span class="c1"># 查询扩展</span>
+    <span class="n">expansions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">query</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">enable_mqe</span> <span class="ow">and</span> <span class="n">mqe_expansions</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">expansions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_prompt_mqe</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">mqe_expansions</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">enable_hyde</span><span class="p">:</span>
+        <span class="n">hyde_text</span> <span class="o">=</span> <span class="n">_prompt_hyde</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">hyde_text</span><span class="p">:</span>
+            <span class="n">expansions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hyde_text</span><span class="p">)</span>
+
+    <span class="c1"># 去重和修剪</span>
+    <span class="n">uniq</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">expansions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">and</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">uniq</span><span class="p">:</span>
+            <span class="n">uniq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">expansions</span> <span class="o">=</span> <span class="n">uniq</span><span class="p">[:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniq</span><span class="p">))]</span>
+
+    <span class="c1"># 分配候选池</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">top_k</span> <span class="o">*</span> <span class="n">candidate_pool_multiplier</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pool</span> <span class="o">//</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expansions</span><span class="p">)))</span>
+
+    <span class="c1"># 构建RAG数据过滤器</span>
+    <span class="n">where</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;memory_type&quot;</span><span class="p">:</span> <span class="s2">&quot;rag_chunk&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">only_rag_data</span><span class="p">:</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;is_rag_data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;data_source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rag_pipeline&quot;</span>
+    <span class="k">if</span> <span class="n">rag_namespace</span><span class="p">:</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;rag_namespace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rag_namespace</span>
+
+    <span class="c1"># 收集所有扩展查询的结果</span>
+    <span class="n">agg</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">expansions</span><span class="p">:</span>
+        <span class="n">qv</span> <span class="o">=</span> <span class="n">embed_query</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="n">hits</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search_similar</span><span class="p">(</span>
+            <span class="n">query_vector</span><span class="o">=</span><span class="n">qv</span><span class="p">,</span> 
+            <span class="n">limit</span><span class="o">=</span><span class="n">per</span><span class="p">,</span> 
+            <span class="n">score_threshold</span><span class="o">=</span><span class="n">score_threshold</span><span class="p">,</span> 
+            <span class="n">where</span><span class="o">=</span><span class="n">where</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hits</span><span class="p">:</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_id&quot;</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">mid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">agg</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
+                <span class="n">agg</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
+
+    <span class="c1"># 按分数排序返回</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">agg</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">merged</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">merged</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]</span>
+</code></pre></div>
+
+</details>
+
+<p>实际应用中，这三种策略的组合使用效果最佳 ，MQE 擅长处理用词多样性问题，HyDE 擅长处理语义鸿沟问题，而统一框架则确保了结果的质量和多样性。</p>
+<p>对于一般查询，建议启用 MQE；对于专业领域查询，建议同时启用 MQE 和 HyDE；对于性能敏感场景，可以只使用基础检索或仅启用 MQE。</p>
+<h3 id="84">8.4 <strong>构建智能文档问答助手</strong></h3>
+<p><strong>8.4.1 案例背景与目标</strong></p>
 
 
 
