@@ -50,7 +50,7 @@ nav:
 #    - LangChain: course/LangChain/index.md
     - Java 基础: course/Java/index.md
     - JavaWeb:
-        - JavaWeb 目录: course/JavaWeb/index.md
+        - 概述: course/JavaWeb/index.md
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
         - JavaScript: course/JavaWeb/JavaScript/index.md
         - Vue: course/JavaWeb/Vue/index.md
@@ -60,32 +60,26 @@ nav:
 #        - MySQL: course/JavaWeb/MySQL/index.md
 #        - JDBL: course/JavaWeb/JDBL/index.md
 #        - Mybatis: course/JavaWeb/Mybatis/index.md
-    - 大模型基础:
-        - course/大模型基础/index.md
-        - 面试题: course/大模型基础/面试题/index.md
     - Agent 基础-Hello-Agents:
-        - 相关原文: course/Agent/index.md
-        - 第一章 初识智能体: course/Agent/第一章 初识智能体/index.md
-        - 第二章 智能体发展史: course/Agent/第二章 智能体发展史/index.md
-        - 第三章 大语言模型基础: course/Agent/第三章 大语言模型基础/index.md
-        - 第四章 智能体经典范式构建: course/Agent/第四章 智能体经典范式构建/index.md
-        - 第五章 基于低代码平台的智能体搭建: course/Agent/第五章 基于低代码平台的智能体搭建/index.md
-        - 第六章 框架开发实践: course/Agent/第六章 框架开发实践/index.md
-        - 第七章 构建你的 Agent 框架: course/Agent/第七章 构建你的 Agent 框架/index.md
-        - 第八章 记忆与检索: course/Agent/第八章 记忆与检索/index.md
-        - 第九章 上下文工程: course/Agent/第九章 上下文工程/index.md
-        - 第十章 智能体通信协议: course/Agent/第十章 智能体通信协议/index.md
-        - 第十一章 Agentic-RL: course/Agent/第十一章 Agentic-RL/index.md
-        - 第十二章 智能体性能评估: course/Agent/第十二章 智能体性能评估/index.md
-    - Agent 基础-JavaGuide:
-        - course/AI Agent/index.md
-        - 面试题: course/AI Agent/面试题/index.md
-#    - RAG:
-#        - course/RAG/index.md
-#        - 面试题: course/RAG/面试题/index.md
-#    - AI 系统设计:
-#        - course/AI 系统/index.md
-#        - 面试题: course/AI 系统设计/面试题/index.md
+        - 概述: course/Agent/index.md
+        - 一、初识智能体: course/Agent/一、初识智能体/index.md
+        - 二、智能体发展史: course/Agent/二、智能体发展史/index.md
+        - 三、大语言模型基础: course/Agent/三、大语言模型基础/index.md
+        - 四、智能体经典范式构建: course/Agent/四、智能体经典范式构建/index.md
+        - 五、基于低代码平台的智能体搭建: course/Agent/五、基于低代码平台的智能体搭建/index.md
+        - 六、框架开发实践: course/Agent/六、框架开发实践/index.md
+        - 七、构建你的 Agent 框架: course/Agent/七、构建你的 Agent 框架/index.md
+        - 八、记忆与检索: course/Agent/八、记忆与检索/index.md
+        - 九、上下文工程: course/Agent/九、上下文工程/index.md
+        - 十、智能体通信协议: course/Agent/十、智能体通信协议/index.md
+        - 十一、Agentic-RL: course/Agent/十一、Agentic-RL/index.md
+        - 十二、智能体性能评估: course/Agent/十二、智能体性能评估/index.md
+    - AI 应用开发-JavaGuide:
+        - 大模型基础: course/AI 应用开发/大模型基础/index.md
+        - AI Agent: course/AI 应用开发/AI Agent/index.md
+        - RAG: course/AI 应用开发/RAG/index.md
+        - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
+#        - 面试题: course/AI 应用开发/面试题/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
