@@ -1,20 +1,30 @@
 # **四、智能体经典范式构建**
 
-**智能体经典范式**：为了更好地组织智能体的“思考”与“行动”过程，业界涌现出了多种经典的架构范式
+为了更好地组织智能体的“思考”与“行动”过程，业界涌现出了多种经典的架构范式，其中最具代表性的三种：
 
-- ReAct（Reasoning and Acting）： 一种将“思考”和“行动”紧密结合的范式，让智能体边想边做，动态调整
-- Plan-and-Solve： 一种“三思而后行”的范式，智能体首先生成一个完整的行动计划，然后严格执行
-- Reflection： 一种赋予智能体“反思”能力的范式，通过自我批判和修正来优化结果
+- **ReAct（Reasoning and Acting）**： 一种将“思考”和“行动”紧密结合的范式，让智能体边想边做，动态调整。
+- **Plan-and-Solve**： 一种“三思而后行”的范式，智能体首先生成一个完整的行动计划，然后严格执行。
+- **Reflection**： 一种赋予智能体“反思”能力的范式，通过自我批判和修正来优化结果。
 
-### 4.1 **LLM 客户端准备**
+### 4.1 **环境准备与基础工具定义**
 
 **4.1.1 安装依赖库**：
+
+- Python 3.10 或更高版本
+- `openai` 库：用于与大语言模型交互
+- `python-dotenv` 库：用于安全地管理 API 密钥
 
 ```bash
 pip install openai python-dotenv
 ```
 
 **4.1.2 配置 API 密钥**：
+
+为了让我们的代码更通用，我们将模型服务的相关信息（模型ID、API密钥、服务地址）统一配置在环境变量中。
+
+在你的项目根目录下，创建一个名为 `.env` 的文件。
+
+在该文件中，添加以下内容。你可以根据自己的需要，将其指向 OpenAI 官方服务，或任何兼容 OpenAI 接口的本地/第三方服务。
 
 ```python
 # .env file
@@ -26,7 +36,7 @@ LLM_BASE_URL="YOUR-URL"
 **4.1.3 封装基础 LLM 调用函数**：
 
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter4/llm_client.py</summary>
 
 ```python
 # 4.1.3 封装基础 LLM 调用函数
@@ -36,10 +46,8 @@ from openai import OpenAI # OpenAI 官方客户端
 from dotenv import load_dotenv # 从 .env 文件加载环境变量
 from typing import List, Dict # 类型提示（可选，用于函数注解）
 
-
 # 加载 .env 文件中的环境变量
 load_dotenv()
-
 
 class HelloAgentsLLM:
     """
@@ -109,20 +117,42 @@ if __name__ == '__main__':
 
     except ValueError as e:
         print(e)
+```
 
+</details>
 
->>>
+**运行结果示例**
+
+```
 --- 调用LLM ---
 🧠 正在调用 xxxxxx 模型...
 ✅ 大语言模型响应成功:
 快速排序是一种非常高效的排序算法...
 ```
 
-</details>
 
 ### 4.2 **ReAct**
 
-**4.2.1 ReAct 工作流程**：<span style="color: red;">不断重复 Thought -> Action -> Observation 的循环</span>
+在准备好 LLM 客户端后，我们将构建第一个，也是最经典的一个智能体范式**ReAct (Reason + Act)**。
+
+ReAct 由 Shunyu Yao 于2022年提出，其核心思想是模仿人类解决问题的方式，将**推理 (Reasoning)** 与**行动 (Acting)** 显式地结合起来，形成一个“思考-行动-观察”的循环。
+
+**4.2.1 ReAct 工作流程**：
+
+在 ReAct 诞生之前，主流的方法可以分为两类：
+
+* “纯思考”型：如**思维链 (Chain-of-Thought)**，它能引导模型进行复杂的逻辑推理，但无法与外部世界交互，容易产生事实幻觉。
+* “纯行动”型：模型直接输出要执行的动作，但缺乏规划和纠错能力。
+
+ReAct 的巧妙之处在于，它认识到**思考与行动是相辅相成的**。思考指导行动，而行动的结果又反过来修正思考。
+
+为此，ReAct 范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：
+
+* **Thought (思考)**： 这是智能体的“内心独白”。它会分析当前情况、分解任务、制定下一步计划，或者反思上一步的结果。
+* **Action (行动)**： 这是智能体决定采取的具体动作，通常是调用一个外部工具，例如 `Search['华为最新款手机']`。
+* **Observation (观察)**： 这是执行Action后从外部工具返回的结果，例如搜索结果的摘要或 API 的返回值。
+
+<span style="color: red;">不断重复 Thought -> Action -> Observation 的循环</span>
 
 - 适用场景：
     - 需要外部知识的任务：如查询实时信息（天气、新闻、股价）、搜索专业领域的知识等
