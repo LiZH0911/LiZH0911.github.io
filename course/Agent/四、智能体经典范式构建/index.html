@@ -893,10 +893,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-llm" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 LLM 客户端准备
+        4.1 环境准备与基础工具定义
       
     </span>
   </a>
@@ -1634,10 +1634,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#41-llm" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 LLM 客户端准备
+        4.1 环境准备与基础工具定义
       
     </span>
   </a>
@@ -1695,17 +1695,25 @@
 
 
 <h1 id="_1"><strong>四、智能体经典范式构建</strong></h1>
-<p><strong>智能体经典范式</strong>：为了更好地组织智能体的“思考”与“行动”过程，业界涌现出了多种经典的架构范式</p>
+<p>为了更好地组织智能体的“思考”与“行动”过程，业界涌现出了多种经典的架构范式，其中最具代表性的三种：</p>
 <ul>
-<li>ReAct（Reasoning and Acting）： 一种将“思考”和“行动”紧密结合的范式，让智能体边想边做，动态调整</li>
-<li>Plan-and-Solve： 一种“三思而后行”的范式，智能体首先生成一个完整的行动计划，然后严格执行</li>
-<li>Reflection： 一种赋予智能体“反思”能力的范式，通过自我批判和修正来优化结果</li>
+<li><strong>ReAct（Reasoning and Acting）</strong>： 一种将“思考”和“行动”紧密结合的范式，让智能体边想边做，动态调整。</li>
+<li><strong>Plan-and-Solve</strong>： 一种“三思而后行”的范式，智能体首先生成一个完整的行动计划，然后严格执行。</li>
+<li><strong>Reflection</strong>： 一种赋予智能体“反思”能力的范式，通过自我批判和修正来优化结果。</li>
 </ul>
-<h3 id="41-llm">4.1 <strong>LLM 客户端准备</strong></h3>
+<h3 id="41">4.1 <strong>环境准备与基础工具定义</strong></h3>
 <p><strong>4.1.1 安装依赖库</strong>：</p>
+<ul>
+<li>Python 3.10 或更高版本</li>
+<li><code>openai</code> 库：用于与大语言模型交互</li>
+<li><code>python-dotenv</code> 库：用于安全地管理 API 密钥</li>
+</ul>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>openai<span class="w"> </span>python-dotenv
 </code></pre></div>
 <p><strong>4.1.2 配置 API 密钥</strong>：</p>
+<p>为了让我们的代码更通用，我们将模型服务的相关信息（模型ID、API密钥、服务地址）统一配置在环境变量中。</p>
+<p>在你的项目根目录下，创建一个名为 <code>.env</code> 的文件。</p>
+<p>在该文件中，添加以下内容。你可以根据自己的需要，将其指向 OpenAI 官方服务，或任何兼容 OpenAI 接口的本地/第三方服务。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .env file</span>
 <span class="n">LLM_API_KEY</span><span class="o">=</span><span class="s2">&quot;YOUR-API-KEY&quot;</span>
 <span class="n">LLM_MODEL_ID</span><span class="o">=</span><span class="s2">&quot;YOUR-MODEL&quot;</span>
@@ -1713,7 +1721,7 @@
 </code></pre></div>
 <p><strong>4.1.3 封装基础 LLM 调用函数</strong>：</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>chapter4/llm_client.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 4.1.3 封装基础 LLM 调用函数</span>
 
@@ -1722,10 +1730,8 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span> <span class="c1"># 从 .env 文件加载环境变量</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span> <span class="c1"># 类型提示（可选，用于函数注解）</span>
 
-
 <span class="c1"># 加载 .env 文件中的环境变量</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
-
 
 <span class="k">class</span><span class="w"> </span><span class="nc">HelloAgentsLLM</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1795,19 +1801,33 @@
 
     <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-
-
-<span class="o">&gt;&gt;&gt;</span>
-<span class="o">---</span> <span class="n">调用LLM</span> <span class="o">---</span>
-<span class="err">🧠</span> <span class="n">正在调用</span> <span class="n">xxxxxx</span> <span class="n">模型</span><span class="o">...</span>
-<span class="err">✅</span> <span class="n">大语言模型响应成功</span><span class="p">:</span>
-<span class="n">快速排序是一种非常高效的排序算法</span><span class="o">...</span>
 </code></pre></div>
 
 </details>
 
+<p><strong>运行结果示例</strong></p>
+<div class="highlight"><pre><span></span><code>--- 调用LLM ---
+🧠 正在调用 xxxxxx 模型...
+✅ 大语言模型响应成功:
+快速排序是一种非常高效的排序算法...
+</code></pre></div>
 <h3 id="42-react">4.2 <strong>ReAct</strong></h3>
-<p><strong>4.2.1 ReAct 工作流程</strong>：<span style="color: red;">不断重复 Thought -&gt; Action -&gt; Observation 的循环</span></p>
+<p>在准备好 LLM 客户端后，我们将构建第一个，也是最经典的一个智能体范式<strong>ReAct (Reason + Act)</strong>。</p>
+<p>ReAct 由 Shunyu Yao 于2022年提出，其核心思想是模仿人类解决问题的方式，将<strong>推理 (Reasoning)</strong> 与<strong>行动 (Acting)</strong> 显式地结合起来，形成一个“思考-行动-观察”的循环。</p>
+<p><strong>4.2.1 ReAct 工作流程</strong>：</p>
+<p>在 ReAct 诞生之前，主流的方法可以分为两类：</p>
+<ul>
+<li>“纯思考”型：如<strong>思维链 (Chain-of-Thought)</strong>，它能引导模型进行复杂的逻辑推理，但无法与外部世界交互，容易产生事实幻觉。</li>
+<li>“纯行动”型：模型直接输出要执行的动作，但缺乏规划和纠错能力。</li>
+</ul>
+<p>ReAct 的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。</p>
+<p>为此，ReAct 范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：</p>
+<ul>
+<li><strong>Thought (思考)</strong>： 这是智能体的“内心独白”。它会分析当前情况、分解任务、制定下一步计划，或者反思上一步的结果。</li>
+<li><strong>Action (行动)</strong>： 这是智能体决定采取的具体动作，通常是调用一个外部工具，例如 <code>Search['华为最新款手机']</code>。</li>
+<li><strong>Observation (观察)</strong>： 这是执行Action后从外部工具返回的结果，例如搜索结果的摘要或 API 的返回值。</li>
+</ul>
+<p><span style="color: red;">不断重复 Thought -&gt; Action -&gt; Observation 的循环</span></p>
 <ul>
 <li>适用场景：<ul>
 <li>需要外部知识的任务：如查询实时信息（天气、新闻、股价）、搜索专业领域的知识等</li>
