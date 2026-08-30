@@ -884,6 +884,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3.2 与大语言模型交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 提示工程：
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 文本分词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 本地部署大语言模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -894,6 +933,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3.3 大语言模型的缩放法则与局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-scaling-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 缩放法则（Scaling Laws）：
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-hallucination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 模型幻觉（Hallucination）：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1642,6 +1709,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3.2 与大语言模型交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 提示工程：
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 文本分词
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 本地部署大语言模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1652,6 +1758,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3.3 大语言模型的缩放法则与局限性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-scaling-laws" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 缩放法则（Scaling Laws）：
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-hallucination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 模型幻觉（Hallucination）：
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1673,12 +1807,13 @@
 
 
 <h1 id="_1"><strong>三、大语言模型基础</strong></h1>
-<h3 id="31-transformer">3.1 <strong>语言模型与 Transformer 架构</strong></h3>
+<h2 id="31-transformer">3.1 <strong>语言模型与 Transformer 架构</strong></h2>
 <ul>
 <li>参考 <a href="https://github.com/datawhalechina/hello-agents/blob/main/docs/chapter3/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80.md">Hello-Agents 第三章</a></li>
 </ul>
-<h3 id="32">3.2 <strong>与大语言模型交互</strong></h3>
-<p><strong>3.2.1 提示工程</strong>：研究如何设计出精准的提示，从而引导模型产生期望输出的回复</p>
+<h2 id="32">3.2 <strong>与大语言模型交互</strong></h2>
+<h3 id="321"><strong>3.2.1 提示工程</strong>：</h3>
+<p>提示工程的目标研究如何设计出精准的提示，从而引导模型产生期望输出的回复</p>
 <p><strong>模型采样参数</strong>：</p>
 <ul>
 <li>Temperature：温度是控制模型输出“随机性”与“确定性”的关键参数（控制Softmax输出）</li>
@@ -1705,39 +1840,37 @@
 <ul>
 <li>实现 CoT 的关键：在提示中加入一句简单的引导语，如“请逐步思考”或“Let's think step by step”</li>
 </ul>
-<p><strong>3.2.2 文本分词</strong>：</p>
+<h3 id="322"><strong>3.2.2 文本分词</strong></h3>
+<p><strong>分词（Tokenization）</strong>：将文本序列转换为数字序列的过程</p>
+<p><strong>分词器（Tokenizer）</strong>：定义一套规则，将原始文本切分成一个个最小的单元，即词元（Token）</p>
+<p><strong>分词器对开发者的意义</strong>：</p>
 <ul>
-<li>分词（Tokenization）：将文本序列转换为数字序列的过程</li>
-<li>分词器（Tokenizer）：定义一套规则，将原始文本切分成一个个最小的单元，即词元（Token）</li>
-<li>分词器对开发者的意义：<ul>
 <li>上下文窗口限制：模型的上下文窗口（如 8K, 128K）是以 Token 数量计算的，而不是字符数或单词数。同样一段话，在不同语言（如中英文）或不同分词器下，Token 数量可能相差巨大</li>
 <li>API 成本：大多数模型 API 都是按 Token 数量计费的</li>
 <li>模型表现的异常：有时模型的奇怪表现根源在于分词。例如，模型可能很擅长计算<code>2 + 2</code>，但对于<code>2+2</code>（没有空格）就可能出错，因为后者可能被分词器视为一个独立的、不常见的词元</li>
 </ul>
-</li>
-</ul>
-<p><strong>3.2.3 本地部署大语言模型</strong>：对于许多需要处理敏感数据、希望离线运行或想精细控制成本的场景，将大语言模型直接部署在本地就显得至关重要。</p>
-<h3 id="33">3.3 <strong>大语言模型的缩放法则与局限性</strong></h3>
-<p><strong>3.3.1 缩放法则（Scaling Laws）</strong>：</p>
-<ul>
-<li>缩放法则：在对数-对数坐标系下，模型的性能（通常用损失 Loss 来衡量）与参数量、数据量和计算量这三个因素都呈现出平滑的幂律关系</li>
-<li>Chinchilla 定律：指出在给定的计算预算下，为了达到最优性能，模型参数量和训练数据量之间存在一个最优配比</li>
-<li>能力涌现：当模型规模达到一定阈值后，会突然展现出在小规模模型中完全不存在或表现不佳的全新能力。例如，链式思考 (Chain-of-Thought) 、指令遵循 (Instruction Following) 、多步推理、代码生成等能力，都是在模型参数量达到数百亿甚至千亿级别后才显著出现的。</li>
-</ul>
-<p><strong>3.3.2 模型幻觉（Hallucination）</strong>：指大语言模型生成的内容与客观事实、用户输入或上下文信息相矛盾，或者生成了不存在的事实、实体或事件</p>
+<h3 id="323"><strong>3.2.3 本地部署大语言模型</strong></h3>
+<p>对于许多需要处理敏感数据、希望离线运行或想精细控制成本的场景，将大语言模型直接部署在本地就显得至关重要。</p>
+<h2 id="33">3.3 <strong>大语言模型的缩放法则与局限性</strong></h2>
+<h3 id="331-scaling-laws"><strong>3.3.1 缩放法则（Scaling Laws）</strong>：</h3>
+<p><strong>缩放法则</strong>：在对数-对数坐标系下，模型的性能（通常用损失 Loss 来衡量）与参数量、数据量和计算量这三个因素都呈现出平滑的幂律关系</p>
+<p><strong>Chinchilla 定律</strong>：指出在给定的计算预算下，为了达到最优性能，模型参数量和训练数据量之间存在一个最优配比</p>
+<p><strong>能力涌现</strong>：当模型规模达到一定阈值后，会突然展现出在小规模模型中完全不存在或表现不佳的全新能力。例如，链式思考 (Chain-of-Thought) 、指令遵循 (Instruction Following) 、多步推理、代码生成等能力，都是在模型参数量达到数百亿甚至千亿级别后才显著出现的。</p>
+<h3 id="332-hallucination"><strong>3.3.2 模型幻觉（Hallucination）</strong>：</h3>
+<p>模型幻觉指大语言模型生成的内容与客观事实、用户输入或上下文信息相矛盾，或者生成了不存在的事实、实体或事件。</p>
 <ol>
-<li>事实性幻觉（Factual Hallucinations）：模型生成与现实世界事实不符的信息</li>
-<li>忠实性幻觉（Faithfulness Hallucinations）：在文本摘要、翻译等任务中，生成的内容未能忠实地反映源文本的含义</li>
-<li>内在幻觉（Intrinsic Hallucinations）：模型生成的内容与输入信息直接矛盾</li>
+<li><strong>事实性幻觉（Factual Hallucinations）</strong>：模型生成与现实世界事实不符的信息</li>
+<li><strong>忠实性幻觉（Faithfulness Hallucinations）</strong>：在文本摘要、翻译等任务中，生成的内容未能忠实地反映源文本的含义</li>
+<li><strong>内在幻觉（Intrinsic Hallucinations）</strong>：模型生成的内容与输入信息直接矛盾</li>
 </ol>
 <p><strong>检测和缓解幻觉的方法</strong>：</p>
 <ul>
-<li>数据层面： 通过高质量数据清洗、引入事实性知识以及强化学习与人类反馈（RLHF）等方式，从源头减少幻觉</li>
-<li>模型层面： 探索新的模型架构，或让模型能够表达其对生成内容的不确定性</li>
-<li>推理与生成层面：<ul>
-<li>检索增强生成（Retrieval-Augmented Generation, RAG）：目前缓解幻觉的有效方法之一。RAG 系统通过在生成之前从外部知识库（如文档数据库、网页）中检索相关信息，然后将检索到的信息作为上下文，引导模型生成基于事实的回答</li>
-<li>多步推理与验证：引导模型进行多步推理，并在每一步进行自我检查或外部验证</li>
-<li>引入外部工具：允许模型调用外部工具（如搜索引擎、计算器、代码解释器）来获取实时信息或进行精确计算</li>
+<li><strong>数据层面</strong>： 通过高质量数据清洗、引入事实性知识以及强化学习与人类反馈（RLHF）等方式，从源头减少幻觉</li>
+<li><strong>模型层面</strong>： 探索新的模型架构，或让模型能够表达其对生成内容的不确定性</li>
+<li><strong>推理与生成层面</strong>：<ul>
+<li><strong>检索增强生成（Retrieval-Augmented Generation, RAG）</strong>：目前缓解幻觉的有效方法之一。RAG 系统通过在生成之前从外部知识库（如文档数据库、网页）中检索相关信息，然后将检索到的信息作为上下文，引导模型生成基于事实的回答</li>
+<li><strong>多步推理与验证</strong>：引导模型进行多步推理，并在每一步进行自我检查或外部验证</li>
+<li><strong>引入外部工具</strong>：允许模型调用外部工具（如搜索引擎、计算器、代码解释器）来获取实时信息或进行精确计算</li>
 </ul>
 </li>
 </ul>
@@ -1800,6 +1933,8 @@
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
