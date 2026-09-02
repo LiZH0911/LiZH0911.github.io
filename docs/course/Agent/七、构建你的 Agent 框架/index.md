@@ -4,15 +4,13 @@
 
 ### **7.1.1 为何需要自建Agent框架**
 
-（1）市面框架的快速迭代与局限性
-
-（2）从使用者到构建者的能力跃迁
-
-（3）定制化需求与深度掌握的必要性
+1. 市面框架的快速迭代与局限性
+2. 从使用者到构建者的能力跃迁
+3. 定制化需求与深度掌握的必要性
 
 ### **7.1.2 HelloAgents框架的设计理念**
 
-构建一个新的 Agent 框架，关键不在于功能的多少，而在于设计理念是否能真正解决现有框架的痛点。
+构建一个新的 Agent 框架，关键不在于功能的多少，而在于能否真正解决现有框架的痛点。
 
 当你初次接触任何成熟的框架时，可能会被其丰富的功能所吸引，但很快就会发现一个问题：要完成一个简单的任务，往往需要理解 Chain、Agent、Tool、Memory、Retriever 等十几个不同的概念。每个概念都有自己的抽象层，学习曲线变得异常陡峭。
 
@@ -20,17 +18,14 @@
 
 HelloAgents 框架试图在功能完整性和学习友好性之间找到平衡点，形成了四个核心的设计理念。
 
-（1）轻量级与教学友好的平衡
-
-（2）基于标准API的务实选择
-
-（3）渐进式学习路径的精心设计
-
-（4）统一的“工具”抽象：万物皆为工具
+1. 轻量级与教学友好的平衡
+2. 基于标准API的务实选择
+3. 渐进式学习路径的精心设计
+4. 统一的“工具”抽象：万物皆为工具
 
 ### **7.1.3 本章学习目标**
 
-```python
+```
 hello-agents/
 ├── hello_agents/
 │   │
@@ -156,9 +151,9 @@ print(f"历史消息数: {len(agent.get_history())}")
 
 本节内容将在第 4.1.3 节创建的 HelloAgentsLLM 基础上进行迭代升级。我们将把这个基础客户端，改造为一个更具适应性的模型调用中枢。本次升级主要围绕以下三个目标展开：
 
-1. 多提供商支持：实现对 OpenAI、ModelScope、智谱 AI 等多种主流 LLM 服务商的无缝切换，避免框架与特定供应商绑定。
-2. 本地模型集成：引入 VLLM 和 Ollama 这两种高性能本地部署方案。
-3. 自动检测机制：建立一套自动识别机制，使框架能根据环境信息智能推断所使用的 LLM 服务类型，简化用户的配置过程。
+1. **多提供商支持**：实现对 OpenAI、ModelScope、智谱 AI 等多种主流 LLM 服务商的无缝切换，避免框架与特定供应商绑定。
+2. **本地模型集成**：引入 VLLM 和 Ollama 这两种高性能本地部署方案。
+3. **自动检测机制**：建立一套自动识别机制，使框架能根据环境信息智能推断所使用的 LLM 服务类型，简化用户的配置过程。
 
 ### **7.2.1 支持多提供商**
 
@@ -259,7 +254,7 @@ for chunk in response_stream:
 
 **VLLM**
 
-VLLM 是一个为 LLM 推理设计的高性能 Python 库。它通过 PagedAttention 等先进技术，可以实现比标准 Transformers 实现高出数倍的吞吐量。下面是在本地部署一个 VLLM 服务的完整步骤：
+VLLM 是一个为 LLM 推理设计的高性能 Python 库。它通过 PagedAttention 等先进技术，可以实现**比标准 Transformers 实现高出数倍的吞吐量**。下面是在本地部署一个 VLLM 服务的完整步骤：
 
 首先，需要根据你的硬件环境（特别是 CUDA 版本）安装 VLLM。
 
@@ -439,6 +434,360 @@ for chunk in llm.think(messages):
     print(chunk, end="")
 ```
 
+**HelloAgentsLLM 完整代码**：
+
+<details>
+<summary>hello_agents/core/llm.py</summary>
+
+```python
+"""HelloAgents统一LLM接口 - 基于OpenAI原生API"""
+
+import os
+from typing import Literal, Optional, Iterator
+from openai import OpenAI
+
+from .exceptions import HelloAgentsException
+
+# 支持的LLM提供商
+SUPPORTED_PROVIDERS = Literal[
+    "openai",
+    "deepseek",
+    "qwen",
+    "modelscope",
+    "kimi",
+    "zhipu",
+    "ollama",
+    "vllm",
+    "local",
+    "auto",
+    "custom",
+]
+
+class HelloAgentsLLM:
+    """
+    为HelloAgents定制的LLM客户端。
+    它用于调用任何兼容OpenAI接口的服务，并默认使用流式响应。
+
+    设计理念：
+    - 参数优先，环境变量兜底
+    - 流式响应为默认，提供更好的用户体验
+    - 支持多种LLM提供商
+    - 统一的调用接口
+    """
+
+    def __init__(
+        self,
+        model: Optional[str] = None,
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
+        provider: Optional[SUPPORTED_PROVIDERS] = None,
+        temperature: float = 0.7,
+        max_tokens: Optional[int] = None,
+        timeout: Optional[int] = None,
+        **kwargs
+    ):
+        """
+        初始化客户端。优先使用传入参数，如果未提供，则从环境变量加载。
+        支持自动检测provider或使用统一的LLM_*环境变量配置。
+
+        Args:
+            model: 模型名称，如果未提供则从环境变量LLM_MODEL_ID读取
+            api_key: API密钥，如果未提供则从环境变量读取
+            base_url: 服务地址，如果未提供则从环境变量LLM_BASE_URL读取
+            provider: LLM提供商，如果未提供则自动检测
+            temperature: 温度参数
+            max_tokens: 最大token数
+            timeout: 超时时间，从环境变量LLM_TIMEOUT读取，默认60秒
+        """
+        # 优先使用传入参数，如果未提供，则从环境变量加载
+        self.model = model or os.getenv("LLM_MODEL_ID")
+        self.temperature = temperature
+        self.max_tokens = max_tokens
+        self.timeout = timeout or int(os.getenv("LLM_TIMEOUT", "60"))
+        self.kwargs = kwargs
+
+        # 自动检测provider或使用指定的provider
+        requested_provider = (provider or "").lower() if provider else None
+        self.provider = provider or self._auto_detect_provider(api_key, base_url)
+
+        if requested_provider == "custom":
+            self.provider = "custom"
+            self.api_key = api_key or os.getenv("LLM_API_KEY")
+            self.base_url = base_url or os.getenv("LLM_BASE_URL")
+        else:
+            # 根据provider确定API密钥和base_url
+            self.api_key, self.base_url = self._resolve_credentials(api_key, base_url)
+
+        # 验证必要参数
+        if not self.model:
+            self.model = self._get_default_model()
+        if not all([self.api_key, self.base_url]):
+            raise HelloAgentsException("API密钥和服务地址必须被提供或在.env文件中定义。")
+
+        # 创建OpenAI客户端
+        self._client = self._create_client()
+
+    def _auto_detect_provider(self, api_key: Optional[str], base_url: Optional[str]) -> str:
+        """
+        自动检测LLM提供商
+
+        检测逻辑：
+        1. 优先检查特定提供商的环境变量
+        2. 根据API密钥格式判断
+        3. 根据base_url判断
+        4. 默认返回通用配置
+        """
+        # 1. 检查特定提供商的环境变量
+        if os.getenv("OPENAI_API_KEY"):
+            return "openai"
+        if os.getenv("DEEPSEEK_API_KEY"):
+            return "deepseek"
+        if os.getenv("DASHSCOPE_API_KEY"):
+            return "qwen"
+        if os.getenv("MODELSCOPE_API_KEY"):
+            return "modelscope"
+        if os.getenv("KIMI_API_KEY") or os.getenv("MOONSHOT_API_KEY"):
+            return "kimi"
+        if os.getenv("ZHIPU_API_KEY") or os.getenv("GLM_API_KEY"):
+            return "zhipu"
+        if os.getenv("OLLAMA_API_KEY") or os.getenv("OLLAMA_HOST"):
+            return "ollama"
+        if os.getenv("VLLM_API_KEY") or os.getenv("VLLM_HOST"):
+            return "vllm"
+
+        # 2. 根据API密钥格式判断
+        actual_api_key = api_key or os.getenv("LLM_API_KEY")
+        if actual_api_key:
+            actual_key_lower = actual_api_key.lower()
+            if actual_api_key.startswith("ms-"):
+                return "modelscope"
+            elif actual_key_lower == "ollama":
+                return "ollama"
+            elif actual_key_lower == "vllm":
+                return "vllm"
+            elif actual_key_lower == "local":
+                return "local"
+            elif actual_api_key.startswith("sk-") and len(actual_api_key) > 50:
+                # 可能是OpenAI、DeepSeek或Kimi，需要进一步判断
+                pass
+            elif actual_api_key.endswith(".") or "." in actual_api_key[-20:]:
+                # 智谱AI的API密钥格式通常包含点号
+                return "zhipu"
+
+        # 3. 根据base_url判断
+        actual_base_url = base_url or os.getenv("LLM_BASE_URL")
+        if actual_base_url:
+            base_url_lower = actual_base_url.lower()
+            if "api.openai.com" in base_url_lower:
+                return "openai"
+            elif "api.deepseek.com" in base_url_lower:
+                return "deepseek"
+            elif "dashscope.aliyuncs.com" in base_url_lower:
+                return "qwen"
+            elif "api-inference.modelscope.cn" in base_url_lower:
+                return "modelscope"
+            elif "api.moonshot.cn" in base_url_lower:
+                return "kimi"
+            elif "open.bigmodel.cn" in base_url_lower:
+                return "zhipu"
+            elif "localhost" in base_url_lower or "127.0.0.1" in base_url_lower:
+                # 本地部署检测 - 优先检查特定服务
+                if ":11434" in base_url_lower or "ollama" in base_url_lower:
+                    return "ollama"
+                elif ":8000" in base_url_lower and "vllm" in base_url_lower:
+                    return "vllm"
+                elif ":8080" in base_url_lower or ":7860" in base_url_lower:
+                    return "local"
+                else:
+                    # 根据API密钥进一步判断
+                    if actual_api_key and actual_api_key.lower() == "ollama":
+                        return "ollama"
+                    elif actual_api_key and actual_api_key.lower() == "vllm":
+                        return "vllm"
+                    else:
+                        return "local"
+            elif any(port in base_url_lower for port in [":8080", ":7860", ":5000"]):
+                # 常见的本地部署端口
+                return "local"
+
+        # 4. 默认返回auto，使用通用配置
+        return "auto"
+
+    def _resolve_credentials(self, api_key: Optional[str], base_url: Optional[str]) -> tuple[str, str]:
+        """根据provider解析API密钥和base_url"""
+        if self.provider == "openai":
+            resolved_api_key = api_key or os.getenv("OPENAI_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://api.openai.com/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "deepseek":
+            resolved_api_key = api_key or os.getenv("DEEPSEEK_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://api.deepseek.com"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "qwen":
+            resolved_api_key = api_key or os.getenv("DASHSCOPE_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://dashscope.aliyuncs.com/compatible-mode/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "modelscope":
+            resolved_api_key = api_key or os.getenv("MODELSCOPE_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://api-inference.modelscope.cn/v1/"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "kimi":
+            resolved_api_key = api_key or os.getenv("KIMI_API_KEY") or os.getenv("MOONSHOT_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://api.moonshot.cn/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "zhipu":
+            resolved_api_key = api_key or os.getenv("ZHIPU_API_KEY") or os.getenv("GLM_API_KEY") or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "https://open.bigmodel.cn/api/paas/v4"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "ollama":
+            resolved_api_key = api_key or os.getenv("OLLAMA_API_KEY") or os.getenv("LLM_API_KEY") or "ollama"
+            resolved_base_url = base_url or os.getenv("OLLAMA_HOST") or os.getenv("LLM_BASE_URL") or "http://localhost:11434/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "vllm":
+            resolved_api_key = api_key or os.getenv("VLLM_API_KEY") or os.getenv("LLM_API_KEY") or "vllm"
+            resolved_base_url = base_url or os.getenv("VLLM_HOST") or os.getenv("LLM_BASE_URL") or "http://localhost:8000/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "local":
+            resolved_api_key = api_key or os.getenv("LLM_API_KEY") or "local"
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL") or "http://localhost:8000/v1"
+            return resolved_api_key, resolved_base_url
+
+        elif self.provider == "custom":
+            resolved_api_key = api_key or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL")
+            return resolved_api_key, resolved_base_url
+
+        else:
+            # auto或其他情况：使用通用配置，支持任何OpenAI兼容的服务
+            resolved_api_key = api_key or os.getenv("LLM_API_KEY")
+            resolved_base_url = base_url or os.getenv("LLM_BASE_URL")
+            return resolved_api_key, resolved_base_url
+
+    def _create_client(self) -> OpenAI:
+        """创建OpenAI客户端"""
+        return OpenAI(
+            api_key=self.api_key,
+            base_url=self.base_url,
+            timeout=self.timeout
+        )
+    
+    def _get_default_model(self) -> str:
+        """获取默认模型"""
+        if self.provider == "openai":
+            return "gpt-3.5-turbo"
+        elif self.provider == "deepseek":
+            return "deepseek-chat"
+        elif self.provider == "qwen":
+            return "qwen-plus"
+        elif self.provider == "modelscope":
+            return "Qwen/Qwen2.5-72B-Instruct"
+        elif self.provider == "kimi":
+            return "moonshot-v1-8k"
+        elif self.provider == "zhipu":
+            return "glm-4"
+        elif self.provider == "ollama":
+            return "llama3.2"  # Ollama常用模型
+        elif self.provider == "vllm":
+            return "meta-llama/Llama-2-7b-chat-hf"  # vLLM常用模型
+        elif self.provider == "local":
+            return "local-model"  # 本地模型占位符
+        elif self.provider == "custom":
+            return self.model or "gpt-3.5-turbo"
+        else:
+            # auto或其他情况：根据base_url智能推断默认模型
+            base_url = os.getenv("LLM_BASE_URL", "")
+            base_url_lower = base_url.lower()
+            if "modelscope" in base_url_lower:
+                return "Qwen/Qwen2.5-72B-Instruct"
+            elif "deepseek" in base_url_lower:
+                return "deepseek-chat"
+            elif "dashscope" in base_url_lower:
+                return "qwen-plus"
+            elif "moonshot" in base_url_lower:
+                return "moonshot-v1-8k"
+            elif "bigmodel" in base_url_lower:
+                return "glm-4"
+            elif "ollama" in base_url_lower or ":11434" in base_url_lower:
+                return "llama3.2"
+            elif ":8000" in base_url_lower or "vllm" in base_url_lower:
+                return "meta-llama/Llama-2-7b-chat-hf"
+            elif "localhost" in base_url_lower or "127.0.0.1" in base_url_lower:
+                return "local-model"
+            else:
+                return "gpt-3.5-turbo"
+
+    def think(self, messages: list[dict[str, str]], temperature: Optional[float] = None) -> Iterator[str]:
+        """
+        调用大语言模型进行思考，并返回流式响应。
+        这是主要的调用方法，默认使用流式响应以获得更好的用户体验。
+
+        Args:
+            messages: 消息列表
+            temperature: 温度参数，如果未提供则使用初始化时的值
+
+        Yields:
+            str: 流式响应的文本片段
+        """
+        print(f"🧠 正在调用 {self.model} 模型...")
+        try:
+            response = self._client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=temperature if temperature is not None else self.temperature,
+                max_tokens=self.max_tokens,
+                stream=True, # 关键：启用流式响应
+            )
+
+            # 处理流式响应
+            print("✅ 大语言模型响应成功:")
+            for chunk in response: # 遍历响应流中的每个数据块（chunk）
+                content = chunk.choices[0].delta.content or "" # 从每个chunk中提取增量内容（delta.content），chunk 是 Pydantic 模型对象，用点号（.）访问属性，也支持字典式访问
+                if content:
+                    print(content, end="", flush=True) # 打印增量内容，end="" 表示不换行，flush=True 表示立即刷新输出缓冲区，确保实时显示
+                    yield content # 通过 yield 将内容逐块返回给调用方
+            print()  # 在流式输出结束后换行
+
+        except Exception as e:
+            print(f"❌ 调用LLM API时发生错误: {e}")
+            raise HelloAgentsException(f"LLM调用失败: {str(e)}")
+
+    def invoke(self, messages: list[dict[str, str]], **kwargs) -> str:
+        """
+        非流式调用LLM，返回完整响应。
+        适用于不需要流式输出的场景。
+        """
+        try:
+            response = self._client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                temperature=kwargs.get('temperature', self.temperature),
+                max_tokens=kwargs.get('max_tokens', self.max_tokens),
+                **{k: v for k, v in kwargs.items() if k not in ['temperature', 'max_tokens']} # 字典推导式，将其他所有 kwargs 参数传递给 API
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            raise HelloAgentsException(f"LLM调用失败: {str(e)}")
+
+    def stream_invoke(self, messages: list[dict[str, str]], **kwargs) -> Iterator[str]:
+        """
+        流式调用LLM的别名方法，与think方法功能相同。
+        保持向后兼容性。
+        """
+        temperature = kwargs.get('temperature')
+        yield from self.think(messages, temperature)
+
+```
+
+</details>
+
 ## 7.3 **框架接口实现**
 
 在上节中，我们构建了 HelloAgentsLLM 这一核心组件，解决了与大语言模型通信的关键问题。不过它还需要一系列配套的接口和组件来处理数据流、管理配置、应对异常，并为上层应用的构建提供一个清晰、统一的结构。本节将讲述以下三个核心文件：
@@ -497,7 +846,7 @@ class Message(BaseModel):
 
 除了 `content` 和 `role` 这两个核心字段外，我们还增加了 `timestamp` 和 `metadata`，为日志记录和未来功能扩展预留了空间。
 
-最后，`to_dict()` 方法是其核心功能之一，负责将内部使用的 `Message` 对象转换为与 OpenAI API 兼容的字典格式，体现了“对内丰富，对外兼容”的设计原则。
+最后，`to_dict()` 方法是其核心功能之一，负责**将内部使用的 `Message` 对象转换为与 OpenAI API 兼容的字典格式**，体现了“对内丰富，对外兼容”的设计原则。
 
 ### **7.3.2 Config 类**
 
@@ -508,10 +857,12 @@ class Message(BaseModel):
 
 ```python
 """配置管理"""
+
 import os
 from typing import Optional, Dict, Any
-from pydantic import BaseModel
+from pydantic import BaseModel # Pydantic 是 Python 中最流行的数据验证和设置管理库，用于定义数据模型、自动验证类型、序列化/反序列化数据（对象 ↔ 字典/JSON 互转）。
 
+# Config 是 Pydantic BaseModel 的子类
 class Config(BaseModel):
     """HelloAgents配置类"""
     
@@ -527,7 +878,8 @@ class Config(BaseModel):
     
     # 其他配置
     max_history_length: int = 100
-    
+
+    # 类方法，从环境变量创建：config = Config.from_env()
     @classmethod
     def from_env(cls) -> "Config":
         """从环境变量创建配置"""
@@ -536,8 +888,9 @@ class Config(BaseModel):
             log_level=os.getenv("LOG_LEVEL", "INFO"),
             temperature=float(os.getenv("TEMPERATURE", "0.7")),
             max_tokens=int(os.getenv("MAX_TOKENS")) if os.getenv("MAX_TOKENS") else None,
-        )
-    
+        ) # ← 创建并返回 Config 实例
+
+    # 转换为字典：config_dict = config.to_dict()
     def to_dict(self) -> Dict[str, Any]:
         """转换为字典"""
         return self.dict()
@@ -549,7 +902,12 @@ class Config(BaseModel):
 
 其次，每个配置项都设有合理的默认值，保证了框架在零配置下也能工作。
 
-最核心的是 `from_env()` 类方法，它允许用户通过设置环境变量来覆盖默认配置，无需修改代码，这在部署到不同环境时尤其有用。
+最核心的是 `from_env()` 类方法，它允许用户**通过设置环境变量来覆盖默认配置，无需修改代码**，这在部署到不同环境时尤其有用。
+
+```python
+# 从环境变量创建 Config 实例
+config = Config.from_env()
+```
 
 
 ### **7.3.3 Agent 抽象基类**
@@ -563,8 +921,9 @@ class Config(BaseModel):
 
 ```python
 """Agent基类"""
+
 from abc import ABC, abstractmethod
-from typing import Optional, Any
+from typing import Optional
 from .message import Message
 from .llm import HelloAgentsLLM
 from .config import Config
@@ -582,8 +941,8 @@ class Agent(ABC):
         self.name = name
         self.llm = llm
         self.system_prompt = system_prompt
-        self.config = config or Config()
-        self._history: list[Message] = []
+        self.config = config or Config() # 如果 config is None 就使用默认配置
+        self._history: list[Message] = [] # 初始化一个空列表来存储历史消息
     
     @abstractmethod
     def run(self, input_text: str, **kwargs) -> str:
@@ -604,6 +963,9 @@ class Agent(ABC):
     
     def __str__(self) -> str:
         return f"Agent(name={self.name}, provider={self.llm.provider})"
+    
+    def __repr__(self) -> str:
+        return self.__str__()
 ```
 
 </details>
@@ -1088,10 +1450,190 @@ class MyReActAgent(ReActAgent):
 ### **7.4.3 ReflectionAgent**
 
 <details>
-<summary>chapter7/my_reflection_agent.py</summary>
+<summary>hello_agents/agents/reflection_agent.py</summary>
 
 ```python
-略
+"""Reflection Agent实现 - 自我反思与迭代优化的智能体"""
+
+from typing import Optional, List, Dict, Any
+from ..core.agent import Agent
+from ..core.llm import HelloAgentsLLM
+from ..core.config import Config
+from ..core.message import Message
+
+# 默认提示词模板
+DEFAULT_PROMPTS = {
+    "initial": """
+请根据以下要求完成任务：
+
+任务: {task}
+
+请提供一个完整、准确的回答。
+""",
+    "reflect": """
+请仔细审查以下回答，并找出可能的问题或改进空间：
+
+# 原始任务:
+{task}
+
+# 当前回答:
+{content}
+
+请分析这个回答的质量，指出不足之处，并提出具体的改进建议。
+如果回答已经很好，请回答"无需改进"。
+""",
+    "refine": """
+请根据反馈意见改进你的回答：
+
+# 原始任务:
+{task}
+
+# 上一轮回答:
+{last_attempt}
+
+# 反馈意见:
+{feedback}
+
+请提供一个改进后的回答。
+"""
+}
+
+class Memory:
+    """
+    简单的短期记忆模块，用于存储智能体的行动与反思轨迹。
+    """
+    def __init__(self):
+        self.records: List[Dict[str, Any]] = []
+
+    def add_record(self, record_type: str, content: str):
+        """向记忆中添加一条新记录"""
+        self.records.append({"type": record_type, "content": content})
+        print(f"📝 记忆已更新，新增一条 '{record_type}' 记录。")
+
+    def get_trajectory(self) -> str:
+        """将所有记忆记录格式化为一个连贯的字符串文本"""
+        trajectory = ""
+        for record in self.records:
+            if record['type'] == 'execution':
+                trajectory += f"--- 上一轮尝试 (代码) ---\n{record['content']}\n\n"
+            elif record['type'] == 'reflection':
+                trajectory += f"--- 评审员反馈 ---\n{record['content']}\n\n"
+        return trajectory.strip()
+
+    def get_last_execution(self) -> str:
+        """获取最近一次的执行结果"""
+        for record in reversed(self.records):
+            if record['type'] == 'execution':
+                return record['content']
+        return ""
+
+class ReflectionAgent(Agent):
+    """
+    Reflection Agent - 自我反思与迭代优化的智能体
+
+    这个Agent能够：
+    1. 执行初始任务
+    2. 对结果进行自我反思
+    3. 根据反思结果进行优化
+    4. 迭代改进直到满意
+
+    特别适合代码生成、文档写作、分析报告等需要迭代优化的任务。
+
+    支持多种专业领域的提示词模板，用户可以自定义或使用内置模板。
+    """
+
+    def __init__(
+        self,
+        name: str,
+        llm: HelloAgentsLLM,
+        system_prompt: Optional[str] = None,
+        config: Optional[Config] = None,
+        max_iterations: int = 3,
+        custom_prompts: Optional[Dict[str, str]] = None
+    ):
+        """
+        初始化ReflectionAgent
+
+        Args:
+            name: Agent名称
+            llm: LLM实例
+            system_prompt: 系统提示词
+            config: 配置对象
+            max_iterations: 最大迭代次数
+            custom_prompts: 自定义提示词模板 {"initial": "", "reflect": "", "refine": ""}
+        """
+        super().__init__(name, llm, system_prompt, config)
+        self.max_iterations = max_iterations
+        self.memory = Memory()
+
+        # 设置提示词模板：用户自定义优先，否则使用默认模板
+        self.prompts = custom_prompts if custom_prompts else DEFAULT_PROMPTS
+    
+    def run(self, input_text: str, **kwargs) -> str:
+        """
+        运行Reflection Agent
+
+        Args:
+            input_text: 任务描述
+            **kwargs: 其他参数
+
+        Returns:
+            最终优化后的结果
+        """
+        print(f"\n🤖 {self.name} 开始处理任务: {input_text}")
+
+        # 重置记忆
+        self.memory = Memory()
+
+        # 1. 初始执行
+        print("\n--- 正在进行初始尝试 ---")
+        initial_prompt = self.prompts["initial"].format(task=input_text)
+        initial_result = self._get_llm_response(initial_prompt, **kwargs)
+        self.memory.add_record("execution", initial_result)
+
+        # 2. 迭代循环：反思与优化
+        for i in range(self.max_iterations):
+            print(f"\n--- 第 {i+1}/{self.max_iterations} 轮迭代 ---")
+
+            # a. 反思
+            print("\n-> 正在进行反思...")
+            last_result = self.memory.get_last_execution()
+            reflect_prompt = self.prompts["reflect"].format(
+                task=input_text,
+                content=last_result
+            )
+            feedback = self._get_llm_response(reflect_prompt, **kwargs)
+            self.memory.add_record("reflection", feedback)
+
+            # b. 检查是否需要停止
+            if "无需改进" in feedback or "no need for improvement" in feedback.lower():
+                print("\n✅ 反思认为结果已无需改进，任务完成。")
+                break
+
+            # c. 优化
+            print("\n-> 正在进行优化...")
+            refine_prompt = self.prompts["refine"].format(
+                task=input_text,
+                last_attempt=last_result,
+                feedback=feedback
+            )
+            refined_result = self._get_llm_response(refine_prompt, **kwargs)
+            self.memory.add_record("execution", refined_result)
+
+        final_result = self.memory.get_last_execution()
+        print(f"\n--- 任务完成 ---\n最终结果:\n{final_result}")
+
+        # 保存到历史记录
+        self.add_message(Message(input_text, "user"))
+        self.add_message(Message(final_result, "assistant"))
+
+        return final_result
+    
+    def _get_llm_response(self, prompt: str, **kwargs) -> str:
+        """调用LLM并获取完整响应"""
+        messages = [{"role": "user", "content": prompt}]
+        return self.llm.invoke(messages, **kwargs) or ""
+
 ```
 
 </details>
@@ -1099,11 +1641,212 @@ class MyReActAgent(ReActAgent):
 ### **7.4.4 PlanAndSolveAgent**
 
 <details>
-<summary>chapter7/my_plan_solve_agent.py</summary>
+<summary>hello_agents/agents/plan_solve_agent.py</summary>
 
+``````python
+"""Plan and Solve Agent实现 - 分解规划与逐步执行的智能体"""
+
+import ast
+from typing import Optional, List, Dict
+from ..core.agent import Agent
+from ..core.llm import HelloAgentsLLM
+from ..core.config import Config
+from ..core.message import Message
+
+# 默认规划器提示词模板
+DEFAULT_PLANNER_PROMPT = """
+你是一个顶级的AI规划专家。你的任务是将用户提出的复杂问题分解成一个由多个简单步骤组成的行动计划。
+请确保计划中的每个步骤都是一个独立的、可执行的子任务，并且严格按照逻辑顺序排列。
+你的输出必须是一个Python列表，其中每个元素都是一个描述子任务的字符串。
+
+问题: {question}
+
+请严格按照以下格式输出你的计划:
 ```python
-略
+["步骤1", "步骤2", "步骤3", ...]
 ```
+"""
+
+# 默认执行器提示词模板
+DEFAULT_EXECUTOR_PROMPT = """
+你是一位顶级的AI执行专家。你的任务是严格按照给定的计划，一步步地解决问题。
+你将收到原始问题、完整的计划、以及到目前为止已经完成的步骤和结果。
+请你专注于解决"当前步骤"，并仅输出该步骤的最终答案，不要输出任何额外的解释或对话。
+
+# 原始问题:
+{question}
+
+# 完整计划:
+{plan}
+
+# 历史步骤与结果:
+{history}
+
+# 当前步骤:
+{current_step}
+
+请仅输出针对"当前步骤"的回答:
+"""
+
+class Planner:
+    """规划器 - 负责将复杂问题分解为简单步骤"""
+
+    def __init__(self, llm_client: HelloAgentsLLM, prompt_template: Optional[str] = None):
+        self.llm_client = llm_client
+        self.prompt_template = prompt_template if prompt_template else DEFAULT_PLANNER_PROMPT
+
+    def plan(self, question: str, **kwargs) -> List[str]:
+        """
+        生成执行计划
+
+        Args:
+            question: 要解决的问题
+            **kwargs: LLM调用参数
+
+        Returns:
+            步骤列表
+        """
+        prompt = self.prompt_template.format(question=question)
+        messages = [{"role": "user", "content": prompt}]
+
+        print("--- 正在生成计划 ---")
+        response_text = self.llm_client.invoke(messages, **kwargs) or ""
+        print(f"✅ 计划已生成:\n{response_text}")
+
+        try:
+            # 提取Python代码块中的列表
+            plan_str = response_text.split("```python")[1].split("```")[0].strip()
+            plan = ast.literal_eval(plan_str)
+            return plan if isinstance(plan, list) else []
+        except (ValueError, SyntaxError, IndexError) as e:
+            print(f"❌ 解析计划时出错: {e}")
+            print(f"原始响应: {response_text}")
+            return []
+        except Exception as e:
+            print(f"❌ 解析计划时发生未知错误: {e}")
+            return []
+
+class Executor:
+    """执行器 - 负责按计划逐步执行"""
+
+    def __init__(self, llm_client: HelloAgentsLLM, prompt_template: Optional[str] = None):
+        self.llm_client = llm_client
+        self.prompt_template = prompt_template if prompt_template else DEFAULT_EXECUTOR_PROMPT
+
+    def execute(self, question: str, plan: List[str], **kwargs) -> str:
+        """
+        按计划执行任务
+
+        Args:
+            question: 原始问题
+            plan: 执行计划
+            **kwargs: LLM调用参数
+
+        Returns:
+            最终答案
+        """
+        history = ""
+        final_answer = ""
+
+        print("\n--- 正在执行计划 ---")
+        for i, step in enumerate(plan, 1):
+            print(f"\n-> 正在执行步骤 {i}/{len(plan)}: {step}")
+            prompt = self.prompt_template.format(
+                question=question,
+                plan=plan,
+                history=history if history else "无",
+                current_step=step
+            )
+            messages = [{"role": "user", "content": prompt}]
+
+            response_text = self.llm_client.invoke(messages, **kwargs) or ""
+
+            history += f"步骤 {i}: {step}\n结果: {response_text}\n\n"
+            final_answer = response_text
+            print(f"✅ 步骤 {i} 已完成，结果: {final_answer}")
+
+        return final_answer
+
+class PlanAndSolveAgent(Agent):
+    """
+    Plan and Solve Agent - 分解规划与逐步执行的智能体
+    
+    这个Agent能够：
+    1. 将复杂问题分解为简单步骤
+    2. 按照计划逐步执行
+    3. 维护执行历史和上下文
+    4. 得出最终答案
+    
+    特别适合多步骤推理、数学问题、复杂分析等任务。
+    """
+    
+    def __init__(
+        self,
+        name: str,
+        llm: HelloAgentsLLM,
+        system_prompt: Optional[str] = None,
+        config: Optional[Config] = None,
+        custom_prompts: Optional[Dict[str, str]] = None
+    ):
+        """
+        初始化PlanAndSolveAgent
+
+        Args:
+            name: Agent名称
+            llm: LLM实例
+            system_prompt: 系统提示词
+            config: 配置对象
+            custom_prompts: 自定义提示词模板 {"planner": "", "executor": ""}
+        """
+        super().__init__(name, llm, system_prompt, config)
+
+        # 设置提示词模板：用户自定义优先，否则使用默认模板
+        if custom_prompts:
+            planner_prompt = custom_prompts.get("planner")
+            executor_prompt = custom_prompts.get("executor")
+        else:
+            planner_prompt = None
+            executor_prompt = None
+
+        self.planner = Planner(self.llm, planner_prompt)
+        self.executor = Executor(self.llm, executor_prompt)
+    
+    def run(self, input_text: str, **kwargs) -> str:
+        """
+        运行Plan and Solve Agent
+        
+        Args:
+            input_text: 要解决的问题
+            **kwargs: 其他参数
+            
+        Returns:
+            最终答案
+        """
+        print(f"\n🤖 {self.name} 开始处理问题: {input_text}")
+        
+        # 1. 生成计划
+        plan = self.planner.plan(input_text, **kwargs)
+        if not plan:
+            final_answer = "无法生成有效的行动计划，任务终止。"
+            print(f"\n--- 任务终止 ---\n{final_answer}")
+            
+            # 保存到历史记录
+            self.add_message(Message(input_text, "user"))
+            self.add_message(Message(final_answer, "assistant"))
+            
+            return final_answer
+        
+        # 2. 执行计划
+        final_answer = self.executor.execute(input_text, plan, **kwargs)
+        print(f"\n--- 任务完成 ---\n最终答案: {final_answer}")
+        
+        # 保存到历史记录
+        self.add_message(Message(input_text, "user"))
+        self.add_message(Message(final_answer, "assistant"))
+        
+        return final_answer
+
+``````
 
 </details>
 
@@ -1124,10 +1867,14 @@ FunctionCallAgent 是 hello-agents 在 0.2.8 之后引入的 Agent，它基于 O
 * `_parse_function_call_arguments`: 解析模型返回的 JSON 字符串参数
 * `_convert_parameter_types`: 转换参数类型
 
-这些功能可以使其具备原生的 OpenAI Function Calling 的能力，对比使用 prompt 约束的方式，具备更强的鲁棒性。
+这些功能可以使其具备原生的 OpenAI Function Calling 的能力
+
+通过 OpenAI 原生的 tools 参数与模型交互，而不是通过手动解析文本或正则匹配来触发工具
+
+对比使用 prompt 约束的方式，具备更强的鲁棒性。
 
 <details>
-<summary>点击展开完整代码</summary>
+<summary>OpenAI Function Calling 的示例与再封装</summary>
 
 ```python
 def _invoke_with_tools(self, messages: list[dict[str, Any]], tools: list[dict[str, Any]], tool_choice: Union[str, dict], **kwargs):
@@ -1187,11 +1934,405 @@ print(completion)
 
 </details>
 
+**使用 OpenAI 函数调用范式的 FunctionCallAgent 实现**：
+
+<details>
+<summary>hello_agents/agents/function_call_agent.py</summary>
+
+```python
+"""FunctionCallAgent - 使用OpenAI函数调用范式的Agent实现"""
+
+from __future__ import annotations
+
+import json
+from typing import Iterator, Optional, Union, TYPE_CHECKING, Any, Dict
+
+from ..core.agent import Agent
+from ..core.config import Config
+from ..core.llm import HelloAgentsLLM
+from ..core.message import Message
+
+if TYPE_CHECKING:
+    from ..tools.registry import ToolRegistry
+
+
+def _map_parameter_type(param_type: str) -> str:
+    """将工具参数类型映射为JSON Schema允许的类型"""
+    normalized = (param_type or "").lower()
+    if normalized in {"string", "number", "integer", "boolean", "array", "object"}:
+        return normalized
+    return "string"
+
+# FunctionCallAgent 继承自基类 Agent，目的是让LLM能够自主决定何时调用外部工具（函数），并通过OpenAI原生的 tools 参数与模型交互，而不是通过手动解析文本或正则匹配来触发工具。
+class FunctionCallAgent(Agent):
+    """基于OpenAI原生函数调用机制的Agent"""
+
+    def __init__(
+        self,
+        name: str,
+        llm: HelloAgentsLLM,
+        system_prompt: Optional[str] = None,
+        config: Optional[Config] = None,
+        tool_registry: Optional["ToolRegistry"] = None, # 工具注册表，管理所有可用工具
+        enable_tool_calling: bool = True, # 是否启用工具调用
+        default_tool_choice: Union[str, dict] = "auto", # 默认工具选择策略，如 "auto" / "none" / 指定函数
+        max_tool_iterations: int = 3, # 最大工具调用轮次，防止死循环
+    ):
+        super().__init__(name, llm, system_prompt, config)
+        self.tool_registry = tool_registry
+        self.enable_tool_calling = enable_tool_calling and tool_registry is not None
+        self.default_tool_choice = default_tool_choice
+        self.max_tool_iterations = max_tool_iterations
+
+    def _get_system_prompt(self) -> str:
+        """构建系统提示词，注入工具描述"""
+        base_prompt = self.system_prompt or "你是一个可靠的AI助理，能够在需要时调用工具完成任务。"
+
+        if not self.enable_tool_calling or not self.tool_registry:
+            return base_prompt
+
+        tools_description = self.tool_registry.get_tools_description()
+        if not tools_description or tools_description == "暂无可用工具":
+            return base_prompt
+
+        prompt = base_prompt + "\n\n## 可用工具\n"
+        prompt += "当你判断需要外部信息或执行动作时，可以直接通过函数调用使用以下工具：\n"
+        prompt += tools_description + "\n"
+        prompt += "\n请主动决定是否调用工具，合理利用多次调用来获得完备答案。"
+        return prompt
+
+    # 将注册的工具转换为 OpenAI 所需的 tools 参数格式
+    def _build_tool_schemas(self) -> list[dict[str, Any]]:
+        if not self.enable_tool_calling or not self.tool_registry:
+            return []
+
+        schemas: list[dict[str, Any]] = []
+
+        # Tool对象
+        for tool in self.tool_registry.get_all_tools():
+            properties: Dict[str, Any] = {}
+            required: list[str] = []
+
+            try:
+                parameters = tool.get_parameters()
+            except Exception:
+                parameters = []
+
+            for param in parameters:
+                properties[param.name] = {
+                    "type": _map_parameter_type(param.type),
+                    "description": param.description or ""
+                }
+                if param.default is not None:
+                    properties[param.name]["default"] = param.default
+                if getattr(param, "required", True):
+                    required.append(param.name)
+
+            schema: dict[str, Any] = {
+                "type": "function",
+                "function": {
+                    "name": tool.name,
+                    "description": tool.description or "",
+                    "parameters": {
+                        "type": "object",
+                        "properties": properties
+                    }
+                }
+            }
+            if required:
+                schema["function"]["parameters"]["required"] = required
+            schemas.append(schema)
+
+        # register_function 注册的工具（直接访问内部结构）
+        function_map = getattr(self.tool_registry, "_functions", {})
+        for name, info in function_map.items():
+            schemas.append(
+                {
+                    "type": "function",
+                    "function": {
+                        "name": name,
+                        "description": info.get("description", ""),
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "input": {
+                                    "type": "string",
+                                    "description": "输入文本"
+                                }
+                            },
+                            "required": ["input"]
+                        }
+                    }
+                }
+            )
+
+        return schemas
+
+    @staticmethod
+    def _extract_message_content(raw_content: Any) -> str:
+        """从OpenAI响应的message.content中安全提取文本"""
+        if raw_content is None:
+            return ""
+        if isinstance(raw_content, str):
+            return raw_content
+        if isinstance(raw_content, list):
+            parts: list[str] = []
+            for item in raw_content:
+                text = getattr(item, "text", None)
+                if text is None and isinstance(item, dict):
+                    text = item.get("text")
+                if text:
+                    parts.append(text)
+            return "".join(parts)
+        return str(raw_content)
+
+    @staticmethod
+    def _parse_function_call_arguments(arguments: Optional[str]) -> dict[str, Any]:
+        """解析模型返回的JSON字符串参数"""
+        if not arguments:
+            return {}
+
+        try:
+            parsed = json.loads(arguments)
+            return parsed if isinstance(parsed, dict) else {}
+        except json.JSONDecodeError:
+            return {}
+
+    def _convert_parameter_types(self, tool_name: str, param_dict: dict[str, Any]) -> dict[str, Any]:
+        """根据工具定义尽可能转换参数类型"""
+        if not self.tool_registry:
+            return param_dict
+
+        tool = self.tool_registry.get_tool(tool_name)
+        if not tool:
+            return param_dict
+
+        try:
+            tool_params = tool.get_parameters()
+        except Exception:
+            return param_dict
+
+        type_mapping = {param.name: param.type for param in tool_params}
+        converted: dict[str, Any] = {}
+
+        for key, value in param_dict.items():
+            param_type = type_mapping.get(key)
+            if not param_type:
+                converted[key] = value
+                continue
+
+            try:
+                normalized = param_type.lower()
+                if normalized in {"number", "float"}:
+                    converted[key] = float(value)
+                elif normalized in {"integer", "int"}:
+                    converted[key] = int(value)
+                elif normalized in {"boolean", "bool"}:
+                    if isinstance(value, bool):
+                        converted[key] = value
+                    elif isinstance(value, (int, float)):
+                        converted[key] = bool(value)
+                    elif isinstance(value, str):
+                        converted[key] = value.lower() in {"true", "1", "yes"}
+                    else:
+                        converted[key] = bool(value)
+                else:
+                    converted[key] = value
+            except (TypeError, ValueError):
+                converted[key] = value
+
+        return converted
+
+    def _execute_tool_call(self, tool_name: str, arguments: dict[str, Any]) -> str:
+        """执行工具调用并返回字符串结果"""
+        if not self.tool_registry:
+            return "❌ 错误：未配置工具注册表"
+
+        tool = self.tool_registry.get_tool(tool_name)
+        if tool:
+            try:
+                typed_arguments = self._convert_parameter_types(tool_name, arguments)
+                return tool.run(typed_arguments)
+            except Exception as exc:
+                return f"❌ 工具调用失败：{exc}"
+
+        func = self.tool_registry.get_function(tool_name)
+        if func:
+            try:
+                input_text = arguments.get("input", "")
+                return func(input_text)
+            except Exception as exc:
+                return f"❌ 工具调用失败：{exc}"
+
+        return f"❌ 错误：未找到工具 '{tool_name}'"
+
+    def _invoke_with_tools(self, messages: list[dict[str, Any]], tools: list[dict[str, Any]], tool_choice: Union[str, dict], **kwargs):
+        """调用底层OpenAI客户端执行函数调用"""
+        client = getattr(self.llm, "_client", None)
+        if client is None:
+            raise RuntimeError("HelloAgentsLLM 未正确初始化客户端，无法执行函数调用。")
+
+        client_kwargs = dict(kwargs)
+        client_kwargs.setdefault("temperature", self.llm.temperature)
+        if self.llm.max_tokens is not None:
+            client_kwargs.setdefault("max_tokens", self.llm.max_tokens)
+
+        return client.chat.completions.create(
+            model=self.llm.model,
+            messages=messages,
+            tools=tools,
+            tool_choice=tool_choice,
+            **client_kwargs,
+        )
+
+    def run(
+        self,
+        input_text: str,
+        *,
+        max_tool_iterations: Optional[int] = None,
+        tool_choice: Optional[Union[str, dict]] = None,
+        **kwargs,
+    ) -> str:
+        """
+        执行函数调用范式的对话流程
+        """
+        # 1. 构建消息列表：system + 历史记录 + 用户输入。
+        messages: list[dict[str, Any]] = []
+        system_prompt = self._get_system_prompt()
+        messages.append({"role": "system", "content": system_prompt})
+
+        for msg in self._history:
+            messages.append({"role": msg.role, "content": msg.content})
+
+        messages.append({"role": "user", "content": input_text})
+
+        # 判断是否有工具：如果没有工具，直接调用 llm.invoke() 返回
+        tool_schemas = self._build_tool_schemas()
+        if not tool_schemas:
+            response_text = self.llm.invoke(messages, **kwargs)
+            self.add_message(Message(input_text, "user"))
+            self.add_message(Message(response_text, "assistant"))
+            return response_text
+
+        iterations_limit = max_tool_iterations if max_tool_iterations is not None else self.max_tool_iterations
+        effective_tool_choice: Union[str, dict] = tool_choice if tool_choice is not None else self.default_tool_choice
+
+        current_iteration = 0
+        final_response = ""
+
+        while current_iteration < iterations_limit:
+            response = self._invoke_with_tools(
+                messages,
+                tools=tool_schemas,
+                tool_choice=effective_tool_choice,
+                **kwargs,
+            )
+
+            choice = response.choices[0]
+            assistant_message = choice.message
+            content = self._extract_message_content(assistant_message.content)
+            tool_calls = list(assistant_message.tool_calls or [])
+
+            if tool_calls:
+                assistant_payload: dict[str, Any] = {"role": "assistant", "content": content}
+                assistant_payload["tool_calls"] = []
+
+                for tool_call in tool_calls:
+                    assistant_payload["tool_calls"].append(
+                        {
+                            "id": tool_call.id,
+                            "type": tool_call.type,
+                            "function": {
+                                "name": tool_call.function.name,
+                                "arguments": tool_call.function.arguments,
+                            },
+                        }
+                    )
+                messages.append(assistant_payload)
+
+                for tool_call in tool_calls:
+                    tool_name = tool_call.function.name
+                    arguments = self._parse_function_call_arguments(tool_call.function.arguments)
+                    result = self._execute_tool_call(tool_name, arguments)
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": tool_call.id,
+                            "name": tool_name,
+                            "content": result,
+                        }
+                    )
+
+                current_iteration += 1
+                continue
+
+            final_response = content
+            messages.append({"role": "assistant", "content": final_response})
+            break
+
+        if current_iteration >= iterations_limit and not final_response:
+            final_choice = self._invoke_with_tools(
+                messages,
+                tools=tool_schemas,
+                tool_choice="none",
+                **kwargs,
+            )
+            final_response = self._extract_message_content(final_choice.choices[0].message.content)
+            messages.append({"role": "assistant", "content": final_response})
+
+        self.add_message(Message(input_text, "user"))
+        self.add_message(Message(final_response, "assistant"))
+        return final_response
+
+    def add_tool(self, tool) -> None:
+        """便捷方法：将工具注册到当前Agent"""
+        if not self.tool_registry:
+            from ..tools.registry import ToolRegistry
+
+            self.tool_registry = ToolRegistry()
+            self.enable_tool_calling = True
+
+        if hasattr(tool, "auto_expand") and getattr(tool, "auto_expand"):
+            expanded_tools = tool.get_expanded_tools()
+            if expanded_tools:
+                for expanded_tool in expanded_tools:
+                    self.tool_registry.register_tool(expanded_tool)
+                print(f"✅ MCP工具 '{tool.name}' 已展开为 {len(expanded_tools)} 个独立工具")
+                return
+
+        self.tool_registry.register_tool(tool)
+
+    def remove_tool(self, tool_name: str) -> bool:
+        if self.tool_registry:
+            before = set(self.tool_registry.list_tools())
+            self.tool_registry.unregister(tool_name)
+            after = set(self.tool_registry.list_tools())
+            return tool_name in before and tool_name not in after
+        return False
+
+    def list_tools(self) -> list[str]:
+        if self.tool_registry:
+            return self.tool_registry.list_tools()
+        return []
+
+    def has_tools(self) -> bool:
+        return self.enable_tool_calling and self.tool_registry is not None
+
+    def stream_run(self, input_text: str, **kwargs) -> Iterator[str]:
+        """流式调用暂未实现，直接回退到一次性调用"""
+        result = self.run(input_text, **kwargs)
+        yield result
+
+```
+
+</details>
+
+
 ## 7.5 **工具系统**
 
 本节内容将在前面构建的Agent基础架构上，深入探讨工具系统的设计与实现。我们将从基础设施建设开始，逐步深入到自定义开发设计。本节的学习目标围绕以下三个核心方面展开：
 
-* **统一的工具抽象与管理**：建立标准化的Tool基类和ToolRegistry注册机制，为工具的开发、注册、发现和执行提供统一的基础设施。
+* **统一的工具抽象与管理**：建立标准化的 Tool 基类和 ToolRegistry 注册机制，为工具的开发、注册、发现和执行提供统一的基础设施。
 * **实战驱动的工具开发**：以数学计算工具为案例，展示如何设计和实现自定义工具，让读者掌握工具开发的完整流程。
 * **高级整合与优化策略**：通过多源搜索工具的设计，展示如何整合多个外部服务，实现智能后端选择、结果合并和容错处理，体现工具系统在复杂场景下的设计思维。
 

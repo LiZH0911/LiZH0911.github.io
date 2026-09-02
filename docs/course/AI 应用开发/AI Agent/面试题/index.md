@@ -14,11 +14,23 @@
 
 常见面试题：
 
-* AI Agent 是什么？和普通 Chatbot 有什么区别？
+* AI Agent 和 LLM 有什么区别？
+
+LLM 本质上是一个文本生成模型，它只能根据输入生成输出文本。而 AI Agent 是以 LLM 为核心构建的自主决策系统
+
 * Agent = LLM + Planning + Memory + Tools 这条公式怎么理解？
+
+Agent 在 LLM 之上增加了三个关键能力：第一是 Planning，能自主分解和规划任务；第二是 Memory，有独立的记忆系统来持久化信息；第三是 Tool Use，能调用外部工具来执行真实操作。简单来说，LLM 是大脑，Agent 是一个有大脑、有记忆、有手脚的完整系统。"
+
 * Agent Loop 的完整流程是什么？
+
+思考、行动、观察的循环
+
 * Agent 和传统编程、Workflow 的核心区别是什么？
+
 * ReAct、Plan-and-Execute、Reflection、Multi-Agent 分别适合什么场景？
+
+
 * Tools 注册时，工具 description 为什么很关键？
 * 什么时候用纯 Agent，什么时候用 Workflow 或 Agentic Workflow？
 * Multi-Agent 协作的主要问题是什么？为什么生产里不能盲目上多 Agent？
