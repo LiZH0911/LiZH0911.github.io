@@ -1567,12 +1567,27 @@
 <p>这部分通常从 Agent 的定义开始，随后追问运行循环和编排方式。准备时要能分清 Chatbot、Workflow 与 Agent 在任务路径、状态和工具使用上的差别。</p>
 <p>常见面试题：</p>
 <ul>
-<li>AI Agent 是什么？和普通 Chatbot 有什么区别？</li>
+<li>AI Agent 和 LLM 有什么区别？</li>
+</ul>
+<p>LLM 本质上是一个文本生成模型，它只能根据输入生成输出文本。而 AI Agent 是以 LLM 为核心构建的自主决策系统</p>
+<ul>
 <li>Agent = LLM + Planning + Memory + Tools 这条公式怎么理解？</li>
+</ul>
+<p>Agent 在 LLM 之上增加了三个关键能力：第一是 Planning，能自主分解和规划任务；第二是 Memory，有独立的记忆系统来持久化信息；第三是 Tool Use，能调用外部工具来执行真实操作。简单来说，LLM 是大脑，Agent 是一个有大脑、有记忆、有手脚的完整系统。"</p>
+<ul>
 <li>Agent Loop 的完整流程是什么？</li>
-<li>Agent 和传统编程、Workflow 的核心区别是什么？</li>
-<li>ReAct、Plan-and-Execute、Reflection、Multi-Agent 分别适合什么场景？</li>
-<li>Tools 注册时，工具 description 为什么很关键？</li>
+</ul>
+<p>思考、行动、观察的循环</p>
+<ul>
+<li>
+<p>Agent 和传统编程、Workflow 的核心区别是什么？</p>
+</li>
+<li>
+<p>ReAct、Plan-and-Execute、Reflection、Multi-Agent 分别适合什么场景？</p>
+</li>
+<li>
+<p>Tools 注册时，工具 description 为什么很关键？</p>
+</li>
 <li>什么时候用纯 Agent，什么时候用 Workflow 或 Agentic Workflow？</li>
 <li>Multi-Agent 协作的主要问题是什么？为什么生产里不能盲目上多 Agent？</li>
 </ul>
