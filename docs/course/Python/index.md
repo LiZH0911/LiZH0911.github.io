@@ -4,6 +4,10 @@
 
 - [黑马程序员 Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
 
+Python 详细教程：
+
+- [小白学 Python](https://walter201230.github.io/Python/)
+
 ## 一、数据存储与运算
 
 ### 1.1 **字面量**
@@ -290,6 +294,177 @@ for 元素 in 数据集:
 - `keys()`：返回字典中所有键的列表
 - `values()`：返回字典中所有值的列表
 - `items()`：返回字典中所有键值对的列表
+
+## X、迭代器与生成器
+
+### x.1 **迭代**
+
+**迭代**：迭代（Iteration）就是“逐个取出”一个容器（比如列表、字符串）里的每一个元素，并对其执行相同操作的过程。
+
+```python
+# -*- coding: UTF-8 -*-
+
+# 1、for 循环迭代字符串
+for char in 'liangdianshui' :
+    print ( char , end = ' ' )
+
+print('\n')
+
+# 2、for 循环迭代 list
+list1 = [1,2,3,4,5]
+for num1 in list1 :
+    print ( num1 , end = ' ' )
+
+print('\n')
+
+# 3、for 循环也可以迭代 dict （字典）
+dict1 = {'name':'两点水','age':'23','sex':'男'}
+
+for key in dict1 :    # 迭代 dict 中的 key
+    print ( key , end = ' ' )
+
+print('\n')
+
+for value in dict1.values() :   # 迭代 dict 中的 value
+    print ( value , end = ' ' )
+
+print ('\n')
+
+# 如果 list 里面一个元素有两个变量，也是很容易迭代的
+for x , y in [ (1,'a') , (2,'b') , (3,'c') ] :
+    print ( x , y )
+```
+
+### x.2 **迭代器**
+
+**迭代器**：一个可以记住遍历位置的对象。
+
+**迭代器的两个基本方法**：`iter()` 和 `next()`
+
+**迭代器的创建**：字符串、列表或元组对象都可用于创建迭代器
+
+**迭代器的遍历**：可以使用常规 for 语句进行遍历，也可以使用 `next()` 函数来遍历。
+
+```python
+# 1、字符创创建迭代器对象
+str1 = 'liangdianshui'
+iter1 = iter(str1)
+
+# 2、list对象创建迭代器
+list1 = [1,2,3,4]
+iter2 = iter(list1)
+
+# 3、tuple(元祖) 对象创建迭代器
+tuple1 = (1,2,3,4)
+iter3 = iter(tuple1)
+
+# for 循环遍历迭代器对象
+for x in iter1:
+    print (x, end = ' ')
+
+print('\n------------------------')
+
+# next() 函数遍历迭代器
+while True:
+    try:
+        print (next(iter3))
+    except StopIteration:
+        break
+```
+
+输出结果：
+
+```
+l i a n g d i a n s h u i 
+------------------------
+1
+2
+3
+4
+```
+
+### x.3 **列表生成式**
+
+**列表生成式的创建**
+
+```
+[expr for iter_var in iterable] 
+[expr for iter_var in iterable if cond_expr]
+```
+
+### x.4 **生成器**
+
+**生成器**：生成器（Generator）是一种特殊的迭代器，它不一次性生成所有数据，而是按需生成（惰性计算）。
+
+**生成器的使用场景**：不想同一时间将所有计算结果集分配到内存当中，特别是结果集里还包含循环。因为这样会耗费大量资源。
+
+**生成器的创建（以函数形式）**：
+
+实际运用中，大多数的生成器都是通过函数来实现的，使用 yield 关键字来返回数据并记住当前执行位置。
+
+生成器和函数的执行流程不一样。函数是顺序执行，遇到 return 语句或者最后一行函数语句就返回。
+
+而生成器在每次调用 next() 的时候执行，遇到 yield 语句返回，再次执行时从上次返回的 yield 语句处继续执行。
+
+```python
+def my_generator():
+    print("开始")
+    yield 1
+    print("继续")
+    yield 2
+    print("结束")
+    yield 3
+
+# 调用函数不会执行代码，而是返回一个生成器对象
+gen = my_generator()
+print(gen)  # <generator object my_generator at 0x...>
+
+# 用 next() 逐个触发执行
+print(next(gen))  # 输出：开始 \n 1
+print(next(gen))  # 输出：继续 \n 2
+print(next(gen))  # 输出：结束 \n 3
+print(next(gen))  # 报错 StopIteration
+```
+
+再比如一个计算斐波那契数列的生成器：
+
+```python
+# -*- coding: UTF-8 -*-
+def fibon(n):
+    a = b = 1
+    for i in range(n):
+        yield a
+        a, b = b, a + b
+
+# 引用函数
+for x in fibon(1000000):
+    print(x , end = ' ')
+```
+
+### x.5 **综合例子**
+
+**反向迭代**
+
+```python
+list1 = [1,2,3,4,5]
+for num1 in reversed(list1) :
+    print (num1, end = ' ')
+```
+
+注意：反向迭代只有当**对象的大小可预先确定**或者**对象实现了 `__reversed__()` 的特殊方法**时才能生效。如果两者都不符合，那你必须先将对象转换为一个列表。
+
+**同时迭代多个序列**
+
+为了同时迭代多个序列，使用 `zip()` 函数
+
+```python
+# -*- coding: UTF-8 -*-
+names = ['laingdianshui', 'twowater', '两点水']
+ages = [18, 19, 20]
+for name, age in zip(names, ages):
+     print(name,age)
+```
+
 
 ## 四、函数
 
@@ -728,3 +903,944 @@ df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'})
 
 
 
+## X、线程与进程
+
+### x.1 **基本概念**
+
+线程与进程是操作系统里面的术语，简单来讲，每一个应用程序都有一个自己的进程。
+
+操作系统会为这些进程分配一些执行资源，例如内存空间等。
+
+在进程中，又可以创建一些线程，他们共享这些内存空间，并由操作系统调用，以便并行计算。
+
+我们都知道现代操作系统比如 Mac OS X，UNIX，Linux，Windows 等可以同时运行多个任务。
+
+对于操作系统来说，**一个任务就是一个进程（Process）**，比如打开一个浏览器就是启动一个浏览器进程，打开 PyCharm 就是一个启动了一个 PtCharm 进程，打开 Markdown 就是启动了一个 Md 的进程。
+
+虽然现在多核 CPU 已经非常普及了。
+
+可是由于 CPU 执行代码都是顺序执行的，这时候我们就会有疑问，单核 CPU 是怎么执行多任务的呢？
+
+其实就是操作系统轮流让各个任务交替执行，任务 1 执行 0.01 秒，切换到任务 2 ，任务 2 执行 0.01 秒，再切换到任务 3 ，执行 0.01秒……这样反复执行下去。
+
+表面上看，每个任务都是交替执行的，但是，由于 CPU 的执行速度实在是太快了，我们肉眼和感觉上没法识别出来，就像所有任务都在同时执行一样。
+
+真正的并行执行多任务只能在多核 CPU 上实现，但是，由于任务数量远远多于 CPU 的核心数量，所以，操作系统也会自动把很多任务轮流调度到每个核心上执行。
+
+有些进程不仅仅只是干一件事的啊，比如浏览器，我们可以播放视频，播放音频，看文章，编辑文章等等，其实这些都是在浏览器进程中的子任务。在一个进程内部，要同时干多件事，就需要同时运行多个“子任务”，我们把**进程内的这些“子任务”称为线程（Thread）**。
+
+由于每个进程至少要干一件事，所以，一个进程至少有一个线程。
+
+当然，一个进程也可以有多个线程，多个线程可以同时执行，多线程的执行方式和多进程是一样的，也是由操作系统在多个线程之间快速切换，让每个线程都短暂地交替运行，看起来就像同时执行一样。
+
+那么在 Python 中我们要同时执行多个任务怎么办？
+
+多任务的实现有3种方式：
+
+- 多进程模式；启动多个进程，每个进程虽然只有一个线程，但多个进程可以一块执行多个任务
+- 多线程模式；启动一个进程，在一个进程内启动多个线程
+- 多进程 + 多线程模式：启动多个进程，每个进程再启动多个线程，这样同时执行的任务就更多了，当然这种模型更复杂，实际很少采用。
+
+同时执行多个任务通常各个任务之间并不是没有关联的，而是需要相互通信和协调，有时，任务 1 必须暂停等待任务 2 完成后才能继续执行，有时，任务 3 和任务 4 又不能同时执行，所以，多进程和多线程的程序的复杂度要远远高于我们前面写的单进程单线程的程序。
+
+因为复杂度高，调试困难，所以，不是迫不得已，我们也不想编写多任务。
+
+但是，有很多时候，没有多任务还真不行。
+
+想想在电脑上看电影，就必须由一个线程播放视频，另一个线程播放音频，否则，单线程实现的话就只能先把视频播放完再播放音频，或者先把音频播放完再播放视频，这显然是不行的。
+
+### x.2 **多线程编程**
+
+**线程的状态**
+
+* New 创建
+* Runnable 就绪。等待调度
+* Running 运行
+* Blocked 阻塞。阻塞可能在 Wait Locked Sleeping
+* Dead 消亡
+
+**线程的类型**
+
+* 主线程
+* 子线程
+* 守护线程（后台线程）
+* 前台线程
+
+**线程的创建**
+
+Python 提供两个模块进行多线程的操作，分别是 `thread` 和 `threading`
+
+`thread`是比较低级的模块，用于更底层的操作，一般应用级别的开发不常用。
+
+因此，我们使用 `threading` 来举个例子：
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import time
+import threading
+
+
+class MyThread(threading.Thread):
+    def run(self):
+        for i in range(5):
+            print(f'thread {self.name}, @number: {i}')
+            time.sleep(1)
+
+
+def main():
+    print("Start main threading")
+
+    # 创建三个线程
+    threads = [MyThread() for i in range(3)]
+    # 启动三个线程
+    for t in threads:
+        t.start()
+
+    print("End Main threading")
+
+
+if __name__ == '__main__':
+    main()
+```
+
+运行结果：
+
+```
+Start main threading
+thread Thread-1, @number: 0
+thread Thread-2, @number: 0
+thread Thread-3, @number: 0
+End Main threading
+thread Thread-2, @number: 1
+thread Thread-3, @number: 1
+thread Thread-1, @number: 1
+thread Thread-1, @number: 2
+thread Thread-2, @number: 2
+thread Thread-3, @number: 2
+thread Thread-3, @number: 3
+thread Thread-2, @number: 3
+thread Thread-1, @number: 3
+thread Thread-2, @number: 4
+thread Thread-3, @number: 4
+thread Thread-1, @number: 4
+```
+
+注意，这里不同的环境输出的结果肯定是不一样的。
+
+**线程合并**
+
+上面的示例打印出来的结果来看，主线程结束后，子线程还在运行。那么我们需要主线程要等待子线程运行完后，再退出，要怎么办呢？
+
+这时候，就需要用到 `join` 方法了。
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import time
+import threading
+
+
+class MyThread(threading.Thread):
+    def run(self):
+        for i in range(5):
+            print(f'thread {self.name}, @number: {i}')
+            time.sleep(1)
+
+
+def main():
+    print("Start main threading")
+
+    # 创建三个线程
+    threads = [MyThread() for i in range(3)]
+    # 启动三个线程
+    for t in threads:
+        t.start()
+
+    # 一次让新创建的线程执行 join
+    for t in threads:
+        t.join()
+
+    print("End Main threading")
+
+
+if __name__ == '__main__':
+    main()
+```
+
+运行结果：
+
+```
+Start main threading
+thread Thread-1, @number: 0
+thread Thread-2, @number: 0
+thread Thread-3, @number: 0
+thread Thread-1, @number: 1
+thread Thread-3, @number: 1
+thread Thread-2, @number: 1
+thread Thread-1, @number: 2
+thread Thread-3, @number: 2
+thread Thread-2, @number: 2
+thread Thread-1, @number: 3
+thread Thread-3, @number: 3
+thread Thread-2, @number: 3
+thread Thread-1, @number: 4
+thread Thread-3, @number: 4
+thread Thread-2, @number: 4
+End Main threading
+```
+
+从打印的结果，可以清楚看到，相比上面示例打印出来的结果，主线程是在等待子线程运行结束后才结束的。
+
+**线程同步与互斥锁**
+
+使用线程加载获取数据，通常都会造成数据不同步的情况。当然，这时候我们可以给资源进行加锁，也就是访问资源的线程需要获得锁才能访问。
+
+其中 `threading` 模块给我们提供了一个 `Lock` 功能。
+
+```python
+# 创建锁
+lock = threading.Lock()
+# 在线程中获取锁
+lock.acquire()
+# 释放锁
+lock.release()
+```
+
+当然为了支持在同一线程中多次请求同一资源，Python 提供了可重入锁（RLock）。
+
+RLock 内部维护着一个 Lock 和一个 counter 变量，counter 记录了 acquire 的次数，从而使得资源可以被多次 require。直到一个线程所有的 acquire 都被 release，其他的线程才能获得资源。
+
+```python
+# 创建可重入锁
+r_lock = threading.RLock()
+```
+
+**Condition 条件变量**
+
+实用锁可以达到线程同步，但是在更复杂的环境，需要针对锁进行一些条件判断。
+
+Python 提供了 `Condition` 对象。
+
+**使用 `Condition` 对象可以在某些事件触发或者达到特定的条件后才处理数据，`Condition` 除了具有 `Lock` 对象的 `acquire` 方法和 `release` 方法外，还提供了 `wait` 和 `notify` 方法。**
+
+线程首先 acquire 一个条件变量锁。如果条件不足，则该线程 wait，如果满足就执行线程，甚至可以 notify 其他线程。其他处于 wait 状态的线程接到通知后会重新判断条件。
+
+其中条件变量可以看成不同的线程先后 acquire 获得锁，如果不满足条件，可以理解为被扔到一个（ Lock 或 RLock ）的 waiting 池。直到其他线程 notify 之后再重新判断条件。不断的重复这一过程，从而解决复杂的同步问题。
+
+该模式常用于生产者消费者模式，具体看看下面在线购物买家和卖家的示例：
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import threading, time
+
+class Consumer(threading.Thread):
+    def __init__(self, cond, name):
+        # 初始化
+        super(Consumer, self).__init__()
+        self.cond = cond
+        self.name = name
+
+    def run(self):
+        # 确保先运行Seeker中的方法
+        time.sleep(1)
+        self.cond.acquire()
+        print(self.name + ': 我这两件商品一起买，可以便宜点吗')
+        self.cond.notify()
+        self.cond.wait()
+        print(self.name + ': 我已经提交订单了，你修改下价格')
+        self.cond.notify()
+        self.cond.wait()
+        print(self.name + ': 收到，我支付成功了')
+        self.cond.notify()
+        self.cond.release()
+        print(self.name + ': 等待收货')
+
+
+class Producer(threading.Thread):
+    def __init__(self, cond, name):
+        super(Producer, self).__init__()
+        self.cond = cond
+        self.name = name
+
+    def run(self):
+        self.cond.acquire()
+        # 释放对琐的占用，同时线程挂起在这里，直到被 notify 并重新占有琐。
+        self.cond.wait()
+        print(self.name + ': 可以的，你提交订单吧')
+        self.cond.notify()
+        self.cond.wait()
+        print(self.name + ': 好了，已经修改了')
+        self.cond.notify()
+        self.cond.wait()
+        print(self.name + ': 嗯，收款成功，马上给你发货')
+        self.cond.release()
+        print(self.name + ': 发货商品')
+
+
+cond = threading.Condition()
+consumer = Consumer(cond, '买家（两点水）')
+producer = Producer(cond, '卖家（三点水）')
+consumer.start()
+producer.start()
+```
+
+输出的结果如下：
+
+```
+买家（两点水）: 我这两件商品一起买，可以便宜点吗
+卖家（三点水）: 可以的，你提交订单吧
+买家（两点水）: 我已经提交订单了，你修改下价格
+卖家（三点水）: 好了，已经修改了
+买家（两点水）: 收到，我支付成功了
+买家（两点水）: 等待收货
+卖家（三点水）: 嗯，收款成功，马上给你发货
+卖家（三点水）: 发货商品
+```
+
+**线程间通信**
+
+如果程序中有多个线程，这些线程避免不了需要相互通信的。那么我们怎样在这些线程之间安全地交换信息或数据呢？
+
+从一个线程向另一个线程发送数据最安全的方式可能就是使用 queue 库中的队列了。创建一个被多个线程共享的 `Queue` 对象，这些线程通过使用 `put()` 和 `get()` 操作来向队列中添加或者删除元素。
+
+```python
+# -*- coding: UTF-8 -*-
+from queue import Queue
+from threading import Thread
+
+
+def write(q):
+    # 写数据进程
+    for value in ['两点水', '三点水', '四点水']:
+        print(f'写进 Queue 的值为：{value}')
+        q.put(value)
+    q.put(None)  # 写完放一个结束标记
+
+
+def read(q):
+    # 读取数据进程
+    while True:
+        value = q.get(True)
+        if value is None:  # 读到结束标记就退出
+            break
+        print(f'从 Queue 读取的值为：{value}')
+
+
+if __name__ == '__main__':
+    q = Queue()
+    t1 = Thread(target=write, args=(q,))
+    t2 = Thread(target=read, args=(q,))
+    t1.start()
+    t2.start()
+```
+
+输出的结果如下：
+
+```
+写进 Queue 的值为：两点水
+写进 Queue 的值为：三点水
+从 Queue 读取的值为：两点水
+写进 Queue 的值为：四点水
+从 Queue 读取的值为：三点水
+从 Queue 读取的值为：四点水
+```
+
+Python 还提供了 Event 对象用于线程间通信，它是由线程设置的信号标志，如果信号标志位真，则其他线程等待直到信号接触。
+
+Event 对象实现了简单的线程通信机制，它提供了设置信号，清除信号，等待等用于实现线程间的通信。
+
+- 设置信号：使用 Event 的 `set()` 方法可以设置 Event 对象内部的信号标志为真。Event 对象提供了 `is_set()` 方法来判断其内部信号标志的状态。当使用 event 对象的 `set()` 方法后，`is_set()` 方法返回真
+- 清除信号：使用 Event 对象的 `clear()` 方法可以清除 Event 对象内部的信号标志，即将其设为假，当使用 Event 的 `clear()` 方法后，`is_set()` 方法返回假
+- 等待：Event 对象 wait 的方法只有在内部信号为真的时候才会很快的执行并完成返回。当 Event 对象的内部信号标志位假时，则 wait 方法一直等待到其为真时才返回。
+
+示例：
+
+```python
+# -*- coding: UTF-8 -*-
+
+import threading
+
+
+class mThread(threading.Thread):
+    def __init__(self, threadname):
+        threading.Thread.__init__(self, name=threadname)
+
+    def run(self):
+        # 使用全局Event对象
+        global event
+        # 判断Event对象内部信号标志
+        if event.is_set():
+            event.clear()
+            # 加 timeout 兜底：is_set() 判断与 clear() 之间不是原子操作，
+            # 两个线程可能都通过判断、都进 wait()，而只有一个 set() 来唤醒
+            event.wait(timeout=1)
+            print(self.name)
+        else:
+            print(self.name)
+            # 设置Event对象内部信号标志
+            event.set()
+
+# 生成Event对象
+event = threading.Event()
+# 设置Event对象内部信号标志
+event.set()
+t1 = []
+for i in range(10):
+    t = mThread(str(i))
+    # 生成线程列表
+    t1.append(t)
+
+for i in t1:
+    # 运行线程
+    i.start()
+```
+
+输出的结果如下：
+
+```
+1
+0
+3
+2
+5
+4
+7
+6
+9
+8
+```
+
+**后台线程**
+
+默认情况下，主线程退出之后，即使子线程没有 `join`。那么主线程结束后，子线程也依然会继续执行。
+
+如果希望主线程退出后，其子线程也退出而不再执行，则需要设置子线程为后台线程。Thread 对象提供了 `daemon` 属性。
+
+- daemon=True：守护线程。主线程结束时，它会被强制杀掉，不会阻止程序退出。
+- daemon=False（默认）：非守护线程。主线程要等它跑完才退出。
+
+```python
+import threading, time
+
+def worker():
+    while True:
+        print("running...")
+        time.sleep(1)
+
+t = threading.Thread(target=worker, name="w")
+t.daemon = True      # 主线程退出时，这个线程自动结束
+t.start()
+
+time.sleep(3)
+print("main done")   # 主线程结束后，程序直接退出，不会卡在 worker
+```
+
+总结：
+
+- 默认（非守护线程）下，主线程退出后，子线程依然会继续执行，直到所有非守护线程都结束，进程才退出。
+- `join()` 是阻塞主线程，先等子线程结束再继续主线程。可加超时 `join(timeout)`，超时后主线程继续。
+- `daemon=True` 是截断子线程（守护线程）。当主线程结束后，所有非守护线程都结束，触发整个进程退出，导致守护线程被强制终止。
+
+一句话记忆：
+
+* 非守护：主线程可以先走，我留下收尾，进程等我。
+* join：主线程你别走，我等你。
+* daemon：进程一走，我陪葬。
+
+### x.3 **进程**
+
+Python 中的多线程其实并不是真正的多线程，如果想要充分地使用多核 CPU 的资源，在 Python 中大部分情况需要使用多进程。
+
+Python 提供了非常好用的多进程包 `multiprocessing`，只需要定义一个函数，Python 会完成其他所有事情。
+
+借助这个包，可以轻松完成从单进程到并发执行的转换。`multiprocessing` 支持子进程、通信和共享数据、执行不同形式的同步，提供了 `Process`、`Queue`、`Pipe`、`Lock` 等组件。
+
+**创建进程类 Process**
+
+下面看一个创建函数并将其作为多个进程的例子：
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import multiprocessing
+import time
+
+
+def worker(interval, name):
+    print(name + '【start】')
+    time.sleep(interval)
+    print(name + '【end】')
+
+
+if __name__ == "__main__":
+    p1 = multiprocessing.Process(target=worker, args=(2, '两点水1'))
+    p2 = multiprocessing.Process(target=worker, args=(3, '两点水2'))
+    p3 = multiprocessing.Process(target=worker, args=(4, '两点水3'))
+
+    p1.start()
+    p2.start()
+    p3.start()
+
+    print("The number of CPU is:" + str(multiprocessing.cpu_count()))
+    for p in multiprocessing.active_children():
+        print("child   p.name:" + p.name + "\tp.id" + str(p.pid))
+    print("END!!!!!!!!!!!!!!!!!")
+```
+
+输出的结果：
+
+```
+两点水1【start】
+两点水2【start】
+The number of CPU is:24
+child   p.name:Process-2	p.id15480
+child   p.name:Process-3	p.id35916
+child   p.name:Process-1	p.id38924
+END!!!!!!!!!!!!!!!!!
+两点水3【start】
+两点水1【end】
+两点水2【end】
+两点水3【end】
+```
+
+**自定义进程类（继承 Process）**
+
+当然我们也可以自定义进程类，如下面的例子，当进程 p 调用 `start()` 时，自动调用 `run()` 方法。
+
+```python
+# -*- coding: UTF-8 -*-
+
+import multiprocessing
+import time
+
+
+class ClockProcess(multiprocessing.Process):
+    def __init__(self, interval):
+        multiprocessing.Process.__init__(self)
+        self.interval = interval
+
+    def run(self):
+        n = 5
+        while n > 0:
+            print(f"当前时间: {time.ctime()}")
+            time.sleep(self.interval)
+            n -= 1
+
+
+if __name__ == '__main__':
+    p = ClockProcess(3)
+    p.start()
+```
+
+输出结果如下：
+
+```
+当前时间: Thu Sep 10 17:05:02 2026
+当前时间: Thu Sep 10 17:05:05 2026
+当前时间: Thu Sep 10 17:05:08 2026
+当前时间: Thu Sep 10 17:05:11 2026
+当前时间: Thu Sep 10 17:05:14 2026
+```
+
+**daemon 属性**
+
+如果在子进程中添加了 `daemon = True`，那么当主进程结束的时候，子进程也会跟着结束。所以没有打印子进程的信息。
+
+```python
+# -*- coding: UTF-8 -*-
+
+import multiprocessing
+import time
+
+
+def worker(interval):
+    print(f'工作开始时间：{time.ctime()}')
+    time.sleep(interval)
+    print(f'工作结果时间：{time.ctime()}')
+
+
+if __name__ == '__main__':
+    p = multiprocessing.Process(target=worker, args=(3,))
+    p.daemon = True
+    p.start()
+    print('【EMD】')
+```
+
+输出结果：
+
+```
+【EMD】
+```
+
+**join 方法**
+
+join 方法的主要作用是：阻塞当前进程，直到调用 join 方法的那个进程执行完，再继续执行当前进程。
+
+```python
+import multiprocessing
+import time
+
+
+def worker(interval):
+    print(f'工作开始时间：{time.ctime()}')
+    time.sleep(interval)
+    print(f'工作结果时间：{time.ctime()}')
+
+
+if __name__ == '__main__':
+    p = multiprocessing.Process(target=worker, args=(3,))
+    p.daemon = True
+    p.start()
+    p.join()
+    print('【EMD】')
+```
+
+输出的结果：
+
+```
+工作开始时间：Thu Sep 10 17:08:27 2026
+工作结果时间：Thu Sep 10 17:08:30 2026
+【EMD】
+```
+
+**Pool 进程池**
+
+如果需要很多的子进程，难道我们需要一个一个的去创建吗？
+
+当然不用，我们可以使用进程池的方法批量创建子进程。
+
+```python
+# -*- coding: UTF-8 -*-
+
+from multiprocessing import Pool
+import os, time, random
+
+
+def long_time_task(name):
+    print(f'进程的名称：{name} ；进程的PID: {os.getpid()} ')
+    start = time.time()
+    time.sleep(random.random() * 3)
+    end = time.time()
+    print(f'进程 {name} 运行了 {end - start} 秒')
+
+
+if __name__ == '__main__':
+    print(f'主进程的 PID：{os.getpid()}')
+    p = Pool(4)
+    for i in range(6):
+        p.apply_async(long_time_task, args=(i,))
+    p.close()
+    # 等待所有子进程结束后在关闭主进程
+    p.join()
+    print('【End】')
+```
+
+输出的结果如下：
+
+```
+主进程的 PID：41680
+进程的名称：0 ；进程的PID: 38604 
+进程的名称：1 ；进程的PID: 38480 
+进程的名称：2 ；进程的PID: 8396 
+进程的名称：3 ；进程的PID: 37300 
+进程 3 运行了 0.45252037048339844 秒
+进程的名称：4 ；进程的PID: 37300 
+进程 1 运行了 1.4969210624694824 秒
+进程的名称：5 ；进程的PID: 38480 
+进程 0 运行了 1.7344286441802979 秒
+进程 2 运行了 2.1402225494384766 秒
+进程 5 运行了 0.9203391075134277 秒
+进程 4 运行了 1.9575226306915283 秒
+【End】
+```
+
+`Pool` 对象调用 `join()` 方法会等待所有子进程执行完毕.
+
+调用 `join()` 之前必须先调用 `close()` ，调用 `close()` 之后就不能继续添加新的 Process 了。
+
+请注意输出的结果，子进程 0，1，2，3是立刻执行的，而子进程 4 要等待前面某个子进程完成后才执行，这是因为 Pool 的默认大小在我的电脑上是 4，因此，最多同时执行 4 个进程。这是 Pool 有意设计的限制，并不是操作系统的限制。如果改成：
+
+```python
+p = Pool(5)
+```
+
+就可以同时跑 5 个进程。
+
+建议 Pool 大小：
+
+```python
+import os
+import multiprocessing
+pool_size = os.cpu_count()
+p = multiprocessing.Pool(pool_size)
+```
+
+**进程间通信**
+
+Process 之间肯定是需要通信的，操作系统提供了很多机制来实现进程间的通信。
+
+Python 的 multiprocessing 模块包装了底层的机制，提供了 Queue、Pipes 等多种方式来交换数据。
+
+以 Queue 为例，在父进程中创建两个子进程，一个往 Queue 里写数据，一个从 Queue 里读数据：
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+from multiprocessing import Process, Queue
+import os, time, random
+
+
+def write(q):
+    # 写数据进程
+    print(f'写进程的PID:{os.getpid()}')
+    for value in ['两点水', '三点水', '四点水']:
+        print(f'写进 Queue 的值为：{value}')
+        q.put(value)
+        time.sleep(random.random())
+
+
+def read(q):
+    # 读取数据进程
+    print(f'读进程的PID:{os.getpid()}')
+    while True:
+        value = q.get(True)
+        print(f'从 Queue 读取的值为：{value}')
+
+
+if __name__ == '__main__':
+    # 父进程创建 Queue，并传给各个子进程
+    q = Queue()
+    pw = Process(target=write, args=(q,))
+    pr = Process(target=read, args=(q,))
+    # 启动子进程 pw
+    pw.start()
+    # 启动子进程pr
+    pr.start()
+    # 等待pw结束:
+    pw.join()
+    # pr 进程里是死循环，无法等待其结束，只能强行终止
+    pr.terminate()
+```
+
+输出的结果为：
+
+```
+写进程的PID:3220
+写进 Queue 的值为：两点水
+读进程的PID:39640
+从 Queue 读取的值为：两点水
+写进 Queue 的值为：三点水
+从 Queue 读取的值为：三点水
+写进 Queue 的值为：四点水
+从 Queue 读取的值为：四点水
+```
+
+## X、正则表达式
+
+### x.1 **初识 Python 正则表达式**
+
+正则表达式是一个特殊的字符序列，用于判断一个字符串是否与我们所设定的字符序列是否匹配，也就是说检查一个字符串是否与某种模式匹配。
+
+Python 自 1.5 版本起增加了 `re` 模块，它提供 Perl 风格的正则表达式模式。`re` 模块使 Python 语言拥有全部的正则表达式功能。
+
+下面通过实例，一步一步来初步认识正则表达式。
+
+比如在一段字符串中寻找是否含有某个字符或某些字符，通常我们使用内置函数来实现，如下：
+
+```python
+# 设定一个常量
+a = '两点水|twowater|liangdianshui|草根程序员|ReadingWithU'
+
+# 判断是否有 “两点水” 这个字符串，使用 PY 自带函数
+
+print(f'是否含有“两点水”这个字符串：{a.index("两点水") > -1}')
+print(f'是否含有“两点水”这个字符串：{"两点水" in a}')
+```
+
+输出的结果如下：
+
+```
+是否含有“两点水”这个字符串：True
+是否含有“两点水”这个字符串：True
+```
+
+那么，如果使用正则表达式呢？
+
+刚刚提到过，Python 给我们提供了 `re` 模块来实现正则表达式的所有功能，那么我们先使用其中的一个函数：
+
+```python
+re.findall(pattern, string[, flags])
+```
+
+该函数实现了在字符串中找到正则表达式所匹配的所有子串，并组成一个列表返回,具体操作如下：
+
+```python
+import re
+
+# 设定一个常量
+a = '两点水|twowater|liangdianshui|草根程序员|ReadingWithU'
+
+# 正则表达式
+
+findall = re.findall('两点水', a)
+print(findall)
+
+if len(findall) > 0:
+    print('a 含有“两点水”这个字符串')
+else:
+    print('a 不含有“两点水”这个字符串')
+```
+
+输出的结果：
+
+```
+['两点水']
+a 含有“两点水”这个字符串
+```
+
+从输出结果可以看到，可以实现和内置函数一样的功能。
+
+可是在这里也要强调一点，上面这个例子只是方便我们理解正则表达式，这个正则表达式的写法是毫无意义的。
+
+因为用 Python 自带函数就能解决的问题，我们就没必要使用正则表达式了，这样做多此一举。
+
+而且上面例子中的正则表达式设置成为了一个常量，并不是一个正则表达式的规则，正则表达式的灵魂在于规则，所以这样做意义不大。
+
+那么正则表达式的规则怎么写呢？先不急，我们一步一步来，先来一个简单的，**找出字符串中的所有小写字母**。
+
+首先我们**在 `findall` 函数中第一个参数写正则表达式的规则**，其中 `[a-z]` 就是匹配任何小写字母，第二个参数只要填写要匹配的字符串就行了。具体如下：
+
+```python
+import re
+
+# 设定一个常量
+a = '两点水|twowater|liangdianshui|草根程序员|ReadingWithU'
+
+# 选择 a 里面的所有小写英文字母
+
+re_findall = re.findall('[a-z]', a)
+
+print(re_findall)
+```
+
+输出的结果：
+
+```
+['t', 'w', 'o', 'w', 'a', 't', 'e', 'r', 'l', 'i', 'a', 'n', 'g', 'd', 'i', 'a', 'n', 's', 'h', 'u', 'i', 'e', 'a', 'd', 'i', 'n', 'g', 'i', 't', 'h']
+```
+
+这样我们就拿到了字符串中的所有小写字母了。
+
+### x.2 **字符集**
+
+我们初步认识了 Python 的正则表达式，可能你就会问，正则表达式还有什么规则，什么字母代表什么意思呢？
+
+字符集是由一对方括号 “[]” 括起来的字符集合。使用字符集，可以匹配多个字符中的一个，即字符关系是“**或（OR）**”关系。
+
+比如：
+
+- `C[ET]O` 匹配到的是 `CEO` 或 `CTO` ，即 `[ET]` 代表的是一个 `E` 或者一个 `T` 。
+- `[a-z]` 匹配所有小写字母中的其中一个，这里使用了连字符 `-` 定义一个连续字符的字符范围。
+- `[0-9a-fA-F]` 匹配单个的十六进制数字，且不分大小写
+
+下面看一个例子：
+
+```python
+import re
+a = 'uav,ubv,ucv,uwv,uzv,ucv,uov'
+
+# 字符集
+
+# 取 u 和 v 中间是 a 或 b 或 c 的字符
+findall = re.findall('u[abc]v', a)
+print(findall)
+# 如果是连续的字母，数字可以使用 - 来代替
+l = re.findall('u[a-c]v', a)
+print(l)
+
+# 取 u 和 v 中间不是 a 或 b 或 c 的字符
+re_findall = re.findall('u[^abc]v', a)
+print(re_findall)
+```
+
+输出结果：
+
+```
+['uav', 'ubv', 'ucv', 'ucv']
+['uav', 'ubv', 'ucv', 'ucv']
+['uwv', 'uzv', 'uov']
+```
+
+正则表达式本身就定义了一些规则，比如 `\d` 匹配所有数字字符,其实它是等价于 `[0-9]`，下面也写了个例子，通过字符集的形式解释了这些特殊字符
+
+```python
+import re
+
+a = 'uav_ubv_ucv_uwv_uzv_ucv_uov&123-456-789'
+
+# 概括字符集
+
+# \d 相当于 [0-9] ,匹配所有数字字符
+# \D 相当于 [^0-9] ， 匹配所有非数字字符
+findall1 = re.findall('\d', a)
+findall2 = re.findall('[0-9]', a)
+findall3 = re.findall('\D', a)
+findall4 = re.findall('[^0-9]', a)
+print(findall1)
+print(findall2)
+print(findall3)
+print(findall4)
+
+# \w 匹配包括下划线的任何单词字符，等价于 [A-Za-z0-9_]
+findall5 = re.findall('\w', a)
+findall6 = re.findall('[A-Za-z0-9_]', a)
+print(findall5)
+print(findall6)
+```
+
+输出结果：
+
+```
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+```
+
+### x.3 **数量词**
+
+**为什么要用数量词**：当要匹配几十上百长度的字符时，一个一个的写太麻烦，所以就出现了数量词。
+
+**数量词的词法**：`{min, max}` 。min 和 max 都是非负整数。如果逗号有而 max 被忽略了，则 max 没有限制。如果逗号和 max 都被忽略了，则重复 min 次。
+
+比如，`\b[1-9][0-9]{3}\b` 匹配的是 1000 ~ 9999 之间的数字( `\b` 表示单词边界），
+
+而 `\b[1-9][0-9]{2,4}\b`，匹配的是一个在 100 ~ 99999 之间的数字。
+
+下面看一个实例，匹配出字符串中 4 到 7 个字母的英文
+
+```python
+import re
+
+a = 'java*&39android##@@python'
+
+# 数量词
+
+findall = re.findall('[a-z]{4,7}', a)
+print(findall)
+```
+
+输出结果：
+
+```
+['java', 'android', 'python']
+```

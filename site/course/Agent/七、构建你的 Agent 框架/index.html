@@ -2219,44 +2219,48 @@
 <h1 id="_1"><strong>七、构建你的智能体框架</strong></h1>
 <h2 id="71">7.1 <strong>框架整体架构设计</strong></h2>
 <h3 id="711-agent"><strong>7.1.1 为何需要自建Agent框架</strong></h3>
-<p>（1）市面框架的快速迭代与局限性</p>
-<p>（2）从使用者到构建者的能力跃迁</p>
-<p>（3）定制化需求与深度掌握的必要性</p>
+<ol>
+<li>市面框架的快速迭代与局限性</li>
+<li>从使用者到构建者的能力跃迁</li>
+<li>定制化需求与深度掌握的必要性</li>
+</ol>
 <h3 id="712-helloagents"><strong>7.1.2 HelloAgents框架的设计理念</strong></h3>
-<p>构建一个新的 Agent 框架，关键不在于功能的多少，而在于设计理念是否能真正解决现有框架的痛点。</p>
+<p>构建一个新的 Agent 框架，关键不在于功能的多少，而在于能否真正解决现有框架的痛点。</p>
 <p>当你初次接触任何成熟的框架时，可能会被其丰富的功能所吸引，但很快就会发现一个问题：要完成一个简单的任务，往往需要理解 Chain、Agent、Tool、Memory、Retriever 等十几个不同的概念。每个概念都有自己的抽象层，学习曲线变得异常陡峭。</p>
 <p>这种复杂性虽然带来了强大的功能，但也成为了初学者的障碍。</p>
 <p>HelloAgents 框架试图在功能完整性和学习友好性之间找到平衡点，形成了四个核心的设计理念。</p>
-<p>（1）轻量级与教学友好的平衡</p>
-<p>（2）基于标准API的务实选择</p>
-<p>（3）渐进式学习路径的精心设计</p>
-<p>（4）统一的“工具”抽象：万物皆为工具</p>
+<ol>
+<li>轻量级与教学友好的平衡</li>
+<li>基于标准API的务实选择</li>
+<li>渐进式学习路径的精心设计</li>
+<li>统一的“工具”抽象：万物皆为工具</li>
+</ol>
 <h3 id="713"><strong>7.1.3 本章学习目标</strong></h3>
-<div class="highlight"><pre><span></span><code><span class="n">hello</span><span class="o">-</span><span class="n">agents</span><span class="o">/</span>
-<span class="err">├──</span> <span class="n">hello_agents</span><span class="o">/</span>
-<span class="err">│</span>   <span class="err">│</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">core</span><span class="o">/</span>                     <span class="c1"># 核心框架层</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">agent</span><span class="o">.</span><span class="n">py</span>              <span class="c1"># Agent基类</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">llm</span><span class="o">.</span><span class="n">py</span>                <span class="c1"># HelloAgentsLLM统一接口</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">message</span><span class="o">.</span><span class="n">py</span>            <span class="c1"># 消息系统</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">config</span><span class="o">.</span><span class="n">py</span>             <span class="c1"># 配置管理</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># 异常体系</span>
-<span class="err">│</span>   <span class="err">│</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">agents</span><span class="o">/</span>                   <span class="c1"># Agent实现层</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">simple_agent</span><span class="o">.</span><span class="n">py</span>       <span class="c1"># SimpleAgent实现</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">react_agent</span><span class="o">.</span><span class="n">py</span>        <span class="c1"># ReActAgent实现</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">reflection_agent</span><span class="o">.</span><span class="n">py</span>   <span class="c1"># ReflectionAgent实现</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">plan_solve_agent</span><span class="o">.</span><span class="n">py</span>   <span class="c1"># PlanAndSolveAgent实现</span>
-<span class="err">│</span>   <span class="err">│</span>
-<span class="err">│</span>   <span class="err">├──</span> <span class="n">tools</span><span class="o">/</span>                    <span class="c1"># 工具系统层</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">base</span><span class="o">.</span><span class="n">py</span>               <span class="c1"># 工具基类</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">registry</span><span class="o">.</span><span class="n">py</span>           <span class="c1"># 工具注册机制</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">chain</span><span class="o">.</span><span class="n">py</span>              <span class="c1"># 工具链管理系统</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">├──</span> <span class="n">async_executor</span><span class="o">.</span><span class="n">py</span>     <span class="c1"># 异步工具执行器</span>
-<span class="err">│</span>   <span class="err">│</span>   <span class="err">└──</span> <span class="n">builtin</span><span class="o">/</span>              <span class="c1"># 内置工具集</span>
-<span class="err">│</span>   <span class="err">│</span>       <span class="err">├──</span> <span class="n">calculator</span><span class="o">.</span><span class="n">py</span>     <span class="c1"># 计算工具</span>
-<span class="err">│</span>   <span class="err">│</span>       <span class="err">└──</span> <span class="n">search</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># 搜索工具</span>
-<span class="err">└──</span>
+<div class="highlight"><pre><span></span><code>hello-agents/
+├── hello_agents/
+│   │
+│   ├── core/                     # 核心框架层
+│   │   ├── agent.py              # Agent基类
+│   │   ├── llm.py                # HelloAgentsLLM统一接口
+│   │   ├── message.py            # 消息系统
+│   │   ├── config.py             # 配置管理
+│   │   └── exceptions.py         # 异常体系
+│   │
+│   ├── agents/                   # Agent实现层
+│   │   ├── simple_agent.py       # SimpleAgent实现
+│   │   ├── react_agent.py        # ReActAgent实现
+│   │   ├── reflection_agent.py   # ReflectionAgent实现
+│   │   └── plan_solve_agent.py   # PlanAndSolveAgent实现
+│   │
+│   ├── tools/                    # 工具系统层
+│   │   ├── base.py               # 工具基类
+│   │   ├── registry.py           # 工具注册机制
+│   │   ├── chain.py              # 工具链管理系统
+│   │   ├── async_executor.py     # 异步工具执行器
+│   │   └── builtin/              # 内置工具集
+│   │       ├── calculator.py     # 计算工具
+│   │       └── search.py         # 搜索工具
+└──
 </code></pre></div>
 <p><strong>快速开始：安装 HelloAgents 框架</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># hello-agents 框架代码可见链接：https://github.com/jjyaoao/helloagents</span>
@@ -2349,9 +2353,9 @@ LLM_TIMEOUT=60
 <h2 id="72-helloagentsllm">7.2 <strong>HelloAgentsLLM 扩展</strong></h2>
 <p>本节内容将在第 4.1.3 节创建的 HelloAgentsLLM 基础上进行迭代升级。我们将把这个基础客户端，改造为一个更具适应性的模型调用中枢。本次升级主要围绕以下三个目标展开：</p>
 <ol>
-<li>多提供商支持：实现对 OpenAI、ModelScope、智谱 AI 等多种主流 LLM 服务商的无缝切换，避免框架与特定供应商绑定。</li>
-<li>本地模型集成：引入 VLLM 和 Ollama 这两种高性能本地部署方案。</li>
-<li>自动检测机制：建立一套自动识别机制，使框架能根据环境信息智能推断所使用的 LLM 服务类型，简化用户的配置过程。</li>
+<li><strong>多提供商支持</strong>：实现对 OpenAI、ModelScope、智谱 AI 等多种主流 LLM 服务商的无缝切换，避免框架与特定供应商绑定。</li>
+<li><strong>本地模型集成</strong>：引入 VLLM 和 Ollama 这两种高性能本地部署方案。</li>
+<li><strong>自动检测机制</strong>：建立一套自动识别机制，使框架能根据环境信息智能推断所使用的 LLM 服务类型，简化用户的配置过程。</li>
 </ol>
 <h3 id="721"><strong>7.2.1 支持多提供商</strong></h3>
 <p>（1）创建自定义LLM类并<strong>继承</strong></p>
@@ -2441,7 +2445,7 @@ LLM_TIMEOUT=60
 <h3 id="722"><strong>7.2.2 本地模型调用</strong></h3>
 <p>为了在本地实现高性能、生产级的模型推理服务，社区涌现出了 VLLM 和 Ollama 等优秀工具。它们通过连续批处理、PagedAttention 等技术，显著提升了模型的吞吐量和运行效率，并将模型封装为兼容 OpenAI 标准的 API 服务。这意味着，我们可以将它们无缝地集成到 <code>HelloAgentsLLM</code> 中。</p>
 <p><strong>VLLM</strong></p>
-<p>VLLM 是一个为 LLM 推理设计的高性能 Python 库。它通过 PagedAttention 等先进技术，可以实现比标准 Transformers 实现高出数倍的吞吐量。下面是在本地部署一个 VLLM 服务的完整步骤：</p>
+<p>VLLM 是一个为 LLM 推理设计的高性能 Python 库。它通过 PagedAttention 等先进技术，可以实现<strong>比标准 Transformers 实现高出数倍的吞吐量</strong>。下面是在本地部署一个 VLLM 服务的完整步骤：</p>
 <p>首先，需要根据你的硬件环境（特别是 CUDA 版本）安装 VLLM。</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>vllm
 </code></pre></div>
@@ -2582,6 +2586,357 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">llm</span><span class="o">.</span><span class="n">think</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p><strong>HelloAgentsLLM 完整代码</strong>：</p>
+<details>
+<summary>hello_agents/core/llm.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;HelloAgents统一LLM接口 - 基于OpenAI原生API&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsException</span>
+
+<span class="c1"># 支持的LLM提供商</span>
+<span class="n">SUPPORTED_PROVIDERS</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span>
+    <span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;deepseek&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;qwen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modelscope&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;kimi&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;zhipu&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vllm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloAgentsLLM</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    为HelloAgents定制的LLM客户端。</span>
+<span class="sd">    它用于调用任何兼容OpenAI接口的服务，并默认使用流式响应。</span>
+
+<span class="sd">    设计理念：</span>
+<span class="sd">    - 参数优先，环境变量兜底</span>
+<span class="sd">    - 流式响应为默认，提供更好的用户体验</span>
+<span class="sd">    - 支持多种LLM提供商</span>
+<span class="sd">    - 统一的调用接口</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">provider</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SUPPORTED_PROVIDERS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="n">max_tokens</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初始化客户端。优先使用传入参数，如果未提供，则从环境变量加载。</span>
+<span class="sd">        支持自动检测provider或使用统一的LLM_*环境变量配置。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model: 模型名称，如果未提供则从环境变量LLM_MODEL_ID读取</span>
+<span class="sd">            api_key: API密钥，如果未提供则从环境变量读取</span>
+<span class="sd">            base_url: 服务地址，如果未提供则从环境变量LLM_BASE_URL读取</span>
+<span class="sd">            provider: LLM提供商，如果未提供则自动检测</span>
+<span class="sd">            temperature: 温度参数</span>
+<span class="sd">            max_tokens: 最大token数</span>
+<span class="sd">            timeout: 超时时间，从环境变量LLM_TIMEOUT读取，默认60秒</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 优先使用传入参数，如果未提供，则从环境变量加载</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_MODEL_ID&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="n">max_tokens</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_TIMEOUT&quot;</span><span class="p">,</span> <span class="s2">&quot;60&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="c1"># 自动检测provider或使用指定的provider</span>
+        <span class="n">requested_provider</span> <span class="o">=</span> <span class="p">(</span><span class="n">provider</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="n">provider</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="n">provider</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_detect_provider</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">requested_provider</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="s2">&quot;custom&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 根据provider确定API密钥和base_url</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_credentials</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+
+        <span class="c1"># 验证必要参数</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_model</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="n">HelloAgentsException</span><span class="p">(</span><span class="s2">&quot;API密钥和服务地址必须被提供或在.env文件中定义。&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 创建OpenAI客户端</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_client</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_auto_detect_provider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        自动检测LLM提供商</span>
+
+<span class="sd">        检测逻辑：</span>
+<span class="sd">        1. 优先检查特定提供商的环境变量</span>
+<span class="sd">        2. 根据API密钥格式判断</span>
+<span class="sd">        3. 根据base_url判断</span>
+<span class="sd">        4. 默认返回通用配置</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 1. 检查特定提供商的环境变量</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;openai&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEEPSEEK_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;deepseek&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DASHSCOPE_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;qwen&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MODELSCOPE_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;modelscope&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;KIMI_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MOONSHOT_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;kimi&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ZHIPU_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;GLM_API_KEY&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;zhipu&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OLLAMA_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OLLAMA_HOST&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;ollama&quot;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VLLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VLLM_HOST&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;vllm&quot;</span>
+
+        <span class="c1"># 2. 根据API密钥格式判断</span>
+        <span class="n">actual_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">actual_api_key</span><span class="p">:</span>
+            <span class="n">actual_key_lower</span> <span class="o">=</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;ms-&quot;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="s2">&quot;modelscope&quot;</span>
+            <span class="k">elif</span> <span class="n">actual_key_lower</span> <span class="o">==</span> <span class="s2">&quot;ollama&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;ollama&quot;</span>
+            <span class="k">elif</span> <span class="n">actual_key_lower</span> <span class="o">==</span> <span class="s2">&quot;vllm&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;vllm&quot;</span>
+            <span class="k">elif</span> <span class="n">actual_key_lower</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+            <span class="k">elif</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sk-&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">actual_api_key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="c1"># 可能是OpenAI、DeepSeek或Kimi，需要进一步判断</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">actual_api_key</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+                <span class="c1"># 智谱AI的API密钥格式通常包含点号</span>
+                <span class="k">return</span> <span class="s2">&quot;zhipu&quot;</span>
+
+        <span class="c1"># 3. 根据base_url判断</span>
+        <span class="n">actual_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">actual_base_url</span><span class="p">:</span>
+            <span class="n">base_url_lower</span> <span class="o">=</span> <span class="n">actual_base_url</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">&quot;api.openai.com&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;openai&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;api.deepseek.com&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;deepseek&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;dashscope.aliyuncs.com&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;qwen&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;api-inference.modelscope.cn&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;modelscope&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;api.moonshot.cn&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;kimi&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;open.bigmodel.cn&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;zhipu&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;localhost&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;127.0.0.1&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="c1"># 本地部署检测 - 优先检查特定服务</span>
+                <span class="k">if</span> <span class="s2">&quot;:11434&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;ollama&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s2">&quot;ollama&quot;</span>
+                <span class="k">elif</span> <span class="s2">&quot;:8000&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">and</span> <span class="s2">&quot;vllm&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s2">&quot;vllm&quot;</span>
+                <span class="k">elif</span> <span class="s2">&quot;:8080&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;:7860&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># 根据API密钥进一步判断</span>
+                    <span class="k">if</span> <span class="n">actual_api_key</span> <span class="ow">and</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ollama&quot;</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="s2">&quot;ollama&quot;</span>
+                    <span class="k">elif</span> <span class="n">actual_api_key</span> <span class="ow">and</span> <span class="n">actual_api_key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;vllm&quot;</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="s2">&quot;vllm&quot;</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+            <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">port</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;:8080&quot;</span><span class="p">,</span> <span class="s2">&quot;:7860&quot;</span><span class="p">,</span> <span class="s2">&quot;:5000&quot;</span><span class="p">]):</span>
+                <span class="c1"># 常见的本地部署端口</span>
+                <span class="k">return</span> <span class="s2">&quot;local&quot;</span>
+
+        <span class="c1"># 4. 默认返回auto，使用通用配置</span>
+        <span class="k">return</span> <span class="s2">&quot;auto&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_credentials</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">base_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;根据provider解析API密钥和base_url&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://api.openai.com/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;deepseek&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEEPSEEK_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://api.deepseek.com&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;qwen&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DASHSCOPE_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;modelscope&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MODELSCOPE_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://api-inference.modelscope.cn/v1/&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;kimi&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;KIMI_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MOONSHOT_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://api.moonshot.cn/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;zhipu&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;ZHIPU_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;GLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;https://open.bigmodel.cn/api/paas/v4&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;ollama&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OLLAMA_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;ollama&quot;</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OLLAMA_HOST&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;http://localhost:11434/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;vllm&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VLLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;vllm&quot;</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;VLLM_HOST&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;http://localhost:8000/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;local&quot;</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;http://localhost:8000/v1&quot;</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># auto或其他情况：使用通用配置，支持任何OpenAI兼容的服务</span>
+            <span class="n">resolved_api_key</span> <span class="o">=</span> <span class="n">api_key</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">)</span>
+            <span class="n">resolved_base_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">resolved_api_key</span><span class="p">,</span> <span class="n">resolved_base_url</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OpenAI</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;创建OpenAI客户端&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">OpenAI</span><span class="p">(</span>
+            <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">api_key</span><span class="p">,</span>
+            <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_default_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取默认模型&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;openai&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;gpt-3.5-turbo&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;deepseek&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;deepseek-chat&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;qwen&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;qwen-plus&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;modelscope&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Qwen/Qwen2.5-72B-Instruct&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;kimi&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;moonshot-v1-8k&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;zhipu&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;glm-4&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;ollama&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;llama3.2&quot;</span>  <span class="c1"># Ollama常用模型</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;vllm&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;meta-llama/Llama-2-7b-chat-hf&quot;</span>  <span class="c1"># vLLM常用模型</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;local-model&quot;</span>  <span class="c1"># 本地模型占位符</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">provider</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="ow">or</span> <span class="s2">&quot;gpt-3.5-turbo&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># auto或其他情况：根据base_url智能推断默认模型</span>
+            <span class="n">base_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">base_url_lower</span> <span class="o">=</span> <span class="n">base_url</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s2">&quot;modelscope&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Qwen/Qwen2.5-72B-Instruct&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;deepseek&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;deepseek-chat&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;dashscope&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;qwen-plus&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;moonshot&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;moonshot-v1-8k&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;bigmodel&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;glm-4&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;ollama&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;:11434&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;llama3.2&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;:8000&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;vllm&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;meta-llama/Llama-2-7b-chat-hf&quot;</span>
+            <span class="k">elif</span> <span class="s2">&quot;localhost&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span> <span class="ow">or</span> <span class="s2">&quot;127.0.0.1&quot;</span> <span class="ow">in</span> <span class="n">base_url_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;local-model&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;gpt-3.5-turbo&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">think</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">temperature</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        调用大语言模型进行思考，并返回流式响应。</span>
+<span class="sd">        这是主要的调用方法，默认使用流式响应以获得更好的用户体验。</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            messages: 消息列表</span>
+<span class="sd">            temperature: 温度参数，如果未提供则使用初始化时的值</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            str: 流式响应的文本片段</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧠 正在调用 </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="si">}</span><span class="s2"> 模型...&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+                <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span> <span class="k">if</span> <span class="n">temperature</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">,</span>
+                <span class="n">max_tokens</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span><span class="p">,</span>
+                <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># 关键：启用流式响应</span>
+            <span class="p">)</span>
+
+            <span class="c1"># 处理流式响应</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ 大语言模型响应成功:&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span> <span class="c1"># 遍历响应流中的每个数据块（chunk）</span>
+                <span class="n">content</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">content</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span> <span class="c1"># 从每个chunk中提取增量内容（delta.content），chunk 是 Pydantic 模型对象，用点号（.）访问属性，也支持字典式访问</span>
+                <span class="k">if</span> <span class="n">content</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 打印增量内容，end=&quot;&quot; 表示不换行，flush=True 表示立即刷新输出缓冲区，确保实时显示</span>
+                    <span class="k">yield</span> <span class="n">content</span> <span class="c1"># 通过 yield 将内容逐块返回给调用方</span>
+            <span class="nb">print</span><span class="p">()</span>  <span class="c1"># 在流式输出结束后换行</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ 调用LLM API时发生错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">HelloAgentsException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM调用失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        非流式调用LLM，返回完整响应。</span>
+<span class="sd">        适用于不需要流式输出的场景。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+                <span class="n">temperature</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span><span class="p">),</span>
+                <span class="n">max_tokens</span><span class="o">=</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max_tokens&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span><span class="p">),</span>
+                <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;max_tokens&#39;</span><span class="p">]}</span> <span class="c1"># 字典推导式，将其他所有 kwargs 参数传递给 API</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">HelloAgentsException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM调用失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stream_invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        流式调用LLM的别名方法，与think方法功能相同。</span>
+<span class="sd">        保持向后兼容性。</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;temperature&#39;</span><span class="p">)</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">think</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">temperature</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
 <h2 id="73">7.3 <strong>框架接口实现</strong></h2>
 <p>在上节中，我们构建了 HelloAgentsLLM 这一核心组件，解决了与大语言模型通信的关键问题。不过它还需要一系列配套的接口和组件来处理数据流、管理配置、应对异常，并为上层应用的构建提供一个清晰、统一的结构。本节将讲述以下三个核心文件：</p>
 <ul>
@@ -2633,17 +2988,19 @@ LLM_MODEL_ID=&quot;llama3&quot;
 
 <p>首先，我们通过 <code>typing.Literal</code> 将 <code>role</code> 字段的取值严格限制为 <code>"user"</code>, <code>"assistant"</code>, <code>"system"</code>, <code>"tool"</code> 四种，这直接对应 OpenAI API 的规范，保证了类型安全。</p>
 <p>除了 <code>content</code> 和 <code>role</code> 这两个核心字段外，我们还增加了 <code>timestamp</code> 和 <code>metadata</code>，为日志记录和未来功能扩展预留了空间。</p>
-<p>最后，<code>to_dict()</code> 方法是其核心功能之一，负责将内部使用的 <code>Message</code> 对象转换为与 OpenAI API 兼容的字典格式，体现了“对内丰富，对外兼容”的设计原则。</p>
+<p>最后，<code>to_dict()</code> 方法是其核心功能之一，负责<strong>将内部使用的 <code>Message</code> 对象转换为与 OpenAI API 兼容的字典格式</strong>，体现了“对内丰富，对外兼容”的设计原则。</p>
 <h3 id="732-config"><strong>7.3.2 Config 类</strong></h3>
 <p><strong>Config</strong> 类的职责是将代码中硬编码配置参数集中起来，并支持从环境变量中读取。</p>
 <details>
 <summary>hello_agents/core/config.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;配置管理&quot;&quot;&quot;</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span> <span class="c1"># Pydantic 是 Python 中最流行的数据验证和设置管理库，用于定义数据模型、自动验证类型、序列化/反序列化数据（对象 ↔ 字典/JSON 互转）。</span>
 
+<span class="c1"># Config 是 Pydantic BaseModel 的子类</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;HelloAgents配置类&quot;&quot;&quot;</span>
 
@@ -2660,6 +3017,7 @@ LLM_MODEL_ID=&quot;llama3&quot;
     <span class="c1"># 其他配置</span>
     <span class="n">max_history_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 
+    <span class="c1"># 类方法，从环境变量创建：config = Config.from_env()</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_env</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Config&quot;</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;从环境变量创建配置&quot;&quot;&quot;</span>
@@ -2668,8 +3026,9 @@ LLM_MODEL_ID=&quot;llama3&quot;
             <span class="n">log_level</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LOG_LEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">),</span>
             <span class="n">temperature</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TEMPERATURE&quot;</span><span class="p">,</span> <span class="s2">&quot;0.7&quot;</span><span class="p">)),</span>
             <span class="n">max_tokens</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MAX_TOKENS&quot;</span><span class="p">))</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;MAX_TOKENS&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="p">)</span> <span class="c1"># ← 创建并返回 Config 实例</span>
 
+    <span class="c1"># 转换为字典：config_dict = config.to_dict()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;转换为字典&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
@@ -2679,7 +3038,10 @@ LLM_MODEL_ID=&quot;llama3&quot;
 
 <p>首先，我们将配置项按逻辑划分为 <code>LLM配置</code>、<code>系统配置</code> 等，使结构一目了然。</p>
 <p>其次，每个配置项都设有合理的默认值，保证了框架在零配置下也能工作。</p>
-<p>最核心的是 <code>from_env()</code> 类方法，它允许用户通过设置环境变量来覆盖默认配置，无需修改代码，这在部署到不同环境时尤其有用。</p>
+<p>最核心的是 <code>from_env()</code> 类方法，它允许用户<strong>通过设置环境变量来覆盖默认配置，无需修改代码</strong>，这在部署到不同环境时尤其有用。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 从环境变量创建 Config 实例</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">from_env</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="733-agent"><strong>7.3.3 Agent 抽象基类</strong></h3>
 <p><code>Agent</code> 类是整个框架的顶层抽象。它定义了一个智能体应该具备的通用行为和属性，但并不关心具体的实现方式。</p>
 <p>我们通过 Python 的 <code>abc</code> (Abstract Base Classes) 模块来实现它，这强制所有具体的智能体实现（如后续章节的 <code>SimpleAgent</code>, <code>ReActAgent</code> 等）都必须遵循同一个“接口”。</p>
@@ -2687,8 +3049,9 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <summary>hello_agents/core/agent.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Agent基类&quot;&quot;&quot;</span>
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
@@ -2706,8 +3069,8 @@ LLM_MODEL_ID=&quot;llama3&quot;
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">llm</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="n">system_prompt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="ow">or</span> <span class="n">Config</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span> <span class="ow">or</span> <span class="n">Config</span><span class="p">()</span> <span class="c1"># 如果 config is None 就使用默认配置</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_history</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 初始化一个空列表来存储历史消息</span>
 
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -2728,6 +3091,9 @@ LLM_MODEL_ID=&quot;llama3&quot;
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Agent(name=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, provider=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">provider</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 </code></pre></div>
 
 </details>
@@ -3187,18 +3553,397 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <p>对于 ReAct 的测试案例，由于需要调用工具，所以统一放在文末提供测试代码。</p>
 <h3 id="743-reflectionagent"><strong>7.4.3 ReflectionAgent</strong></h3>
 <details>
-<summary>chapter7/my_reflection_agent.py</summary>
+<summary>hello_agents/agents/reflection_agent.py</summary>
 
-<div class="highlight"><pre><span></span><code><span class="n">略</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Reflection Agent实现 - 自我反思与迭代优化的智能体&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+
+<span class="c1"># 默认提示词模板</span>
+<span class="n">DEFAULT_PROMPTS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;initial&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">请根据以下要求完成任务：</span>
+
+<span class="s2">任务: </span><span class="si">{task}</span>
+
+<span class="s2">请提供一个完整、准确的回答。</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reflect&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">请仔细审查以下回答，并找出可能的问题或改进空间：</span>
+
+<span class="s2"># 原始任务:</span>
+<span class="si">{task}</span>
+
+<span class="s2"># 当前回答:</span>
+<span class="si">{content}</span>
+
+<span class="s2">请分析这个回答的质量，指出不足之处，并提出具体的改进建议。</span>
+<span class="s2">如果回答已经很好，请回答&quot;无需改进&quot;。</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;refine&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">请根据反馈意见改进你的回答：</span>
+
+<span class="s2"># 原始任务:</span>
+<span class="si">{task}</span>
+
+<span class="s2"># 上一轮回答:</span>
+<span class="si">{last_attempt}</span>
+
+<span class="s2"># 反馈意见:</span>
+<span class="si">{feedback}</span>
+
+<span class="s2">请提供一个改进后的回答。</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Memory</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    简单的短期记忆模块，用于存储智能体的行动与反思轨迹。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;向记忆中添加一条新记录&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">record_type</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📝 记忆已更新，新增一条 &#39;</span><span class="si">{</span><span class="n">record_type</span><span class="si">}</span><span class="s2">&#39; 记录。&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;将所有记忆记录格式化为一个连贯的字符串文本&quot;&quot;&quot;</span>
+        <span class="n">trajectory</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;execution&#39;</span><span class="p">:</span>
+                <span class="n">trajectory</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;--- 上一轮尝试 (代码) ---</span><span class="se">\n</span><span class="si">{</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="k">elif</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;reflection&#39;</span><span class="p">:</span>
+                <span class="n">trajectory</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;--- 评审员反馈 ---</span><span class="se">\n</span><span class="si">{</span><span class="n">record</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">trajectory</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_last_execution</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取最近一次的执行结果&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;execution&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ReflectionAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reflection Agent - 自我反思与迭代优化的智能体</span>
+
+<span class="sd">    这个Agent能够：</span>
+<span class="sd">    1. 执行初始任务</span>
+<span class="sd">    2. 对结果进行自我反思</span>
+<span class="sd">    3. 根据反思结果进行优化</span>
+<span class="sd">    4. 迭代改进直到满意</span>
+
+<span class="sd">    特别适合代码生成、文档写作、分析报告等需要迭代优化的任务。</span>
+
+<span class="sd">    支持多种专业领域的提示词模板，用户可以自定义或使用内置模板。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">llm</span><span class="p">:</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span>
+        <span class="n">system_prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">custom_prompts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初始化ReflectionAgent</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Agent名称</span>
+<span class="sd">            llm: LLM实例</span>
+<span class="sd">            system_prompt: 系统提示词</span>
+<span class="sd">            config: 配置对象</span>
+<span class="sd">            max_iterations: 最大迭代次数</span>
+<span class="sd">            custom_prompts: 自定义提示词模板 {&quot;initial&quot;: &quot;&quot;, &quot;reflect&quot;: &quot;&quot;, &quot;refine&quot;: &quot;&quot;}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">llm</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_iterations</span> <span class="o">=</span> <span class="n">max_iterations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">()</span>
+
+        <span class="c1"># 设置提示词模板：用户自定义优先，否则使用默认模板</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prompts</span> <span class="o">=</span> <span class="n">custom_prompts</span> <span class="k">if</span> <span class="n">custom_prompts</span> <span class="k">else</span> <span class="n">DEFAULT_PROMPTS</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        运行Reflection Agent</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_text: 任务描述</span>
+<span class="sd">            **kwargs: 其他参数</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            最终优化后的结果</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🤖 </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> 开始处理任务: </span><span class="si">{</span><span class="n">input_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 重置记忆</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">()</span>
+
+        <span class="c1"># 1. 初始执行</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 正在进行初始尝试 ---&quot;</span><span class="p">)</span>
+        <span class="n">initial_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompts</span><span class="p">[</span><span class="s2">&quot;initial&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">input_text</span><span class="p">)</span>
+        <span class="n">initial_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_llm_response</span><span class="p">(</span><span class="n">initial_prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add_record</span><span class="p">(</span><span class="s2">&quot;execution&quot;</span><span class="p">,</span> <span class="n">initial_result</span><span class="p">)</span>
+
+        <span class="c1"># 2. 迭代循环：反思与优化</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iterations</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 第 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iterations</span><span class="si">}</span><span class="s2"> 轮迭代 ---&quot;</span><span class="p">)</span>
+
+            <span class="c1"># a. 反思</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-&gt; 正在进行反思...&quot;</span><span class="p">)</span>
+            <span class="n">last_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">get_last_execution</span><span class="p">()</span>
+            <span class="n">reflect_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompts</span><span class="p">[</span><span class="s2">&quot;reflect&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="n">input_text</span><span class="p">,</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">last_result</span>
+            <span class="p">)</span>
+            <span class="n">feedback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_llm_response</span><span class="p">(</span><span class="n">reflect_prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add_record</span><span class="p">(</span><span class="s2">&quot;reflection&quot;</span><span class="p">,</span> <span class="n">feedback</span><span class="p">)</span>
+
+            <span class="c1"># b. 检查是否需要停止</span>
+            <span class="k">if</span> <span class="s2">&quot;无需改进&quot;</span> <span class="ow">in</span> <span class="n">feedback</span> <span class="ow">or</span> <span class="s2">&quot;no need for improvement&quot;</span> <span class="ow">in</span> <span class="n">feedback</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">✅ 反思认为结果已无需改进，任务完成。&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="c1"># c. 优化</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-&gt; 正在进行优化...&quot;</span><span class="p">)</span>
+            <span class="n">refine_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompts</span><span class="p">[</span><span class="s2">&quot;refine&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">task</span><span class="o">=</span><span class="n">input_text</span><span class="p">,</span>
+                <span class="n">last_attempt</span><span class="o">=</span><span class="n">last_result</span><span class="p">,</span>
+                <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span>
+            <span class="p">)</span>
+            <span class="n">refined_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_llm_response</span><span class="p">(</span><span class="n">refine_prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">add_record</span><span class="p">(</span><span class="s2">&quot;execution&quot;</span><span class="p">,</span> <span class="n">refined_result</span><span class="p">)</span>
+
+        <span class="n">final_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="o">.</span><span class="n">get_last_execution</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 任务完成 ---</span><span class="se">\n</span><span class="s2">最终结果:</span><span class="se">\n</span><span class="si">{</span><span class="n">final_result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 保存到历史记录</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">final_result</span><span class="p">,</span> <span class="s2">&quot;assistant&quot;</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">final_result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_llm_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;调用LLM并获取完整响应&quot;&quot;&quot;</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
 </code></pre></div>
 
 </details>
 
 <h3 id="744-planandsolveagent"><strong>7.4.4 PlanAndSolveAgent</strong></h3>
 <details>
-<summary>chapter7/my_plan_solve_agent.py</summary>
+<summary>hello_agents/agents/plan_solve_agent.py</summary>
 
-<div class="highlight"><pre><span></span><code><span class="n">略</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Plan and Solve Agent实现 - 分解规划与逐步执行的智能体&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+
+<span class="c1"># 默认规划器提示词模板</span>
+<span class="n">DEFAULT_PLANNER_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">你是一个顶级的AI规划专家。你的任务是将用户提出的复杂问题分解成一个由多个简单步骤组成的行动计划。</span>
+<span class="s2">请确保计划中的每个步骤都是一个独立的、可执行的子任务，并且严格按照逻辑顺序排列。</span>
+<span class="s2">你的输出必须是一个Python列表，其中每个元素都是一个描述子任务的字符串。</span>
+
+<span class="s2">问题: </span><span class="si">{question}</span>
+
+<span class="s2">请严格按照以下格式输出你的计划:</span>
+<span class="s2">```python</span>
+<span class="s2">[&quot;步骤1&quot;, &quot;步骤2&quot;, &quot;步骤3&quot;, ...]</span>
+<span class="s2">```</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># 默认执行器提示词模板</span>
+<span class="n">DEFAULT_EXECUTOR_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">你是一位顶级的AI执行专家。你的任务是严格按照给定的计划，一步步地解决问题。</span>
+<span class="s2">你将收到原始问题、完整的计划、以及到目前为止已经完成的步骤和结果。</span>
+<span class="s2">请你专注于解决&quot;当前步骤&quot;，并仅输出该步骤的最终答案，不要输出任何额外的解释或对话。</span>
+
+<span class="s2"># 原始问题:</span>
+<span class="si">{question}</span>
+
+<span class="s2"># 完整计划:</span>
+<span class="si">{plan}</span>
+
+<span class="s2"># 历史步骤与结果:</span>
+<span class="si">{history}</span>
+
+<span class="s2"># 当前步骤:</span>
+<span class="si">{current_step}</span>
+
+<span class="s2">请仅输出针对&quot;当前步骤&quot;的回答:</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Planner</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;规划器 - 负责将复杂问题分解为简单步骤&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">llm_client</span><span class="p">:</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span> <span class="n">prompt_template</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llm_client</span> <span class="o">=</span> <span class="n">llm_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prompt_template</span> <span class="o">=</span> <span class="n">prompt_template</span> <span class="k">if</span> <span class="n">prompt_template</span> <span class="k">else</span> <span class="n">DEFAULT_PLANNER_PROMPT</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        生成执行计划</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            question: 要解决的问题</span>
+<span class="sd">            **kwargs: LLM调用参数</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            步骤列表</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompt_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">)</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 正在生成计划 ---&quot;</span><span class="p">)</span>
+        <span class="n">response_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm_client</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ 计划已生成:</span><span class="se">\n</span><span class="si">{</span><span class="n">response_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 提取Python代码块中的列表</span>
+            <span class="n">plan_str</span> <span class="o">=</span> <span class="n">response_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;```python&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;```&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">plan</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">plan_str</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">plan</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ 解析计划时出错: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;原始响应: </span><span class="si">{</span><span class="n">response_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ 解析计划时发生未知错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Executor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;执行器 - 负责按计划逐步执行&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">llm_client</span><span class="p">:</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span> <span class="n">prompt_template</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llm_client</span> <span class="o">=</span> <span class="n">llm_client</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prompt_template</span> <span class="o">=</span> <span class="n">prompt_template</span> <span class="k">if</span> <span class="n">prompt_template</span> <span class="k">else</span> <span class="n">DEFAULT_EXECUTOR_PROMPT</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">plan</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        按计划执行任务</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            question: 原始问题</span>
+<span class="sd">            plan: 执行计划</span>
+<span class="sd">            **kwargs: LLM调用参数</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            最终答案</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">final_answer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 正在执行计划 ---&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-&gt; 正在执行步骤 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prompt_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span>
+                <span class="n">plan</span><span class="o">=</span><span class="n">plan</span><span class="p">,</span>
+                <span class="n">history</span><span class="o">=</span><span class="n">history</span> <span class="k">if</span> <span class="n">history</span> <span class="k">else</span> <span class="s2">&quot;无&quot;</span><span class="p">,</span>
+                <span class="n">current_step</span><span class="o">=</span><span class="n">step</span>
+            <span class="p">)</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+
+            <span class="n">response_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm_client</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="n">history</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;步骤 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="se">\n</span><span class="s2">结果: </span><span class="si">{</span><span class="n">response_text</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+            <span class="n">final_answer</span> <span class="o">=</span> <span class="n">response_text</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ 步骤 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> 已完成，结果: </span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">final_answer</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">PlanAndSolveAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plan and Solve Agent - 分解规划与逐步执行的智能体</span>
+
+<span class="sd">    这个Agent能够：</span>
+<span class="sd">    1. 将复杂问题分解为简单步骤</span>
+<span class="sd">    2. 按照计划逐步执行</span>
+<span class="sd">    3. 维护执行历史和上下文</span>
+<span class="sd">    4. 得出最终答案</span>
+
+<span class="sd">    特别适合多步骤推理、数学问题、复杂分析等任务。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">llm</span><span class="p">:</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span>
+        <span class="n">system_prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">custom_prompts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初始化PlanAndSolveAgent</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: Agent名称</span>
+<span class="sd">            llm: LLM实例</span>
+<span class="sd">            system_prompt: 系统提示词</span>
+<span class="sd">            config: 配置对象</span>
+<span class="sd">            custom_prompts: 自定义提示词模板 {&quot;planner&quot;: &quot;&quot;, &quot;executor&quot;: &quot;&quot;}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">llm</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+        <span class="c1"># 设置提示词模板：用户自定义优先，否则使用默认模板</span>
+        <span class="k">if</span> <span class="n">custom_prompts</span><span class="p">:</span>
+            <span class="n">planner_prompt</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;planner&quot;</span><span class="p">)</span>
+            <span class="n">executor_prompt</span> <span class="o">=</span> <span class="n">custom_prompts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;executor&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">planner_prompt</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">executor_prompt</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">planner</span> <span class="o">=</span> <span class="n">Planner</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="p">,</span> <span class="n">planner_prompt</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="n">Executor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="p">,</span> <span class="n">executor_prompt</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        运行Plan and Solve Agent</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_text: 要解决的问题</span>
+<span class="sd">            **kwargs: 其他参数</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            最终答案</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🤖 </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> 开始处理问题: </span><span class="si">{</span><span class="n">input_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 1. 生成计划</span>
+        <span class="n">plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">planner</span><span class="o">.</span><span class="n">plan</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">plan</span><span class="p">:</span>
+            <span class="n">final_answer</span> <span class="o">=</span> <span class="s2">&quot;无法生成有效的行动计划，任务终止。&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 任务终止 ---</span><span class="se">\n</span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># 保存到历史记录</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">final_answer</span><span class="p">,</span> <span class="s2">&quot;assistant&quot;</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">final_answer</span>
+
+        <span class="c1"># 2. 执行计划</span>
+        <span class="n">final_answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="n">plan</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 任务完成 ---</span><span class="se">\n</span><span class="s2">最终答案: </span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 保存到历史记录</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">final_answer</span><span class="p">,</span> <span class="s2">&quot;assistant&quot;</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">final_answer</span>
 </code></pre></div>
 
 </details>
@@ -3215,9 +3960,11 @@ LLM_MODEL_ID=&quot;llama3&quot;
 <li><code>_parse_function_call_arguments</code>: 解析模型返回的 JSON 字符串参数</li>
 <li><code>_convert_parameter_types</code>: 转换参数类型</li>
 </ul>
-<p>这些功能可以使其具备原生的 OpenAI Function Calling 的能力，对比使用 prompt 约束的方式，具备更强的鲁棒性。</p>
+<p>这些功能可以使其具备原生的 OpenAI Function Calling 的能力</p>
+<p>通过 OpenAI 原生的 tools 参数与模型交互，而不是通过手动解析文本或正则匹配来触发工具</p>
+<p>对比使用 prompt 约束的方式，具备更强的鲁棒性。</p>
 <details>
-<summary>点击展开完整代码</summary>
+<summary>OpenAI Function Calling 的示例与再封装</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_invoke_with_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">tools</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">tool_choice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;调用底层OpenAI客户端执行函数调用&quot;&quot;&quot;</span>
@@ -3276,10 +4023,400 @@ LLM_MODEL_ID=&quot;llama3&quot;
 
 </details>
 
+<p><strong>使用 OpenAI 函数调用范式的 FunctionCallAgent 实现</strong>：</p>
+<details>
+<summary>hello_agents/agents/function_call_agent.py</summary>
+
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;FunctionCallAgent - 使用OpenAI函数调用范式的Agent实现&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.agent</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..core.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..tools.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_map_parameter_type</span><span class="p">(</span><span class="n">param_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;将工具参数类型映射为JSON Schema允许的类型&quot;&quot;&quot;</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">param_type</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">normalized</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="s2">&quot;object&quot;</span><span class="p">}:</span>
+        <span class="k">return</span> <span class="n">normalized</span>
+    <span class="k">return</span> <span class="s2">&quot;string&quot;</span>
+
+<span class="c1"># FunctionCallAgent 继承自基类 Agent，目的是让LLM能够自主决定何时调用外部工具（函数），并通过OpenAI原生的 tools 参数与模型交互，而不是通过手动解析文本或正则匹配来触发工具。</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionCallAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于OpenAI原生函数调用机制的Agent&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">llm</span><span class="p">:</span> <span class="n">HelloAgentsLLM</span><span class="p">,</span>
+        <span class="n">system_prompt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Config</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_registry</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ToolRegistry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># 工具注册表，管理所有可用工具</span>
+        <span class="n">enable_tool_calling</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="c1"># 是否启用工具调用</span>
+        <span class="n">default_tool_choice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="c1"># 默认工具选择策略，如 &quot;auto&quot; / &quot;none&quot; / 指定函数</span>
+        <span class="n">max_tool_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="c1"># 最大工具调用轮次，防止死循环</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">llm</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span> <span class="o">=</span> <span class="n">tool_registry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_tool_calling</span> <span class="o">=</span> <span class="n">enable_tool_calling</span> <span class="ow">and</span> <span class="n">tool_registry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_tool_choice</span> <span class="o">=</span> <span class="n">default_tool_choice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_tool_iterations</span> <span class="o">=</span> <span class="n">max_tool_iterations</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_system_prompt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;构建系统提示词，注入工具描述&quot;&quot;&quot;</span>
+        <span class="n">base_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="ow">or</span> <span class="s2">&quot;你是一个可靠的AI助理，能够在需要时调用工具完成任务。&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_tool_calling</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base_prompt</span>
+
+        <span class="n">tools_description</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">get_tools_description</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tools_description</span> <span class="ow">or</span> <span class="n">tools_description</span> <span class="o">==</span> <span class="s2">&quot;暂无可用工具&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base_prompt</span>
+
+        <span class="n">prompt</span> <span class="o">=</span> <span class="n">base_prompt</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">## 可用工具</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">prompt</span> <span class="o">+=</span> <span class="s2">&quot;当你判断需要外部信息或执行动作时，可以直接通过函数调用使用以下工具：</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">prompt</span> <span class="o">+=</span> <span class="n">tools_description</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">prompt</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">请主动决定是否调用工具，合理利用多次调用来获得完备答案。&quot;</span>
+        <span class="k">return</span> <span class="n">prompt</span>
+
+    <span class="c1"># 将注册的工具转换为 OpenAI 所需的 tools 参数格式</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_tool_schemas</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_tool_calling</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">schemas</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Tool对象</span>
+        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">get_all_tools</span><span class="p">():</span>
+            <span class="n">properties</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">required</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">parameters</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">parameters</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+                <span class="n">properties</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">_map_parameter_type</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">type</span><span class="p">),</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">param</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">properties</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span>
+                <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+                    <span class="n">required</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="n">schema</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">tool</span><span class="o">.</span><span class="n">description</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="n">properties</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">required</span><span class="p">:</span>
+                <span class="n">schema</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">][</span><span class="s2">&quot;parameters&quot;</span><span class="p">][</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">required</span>
+            <span class="n">schemas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+
+        <span class="c1"># register_function 注册的工具（直接访问内部结构）</span>
+        <span class="n">function_map</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">,</span> <span class="s2">&quot;_functions&quot;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">function_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">schemas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+                        <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;输入文本&quot;</span>
+                                <span class="p">}</span>
+                            <span class="p">},</span>
+                            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;input&quot;</span><span class="p">]</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">schemas</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_message_content</span><span class="p">(</span><span class="n">raw_content</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;从OpenAI响应的message.content中安全提取文本&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">raw_content</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw_content</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">raw_content</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">raw_content</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">parts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">raw_content</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">text</span><span class="p">:</span>
+                    <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">raw_content</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_parse_function_call_arguments</span><span class="p">(</span><span class="n">arguments</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;解析模型返回的JSON字符串参数&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">arguments</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">parsed</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parsed</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_convert_parameter_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;根据工具定义尽可能转换参数类型&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">param_dict</span>
+
+        <span class="n">tool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">get_tool</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tool</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">param_dict</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tool_params</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">get_parameters</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">param_dict</span>
+
+        <span class="n">type_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">param</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">tool_params</span><span class="p">}</span>
+        <span class="n">converted</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">param_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">param_type</span> <span class="o">=</span> <span class="n">type_mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">param_type</span><span class="p">:</span>
+                <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">continue</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">normalized</span> <span class="o">=</span> <span class="n">param_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">normalized</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">}:</span>
+                    <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">normalized</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">}:</span>
+                    <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">normalized</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span> <span class="s2">&quot;bool&quot;</span><span class="p">}:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+                        <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                        <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                        <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;true&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">}</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+                <span class="n">converted</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">converted</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_execute_tool_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">arguments</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;执行工具调用并返回字符串结果&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;❌ 错误：未配置工具注册表&quot;</span>
+
+        <span class="n">tool</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">get_tool</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tool</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">typed_arguments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_convert_parameter_types</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">typed_arguments</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 工具调用失败：</span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">func</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">input_text</span> <span class="o">=</span> <span class="n">arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">input_text</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 工具调用失败：</span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 错误：未找到工具 &#39;</span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_invoke_with_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">tools</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">tool_choice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;调用底层OpenAI客户端执行函数调用&quot;&quot;&quot;</span>
+        <span class="n">client</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="p">,</span> <span class="s2">&quot;_client&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;HelloAgentsLLM 未正确初始化客户端，无法执行函数调用。&quot;</span><span class="p">)</span>
+
+        <span class="n">client_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">client_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">max_tokens</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">client_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;max_tokens&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">max_tokens</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+            <span class="n">tool_choice</span><span class="o">=</span><span class="n">tool_choice</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">client_kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">max_tool_iterations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_choice</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        执行函数调用范式的对话流程</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># 1. 构建消息列表：system + 历史记录 + 用户输入。</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">system_prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_system_prompt</span><span class="p">()</span>
+        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">})</span>
+
+        <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_history</span><span class="p">:</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">})</span>
+
+        <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">input_text</span><span class="p">})</span>
+
+        <span class="c1"># 判断是否有工具：如果没有工具，直接调用 llm.invoke() 返回</span>
+        <span class="n">tool_schemas</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_tool_schemas</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tool_schemas</span><span class="p">:</span>
+            <span class="n">response_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">response_text</span><span class="p">,</span> <span class="s2">&quot;assistant&quot;</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">response_text</span>
+
+        <span class="n">iterations_limit</span> <span class="o">=</span> <span class="n">max_tool_iterations</span> <span class="k">if</span> <span class="n">max_tool_iterations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_tool_iterations</span>
+        <span class="n">effective_tool_choice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="n">tool_choice</span> <span class="k">if</span> <span class="n">tool_choice</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_tool_choice</span>
+
+        <span class="n">current_iteration</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">final_response</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">while</span> <span class="n">current_iteration</span> <span class="o">&lt;</span> <span class="n">iterations_limit</span><span class="p">:</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invoke_with_tools</span><span class="p">(</span>
+                <span class="n">messages</span><span class="p">,</span>
+                <span class="n">tools</span><span class="o">=</span><span class="n">tool_schemas</span><span class="p">,</span>
+                <span class="n">tool_choice</span><span class="o">=</span><span class="n">effective_tool_choice</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">choice</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">assistant_message</span> <span class="o">=</span> <span class="n">choice</span><span class="o">.</span><span class="n">message</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_message_content</span><span class="p">(</span><span class="n">assistant_message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+            <span class="n">tool_calls</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">assistant_message</span><span class="o">.</span><span class="n">tool_calls</span> <span class="ow">or</span> <span class="p">[])</span>
+
+            <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+                <span class="n">assistant_payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">}</span>
+                <span class="n">assistant_payload</span><span class="p">[</span><span class="s2">&quot;tool_calls&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="k">for</span> <span class="n">tool_call</span> <span class="ow">in</span> <span class="n">tool_calls</span><span class="p">:</span>
+                    <span class="n">assistant_payload</span><span class="p">[</span><span class="s2">&quot;tool_calls&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+                            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                                <span class="s2">&quot;arguments&quot;</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">,</span>
+                            <span class="p">},</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">assistant_payload</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">tool_call</span> <span class="ow">in</span> <span class="n">tool_calls</span><span class="p">:</span>
+                    <span class="n">tool_name</span> <span class="o">=</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span>
+                    <span class="n">arguments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parse_function_call_arguments</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_tool_call</span><span class="p">(</span><span class="n">tool_name</span><span class="p">,</span> <span class="n">arguments</span><span class="p">)</span>
+                    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                        <span class="p">{</span>
+                            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;tool&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;tool_call_id&quot;</span><span class="p">:</span> <span class="n">tool_call</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tool_name</span><span class="p">,</span>
+                            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span>
+                        <span class="p">}</span>
+                    <span class="p">)</span>
+
+                <span class="n">current_iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+
+            <span class="n">final_response</span> <span class="o">=</span> <span class="n">content</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">final_response</span><span class="p">})</span>
+            <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">current_iteration</span> <span class="o">&gt;=</span> <span class="n">iterations_limit</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">final_response</span><span class="p">:</span>
+            <span class="n">final_choice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invoke_with_tools</span><span class="p">(</span>
+                <span class="n">messages</span><span class="p">,</span>
+                <span class="n">tools</span><span class="o">=</span><span class="n">tool_schemas</span><span class="p">,</span>
+                <span class="n">tool_choice</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">final_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_message_content</span><span class="p">(</span><span class="n">final_choice</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">final_response</span><span class="p">})</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_message</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">final_response</span><span class="p">,</span> <span class="s2">&quot;assistant&quot;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">final_response</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;便捷方法：将工具注册到当前Agent&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">..tools.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolRegistry</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">enable_tool_calling</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="s2">&quot;auto_expand&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">tool</span><span class="p">,</span> <span class="s2">&quot;auto_expand&quot;</span><span class="p">):</span>
+            <span class="n">expanded_tools</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">get_expanded_tools</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">expanded_tools</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">expanded_tool</span> <span class="ow">in</span> <span class="n">expanded_tools</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">expanded_tool</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ MCP工具 &#39;</span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; 已展开为 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">expanded_tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个独立工具&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">tool</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="n">before</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">list_tools</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">unregister</span><span class="p">(</span><span class="n">tool_name</span><span class="p">)</span>
+            <span class="n">after</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">list_tools</span><span class="p">())</span>
+            <span class="k">return</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">before</span> <span class="ow">and</span> <span class="n">tool_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">after</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_tools</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enable_tool_calling</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_registry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stream_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;流式调用暂未实现，直接回退到一次性调用&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">result</span>
+</code></pre></div>
+
+</details>
+
 <h2 id="75">7.5 <strong>工具系统</strong></h2>
 <p>本节内容将在前面构建的Agent基础架构上，深入探讨工具系统的设计与实现。我们将从基础设施建设开始，逐步深入到自定义开发设计。本节的学习目标围绕以下三个核心方面展开：</p>
 <ul>
-<li><strong>统一的工具抽象与管理</strong>：建立标准化的Tool基类和ToolRegistry注册机制，为工具的开发、注册、发现和执行提供统一的基础设施。</li>
+<li><strong>统一的工具抽象与管理</strong>：建立标准化的 Tool 基类和 ToolRegistry 注册机制，为工具的开发、注册、发现和执行提供统一的基础设施。</li>
 <li><strong>实战驱动的工具开发</strong>：以数学计算工具为案例，展示如何设计和实现自定义工具，让读者掌握工具开发的完整流程。</li>
 <li><strong>高级整合与优化策略</strong>：通过多源搜索工具的设计，展示如何整合多个外部服务，实现智能后端选择、结果合并和容错处理，体现工具系统在复杂场景下的设计思维。</li>
 </ul>

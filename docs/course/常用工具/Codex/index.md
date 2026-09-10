@@ -1,8 +1,9 @@
 # Codex
 
-该笔记参考的课程链接：
+相关原文：
 
 - [ChatGPT 橙皮书](https://bozhoudev.github.io/codex-orange-book/)
+- [AI 编程指南-Codex 篇](https://coding.stormzhang.ai/codex/)
 
 ## 一、Codex 基础认知
 
