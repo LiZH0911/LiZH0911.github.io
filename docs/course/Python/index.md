@@ -1,11 +1,8 @@
-# Python 基础
+# Python
 
-该笔记参考的课程链接：
+相关链接：
 
 - [黑马程序员 Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
-
-Python 详细教程：
-
 - [小白学 Python](https://walter201230.github.io/Python/)
 
 ## 一、数据存储与运算
@@ -534,7 +531,7 @@ def calc(scores: list[int]) -> float
 
 **类型推断**：类型推断是指 Python 解释器自动推断出变量、表达式或函数返回值的数据类型的能力，而无需开发者显式声明。
 
-## 五、模块
+## 五、模块与包
 
 **模块（module）**：一个.py 文件就是一个模块，模块是 Python 程序的基本组织单位。在模块中可以定义函数、类，以及可执行的代码。
 
@@ -900,6 +897,7 @@ df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'})
 **Matplotlib 安装**：`pip install matplotlib` 或 `conda install matplotlib`
 
 - [Matplotlib 官方文档](https://matplotlib.org/stable/contents.html)
+
 
 
 
@@ -1642,9 +1640,10 @@ if __name__ == '__main__':
 从 Queue 读取的值为：四点水
 ```
 
+
 ## X、正则表达式
 
-### x.1 **初识 Python 正则表达式**
+### x.1 **初识**
 
 正则表达式是一个特殊的字符序列，用于判断一个字符串是否与我们所设定的字符序列是否匹配，也就是说检查一个字符串是否与某种模式匹配。
 
@@ -1844,3 +1843,906 @@ print(findall)
 ```
 ['java', 'android', 'python']
 ```
+
+注意，上面例子是贪婪模式，它的宗旨是读尽可能多的字符
+
+如果要使用懒惰模式，则加一个 `?` ，上面的例子修改如下：
+
+```python
+import re
+
+a = 'java*&39android##@@python'
+
+# 非贪婪
+re_findall = re.findall('[a-z]{4,7}?', a)
+print(re_findall)
+```
+
+输出结果：
+
+```
+['java', 'andr', 'pyth']
+```
+
+除了`{min, max}`，还有一些特殊字符也是可以表示数量的，比如：
+
+* `?`：告诉引擎匹配前导字符 0 次或 1 次
+* `+`：告诉引擎匹配前导字符 1 次或多次
+* `*`：告诉引擎匹配前导字符 0 次或多次
+
+把这部分的知识点总结一下,就是下面这个表了:
+
+| 贪   婪 | 惰   性 | 描   述           |
+| ------- | ------- |-----------------|
+| `？`      | `？？`    | 零次或一次出现，等价于`{0,1}` |
+| `+`       | `+？`     | 一次或多次出现，等价于`{1,}` |
+| `*`       | `*？`     | 零次或多次出现，等价于`{0,}` |
+| `{n}`     | `{n}？`   | 恰好 n 次出现        |
+| `{n,m}`   | `{n,m}？` | 至少 n 次，至多 m 次出现 |
+| `{n,}`    | `{n,}？`  | 至少 n 次出现        |
+
+### x.4 **边界匹配符和组**
+
+边界匹配符用来匹配位置，而不是字符本身。它们不消耗字符，只断言某个位置满足条件。
+
+一般的边界匹配符有以下几个：
+
+| 语法 | 描述                       |
+| ---- |--------------------------|
+| `^`    | 匹配字符串开头（在有多行的情况中匹配每行的开头） |
+| `$`    | 匹配字符串结尾（在有多行的情况中匹配每行的末尾） |
+| `\A`   | 仅匹配字符串开头                 |
+| `\Z`   | 仅匹配字符串末尾                 |
+| `\b`   | 匹配单词边界 `\w` 和 `\W` 之间    |
+| `\B`   | 匹配非单词边界`[^\b]`           |
+
+组用圆括号 `()` 把一部分模式括起来，实现**捕获、复用、分支**等功能。
+
+分组表达式 `(...)` 其实就是把这部分字符作为一个整体，当然，可以有多分组的情况，每遇到一个分组，编号就会加 1 ，而且分组后面也是可以加数量词的。
+
+### x.5 **re.sub**
+
+`re.sub` 是 Python `re` 模块里用来**替换字符串**的函数，全称是 substitute（替换）。
+
+**基本语法**：`re.sub(pattern, repl, string, count=0, flags=0)`
+
+| 参数 | 含义 |
+|------|------|
+| `pattern` | 正则表达式模式 |
+| `repl` | 替换成什么（字符串，或一个函数） |
+| `string` | 被处理的原始字符串 |
+| `count` | 最多替换几次，默认 `0` 表示全部替换 |
+| `flags` | 匹配标志，如 `re.I`（忽略大小写）、`re.M`（多行）等 |
+
+第二个参数是可以传递一个函数的，这也是这个方法的强大之处，例如：
+
+```python
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import re
+
+a = 'Python*Android*Java-888'
+
+# 把字符串中的 * 字符替换成 & 字符
+sub1 = re.sub('\*', '&', a)
+print(sub1)
+
+# 把字符串中的第一个 * 字符替换成 & 字符
+sub2 = re.sub('\*', '&', a, 1)
+print(sub2)
+
+
+# 把字符串中的 * 字符替换成 & 字符,把字符 - 换成 |
+
+# 1、先定义一个函数
+def convert(value):
+    group = value.group()
+    if (group == '*'):
+        return '&'
+    elif (group == '-'):
+        return '|'
+
+
+# 第二个参数，要替换的字符可以为一个函数
+sub3 = re.sub('[\*-]', convert, a)
+print(sub3)
+```
+
+输出的结果：
+
+```
+Python&Android&Java-888
+Python&Android*Java-888
+Python&Android&Java|888
+```
+
+### x.6 **re.match 和 re.search**
+
+**re.match 函数**
+
+`re.match` 是 Python `re` 模块里用来从字符串开头匹配的函数。
+
+**基本语法**：`re.match(pattern, string, flags=0)`
+
+| 参数 | 含义 |
+|------|------|
+| `pattern` | 正则表达式模式 |
+| `string` | 被匹配的原始字符串 |
+| `flags` | 匹配标志，如 `re.I`（忽略大小写）、`re.M`（多行）等 |
+
+`re.match` 尝试从字符串的起始位置匹配一个模式，匹配成功则返回 `Match` 对象，匹配失败则返回 `None`。
+
+**re.search 函数**
+
+`re.search` 是 Python `re` 模块里用来在字符串中搜索第一个匹配的函数。
+
+**基本语法**：`re.search(pattern, string, flags=0)`
+
+`re.search` 从左到右扫描整个字符串，找到第一个匹配正则表达式的位置，返回 `Match` 对象；找不到返回 `None`。
+
+```python
+import re
+
+text = "xabc"
+
+print(re.match(r'abc', text))    # None
+print(re.search(r'abc', text))   # <re.Match ... match='abc'>
+```
+
+`re.search` 配合捕获组使用：
+
+```python
+import re
+
+m = re.search(r'(\d{4})-(\d{2})-(\d{2})', "日期是 2024-01-15 哦")
+print(m.group())    # 2024-01-15
+print(m.group(1))   # 2024
+print(m.group(2))   # 01
+print(m.group(3))   # 15
+print(m.groups())   # ('2024', '01', '15')
+```
+
+最后，正则表达式是非常厉害的工具，通常可以用来解决字符串内置函数无法解决的问题，而且正则表达式大部分语言都是有的。
+
+特别是在 Python 的爬虫和数据分析应用中离不开正则表达式。
+
+
+## X、闭包
+
+### x.1 **闭包的定义**
+
+闭包（Closure）是一个函数，它记住了自己被定义时所在作用域中的变量，即使那个作用域已经执行结束，这些变量依然可以被访问。
+
+一个函数满足以下条件就是闭包：
+
+* **嵌套函数**：定义在另一个函数内部；
+* **引用外部变量**：内部函数引用了外层函数的变量；
+* **外层函数返回内层函数**：把内部函数作为返回值返回。
+
+```python
+def outer(x):              # 外层函数
+    def inner(y):          # 内层函数
+        return x + y       # 引用外层变量 x
+    return inner           # 返回内层函数
+
+add5 = outer(5)            # x = 5 被"记住"
+print(add5(3))             # 8
+print(add5(10))            # 15
+```
+
+`add5` 就是一个闭包，它记住了 `x = 5`
+
+**闭包的经典例子**
+
+1. **装饰器**：最广泛的应用
+2. **工厂函数（如生成乘法器）**：根据参数生成不同行为的函数
+3. **保存状态**：不依赖全局变量或类，保存局部状态
+4. **回调函数**：记住上下文吗
+5. **函数式编程**：配合 `map`、`filter`、`sorted` 等
+
+### x.2 **nonlocal 关键字**
+
+内层函数修改外层变量时，需要 `nonlocal` 关键字
+
+```python
+def outer():
+    x = 0
+
+    def inner():
+        nonlocal x    # 不加会报 UnboundLocalError
+        x += 1
+        return x
+
+    return inner
+
+f = outer()
+print(f())   # 1
+print(f())   # 2
+```
+
+再看一个例子：
+
+```python
+time = 0
+
+
+def study_time(time):
+    def insert_time(min):
+        nonlocal  time
+        time = time + min
+        return time
+
+    return insert_time
+
+
+f = study_time(time) # 将全局变量 time 的值 0 赋给外层函数，即外层函数的 time 初值为 0
+# 如果函数是闭包的话，__closure__ 返回一个由 cell 组成的元组对象
+print(f.__closure__) # (<cell at 0x0000000000410C48: int object at 0x000000001D6AB420>,)
+print(f(2)) # 2，外层函数的 time 增加 2
+print(time) # 0，全局变量 time 没有变化
+print(f.__closure__[0].cell_contents) # 2
+print(f(10)) # 12，外层函数的 time 再增加 10
+print(time) # 0
+print(f.__closure__[0].cell_contents) # 12
+```
+
+从打印结果可见，传进来的值一直存储在闭包的 `cell_contents` 中,因此，这也就是闭包的最大特点，可以将父函数的变量与其内部定义的函数绑定。就算生成闭包的父函数已经释放了，闭包仍然存在。
+
+闭包的过程其实好比类（父函数）生成实例（闭包），不同的是父函数只在调用时执行，执行完毕后其环境就会释放，而类则在文件执行时创建，一般程序执行完毕后作用域才释放，因此对一些需要重用的功能且不足以定义为类的行为，使用闭包会比使用类占用更少的资源，且更轻巧灵活。
+
+* 状态简单、逻辑少 → 闭包更轻量
+* 状态多、方法多 → 用类更清晰
+
+
+
+## X、装饰器
+
+### x.1 **函数式编程**
+
+**函数式编程**：把函数当值来传递和组合的编程范式
+
+```python
+import time
+
+
+def punch():
+    print('昵称：两点水  部门：做鸭事业部 上班打卡成功')
+
+
+def add_time(func):
+    print(time.strftime('%Y-%m-%d', time.localtime(time.time())))
+    func()
+
+
+def holiday():
+    print('天气太冷，今天放假')
+
+
+add_time(punch)
+add_time(holiday)
+```
+
+输出结果：
+
+```
+2026-09-11
+昵称：两点水  部门：做鸭事业部 上班打卡成功
+2026-09-11
+天气太冷，今天放假
+```
+
+这样子就没有改动 `punch` 方法，而且任何需要用到打印当前日期的函数都可以把函数传进 `add_time` 就可以了。
+
+### x.2 **装饰器**
+
+装饰器结合了**函数式编程的思想**与**闭包**
+
+```python
+def logger(func):              # 接收一个函数
+    def wrapper(*args, **kwargs):   # 内层函数
+        print(f"调用 {func.__name__}")
+        return func(*args, **kwargs)  # 调用原函数
+    return wrapper             # 返回新函数
+
+@logger
+def add(a, b):
+    return a + b
+
+@logger
+def sub(a, b):
+    return a - b
+
+print(add(1, 2))
+# 调用 add
+# 3
+```
+
+@`logger` 就是装饰器语法糖，等价于 `add = logger(add)`
+
+执行流程：
+
+1. `@logger` 把 `add` 传给 `logger`
+2. `logger` 返回 `wrapper`
+3. `add` 这个名字现在指向 `wrapper`
+4. 以后调用 `add(1, 2)`，其实调用的是 `wrapper(1, 2)`
+5. `wrapper` 里先打印日志，再调用真正的 `add`
+
+
+## X、Pydantic 数据校验库
+
+Pydantic 是 Python 生态里最火的「数据校验」库，FastAPI 的核心、LangChain 的接口、各种 SDK 的配置类，背后都是它。
+
+它的核心思想很朴素：**数据进入边界时，按声明的 schema 严格校验、必要时强制转换；之后程序内部代码就能放心用了**。
+
+Pydantic 是**第三方库**，不在标准库里，需要安装：
+
+```bash
+pip install pydantic
+```
+
+### x.1 **第一个 BaseModel**
+
+```python
+from pydantic import BaseModel
+
+
+class Employee(BaseModel):
+    name: str
+    age: int
+    salary: float
+
+
+e = Employee(name='两点水', age=28, salary=12000.0)
+print(e)
+```
+
+输出：
+
+```
+name='两点水' age=28 salary=12000.0
+```
+
+各位是不是觉得这写法跟 dataclass 几乎一样？没错——继承 `BaseModel`，写带类型注解的字段，剩下的 Pydantic 全包了。
+
+它会自动生成 `__init__`、`__repr__`、`__eq__`，还会做一件 dataclass 不做的事——**类型校验和强制转换**。
+
+```python
+from pydantic import BaseModel
+
+
+class Employee(BaseModel):
+    name: str
+    age: int
+    salary: float
+
+
+# 注意：age 我传的是字符串 '28'，salary 传的是字符串 '12000.5'
+e = Employee(name='两点水', age='28', salary='12000.5')
+print(e)
+print(type(e.age), type(e.salary))
+```
+
+输出：
+
+```
+name='两点水' age=28 salary=12000.5
+<class 'int'> <class 'float'>
+```
+
+看到了吗？传的 `age='28'` 是字符串，但 Pydantic 自动转成了 int。
+
+`salary='12000.5'` 也被转成了 float。这就是 Pydantic 的「智能转换」——只要类型能合理转换，它就帮你转。
+
+如果传的是真的转不过去，Pydantic 不仅会抛 ValidationError，还说明哪些字段、为什么错、收到的是啥
+
+## X、异步编程
+
+### x.1 **async/await**
+
+`asyncio` 是 Python 标准库中用于编写并发代码的模块，基于 `async/await` 语法，核心是事件循环。自 Python 3.4 引入，3.7 后 API 趋于稳定。
+
+它的卖点很直白——**一个线程，同时等一百件事**。
+
+**串行 vs 并发**：
+
+下面这段是「正经的」串行代码，三件事各等 1 秒：
+
+```python
+import time
+
+
+def task(name):
+    time.sleep(1)
+    return f'{name} 完成'
+
+
+start = time.perf_counter()
+r1 = task('打卡')
+r2 = task('查询')
+r3 = task('上传')
+cost = time.perf_counter() - start
+print(r1, r2, r3)
+print(f'总共 {cost:.2f} 秒')
+```
+运行结果:
+
+```
+打卡 完成 查询 完成 上传 完成
+总共 3.00 秒
+```
+
+接下来换成异步版本：
+
+```python
+import asyncio
+import time
+
+
+async def task(name):
+    await asyncio.sleep(1)
+    return f'{name} 完成'
+
+
+async def main():
+    start = time.perf_counter()
+    r1, r2, r3 = await asyncio.gather(
+        task('打卡'),
+        task('查询'),
+        task('上传'),
+    )
+    cost = time.perf_counter() - start
+    print(r1, r2, r3)
+    print(f'总共 {cost:.2f} 秒')
+
+
+asyncio.run(main())
+```
+
+运行结果：
+
+```
+打卡 完成 查询 完成 上传 完成
+总共 1.00 秒
+```
+
+3 秒变 1 秒，三件事居然真的「同时」完成了。先别管 `async` 、 `await` 、 `gather` 这些词是什么意思。
+
+先记住一个事实：**`asyncio.sleep(1)` 在一个协程里等的时候，另一个协程可以去用 CPU 干自己的活**，三个协程的等待是重叠的，所以总时间就是最长那一个，而不是三者之和。
+
+这就是 `asyncio` 的核心魔法。它没有偷偷开线程，也没有把 CPU 加速。它做的事很朴素：**当某个协程在等 IO 的时候，让出 CPU 给其他协程，等回来再继续**。
+
+**async：定义协程函数**
+
+普通函数加一个 `async` 关键字，就成了**协程函数（coroutine function）**：
+
+```python
+async def hello():
+    return '两点水好'
+
+print(hello())
+```
+
+输出：
+
+```
+<coroutine object hello at 0x...>
+RuntimeWarning: coroutine 'hello' was never awaited
+```
+
+同样是 `print(hello())` ，普通函数返回的是字符串 '两点水好' ，协程函数返回的却是一个 **协程对象**——一个 <coroutine object> ，而不是字符串
+
+更要命的是，Python 还甩了一句警告：这协程从来没被 `await` 过（coroutine was never awaited）。
+
+这说明：
+
+- `async def` 定义的不是一个会立刻跑的函数
+- 调用 `async def` 定义的函数，**它根本没跑**，只是给你返回一个待执行的任务清单
+
+这张**任务清单就是协程对象**。它必须被 `await` ，或者扔给事件循环去执行，里面的代码才会真正跑起来。
+
+**await：等待协程对象完成**
+
+那怎么让这张任务单真的执行？用 `await`：
+
+```python
+import asyncio
+
+
+async def hello():
+    return '两点水好'
+
+
+async def main():
+    result = await hello()
+    print(result)
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+两点水好
+```
+
+这下拿到字符串了。`await hello()` 可以理解为：请帮我把 `hello()` 这张任务单完成，然后把结果给我。
+
+**注意**：
+
+- **`await` 只能写在 `async def` 函数体内部**
+- **协程不 `await`，等于没写**
+- **协程只能被 `await` 一次**
+- 多个`await`连着写本质是**串行**的，需要用 `asyncio.gather` 或 `asyncio.create_task` 实现并发
+- **为了在普通脚本里调用 `async def` 怎么办？需要用到 `asyncio.run()`**
+
+**asyncio.run()：启动事件循环**
+
+`asyncio.run()` 是**同步代码和异步代码之间的门**。它接收一个协程对象，启动一个**事件循环（event loop）**，把协程跑完，然后关掉事件循环：
+
+```python
+import asyncio
+
+async def main():
+    print('我在异步世界里')
+    await asyncio.sleep(0.01)
+    print('我又在异步世界里')
+
+asyncio.run(main())
+```
+
+这里隐含了一个非常重要的设计：**整个程序里通常只有一个事件循环**，由 `asyncio.run()` 启动。所有的协程都跑在这个循环里。各位可以这么想象：
+
+* 同步世界 → 一条直直的路，一步接一步
+* 异步世界 → 一个调度中心（事件循环），里面挂着一堆协程，谁能跑就让谁跑
+
+`asyncio.run()` 就是从同步世界踏进异步世界的入口。**一个程序只该调用一次**（嵌套调用会报错）。
+
+### x.2 **gather**
+
+**asyncio.gather：多协程并发**
+
+```python
+import asyncio
+import time
+
+
+async def task(name):
+    await asyncio.sleep(0.5)
+    return f'{name} 完成'
+
+
+async def main():
+    start = time.perf_counter()
+    r1, r2, r3 = await asyncio.gather(
+        task('A'),
+        task('B'),
+        task('C'),
+    )
+    cost = time.perf_counter() - start
+    print(r1, r2, r3)
+    print(f'用了 {cost:.2f} 秒')
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+A 完成 B 完成 C 完成
+用了 0.51 秒
+```
+
+**注意**：
+
+- `gather` 返回的是 **所有结果的列表**，顺序和传进去的顺序一致
+- 任意一个协程抛异常，默认情况下整个 `gather` 都会抛
+- 传进去的可以是协程，也可以是 Task 对象
+
+`gather` 是 `asyncio` 里出现频率最高的函数之一。各位看到同时跑多个的需求，第一反应就该是它（或者后面要讲的 Task）。
+
+### x.3 **Task**
+
+**Task：把协程派出去**
+
+上面的 `gather` 用得很爽，但有时候我们想要更细的控制：先把任务派出去，让它在后台跑着，我先去干别的事，需要的时候再回来收结果。
+
+`asyncio.create_task()` 把一个协程包装成 `Task` 并**立即交给事件循环调度**。
+
+```python
+import asyncio
+import time
+
+
+async def slow_job(name, delay):
+    await asyncio.sleep(delay)
+    return f'{name} 完成'
+
+
+async def main():
+    start = time.perf_counter()
+    t1 = asyncio.create_task(slow_job('A', 0.3))
+    t2 = asyncio.create_task(slow_job('B', 0.5))
+    print('两个任务已经派出去了，main 还能干别的')
+    await asyncio.sleep(0.1)
+    print('我先打个卡')
+    r1 = await t1
+    r2 = await t2
+    cost = time.perf_counter() - start
+    print(r1, r2)
+    print(f'用了 {cost:.2f} 秒')
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+两个任务已经派出去了，main 还能干别的
+我先打个卡
+A 完成 B 完成
+用了 0.49 秒
+```
+
+注意：
+
+- **`create_task` 立刻把协程注册到事件循环开始跑了，不等 `await`**。
+- `await t1` 这一行只是说现在我要这个结果，没好就在这等一下，等的时候 t2 也在并发地跑。
+
+多种用法对比：
+
+1. 直接 `await` 一个协程：本质串行，立即执行并收回
+2. `await` 一个 `gather`（`gather`内包含多个协程）：一次性派一堆任务再一次性收回，写法紧凑
+3. 逐个`create_task` + 逐个 `await`：先派一堆任务，后台跑，想要的时候再逐个收回
+4. **最推荐的的写法**——逐个`create_task` + `gather(task1, task2,...)`：先派一堆任务，后台跑，想要的时候再一起收回
+
+### x.4 **wait_for 和 timeout**
+
+写网络请求的童鞋一定有个心结：万一对面服务器不返回，我这协程是不是要等到天荒地老？
+
+这就要请出 **超时** 了。`asyncio` 提供了两套写法。
+
+**第一种：`asyncio.wait_for`**，老牌的，写法是**把协程包一层**：
+
+```python
+import asyncio
+
+
+async def slow_job():
+    await asyncio.sleep(2)
+    return '终于好了'
+
+
+async def main():
+    try:
+        r = await asyncio.wait_for(slow_job(), timeout=0.5)
+        print(r)
+    except asyncio.TimeoutError:
+        print('超时了，不等了')
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+超时了，不等了
+```
+
+`wait_for(coro, timeout=0.5)` 的意思是给这个协程 0.5 秒，超过就取消并抛 TimeoutError。
+
+**第一种：`asyncio.timeout`**，Python 3.11+ 新写法，用 `async with` 当上下文：
+
+```python
+import asyncio
+
+
+async def slow_job():
+    await asyncio.sleep(2)
+    return '终于好了'
+
+
+async def main():
+    try:
+        async with asyncio.timeout(0.5):
+            r = await slow_job()
+            print(r)
+    except TimeoutError:
+        print('超时了，不等了')
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+超时了，不等了
+```
+
+效果一样，但是写起来更顺手——你想给**这一段**加超时，就把这段 `async with` 包起来。
+
+要给多个 `await` 一起加超时，第二种写法尤其方便。新代码推荐用 `asyncio.timeout` 。
+
+### x.5 **Task.cancel()**
+
+超时本质上是**自动取消**。其实手动取消也很简单：
+
+```python
+import asyncio
+
+
+async def long_running():
+    try:
+        for i in range(10):
+            print(f'还在跑 {i}')
+            await asyncio.sleep(0.05)
+    except asyncio.CancelledError:
+        print('被取消了，清理一下')
+        raise # 把刚才捕获到的那个异常，原封不动地重新抛出去
+
+
+async def main():
+    t = asyncio.create_task(long_running())
+    await asyncio.sleep(0.12)
+    t.cancel()
+    try:
+        await t
+    except asyncio.CancelledError:
+        print('任务确实被取消了')
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+还在跑 0
+还在跑 1
+还在跑 2
+被取消了，清理一下
+任务确实被取消了
+```
+
+`Task.cancel()` 会向协程内部抛一个 `CancelledError` 。协程可以选择 catch 这个异常做清理。
+
+但 **强烈建议** 在清理完之后 `raise` 出去，让外面知道任务确实被取消了——把 `CancelledError` 默默吞掉，是另一个非常隐蔽的坑。
+
+### x.6 **TaskGroup**
+
+`gather` 用着挺好，为什么 Python 3.11 又搞了个 `TaskGroup` 出来？
+
+gather 的默认行为是**一个失败就把异常往外抛，其他任务继续在事件循环里跑**。
+
+如果 A 里写文件、B 里发请求，它们会跑完（甚至再抛错）才停。这种**一脚走人，别人在背后干活**的行为不安全。
+
+`TaskGroup` 解决了这个问题：
+
+```python
+import asyncio
+
+
+async def good(name, delay):
+    await asyncio.sleep(delay)
+    return f'{name} ok'
+
+
+async def bad():
+    await asyncio.sleep(0.1)
+    raise ValueError('坏了')
+
+
+async def main():
+    try:
+        async with asyncio.TaskGroup() as tg:
+            t_a = tg.create_task(good('A', 0.5))
+            t_bad = tg.create_task(bad())
+            t_b = tg.create_task(good('B', 0.5))
+    except* ValueError as eg: # except* 是 Python 3.11 引入的 PEP 654「异常组」专用语法
+        print('TaskGroup 捕获到异常组：', eg.exceptions)
+
+
+asyncio.run(main())
+```
+
+输出：
+
+```
+TaskGroup 捕获到异常组： (ValueError('坏了'),)
+```
+
+`TaskGroup` 的几个优点：
+
+* **自动等待全部完成** ：`async with` 退出之前，所有 task 一定都跑完了
+* **一个失败，全部取消** ：`bad` 抛错之后，A 和 B 会被立刻 `cancel` ，不会继续在后台跑
+* **异常组（ExceptionGroup）**：多个 task 同时失败的时候，所有异常会被打包成一个 `ExceptionGroup` ，用 `except*` 语法捕获
+
+新代码里能用 `TaskGroup` 就用 `TaskGroup` ，比 `gather` 更安全、更可控。
+
+`gather` 适合场景简单、一两个任务、对取消语义要求不高的场合。
+
+### x.7 **async with 和 async for**
+
+`asyncio.timeout(0.5)` 那个例子里，各位看到了 `async with` 的写法。这是「异步上下文管理器」——它的 `__enter__` 和 `__exit__` 都换成了 `async` 版本，叫 `__aenter__` 和 `__aexit__` 。
+
+什么时候需要 `async with`？最常见的就是网络客户端：
+
+<!-- skip-ci -->
+```python
+import asyncio
+import httpx
+
+
+async def main():
+    async with httpx.AsyncClient() as client:
+        r = await client.get('https://httpbin.org/get')
+        print(r.status_code)
+
+
+asyncio.run(main())
+```
+
+`async with` 之所以是 `async with`，是因为「关闭这个连接池」这件事本身可能涉及 IO，不能是一个普通的同步 `__exit__` 。
+
+类似的还有「异步迭代器」——`async for` 。比如某些数据库驱动支持流式读取：
+
+<!-- skip-ci -->
+```python
+import httpx
+import asyncio
+
+
+async def main():
+    async with httpx.AsyncClient() as client:
+        async with client.stream('GET', 'https://httpbin.org/stream/3') as resp:
+            async for line in resp.aiter_lines():
+                print('line:', line)
+
+
+asyncio.run(main())
+```
+
+`async for line in resp.aiter_lines()` 的语义是：每读到一行（可能要等网络），把这一行交给我，然后继续等下一行。同步的 `for` 做不到这件事，只能 `async for` 。
+
+各位记一下规律：
+
+- 普通的对象、上下文 → `with` 、 `for`
+- 涉及到 IO 的、协程的对象 → `async with` 、 `async for`
+
+### x.8 **异步编程的使用场景**
+
+`asyncio` 的强项是 **IO bound** ——程序大部分时间在等：等网络、等磁盘、等数据库、等用户输入。这种场景下「等待」是可以重叠的，async 能让一个线程同时等无数件事，效果立竿见影。
+
+`asyncio` 的弱项是 **CPU bound** ——程序大部分时间在算：加密解密、图像处理、机器学习推理。这种场景下没有「等」可以利用，CPU 一直在干活，async 帮不上忙。一个线程也只能利用一个核，剩下七个核睡大觉。
+
+对照表：
+
+| 场景 | 用什么 |
+| --- | --- |
+| 抓 100 个 URL | `asyncio` + `httpx` |
+| 同时读写一堆文件 | `asyncio` + `aiofiles` |
+| 高并发 Web 服务（一台机器扛几千个连接） | `asyncio` + `FastAPI / aiohttp` |
+| 视频转码、大矩阵计算 | `multiprocessing` 或 C 扩展 |
+| 海量数据本地排序 | 多进程 + 分块 |
+| 同时干一点 IO 一点 CPU | async 主框架 + `asyncio.to_thread` 或 `run_in_executor` |
+
+各位可以这么记：**async 是用来「等」的，不是用来「算」的**。
+
+## X、代码风格 ruff
+
+## X、单元测试 pytest
+
+30 秒跑完 100 个用例的测试框架
+
+## X、标准日志 logging
+
+把 `print` 调试升级成正经日志
+
+## X、打包发布
+
+让全世界一行 `pip install` 用上你的工具
