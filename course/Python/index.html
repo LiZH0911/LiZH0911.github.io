@@ -23,7 +23,7 @@
     
     
       
-        <title>Python 基础 - LiZH0911的学习笔记</title>
+        <title>Python - LiZH0911的学习笔记</title>
       
     
     
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python 基础
+              Python
             
           </span>
         </div>
@@ -431,7 +431,7 @@
   <span class="md-ellipsis">
     
   
-    Python 基础
+    Python
   
 
     
@@ -449,7 +449,7 @@
   <span class="md-ellipsis">
     
   
-    Python 基础
+    Python
   
 
     
@@ -816,7 +816,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、模块
+        五、模块与包
       
     </span>
   </a>
@@ -1097,10 +1097,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#x1-python" class="md-nav__link">
+  <a href="#x1_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        x.1 初识 Python 正则表达式
+        x.1 初识
       
     </span>
   </a>
@@ -1129,8 +1129,296 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#x4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.4 边界匹配符和组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x5-resub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.5 re.sub
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x6-rematch-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.6 re.match 和 re.search
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 闭包的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2-nonlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 nonlocal 关键字
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、装饰器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、装饰器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 函数式编程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 装饰器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xpydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、Pydantic 数据校验库
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、Pydantic 数据校验库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1-basemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 第一个 BaseModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、异步编程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、异步编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 async/await
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2-gather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 gather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x3-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.3 Task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x4-wait_for-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.4 wait_for 和 timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x5-taskcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.5 Task.cancel()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x6-taskgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.6 TaskGroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x7-async-with-async-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.7 async with 和 async for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.8 异步编程的使用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、代码风格 ruff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、单元测试 pytest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、标准日志 logging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、打包发布
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2645,7 +2933,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        五、模块
+        五、模块与包
       
     </span>
   </a>
@@ -2926,10 +3214,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#x1-python" class="md-nav__link">
+  <a href="#x1_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        x.1 初识 Python 正则表达式
+        x.1 初识
       
     </span>
   </a>
@@ -2958,8 +3246,296 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#x4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.4 边界匹配符和组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x5-resub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.5 re.sub
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x6-rematch-research" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.6 re.match 和 re.search
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 闭包的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2-nonlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 nonlocal 关键字
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、装饰器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、装饰器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 函数式编程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 装饰器
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xpydantic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、Pydantic 数据校验库
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、Pydantic 数据校验库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1-basemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 第一个 BaseModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、异步编程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="X、异步编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x1-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.1 async/await
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x2-gather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.2 gather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x3-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.3 Task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x4-wait_for-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.4 wait_for 和 timeout
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x5-taskcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.5 Task.cancel()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x6-taskgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.6 TaskGroup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x7-async-with-async-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.7 async with 和 async for
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        x.8 异步编程的使用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-ruff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、代码风格 ruff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-pytest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、单元测试 pytest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、标准日志 logging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、打包发布
+      
+    </span>
+  </a>
   
 </li>
       
@@ -2980,13 +3556,10 @@
 
 
 
-<h1 id="python">Python 基础</h1>
-<p>该笔记参考的课程链接：</p>
+<h1 id="python">Python</h1>
+<p>相关链接：</p>
 <ul>
 <li><a href="https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">黑马程序员 Python+AI</a></li>
-</ul>
-<p>Python 详细教程：</p>
-<ul>
 <li><a href="https://walter201230.github.io/Python/">小白学 Python</a></li>
 </ul>
 <h2 id="_1">一、数据存储与运算</h2>
@@ -3412,7 +3985,7 @@
 <p>常见类型：int、float、str、bool、None、list、tuple、dict、set、int | str</p>
 </blockquote>
 <p><strong>类型推断</strong>：类型推断是指 Python 解释器自动推断出变量、表达式或函数返回值的数据类型的能力，而无需开发者显式声明。</p>
-<h2 id="_5">五、模块</h2>
+<h2 id="_5">五、模块与包</h2>
 <p><strong>模块（module）</strong>：一个.py 文件就是一个模块，模块是 Python 程序的基本组织单位。在模块中可以定义函数、类，以及可执行的代码。</p>
 <ul>
 <li>使代码结构清晰，便于维护</li>
@@ -4316,7 +4889,7 @@ END!!!!!!!!!!!!!!!!!
 从 Queue 读取的值为：四点水
 </code></pre></div>
 <h2 id="x_2">X、正则表达式</h2>
-<h3 id="x1-python">x.1 <strong>初识 Python 正则表达式</strong></h3>
+<h3 id="x1_2">x.1 <strong>初识</strong></h3>
 <p>正则表达式是一个特殊的字符序列，用于判断一个字符串是否与我们所设定的字符序列是否匹配，也就是说检查一个字符串是否与某种模式匹配。</p>
 <p>Python 自 1.5 版本起增加了 <code>re</code> 模块，它提供 Perl 风格的正则表达式模式。<code>re</code> 模块使 Python 语言拥有全部的正则表达式功能。</p>
 <p>下面通过实例，一步一步来初步认识正则表达式。</p>
@@ -4459,6 +5032,817 @@ a 含有“两点水”这个字符串
 <p>输出结果：</p>
 <div class="highlight"><pre><span></span><code>[&#39;java&#39;, &#39;android&#39;, &#39;python&#39;]
 </code></pre></div>
+<p>注意，上面例子是贪婪模式，它的宗旨是读尽可能多的字符</p>
+<p>如果要使用懒惰模式，则加一个 <code>?</code> ，上面的例子修改如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;java*&amp;39android##@@python&#39;</span>
+
+<span class="c1"># 非贪婪</span>
+<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[a-z]{4,7}?&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re_findall</span><span class="p">)</span>
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>[&#39;java&#39;, &#39;andr&#39;, &#39;pyth&#39;]
+</code></pre></div>
+<p>除了<code>{min, max}</code>，还有一些特殊字符也是可以表示数量的，比如：</p>
+<ul>
+<li><code>?</code>：告诉引擎匹配前导字符 0 次或 1 次</li>
+<li><code>+</code>：告诉引擎匹配前导字符 1 次或多次</li>
+<li><code>*</code>：告诉引擎匹配前导字符 0 次或多次</li>
+</ul>
+<p>把这部分的知识点总结一下,就是下面这个表了:</p>
+<table>
+<thead>
+<tr>
+<th>贪   婪</th>
+<th>惰   性</th>
+<th>描   述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>？</code></td>
+<td><code>？？</code></td>
+<td>零次或一次出现，等价于<code>{0,1}</code></td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td><code>+？</code></td>
+<td>一次或多次出现，等价于<code>{1,}</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td><code>*？</code></td>
+<td>零次或多次出现，等价于<code>{0,}</code></td>
+</tr>
+<tr>
+<td><code>{n}</code></td>
+<td><code>{n}？</code></td>
+<td>恰好 n 次出现</td>
+</tr>
+<tr>
+<td><code>{n,m}</code></td>
+<td><code>{n,m}？</code></td>
+<td>至少 n 次，至多 m 次出现</td>
+</tr>
+<tr>
+<td><code>{n,}</code></td>
+<td><code>{n,}？</code></td>
+<td>至少 n 次出现</td>
+</tr>
+</tbody>
+</table>
+<h3 id="x4_1">x.4 <strong>边界匹配符和组</strong></h3>
+<p>边界匹配符用来匹配位置，而不是字符本身。它们不消耗字符，只断言某个位置满足条件。</p>
+<p>一般的边界匹配符有以下几个：</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>^</code></td>
+<td>匹配字符串开头（在有多行的情况中匹配每行的开头）</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>匹配字符串结尾（在有多行的情况中匹配每行的末尾）</td>
+</tr>
+<tr>
+<td><code>\A</code></td>
+<td>仅匹配字符串开头</td>
+</tr>
+<tr>
+<td><code>\Z</code></td>
+<td>仅匹配字符串末尾</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>匹配单词边界 <code>\w</code> 和 <code>\W</code> 之间</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>匹配非单词边界<code>[^\b]</code></td>
+</tr>
+</tbody>
+</table>
+<p>组用圆括号 <code>()</code> 把一部分模式括起来，实现<strong>捕获、复用、分支</strong>等功能。</p>
+<p>分组表达式 <code>(...)</code> 其实就是把这部分字符作为一个整体，当然，可以有多分组的情况，每遇到一个分组，编号就会加 1 ，而且分组后面也是可以加数量词的。</p>
+<h3 id="x5-resub">x.5 <strong>re.sub</strong></h3>
+<p><code>re.sub</code> 是 Python <code>re</code> 模块里用来<strong>替换字符串</strong>的函数，全称是 substitute（替换）。</p>
+<p><strong>基本语法</strong>：<code>re.sub(pattern, repl, string, count=0, flags=0)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td>正则表达式模式</td>
+</tr>
+<tr>
+<td><code>repl</code></td>
+<td>替换成什么（字符串，或一个函数）</td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>被处理的原始字符串</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>最多替换几次，默认 <code>0</code> 表示全部替换</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>匹配标志，如 <code>re.I</code>（忽略大小写）、<code>re.M</code>（多行）等</td>
+</tr>
+</tbody>
+</table>
+<p>第二个参数是可以传递一个函数的，这也是这个方法的强大之处，例如：</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python*Android*Java-888&#39;</span>
+
+<span class="c1"># 把字符串中的 * 字符替换成 &amp; 字符</span>
+<span class="n">sub1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\*&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub1</span><span class="p">)</span>
+
+<span class="c1"># 把字符串中的第一个 * 字符替换成 &amp; 字符</span>
+<span class="n">sub2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\*&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub2</span><span class="p">)</span>
+
+
+<span class="c1"># 把字符串中的 * 字符替换成 &amp; 字符,把字符 - 换成 |</span>
+
+<span class="c1"># 1、先定义一个函数</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;&amp;&#39;</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;|&#39;</span>
+
+
+<span class="c1"># 第二个参数，要替换的字符可以为一个函数</span>
+<span class="n">sub3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[\*-]&#39;</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub3</span><span class="p">)</span>
+</code></pre></div>
+<p>输出的结果：</p>
+<div class="highlight"><pre><span></span><code>Python&amp;Android&amp;Java-888
+Python&amp;Android*Java-888
+Python&amp;Android&amp;Java|888
+</code></pre></div>
+<h3 id="x6-rematch-research">x.6 <strong>re.match 和 re.search</strong></h3>
+<p><strong>re.match 函数</strong></p>
+<p><code>re.match</code> 是 Python <code>re</code> 模块里用来从字符串开头匹配的函数。</p>
+<p><strong>基本语法</strong>：<code>re.match(pattern, string, flags=0)</code></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pattern</code></td>
+<td>正则表达式模式</td>
+</tr>
+<tr>
+<td><code>string</code></td>
+<td>被匹配的原始字符串</td>
+</tr>
+<tr>
+<td><code>flags</code></td>
+<td>匹配标志，如 <code>re.I</code>（忽略大小写）、<code>re.M</code>（多行）等</td>
+</tr>
+</tbody>
+</table>
+<p><code>re.match</code> 尝试从字符串的起始位置匹配一个模式，匹配成功则返回 <code>Match</code> 对象，匹配失败则返回 <code>None</code>。</p>
+<p><strong>re.search 函数</strong></p>
+<p><code>re.search</code> 是 Python <code>re</code> 模块里用来在字符串中搜索第一个匹配的函数。</p>
+<p><strong>基本语法</strong>：<code>re.search(pattern, string, flags=0)</code></p>
+<p><code>re.search</code> 从左到右扫描整个字符串，找到第一个匹配正则表达式的位置，返回 <code>Match</code> 对象；找不到返回 <code>None</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;xabc&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>    <span class="c1"># None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>   <span class="c1"># &lt;re.Match ... match=&#39;abc&#39;&gt;</span>
+</code></pre></div>
+<p><code>re.search</code> 配合捕获组使用：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d</span><span class="si">{4}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="s2">&quot;日期是 2024-01-15 哦&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>    <span class="c1"># 2024-01-15</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># 2024</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>   <span class="c1"># 01</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># 15</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>   <span class="c1"># (&#39;2024&#39;, &#39;01&#39;, &#39;15&#39;)</span>
+</code></pre></div>
+<p>最后，正则表达式是非常厉害的工具，通常可以用来解决字符串内置函数无法解决的问题，而且正则表达式大部分语言都是有的。</p>
+<p>特别是在 Python 的爬虫和数据分析应用中离不开正则表达式。</p>
+<h2 id="x_3">X、闭包</h2>
+<h3 id="x1_3">x.1 <strong>闭包的定义</strong></h3>
+<p>闭包（Closure）是一个函数，它记住了自己被定义时所在作用域中的变量，即使那个作用域已经执行结束，这些变量依然可以被访问。</p>
+<p>一个函数满足以下条件就是闭包：</p>
+<ul>
+<li><strong>嵌套函数</strong>：定义在另一个函数内部；</li>
+<li><strong>引用外部变量</strong>：内部函数引用了外层函数的变量；</li>
+<li><strong>外层函数返回内层函数</strong>：把内部函数作为返回值返回。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>              <span class="c1"># 外层函数</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>          <span class="c1"># 内层函数</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>       <span class="c1"># 引用外层变量 x</span>
+    <span class="k">return</span> <span class="n">inner</span>           <span class="c1"># 返回内层函数</span>
+
+<span class="n">add5</span> <span class="o">=</span> <span class="n">outer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>            <span class="c1"># x = 5 被&quot;记住&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add5</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>             <span class="c1"># 8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">add5</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>            <span class="c1"># 15</span>
+</code></pre></div>
+<p><code>add5</code> 就是一个闭包，它记住了 <code>x = 5</code></p>
+<p><strong>闭包的经典例子</strong></p>
+<ol>
+<li><strong>装饰器</strong>：最广泛的应用</li>
+<li><strong>工厂函数（如生成乘法器）</strong>：根据参数生成不同行为的函数</li>
+<li><strong>保存状态</strong>：不依赖全局变量或类，保存局部状态</li>
+<li><strong>回调函数</strong>：记住上下文吗</li>
+<li><strong>函数式编程</strong>：配合 <code>map</code>、<code>filter</code>、<code>sorted</code> 等</li>
+</ol>
+<h3 id="x2-nonlocal">x.2 <strong>nonlocal 关键字</strong></h3>
+<p>内层函数修改外层变量时，需要 <code>nonlocal</code> 关键字</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">outer</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner</span><span class="p">():</span>
+        <span class="k">nonlocal</span> <span class="n">x</span>    <span class="c1"># 不加会报 UnboundLocalError</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span>   <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span>   <span class="c1"># 2</span>
+</code></pre></div>
+<p>再看一个例子：</p>
+<div class="highlight"><pre><span></span><code><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">study_time</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert_time</span><span class="p">(</span><span class="nb">min</span><span class="p">):</span>
+        <span class="k">nonlocal</span>  <span class="n">time</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="nb">min</span>
+        <span class="k">return</span> <span class="n">time</span>
+
+    <span class="k">return</span> <span class="n">insert_time</span>
+
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">study_time</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="c1"># 将全局变量 time 的值 0 赋给外层函数，即外层函数的 time 初值为 0</span>
+<span class="c1"># 如果函数是闭包的话，__closure__ 返回一个由 cell 组成的元组对象</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span> <span class="c1"># (&lt;cell at 0x0000000000410C48: int object at 0x000000001D6AB420&gt;,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># 2，外层函数的 time 增加 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="c1"># 0，全局变量 time 没有变化</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cell_contents</span><span class="p">)</span> <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1"># 12，外层函数的 time 再增加 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cell_contents</span><span class="p">)</span> <span class="c1"># 12</span>
+</code></pre></div>
+<p>从打印结果可见，传进来的值一直存储在闭包的 <code>cell_contents</code> 中,因此，这也就是闭包的最大特点，可以将父函数的变量与其内部定义的函数绑定。就算生成闭包的父函数已经释放了，闭包仍然存在。</p>
+<p>闭包的过程其实好比类（父函数）生成实例（闭包），不同的是父函数只在调用时执行，执行完毕后其环境就会释放，而类则在文件执行时创建，一般程序执行完毕后作用域才释放，因此对一些需要重用的功能且不足以定义为类的行为，使用闭包会比使用类占用更少的资源，且更轻巧灵活。</p>
+<ul>
+<li>状态简单、逻辑少 → 闭包更轻量</li>
+<li>状态多、方法多 → 用类更清晰</li>
+</ul>
+<h2 id="x_4">X、装饰器</h2>
+<h3 id="x1_4">x.1 <strong>函数式编程</strong></h3>
+<p><strong>函数式编程</strong>：把函数当值来传递和组合的编程范式</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">punch</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;昵称：两点水  部门：做鸭事业部 上班打卡成功&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_time</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())))</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">holiday</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;天气太冷，今天放假&#39;</span><span class="p">)</span>
+
+
+<span class="n">add_time</span><span class="p">(</span><span class="n">punch</span><span class="p">)</span>
+<span class="n">add_time</span><span class="p">(</span><span class="n">holiday</span><span class="p">)</span>
+</code></pre></div>
+<p>输出结果：</p>
+<div class="highlight"><pre><span></span><code>2026-09-11
+昵称：两点水  部门：做鸭事业部 上班打卡成功
+2026-09-11
+天气太冷，今天放假
+</code></pre></div>
+<p>这样子就没有改动 <code>punch</code> 方法，而且任何需要用到打印当前日期的函数都可以把函数传进 <code>add_time</code> 就可以了。</p>
+<h3 id="x2_3">x.2 <strong>装饰器</strong></h3>
+<p>装饰器结合了<strong>函数式编程的思想</strong>与<strong>闭包</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logger</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>              <span class="c1"># 接收一个函数</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>   <span class="c1"># 内层函数</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;调用 </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 调用原函数</span>
+    <span class="k">return</span> <span class="n">wrapper</span>             <span class="c1"># 返回新函数</span>
+
+<span class="nd">@logger</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nd">@logger</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sub</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># 调用 add</span>
+<span class="c1"># 3</span>
+</code></pre></div>
+<p>@<code>logger</code> 就是装饰器语法糖，等价于 <code>add = logger(add)</code></p>
+<p>执行流程：</p>
+<ol>
+<li><code>@logger</code> 把 <code>add</code> 传给 <code>logger</code></li>
+<li><code>logger</code> 返回 <code>wrapper</code></li>
+<li><code>add</code> 这个名字现在指向 <code>wrapper</code></li>
+<li>以后调用 <code>add(1, 2)</code>，其实调用的是 <code>wrapper(1, 2)</code></li>
+<li><code>wrapper</code> 里先打印日志，再调用真正的 <code>add</code></li>
+</ol>
+<h2 id="xpydantic">X、Pydantic 数据校验库</h2>
+<p>Pydantic 是 Python 生态里最火的「数据校验」库，FastAPI 的核心、LangChain 的接口、各种 SDK 的配置类，背后都是它。</p>
+<p>它的核心思想很朴素：<strong>数据进入边界时，按声明的 schema 严格校验、必要时强制转换；之后程序内部代码就能放心用了</strong>。</p>
+<p>Pydantic 是<strong>第三方库</strong>，不在标准库里，需要安装：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pydantic
+</code></pre></div>
+<h3 id="x1-basemodel">x.1 <strong>第一个 BaseModel</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Employee</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">salary</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mf">12000.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>name=&#39;两点水&#39; age=28 salary=12000.0
+</code></pre></div>
+<p>各位是不是觉得这写法跟 dataclass 几乎一样？没错——继承 <code>BaseModel</code>，写带类型注解的字段，剩下的 Pydantic 全包了。</p>
+<p>它会自动生成 <code>__init__</code>、<code>__repr__</code>、<code>__eq__</code>，还会做一件 dataclass 不做的事——<strong>类型校验和强制转换</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Employee</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">salary</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<span class="c1"># 注意：age 我传的是字符串 &#39;28&#39;，salary 传的是字符串 &#39;12000.5&#39;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;28&#39;</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="s1">&#39;12000.5&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">age</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">))</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>name=&#39;两点水&#39; age=28 salary=12000.5
+&lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt;
+</code></pre></div>
+<p>看到了吗？传的 <code>age='28'</code> 是字符串，但 Pydantic 自动转成了 int。</p>
+<p><code>salary='12000.5'</code> 也被转成了 float。这就是 Pydantic 的「智能转换」——只要类型能合理转换，它就帮你转。</p>
+<p>如果传的是真的转不过去，Pydantic 不仅会抛 ValidationError，还说明哪些字段、为什么错、收到的是啥</p>
+<h2 id="x_5">X、异步编程</h2>
+<h3 id="x1-asyncawait">x.1 <strong>async/await</strong></h3>
+<p><code>asyncio</code> 是 Python 标准库中用于编写并发代码的模块，基于 <code>async/await</code> 语法，核心是事件循环。自 Python 3.4 引入，3.7 后 API 趋于稳定。</p>
+<p>它的卖点很直白——<strong>一个线程，同时等一百件事</strong>。</p>
+<p><strong>串行 vs 并发</strong>：</p>
+<p>下面这段是「正经的」串行代码，三件事各等 1 秒：</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;打卡&#39;</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;查询&#39;</span><span class="p">)</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;上传&#39;</span><span class="p">)</span>
+<span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+</code></pre></div>
+运行结果:</p>
+<div class="highlight"><pre><span></span><code>打卡 完成 查询 完成 上传 完成
+总共 3.00 秒
+</code></pre></div>
+<p>接下来换成异步版本：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;打卡&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;查询&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;上传&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>运行结果：</p>
+<div class="highlight"><pre><span></span><code>打卡 完成 查询 完成 上传 完成
+总共 1.00 秒
+</code></pre></div>
+<p>3 秒变 1 秒，三件事居然真的「同时」完成了。先别管 <code>async</code> 、 <code>await</code> 、 <code>gather</code> 这些词是什么意思。</p>
+<p>先记住一个事实：<strong><code>asyncio.sleep(1)</code> 在一个协程里等的时候，另一个协程可以去用 CPU 干自己的活</strong>，三个协程的等待是重叠的，所以总时间就是最长那一个，而不是三者之和。</p>
+<p>这就是 <code>asyncio</code> 的核心魔法。它没有偷偷开线程，也没有把 CPU 加速。它做的事很朴素：<strong>当某个协程在等 IO 的时候，让出 CPU 给其他协程，等回来再继续</strong>。</p>
+<p><strong>async：定义协程函数</strong></p>
+<p>普通函数加一个 <code>async</code> 关键字，就成了<strong>协程函数（coroutine function）</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;两点水好&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hello</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>&lt;coroutine object hello at 0x...&gt;
+RuntimeWarning: coroutine &#39;hello&#39; was never awaited
+</code></pre></div>
+<p>同样是 <code>print(hello())</code> ，普通函数返回的是字符串 '两点水好' ，协程函数返回的却是一个 <strong>协程对象</strong>——一个 <coroutine object> ，而不是字符串</p>
+<p>更要命的是，Python 还甩了一句警告：这协程从来没被 <code>await</code> 过（coroutine was never awaited）。</p>
+<p>这说明：</p>
+<ul>
+<li><code>async def</code> 定义的不是一个会立刻跑的函数</li>
+<li>调用 <code>async def</code> 定义的函数，<strong>它根本没跑</strong>，只是给你返回一个待执行的任务清单</li>
+</ul>
+<p>这张<strong>任务清单就是协程对象</strong>。它必须被 <code>await</code> ，或者扔给事件循环去执行，里面的代码才会真正跑起来。</p>
+<p><strong>await：等待协程对象完成</strong></p>
+<p>那怎么让这张任务单真的执行？用 <code>await</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s1">&#39;两点水好&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">hello</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>两点水好
+</code></pre></div>
+<p>这下拿到字符串了。<code>await hello()</code> 可以理解为：请帮我把 <code>hello()</code> 这张任务单完成，然后把结果给我。</p>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><strong><code>await</code> 只能写在 <code>async def</code> 函数体内部</strong></li>
+<li><strong>协程不 <code>await</code>，等于没写</strong></li>
+<li><strong>协程只能被 <code>await</code> 一次</strong></li>
+<li>多个<code>await</code>连着写本质是<strong>串行</strong>的，需要用 <code>asyncio.gather</code> 或 <code>asyncio.create_task</code> 实现并发</li>
+<li><strong>为了在普通脚本里调用 <code>async def</code> 怎么办？需要用到 <code>asyncio.run()</code></strong></li>
+</ul>
+<p><strong>asyncio.run()：启动事件循环</strong></p>
+<p><code>asyncio.run()</code> 是<strong>同步代码和异步代码之间的门</strong>。它接收一个协程对象，启动一个<strong>事件循环（event loop）</strong>，把协程跑完，然后关掉事件循环：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我在异步世界里&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我又在异步世界里&#39;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>这里隐含了一个非常重要的设计：<strong>整个程序里通常只有一个事件循环</strong>，由 <code>asyncio.run()</code> 启动。所有的协程都跑在这个循环里。各位可以这么想象：</p>
+<ul>
+<li>同步世界 → 一条直直的路，一步接一步</li>
+<li>异步世界 → 一个调度中心（事件循环），里面挂着一堆协程，谁能跑就让谁跑</li>
+</ul>
+<p><code>asyncio.run()</code> 就是从同步世界踏进异步世界的入口。<strong>一个程序只该调用一次</strong>（嵌套调用会报错）。</p>
+<h3 id="x2-gather">x.2 <strong>gather</strong></h3>
+<p><strong>asyncio.gather：多协程并发</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>A 完成 B 完成 C 完成
+用了 0.51 秒
+</code></pre></div>
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>gather</code> 返回的是 <strong>所有结果的列表</strong>，顺序和传进去的顺序一致</li>
+<li>任意一个协程抛异常，默认情况下整个 <code>gather</code> 都会抛</li>
+<li>传进去的可以是协程，也可以是 Task 对象</li>
+</ul>
+<p><code>gather</code> 是 <code>asyncio</code> 里出现频率最高的函数之一。各位看到同时跑多个的需求，第一反应就该是它（或者后面要讲的 Task）。</p>
+<h3 id="x3-task">x.3 <strong>Task</strong></h3>
+<p><strong>Task：把协程派出去</strong></p>
+<p>上面的 <code>gather</code> 用得很爽，但有时候我们想要更细的控制：先把任务派出去，让它在后台跑着，我先去干别的事，需要的时候再回来收结果。</p>
+<p><code>asyncio.create_task()</code> 把一个协程包装成 <code>Task</code> 并<strong>立即交给事件循环调度</strong>。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;两个任务已经派出去了，main 还能干别的&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我先打个卡&#39;</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">t1</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">t2</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>两个任务已经派出去了，main 还能干别的
+我先打个卡
+A 完成 B 完成
+用了 0.49 秒
+</code></pre></div>
+<p>注意：</p>
+<ul>
+<li><strong><code>create_task</code> 立刻把协程注册到事件循环开始跑了，不等 <code>await</code></strong>。</li>
+<li><code>await t1</code> 这一行只是说现在我要这个结果，没好就在这等一下，等的时候 t2 也在并发地跑。</li>
+</ul>
+<p>多种用法对比：</p>
+<ol>
+<li>直接 <code>await</code> 一个协程：本质串行，立即执行并收回</li>
+<li><code>await</code> 一个 <code>gather</code>（<code>gather</code>内包含多个协程）：一次性派一堆任务再一次性收回，写法紧凑</li>
+<li>逐个<code>create_task</code> + 逐个 <code>await</code>：先派一堆任务，后台跑，想要的时候再逐个收回</li>
+<li><strong>最推荐的的写法</strong>——逐个<code>create_task</code> + <code>gather(task1, task2,...)</code>：先派一堆任务，后台跑，想要的时候再一起收回</li>
+</ol>
+<h3 id="x4-wait_for-timeout">x.4 <strong>wait_for 和 timeout</strong></h3>
+<p>写网络请求的童鞋一定有个心结：万一对面服务器不返回，我这协程是不是要等到天荒地老？</p>
+<p>这就要请出 <strong>超时</strong> 了。<code>asyncio</code> 提供了两套写法。</p>
+<p><strong>第一种：<code>asyncio.wait_for</code></strong>，老牌的，写法是<strong>把协程包一层</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;终于好了&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;超时了，不等了&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>超时了，不等了
+</code></pre></div>
+<p><code>wait_for(coro, timeout=0.5)</code> 的意思是给这个协程 0.5 秒，超过就取消并抛 TimeoutError。</p>
+<p><strong>第一种：<code>asyncio.timeout</code></strong>，Python 3.11+ 新写法，用 <code>async with</code> 当上下文：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;终于好了&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">timeout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">slow_job</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;超时了，不等了&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>超时了，不等了
+</code></pre></div>
+<p>效果一样，但是写起来更顺手——你想给<strong>这一段</strong>加超时，就把这段 <code>async with</code> 包起来。</p>
+<p>要给多个 <code>await</code> 一起加超时，第二种写法尤其方便。新代码推荐用 <code>asyncio.timeout</code> 。</p>
+<h3 id="x5-taskcancel">x.5 <strong>Task.cancel()</strong></h3>
+<p>超时本质上是<strong>自动取消</strong>。其实手动取消也很简单：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">long_running</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;还在跑 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;被取消了，清理一下&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="c1"># 把刚才捕获到的那个异常，原封不动地重新抛出去</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">long_running</span><span class="p">())</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.12</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">t</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;任务确实被取消了&#39;</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>还在跑 0
+还在跑 1
+还在跑 2
+被取消了，清理一下
+任务确实被取消了
+</code></pre></div>
+<p><code>Task.cancel()</code> 会向协程内部抛一个 <code>CancelledError</code> 。协程可以选择 catch 这个异常做清理。</p>
+<p>但 <strong>强烈建议</strong> 在清理完之后 <code>raise</code> 出去，让外面知道任务确实被取消了——把 <code>CancelledError</code> 默默吞掉，是另一个非常隐蔽的坑。</p>
+<h3 id="x6-taskgroup">x.6 <strong>TaskGroup</strong></h3>
+<p><code>gather</code> 用着挺好，为什么 Python 3.11 又搞了个 <code>TaskGroup</code> 出来？</p>
+<p>gather 的默认行为是<strong>一个失败就把异常往外抛，其他任务继续在事件循环里跑</strong>。</p>
+<p>如果 A 里写文件、B 里发请求，它们会跑完（甚至再抛错）才停。这种<strong>一脚走人，别人在背后干活</strong>的行为不安全。</p>
+<p><code>TaskGroup</code> 解决了这个问题：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">good</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> ok&#39;</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bad</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;坏了&#39;</span><span class="p">)</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TaskGroup</span><span class="p">()</span> <span class="k">as</span> <span class="n">tg</span><span class="p">:</span>
+            <span class="n">t_a</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+            <span class="n">t_bad</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">bad</span><span class="p">())</span>
+            <span class="n">t_b</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="k">except</span><span class="o">*</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">eg</span><span class="p">:</span> <span class="c1"># except* 是 Python 3.11 引入的 PEP 654「异常组」专用语法</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TaskGroup 捕获到异常组：&#39;</span><span class="p">,</span> <span class="n">eg</span><span class="o">.</span><span class="n">exceptions</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p>输出：</p>
+<div class="highlight"><pre><span></span><code>TaskGroup 捕获到异常组： (ValueError(&#39;坏了&#39;),)
+</code></pre></div>
+<p><code>TaskGroup</code> 的几个优点：</p>
+<ul>
+<li><strong>自动等待全部完成</strong> ：<code>async with</code> 退出之前，所有 task 一定都跑完了</li>
+<li><strong>一个失败，全部取消</strong> ：<code>bad</code> 抛错之后，A 和 B 会被立刻 <code>cancel</code> ，不会继续在后台跑</li>
+<li><strong>异常组（ExceptionGroup）</strong>：多个 task 同时失败的时候，所有异常会被打包成一个 <code>ExceptionGroup</code> ，用 <code>except*</code> 语法捕获</li>
+</ul>
+<p>新代码里能用 <code>TaskGroup</code> 就用 <code>TaskGroup</code> ，比 <code>gather</code> 更安全、更可控。</p>
+<p><code>gather</code> 适合场景简单、一两个任务、对取消语义要求不高的场合。</p>
+<h3 id="x7-async-with-async-for">x.7 <strong>async with 和 async for</strong></h3>
+<p><code>asyncio.timeout(0.5)</code> 那个例子里，各位看到了 <code>async with</code> 的写法。这是「异步上下文管理器」——它的 <code>__enter__</code> 和 <code>__exit__</code> 都换成了 <code>async</code> 版本，叫 <code>__aenter__</code> 和 <code>__aexit__</code> 。</p>
+<p>什么时候需要 <code>async with</code>？最常见的就是网络客户端：</p>
+<!-- skip-ci -->
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://httpbin.org/get&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p><code>async with</code> 之所以是 <code>async with</code>，是因为「关闭这个连接池」这件事本身可能涉及 IO，不能是一个普通的同步 <code>__exit__</code> 。</p>
+<p>类似的还有「异步迭代器」——<code>async for</code> 。比如某些数据库驱动支持流式读取：</p>
+<!-- skip-ci -->
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;https://httpbin.org/stream/3&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">aiter_lines</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;line:&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+<p><code>async for line in resp.aiter_lines()</code> 的语义是：每读到一行（可能要等网络），把这一行交给我，然后继续等下一行。同步的 <code>for</code> 做不到这件事，只能 <code>async for</code> 。</p>
+<p>各位记一下规律：</p>
+<ul>
+<li>普通的对象、上下文 → <code>with</code> 、 <code>for</code></li>
+<li>涉及到 IO 的、协程的对象 → <code>async with</code> 、 <code>async for</code></li>
+</ul>
+<h3 id="x8">x.8 <strong>异步编程的使用场景</strong></h3>
+<p><code>asyncio</code> 的强项是 <strong>IO bound</strong> ——程序大部分时间在等：等网络、等磁盘、等数据库、等用户输入。这种场景下「等待」是可以重叠的，async 能让一个线程同时等无数件事，效果立竿见影。</p>
+<p><code>asyncio</code> 的弱项是 <strong>CPU bound</strong> ——程序大部分时间在算：加密解密、图像处理、机器学习推理。这种场景下没有「等」可以利用，CPU 一直在干活，async 帮不上忙。一个线程也只能利用一个核，剩下七个核睡大觉。</p>
+<p>对照表：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抓 100 个 URL</td>
+<td><code>asyncio</code> + <code>httpx</code></td>
+</tr>
+<tr>
+<td>同时读写一堆文件</td>
+<td><code>asyncio</code> + <code>aiofiles</code></td>
+</tr>
+<tr>
+<td>高并发 Web 服务（一台机器扛几千个连接）</td>
+<td><code>asyncio</code> + <code>FastAPI / aiohttp</code></td>
+</tr>
+<tr>
+<td>视频转码、大矩阵计算</td>
+<td><code>multiprocessing</code> 或 C 扩展</td>
+</tr>
+<tr>
+<td>海量数据本地排序</td>
+<td>多进程 + 分块</td>
+</tr>
+<tr>
+<td>同时干一点 IO 一点 CPU</td>
+<td>async 主框架 + <code>asyncio.to_thread</code> 或 <code>run_in_executor</code></td>
+</tr>
+</tbody>
+</table>
+<p>各位可以这么记：<strong>async 是用来「等」的，不是用来「算」的</strong>。</p>
+<h2 id="x-ruff">X、代码风格 ruff</h2>
+<h2 id="x-pytest">X、单元测试 pytest</h2>
+<p>30 秒跑完 100 个用例的测试框架</p>
+<h2 id="x-logging">X、标准日志 logging</h2>
+<p>把 <code>print</code> 调试升级成正经日志</p>
+<h2 id="x_6">X、打包发布</h2>
+<p>让全世界一行 <code>pip install</code> 用上你的工具</p>
 
 
 
