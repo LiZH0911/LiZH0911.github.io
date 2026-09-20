@@ -1,8 +1,9 @@
 这里记录我学习过程中整理的笔记。
 
-- [Python 基础](Python/index.md) —— 介绍 Python 的基础语法
-- [PythonWeb](PythonWeb/index.md) —— 介绍使用基于 Python 的 FastAPI 架构构建服务端
-- [Java 基础](Java/index.md) —— 介绍 Java 的基础语法
-- [JavaWeb](JavaWeb/index.md) ——
-- [Agent 基础](Agent/index.md) —— 从零开始的 Agent 开发
-- [常用工具](常用工具/index.md) —— 
+- [Python](Python/index.md)
+- [Python 后端开发](Python后端/FastAPI/index.md)
+- [Java 基础](Java/index.md)
+- [JavaWeb 开发](JavaWeb/index.md)
+- [数据库](%E6%95%B0%E6%8D%AE%E5%BA%93%2Findex.md)
+- [Agent 基础](Agent/index.md)
+- [常用工具](常用工具/index.md)

@@ -50,8 +50,8 @@ nav:
     - 目录: course/index.md
     # - 示例: course/example.md
     - Python: course/Python/index.md
-    - PythonWeb: course/PythonWeb/index.md
-        # - FastAPI: course/PythonWeb/FastAPI/index.md
+    - Python 后端:
+        - FastAPI: course/Python后端/FastAPI/index.md
 #    - LangChain: course/LangChain/index.md
     - Java 基础: course/Java/index.md
     - JavaWeb:
@@ -65,6 +65,7 @@ nav:
 #        - MySQL: course/JavaWeb/MySQL/index.md
 #        - JDBL: course/JavaWeb/JDBL/index.md
 #        - Mybatis: course/JavaWeb/Mybatis/index.md
+    - 数据库: course/数据库/index.md
     - Agent 基础-Hello-Agents:
         - 概述: course/Agent/index.md
         - 一、初识智能体: course/Agent/一、初识智能体/index.md
@@ -85,6 +86,11 @@ nav:
         - RAG: course/AI 应用开发/RAG/index.md
         - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
 #        - 面试题: course/AI 应用开发/面试题/index.md
+    - 计算机基础:
+        - 计算机网络: course/计算机基础/计算机网络/index.md
+        - 操作系统: course/计算机基础/操作系统/index.md
+        - 数据结构: course/计算机基础/数据结构/index.md
+        - 算法: course/计算机基础/算法/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
@@ -92,7 +98,7 @@ nav:
         - Node.js: course/常用工具/Nodejs/index.md
         - Codex: course/常用工具/Codex/index.md
         - Claude Code: course/常用工具/Claude Code/index.md
-        - Skills: course/常用工具/Skill/index.md
+        - Skill: course/常用工具/Skill/index.md
         - Docker: course/常用工具/Docker/index.md
 
   - 关于: about/index.md

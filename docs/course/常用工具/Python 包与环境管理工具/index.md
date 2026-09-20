@@ -5,6 +5,7 @@
 - [菜鸟教程-pip](https://www.runoob.com/python3/python3-pip.html)
 - [菜鸟教程-Anaconda](https://www.runoob.com/python-qt/anaconda-tutorial.html)
 - [菜鸟教程-uv](https://www.runoob.com/python3/uv-tutorial.html)
+- [uv 官方教程](https://docs.astral.sh/uv/)
 
 ## 一、pip
 
@@ -132,4 +133,127 @@ jupyter notebook
 
 ## 三、uv
 
-暂未用到，以后用到再学
+uv 是由 Astral 公司开发的一款用 Rust 编写的 Python 包管理器和环境管理器，主要目标是提供比现有工具快 10-100 倍的性能，同时保持简单直观的用户体验。
+
+uv 可以替代 pip、virtualenv、pip-tools、pyenv 等工具，提供依赖管理、虚拟环境创建、Python 版本管理等一站式服务。
+
+**1、Python 版本管理**
+
+```bash
+# 查看可用的 Python 版本
+uv python list
+# 安装特定版本 python
+uv python install 3.11.6
+# 设置全局默认 Python 版本
+uv python default 3.12
+# 为当前项目固定 Python 版本（会创建 .python-version 文件）
+uv python pin 3.12
+```
+
+**2、虚拟环境管理**
+
+```bash
+# 创建虚拟环境
+# 在当前目录创建名为 .venv 的虚拟环境（使用系统默认 Python）
+uv venv
+# 使用指定 Python 版本创建虚拟环境
+uv venv --python 3.12
+
+# 激活虚拟环境
+# macOS / Linux
+source .venv/bin/activate
+# Windows（PowerShell）
+.venv\Scripts\activate
+
+# 退出虚拟环境
+deactivate
+```
+
+日常开发中可以使用 `uv run` 直接运行脚本，无需手动激活虚拟环境。
+
+**3、包管理（pip 兼容模式）**
+
+uv 提供了与 pip 完全兼容的命令接口，可以直接替换已有工作流中的 pip 命令：
+
+```bash
+# 安装最新版本
+uv pip install requests
+
+# 安装特定版本
+uv pip install requests==2.31.0
+
+# 从 requirements.txt 批量安装
+uv pip install -r requirements.txt
+
+# 升级包
+uv pip install --upgrade requests
+
+# 卸载包
+uv pip uninstall requests
+
+# 查看已安装的包：
+uv pip list
+
+# 导出当前环境的依赖到 requirements.txt
+uv pip freeze > requirements.txt
+```
+
+**4、项目管理（推荐方式）**
+
+uv 支持以 `pyproject.toml` 为中心的现代项目管理方式，这是比 pip 模式更推荐的使用方法，尤其适合团队协作和多环境部署。
+
+```bash
+# 初始化项目
+uv init my_project
+cd my_project
+
+# 添加和移除依赖
+# 在项目模式下，推荐使用 uv add 和 uv remove 管理依赖，它们会自动更新 pyproject.toml 和 uv.lock
+# 添加生产依赖
+uv add requests
+# 添加指定版本的依赖
+uv add "requests>=2.31.0"
+# 添加开发依赖（只在开发环境使用，如测试框架）
+uv add --dev pytest ruff
+# 移除依赖
+uv remove requests
+
+# 安装项目全部依赖（uv sync）
+# 克隆项目或更新 pyproject.toml 后，运行以下命令一键安装所有依赖
+uv sync
+```
+
+如果安装速度慢，可以在 pyproject.toml 中设置国内镜像源：
+
+```toml
+[tool.uv]
+index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+```
+
+**5、运行脚本（uv run）**
+
+uv run 是 uv 中非常实用的命令，可以**无需手动激活虚拟环境**直接运行脚本或命令，uv 会自动找到并使用正确的环境
+
+```bash
+# 直接运行 Python 脚本
+uv run main.py
+
+# 运行项目中的测试
+uv run pytest
+
+# 运行任意命令（在虚拟环境的上下文中执行）
+uv run python -c "import requests; print(requests.__version__)"
+```
+
+**6、迁移到 uv**
+
+从 pip + virtualenv 迁移：
+
+```bash
+# 创建并激活虚拟环境
+uv venv
+source .venv/bin/activate
+
+# 安装原有依赖
+uv pip install -r requirements.txt
+```

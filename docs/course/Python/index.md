@@ -52,11 +52,11 @@
 
 **基本数据类型**：
 
-- 字符串：str
-- 整数：int
-- 浮点数：float
-- 布尔值：bool
-- 空值：None
+- 字符串：`str`
+- 整数：`int`
+- 浮点数：`float`
+- 布尔值：`bool`
+- 空值：`None`
 
 **数据类型查看**：
 
@@ -99,16 +99,11 @@
 **字符串格式化**：
 
 1. `format()`
-
-    示例：`print("Hello, {}!".format("World"))`
-
+    - 示例：`print("Hello, {}!".format("World"))`
 2. `%s`
-
-    示例：`print("Hello, %s!" % "World")`
-
+    - 示例：`print("Hello, %s!" % "World")`
 3. `f-string`
-
-    示例：`print(f"Hello, {name}!")`
+    - 示例：`print(f"Hello, {name}!")`
 
 ### 1.6 **输入与输出**
 
@@ -186,8 +181,6 @@ for 元素 in 数据集:
 - `sort()`：排序列表
 - `copy()`：复制列表
 - `enumerate()`：返回一个枚举对象，枚举对象包含索引和元素
-- `zip()`：返回一个迭代器，迭代器中包含两个列表中对应位置的元素
-- `map()`：返回一个迭代器，迭代器中包含两个列表中对应位置的元素
 
 ### 3.2 **字符串 str**
 
@@ -299,18 +292,16 @@ for 元素 in 数据集:
 **迭代**：迭代（Iteration）就是“逐个取出”一个容器（比如列表、字符串）里的每一个元素，并对其执行相同操作的过程。
 
 ```python
-# -*- coding: UTF-8 -*-
-
 # 1、for 循环迭代字符串
 for char in 'liangdianshui' :
-    print ( char , end = ' ' )
+    print (char , end = ' ')
 
 print('\n')
 
 # 2、for 循环迭代 list
 list1 = [1,2,3,4,5]
 for num1 in list1 :
-    print ( num1 , end = ' ' )
+    print (num1 , end = ' ')
 
 print('\n')
 
@@ -318,18 +309,18 @@ print('\n')
 dict1 = {'name':'两点水','age':'23','sex':'男'}
 
 for key in dict1 :    # 迭代 dict 中的 key
-    print ( key , end = ' ' )
+    print (key , end = ' ')
 
 print('\n')
 
 for value in dict1.values() :   # 迭代 dict 中的 value
-    print ( value , end = ' ' )
+    print (value , end = ' ')
 
 print ('\n')
 
 # 如果 list 里面一个元素有两个变量，也是很容易迭代的
 for x , y in [ (1,'a') , (2,'b') , (3,'c') ] :
-    print ( x , y )
+    print (x , y)
 ```
 
 ### x.2 **迭代器**
@@ -2168,6 +2159,259 @@ print(add(1, 2))
 4. 以后调用 `add(1, 2)`，其实调用的是 `wrapper(1, 2)`
 5. `wrapper` 里先打印日志，再调用真正的 `add`
 
+## X、类型注解
+
+### x.1 **动机**
+
+**自动补全**
+
+让我们从一个简单的例子开始：
+
+```python
+def get_full_name(first_name, last_name):
+    full_name = first_name.title() + " " + last_name.title()
+    return full_name
+
+
+print(get_full_name("john", "doe"))
+```
+
+这个函数做了下面这些事情：
+
+* 接收 `first_name` 和 `last_name`。
+* 通过 `title()` 将每个参数的第一个字母转换为大写。
+* 用一个空格将它们**拼接**起来。
+
+这是一个非常简单的程序。
+
+但现在想象你要从零开始写它。
+
+你试试程序员的老朋友——编辑器的自动补全。
+
+你输入函数的第一个参数 `first_name`，再输入一个点（`.`），然后按下 `Ctrl+Space` 触发补全
+
+但很遗憾，没有什么有用的提示
+
+修改函数参数：`first_name: str, last_name: str`
+
+此时，在同样的位置，你用 `Ctrl+Space` 触发自动补全，就能找到 `title()`
+
+**错误检查**
+
+因为编辑器知道变量的类型，你不仅能得到补全，还能获得错误检查。
+
+### x.2 **声明类型**
+
+**简单类型**：
+
+* `str`
+* `int`
+* `float`
+* `bool`
+* `bytes`
+
+**任意类型**：
+
+使用标准库的 typing 模块:
+
+```python
+from typing import Any
+
+
+def some_function(data: Any):
+    print(data)
+```
+
+**泛型类型**：
+
+有些类型可以在方括号中接收“类型参数”（type parameters），用于声明其内部值的类型。比如“字符串列表”可以写为 `list[str]`。
+
+这些能接收类型参数的类型称为**泛型类型**（Generic types）或**泛型**（Generics）。
+
+你可以把相同的内建类型作为泛型使用（带方括号和内部类型）：
+
+* `list`：例如 `def process_items(items: list[str]):`
+* `tuple`：例如 `def process_items(items_t: tuple[int, int, str]):`
+* `set`：例如 `def process_items(items_s: set[bytes]):`
+* `dict`：例如 `def process_items(prices: dict[str, float]):`
+
+**Union**：
+
+你可以声明一个变量可以是**若干种类型中的任意一种**，比如既可以是 `int` 也可以是 `str`。
+
+定义时使用竖线（`|`）把两种类型分开。
+
+```python
+def process_item(item: int | str):
+    print(item)
+```
+
+**可能为 `None`**：
+
+你可以声明一个值的类型是某种类型（比如 str），但它也可能是 None。
+
+```python
+def say_hi(name: str | None = None):
+    if name is not None:
+        print(f"Hey {name}!")
+    else:
+        print("Hello World")
+```
+
+## X、pathlib 路径处理
+
+### x.1 **第一个 Path**
+
+### x.2 **用 `/` 来拼接路径**
+
+老的路径拼接：
+
+```python
+import os
+
+base = '/tmp'
+data_path = os.path.join(base, 'demo', 'sub', 'foo.txt')
+print(data_path)
+```
+
+`pathlib` 的路径拼接：
+
+```python
+from pathlib import Path
+
+base = Path('/tmp')
+data_path = base / 'demo' / 'sub' / 'foo.txt'
+print(data_path)
+```
+
+输出都是：
+
+```
+/tmp/demo/sub/foo.txt
+```
+
+注意看：拼接路径用的是 `/` 这个操作符
+
+因为 `Path` 重载了 `__truediv__`（也就是除法操作符），所以 `Path('/tmp') / 'demo'` 这种写法就被翻译成了路径拼接。
+
+这种设计简直是天才，因为路径在 URL、Linux 文件系统里用的本来就是 `/`，跟我们脑子里的语义完全一致。
+
+### x.3 **常用属性**
+
+**`.name`：完整文件名（带后缀）**
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/foo.txt')
+print(p.name) # foo.txt
+```
+
+相当于 os.path.basename(...)
+
+**`.stem`：去掉后缀的「主干」**
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/foo.txt')
+print(p.stem) # foo
+```
+
+**`.suffix`：扩展名（带点）**
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/foo.txt')
+print(p.suffix) # .txt
+
+# 不带点
+print(p.suffix[1:]) # txt
+
+# 多后缀
+p = Path('archive.tar.gz')
+print(p.suffix) # .gz
+print(p.suffixes) # ['.tar', '.gz']
+```
+
+**`.parent`：父目录**
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/sub/foo.txt')
+print(p.parent) # /tmp/demo/sub
+```
+
+**`.parents`：所有祖先目录**
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/sub/foo.txt')
+for ancestor in p.parents:
+    print(ancestor)
+```
+
+输出：
+
+```
+/tmp/demo/sub
+/tmp/demo
+/tmp
+```
+
+**`.anchor`：锚点**
+
+锚点是路径的「根」部分。
+
+```python
+from pathlib import Path
+
+p = Path('/tmp/demo/foo.txt')
+print(p.anchor) # /
+```
+
+在 Linux / macOS 上一般就是 `/`，在 Windows 上可能是 `C:\` 这种盘符。这个属性平时用得不多，但跨平台代码里偶尔会派上用场。
+
+**综合演示**
+
+```python
+from pathlib import Path
+
+p = Path('/Users/two_water/projects/demo/main.py')
+
+print('name    :', p.name)
+print('stem    :', p.stem)
+print('suffix  :', p.suffix)
+print('parent  :', p.parent)
+print('anchor  :', p.anchor)
+print('parts   :', p.parts)
+```
+
+输出：
+
+```
+name    : main.py
+stem    : main
+suffix  : .py
+parent  : /Users/two_water/projects/demo
+anchor  : /
+parts   : ('/', 'Users', 'two_water', 'projects', 'demo', 'main.py')
+```
+
+### x.4 **判断和信息**
+
+光能拼路径还不够，我们经常要判断「这文件存不存在啊」、「是文件还是目录啊」。
+
+### x.5 **遍历目录**
+
+### x.6 **读写文件**
+
+### x.7 **创建和删除**
+
+### x.8 **路径转换**
 
 ## X、Pydantic 数据校验库
 
@@ -2735,13 +2979,333 @@ asyncio.run(main())
 
 ## X、代码风格 ruff
 
+### x.1 **ruff 入门**
+
+`ruff` 是 Astral 公司开源的 Python 代码检查 + 格式化工具。两个关键属性：
+
+* **用 Rust 写的**。
+* **一个工具替掉一堆**。`flake8`、`black`、`isort`、`pyupgrade`、`pydocstyle`、`bandit`、`pylint` 的部分规则、`autoflake`，全部内置。
+
+**安装**：
+
+```
+uv add --dev ruff
+```
+
+`--dev` 意思是「装到开发依赖组」，发布生产环境时不会带上。`ruff` 是开发工具，只在开发和 CI 时用，所以放 `--dev` 最合适。
+
+**第一次跑**：
+
+```bash
+ruff check .
+```
+
+这条命令会扫描当前目录下所有 `.py` 文件，按默认规则检查。
+
+规则号前面如果带个 `[*]`，说明这条规则可以**自动修复**。
+
+**自动修复**：
+
+```bash
+ruff check --fix .
+```
+
+**格式化代码**：
+
+```bash
+ruff format .
+```
+
+这条命令会把整个项目的代码风格统一到一致的缩进、引号、换行规则。
+
+把这两条命令加在一起，就是日常 commit 之前的标准流程：
+
+```bash
+ruff check --fix . && ruff format .
+```
+
+### x.2 **ruff 配置：pyproject.toml**
+
+ruff 的配置全部塞进 pyproject.toml，没有别的文件。配置长这样：
+
+```toml
+[tool.ruff]
+# 行宽，跟 black 默认一致
+line-length = 88
+
+# 目标 Python 版本，影响某些规则的判断
+target-version = "py312"
+
+# 排除哪些目录
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+    "__pycache__",
+    "migrations",
+]
+
+[tool.ruff.lint]
+# 启用哪些规则集
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+# 忽略哪些具体规则
+ignore = ["E501"]
+
+[tool.ruff.format]
+# 引号风格：双引号优先（black 风格）
+quote-style = "double"
+# 缩进风格：空格
+indent-style = "space"
+```
+
+**完整配置示例**：
+
+放一份生产可用的 `pyproject.toml` 配置，各位可以直接抄回去改：
+
+```toml
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = [
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+    "__pycache__",
+    "migrations",
+    "*.ipynb",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "C4",  # flake8-comprehensions
+    "N",   # pep8-naming
+    "RET", # flake8-return
+]
+ignore = [
+    "E501",  # 行太长，交给 formatter 处理
+    "B008",  # 函数默认参数里调用函数，FastAPI 的 Depends 用法
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/*" = ["S101"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["my_project"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+```
+
+抄这份过去，改一下 `target-version` 和 `known-first-party`，基本就能用。
+
+### x.3 **自动修复**
+
+### x.4 **格式化代码**
+
+### x.4 **ruff 集成**
+
+**集成 pre-commit**
+
+**集成 GitHub Actions CI**
+
+**集成编辑器**
+
+1. VS Code
+2. PyCharm
+3. Neovim / Vim
+
 ## X、单元测试 pytest
 
 30 秒跑完 100 个用例的测试框架
 
+`pytest` 是 Python 圈测试的事实标准。`Django`、`FastAPI`、`Pandas`、`NumPy`、`SQLAlchemy`、`Pydantic`、`Requests`、`httpx`、几乎你能叫出名字的 Python 项目都用它来跑测试。
+
+这一章咱们把 pytest 从零讲到能上手。学完之后，各位应该能：
+
+1. 写出第一个 `pytest` 测试，跑起来看到绿色的 PASS
+2. 看懂别人项目里 `tests/` 目录在干啥
+3. 用 `fixture`、参数化、`tmp_path`、`monkeypatch` 这些核心工具把测试写得又简洁又强壮
+4. 给自己的项目接上覆盖率，知道哪行代码还没被测到
+5. 把测试接进 `CI`，提交 PR 自动跑
+
+### x.1 **第一个测试**
+
+建一个新目录：
+
+```bash
+mkdir test-demo
+cd test-demo
+uv init
+uv add --dev pytest
+```
+
+写一个最普通的 Python 文件 mymath.py：
+
+```python
+def add(a, b):
+    return a + b
+
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("除数不能为 0")
+    return a / b
+```
+
+然后写一个测试文件 test_mymath.py：
+
+```python
+from mymath import add, divide
+
+
+def test_add():
+    assert add(2, 3) == 5
+
+
+def test_add_negative():
+    assert add(-1, 1) == 0
+
+
+def test_divide():
+    assert divide(10, 2) == 5
+```
+
+注意三个细节：
+
+1. 文件名以 test_ 开头
+2. 函数名以 test_ 开头
+3. 断言用 Python 内置的 assert 关键字
+
+命令行运行：
+
+```bash
+uv run pytest
+```
+
+输出：
+
+```
+===================================================================================== test session starts =====================================================================================
+platform win32 -- Python 3.11.16, pytest-9.1.1, pluggy-1.6.0
+rootdir: D:\就业\Python\Pytest_code
+configfile: pyproject.toml
+collected 3 items                                                                                                                                                                               
+
+test_mymath.py ...                                                                                                                                                                       [100%] 
+
+====================================================================================== 3 passed in 0.01s ====================================================================================== 
+```
+
+三个绿点 `...` 代表三个测试全部通过。0.01 秒跑完。
+
+### x.2 **测试发现**
+
+pytest 有一套默认的「测试发现」（test discovery）规则。它会从当前目录开始，递归扫描所有目录，找符合下面这些规则的东西：
+
+* 测试文件：`test_*.py` 或 `*_test.py`
+* 测试类：以 `Test` 开头的类（且没有 `__init__` 方法）
+* 测试函数：以 `test_` 开头的函数或方法
+
+```
+my-project/
+├── src/
+│   └── mymath.py
+└── tests/
+    ├── test_mymath.py        # 自动发现 ✓
+    ├── test_helper.py        # 自动发现 ✓
+    ├── helper_test.py        # 自动发现 ✓
+    └── notes.py              # 不识别 ✗
+```
+
+各位写测试的时候，约定俗成的目录结构是这样：
+
+```
+my-project/
+├── pyproject.toml
+├── src/
+│   └── mypackage/
+│       ├── __init__.py
+│       ├── core.py
+│       └── utils.py
+└── tests/
+    ├── test_core.py
+    └── test_utils.py
+```
+
+### x.3 **fixture——测试界的依赖注入**
+
 ## X、标准日志 logging
 
 把 `print` 调试升级成正经日志
+
+### x.1 **第一个 logger**
+
+```python
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
+logging.debug("调试看的，临时变量")
+logging.info("正常流程的关键节点")
+logging.warning("不对劲但能继续")
+logging.error("这次操作失败了")
+logging.critical("整个程序要挂")
+```
+
+### x.2 **basicConfig：最简的一行配置**
+
+```python
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, # 日志级别
+    format="%(asctime)s - %(levelname)s - %(message)s", # 每条日志的格式
+    filename="app.log", # 日志文件名
+    filemode="a", # 写文件的模式，'a' 追加（默认），'w' 覆盖
+    encoding="utf-8", # 文件编码，强烈建议加 encoding='utf-8'，不然 Windows 上中文很容易挂
+)
+
+logging.info("两点水准备打卡")
+```
+
+### x.3 **每个模块开独立的 logger：getLogger(__name__)**
+
+```python
+import logging
+
+logger = logging.getLogger(__name__)
+
+def punch_in(user):
+    logger.info("用户 %s 开始打卡", user)
+```
+
+### x.4 **format 字符串：常用占位符**
+
+最常用的搭配是：
+
+```
+"%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+```
+
+要追查 bug 时常用的更详细版本：
+
+```
+"%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s"
+```
+
 
 ## X、打包发布
 
