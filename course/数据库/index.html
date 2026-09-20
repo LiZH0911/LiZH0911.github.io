@@ -1,0 +1,2810 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../JavaWeb/Vue/">
+      
+      
+        <link rel="next" href="../Agent/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>数据库 - LiZH0911的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/home.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-header__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiZH0911的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数据库
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  技术栈
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-nav__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    LiZH0911的学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技术栈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技术栈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 后端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 后端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python%E5%90%8E%E7%AB%AF/FastAPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaWeb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/HTML-CSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML-CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/JavaScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/Vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、数据库基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、数据库基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 数据库, 数据库管理系统, 数据库系统, 数据库管理员
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DBMS 的四大核心功能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 DBMS 的类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 关系型数据库核心概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ER 图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 数据库范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 不推荐使用外键与级联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 不推荐使用存储过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.x 数据库设计的步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、NoSQL 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、NoSQL 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 NoSQL 数据库的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 NoSQL 数据库的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 NoSQL 数据库的类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、SQL 语法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、SQL 语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 数据库术语
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 SQL 语法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 SQL 分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 增删改查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 排序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 子查询
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 基础-Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent 基础-Hello-Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%80%E3%80%81%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二、智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%89%E3%80%81%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%9B%9B%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四、智能体经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%94%E3%80%81%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、基于低代码平台的智能体搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AD%E3%80%81%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%83%E3%80%81%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%20Agent%20%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    七、构建你的 Agent 框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AB%E3%80%81%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B9%9D%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    九、上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十、智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%B8%80%E3%80%81Agentic-RL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十一、Agentic-RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十二、智能体性能评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 应用开发-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 应用开发-JavaGuide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/AI%20Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/RAG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/AI%20%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 系统设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Python%20%E5%8C%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包与环境管理工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Nodejs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Claude%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、数据库基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、数据库基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 数据库, 数据库管理系统, 数据库系统, 数据库管理员
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DBMS 的四大核心功能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 DBMS 的类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 关系型数据库核心概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-er" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 ER 图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 数据库范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 不推荐使用外键与级联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 不推荐使用存储过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.x 数据库设计的步骤
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、NoSQL 基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、NoSQL 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 NoSQL 数据库的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 NoSQL 数据库的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 NoSQL 数据库的类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、SQL 语法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、SQL 语法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 数据库术语
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 SQL 语法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 SQL 分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 增删改查
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 排序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 分组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 子查询
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">数据库</h1>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://javaguide.cn/database/">JavaGuide-数据库</a></li>
+</ul>
+<h2 id="_2">一、数据库基础</h2>
+<h3 id="11">1.1 <strong>数据库, 数据库管理系统, 数据库系统, 数据库管理员</strong></h3>
+<p>这四个概念描述了从数据本身到管理整个体系的不同层次，我们常用一个图书馆的例子来把它们串联起来理解。</p>
+<ul>
+<li><strong>数据库 (Database - DB)</strong>: 它就像是图书馆里，书架上存放的所有书籍和资料。从技术上讲，数据库就是按照一定数据模型组织、描述和储存起来的、可以被各种用户共享的结构化数据的集合。它就是我们最终要存取的核心——信息本身。</li>
+<li><strong>数据库管理系统 (Database Management System - DBMS)</strong>: 它就像是整个图书馆的管理系统，包括图书的分类编目规则、借阅归还流程、安全检查系统等等。从技术上讲，DBMS 是一种大型软件，比如我们常用的 MySQL、Oracle、PostgreSQL 软件。它的核心职责是科学地组织和存储数据、高效地获取和维护数据；为我们屏蔽了底层文件操作的复杂性，提供了一套标准接口（如 SQL）来操纵数据，并负责并发控制、事务管理、权限控制等复杂问题。</li>
+<li><strong>数据库系统 (Database System - DBS)</strong>: 这是一个更大的概念，不仅包括书(DB)和管理系统(DBMS)，还包括了硬件、应用和使用的人。</li>
+<li><strong>数据库管理员 (Database Administrator - DBA )</strong>: 他就是图书馆的馆长，负责整个数据库系统正常运行。他的职责非常广泛，包括数据库的设计、安装、监控、性能调优、备份与恢复、安全管理等等，确保整个系统的稳定、高效和安全。</li>
+</ul>
+<h3 id="12-dbms">1.2 <strong>DBMS 的四大核心功能</strong></h3>
+<ol>
+<li><strong>数据定义</strong>： 这是 DBMS 的基础。它提供了一套数据定义语言（Data Definition Language - DDL），让我们能够创建、修改和删除数据库中的各种对象。这不仅仅是定义表的结构（比如字段名、数据类型），还包括定义视图、索引、触发器、存储过程等。</li>
+<li><strong>数据操作</strong>： 这是我们作为开发者日常使用最多的功能。它提供了一套数据操作语言（Data Manipulation Language - DML），核心就是我们熟悉的增、删、改、查（CRUD）操作。它让我们能够方便地对数据库中的数据进行操作和检索。</li>
+<li><strong>数据控制</strong>： 这是保证数据正确、安全、可靠的关键。通常包含并发控制、事务管理、完整性约束、权限控制、安全性限制等功能。</li>
+<li><strong>数据库维护</strong>： 这部分功能是为了保障数据库系统的长期稳定运行。它包括了数据的导入导出、数据库的备份与恢复、性能监控与分析、以及系统日志管理等。</li>
+</ol>
+<h3 id="13-dbms">1.3 <strong>DBMS 的类型</strong></h3>
+<ol>
+<li><strong>关系型数据库</strong>：除了我们最常用的关系型数据库（RDBMS），比如 MySQL（开源首选）、PostgreSQL（功能最全）、Oracle（企业级），它们基于严格的表结构和 SQL，非常适合结构化数据和需要事务保证的场景，例如银行交易、订单系统。</li>
+<li><strong>NoSQL 数据库</strong>：它们的共同特点是为了极致的性能和水平扩展能力，在某些方面（通常是事务）做了妥协。<ul>
+<li><strong>键值数据库</strong>：如 Redis，适合缓存、会话存储等。</li>
+<li><strong>文档数据库</strong>：如 MongoDB，适合半结构化文档（比如 JSON/BSON）的存储和查询。</li>
+<li><strong>列式数据库</strong>：如 Cassandra、HBase，适合大规模数据存储和查询。</li>
+<li><strong>图形数据库</strong>：如 Neo4j，适合关系复杂、查询路径的场景。</li>
+</ul>
+</li>
+<li><strong>NewSQL 数据库</strong>：分布式关系型数据库。不仅具有 NoSQL 对海量数据的存储管理能力，还保持了传统数据库支持 ACID 和 SQL 等特性。</li>
+</ol>
+<h3 id="14">1.4 <strong>关系型数据库核心概念</strong></h3>
+<p><img alt="v-17.svg" src="images/v-17.svg" /></p>
+<p><strong>基础概念</strong>：</p>
+<ul>
+<li><strong>元组（Tuple）</strong>： 元组是关系数据库中的基本单位，在二维表中对应一行记录。每个元组包含了一个实体的完整信息。例如，在学生表中，每个学生的完整信息（学号、姓名、年龄等）构成一个元组。</li>
+<li><strong>码（Key）</strong>： 码是能够唯一标识关系中元组的一个或多个属性的集合。码的主要作用是保证数据的唯一性和完整性。</li>
+</ul>
+<p><strong>码的分类</strong>：</p>
+<ul>
+<li><strong>候选码（Candidate Key）</strong>： 候选码是能够唯一标识元组的最小属性集合，其任何真子集都不能唯一标识元组。一个关系可能有多个候选码。例如，在学生表中，如果"学号"能唯一标识学生，同时"身份证号"也能唯一标识学生，那么{学号}和{身份证号}都是候选码。</li>
+<li><strong>主码/主键（Primary Key）</strong>： 主码是从候选码中选择的一个，用于唯一标识关系中的元组。每个关系只能有一个主码，但可以有多个候选码。选择主码时通常考虑：简单性、稳定性、无业务含义等因素。</li>
+<li><strong>外码/外键（Foreign Key）</strong>： 外码是一个关系中的属性或属性组，它对应另一个关系的主码。外码用于建立和维护两个关系之间的联系，是实现参照完整性的重要机制。例如，在选课表中的"学号"如果引用学生表的主码"学号"，则选课表中的"学号"就是外码。</li>
+</ul>
+<p><strong>属性分类</strong>：</p>
+<ul>
+<li>主属性（Prime Attribute）： 主属性是包含在任何一个候选码中的属性。如果一个关系有多个候选码，那么这些候选码中出现的所有属性都是主属性。例如，工人关系（工号，身份证号，姓名，性别，部门）中，如果{工号}和{身份证号}都是候选码，那么"工号"和"身份证号"都是主属性。</li>
+<li>非主属性（Non-prime Attribute）： 非主属性是不包含在任何候选码中的属性。这些属性完全依赖于候选码来确定其值。在上述工人关系中，"姓名"、"性别"、"部门"都是非主属性。</li>
+</ul>
+<h3 id="15-er">1.5 <strong>ER 图</strong></h3>
+<p>我们做一个项目的时候一定要试着画 ER 图来捋清数据库设计，</p>
+<p><strong>ER 图</strong>：全称是 Entity Relationship Diagram（实体联系图），提供了表示实体类型、属性和联系的方法。</p>
+<p><strong>ER 图的 3 个要素</strong>：</p>
+<ul>
+<li><strong>实体</strong>：通常是现实世界的业务对象，当然使用一些逻辑对象也可以。比如对于一个校园管理系统，会涉及学生、教师、课程、班级等等实体。在 ER 图中，实体使用矩形框表示。</li>
+<li><strong>属性</strong>：即某个实体拥有的属性，属性用来描述组成实体的要素，对于产品设计来说可以理解为字段。在 ER 图中，属性使用椭圆形表示。</li>
+<li><strong>联系</strong>：即实体与实体之间的关系，在 ER 图中用菱形表示，这个关系不仅有业务关联关系，还能通过数字表示实体之间的数量对照关系。例如，一个班级会有多个学生就是一种实体间的联系。</li>
+</ul>
+<p><strong>实体间的关系</strong>：</p>
+<ul>
+<li>多对多（M: N）</li>
+<li>1 对 1（1:1）</li>
+<li>1 对多（1: N）</li>
+</ul>
+<h3 id="16">1.6 <strong>数据库范式</strong></h3>
+<p>数据库范式有 3 种：</p>
+<ul>
+<li>1NF(第一范式)：属性不可再分。</li>
+<li>2NF(第二范式)：1NF 的基础之上，消除了非主属性对于码的部分函数依赖。</li>
+<li>3NF(第三范式)：3NF 在 2NF 的基础之上，消除了非主属性对于码的传递函数依赖 。</li>
+</ul>
+<p><strong>1NF(第一范式)</strong></p>
+<p>属性（对应于表中的字段）不能再被分割，也就是这个字段只能是一个值，不能再分为多个其他的字段了。</p>
+<p>1NF 是所有关系型数据库的最基本要求 ，也就是说关系型数据库中创建的表一定满足第一范式。</p>
+<p><strong>2NF(第二范式)</strong></p>
+<p>2NF 在 1NF 的基础之上，消除了非主属性对于码的<strong>部分函数依赖</strong>。</p>
+<p>第二范式在第一范式的基础上增加了一个列，这个列称为主键，非主属性都依赖于主键。</p>
+<p>一些重要的概念：</p>
+<ul>
+<li><strong>函数依赖（functional dependency）</strong>：若在一张表中，在属性（或属性组）X 的值确定的情况下，必定能确定属性 Y 的值，那么就可以说 Y 函数依赖于 X，写作 X → Y。</li>
+<li><strong>部分函数依赖（partial functional dependency）</strong>：如果 X→Y，并且存在 X 的一个真子集 X0，使得 X0→Y，则称 Y 对 X 部分函数依赖。比如学生基本信息表 R 中（学号，身份证号，姓名）当然学号属性取值是唯一的，在 R 关系中，（学号，身份证号）-&gt;（姓名），（学号）-&gt;（姓名），（身份证号）-&gt;（姓名）；所以姓名部分函数依赖于（学号，身份证号）；</li>
+<li><strong>完全函数依赖(Full functional dependency)</strong>：在一个关系中，若某个非主属性数据项依赖于全部关键字称之为完全函数依赖。比如学生基本信息表 R（学号，班级，姓名）假设不同的班级学号有相同的，班级内学号不能相同，在 R 关系中，（学号，班级）-&gt;（姓名），但是（学号）-&gt;(姓名)不成立，（班级）-&gt;(姓名)不成立，所以姓名完全函数依赖与（学号，班级）；</li>
+<li><strong>传递函数依赖</strong>：在关系模式 R(U)中，设 X，Y，Z 是 U 的不同的属性子集，如果 X 确定 Y、Y 确定 Z，且有 X 不包含 Y，Y 不确定 X，（X∪Y）∩Z=空集合，则称 Z 传递函数依赖(transitive functional dependency) 于 X。传递函数依赖会导致数据冗余和异常。传递函数依赖的 Y 和 Z 子集往往同属于某一个事物，因此可将其合并放到一个表中。比如在关系 R(学号 , 姓名, 系名，系主任)中，学号 → 系名，系名 → 系主任，所以存在非主属性系主任对于学号的传递函数依赖。</li>
+</ul>
+<p><strong>3NF(第三范式)</strong></p>
+<p>在 2NF 的基础之上，消除了非主属性对于码的<strong>传递函数依赖</strong>。</p>
+<p>符合 3NF 要求的数据库设计，基本上解决了数据冗余过大，插入异常，修改异常，删除异常的问题。</p>
+<p>比如在关系 R(学号 , 姓名, 系名，系主任)中，<strong>学号 → 系名，系名 → 系主任</strong>，所以存在非主属性系主任对于学号的<strong>传递函数依赖</strong>，所以该表的设计，不符合 3NF 的要求。</p>
+<h3 id="17">1.7 <strong>不推荐使用外键与级联</strong></h3>
+<ul>
+<li>增加了复杂性</li>
+<li>增加了额外工作</li>
+<li>对分库分表不友好</li>
+<li>……</li>
+</ul>
+<h3 id="18">1.8 <strong>不推荐使用存储过程</strong></h3>
+<ul>
+<li>调试困难</li>
+<li>移植性差</li>
+<li>占用数据库资源</li>
+<li>版本管理困难</li>
+</ul>
+<h3 id="1x">1.x <strong>数据库设计的步骤</strong></h3>
+<p><img alt="v-4.svg" src="images/v-4.svg" /></p>
+<h2 id="nosql">二、NoSQL 基础</h2>
+<h3 id="21-nosql">2.1 <strong>NoSQL 数据库的定义</strong></h3>
+<p>NoSQL（Not Only SQL 的缩写）泛指非关系型的数据库，主要针对的是键值、文档以及图形类型数据存储。</p>
+<p>并且，NoSQL 数据库天生支持分布式，数据冗余和数据分片等特性，旨在提供可扩展的高可用高性能数据存储解决方案。</p>
+<p>NoSQL 数据库可以存储关系型数据，不过它们与关系型数据库的存储方式不同。</p>
+<p>NoSQL 数据库代表：HBase、Cassandra、MongoDB、Redis。</p>
+<h3 id="22-nosql">2.2 <strong>NoSQL 数据库的优势</strong></h3>
+<p>NoSQL 数据库非常适合许多现代应用程序，例如移动、Web 和游戏等应用程序，它们需要<strong>灵活</strong>、<strong>可扩展</strong>、<strong>高性能</strong>和<strong>功能强大</strong>的数据库以提供卓越的用户体验。</p>
+<h3 id="23-nosql">2.3 <strong>NoSQL 数据库的类型</strong></h3>
+<ul>
+<li><strong>键值</strong>：键值数据库是一种较简单的数据库，其中每个项目都包含键和值。这是极为灵活的 NoSQL 数据库类型，因为应用可以完全控制 value 字段中存储的内容，没有任何限制。Redis 和 DynanoDB 是两款非常流行的键值数据库。</li>
+<li><strong>文档</strong>：文档数据库中的数据被存储在类似于 JSON（JavaScript 对象表示法）对象的文档中，非常清晰直观。每个文档包含成对的字段和值。这些值通常可以是各种类型，包括字符串、数字、布尔值、数组或对象等，并且它们的结构通常与开发者在代码中使用的对象保持一致。MongoDB 就是一款非常流行的文档数据库。</li>
+<li><strong>图形</strong>：图形数据库旨在轻松构建和运行与高度连接的数据集一起使用的应用程序。图形数据库的典型使用案例包括社交网络、推荐引擎、欺诈检测和知识图形。Neo4j 和 Giraph 是两款非常流行的图形数据库。</li>
+<li><strong>宽列</strong>：宽列存储数据库非常适合需要存储大量的数据。Cassandra 和 HBase 是两款非常流行的宽列存储数据库。</li>
+</ul>
+<p><img alt="NoSQL数据库的类型.png" src="images/NoSQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E7%B1%BB%E5%9E%8B.png" /></p>
+<h2 id="sql">三、SQL 语法</h2>
+<h3 id="31">3.1 <strong>数据库术语</strong></h3>
+<ul>
+<li><strong>数据库（database）</strong> - 保存有组织的数据的容器（通常是一个文件或一组文件）。</li>
+<li><strong>数据表（table）</strong> - 某种特定类型数据的结构化清单。</li>
+<li><strong>模式（schema）</strong> - 关于数据库和表的布局及特性的信息。模式定义了数据在表中如何存储，包含存储什么样的数据，数据如何分解，各部分信息如何命名等信息。数据库和表都有模式。</li>
+<li><strong>列（column）</strong> - 表中的一个字段。所有表都是由一个或多个列组成的。</li>
+<li><strong>行（row）</strong> - 表中的一个记录。</li>
+<li><strong>主键（primary key）</strong> - 一列（或一组列），其值能够唯一标识表中每一行。</li>
+</ul>
+<h3 id="32-sql">3.2 <strong>SQL 语法</strong></h3>
+<p><strong>SQL 语法结构</strong>：</p>
+<ul>
+<li><strong>子句</strong>：是语句和查询的组成成分。（在某些情况下，这些都是可选的。）</li>
+<li><strong>表达式</strong>：可以产生任何标量值，或由列和行的数据库表</li>
+<li><strong>谓词</strong>：给需要评估的 SQL 三值逻辑（3VL）（true/false/unknown）或布尔真值指定条件，并限制语句和查询的效果，或改变程序流程。</li>
+<li><strong>查询</strong>：基于特定条件检索数据。这是 SQL 的一个重要组成部分。</li>
+<li><strong>语句</strong>：可以持久地影响纲要和数据，也可以控制数据库事务、程序流程、连接、会话或诊断。</li>
+</ul>
+<p><strong>SQL 语法要点</strong>：</p>
+<ul>
+<li><strong>SQL 语句不区分大小写</strong>，但是数据库表名、列名和值是否区分，依赖于具体的 DBMS 以及配置。例如：<code>SELECT</code> 与 <code>select</code>、<code>Select</code> 是相同的。</li>
+<li>多条 SQL 语句必须<strong>以分号（;）分隔</strong>。</li>
+<li>处理 SQL 语句时，所有空格都被忽略。</li>
+</ul>
+<p>SQL 语句可以写成一行，也可以分写为多行：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 一行 SQL 语句</span>
+
+<span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 多行 SQL 语句</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>SQL 支持三种注释：</p>
+<div class="highlight"><pre><span></span><code><span class="o">##</span><span class="w"> </span><span class="err">注释</span><span class="mi">1</span>
+<span class="c1">-- 注释2</span>
+<span class="cm">/* 注释3 */</span>
+</code></pre></div>
+<h3 id="33-sql">3.3 <strong>SQL 分类</strong></h3>
+<p><strong>3.3.1 数据定义语言（DDL）</strong></p>
+<p>数据定义语言（Data Definition Language，DDL）是 SQL 语言集中负责数据结构定义与数据库对象定义的语言。</p>
+<p>DDL 的主要功能是<strong>定义数据库对象</strong>。</p>
+<p>DDL 的核心指令是 <code>CREATE</code>、<code>ALTER</code>、<code>DROP</code></p>
+<p><strong>3.3.2 数据操纵语言（DML）</strong></p>
+<p>数据操纵语言（Data Manipulation Language, DML）是用于<strong>数据库操作</strong>，对数据库其中的对象和数据运行访问工作的编程语句。</p>
+<p>DML 的主要功能是 访问数据，因此其语法都是以读写数据库为主。</p>
+<p>DML 的核心指令是 <code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>SELECT</code>。这四个指令合称 CRUD(Create, Read, Update, Delete)，即增删改查。</p>
+<p><strong>3.3.3 事务控制语言（TCL）</strong></p>
+<p>事务控制语言 (Transaction Control Language, TCL) 用于<strong>管理数据库中的事务</strong>。</p>
+<p>用于管理由 DML 语句所做的更改。它还允许将语句分组为逻辑事务。</p>
+<p>TCL 的核心指令是 <code>COMMIT</code>、<code>ROLLBACK</code></p>
+<p><strong>3.3.4 数据控制语言（DCL）</strong></p>
+<p>数据控制语言 (Data Control Language, DCL) 是一种可对数据访问权进行控制的指令，它可以控制特定用户账户对数据表、查看表、预存程序、用户自定义函数等数据库对象的控制权。</p>
+<p>DCL 的核心指令是 <code>GRANT</code>、<code>REVOKE</code>。</p>
+<p>DCL 以<strong>控制用户的访问权限</strong>为主，因此其指令作法并不复杂，可利用 DCL 控制的权限有：<code>CONNECT</code>、<code>SELECT</code>、<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>、<code>EXECUTE</code>、<code>USAGE</code>、<code>REFERENCES</code>。</p>
+<p>根据不同的 DBMS 以及不同的安全性实体，其支持的权限控制也有所不同。</p>
+<h3 id="34">3.4 <strong>增删改查</strong></h3>
+<p>我们先来介绍 DML 语句用法。 DML 的主要功能是读写数据库实现增删改查。</p>
+<p><strong>3.4.1 插入数据</strong></p>
+<p><code>INSERT INTO</code> 语句用于向表中插入新记录。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">插入一行</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">插入多行</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">插入行的一部分</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">插入查询出来的数据</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">account</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>3.4.2 更新数据</strong></p>
+<p><code>UPDATE</code> 语句用于更新表中的记录。</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>3.4.3 删除数据</strong></p>
+<p><code>DELETE</code> 语句用于删除表中的记录。</p>
+<p><code>TRUNCATE TABLE</code> 可以清空表，也就是删除所有行。说明：<code>TRUNCATE</code> 语句不属于 DML 语法而是 DDL 语法。</p>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">删除表中的指定数据</span>
+<span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;robot&#39;</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">清空表中的数据</span>
+<span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">user</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>3.4.4 查询数据</strong></p>
+<p><code>SELECT</code> 语句用于从数据库中查询数据。</p>
+<p><code>DISTINCT</code> 用于返回唯一不同的值。它作用于要 <code>SELECT</code> 的所有列，也就是说所有列的值都相同才算相同。<code>DISTINCT</code> 通常用于去重。</p>
+<p><code>LIMIT</code> 限制返回的行数。可以有两个参数，第一个参数为起始行，从 0 开始；第二个参数为返回的总行数。</p>
+<ul>
+<li>ASC：升序（默认）</li>
+<li>DESC：降序</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">查询单列</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">prod_name</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">查询多列</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">查询所有列</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">查询不同的值</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">vend_id</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">限制查询结果</span>
+<span class="c1">-- 返回前 5 行</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="c1">-- 返回第 3 ~ 5 行</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mytable</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="35">3.5 <strong>排序</strong></h3>
+<p><code>order by</code> 用于对结果集按照一个列或者多个列进行排序。默认按照升序对记录进行排序，如果需要按照降序对记录进行排序，可以使用 <code>DESC</code> 关键字。</p>
+<p><code>order by</code> 对多列排序的时候，先排序的列放前面，后排序的列放后面。并且，不同的列可以有不同的排序规则。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="36">3.6 <strong>分组</strong></h3>
+<p><strong><code>group by</code></strong>：</p>
+<ul>
+<li><code>group by</code> 子句将记录分组到汇总行中。</li>
+<li><code>group by</code> 为每个组返回一个记录。</li>
+<li><code>group by</code> 通常还涉及聚合 <code>count</code>，<code>max</code>，<code>sum</code>，<code>avg</code> 等。</li>
+<li><code>group by</code> 可以按一列或多列进行分组。</li>
+<li><code>group by</code> 按分组字段进行排序后，<code>order by</code> 可以以汇总字段来进行排序。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">分组</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">cust_address</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">addr_num</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cust_name</span><span class="p">;</span>
+
+<span class="o">#</span><span class="w"> </span><span class="err">分组后排序</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">cust_address</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">addr_num</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cust_name</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<p><strong><code>having</code></strong>：</p>
+<ul>
+<li><code>having</code> 用于对汇总的 <code>group by</code> 结果进行过滤。</li>
+<li><code>having</code> 一般都是和 <code>group by</code> 连用。</li>
+<li><code>where</code> 和 <code>having</code> 可以在相同的查询中。</li>
+</ul>
+<p>使用 WHERE 和 HAVING 过滤数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">cust_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">NumberOfOrders</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_email</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">cust_name</span>
+<span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<p><strong><code>having</code> vs <code>where</code></strong>：</p>
+<ul>
+<li><code>where</code>：过滤指定的行，后面不能加聚合函数（分组函数）。<code>where</code> 在 <code>group by</code> 前。</li>
+<li><code>having</code>：过滤分组，一般都是和 <code>group by</code> 连用，不能单独使用。<code>having</code> 在 <code>group by</code> 之后</li>
+</ul>
+<h3 id="37">3.7 <strong>子查询</strong></h3>
+<p>子查询是嵌套在较大查询中的 SQL 查询，也称内部查询或内部选择，包含子查询的语句也称为外部查询或外部选择。</p>
+<p>简单来说，子查询就是指将一个 <code>select</code> 查询（子查询）的结果作为另一个 SQL 语句（主查询）的数据来源或者判断条件。</p>
+<p>子查询可以嵌入 <code>SELECT</code>、<code>INSERT</code>、<code>UPDATE</code> 和 <code>DELETE</code> 语句中，也可以和 <code>=</code>、<code>&lt;</code>、<code>&gt;</code>、<code>IN</code>、<code>BETWEEN</code>、<code>EXISTS</code> 等运算符一起使用。</p>
+<p>子查询常用在 <code>WHERE</code> 子句和 <code>FROM</code> 子句后边：</p>
+<ul>
+<li>当用于 <code>WHERE</code> 子句时，根据不同的运算符，子查询可以返回单行单列、多行单列、单行多列数据。子查询就是要返回能够作为 <code>WHERE</code> 子句查询条件的值。</li>
+<li>当用于 <code>FROM</code> 子句时，一般返回多行多列数据，相当于返回一张临时表，这样才符合 <code>FROM</code> 后面是表的规则。这种做法能够实现多表联合查询。</li>
+</ul>
+<p>用于 <code>WHERE</code> 子句的子查询的基本语法如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="p">]</span>
+<span class="k">from</span><span class="w">   </span><span class="n">table1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="p">]</span>
+<span class="k">where</span><span class="w">  </span><span class="k">column_name</span><span class="w"> </span><span class="k">operator</span>
+<span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">table1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">table2</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">[</span><span class="k">where</span><span class="p">])</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
