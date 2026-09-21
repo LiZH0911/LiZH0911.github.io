@@ -1,0 +1,69 @@
+{#-
+  Giscus 评论系统（基于 GitHub Discussions）
+  ------------------------------------------------------------------
+  · 仅当页面 front matter 中写了 `comments: true` 时才渲染
+  · 具体参数在 mkdocs.yml 的 extra.giscus 中配置
+  · 若 extra.giscus.category_id 为空（尚未在 giscus.app 生成），
+    则整块不输出，页面不会出现空的评论标题
+  · 注意：若将来启用 navigation.instant，需把下面的 DOMContentLoaded
+    改为 document$.subscribe(...) 以便站内跳转后重新挂载
+-#}
+{% if page.meta and page.meta.comments %}
+  {% set giscus = config.extra.giscus %}
+  {% if giscus and giscus.category_id %}
+    <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="{{ giscus.repo }}"
+      data-repo-id="{{ giscus.repo_id }}"
+      data-category="{{ giscus.category }}"
+      data-category-id="{{ giscus.category_id }}"
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="light"
+      data-lang="zh-CN"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async
+    ></script>
+
+    <!-- 让 Giscus 跟随 Material 的浅色/深色主题 -->
+    <script>
+      (function () {
+        var giscus = document.querySelector("script[src*=giscus]")
+        if (!giscus) return
+
+        function currentTheme() {
+          var palette = __md_get("__palette")
+          if (palette && typeof palette.color === "object") {
+            return palette.color.scheme === "slate" ? "transparent_dark" : "light"
+          }
+          return "light"
+        }
+
+        // 首次加载时套用当前主题
+        giscus.setAttribute("data-theme", currentTheme())
+
+        // 用户切换主题时通知 Giscus 换肤（无需刷新页面）
+        document.addEventListener("DOMContentLoaded", function () {
+          var ref = document.querySelector("[data-md-component=palette]")
+          if (!ref) return
+
+          ref.addEventListener("change", function () {
+            var frame = document.querySelector(".giscus-frame")
+            if (!frame) return
+
+            frame.contentWindow.postMessage(
+              { giscus: { setConfig: { theme: currentTheme() } } },
+              "https://giscus.app"
+            )
+          })
+        })
+      })()
+    </script>
+  {% endif %}
+{% endif %}

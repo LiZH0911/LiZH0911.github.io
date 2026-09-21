@@ -388,7 +388,7 @@ HAVING COUNT(*) > 1;
 * 当用于 `WHERE` 子句时，根据不同的运算符，子查询可以返回单行单列、多行单列、单行多列数据。子查询就是要返回能够作为 `WHERE` 子句查询条件的值。
 * 当用于 `FROM` 子句时，一般返回多行多列数据，相当于返回一张临时表，这样才符合 `FROM` 后面是表的规则。这种做法能够实现多表联合查询。
 
-用于 `WHERE` 子句的子查询的基本语法如下：
+**用于 `WHERE` 子句的子查询**：
 
 ```sql
 select column_name [, column_name ]
@@ -398,3 +398,447 @@ where  column_name operator
     from table1 [, table2 ]
     [where])
 ```
+
+* 子查询需要放在括号`( )`内。
+* `operator` 表示用于 `where` 子句的运算符。
+
+**用于 `FROM` 子句的子查询**：
+
+```sql
+select column_name [, column_name ]
+from (select column_name [, column_name ]
+      from table1 [, table2 ]
+      [where]) as temp_table_name
+where  condition
+```
+
+用于 `FROM` 的子查询返回的结果相当于一张临时表，所以需要使用 `as` 关键字为该临时表起一个名字。
+
+**子查询的子查询**：
+
+```sql
+SELECT cust_name, cust_contact
+FROM customers
+WHERE cust_id IN (SELECT cust_id
+                  FROM orders
+                  WHERE order_num IN (SELECT order_num
+                                      FROM orderitems
+                                      WHERE prod_id = 'RGAN01'));
+```
+
+内部查询首先在其父查询之前执行，以便可以将内部查询的结果传递给外部查询。
+
+### 3.8 **WHERE**
+
+* WHERE 子句用于过滤记录，即缩小访问数据的范围。
+* WHERE 后跟一个返回 true 或 false 的条件。
+* WHERE 可以与 SELECT，UPDATE 和 DELETE 一起使用。 
+* 可以在 WHERE 子句中使用的操作符：`=`、`<>`、`>`、`<`、`>=`、`<=`、`BETWEEN`、`LIKE`、`IN`
+
+**`SELECT` 语句中的 `WHERE` 子句**：
+
+```sql
+SELECT * FROM Customers
+WHERE cust_name = 'Kids Place';
+```
+
+**`UPDATE` 语句中的 `WHERE` 子句**：
+
+```sql
+UPDATE Customers
+SET cust_name = 'Jack Jones'
+WHERE cust_name = 'Kids Place';
+```
+
+**`DELETE` 语句中的 `WHERE` 子句**：
+
+```sql
+DELETE FROM Customers
+WHERE cust_name = 'Kids Place';
+```
+
+### 3.9 **IN 和 BETWEEN**
+
+* `IN` 操作符在 `WHERE` 子句中使用，作用是在指定的几个特定值中任选一个值。
+* `BETWEEN` 操作符在 `WHERE` 子句中使用，作用是选取介于某个范围内的值。
+
+```sql
+# IN 操作符
+SELECT *
+FROM products
+WHERE vend_id IN ('DLL01', 'BRS01');
+
+# BETWEEN 操作符
+SELECT *
+FROM products
+WHERE prod_price BETWEEN 3 AND 5;
+```
+
+### 3.10 **AND、OR、NOT**
+
+* `AND`、`OR`、`NOT` 是用于对过滤条件的逻辑处理指令。
+* `AND` 优先级高于 `OR`，为了明确处理顺序，可以使用 `()`。
+* `AND` 操作符表示左右条件都要满足。
+* `OR` 操作符表示左右条件满足任意一个即可。
+* `NOT` 操作符用于否定一个条件。
+
+```sql
+# AND 操作符
+SELECT prod_id, prod_name, prod_price
+FROM products
+WHERE vend_id = 'DLL01' AND prod_price <= 4;
+
+# OR 操作符
+SELECT prod_id, prod_name, prod_price
+FROM products
+WHERE vend_id = 'DLL01' OR vend_id = 'BRS01';
+
+# NOT 操作符
+SELECT *
+FROM products
+WHERE prod_price NOT BETWEEN 3 AND 5;
+```
+
+### 3.11 **LIKE**
+
+* `LIKE` 操作符在 `WHERE` 子句中使用，作用是确定字符串是否匹配模式。
+* 只有字段是文本值时才使用 `LIKE`。
+* `LIKE` 支持两个通配符匹配选项：`%` 和 `_`。
+* 不要滥用通配符，通配符位于开头处匹配会非常慢。
+* `%` 表示任何字符出现任意次数。
+* `_` 表示任何字符出现一次。
+
+```sql
+# % 通配符
+SELECT prod_id, prod_name, prod_price
+FROM products
+WHERE prod_name LIKE '%bean bag%';
+
+# _ 通配符
+SELECT prod_id, prod_name, prod_price
+FROM products
+WHERE prod_name LIKE '__ inch teddy bear';
+```
+
+### 3.12 **连接**
+
+JOIN 是“连接”的意思，顾名思义，SQL JOIN 子句用于将两个或者多个表联合起来进行查询。
+
+连接表时需要在每个表中选择一个字段，并对这些字段的值进行比较，值相同的两条记录将合并为一条。
+
+连接表的本质就是将不同表的记录合并起来，形成一张新表。当然，这张新表只是临时的，它仅存在于本次查询期间。
+
+```sql
+select table1.column1, table2.column2...
+from table1
+join table2
+on table1.common_column1 = table2.common_column2;
+```
+
+`table1.common_column1 = table2.common_column2` 是连接条件，只有满足此条件的记录才会合并为一行。
+
+另外，如果两张表的关联字段名相同，也可以使用 `USING` 子句来代替 `ON`，举个例子：
+
+```sql
+SELECT table1.column1, table2.column2...
+FROM table1
+JOIN table2
+USING (common_column);
+```
+
+**`ON` 和 `WHERE` 的区别**：
+
+* 连接表时，SQL 会根据连接条件生成一张新的临时表。`ON` 就是连接条件，它决定临时表的生成。
+* `WHERE` 是在临时表生成以后，再对临时表中的数据进行过滤，生成最终的结果集，这个时候已经没有 `JOIN-ON` 了。
+
+SQL 允许在 JOIN 左边加上一些修饰性的关键词，从而形成不同类型的连接（默认为 `INNER JOIN`）：
+
+- INNER JOIN 内连接
+- LEFT JOIN / LEFT OUTER JOIN 左(外)连接
+- RIGHT JOIN / RIGHT OUTER JOIN 右(外)连接
+- FULL JOIN / FULL OUTER JOIN 全(外)连接
+- SELF JOIN
+- CROSS JOIN
+
+对于 `INNER JOIN` 来说，还有一种隐式的写法，称为 “隐式内连接”，也就是没有 `INNER JOIN` 关键字，使用 `WHERE` 语句实现内连接的功能
+
+```sql
+# 隐式内连接
+select c.cust_name, o.order_num
+from Customers c, Orders o
+where c.cust_id = o.cust_id
+order by c.cust_name;
+
+# 显式内连接
+select c.cust_name, o.order_num
+from Customers c inner join Orders o
+using(cust_id)
+order by c.cust_name;
+```
+
+### 3.13 **组合**
+
+`UNION` 运算符将两个或更多查询的结果组合起来，并生成一个结果集，其中包含来自 `UNION` 中参与查询的提取行。
+
+**`UNION` 基本规则**：
+
+* 所有查询的列数和列顺序必须相同。
+* 每个查询中涉及表的列的数据类型必须相同或兼容。
+* 通常返回的列名取自第一个查询。
+
+默认地，`UNION` 操作符选取不同的值。如果允许重复的值，请使用 `UNION ALL`。
+
+```sql
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+```
+
+`UNION` 结果集中的列名总是等于 `UNION` 中第一个 `SELECT` 语句中的列名。
+
+**`JOIN` vs `UNION`**：
+
+- `JOIN` 中连接表的列可能不同，但在 `UNION` 中，所有查询的列数和列顺序必须相同。
+- `UNION` 将查询之后的行放在一起（垂直放置），但 `JOIN` 将查询之后的列放在一起（水平放置），即它构成一个笛卡尔积。
+
+### 3.13 **函数**
+
+
+
+### 3.14 **数据定义**
+
+接下来，我们来介绍 DDL 语句用法。DDL 的主要功能是定义数据库对象（如：数据库、数据表、视图、索引等）
+
+**3.14.1 数据库（DATABASE）**
+
+**创建数据库**
+
+```sql
+CREATE DATABASE test;
+```
+
+**删除数据库**
+
+```sql
+DROP DATABASE test;
+```
+
+**选择数据库**
+
+```sql
+USE test;
+```
+
+
+**3.14.2 数据表（TABLE）**
+
+**创建数据表**
+
+```sql
+# 普通创建
+CREATE TABLE user (
+  id int(10) unsigned NOT NULL COMMENT 'Id',
+  username varchar(64) NOT NULL DEFAULT 'default' COMMENT '用户名',
+  password varchar(64) NOT NULL DEFAULT 'default' COMMENT '密码',
+  email varchar(64) NOT NULL DEFAULT 'default' COMMENT '邮箱'
+) COMMENT='用户表';
+
+# 根据已有的表创建新表
+CREATE TABLE vip_user AS
+SELECT * FROM user;
+```
+
+**删除数据表**
+
+```sql
+DROP TABLE user;
+```
+
+**修改数据表**
+
+```sql
+# 添加列
+ALTER TABLE user
+ADD age int(3);
+
+# 删除列
+ALTER TABLE user
+DROP COLUMN age;
+
+# 修改列
+ALTER TABLE user
+MODIFY COLUMN age tinyint;
+
+# 添加主键
+ALTER TABLE user
+ADD PRIMARY KEY (id);
+
+# 删除主键
+ALTER TABLE user
+DROP PRIMARY KEY;
+```
+
+**3.14.3 视图（VIEW）**
+
+**定义**：
+
+* 视图是基于 SQL 语句的结果集的可视化的表。
+* 视图是虚拟的表，本身不包含数据，也就不能对其进行索引操作。对视图的操作和对普通表的操作一样。
+
+**作用**：
+
+* 简化复杂的 SQL 操作，比如复杂的联结；
+* 只使用实际表的一部分数据；
+* 通过只给用户访问视图的权限，保证数据的安全性；
+* 更改数据格式和表示。
+
+**创建视图**
+
+```sql
+CREATE VIEW top_10_user_view AS
+SELECT id, username
+FROM user
+WHERE id < 10;
+```
+
+**删除视图**
+
+```sql
+DROP VIEW top_10_user_view;
+```
+
+**3.14.4 索引（INDEX）**
+
+索引是一种用于快速查询和检索数据的数据结构，其本质可以看成是一种排序好的数据结构。
+
+优点：
+
+* 使用索引可以大大加快 数据的检索速度（大大减少检索的数据量）, 这也是创建索引的最主要的原因。
+* 通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。
+
+缺点：
+
+* 创建索引和维护索引需要耗费许多时间。当对表中的数据进行增删改的时候，如果数据有索引，那么索引也需要动态的修改，会降低 SQL 执行效率。
+* 索引需要使用物理文件存储，也会耗费一定空间。
+
+大多数情况下，索引查询都是比全表扫描要快的。但是如果数据库的数据量不大，那么使用索引也不一定能够带来很大提升。
+
+**创建索引**
+
+```sql
+CREATE INDEX user_index
+ON user (id);
+```
+
+**创建唯一索引**
+
+```sql
+CREATE UNIQUE INDEX user_index
+ON user (id);
+```
+
+**添加索引**
+
+```sql
+ALTER TABLE user
+ADD INDEX user_index(id);
+```
+
+**删除索引**
+
+```
+ALTER TABLE user
+DROP INDEX user_index;
+```
+
+**3.14.5 约束**
+
+SQL 约束用于规定表中的数据规则。
+
+如果存在违反约束的数据行为，行为会被约束终止。
+
+约束可以在创建表时规定（通过 `CREATE TABLE` 语句），或者在表创建之后规定（通过 `ALTER TABLE` 语句）。
+
+约束类型：
+
+* `NOT NULL` - 指示某列不能存储 NULL 值。
+* `UNIQUE` - 保证某列的每行必须有唯一的值。
+* `PRIMARY KEY` - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。
+* `FOREIGN KEY` - 保证一个表中的数据匹配另一个表中的值的参照完整性。
+* `CHECK` - 保证列中的值符合指定的条件。
+* `DEFAULT` - 规定没有给列赋值时的默认值
+
+创建表时使用约束条件：
+
+```sql
+CREATE TABLE Users (
+  Id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  Username VARCHAR(64) NOT NULL UNIQUE DEFAULT 'default' COMMENT '用户名',
+  Password VARCHAR(64) NOT NULL DEFAULT 'default' COMMENT '密码',
+  Email VARCHAR(64) NOT NULL DEFAULT 'default' COMMENT '邮箱地址',
+  Enabled TINYINT(4) DEFAULT NULL COMMENT '是否有效',
+  PRIMARY KEY (Id)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+```
+
+
+### 3.15 **事务处理**
+
+接下来，我们来介绍 TCL 语句用法。TCL 的主要功能是管理数据库中的事务。
+
+不能回退 `SELECT` 语句；也不能回退 `CREATE` 和 `DROP` 语句。
+
+**MySQL 默认是隐式提交**，每执行一条语句就把这条语句当成一个事务然后进行提交。当出现 `START TRANSACTION` 语句时，会关闭隐式提交；当 `COMMIT` 或 `ROLLBACK` 语句执行后，事务会自动关闭，重新恢复隐式提交。
+
+通过 `set autocommit=0` 可以取消自动提交，直到 `set autocommit=1` 才会提交；`autocommit` 标记是针对每个连接而不是针对服务器的。
+
+指令：
+
+* `START TRANSACTION` - 指令用于标记事务的起始点。
+* `SAVEPOINT` - 指令用于创建保留点。
+* `ROLLBACK TO` - 指令用于回滚到指定的保留点；如果没有设置保留点，则回退到 `START TRANSACTION` 语句处。
+* `COMMIT` - 提交事务。
+
+```sql
+-- 开始事务
+START TRANSACTION;
+
+-- 插入操作 A
+INSERT INTO `user`
+VALUES (1, 'root1', 'root1', 'xxxx@163.com');
+
+-- 创建保留点 updateA
+SAVEPOINT updateA;
+
+-- 插入操作 B
+INSERT INTO `user`
+VALUES (2, 'root2', 'root2', 'xxxx@163.com');
+
+-- 回滚到保留点 updateA
+ROLLBACK TO updateA;
+
+-- 提交事务，只有操作 A 生效
+COMMIT;
+```
+
+### 3.16 **权限控制**
+
+接下来，我们来介绍 DCL 语句用法。DCL 的主要功能是控制用户的访问权限。
+
+要授予用户帐户权限，可以用 `GRANT` 命令。要撤销用户的权限，可以用 `REVOKE` 命令。
+
+### 3.17 **存储过程**
+
+存储过程可以看成是对一系列 SQL 操作的批处理。存储过程可以由触发器，其他存储过程以及 Java， Python，PHP 等应用程序调用。
+
+使用存储过程的好处：
+
+* 代码封装，保证了一定的安全性；
+* 代码复用；
+* 由于是预先编译，因此具有很高的性能。
+
+需要注意的是：**阿里巴巴《Java 开发手册》强制禁止使用存储过程。因为存储过程难以调试和扩展，更没有移植性**。
+
+### 3.18 **游标**
+
+### 3.19 **触发器**
