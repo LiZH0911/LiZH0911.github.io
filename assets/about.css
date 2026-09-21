@@ -1,0 +1,56 @@
+.about-header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.about-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+}
+
+.about-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.4rem;
+}
+
+.about-tagline {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  margin: 0 auto 1.2rem;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+.about-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.about-tag {
+  display: inline-block;
+  padding: 0.2rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  color: var(--md-primary-fg-color);
+  background: rgba(102, 126, 234, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.about-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
