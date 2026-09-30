@@ -1,0 +1,43 @@
+/* 页脚访问统计（配合 overrides/partials/copyright.html 使用） */
+.site-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.2rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+}
+
+.site-stats__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.site-stats__item svg {
+  width: 1em;
+  height: 1em;
+  fill: currentcolor;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.site-stats__item strong {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+/* 不蒜子的容器：拿到数据前保持隐藏，避免留下空占位或 “--” */
+#busuanzi_container_site_pv,
+#busuanzi_container_site_uv,
+#busuanzi_container_page_pv {
+  display: none;
+}
+
+/* 让 hidden 属性优先于 .site-stats__item 的 display */
+.site-stats [hidden] {
+  display: none !important;
+}
