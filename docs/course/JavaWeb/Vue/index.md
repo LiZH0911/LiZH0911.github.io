@@ -1,15 +1,14 @@
 # Vue
 
-该笔记参考的课程链接：
-
-- [黑马程序员 AI+JavaWeb](https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=46f99c7c1ed609a31f70615a4551767f&p=2)
 
 ## 一、Vue
 
 ### 1.1 **Vue 快速入门**
 
-**Vue 简介**：Vue 是一款用于构建用户界面的渐进式的JavaScript框架
+**Vue 简介**：Vue 是一款用于**构建用户界面**的**渐进式**的 JavaScript **框架**
 
+- 构建用户界面：基于数据（如服务端返回的原始数据）渲染出用户看到的界面
+- 渐进式：根据需求选择 Vue 提供的功能
 - 框架：就是一套完整的项目解决方案，用于快速构建项目
 - 优点：大大提升前端项目的开发效率
 - 缺点：需要理解记忆框架的使用规则（参照 [Vue 官网](https://cn.vuejs.org/)）

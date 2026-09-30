@@ -1,33 +1,23 @@
 # HTML-CSS
 
-该笔记参考的课程链接：
+相关链接：
 
-- [黑马程序员 AI+JavaWeb](https://www.bilibili.com/video/BV1yGydYEE3H?spm_id_from=333.788.videopod.episodes&vd_source=46f99c7c1ed609a31f70615a4551767f&p=2)
-
+- [HTML官方文档](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+- [CSS官方文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 
 ## 一、HTML-CSS
 
 ### 1.1 **HTML-CSS 入门**
 
-**Web 标准**：Web 标准也称网页标准，由一系列的标准组成，大部分由 W3C (World WideWeb Consortium，万维网联盟) 负责制定
+**1.1.1 网页的组成**
 
-**网页的组成**：
+1. **HTML（HyperText Markup Language）**：超文本标记语言，定义网页内容与结构
+    - 超文本：超越了文本的限制，比普通文本更强大。除了文字信息，还可以定义图片、音频、视频等内容。
+    - 标记语言：由标签`<标签名>`构成的语言
+2. **CSS（Cascading Style Sheet）**：层叠样式表，定义网页样式（表现）
+3. **JavaScript**：脚本语言，实现网页交互
 
-- HTML：超文本标记语言，用于创建网页结构
-- CSS：层叠样式表，用于创建网页样式
-- JavaScript：脚本语言，用于创建网页交互
-
-**HTML（HyperText Markup Language）**：超文本标记语言，用于定义网页内容的含义和结构
-
-- 超文本：超越了文本的限制，比普通文本更强大。除了文字信息，还可以定义图片、音频、视频等内容。
-- 标记语言：由标签`<标签名>`构成的语言
-- [HTML官方文档](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
-
-**CSS（Cascading Style Sheet）**：层叠样式表，用于控制页面的样式（表现）。
-
-- [CSS官方文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
-
-**HTML 基本骨架标签**：
+**1.1.2 HTML 基本骨架标签**
 
 ```html
 <html>
@@ -42,15 +32,15 @@
 </html>
 ```
 
-**前端开发工具**：VS code
+
 
 ### 1.2 **HTML-CSS 常见标签和样式**
 
-**1.2.1 标题排版**：
+**1.2.1 标题标签**：
 
-**标题标签**：`<h1>一级标题</h1>` ~ `<h6>六级标题</h6>`
-
-**超链接标签**：`<a href="https://www.cctv.com">央视网</a>`
+- `<h1>一级标题</h1>`
+- ...
+- `<h6>六级标题</h6>`
 
 <details>
 <summary>点击展开完整代码</summary>
@@ -83,13 +73,11 @@
 
 </details>
 
-**1.2.2 标题样式**：
+**1.2.2 CSS 样式**
 
-**CSS 样式**：
-
-1. 行内样式：body 内定义`<span style="color: gray;">2024年05月15日 20:07</span>`
-2. 内部样式：head 内定义`<style>span{color: gray;}</style>`
-3. 外部样式：.css 文件内定义，然后 head 内引入该文件 `<link rel="stylesheet" href="css/news.css">`
+1. **行内样式**：`body` 内定义`<span style="color: gray;">2024年05月15日 20:07</span>`
+2. **内部样式**：`head` 内定义`<style>span{color: gray;}</style>`
+3. **外部样式**：`.css` 文件内定义，然后 `head` 内引入该文件 `<link rel="stylesheet" href="css/news.css">`
 
 <details>
 <summary>点击展开完整代码</summary>
@@ -138,11 +126,11 @@
 
 </details>
 
-**CSS 选择器**：
+**1.2.3 CSS 选择器**
 
-- 元素选择器：`元素名{}`
-- 类选择器：`.类名{}`
-- ID选择器：`#ID名{}`
+- **元素选择器**：`元素名{}`
+- **类选择器**：`.类名{}`
+- **ID 选择器**：`#ID名{}`
 - ……
 
 <details>
@@ -191,52 +179,38 @@
 
 </details>
 
-**1.2.3 正文排版**：
+**1.2.4 常用正文标签**
 
-**视频标签**：`<video src="视频地址" controls width="80%"></video>`
+- **视频标签**：`<video src="视频地址" controls width="80%"></video>`
+- **图片标签**：` <img src="图片地址" width="80%"></img>`
+- **超链接标签**：`<a href="https://www.cctv.com">央视网</a>`
+- **段落标签**：`<p>段落</p>`
 
-**图片标签**：` <img src="图片地址" width="80%"></img>`
+**1.2.5 常用正文样式**
 
-> 宽度和高度只设置一个即可, 另一个会等比例缩放
+- **加粗**：
+    - `<b>加粗文本</b>`
+    - `<strong>央视网消息</strong>`
+- **下划线**：
+    - `<u>下划线文本</u>`
+    - `<ins>插入的文本</ins>`
+- **斜体**：
+    - `<i>斜体文本</i>`
+    - `<em>强调的文本</em>`
+- **删除线**：
+    - `<s>删除的文本</s>`
+    - `<del>删除的文本</del>`
+- **字符实体**：
+    - `&nbsp;`：空格
+    - `&lt;`：小于符号
+    - `&gt;`：大于符号
+- **首行缩进**：
+    - `&nbsp;&nbsp;&nbsp;&nbsp;`
+    - CSS 样式：`p{text-indent: 2em;}`
 
-**段落标签**：`<p>段落</p>`
+**1.2.6 整体布局：盒子模型**
 
-**1.2.4 正文样式**：
-
-**加粗**：
-
-- `<b>加粗文本</b>`
-- `<strong>央视网消息</strong>`
-
-**下划线**：
-
-- `<u>下划线文本</u>`
-- `<ins>插入的文本</ins>`
-
-**斜体**：
-
-- `<i>斜体文本</i>`
-- `<em>强调的文本</em>`
-
-**删除线**：
-
-- `<s>删除的文本</s>`
-- `<del>删除的文本</del>`
-
-**字符实体**：
-
-- `&nbsp;`：空格
-- `&lt;`：小于符号
-- `&gt;`：大于符号
-
-**首行缩进**：
-
-- `&nbsp;&nbsp;&nbsp;&nbsp;`
-  - CSS 样式：`p{text-indent: 2em;}`
-
-**1.2.5 整体布局**：
-
-**盒子模型**：包括内容（content）、内边距（padding）、边框（border）、外边距（margin）
+**盒子模型**包括内容（content）、内边距（padding）、边框（border）、外边距（margin）
 
 **布局标签-块标签**：`<div></div>`
 
@@ -245,11 +219,7 @@
 - 包裹行内内容
 - 不会换行
 
-**页面原型**：指在应用程序开发初期，由产品经理制作的一个早期项目模型，它用于展示页面的基本布局、功能和交互设计。通常用来帮助设计师、开发者等更好地理解和讨论最终产品的外观和行为。
-
-
-
-**1.2.6 表单**：
+**1.2.7 表单标签**
 
 **表单标签**：`<form>表单内容</form>`
 
@@ -361,7 +331,7 @@
 
 </details>
 
-### 1.3 **Vibe Coding 案例-员工管理页面制作**
+### 1.3 **案例：员工管理页面（Vibe Coding）**
 
 **提示词-①顶部导航栏**：
 

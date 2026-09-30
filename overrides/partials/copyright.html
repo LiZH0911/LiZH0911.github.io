@@ -1,0 +1,78 @@
+{#-
+  页脚：版权信息 + 访问统计
+  ------------------------------------------------------------------
+  · 访问量来自「不蒜子」busuanzi：免费、无需注册，按域名统计
+    容器在 footer.css 里默认 display:none，只有脚本成功取到数据后写入
+    内联 display 才会显示 —— 服务不可用或被访客屏蔽时不会留下空占位
+  · GitHub 数据由浏览器实时读取 api.github.com，失败则整块保持隐藏
+  · api 地址由 config.repo_url 推导，换仓库时只需改 repo_url
+-#}
+<div class="md-copyright">
+  <div class="site-stats">
+    <span id="busuanzi_container_site_pv">
+      <span class="site-stats__item">
+        {% include ".icons/material/eye-outline.svg" %}
+        总访问量 <strong id="busuanzi_value_site_pv">--</strong> 次
+      </span>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span class="site-stats__item">
+        {% include ".icons/material/account-multiple-outline.svg" %}
+        访客数 <strong id="busuanzi_value_site_uv">--</strong> 人
+      </span>
+    </span>
+    <span id="busuanzi_container_page_pv">
+      <span class="site-stats__item">
+        {% include ".icons/material/file-eye-outline.svg" %}
+        本页阅读 <strong id="busuanzi_value_page_pv">--</strong> 次
+      </span>
+    </span>
+    {% if config.repo_url %}
+      <span
+        class="site-stats__item"
+        id="gh-stats"
+        data-api="{{ config.repo_url | replace('https://github.com/', 'https://api.github.com/repos/') }}"
+        hidden
+      >
+        {% include ".icons/octicons/star-fill-16.svg" %}
+        GitHub <strong data-gh="stars">--</strong> Star ·
+        <strong data-gh="forks">--</strong> Fork
+      </span>
+    {% endif %}
+  </div>
+
+  <div class="md-copyright__highlight">
+    Copyright &copy; {{ build_date_utc.year }} LiZH0911 · 记录学习路上的点点滴滴
+  </div>
+
+  {% if not config.extra.generator == false %}
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<script>
+  (function () {
+    var el = document.getElementById("gh-stats")
+    if (!el || !el.dataset.api) return
+
+    fetch(el.dataset.api)
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status)
+        return res.json()
+      })
+      .then(function (data) {
+        el.querySelector('[data-gh="stars"]').textContent = data.stargazers_count
+        el.querySelector('[data-gh="forks"]').textContent = data.forks_count
+        el.hidden = false
+      })
+      .catch(function () {
+        // 取不到数据就保持隐藏，不影响页面其他内容
+      })
+  })()
+</script>
