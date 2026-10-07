@@ -78,8 +78,7 @@ nav:
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md
         - JavaScript: course/JavaWeb/JavaScript/index.md
         - Vue: course/JavaWeb/Vue/index.md
-#        - Ajax: course/JavaWeb/Ajax/index.md
-#        - Maven: course/JavaWeb/Maven/index.md
+        - Maven: course/JavaWeb/Maven/index.md
 #        - Web基础: course/JavaWeb/Web基础/index.md
 #        - MySQL: course/JavaWeb/MySQL/index.md
 #        - JDBL: course/JavaWeb/JDBL/index.md

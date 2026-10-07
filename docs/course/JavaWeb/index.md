@@ -9,8 +9,6 @@
 - [JavaScript](JavaScript/index.md)
 - [Vue](Vue/index.md)
 
-[//]: # (- [Ajax]&#40;Ajax/index.md&#41; —— 介绍 Ajax 的基础用法)
-
 [//]: # (- [Maven]&#40;Maven/index.md&#41; —— 介绍 Maven 的基础用法)
 
 [//]: # (- [Web基础]&#40;Web基础/index.md&#41; —— 介绍 Web 的基础用法)

@@ -7,17 +7,18 @@
 
 **Vue 简介**：Vue 是一款用于**构建用户界面**的**渐进式**的 JavaScript **框架**
 
-- 构建用户界面：基于数据（如服务端返回的原始数据）渲染出用户看到的界面
-- 渐进式：根据需求选择 Vue 提供的功能
-- 框架：就是一套完整的项目解决方案，用于快速构建项目
-- 优点：大大提升前端项目的开发效率
-- 缺点：需要理解记忆框架的使用规则（参照 [Vue 官网](https://cn.vuejs.org/)）
+- **构建用户界面**：基于数据（如服务端返回的原始数据）渲染出用户看到的界面
+- **渐进式**：根据需求选择 Vue 提供的功能
+- **框架**：一套完整的项目解决方案，用于快速构建项目（大大提升前端项目的开发效率）
+- [Vue 官网](https://cn.vuejs.org/)
+
+![Vue.png](./images/Vue.png)
 
 **Vue 的使用步骤**：
 
 ```html
 <body>
-  <!-- 3. 准备元素，被Vue控制 -->
+  <!-- 3. 准备元素（div），被 Vue 控制 -->
   <div id="app">
     <!-- 通过插值表达式渲染页面 -->
     <h1>{{message}}</h1> 
@@ -25,12 +26,13 @@
   </div>
   
   <script type="module">
-    // 1. 引入Vue模块（通过 CDN 以及原生 ES 模块使用 Vue）
+    // 1. 引入 Vue 模块（通过 CDN 以及原生 ES 模块使用 Vue）
     import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 
-    // 2. 创建Vue的应用实例，控制视图的元素
+    // 2. 创建 Vue 的应用实例，控制视图的元素
     createApp({
       data() {
+        // 准备数据
         return {
           message: 'Hello Vue',
           count: 100
@@ -51,38 +53,38 @@
 </div>
 ```
 
-**v-for**：
+**`v-for`**：
 
 - 作用：列表渲染，遍历容器的元素或者对象的属性
 - 语法：`<tr v-for="(item, index) in items" :key="item.id"> {{item}}</tr>`
 
 > key: 唯一标识，推荐使用 id 作为 key
 
-**v-bind**：
+**`v-bind`**：
 
 - 作用：动态为 HTML 标签绑定属性值
 - 语法：`v-bind:属性名="属性值"`
 
-**v-if**：
+**`v-if`**：
 
 - 作用：控制元素的显示和隐藏
 - 语法：`v-if="表达式"`、`v-else-if="表达式"`、`v-else="表达式"`，表达式为 true 才渲染
-- 原理：基于条件判断，来控制创建或移除元素节点（条件渲染）
+- 原理：基于条件判断，来控制创建或移除元素节点（**条件渲染**）
 - 场景：不频繁切换
 
-**v-show**：
+**`v-show`**：
 
 - 作用：控制元素的显示和隐藏
 - 语法：`v-show="表达式"`，表达式为 true 才显示
-- 原理：基于 CSS 样式 display 来控制显示与隐藏（渲染后条件显示）
+- 原理：基于 CSS 样式 display 来控制显示与隐藏（**渲染后条件显示**）
 - 场景：频繁切换
 
-**v-model**：
+**`v-model`**：
 
 - 作用：在表单元素上使用，双向数据绑定。可以方便的 获取 或 设置 表单项数据
 - 语法：`v-model="变量名”`
 
-**v-on**：
+**`v-on`**：
 
 - 作用：为 html 标签绑定事件（添加事件监听）
 - 语法：`v-on:事件名="方法名"`，简写为`@事件名="..."`
@@ -336,3 +338,191 @@
 
 </details>
 
+## 二、Ajax
+
+### 2.1 **Ajax**
+
+**Ajax**：Asynchronous JavaScript And XML，异步的 JavaScript 和 XML。
+
+**作用**：
+
+* **数据交换**：通过 Ajax 可以给服务器发送请求，并获取服务器响应的数据。
+* **异步交互**：可以在**不重新加载整个页面**的情况下，与服务器交换数据并**更新部分网页**的技术，如：搜索联想、用户名是否可用的校验等等。
+
+### 2.2 **Axios**
+
+**Axios**：Axios 对原生的 Ajax 进行了封装，简化书写，快速开发。
+
+- [Axios 官网](https://www.axios-http.cn/)
+
+**步骤**：
+
+* 引入 Axios 的 `.js` 文件（参照官网）
+* 使用 Axios 发送请求，并获取响应结果
+
+![Axios.png](../Vue/images/Axios.png)
+
+* `method`：请求方式，如 `GET`、`POST`
+* `url`：请求路径
+* `data`：请求数据（`method`为 `POST` 时）
+* `params`：发送请求时携带的 url 参数 如：...?key=val
+
+```html
+<body>
+    
+    <input type="button" value="获取数据GET" id="btnGet">
+    <input type="button" value="操作数据POST" id="btnPost">
+
+    <script src="js/axios.js"></script>
+    <script>
+        //发送GET请求
+        document.querySelector('#btnGet').addEventListener('click', () => {
+            //axios发起异步请求
+            axios({
+                url: 'https://mock.apifox.cn/m1/3083103-0-default/emps/list',
+                method: 'GET'
+            }).then((result) => { //成功回调函数
+                console.log(result.data);
+            }).catch((err) => { //失败回调函数
+                console.log(err);
+            })
+        })
+        
+        //发送POST请求
+        document.querySelector('#btnPost').addEventListener('click', () => {
+            //axios发起异步请求
+            axios({
+                url: 'https://mock.apifox.cn/m1/3083103-0-default/emps/update',
+                method: 'POST',
+                data: 'id=1' //POST请求方式 , 请求体
+            }).then((result) => { //成功回调函数
+                console.log(result.data);
+            }).catch((err) => { //失败回调函数
+                console.log(err);
+            })
+        })
+    </script>
+</body>
+```
+
+### 2.3 **Axios 请求方式别名（推荐）**
+
+为了方便起见，Axios 已经为所有支持的请求方法提供了别名
+
+格式：`axios.请求方式(url [, data [, config]])`
+
+```html
+<body>
+    
+    <input type="button" value="获取数据GET" id="btnGet">
+    <input type="button" value="操作数据POST" id="btnPost">
+
+    <script src="js/axios.js"></script>
+    <script>
+        //发送GET请求
+        document.querySelector('#btnGet').addEventListener('click', () => {
+            axios.get('https://mock.apifox.cn/m1/3083103-0-default/emps/list').then((result) => {
+                console.log(result.data);
+            })
+            .catch((err) => { //失败回调函数
+                console.log(err);
+            });
+            console.log('=========================='); // 这行比上面的先输出（异步交互）
+        })
+
+        
+        //发送POST请求
+        document.querySelector('#btnPost').addEventListener('click', () => {
+            axios.post('https://mock.apifox.cn/m1/3083103-0-default/emps/update', 'id=1').then((result) => {
+                console.log(result.data);
+            });
+        })
+    </script>
+</body>
+```
+
+### 2.4 **Ajax 案例**
+
+```html
+<body>
+    // ...省略页面内容定义
+    
+    <script src="js/axios.js"></script>
+    <script type="module">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+      createApp({
+        // data() 函数定义组件要用到的所有"响应式数据"
+        // 每个组件实例调用一次 data()，就得到一份全新独立的数据。保证每个组件实例的数据互相独立。
+        data() {
+          return {
+            searchForm: { //封装用户输入的查询条件
+                name: '',
+                gender: '',
+                job: ''
+            },
+            empList: [] // 员工列表
+          }
+        },
+        // methods 对象定义组件中的方法
+        methods: {
+            // async、await将异步变为同步
+            async search(){
+                // 发送ajax请求，获取数据
+                // 代码可读性、可维护性不强
+                // axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`).then((result) => {
+                //     this.empList = result.data.data;
+                // })
+                // console.log('===========================');
+
+                let result = await axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&gender=${this.searchForm.gender}&job=${this.searchForm.job}`);
+                this.empList = result.data.data;
+            },
+            clear(){
+                //清空表单项数据
+                this.searchForm = {name:'', gender:'', job:''}
+                this.search()
+            }
+        },
+        // 生命周期-钩子函数 mounted
+        mounted(){
+            // 页面加载完成之后，自动发送 ajax 请求，获取数据
+            this.search()
+        }
+      }).mount('#container')
+    </script>
+
+</body>
+```
+
+## 三、Vue 生命周期
+
+**生命周期**：指一个对象从创建到销毁的整个过程。
+
+**生命周期的八个阶段**：每触发一个生命周期事件，会自动执行一个**生命周期方法（钩子）**。
+
+![Vue生命周期.png](images%2FVue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+
+**典型应用场景**：在页面加载完毕时，发起异步请求，加载数据，渲染页面
+
+```html
+<body>
+    // ...省略页面内容定义
+    
+    <script src="js/axios.js"></script>
+    <script type="module">
+      import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+      createApp({
+        // ...省略 data() 函数 和 methods 对象
+
+        // 生命周期-钩子函数 mounted
+        mounted(){
+            // 页面加载完成之后，自动发送 ajax 请求，获取数据
+            this.search()
+        }
+      }).mount('#container')
+    </script>
+
+</body>
+```
