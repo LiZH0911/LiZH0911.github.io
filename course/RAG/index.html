@@ -1,0 +1,4183 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lizh0911.github.io/course/RAG/">
+      
+      
+        <link rel="prev" href="../Agent/%E5%8D%81%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/">
+      
+      
+        <link rel="next" href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>RAG - LiZH0911的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/home.css">
+    
+      <link rel="stylesheet" href="../../assets/about.css">
+    
+      <link rel="stylesheet" href="../../assets/footer.css">
+    
+      <link rel="stylesheet" href="../../assets/achievements.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rag" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-header__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiZH0911的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RAG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  技术栈
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../guestbook/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  留言板
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../achievements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  个人经历
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-nav__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    LiZH0911的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技术栈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技术栈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 后端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 后端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python%E5%90%8E%E7%AB%AF/FastAPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%9F%BA%E7%A1%80-%E9%BB%91%E9%A9%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-黑马
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%9F%BA%E7%A1%80-JavaGuide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 集合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%B9%B6%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 并发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/JavaIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/JVM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    新特性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaWeb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/HTML-CSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML-CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/JavaScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/Vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 基础-Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent 基础-Hello-Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%80%E3%80%81%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二、智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%89%E3%80%81%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%9B%9B%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四、智能体经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%94%E3%80%81%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、基于低代码平台的智能体搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AD%E3%80%81%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%83%E3%80%81%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%20Agent%20%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    七、构建你的 Agent 框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AB%E3%80%81%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B9%9D%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    九、上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十、智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%B8%80%E3%80%81Agentic-RL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十一、Agentic-RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十二、智能体性能评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、RAG 基础入门
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、RAG 基础入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 RAG 简介
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 为什么要使用 RAG？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 如何上手 RAG？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 第一个 RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-langchain-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 基于 LangChain 框架的 RAG 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-llamaindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 低代码（基于LlamaIndex）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、数据准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、数据准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 数据加载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 文本分块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、索引构建
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、索引构建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 向量嵌入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 多模态嵌入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 向量数据库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-milvus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Milvus 介绍及多模态检索实践
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 索引优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、检索优化
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 应用开发-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI 应用开发-JavaGuide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/AI%20Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI%20%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/AI%20%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 系统设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Python%20%E5%8C%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包与环境管理工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Nodejs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Claude%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guestbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    留言板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../achievements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人经历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rag_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、RAG 基础入门
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、RAG 基础入门">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 RAG 简介
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 为什么要使用 RAG？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 如何上手 RAG？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 第一个 RAG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-langchain-rag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 基于 LangChain 框架的 RAG 实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-llamaindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 低代码（基于LlamaIndex）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、数据准备
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、数据准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 数据加载
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 文本分块
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、索引构建
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、索引构建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 向量嵌入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 多模态嵌入
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 向量数据库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-milvus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Milvus 介绍及多模态检索实践
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 索引优化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、检索优化
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="rag">RAG</h1>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://github.com/datawhalechina/all-in-rag/tree/main">all-in-rag</a></li>
+</ul>
+<h2 id="rag_1">一、RAG 基础入门</h2>
+<h3 id="11-rag">1.1 <strong>RAG 简介</strong></h3>
+<p><strong>1.1.1 核心定义</strong></p>
+<p><strong>RAG（Retrieval-Augmented Generation）</strong>是一种旨在解决大语言模型（LLM）“知其然不知其所以然”问题的技术范式。</p>
+<p>它的核心是将<strong>模型内部学到的“参数化知识”</strong>（模型权重中固化的、模糊的“记忆”），与<strong>来自外部知识库的“非参数化知识”</strong>（精准、可随时更新的外部数据）相结合。</p>
+<p>其运作逻辑就是在 LLM 生成文本前，先通过检索机制从外部知识库中动态获取相关信息，并将这些“参考资料”融入生成过程，从而提升输出的准确性和时效性。</p>
+<blockquote>
+<p>💡 一句话总结：RAG 就是让 LLM 学会了“开卷考试”，它既能利用自己学到的知识，也能随时查阅外部资料。</p>
+</blockquote>
+<p><strong>1.1.2 技术原理</strong></p>
+<p>RAG 系统主要通过两个阶段来实现“参数化知识”与“非参数化知识”的结合：</p>
+<ol>
+<li><strong>检索阶段</strong>：寻找“非参数化知识”<ul>
+<li><strong>知识向量化</strong>：<strong>嵌入模型（Embedding Model）</strong> 充当了“连接器”的角色。它将外部知识库编码为向量索引（Index），存入<strong>向量数据库</strong>。</li>
+<li><strong>语义召回</strong>：当用户发起查询时，检索模块利用同样的嵌入模型将问题向量化，并通过<strong>相似度搜索（Similarity Search）</strong>，从海量数据中精准锁定与问题最相关的文档片段。</li>
+</ul>
+</li>
+<li><strong>生成阶段</strong>：融合两种知识<ul>
+<li><strong>上下文整合</strong>：生成模块接收检索阶段送来的相关文档片段以及用户的原始问题。</li>
+<li><strong>指令引导生成</strong>：该模块会遵循预设的 Prompt 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。</li>
+</ul>
+</li>
+</ol>
+<div align="center">
+   <img src="./images/1_1_1.svg" width="80%" alt="RAG 双阶段架构示意图">
+   <p>图 1-1 RAG 双阶段架构示意图</p>
+</div>
+
+<p><strong>1.1.3 技术演进分类</strong></p>
+<div align="center">
+   <img src="./images/1_1_2.png" width="100%" alt="RAG 技术演进分类">
+   <p>图 1-2 RAG 技术演进分类</p>
+</div>
+
+<div align="center">
+<table border="1" style="margin: 0 auto;">
+  <tr>
+    <th style="text-align: center;"></th>
+    <th style="text-align: center;">初级 RAG（Naive RAG）</th>
+    <th style="text-align: center;">高级 RAG（Advanced RAG）</th>
+    <th style="text-align: center;">模块化 RAG（Modular RAG）</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>流程</strong></td>
+    <td style="text-align: center;"><strong>离线:</strong> <code>索引</code><br><strong>在线:</strong> <code>检索 → 生成</code></td>
+    <td style="text-align: center;"><strong>离线:</strong> <code>索引</code><br><strong>在线:</strong> <code>...→ 检索前 → ... → 检索后 → ...</code></td>
+    <td style="text-align: center;">积木式可编排流程</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>特点</strong></td>
+    <td style="text-align: center;">基础线性流程</td>
+    <td style="text-align: center;">增加<strong>检索前后</strong>的优化步骤</td>
+    <td style="text-align: center;">模块化、可组合、可动态调整</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>关键技术</strong></td>
+    <td style="text-align: center;">基础向量检索</td>
+    <td style="text-align: center;"><strong>查询重写（Query Rewrite）</strong><br><strong>结果重排（Rerank）</strong></td>
+    <td style="text-align: center;"><strong>动态路由（Routing）</strong><br><strong>查询转换（Query Transformation）</strong><br><strong>多路融合（Fusion）</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>局限性</strong></td>
+    <td style="text-align: center;">效果不稳定，难以优化</td>
+    <td style="text-align: center;">流程相对固定，优化点有限</td>
+    <td style="text-align: center;">系统复杂性高</td>
+  </tr>
+</table>
+<p><em>表 1-1 RAG 技术演进分类对比</em></p>
+</div>
+
+<blockquote>
+<p>“离线”指提前完成的数据预处理工作（如索引构建）；“在线”指用户发起请求后的实时处理流程。</p>
+</blockquote>
+<h3 id="12-rag">1.2 <strong>为什么要使用 RAG？</strong></h3>
+<p><strong>1.2.1 技术选型</strong></p>
+<p>通常应<strong>优先选择对模型改动最小、成本最低的方案</strong>，技术选型路径往往遵循的顺序是<strong>提示词工程（Prompt Engineering） -&gt; 检索增强生成 -&gt; 微调（Fine-tuning）</strong>。</p>
+<p>从两个维度来理解这些技术的区别：</p>
+<ul>
+<li><strong>模型优化</strong>：提示工程和 RAG 完全不改变模型权重，而微调则直接修改模型参数</li>
+<li><strong>上下文优化</strong>：提示工程只是优化提问方式，而 RAG 则通过引入外部知识库，极大地丰富了上下文信息</li>
+</ul>
+<div align="center">
+  <img src="./images/1_1_3.png" width="80%" alt="技术选型路径" />
+  <p>图 1-3 选型路径图</p>
+</div>
+
+<p>基于此，我们的选择路径就清晰了：</p>
+<ol>
+<li><strong>先尝试提示工程</strong>：通过精心设计提示词来引导模型，适用于任务简单、模型已有相关知识的场景。</li>
+<li><strong>再选择 RAG</strong>：如果模型缺乏特定或实时知识而无法回答，则使用 RAG，通过外挂知识库为其提供上下文信息。</li>
+<li><strong>最后考虑微调</strong>：当目标是改变模型“如何做”（行为/风格/格式）而不是“知道什么”（知识）时，微调是最终且最合适的选择。例如，让模型学会严格遵循某种独特的输出格式、模仿特定人物的对话风格，或者将极其复杂的指令“蒸馏”进模型权重中。</li>
+</ol>
+<p><strong>1.2.2 RAG 的优势</strong></p>
+<div align="center">
+<table border="1" style="margin: 0 auto;">
+  <tr>
+    <th style="text-align: center;">问题</th>
+    <th style="text-align: center;">RAG的解决方案</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>静态知识局限</strong></td>
+    <td style="text-align: center;">实时检索外部知识库，支持动态更新</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>幻觉（Hallucination）</strong></td>
+    <td style="text-align: center;">基于检索内容生成，错误率降低</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>领域专业性不足</strong></td>
+    <td style="text-align: center;">引入领域特定知识库（如医疗/法律）</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>数据隐私风险</strong></td>
+    <td style="text-align: center;">本地化部署知识库，避免敏感数据泄露</td>
+  </tr>
+</table>
+<p><em>表 1-2 RAG 对 LLM 局限的解决方案</em></p>
+</div>
+
+<p><strong>1.2.3 适用场景风险分级</strong></p>
+<div align="center">
+<table border="1" style="margin: 0 auto;">
+  <tr>
+    <th style="text-align: center;">风险等级</th>
+    <th style="text-align: center;">案例</th>
+    <th style="text-align: center;">RAG适用性</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>低风险</strong></td>
+    <td style="text-align: center;">翻译/语法检查</td>
+    <td style="text-align: center;">高可靠性</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>中风险</strong></td>
+    <td style="text-align: center;">合同起草/法律咨询</td>
+    <td style="text-align: center;">需结合人工审核</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>高风险</strong></td>
+    <td style="text-align: center;">证据分析/签证决策</td>
+    <td style="text-align: center;">需严格质量控制机制</td>
+  </tr>
+</table>
+<p><em>表 1-3 RAG 适用场景风险分级</em></p>
+</div>
+
+<h3 id="13-rag">1.3 <strong>如何上手 RAG？</strong></h3>
+<p><strong>1.3.1 基础工具链选择</strong></p>
+<p>（1）开发模式</p>
+<ul>
+<li>LangChain 或 LlamaIndex 等<strong>成熟框架</strong>快速集成</li>
+<li><strong>不依赖框架的原生开发</strong>，以获得对系统流程更精细的控制力（在 AI 编程辅助下这并非难事）</li>
+</ul>
+<p>（2）记忆载体（向量数据库）</p>
+<ul>
+<li>Milvus、Pinecone 等，适合大规模数据</li>
+<li>FAISS、Chroma 等，轻量级或本地化</li>
+</ul>
+<p>（3）自动化评估工具（后期量化效果）</p>
+<ul>
+<li>RAGAS 或 TruLens</li>
+</ul>
+<p><strong>1.3.2 四步构建最小可行系统（MVP）</strong></p>
+<ol>
+<li><strong>数据准备与清洗</strong>：这是系统的地基。我们需要将 PDF、Word 等多源异构数据标准化，并采用合理的<strong>分块策略</strong>（如按语义段落切分而非固定字符数），避免信息在切割中支离破碎。</li>
+<li><strong>索引构建</strong>：将切分好的文本通过<strong>嵌入模型</strong>转化为向量，并存入数据库。可以在此阶段关联<strong>元数据</strong>（如来源、页码），这对后续的精确引用很有帮助。</li>
+<li><strong>检索策略优化</strong>：不要依赖单一的向量搜索。可以采用<strong>混合检索</strong>（向量+关键词）等方式来提升召回率，并引入<strong>重排序</strong>模型对检索结果进行二次精选，确保 LLM 看到的都是精华。</li>
+<li><strong>生成与提示工程</strong>：最后，设计一套清晰的 <strong>Prompt 模板</strong>，引导 LLM 基于检索到的上下文回答用户问题，并明确要求模型“不知道就说不知道”，防止幻觉。</li>
+</ol>
+<p><strong>1.3.3 新手友好方案</strong></p>
+<p>如果希望快速验证想法而非深耕代码，可以尝试 <strong>FastGPT</strong> 或 <strong>Dify</strong> 这样的可视化知识库平台，它们封装了复杂的 RAG 流程，仅需上传文档即可使用。对于开发者，利用 <strong>LangChain4j Easy RAG</strong> 或 GitHub 上的 <strong>TinyRAG</strong> [^6]等开源模板，也是高效的起手方式。</p>
+<h3 id="14-rag">1.4 <strong>第一个 RAG</strong></h3>
+<p>接下来将尝试使用 <a href="https://python.langchain.com/docs/introduction/"><strong>LangChain</strong></a> 和 <a href="https://docs.llamaindex.ai/en/stable/"><strong>LlamaIndex</strong></a> 框架完成第一个RAG应用的实现与运行。通过一个示例，演示如何加载本地Markdown文档，利用嵌入模型处理文本，并结合大型语言模型（LLM）来回答与文档内容相关的问题。</p>
+<p><strong>1.4.1 启动虚拟环境</strong></p>
+<ol>
+<li>激活虚拟环境（uv 无需手动激活虚拟环境）</li>
+<li>切换到项目目录</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Windows（PowerShell）</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+<span class="c1"># 假设当前在 all-in-rag 项目的根目录下</span>
+<span class="nb">cd</span><span class="w"> </span>code/C1
+</code></pre></div>
+<p><strong>1.4.2 运行RAG示例代码</strong></p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>01_langchain_example.py
+</code></pre></div>
+<p>代码运行后，可以看到类似下面的输出（格式化后）：</p>
+<div class="highlight"><pre><span></span><code>Downloading<span class="w"> </span>Model<span class="w"> </span>from<span class="w"> </span>https://www.modelscope.cn<span class="w"> </span>to<span class="w"> </span>directory:<span class="w"> </span>Path<span class="se">\t</span>o<span class="se">\a</span>ll-in-rag<span class="se">\m</span>odels<span class="se">\b</span>ge-small-zh-v1.5
+<span class="m">2025</span>-06-08<span class="w"> </span><span class="m">02</span>:36:19,318<span class="w"> </span>-<span class="w"> </span>modelscope<span class="w"> </span>-<span class="w"> </span>INFO<span class="w"> </span>-<span class="w"> </span>Target<span class="w"> </span>directory<span class="w"> </span>already<span class="w"> </span>exists,<span class="w"> </span>skipping<span class="w"> </span>creation.
+<span class="nv">content</span><span class="o">=</span><span class="s1">&#39;</span>
+<span class="s1">文中举了以下例子：</span>
+
+<span class="s1">1. **自然界中的羚羊**：刚出生的羚羊通过试错学习站立和奔跑，适应环境。</span>
+<span class="s1">2. **股票交易**：通过买卖股票并根据市场反馈调整策略，最大化奖励。</span>
+<span class="s1">3. **雅达利游戏（如Breakout和Pong）**：通过不断试错学习如何通关或赢得游戏。</span>
+<span class="s1">4. **选择餐馆**：利用（去已知喜欢的餐馆）与探索（尝试新餐馆）的权衡。</span>
+<span class="s1">5. **做广告**：利用（采取已知最优广告策略）与探索（尝试新广告策略）。</span>
+<span class="s1">6. **挖油**：利用（在已知地点挖油）与探索（在新地点挖油，可能发现大油田）。</span>
+<span class="s1">7. **玩游戏（如《街头霸王》）**：利用（固定策略如蹲角落出脚）与探索（尝试新招式如“大招”）。</span>
+
+<span class="s1">这些例子用于说明强化学习中的核心概念（如探索与利用、延迟奖励等）及其在实际场景中的应用。</span>
+<span class="s1">&#39;</span>
+<span class="nv">additional_kwargs</span><span class="o">={</span><span class="s1">&#39;refusal&#39;</span>:<span class="w"> </span>None<span class="o">}</span>
+<span class="nv">response_metadata</span><span class="o">={</span>
+<span class="w">    </span><span class="s1">&#39;token_usage&#39;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="s1">&#39;completion_tokens&#39;</span>:<span class="w"> </span><span class="m">209</span>,
+<span class="w">        </span><span class="s1">&#39;prompt_tokens&#39;</span>:<span class="w"> </span><span class="m">5576</span>,
+<span class="w">        </span><span class="s1">&#39;total_tokens&#39;</span>:<span class="w"> </span><span class="m">5785</span>,
+<span class="w">        </span><span class="s1">&#39;completion_tokens_details&#39;</span>:<span class="w"> </span>None,
+<span class="w">        </span><span class="s1">&#39;prompt_tokens_details&#39;</span>:<span class="w"> </span><span class="o">{</span><span class="s1">&#39;audio_tokens&#39;</span>:<span class="w"> </span>None,<span class="w"> </span><span class="s1">&#39;cached_tokens&#39;</span>:<span class="w"> </span><span class="m">5568</span><span class="o">}</span>,
+<span class="w">        </span><span class="s1">&#39;prompt_cache_hit_tokens&#39;</span>:<span class="w"> </span><span class="m">5568</span>,
+<span class="w">        </span><span class="s1">&#39;prompt_cache_miss_tokens&#39;</span>:<span class="w"> </span><span class="m">8</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="s1">&#39;model_name&#39;</span>:<span class="w"> </span><span class="s1">&#39;deepseek-chat&#39;</span>,
+<span class="w">    </span><span class="s1">&#39;system_fingerprint&#39;</span>:<span class="w"> </span><span class="s1">&#39;fp_8802369eaa_prod0425fp8&#39;</span>,
+<span class="w">    </span><span class="s1">&#39;id&#39;</span>:<span class="w"> </span><span class="s1">&#39;67a0580d-78b1-44d6-bccf-f654ae0e9bba&#39;</span>,
+<span class="w">    </span><span class="s1">&#39;service_tier&#39;</span>:<span class="w"> </span>None,
+<span class="w">    </span><span class="s1">&#39;finish_reason&#39;</span>:<span class="w"> </span><span class="s1">&#39;stop&#39;</span>,
+<span class="w">    </span><span class="s1">&#39;logprobs&#39;</span>:<span class="w"> </span>None
+<span class="o">}</span>
+<span class="nv">id</span><span class="o">=</span><span class="s1">&#39;run--919cedcd-771e-4aed-8dfd-cf436795792e-0&#39;</span>
+<span class="nv">usage_metadata</span><span class="o">={</span>
+<span class="w">    </span><span class="s1">&#39;input_tokens&#39;</span>:<span class="w"> </span><span class="m">5576</span>,
+<span class="w">    </span><span class="s1">&#39;output_tokens&#39;</span>:<span class="w"> </span><span class="m">209</span>,
+<span class="w">    </span><span class="s1">&#39;total_tokens&#39;</span>:<span class="w"> </span><span class="m">5785</span>,
+<span class="w">    </span><span class="s1">&#39;input_token_details&#39;</span>:<span class="w"> </span><span class="o">{</span><span class="s1">&#39;cache_read&#39;</span>:<span class="w"> </span><span class="m">5568</span><span class="o">}</span>,
+<span class="w">    </span><span class="s1">&#39;output_token_details&#39;</span>:<span class="w"> </span><span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>首次运行时，脚本会下载<code>BAAI/bge-small-zh-v1.5</code>嵌入模型。</p>
+</blockquote>
+<p>输出参数解析：</p>
+<ul>
+<li><strong><code>content</code></strong>: 这是最核心的部分，即大型语言模型（LLM）根据你的问题和提供的上下文生成的具体回答。</li>
+<li><strong><code>additional_kwargs</code></strong>: 包含一些额外的参数，在这个例子中是 <code>{'refusal': None}</code>，表示模型没有拒绝回答。</li>
+<li><strong><code>response_metadata</code></strong>: 包含了关于LLM响应的元数据。<ul>
+<li><code>token_usage</code>: 显示了本次调用消耗的token数量，包括完成（completion_tokens）、提示（prompt_tokens）和总量（total_tokens）。</li>
+<li><code>model_name</code>: 使用的LLM模型名称，当前是 <code>deepseek-chat</code>。</li>
+<li><code>system_fingerprint</code>, <code>id</code>, <code>service_tier</code>, <code>finish_reason</code>, <code>logprobs</code>: 这些是更详细的API响应信息，例如 <code>finish_reason: 'stop'</code> 表示模型正常完成了生成。</li>
+</ul>
+</li>
+<li><strong><code>id</code></strong>: 本次运行的唯一标识符。</li>
+<li><strong><code>usage_metadata</code></strong>: 与 <code>response_metadata</code> 中的 <code>token_usage</code> 类似，提供了输入和输出token的统计。</li>
+</ul>
+<h3 id="15-langchain-rag">1.5 <strong>基于 LangChain 框架的 RAG 实现</strong></h3>
+<p><strong>1.5.1 初始化设置</strong></p>
+<p>首先进行基础配置，包括导入必要的库、加载环境变量以及下载嵌入模型。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="c1"># os.environ[&#39;HF_ENDPOINT&#39;] = &#39;https://hf-mirror.com&#39;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_text_splitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_huggingface</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.vectorstores</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryVectorStore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_deepseek</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
+
+<span class="c1"># 加载环境变量</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>1.5.2 数据准备</strong></p>
+<ul>
+<li><strong>加载原始文档</strong>: 先定义Markdown文件的路径，然后使用<code>TextLoader</code>加载该文件作为知识源。
+    <div class="highlight"><pre><span></span><code><span class="n">markdown_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/C1/markdown/easy-rl-chapter1.md&quot;</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="n">markdown_path</span><span class="p">)</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</code></pre></div></li>
+<li><strong>文本分块 (Chunking)</strong>: 为了便于后续的嵌入和检索，长文档被分割成较小的、可管理的文本块（chunks）。这里采用了递归字符分割策略，使用其默认参数进行分块。当不指定参数初始化 <code>RecursiveCharacterTextSplitter()</code> 时，其默认行为旨在最大程度保留文本的语义结构：<ul>
+<li><strong>默认分隔符与语义保留</strong>: 按顺序尝试使用一系列预设的分隔符 <code>["\n\n" (段落), "\n" (行), " " (空格), "" (字符)]</code> 来递归分割文本。这种策略的目的是尽可能保持段落、句子和单词的完整性，因为它们通常是语义上最相关的文本单元，直到文本块达到目标大小。</li>
+<li><strong>保留分隔符</strong>: 默认情况下 (<code>keep_separator=True</code>)，分隔符本身会被保留在分割后的文本块中。</li>
+<li><strong>默认块大小与重叠</strong>: 使用其基类 <code>TextSplitter</code> 中定义的默认参数 <code>chunk_size=4000</code>（块大小）和 <code>chunk_overlap=200</code>（块重叠）。这些参数确保文本块符合预定的大小限制，并通过重叠来减少上下文信息的丢失。
+<div class="highlight"><pre><span></span><code><span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">()</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<p><strong>1.5.3 索引构建</strong></p>
+<p>数据准备完成后，接下来构建向量索引：</p>
+<ul>
+<li><strong>初始化中文嵌入模型</strong>: 使用<code>HuggingFaceEmbeddings</code>加载之前在初始化设置中下载的中文嵌入模型。配置模型在CPU上运行，并启用嵌入归一化 (<code>normalize_embeddings: True</code>)。
+    <div class="highlight"><pre><span></span><code><span class="n">embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-small-zh-v1.5&quot;</span><span class="p">,</span>
+    <span class="n">model_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="s1">&#39;cpu&#39;</span><span class="p">},</span>
+    <span class="n">encode_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;normalize_embeddings&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></li>
+<li><strong>构建向量存储</strong>: 将分割后的文本块 (<code>texts</code>) 通过初始化好的嵌入模型转换为向量表示，然后使用<code>InMemoryVectorStore</code>将这些向量及其对应的原始文本内容添加进去，从而在内存中构建出一个向量索引。
+    <div class="highlight"><pre><span></span><code><span class="n">vectorstore</span> <span class="o">=</span> <span class="n">InMemoryVectorStore</span><span class="p">(</span><span class="n">embeddings</span><span class="p">)</span>
+<span class="n">vectorstore</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span>
+</code></pre></div></li>
+</ul>
+<p>这个过程完成后，便构建了一个可供查询的知识索引。</p>
+<p><strong>1.5.4 查询与检索</strong></p>
+<p>索引构建完毕后，便可以针对用户问题进行查询与检索：</p>
+<ul>
+<li><strong>定义用户查询</strong>: 设置一个具体的用户问题字符串。
+    <div class="highlight"><pre><span></span><code><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;文中举了哪些例子？&quot;</span>
+</code></pre></div></li>
+<li><strong>在向量存储中查询相关文档</strong>: 使用向量存储的<code>similarity_search</code>方法，根据用户问题在索引中查找最相关的 <code>k</code> (此处示例中 <code>k=3</code>) 个文本块。
+    <div class="highlight"><pre><span></span><code><span class="n">retrieved_docs</span> <span class="o">=</span> <span class="n">vectorstore</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div></li>
+<li><strong>准备上下文</strong>: 将检索到的多个文本块的页面内容 (<code>doc.page_content</code>) 合并成一个单一的字符串，并使用双换行符 (<code>"\n\n"</code>) 分隔各个块，形成最终的上下文信息 (<code>docs_content</code>) 供大语言模型参考。
+    <div class="highlight"><pre><span></span><code><span class="n">docs_content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">retrieved_docs</span><span class="p">)</span>
+</code></pre></div></li>
+</ul>
+<blockquote>
+<p>使用 <code>"\n\n"</code> (双换行符) 而不是 <code>"\n"</code> (单换行符) 来连接不同的检索文档块，主要是为了在传递给大型语言模型（LLM）时，能够更清晰地在语义上区分这些独立的文本片段。双换行符通常代表段落的结束和新段落的开始，这种格式有助于LLM将每个块视为一个独立的上下文来源，从而更好地理解和利用这些信息来生成回答。</p>
+</blockquote>
+<p><strong>1.5.5 生成集成</strong></p>
+<p>最后一步是将检索到的上下文与用户问题结合，利用大语言模型（LLM）生成答案：</p>
+<ul>
+<li><strong>构建提示词模板</strong>: 使用<code>ChatPromptTemplate.from_template</code>创建一个结构化的提示模板。此模板指导LLM根据提供的上下文 (<code>context</code>) 回答用户的问题 (<code>question</code>)，并明确指出在信息不足时应如何回应。
+    <div class="highlight"><pre><span></span><code><span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="o">.</span><span class="n">from_template</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;请根据下面提供的上下文信息来回答问题。</span>
+<span class="s2">请确保你的回答完全基于这些上下文。</span>
+<span class="s2">如果上下文中没有足够的信息来回答问题，请直接告知：“抱歉，我无法根据提供的上下文找到相关信息来回答此问题。”</span>
+
+<span class="s2">上下文:</span>
+<span class="si">{context}</span>
+
+<span class="s2">问题: </span><span class="si">{question}</span>
+
+<span class="s2">回答:&quot;&quot;&quot;</span>
+                                          <span class="p">)</span>
+</code></pre></div></li>
+<li><strong>配置大语言模型</strong>: 初始化 <code>ChatOpenAI</code> 客户端，配置所用模型（<code>glm-4.7-flash-free</code>）、生成答案的温度参数（<code>temperature=0.7</code>）、最大Token数 (<code>max_tokens=2048</code>) 以及API密钥（从环境变量加载）和 url。
+    <div class="highlight"><pre><span></span><code><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;glm-4.7-flash-free&quot;</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEEPSEEK_API_KEY&quot;</span><span class="p">)</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://aihubmix.com/v1&quot;</span>
+<span class="p">)</span>
+</code></pre></div></li>
+<li><strong>调用LLM生成答案并输出</strong>: 将用户问题 (<code>question</code>) 和先前准备好的上下文 (<code>docs_content</code>) 格式化到提示模板中，然后调用ChatDeepSeek的<code>invoke</code>方法获取生成的答案。
+    <div class="highlight"><pre><span></span><code><span class="n">answer</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">docs_content</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="16-llamaindex">1.6 <strong>低代码（基于LlamaIndex）</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="c1"># os.environ[&#39;HF_ENDPOINT&#39;]=&#39;https://hf-mirror.com&#39;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">llama_index.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">VectorStoreIndex</span><span class="p">,</span> <span class="n">SimpleDirectoryReader</span><span class="p">,</span> <span class="n">Settings</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">llama_index.llms.openai_like</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAILike</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">llama_index.embeddings.huggingface</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbedding</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">Settings</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">OpenAILike</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;glm-4.7-flash-free&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEEPSEEK_API_KEY&quot;</span><span class="p">),</span>
+    <span class="n">api_base</span><span class="o">=</span><span class="s2">&quot;https://aihubmix.com/v1&quot;</span><span class="p">,</span>
+    <span class="n">is_chat_model</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">Settings</span><span class="o">.</span><span class="n">embed_model</span> <span class="o">=</span> <span class="n">HuggingFaceEmbedding</span><span class="p">(</span><span class="s2">&quot;BAAI/bge-small-zh-v1.5&quot;</span><span class="p">)</span>
+
+<span class="n">documents</span> <span class="o">=</span> <span class="n">SimpleDirectoryReader</span><span class="p">(</span><span class="n">input_files</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;../../data/C1/markdown/easy-rl-chapter1.md&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">VectorStoreIndex</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="n">query_engine</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">as_query_engine</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">query_engine</span><span class="o">.</span><span class="n">get_prompts</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">query_engine</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;文中举了哪些例子?&quot;</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="_1">二、数据准备</h2>
+<p>虽然本节内容在实际应用中非常重要，但是由于各种文档加载器的迭代更新，以及各类 AI 应用的不同需求，具体选择需要根据实际情况。</p>
+<p>本节仅作简单引入，但请务必<strong>重视数据加载</strong>环节，<strong>“垃圾进，垃圾出 (Garbage In, Garbage Out)”</strong> ——高质量输入是高质量输出的前提。</p>
+<h3 id="21">2.1 <strong>数据加载</strong></h3>
+<p><strong>2.1.1 文档加载器</strong></p>
+<p>RAG 系统中，数据加载是整个流水线的第一步，也是不可或缺的一步。</p>
+<p><strong>文档加载器</strong>负责将各种格式的<strong>非结构化文档（如PDF、Word、Markdown、HTML等）</strong>转换为程序可以处理的<strong>结构化数据</strong>。</p>
+<p>数据加载的质量会直接影响后续的索引构建、检索效果和最终的生成质量。</p>
+<p>文档加载器在 RAG 的数据管道中一般需要完成三个核心任务</p>
+<ol>
+<li>解析不同格式的原始文档，将 PDF、Word、Markdown 等内容提取为可处理的纯文本</li>
+<li>在解析过程中同时抽取文档来源、页码、作者等关键信息作为元数据</li>
+<li>把文本和元数据整理成统一的数据结构，方便后续进行切分、向量化和入库，其整体流程与传统数据工程中的抽取、转换、加载相似，目标都是把杂乱的原始文档清洗并对齐为适合检索和建模的标准化语料。</li>
+</ol>
+<p><strong>2.1.2 当前主流 RAG 文档加载器</strong></p>
+<div align="center">
+<table border="1" style="margin: 0 auto;">
+  <tr>
+    <th style="text-align: center;">工具名称</th>
+    <th style="text-align: center;">特点</th>
+    <th style="text-align: center;">适用场景</th>
+    <th style="text-align: center;">性能表现</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>PyMuPDF4LLM</strong></td>
+    <td style="text-align: center;">PDF→Markdown转换，OCR+表格识别</td>
+    <td style="text-align: center;">科研文献、技术手册</td>
+    <td style="text-align: center;">开源免费，GPU加速</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>TextLoader</strong></td>
+    <td style="text-align: center;">基础文本文件加载</td>
+    <td style="text-align: center;">纯文本处理</td>
+    <td style="text-align: center;">轻量高效</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>DirectoryLoader</strong></td>
+    <td style="text-align: center;">批量目录文件处理</td>
+    <td style="text-align: center;">混合格式文档库</td>
+    <td style="text-align: center;">支持多格式扩展</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Unstructured</strong></td>
+    <td style="text-align: center;">多格式文档解析</td>
+    <td style="text-align: center;">PDF、Word、HTML等</td>
+    <td style="text-align: center;">统一接口，智能解析</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>FireCrawlLoader</strong></td>
+    <td style="text-align: center;">网页内容抓取</td>
+    <td style="text-align: center;">在线文档、新闻</td>
+    <td style="text-align: center;">实时内容获取</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>LlamaParse</strong></td>
+    <td style="text-align: center;">深度PDF结构解析</td>
+    <td style="text-align: center;">法律合同、学术论文</td>
+    <td style="text-align: center;">解析精度高，商业API</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Docling</strong></td>
+    <td style="text-align: center;">模块化企业级解析</td>
+    <td style="text-align: center;">企业合同、报告</td>
+    <td style="text-align: center;">IBM生态兼容</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Marker</strong></td>
+    <td style="text-align: center;">PDF→Markdown，GPU加速</td>
+    <td style="text-align: center;">科研文献、书籍</td>
+    <td style="text-align: center;">专注PDF转换</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>MinerU</strong></td>
+    <td style="text-align: center;">多模态集成解析</td>
+    <td style="text-align: center;">学术文献、财务报表</td>
+    <td style="text-align: center;">集成LayoutLMv3+YOLOv8</td>
+  </tr>
+</table>
+<p><em>表 2-1 当前主流 RAG 文档加载器</em></p>
+</div>
+
+<p><strong>2.1.3 Unstructured 文档处理库</strong></p>
+<p><strong>Unstructured</strong> 是一个专业的文档处理库，专门设计用于 RAG 和 AI 微调场景的非结构化数据预处理。提供了统一的接口来处理多种文档格式，是目前应用较广泛的文档加载解决方案之一。</p>
+<p>Unstructured 在格式支持和内容解析方面具有明显优势，它一方面支持 PDF、Word、Excel、HTML、Markdown 等多种文档格式，并通过统一的 API 接口避免为不同格式分别编写代码，另一方面可以自动识别标题、段落、表格、列表等文档结构，同时保留相应的元数据信息。</p>
+<p>Unstructured 能够识别和分类以下文档元素：</p>
+<div align="center">
+<table border="1" style="margin: 0 auto;">
+  <tr>
+    <th style="text-align: center;">元素类型</th>
+    <th style="text-align: center;">描述</th>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Title</code></td>
+    <td style="text-align: center;">文档标题</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>NarrativeText</code></td>
+    <td style="text-align: center;">由多个完整句子组成的正文文本，不包括标题、页眉、页脚和说明文字</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>ListItem</code></td>
+    <td style="text-align: center;">列表项，属于列表的正文文本元素</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Table</code></td>
+    <td style="text-align: center;">表格</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Image</code></td>
+    <td style="text-align: center;">图像元数据</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Formula</code></td>
+    <td style="text-align: center;">公式</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Address</code></td>
+    <td style="text-align: center;">物理地址</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>EmailAddress</code></td>
+    <td style="text-align: center;">邮箱地址</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>FigureCaption</code></td>
+    <td style="text-align: center;">图片标题/说明文字</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Header</code></td>
+    <td style="text-align: center;">文档页眉</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>Footer</code></td>
+    <td style="text-align: center;">文档页脚</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>CodeSnippet</code></td>
+    <td style="text-align: center;">代码片段</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>PageBreak</code></td>
+    <td style="text-align: center;">页面分隔符</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>PageNumber</code></td>
+    <td style="text-align: center;">页码</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>UncategorizedText</code></td>
+    <td style="text-align: center;">未分类的自由文本</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><code>CompositeElement</code></td>
+    <td style="text-align: center;">分块处理时产生的复合元素*</td>
+  </tr>
+</table>
+<p><em>表 2-2 Unstructured 支持的文档元素类型</em></p>
+</div>
+
+<p><strong>2.1.4 从 LangChain 封装到原始 Unstructured</strong></p>
+<p>LangChain的 <code>UnstructuredMarkdownLoader</code> 是 LangChain 对 <code>Unstructured</code> 库的封装。</p>
+<p>接下来展示如何直接使用 <code>Unstructured</code> 库，这样可以获得更大的灵活性和控制力。</p>
+<p>创建一个简单的示例，尝试使用 <code>Unstructured</code> 库加载并解析一个 PDF 文件。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">unstructured.partition.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">partition</span>
+
+<span class="c1"># PDF文件路径</span>
+<span class="n">pdf_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/C2/pdf/rag.pdf&quot;</span>
+
+<span class="c1"># 使用Unstructured加载并解析PDF文档</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="n">pdf_path</span><span class="p">,</span>
+    <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/pdf&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># 打印解析结果</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;解析完成: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个元素, </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">elements</span><span class="p">)</span><span class="si">}</span><span class="s2"> 字符&quot;</span><span class="p">)</span>
+
+<span class="c1"># 统计元素类型</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">types</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">category</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;元素类型: </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="n">types</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 显示所有元素</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">所有元素:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">element</span><span class="o">.</span><span class="n">category</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>partition 函数参数解析：</strong></p>
+<ul>
+<li><code>filename</code>: 文档文件路径，支持本地文件路径；</li>
+<li><code>content_type</code>: 可选参数，指定MIME类型（如"application/pdf"），可绕过自动文件类型检测；</li>
+<li><code>file</code>: 可选参数，文件对象，与 filename 二选一使用；</li>
+<li><code>url</code>: 可选参数，远程文档 URL，支持直接处理网络文档；</li>
+<li><code>include_page_breaks</code>: 布尔值，是否在输出中包含页面分隔符；</li>
+<li><code>strategy</code>: 处理策略，可选 "auto"、"fast"、"hi_res" 等；</li>
+<li><code>encoding</code>: 文本编码格式，默认自动检测。</li>
+</ul>
+<p><code>partition</code>函数使用自动文件类型检测，内部会根据文件类型路由到对应的专用函数（如 PDF 文件会调用<code>partition_pdf</code>）。如果需要更专业的PDF处理，可以直接使用<code>from unstructured.partition.pdf import partition_pdf</code>，它提供更多 PDF 特有的参数选项，如 OCR 语言设置、图像提取、表格结构推理等高级功能，同时性能更优。</p>
+<blockquote>
+<p>在实际应用中，针对 pdf 的处理，目前更多选用的是 PaddleOCR、MinerU 等模型或工具。</p>
+</blockquote>
+<h3 id="22">2.2 <strong>文本分块</strong></h3>
+<p><strong>2.2.1 文本分块概述</strong></p>
+<p>文本分块（Text Chunking）是构建 RAG 流程的关键步骤。它的原理是将加载后的长篇文档，切分成更小、更易于处理的单元。这些被切分出的文本块，是后续向量检索和模型处理的基本单位。</p>
+<p>将文本分块的首要原因，是为了适应 RAG 系统中两个核心组件的硬性限制：</p>
+<ul>
+<li><strong>嵌入模型 (Embedding Model)</strong>: 负责将文本块转换为向量。这类模型有严格的输入长度上限。例如，许多常用的嵌入模型（如 <code>bge-base-zh-v1.5</code>）的上下文窗口为512个token。任何超出此限制的文本块在输入时都会被截断，导致信息丢失，生成的向量也无法完整代表原文的语义。因此，文本块的大小<strong>必须</strong>小于等于嵌入模型的上下文窗口。</li>
+<li><strong>大语言模型 (LLM)</strong>: 负责根据检索到的上下文生成答案。LLM同样有上下文窗口限制（尽管通常比嵌入模型大得多，从几千到上百万token不等）。检索到的所有文本块，连同用户问题和提示词，都必须能被放入这个窗口中。如果单个块过大，可能会导致只能容纳少数几个相关的块，限制了LLM回答问题时可参考的信息广度。</li>
+</ul>
+<p>因此，分块是确保文本能够被两个模型完整、有效处理的基础。</p>
+<p>LangChain 提供了丰富且易于使用的文本分割器（Text Splitters），下面将介绍几种最核心的策略。</p>
+<p><strong>2.2.2 固定大小分块</strong></p>
+<p>这是最简单直接的分块方法。根据 LangChain 源码，这种方法的工作原理分为两个主要阶段：</p>
+<p>（1）<strong>按段落分割</strong>：<code>CharacterTextSplitter</code> 采用默认分隔符 <code>"\n\n"</code>，使用正则表达式将文本按段落进行分割，通过 <code>_split_text_with_regex</code> 函数处理。</p>
+<p>（2）<strong>智能合并</strong>：调用继承自父类的 <code>_merge_splits</code> 方法，将分割后的段落依次合并。该方法会监控累积长度，当超过 <code>chunk_size</code> 时形成新块，并通过重叠机制（<code>chunk_overlap</code>）保持上下文连续性，同时在必要时发出超长块的警告。</p>
+<p>需要注意，<code>CharacterTextSplitter</code> 实际实现的并非严格的固定大小分块。根据 <code>_merge_splits</code> 源码逻辑，这种方法会：</p>
+<ul>
+<li><strong>优先保持段落完整性</strong>：只有当添加新段落会导致总长度超过 <code>chunk_size</code> 时，才会结束当前块</li>
+<li><strong>处理超长段落</strong>：如果单个段落超过 <code>chunk_size</code>，系统会发出警告但仍将其作为完整块保留</li>
+<li><strong>应用重叠机制</strong>：通过 <code>chunk_overlap</code> 参数在块之间保持内容重叠，确保上下文连续性</li>
+</ul>
+<p>所以，LangChain 的实现更准确地应该称为"段落感知的自适应分块"，块大小会根据段落边界动态调整。</p>
+<p>下面的代码展示了如何配置一个固定大小分块器：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.text_splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">CharacterTextSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextLoader</span>
+
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s2">&quot;../../data/C2/txt/蜂医.txt&quot;</span><span class="p">)</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">CharacterTextSplitter</span><span class="p">(</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>    <span class="c1"># 每个块的目标大小为100个字符</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">10</span>   <span class="c1"># 每个块之间重叠10个字符，以缓解语义割裂</span>
+<span class="p">)</span>
+
+<span class="n">chunks</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;文本被切分为 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个块。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 前5个块内容示例 ---&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chunks</span><span class="p">[:</span><span class="mi">5</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="c1"># chunk 是一个 Document 对象，需要访问它的 .page_content 属性来获取文本</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;块 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> (长度: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="o">.</span><span class="n">page_content</span><span class="p">)</span><span class="si">}</span><span class="s1">): &quot;</span><span class="si">{</span><span class="n">chunk</span><span class="o">.</span><span class="n">page_content</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>这种方法的主要优势在于实现简单、处理速度快且计算开销小。劣势在于可能会在语义边界处切断文本，影响内容的完整性和连贯性。实际的固定大小分块实现（如LangChain的 <code>CharacterTextSplitter</code>）通常会结合分隔符来减少这种问题，在段落边界处优先切分，只有在必要时才会强制按大小切断。因此，这种方法在日志分析、数据预处理等场景中仍有其应用价值。</p>
+<p><strong>2.2.3 递归字符分块</strong></p>
+<p>在前面的章节中，已经尝试了使用 <code>RecursiveCharacterTextSplitter</code> 的默认配置来处理文档分块。现在让我们深入了解 <code>RecursiveCharacterTextSplitter</code> 的实现。这种分块器通过分隔符层级递归处理，相对与固定大小分块，改善了超长文本的处理效果。</p>
+<p><strong>算法流程</strong>：</p>
+<p>（1）<strong>寻找有效分隔符</strong>: 从分隔符列表中从前到后遍历，找到第一个在当前文本中<strong>存在</strong>的分隔符。如果都不存在，使用最后一个分隔符（通常是空字符串 <code>""</code>）。</p>
+<p>（2）<strong>切分与分类处理</strong>: 使用选定的分隔符切分文本，然后遍历所有片段：</p>
+<ul>
+<li><strong>如果片段不超过块大小</strong>: 暂存到 <code>_good_splits</code> 中，准备合并</li>
+<li><strong>如果片段超过块大小</strong>:<ul>
+<li>首先，将暂存的合格片段通过 <code>_merge_splits</code> 合并成块</li>
+<li>然后，检查是否还有剩余分隔符：<ul>
+<li><strong>有剩余分隔符</strong>: 递归调用 <code>_split_text</code> 继续分割</li>
+<li><strong>无剩余分隔符</strong>: 直接保留为超长块</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>（3）<strong>最终处理</strong>: 将剩余的暂存片段合并成最后的块</p>
+<p><strong>实现细节</strong>：</p>
+<ul>
+<li><strong>批处理机制</strong>: 先收集所有合格片段（<code>_good_splits</code>），遇到超长片段时才触发合并操作。</li>
+<li><strong>递归终止条件</strong>: 关键在于 <code>if not new_separators</code> 判断。当分隔符用尽时（<code>new_separators</code> 为空），停止递归，直接保留超长片段。确保算法不会无限递归。</li>
+</ul>
+<p><strong>与固定大小分块的关键差异</strong>：</p>
+<ul>
+<li>固定大小分块遇到超长段落时只能发出警告并保留。</li>
+<li>递归分块会继续使用更细粒度的分隔符（句子→单词→字符）直到满足大小要求。</li>
+</ul>
+<p>具体示例如下：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.text_splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextLoader</span>
+
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s2">&quot;../../data/C2/txt/蜂医.txt&quot;</span><span class="p">)</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span>
+    <span class="n">separators</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;。&quot;</span><span class="p">,</span> <span class="s2">&quot;，&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">],</span>  <span class="c1"># 分隔符优先级</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">chunks</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_text</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>分隔符配置</strong>：
+- <strong>默认分隔符</strong>：<code>["\n\n", "\n", " ", ""]</code>
+- <strong>多语言支持</strong>：对于无词边界语言（中文、日文、泰文），可添加：
+  <div class="highlight"><pre><span></span><code><span class="n">separators</span><span class="o">=</span><span class="p">[</span>
+    <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span>
+    <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u200b</span><span class="s2">&quot;</span><span class="p">,</span>      <span class="c1"># 零宽空格(泰文、日文)</span>
+    <span class="s2">&quot;</span><span class="se">\uff0c</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u3001</span><span class="s2">&quot;</span><span class="p">,</span>      <span class="c1"># 全角逗号、表意逗号</span>
+    <span class="s2">&quot;</span><span class="se">\uff0e</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\u3002</span><span class="s2">&quot;</span><span class="p">,</span>      <span class="c1"># 全角句号、表意句号</span>
+    <span class="s2">&quot;&quot;</span>
+<span class="p">]</span>
+</code></pre></div></p>
+<p><strong>编程语言特化支持</strong>：</p>
+<p><code>RecursiveCharacterTextSplitter</code> 能够针对特定的编程语言（如Python, Java等）使用预设的、更符合代码结构的分隔符。它们通常包含语言的顶级语法结构（如类、函数定义）和次级结构（如控制流语句），以实现更符合代码逻辑的分割。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 针对代码文档的优化分隔符</span>
+<span class="n">splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="o">.</span><span class="n">from_language</span><span class="p">(</span>
+    <span class="n">language</span><span class="o">=</span><span class="n">Language</span><span class="o">.</span><span class="n">PYTHON</span><span class="p">,</span>  <span class="c1"># 支持Python、Java、C++等</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">50</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>递归字符分块的原理是采用一组有层次结构的分隔符（如段落、句子、单词）进行递归分割，旨在有效平衡语义完整性与块大小控制。在 <code>RecursiveCharacterTextSplitter</code> 的实现中，该分块器首先尝试使用最高优先级的分隔符（如段落标记）来切分文本。如果切分后的块仍然过大，会继续对这个大块应用下一优先级分隔符（如句号），如此循环往复，直到块满足大小限制。这种分层处理的机制，能够在尽可能保持高级语义结构完整性的同时，有效控制块大小。</p>
+<p><strong>2.2.4 语义分块</strong></p>
+<p>语义分块（Semantic Chunking）是一种更智能的方法，这种方法不依赖于固定的字符数或预设的分隔符，而是尝试根据文本的语义内涵来切分。其核心是：<strong>在语义主题发生显著变化的地方进行切分</strong>。这使得每个分块都具有高度的内部语义一致性。LangChain 提供了 <code>langchain_experimental.text_splitter.SemanticChunker</code> 来实现这一功能。</p>
+<p><strong>实现原理</strong></p>
+<p><code>SemanticChunker</code> 的工作流程可以概括为以下几个步骤：</p>
+<p>（1）<strong>句子分割 (Sentence Splitting)</strong>：首先，使用标准的句子分割规则（例如，基于句号、问号、感叹号）将输入文本拆分成一个句子列表。</p>
+<p>（2）<strong>上下文感知嵌入 (Context-Aware Embedding)</strong>：这是 <code>SemanticChunker</code> 的一个关键设计。该分块器不是对每个句子独立进行嵌入，而是通过 <code>buffer_size</code> 参数（默认为1）来捕捉上下文信息。对于列表中的每一个句子，这种方法会将其与前后各 <code>buffer_size</code> 个句子组合起来，然后对这个临时的、更长的组合文本进行嵌入。这样，每个句子最终得到的嵌入向量就融入了其上下文的语义。</p>
+<p>（3）<strong>计算语义距离 (Distance Calculation)</strong>：计算每对<strong>相邻</strong>句子的嵌入向量之间的余弦距离。这个距离值量化了两个句子之间的语义差异——距离越大，表示语义关联越弱，跳跃越明显。</p>
+<p>（4）<strong>识别断点 (Breakpoint Identification)</strong>：<code>SemanticChunker</code> 会分析所有计算出的距离值，并根据一个统计方法（默认为 <code>percentile</code>）来确定一个动态阈值。例如，它可能会将所有距离中第95百分位的值作为切分阈值。所有距离大于此阈值的点，都被识别为语义上的“断点”。</p>
+<p>（5）<strong>合并成块 (Merging into Chunks)</strong>：最后，根据识别出的所有断点位置，将原始的句子序列进行切分，并将每个切分后的部分内的所有句子合并起来，形成一个最终的、语义连贯的文本块。</p>
+<p><strong>断点识别方法 (<code>breakpoint_threshold_type</code>)</strong></p>
+<p>如何定义“显著的语义跳跃”是语义分块的关键。<code>SemanticChunker</code> 提供了几种基于统计的方法来识别断点：</p>
+<ul>
+<li>
+<p><code>percentile</code> (百分位法 - <strong>默认方法</strong>):</p>
+<ul>
+<li><strong>逻辑</strong>: 计算所有相邻句子的语义差异值，并将这些差异值进行排序。当一个差异值超过某个百分位阈值时，就认为该差异值是一个断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)，表示使用第95个百分位作为阈值。这意味着，只有最显著的5%的语义差异点会被选为切分点。</li>
+</ul>
+</li>
+<li>
+<p><code>standard_deviation</code> (标准差法):</p>
+<ul>
+<li><strong>逻辑</strong>: 计算所有差异值的平均值和标准差。当一个差异值超过“平均值 + N * 标准差”时，被视为异常高的跳跃，即断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>3</code>)，表示使用3倍标准差作为阈值。</li>
+</ul>
+</li>
+<li>
+<p><code>interquartile</code> (四分位距法):</p>
+<ul>
+<li><strong>逻辑</strong>: 使用统计学中的四分位距（IQR）来识别异常值。当一个差异值超过 <code>Q3 + N * IQR</code> 时，被视为断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>1.5</code>)，表示使用1.5倍的IQR。</li>
+</ul>
+</li>
+<li>
+<p><code>gradient</code> (梯度法):</p>
+<ul>
+<li><strong>逻辑</strong>: 这是一种更复杂的方法。它首先计算差异值的变化率（梯度），然后对梯度应用百分位法。对于那些句子间语义联系紧密、差异值普遍较低的文本（如法律、医疗文档）特别有效，因为这种方法能更好地捕捉到语义变化的“拐点”。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)。</li>
+</ul>
+</li>
+</ul>
+<p><strong>具体示例如下</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="c1">## os.environ[&quot;HF_ENDPOINT&quot;] = &quot;https://hf-mirror.com&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_experimental.text_splitter</span><span class="w"> </span><span class="kn">import</span> <span class="n">SemanticChunker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextLoader</span>
+
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-small-zh-v1.5&quot;</span><span class="p">,</span>
+    <span class="n">model_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="s1">&#39;cpu&#39;</span><span class="p">},</span>
+    <span class="n">encode_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;normalize_embeddings&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># 初始化 SemanticChunker</span>
+<span class="n">text_splitter</span> <span class="o">=</span> <span class="n">SemanticChunker</span><span class="p">(</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">breakpoint_threshold_type</span><span class="o">=</span><span class="s2">&quot;percentile&quot;</span> <span class="c1"># 断点识别方法</span>
+<span class="p">)</span>
+
+<span class="n">loader</span> <span class="o">=</span> <span class="n">TextLoader</span><span class="p">(</span><span class="s2">&quot;../../data/C2/txt/蜂医.txt&quot;</span><span class="p">)</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+
+<span class="n">docs</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>2.2.5 基于文档结构的分块</strong></p>
+<p>对于具有明确结构标记的文档格式（如Markdown、HTML、LaTex），可以利用这些标记来实现更智能、更符合逻辑的分割。</p>
+<p><strong>以 Markdown 结构分块为例</strong></p>
+<p>针对结构清晰的 Markdown 文档，利用其标题层级进行分块是一种高效且保留了丰富语义的方法。LangChain 提供了 <code>MarkdownHeaderTextSplitter</code> 来处理。</p>
+<ul>
+<li>
+<p><strong>实现原理</strong>: 该分块器的主要逻辑是“先按标题分组，再按需细分”。</p>
+<ol>
+<li><strong>定义分割规则</strong>: 用户首先需要提供一个标题层级的映射关系，例如 <code>[ ("#", "Header 1"), ("##", "Header 2") ]</code>，告诉分块器 <code>#</code> 是一级标题，<code>##</code> 是二级标题。</li>
+<li><strong>内容聚合</strong>: 分块器会遍历整个文档，将每个标题下的所有内容（直到下一个同级或更高级别的标题出现前）聚合在一起。每个聚合后的内容块都会被赋予一个包含其完整标题路径的元数据。</li>
+</ol>
+</li>
+<li>
+<p><strong>元数据注入的优势</strong>: 这是此方法的主要特点。例如，对于一篇关于机器学习的文章，某个段落可能位于“第三章：模型评估”下的“3.2节：评估指标”中。经过分割后，这个段落形成的文本块，其元数据就会是 <code>{"Header 1": "第三章：模型评估", "Header 2": "3.2节：评估指标"}</code>。这种元数据为每个块提供了精确的“地址”，极大地增强了上下文的准确性，让大模型能更好地理解信息片段的来源和背景。</p>
+</li>
+<li>
+<p><strong>局限性与组合使用</strong>: 单纯按标题分割可能会导致一个问题：某个章节下的内容可能非常长，远超模型能处理的上下文窗口。为了解决这个问题，<code>MarkdownHeaderTextSplitter</code> 可以与其它分块器（如 <code>RecursiveCharacterTextSplitter</code>）<strong>组合使用</strong>。具体流程是：</p>
+<ul>
+<li>第一步，使用 <code>MarkdownHeaderTextSplitter</code> 将文档按标题分割成若干个大的、带有元数据的逻辑块。</li>
+<li>第二步，对这些逻辑块再应用 <code>RecursiveCharacterTextSplitter</code>，将其进一步切分为符合 <code>chunk_size</code> 要求的小块。由于这个过程是在第一步之后进行的，所有最终生成的小块都会<strong>继承</strong>来自第一步的标题元数据。</li>
+</ul>
+</li>
+<li>
+<p><strong>RAG应用优势</strong>: 这种两阶段的分块方法，既保留了文档的宏观逻辑结构（通过元数据），又确保了每个块的大小适中，是处理结构化文档进行RAG的理想方案。</p>
+</li>
+</ul>
+<p>接下来介绍其他开源框架中的分块策略</p>
+<p><strong>2.2.6 Unstructured：基于文档元素的智能分块</strong></p>
+<p><code>Unstructured</code>是一个强大的文档处理工具，同样提供了实用的<a href="https://docs.unstructured.io/open-source/core-functionality/chunking">分块功能</a>。</p>
+<p>（1）<strong>分区 (Partitioning)</strong>: 这是一个重要功能，负责将原始文档（如PDF、HTML）解析成一系列结构化的“元素”（Elements）。每个元素都带有语义标签，如 <code>Title</code> (标题)、<code>NarrativeText</code> (叙述文本)、<code>ListItem</code> (列表项) 等。这个过程本身就完成了对文档的深度理解和结构化。</p>
+<p>（2）<strong>分块 (Chunking)</strong>: 该功能建立在<strong>分区</strong>的结果之上。分块功能不是对纯文本进行操作，而是将分区产生的“元素”列表作为输入，进行智能组合。Unstructured 提供了两种主要的分块方法：
+-   <strong><code>basic</code></strong>: 这是默认方法。这种方法会连续地组合文档元素（如段落、列表项），直到达到 <code>max_characters</code> 上限，尽可能地填满每个块。如果单个元素超过上限，则会对其进行文本分割。
+-   <strong><code>by_title</code></strong>: 该方法在 <code>basic</code> 方法的基础上，增加了对“章节”的感知。该方法将 <code>Title</code> 元素视为一个新章节的开始，并强制在此处开始一个新的块，确保同一个块内不会包含来自不同章节的内容。这在处理报告、书籍等结构化文档时非常有用，效果类似于 LangChain 的 <code>MarkdownHeaderTextSplitter</code>，但适用范围更广。</p>
+<p>Unstructured 允许将分块作为分区的一个参数在单次调用中完成，也支持在分区之后作为一个独立的步骤来执行分块。这种“先理解、后分割”的策略，使得 Unstructured 能在最大程度上保留文档的原始语义结构，特别是在处理版式复杂的文档时，优势尤为明显。</p>
+<p><strong>2.2.7 LlamaIndex：面向节点的解析与转换</strong></p>
+<p><a href="https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/modules/">LlamaIndex</a> 将数据处理流程抽象为对“<strong>节点（Node）</strong>”的操作。文档被加载后，首先会被解析成一系列的“节点”，分块只是节点转换（Transformation）中的一环。</p>
+<p>LlamaIndex 的分块体系有以下特点：</p>
+<p>（1）<strong>丰富的节点解析器 (Node Parser)</strong>: LlamaIndex 提供了大量针对特定数据格式和方法的节点解析器，可以大致分为几类：
+-   <strong>结构感知型</strong>: 如 <code>MarkdownNodeParser</code>, <code>JSONNodeParser</code>, <code>CodeSplitter</code> 等，能理解并根据源文件的结构（如Markdown标题、代码函数）进行切分。
+-   <strong>语义感知型</strong>: 
+    -   <code>SemanticSplitterNodeParser</code>: 与 LangChain 的 <code>SemanticChunker</code> 类似，这种解析器使用嵌入模型来检测句子之间的语义“断点”，在语义连续性明显减弱的地方切开，从而让每个 chunk 内部尽量连贯。
+    -   <code>SentenceWindowNodeParser</code>: 这是一种巧妙的方法。该方法将文档切分成单个的句子，但在每个句子节点（Node）的元数据中，会存储其前后相邻的N个句子（即“窗口”）。这使得在检索时，可以先用单个句子的嵌入进行精确匹配，然后将包含上下文“窗口”的完整文本送给LLM，极大地提升了上下文的质量。
+-   <strong>常规型</strong>: 如 <code>TokenTextSplitter</code>, <code>SentenceSplitter</code> 等，提供基于Token数量或句子边界的常规切分方法。</p>
+<p>（2）<strong>灵活的转换流水线</strong>: 用户可以构建一个灵活的流水线，例如先用 <code>MarkdownNodeParser</code> 按章节切分文档，再对每个章节节点应用 <code>SentenceSplitter</code> 进行更细粒度的句子级切分。每个节点都携带丰富的元数据，记录着其来源和上下文关系。</p>
+<p>（3）<strong>良好的互操作性</strong>: LlamaIndex 提供了 <code>LangchainNodeParser</code>，可以方便地将任何 LangChain 的 <code>TextSplitter</code> 封装成 LlamaIndex 的节点解析器，无缝集成到其处理流程中。</p>
+<p><strong>2.2.8 ChunkViz：简易的可视化分块工具</strong></p>
+<p>在本文开头部分展示的分块图就是通过 <a href="https://chunkviz.up.railway.app/"><strong>ChunkViz</strong></a> 生成的。可以将你的文档、分块配置作为输入，用不同的颜色块展示每个 chunk 的边界和重叠部分，方便快速理解分块逻辑。</p>
+<h2 id="_2">三、索引构建</h2>
+<h3 id="31">3.1 <strong>向量嵌入</strong></h3>
+<p><strong>3.1.1 向量嵌入基础</strong></p>
+<p>向量嵌入（Embedding）是一种将真实世界中复杂、高维的数据对象（如文本、图像、音频、视频等）转换为数学上易于处理的、低维、稠密的连续数值向量的技术。</p>
+<p>Embedding 的真正意义在于，它产生的向量不是随机数值的堆砌，而是对数据<strong>语义</strong>的数学编码。</p>
+<ul>
+<li><strong>核心原则</strong>：在 Embedding 构建的向量空间中，语义上相似的对象，其对应的向量在空间中的距离会更近；而语义上不相关的对象，它们的向量距离会更远。</li>
+<li><strong>关键度量</strong>：我们通常使用以下数学方法来衡量向量间的“距离”或“相似度”：<ul>
+<li><strong>余弦相似度 (Cosine Similarity)</strong> ：计算两个向量夹角的余弦值。值越接近 1，代表方向越一致，语义越相似。这是最常用的度量方式。</li>
+<li><strong>点积 (Dot Product)</strong> ：计算两个向量的乘积和。在向量归一化后，点积等价于余弦相似度。</li>
+<li><strong>欧氏距离 (Euclidean Distance)</strong> ：计算两个向量在空间中的直线距离。距离越小，语义越相似。</li>
+</ul>
+</li>
+</ul>
+<p>在 RAG 流程中，Embedding 扮演着无可替代的重要角色。</p>
+<p>RAG 的“检索”环节通常以基于 Embedding 的语义搜索为核心。通用流程如下：</p>
+<ol>
+<li><strong>离线索引构建</strong>：将知识库内文档切分后，使用 Embedding 模型将每个文档块（Chunk）转换为向量，存入专门的向量数据库中。</li>
+<li><strong>在线查询检索</strong>：当用户提出问题时，使用<strong>同一个</strong> Embedding 模型将用户的问题也转换为一个向量。</li>
+<li><strong>相似度计算</strong>：在向量数据库中，计算“问题向量”与所有“文档块向量”的相似度。</li>
+<li><strong>召回上下文</strong>：选取相似度最高的 Top-K 个文档块，作为补充的上下文信息，与原始问题一同送给大语言模型（LLM）生成最终答案。</li>
+</ol>
+<p>Embedding 的质量直接决定了 RAG 检索召回内容的准确性与相关性。一个优秀的 Embedding 模型能够精准捕捉问题和文档之间的深层语义联系，即使用户的提问和原文的表述不完全一致。</p>
+<p>反之，一个劣质的 Embedding 模型可能会因为无法理解语义而召回不相关或错误的信息，从而“污染”提供给 LLM 的上下文，导致最终生成的答案质量低下。</p>
+<p><strong>3.1.2 Embedding 技术发展</strong></p>
+<p>略</p>
+<p><strong>3.1.3 嵌入模型训练原理</strong></p>
+<p>了解了嵌入模型的发展，我们来简单探究一下当前主流的嵌入模型（通常是基于 <code>BERT</code> 的变体）是如何通过训练获得强大的语义理解能力的。</p>
+<p>现代嵌入模型的核心通常是 Transformer 的编码器（Encoder）部分，<code>BERT</code> 就是其中的典型代表。它通过堆叠多个 <code>Transformer Encoder</code> 层来构建一个深度的双向表示学习网络。</p>
+<p>BERT 的成功很大程度上归功于 <strong>自监督学习</strong> 策略，它允许模型从海量的、无标注的文本数据中学习知识。</p>
+<p><strong>任务一：掩码语言模型 (Masked Language Model, MLM)</strong></p>
+<ul>
+<li><strong>过程</strong>：<ul>
+<li>随机地将输入句子中 15% 的词元（Token）替换为一个特殊的 <code>[MASK]</code> 标记。</li>
+<li>让模型去预测这些被遮盖住的原始词元是什么。</li>
+</ul>
+</li>
+<li><strong>目标</strong>：通过这个任务，模型被迫学习每个词元与其上下文之间的关系，从而掌握深层次的语境语义。</li>
+</ul>
+<p><strong>任务二：下一句预测 (Next Sentence Prediction, NSP)</strong></p>
+<ul>
+<li><strong>过程</strong>：<ul>
+<li>构造训练样本，每个样本包含两个句子 A 和 B。</li>
+<li>其中 50% 的样本，B 是 A 的真实下一句（IsNext）；另外 50% 的样本，B 是从语料库中随机抽取的句子（NotNext）。</li>
+<li>让模型判断 B 是否是 A 的下一句。</li>
+</ul>
+</li>
+<li><strong>目标</strong>：这个任务让模型学习句子与句子之间的逻辑关系、连贯性和主题相关性。</li>
+<li><strong>重要说明</strong>：后续的研究（如 RoBERTa）发现[^2]，NSP 任务可能过于简单，甚至会损害模型性能。因此，许多现代的预训练模型（如 RoBERTa、SBERT）在预训练阶段移除了 NSP。</li>
+</ul>
+<blockquote>
+<p>更多细节可查看 <a href="https://github.com/datawhalechina/base-nlp/blob/main/docs/chapter5/13_Bert.md">BERT 架构及应用</a></p>
+</blockquote>
+<p><strong>效果增强策略</strong></p>
+<p>虽然 MLM 和 NSP 赋予了模型强大的基础语义理解能力，但为了在检索任务中表现更佳，现代嵌入模型通常会引入更具针对性的训练策略。</p>
+<ul>
+<li>
+<p><strong>度量学习 (Metric Learning)</strong> ：</p>
+<ul>
+<li><strong>思想</strong>：直接以“相似度”作为优化目标。</li>
+<li><strong>方法</strong>：收集大量相关的文本对（例如，（问题，答案）、（新闻标题，正文））。训练的目标是优化向量空间中的<strong>相对距离</strong>：让“正例对”的向量表示在空间中被“拉近”，而“负例对”的向量表示被“推远”。关键在于优化排序关系，而非追求绝对的相似度值（如 1 或 0），因为过度追求极端值可能导致模型过拟合。</li>
+</ul>
+</li>
+<li>
+<p><strong>对比学习 (Contrastive Learning)</strong> ：</p>
+<ul>
+<li><strong>思想</strong>：在向量空间中，将相似的样本“拉近”，将不相似的样本“推远”。</li>
+<li><strong>方法</strong>：构建一个三元组（Anchor, Positive, Negative）。其中，Anchor 和 Positive 是相关的（例如，同一个问题的两种不同问法），Anchor 和 Negative 是不相关的。训练的目标是让 <code>distance(Anchor, Positive)</code> 尽可能小，同时让 <code>distance(Anchor, Negative)</code> 尽可能大。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3.1.4 嵌入模型选型指南</strong></p>
+<p><a href="https://huggingface.co/spaces/mteb/leaderboard"><strong>MTEB (Massive Text Embedding Benchmark)</strong></a> 是一个由 Hugging Face 维护的、全面的文本嵌入模型评测基准。它涵盖了分类、聚类、检索、排序等多种任务，并提供了公开的排行榜，为评估和选择嵌入模型提供了重要的参考依据。</p>
+<p>下面这张图是网站中的模型评估图像，直观地展示了在选择开源嵌入模型时需要权衡的四个核心维度：</p>
+<ul>
+<li><strong>横轴 - 模型参数量 (Number of Parameters)</strong> ：代表了模型的大小。通常，参数量越大的模型（越靠右），其潜在能力越强，但对计算资源的要求也越高。</li>
+<li><strong>纵轴 - 平均任务得分 (Mean Task Score)</strong> ：代表了模型的综合性能。这个分数是模型在分类、聚类、检索等一系列标准 NLP 任务上的平均表现。分数越高（越靠上），说明模型的通用语义理解能力越强。</li>
+<li><strong>气泡大小 - 嵌入维度 (Embedding Size)</strong> ：代表了模型输出向量的维度。气泡越大，维度越高，理论上能编码更丰富的语义细节，但同时也会占用更多的存储和计算资源。</li>
+<li><strong>气泡颜色 - 最大处理长度 (Max Tokens)</strong> ：代表了模型能处理的文本长度上限。颜色越深，表示模型能处理的 Token 数量越多，对长文本的适应性越好。</li>
+</ul>
+<p><img alt="MTEB 排行榜多维度评估示意图" src="images/3_1_3.png" /></p>
+<p>MTEB 榜单可以帮助我们快速筛选掉大量不合适的模型。但需要注意，榜单上的得分是在通用数据集上评测的，可能无法完全反映模型在你特定业务场景下的表现。</p>
+<p>在查看榜单时，除了分数，还需要关注以下几个<strong>关键维度</strong>：</p>
+<ul>
+<li><strong>任务 (Task)</strong> ：对于 RAG 应用，需要重点关注模型在 <code>Retrieval</code> (检索) 任务下的排名。</li>
+<li><strong>语言 (Language)</strong> ：模型是否支持你的业务数据所使用的语言？对于中文 RAG，应选择明确支持中文或多语言的模型。</li>
+<li><strong>模型大小 (Size)</strong> ：模型越大，通常性能越好，但对硬件（显存）的要求也越高，推理速度也越慢。需要根据你的部署环境和性能要求来权衡。</li>
+<li><strong>维度 (Dimensions)</strong> ：向量维度越高，能编码的信息越丰富，但也会占用更多的存储空间和计算资源。</li>
+<li><strong>最大 Token 数 (Max Tokens)</strong> ：这决定了模型能处理的文本长度上限。这个参数是你设计文本分块（Chunking）策略时必须考虑的重要依据，块大小不应超过此限制。</li>
+<li><strong>得分与机构 (Score &amp; Publisher)</strong> ：结合模型的得分排名和其发布机构的声誉进行初步筛选。知名机构发布的模型通常质量更有保障。</li>
+<li><strong>成本 (Cost)</strong> ：如果是使用 API 服务的模型，需要考虑其调用成本；如果是自部署开源模型，则需要评估其对硬件资源的消耗（如显存、内存）以及带来的运维成本。</li>
+</ul>
+<p>不要只依赖公开榜单做最终决定。</p>
+<ol>
+<li><strong>确定基线 (Baseline)</strong> ：根据上述维度，选择几个符合要求的模型作为你的初始基准模型。</li>
+<li><strong>构建私有评测集</strong> ：根据真实业务数据，手动创建一批高质量的评测样本，每个样本包含一个典型用户问题和它对应的标准答案（或最相关的文档块）。</li>
+<li><strong>迭代优化</strong> ：<ul>
+<li>使用基线模型在你的私有评测集上运行，评估其召回的准确率和相关性。</li>
+<li>如果效果不理想，可以尝试更换模型，或者调整 RAG 流程的其他环节（如文本分块策略）。</li>
+<li>通过几轮的对比测试和迭代优化，最终选出在你的特定场景下表现最佳的那个“心仪”模型。</li>
+</ul>
+</li>
+</ol>
+<h3 id="32">3.2 <strong>多模态嵌入</strong></h3>
+<p><strong>3.2.1 为什么需要多模态嵌入？</strong></p>
+<p>前面的章节介绍了如何为文本创建向量嵌入。然而，仅有文本的世界是不完整的。现实世界的信息是多模态的，包含图像、音频、视频等。传统的文本嵌入无法理解“那张有红色汽车的图片”这样的查询，因为文本向量和图像向量处于相互隔离的空间，存在一堵“模态墙”。</p>
+<p><strong>多模态嵌入 (Multimodal Embedding)</strong> 的目标正是为了打破这堵墙。其目的是将不同类型的数据（如图像和文本）映射到<strong>同一个共享的向量空间</strong>。在这个统一的空间里，一段描述“一只奔跑的狗”的文字，其向量会非常接近一张真实小狗奔跑的图片向量。</p>
+<p>实现这一目标的关键，在于解决 <strong>跨模态对齐 (Cross-modal Alignment)</strong> 的挑战。以对比学习、视觉 Transformer (ViT) 等技术为代表的突破，让模型能够学习到不同模态数据之间的语义关联，最终催生了像 CLIP 这样的模型。</p>
+<p><strong>3.2.2 CLIP 模型浅析</strong></p>
+<p>在图文多模态领域，OpenAI 的 <strong>CLIP (Contrastive Language-Image Pre-training)</strong> 是一个很有影响力的模型，它为多模态嵌入定义了一个有效的范式。</p>
+<p>CLIP 的架构清晰简洁。它采用<strong>双编码器架构 (Dual-Encoder Architecture)</strong>，包含一个图像编码器和一个文本编码器，分别将图像和文本映射到同一个共享的向量空间中。</p>
+<p><img alt="CLIP Architecture" src="images/3_2_1.png" /></p>
+<p><em>图：CLIP 的工作流程。(1) 通过对比学习训练双编码器，对齐图文向量空间。(2)和(3) 展示了如何利用该空间，通过图文相似度匹配实现零样本预测。</em></p>
+<p>为了让这两个编码器学会“对齐”不同模态的语义，CLIP 在训练时采用了<strong>对比学习 (Contrastive Learning)</strong> 策略。在处理一批图文数据时，模型的目标是：最大化正确图文对的向量相似度，同时最小化所有错误配对的相似度。通过这种“拉近正例，推远负例”的方式，模型从海量数据中学会了将语义相关的图像和文本在向量空间中拉近。</p>
+<p>这种大规模的对比学习赋予了 CLIP 有效的<strong>零样本（Zero-shot）识别能力</strong>。它能将一个传统的分类任务，转化为一个“图文检索”问题——例如，要判断一张图片是不是猫，只需计算图片向量与“a photo of a cat”文本向量的相似度即可。这使得 CLIP 无需针对特定任务进行微调，就能实现对视觉概念的泛化理解。</p>
+<p><strong>3.2.3 常用多模态嵌入模型(以bge-visualized-m3为例)</strong></p>
+<p>虽然 CLIP 为图文预训练提供了重要基础，但多模态领域的研究迅速发展，涌现了许多针对不同目标和场景进行优化的模型。例如，BLIP 系列专注于提升细粒度的图文理解与生成能力，而 ALIGN 则证明了利用海量噪声数据进行大规模训练的有效性。</p>
+<p>在众多优秀的模型中，由北京智源人工智能研究院（BAAI）开发的 <strong>bge-visualized-m3（Visualized-BGE 的 M3 版本）</strong> 是一个很有代表性的现代多模态嵌入模型。它是在 <strong>BGE-M3</strong>（文本嵌入底座）的基础上引入图像能力而来，体现了当前技术向“更统一、更全面”发展的趋势。</p>
+<p>bge-visualized-m3 的核心特性也可以概括为“M3”（主要继承自其文本底座 BGE-M3）：
+- <strong>多语言性 (Multi-Linguality)</strong>：支持超过 100 种语言的文本表示，可用于跨语言的图文检索（文本侧）。
+- <strong>多功能性 (Multi-Functionality)</strong>：在文本检索场景下，可按需求使用密集检索（Dense Retrieval）、多向量检索（Multi-Vector Retrieval）等不同范式。
+- <strong>多粒度性 (Multi-Granularity)</strong>：文本侧可处理从短句到长达 8192 个 token 的长文档，覆盖更广泛的应用需求。</p>
+<p>在技术架构上，bge-visualized-m3 会先用视觉编码器提取图像的 <strong>patch token</strong>，再将其映射到与文本同维度的“图像 token”，与文本 token 一起送入 BGE 的 Transformer 编码器进行联合建模，最终得到可用于图文检索的统一向量表示。</p>
+<p><strong>3.2.4 代码示例</strong></p>
+<p><strong>步骤1：安装 visual_bge 模块</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 进入 visual_bge 目录</span>
+<span class="nb">cd</span><span class="w"> </span>code/C3/visual_bge
+
+<span class="c1"># 安装 visual_bge 模块及其依赖</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># 返回上级目录</span>
+<span class="nb">cd</span><span class="w"> </span>..
+</code></pre></div>
+<p><strong>步骤2：下载模型权重</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 运行模型下载脚本</span>
+python<span class="w"> </span>download_model.py
+</code></pre></div>
+<p>模型下载脚本会自动检查 <code>../../models/bge/</code> 目录下是否存在模型文件，如果不存在则从 Hugging Face 镜像站下载。</p>
+<p><strong>基础示例</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HF_ENDPOINT&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://hf-mirror.com&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">visual_bge.visual_bge.modeling</span><span class="w"> </span><span class="kn">import</span> <span class="n">Visualized_BGE</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Visualized_BGE</span><span class="p">(</span><span class="n">model_name_bge</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-base-en-v1.5&quot;</span><span class="p">,</span>
+                      <span class="n">model_weight</span><span class="o">=</span><span class="s2">&quot;../../models/bge/Visualized_base_en_v1.5.pth&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">text_emb</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;datawhale开源组织的logo&quot;</span><span class="p">)</span>
+    <span class="n">img_emb_1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s2">&quot;../../data/C3/imgs/datawhale01.png&quot;</span><span class="p">)</span>
+    <span class="n">multi_emb_1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s2">&quot;../../data/C3/imgs/datawhale01.png&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;datawhale开源组织的logo&quot;</span><span class="p">)</span>
+    <span class="n">img_emb_2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s2">&quot;../../data/C3/imgs/datawhale02.png&quot;</span><span class="p">)</span>
+    <span class="n">multi_emb_2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="s2">&quot;../../data/C3/imgs/datawhale02.png&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;datawhale开源组织的logo&quot;</span><span class="p">)</span>
+
+<span class="c1"># 计算相似度</span>
+<span class="n">sim_1</span> <span class="o">=</span> <span class="n">img_emb_1</span> <span class="o">@</span> <span class="n">img_emb_2</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sim_2</span> <span class="o">=</span> <span class="n">img_emb_1</span> <span class="o">@</span> <span class="n">multi_emb_1</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sim_3</span> <span class="o">=</span> <span class="n">text_emb</span> <span class="o">@</span> <span class="n">multi_emb_1</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sim_4</span> <span class="o">=</span> <span class="n">multi_emb_1</span> <span class="o">@</span> <span class="n">multi_emb_2</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 相似度计算结果 ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;纯图像 vs 纯图像: </span><span class="si">{</span><span class="n">sim_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;图文结合1 vs 纯图像: </span><span class="si">{</span><span class="n">sim_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;图文结合1 vs 纯文本: </span><span class="si">{</span><span class="n">sim_3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;图文结合1 vs 图文结合2: </span><span class="si">{</span><span class="n">sim_4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>代码解读：</strong></p>
+<ul>
+<li><strong>模型架构</strong>: <code>Visualized_BGE</code> 是通过将图像token嵌入集成到BGE文本嵌入框架中构建的通用多模态嵌入模型，具备处理超越纯文本的多模态数据的灵活性。</li>
+<li><strong>模型参数</strong>:</li>
+<li><code>model_name_bge</code>: 指定底层BGE文本嵌入模型，继承其强大的文本表示能力。</li>
+<li><code>model_weight</code>: Visual BGE的预训练权重文件，包含视觉编码器参数。</li>
+<li><strong>多模态编码能力</strong>: Visual BGE提供了编码多模态数据的多样性，支持纯文本、纯图像或图文组合的格式：</li>
+<li><strong>纯文本编码</strong>: 保持原始BGE模型的强大文本嵌入能力。</li>
+<li><strong>纯图像编码</strong>: 使用基于EVA-CLIP的视觉编码器处理图像。</li>
+<li><strong>图文联合编码</strong>: 将图像和文本特征融合到统一的向量空间。</li>
+<li><strong>应用场景</strong>: 主要用于混合模态检索任务，包括多模态知识检索、组合图像检索、多模态查询的知识检索等。</li>
+<li><strong>相似度计算</strong>: 使用矩阵乘法计算余弦相似度，所有嵌入向量都被标准化到单位长度，确保相似度值在合理范围内。</li>
+</ul>
+<p><strong>运行结果：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">===</span><span class="w"> </span><span class="nv">相似度计算结果</span><span class="w"> </span><span class="o">===</span>
+纯图像<span class="w"> </span>vs<span class="w"> </span>纯图像:<span class="w"> </span>tensor<span class="o">([[</span><span class="m">0</span>.8318<span class="o">]])</span>
+图文结合1<span class="w"> </span>vs<span class="w"> </span>纯图像:<span class="w"> </span>tensor<span class="o">([[</span><span class="m">0</span>.8291<span class="o">]])</span>
+图文结合1<span class="w"> </span>vs<span class="w"> </span>纯文本:<span class="w"> </span>tensor<span class="o">([[</span><span class="m">0</span>.7627<span class="o">]])</span>
+图文结合1<span class="w"> </span>vs<span class="w"> </span>图文结合2:<span class="w"> </span>tensor<span class="o">([[</span><span class="m">0</span>.9058<span class="o">]])</span>
+</code></pre></div>
+<blockquote>
+<p><a href="https://github.com/datawhalechina/all-in-rag/blob/main/code/C3/01_bge_visualized.py">完整代码</a></p>
+</blockquote>
+<h3 id="33">3.3 <strong>向量数据库</strong></h3>
+<p>使用嵌入模型将文本、图像等非结构化数据转换为高维向量，这些向量是 RAG 系统能够进行语义理解的基础。</p>
+<p>然而，当向量数量从几百个增长到数百万甚至数十亿时，一个核心问题随之而来：<strong>如何快速、准确地从海量向量中找到与用户查询最相似的那几个？</strong></p>
+<p><strong>3.3.1 向量数据库的主要功能</strong></p>
+<p>向量数据库的核心价值在于其高效处理海量高维向量的能力。其主要功能可以概括为以下几点：</p>
+<ul>
+<li><strong>高效的相似性搜索</strong>：这是向量数据库最重要的功能。它利用专门的索引技术（如 HNSW, IVF），能够在数十亿级别的向量中实现毫秒级的近似最近邻（ANN）查询，快速找到与给定查询最相似的数据。</li>
+<li><strong>高维数据存储与管理</strong>：专门为存储高维向量（通常维度成百上千）而优化，支持对向量数据进行增、删、改、查等基本操作。</li>
+<li><strong>丰富的查询能力</strong>：除了基本的相似性搜索，还支持按标量字段过滤查询（例如，在搜索相似图片的同时，指定<code>年份 &gt; 2023</code>）、范围查询和聚类分析等，满足复杂业务需求。</li>
+<li><strong>可扩展与高可用</strong>：现代向量数据库通常采用分布式架构，具备良好的水平扩展能力和容错性，能够通过增加节点来应对数据量的增长，并确保服务的稳定可靠。</li>
+<li><strong>数据与模型生态集成</strong>：与主流的 AI 框架（如 LangChain, LlamaIndex）和机器学习工作流无缝集成，简化了从模型训练到向量检索的应用开发流程。</li>
+</ul>
+<p><strong>3.3.2 向量数据库 vs 传统数据库</strong></p>
+<p>传统的数据库（如 MySQL）擅长处理结构化数据的精确匹配查询（例如，<code>WHERE age = 25</code>），但它们并非为处理高维向量的相似性搜索而设计的。在庞大的向量集合中进行暴力、线性的相似度计算，其计算成本和时间延迟无法接受。</p>
+<p><strong>向量数据库 (Vector Database)</strong> 很好的解决了这一问题，它是一种专门设计用于高效存储、管理和查询高维向量的数据库系统。在 RAG 流程中，它扮演着“知识库”的角色，是连接数据与大语言模型的关键桥梁。</p>
+<p>向量数据库与传统数据库的主要差异：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>维度</strong></th>
+<th style="text-align: left;"><strong>向量数据库</strong></th>
+<th style="text-align: left;"><strong>传统数据库 (RDBMS)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>核心数据类型</strong></td>
+<td style="text-align: left;">高维向量 (Embeddings)</td>
+<td style="text-align: left;">结构化数据 (文本、数字、日期)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>查询方式</strong></td>
+<td style="text-align: left;"><strong>相似性搜索</strong> (ANN)</td>
+<td style="text-align: left;"><strong>精确匹配</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>索引机制</strong></td>
+<td style="text-align: left;">HNSW, IVF, LSH 等 ANN 索引</td>
+<td style="text-align: left;">B-Tree, Hash Index</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>主要应用场景</strong></td>
+<td style="text-align: left;">AI 应用、RAG、推荐系统、图像/语音识别</td>
+<td style="text-align: left;">业务系统 (ERP, CRM)、金融交易、数据报表</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>数据规模</strong></td>
+<td style="text-align: left;">轻松应对千亿级向量</td>
+<td style="text-align: left;">通常在千万到亿级行数据，更大规模需复杂分库分表</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>性能特点</strong></td>
+<td style="text-align: left;">高维数据检索性能极高，计算密集型</td>
+<td style="text-align: left;">结构化数据查询快，高维数据查询性能呈指数级下降</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>一致性</strong></td>
+<td style="text-align: left;">通常为最终一致性</td>
+<td style="text-align: left;">强一致性 (ACID 事务)</td>
+</tr>
+</tbody>
+</table>
+<p>向量数据库和传统数据库并非相互替代的关系，而是<strong>互补关系</strong>。在构建现代 AI 应用时，通常会将两者结合使用：</p>
+<ul>
+<li>利用传统数据库存储业务元数据和结构化信息</li>
+<li>向量数据库则专门负责处理和检索由 AI 模型产生的海量向量数据。</li>
+</ul>
+<p><strong>3.3.3 工作原理</strong></p>
+<p>向量数据库的核心是高效处理高维向量的相似性搜索。</p>
+<p>向量是一组有序的数值，可以表示文本、图像、音频等复杂数据的特征或属性。</p>
+<p>向量数据库通常采用四层架构：</p>
+<ul>
+<li><strong>存储层</strong>：负责存储向量数据和元数据，优化存储效率并支持分布式存储；</li>
+<li><strong>索引层</strong>：维护索引算法（HNSW、LSH、PQ等），负责索引的创建与优化，并支持索引调整；</li>
+<li><strong>查询层</strong>：处理查询请求，支持混合查询并实现查询优化；</li>
+<li><strong>服务层</strong>：管理客户端连接，提供监控和日志能力，并实现安全管理。</li>
+</ul>
+<p>主要技术手段：</p>
+<ul>
+<li><strong>基于树的方法</strong>：如 Annoy 使用的随机投影树，通过树形结构实现对数复杂度的搜索</li>
+<li><strong>基于哈希的方法</strong>：如 LSH（局部敏感哈希），通过哈希函数将相似向量映射到同一“桶”</li>
+<li><strong>基于图的方法</strong>：如 HNSW（分层可导航小世界图），通过多层邻近图结构实现快速搜索</li>
+<li><strong>基于量化的方法</strong>：如 Faiss 的 IVF 和 PQ，通过聚类和量化压缩向量</li>
+</ul>
+<p><strong>3.3.4 主流向量数据库</strong></p>
+<p>当前主流的向量数据库产品：</p>
+<p><a href="https://www.pinecone.io/"> <strong>Pinecone</strong> </a>是一款<strong>完全托管</strong>的向量数据库服务，采用Serverless架构设计。它提供存储计算分离、自动扩展和负载均衡等企业级特性，并保证 99.95% 的 SLA。Pinecone 支持多种语言 SDK，提供极高可用性和低延迟搜索（&lt;100ms），特别适合<strong>企业级生产环境、高并发场景和大规模部署</strong>。</p>
+<p><a href="https://github.com/milvus-io/milvus"> <strong>Milvus</strong> </a>是一款开源的<strong>分布式</strong>向量数据库，采用分布式架构设计，支持GPU加速和多种索引算法。它能够处理亿级向量检索，提供高性能 GPU 加速和完善的生态系统。Milvus 特别适合<strong>大规模部署、高性能要求</strong>的场景，以及需要自定义开发的开源项目。</p>
+<p><a href="https://github.com/qdrant/qdrant"> <strong>Qdrant</strong> </a>是一款<strong>高性能</strong>的开源向量数据库，采用 Rust 开发，支持二进制量化技术。它提供多种索引策略和向量混合搜索功能，能够实现极高的性能（RPS&gt;4000）和低延迟搜索。Qdrant 特别适合性能敏感应用、高并发场景以及中小规模部署。</p>
+<p><a href="https://github.com/weaviate/weaviate"> <strong>Weaviate</strong> </a>是一款支持 GraphQL 的 AI 集成向量数据库，提供 20+AI 模块和多模态支持。它采用 GraphQL API 设计，支持 RAG 优化，特别适合 AI 开发、多模态处理和快速开发场景。Weaviate 具有活跃的社区支持和易于集成的特点。</p>
+<p><a href="https://github.com/chroma-core/chroma"> <strong>Chroma</strong> </a>是一款<strong>轻量级</strong>的开源向量数据库，采用本地优先设计，无依赖。它提供零配置安装、本地运行和低资源消耗等特性，特别适合原型开发、教育培训和小规模应用。Chroma 的部署简单，适合快速原型开发。</p>
+<p><strong>选择建议</strong>：</p>
+<ul>
+<li><strong>新手入门/小型项目</strong>：从 <code>ChromaDB</code> 或 <code>FAISS</code> 开始是最佳选择。它们与 LangChain/LlamaIndex 紧密集成，几行代码就能运行，且能满足基本的存储和检索需求。</li>
+<li><strong>生产环境/大规模应用</strong>：当数据量超过百万级，或需要高并发、实时更新、复杂元数据过滤时，应考虑更专业的解决方案，如 <code>Milvus</code>、<code>Weaviate</code> 或云服务 <code>Pinecone</code>。</li>
+</ul>
+<p><strong>3.3.5 本地向量存储：以 FAISS 为例</strong></p>
+<p>FAISS (Facebook AI Similarity Search) 是一个由 Facebook AI Research 开发的高性能库，专门用于高效的相似性搜索和密集向量聚类。当与 LangChain 结合使用时，它可以作为一个强大的本地向量存储方案，非常适合快速原型设计和中小型应用。</p>
+<p>与 ChromaDB 等数据库不同，FAISS 本质上是一个算法库，它将索引直接保存为本地文件（一个 <code>.faiss</code> 索引文件和一个 <code>.pkl</code> 映射文件），而非运行一个数据库服务。这种方式轻量且高效。</p>
+<p><strong>环境准备</strong></p>
+<p>在开始之前，请确保已安装所有必需的库：</p>
+<blockquote>
+<p>当前requirements.txt安装的 <code>faiss-cpu</code> 是 CPU 版本。如果你的机器有 GPU，可以安装 <code>faiss-gpu</code> 以获得更好的性能。</p>
+</blockquote>
+<p><strong>基础示例(FAISS)</strong></p>
+<p>下面的代码演示了使用 LangChain 和 FAISS 完成一个完整的“创建 -&gt; 保存 -&gt; 加载 -&gt; 查询”流程。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.vectorstores</span><span class="w"> </span><span class="kn">import</span> <span class="n">FAISS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.documents</span><span class="w"> </span><span class="kn">import</span> <span class="n">Document</span>
+
+<span class="c1"># 1. 示例文本和嵌入模型</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;张三是法外狂徒&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;FAISS是一个用于高效相似性搜索和密集向量聚类的库。&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LangChain是一个用于开发由语言模型驱动的应用程序的框架。&quot;</span>
+<span class="p">]</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Document</span><span class="p">(</span><span class="n">page_content</span><span class="o">=</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">]</span>
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;BAAI/bge-small-zh-v1.5&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. 创建向量存储并保存到本地</span>
+<span class="n">vectorstore</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">from_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">embeddings</span><span class="p">)</span>
+
+<span class="n">local_faiss_path</span> <span class="o">=</span> <span class="s2">&quot;./faiss_index_store&quot;</span>
+<span class="n">vectorstore</span><span class="o">.</span><span class="n">save_local</span><span class="p">(</span><span class="n">local_faiss_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FAISS index has been saved to </span><span class="si">{</span><span class="n">local_faiss_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. 加载索引并执行查询</span>
+<span class="c1"># 加载时需指定相同的嵌入模型，并允许反序列化</span>
+<span class="n">loaded_vectorstore</span> <span class="o">=</span> <span class="n">FAISS</span><span class="o">.</span><span class="n">load_local</span><span class="p">(</span>
+    <span class="n">local_faiss_path</span><span class="p">,</span>
+    <span class="n">embeddings</span><span class="p">,</span>
+    <span class="n">allow_dangerous_deserialization</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># 相似性搜索</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;FAISS是做什么的？&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">loaded_vectorstore</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">查询: &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;相似度最高的文档:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<strong>运行结果与解读</strong>：</p>
+<p>当你运行上述脚本时，会看到类似以下的输出：
+<div class="highlight"><pre><span></span><code>FAISS<span class="w"> </span>index<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span>to<span class="w"> </span>./faiss_index_store
+
+查询:<span class="w"> </span><span class="s1">&#39;FAISS是做什么的？&#39;</span>
+相似度最高的文档:
+-<span class="w"> </span>FAISS是一个用于高效相似性搜索和密集向量聚类的库。
+</code></pre></div></p>
+<p><strong>索引创建实现细节</strong>：</p>
+<p>通过深入 LangChain 源码，可以发现索引创建是一个分层、解耦的过程，主要涉及以下几个方法的嵌套调用：</p>
+<ol>
+<li><strong><code>from_documents</code> (封装层)</strong>:<ul>
+<li>这是我们直接调用的方法。它的职责很简单：从输入的 <code>Document</code> 对象列表中提取出纯文本内容 (<code>page_content</code>) 和元数据 (<code>metadata</code>)。</li>
+<li>然后，它将这些提取出的信息传递给核心的 <code>from_texts</code> 方法。</li>
+</ul>
+</li>
+<li><strong><code>from_texts</code> (向量化入口)</strong>:<ul>
+<li>这个方法是面向用户的入口。它接收文本列表，并执行关键的第一步：调用 <code>embedding.embed_documents(texts)</code>，将所有文本批量转换为向量。</li>
+<li>完成向量化后，它并不直接处理索引构建，而是将生成的向量和其他所有信息（文本、元数据等）传递给一个内部的辅助方法 <code>__from</code>。</li>
+</ul>
+</li>
+<li><strong><code>__from</code> (构建索引框架)</strong>:<ul>
+<li>一个内部方法，负责搭建 FAISS 向量存储的“空框架”。</li>
+<li>它会根据指定的距离策略（默认为 L2 欧氏距离）初始化一个空的 FAISS 索引结构（如 <code>faiss.IndexFlatL2</code>）。</li>
+<li>同时，它也准备好了用于存储文档原文的 <code>docstore</code> 和用于连接 FAISS 索引与文档的 <code>index_to_docstore_id</code> 映射。</li>
+<li>最后，它调用另一个内部方法 <code>__add</code> 来完成数据的填充。</li>
+</ul>
+</li>
+<li><strong><code>__add</code> (填充数据)</strong>:<ul>
+<li>真正执行数据添加操作的核心。它接收到向量、文本和元数据后，执行以下关键操作：<ul>
+<li><strong>添加向量</strong>: 将向量列表转换为 FAISS 需要的 <code>numpy</code> 数组，并调用 <code>self.index.add(vector)</code> 将其批量添加到 FAISS 索引中。</li>
+<li><strong>存储文档</strong>: 将文本和元数据打包成 <code>Document</code> 对象，存入 <code>docstore</code>。</li>
+<li><strong>建立映射</strong>: 更新 <code>index_to_docstore_id</code> 字典，建立起 FAISS 内部的整数 ID（如 0, 1, 2...）到我们文档唯一 ID 的映射关系。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="34-milvus">3.4 <strong>Milvus 介绍及多模态检索实践</strong></h3>
+<p><strong>3.4.1 Milvus 简介</strong></p>
+<p>Milvus 是一个开源的、专为大规模向量相似性搜索和分析而设计的向量数据库。它诞生于 Zilliz 公司，并已成为 LF AI &amp; Data 基金会的顶级项目，在AI领域拥有广泛的应用。</p>
+<p>与 FAISS、ChromaDB 等轻量级本地存储方案不同，Milvus 从设计之初就瞄准了<strong>生产环境</strong>。其采用云原生架构，具备高可用、高性能、易扩展的特性，能够处理十亿、百亿甚至更大规模的向量数据。</p>
+<p><strong>官网地址</strong>: <a href="https://milvus.io/">https://milvus.io/</a></p>
+<p><strong>GitHub</strong>: <a href="https://github.com/milvus-io/milvus">https://github.com/milvus-io/milvus</a></p>
+<p><strong>3.4.2 Milvus 部署安装</strong></p>
+<p>Milvus 提供了多种部署方式，这里以 <strong>Milvus Standalone (单机版)</strong> 为例。</p>
+<p><strong>环境准备</strong></p>
+<ul>
+<li><strong>安装 Docker 与 Docker Compose</strong>: 确保系统中已安装并正在运行 Docker 和 Docker Compose。如果你对 Docker 不熟悉，可以参考这篇详细的教程：<a href="https://mp.weixin.qq.com/s/u2es87JU5FNlGo3qDLY_ng">Docker 万字教程：从入门到掌握</a>。</li>
+</ul>
+<blockquote>
+<p>codespace 环境自带Docker Compose无需安装</p>
+</blockquote>
+<p>……略</p>
+<p><strong>3.4.3 Milvus 核心组件</strong></p>
+<p><strong>3.4.4 Milvus 多模态实践</strong></p>
+<h3 id="35">3.5 <strong>索引优化</strong></h3>
+<p>在上一章的文本分块部分，已经简单介绍了一些索引优化的策略。本节将基于 LlamaIndex 的高性能生产级 RAG 构建方案，对索引优化进行更深入的探讨。</p>
+<p><strong>3.5.1 上下文扩展</strong></p>
+<p>在 RAG 系统中，常常面临一个权衡问题：</p>
+<ul>
+<li>使用小块文本进行检索可以获得更高的精确度，但小块文本缺乏足够的上下文，可能导致大语言模型（LLM）无法生成高质量的答案；</li>
+<li>而使用大块文本虽然上下文丰富，却容易引入噪音，降低检索的相关性。</li>
+</ul>
+<p>为了解决这一矛盾，LlamaIndex 提出了一种实用的索引策略——<strong>句子窗口检索（Sentence Window Retrieval）</strong>。</p>
+<p>该技术巧妙地结合了两种方法的优点：它在检索时聚焦于高度精确的单个句子，在送入 LLM 生成答案前，又智能地将上下文扩展回一个更宽的“窗口”，从而同时保证检索的准确性和生成的质量。</p>
+<p>句子窗口检索的思想：<strong>为检索精确性而索引小块，为上下文丰富性而检索大块</strong>。</p>
+<p>句子窗口检索的工作流程：</p>
+<ol>
+<li><strong>索引阶段</strong>：在构建索引时，文档被分割成<strong>单个句子</strong>。每个句子都作为一个独立的“节点（Node）”存入向量数据库。同时，每个句子节点都会在元数据（metadata）中存储其<strong>上下文窗口</strong>，即该句子原文中的前N个和后N个句子。这个窗口内的文本不会被索引，仅仅是作为元数据存储。</li>
+<li><strong>检索阶段</strong>：当用户发起查询时，系统会在所有<strong>单一句子节点</strong>上执行相似度搜索。因为句子是表达完整语义的最小单位，所以这种方式可以非常精确地定位到与用户问题最相关的核心信息。</li>
+<li><strong>后处理阶段</strong>：在检索到最相关的句子节点后，系统会使用一个名为 <code>MetadataReplacementPostProcessor</code> 的后处理模块。该模块会读取到检索到的句子节点的元数据，并用元数据中存储的<strong>完整上下文窗口</strong>来替换节点中原来的单一句子内容。</li>
+<li><strong>生成阶段</strong>：最后，这些被替换了内容的、包含丰富上下文的节点被传递给LLM，用于生成最终的答案。</li>
+</ol>
+<p>句子窗口检索的代码实现：</p>
+<p>下面通过 LlamaIndex 官网的示例，来演示如何实现句子窗口检索，并与常规的检索方法进行对比。该示例将加载一份PDF格式的IPCC气候报告，并就其中的专业问题进行提问。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 假设 Settings.llm 和 Settings.embed_model 已经预先配置好</span>
+
+<span class="c1"># 1. 加载文档</span>
+<span class="n">documents</span> <span class="o">=</span> <span class="n">SimpleDirectoryReader</span><span class="p">(</span>
+    <span class="n">input_files</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;../../data/C3/pdf/IPCC_AR6_WGII_Chapter03.pdf&quot;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="c1"># 2. 创建节点与构建索引</span>
+<span class="c1"># 2.1 句子窗口索引</span>
+<span class="n">node_parser</span> <span class="o">=</span> <span class="n">SentenceWindowNodeParser</span><span class="o">.</span><span class="n">from_defaults</span><span class="p">(</span>
+    <span class="n">window_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">window_metadata_key</span><span class="o">=</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+    <span class="n">original_text_metadata_key</span><span class="o">=</span><span class="s2">&quot;original_text&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sentence_nodes</span> <span class="o">=</span> <span class="n">node_parser</span><span class="o">.</span><span class="n">get_nodes_from_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="n">sentence_index</span> <span class="o">=</span> <span class="n">VectorStoreIndex</span><span class="p">(</span><span class="n">sentence_nodes</span><span class="p">)</span>
+</code></pre></div>
+<p>根据 LlamaIndex 的底层源码，<code>SentenceWindowNodeParser</code> 的核心逻辑位于 <code>build_window_nodes_from_documents</code> 方法中。其实现过程可以分解为以下几个关键步骤：</p>
+<p>（1）<strong>句子切分 (<code>sentence_splitter</code>)</strong> ：解析器首先接收一个文档（<code>Document</code>），然后调用 <code>self.sentence_splitter(doc.text)</code> 方法。这个 <code>sentence_splitter</code> 是一个可配置的函数，默认为 <code>split_by_sentence_tokenizer</code>，它负责将文档的全部文本精确地切分成一个句子列表（<code>text_splits</code>）。</p>
+<p>（2）<strong>创建基础节点 (<code>build_nodes_from_splits</code>)</strong> ：切分出的 <code>text_splits</code> 列表被传递给 <code>build_nodes_from_splits</code> 工具函数。这个函数会为列表中的<strong>每一个句子</strong>都创建一个独立的 <code>TextNode</code>。此时，每个 <code>TextNode</code> 的 <code>text</code> 属性就是这个句子的内容。</p>
+<p>（3）<strong>构建窗口并填充元数据 (主要循环)</strong> ：接下来，解析器会遍历所有新创建的 <code>TextNode</code>。对于位于第 <code>i</code> 个位置的节点，它会执行以下操作：</p>
+<ul>
+<li><strong>定位窗口</strong>：通过列表切片 <code>nodes[max(0, i - self.window_size) : min(i + self.window_size + 1, len(nodes))]</code> 来获取一个包含中心句子及其前后 <code>window_size</code>（默认为3）个邻近节点的列表（<code>window_nodes</code>）。这个切片操作很巧妙地处理了文档开头和结尾的边界情况。</li>
+<li><strong>组合窗口文本</strong>：将 <code>window_nodes</code> 列表中所有节点的 <code>text</code>（即所有在窗口内的句子）用空格拼接成一个长字符串。</li>
+<li>
+<p><strong>填充元数据</strong>：将上一步生成的长字符串（完整的上下文窗口）存入当前节点（第<code>i</code>个节点）的元数据中，键为 <code>self.window_metadata_key</code>（默认为 <code>"window"</code>）。同时，也会将节点自身的文本（原始句子）存入元数据，键为 <code>self.original_text_metadata_key</code>（默认为 <code>"original_text"</code>）。</p>
+</li>
+<li>
+<p><strong>设置元数据排除项</strong>：这是一个非常关键的细节。在填充完元数据后，代码会执行 <code>node.excluded_embed_metadata_keys.extend(...)</code> 和 <code>node.excluded_llm_metadata_keys.extend(...)</code>。这行代码的作用是告诉后续的嵌入模型和LLM，在处理这个节点时，<strong>应当忽略</strong> <code>"window"</code> 和 <code>"original_text"</code> 这两个元数据字段。这确保了只有单个句子的纯净文本被用于生成向量嵌入，从而保证了检索的高精度。而 <code>"window"</code> 字段仅供后续的 <code>MetadataReplacementPostProcessor</code> 使用。</p>
+</li>
+</ul>
+<p>通过以上步骤，<code>SentenceWindowNodeParser</code> 最终返回一个 <code>TextNode</code> 列表。列表中的每个节点都代表一个独立的句子，其 <code>text</code> 属性用于精确检索，而其 <code>metadata</code> 中则“隐藏”了用于生成答案的丰富上下文窗口。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2.2 常规分块索引 (基准)</span>
+<span class="n">base_parser</span> <span class="o">=</span> <span class="n">SentenceSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+<span class="n">base_nodes</span> <span class="o">=</span> <span class="n">base_parser</span><span class="o">.</span><span class="n">get_nodes_from_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="n">base_index</span> <span class="o">=</span> <span class="n">VectorStoreIndex</span><span class="p">(</span><span class="n">base_nodes</span><span class="p">)</span>
+
+<span class="c1"># 3. 构建查询引擎</span>
+<span class="n">sentence_query_engine</span> <span class="o">=</span> <span class="n">sentence_index</span><span class="o">.</span><span class="n">as_query_engine</span><span class="p">(</span>
+    <span class="n">similarity_top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">node_postprocessors</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">MetadataReplacementPostProcessor</span><span class="p">(</span><span class="n">target_metadata_key</span><span class="o">=</span><span class="s2">&quot;window&quot;</span><span class="p">)</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="n">base_query_engine</span> <span class="o">=</span> <span class="n">base_index</span><span class="o">.</span><span class="n">as_query_engine</span><span class="p">(</span><span class="n">similarity_top_k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 4. 执行查询并对比结果</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;What are the concerns surrounding the AMOC?&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;查询: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 句子窗口检索结果 ---&quot;</span><span class="p">)</span>
+<span class="n">window_response</span> <span class="o">=</span> <span class="n">sentence_query_engine</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;回答: </span><span class="si">{</span><span class="n">window_response</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 常规检索结果 ---&quot;</span><span class="p">)</span>
+<span class="n">base_response</span> <span class="o">=</span> <span class="n">base_query_engine</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;回答: </span><span class="si">{</span><span class="n">base_response</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>（1）<strong>构建句子窗口索引</strong>：这一步利用了 <code>SentenceWindowNodeParser</code>。它将文档解析为以单个句子为单位的 <code>Node</code>，同时将包含上下文的“窗口”文本（默认为前后各3个句子）存储在每个 <code>Node</code> 的元数据中。这一步是实现“为检索精确性而索引小块”思想的关键。</p>
+<p>（2）<strong>构建查询引擎与后处理</strong>：查询引擎的构建是实现“为生成质量而扩展上下文”的关键。</p>
+<ul>
+<li>在创建 <code>sentence_query_engine</code> 时，配置中加入了一个重要的后处理器 <code>MetadataReplacementPostProcessor</code>。</li>
+<li>它的作用是：当检索器根据用户查询找到最相关的节点（也就是单个句子）后，这个后处理器会立即介入。</li>
+<li>它会从该节点的元数据中读取出预先存储的完整“窗口”文本，并用它<strong>替换</strong>掉节点中原来的单个句子内容。</li>
+<li>这样，最终传递给大语言模型的就不再是孤立的句子，而是包含丰富上下文的完整文本段落，从而确保了生成答案的质量和连贯性。</li>
+</ul>
+<p>我们向两个引擎提出的问题是：“关于大西洋经向翻转环流（AMOC），人们主要担忧什么？” (What are the concerns surrounding the AMOC?)。</p>
+<p><strong>代码输出如下：</strong>
+<div class="highlight"><pre><span></span><code>查询:<span class="w"> </span>What<span class="w"> </span>are<span class="w"> </span>the<span class="w"> </span>concerns<span class="w"> </span>surrounding<span class="w"> </span>the<span class="w"> </span>AMOC?
+
+---<span class="w"> </span>句子窗口检索结果<span class="w"> </span>---
+回答:<span class="w"> </span>The<span class="w"> </span>Atlantic<span class="w"> </span>Meridional<span class="w"> </span>Overturning<span class="w"> </span>Circulation<span class="w"> </span><span class="o">(</span>AMOC<span class="o">)</span><span class="w"> </span>is<span class="w"> </span>projected<span class="w"> </span>to<span class="w"> </span>decline<span class="w"> </span>over<span class="w"> </span>the<span class="w"> </span>21st<span class="w"> </span>century<span class="w"> </span>with<span class="w"> </span>high<span class="w"> </span>confidence,<span class="w"> </span>though<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>low<span class="w"> </span>confidence<span class="w"> </span><span class="k">in</span><span class="w"> </span>quantitative<span class="w"> </span>projections<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>decline.<span class="w"> </span>Observational<span class="w"> </span>records<span class="w"> </span>since<span class="w"> </span>the<span class="w"> </span>mid-2000s<span class="w"> </span>are<span class="w"> </span>too<span class="w"> </span>short<span class="w"> </span>to<span class="w"> </span>determine<span class="w"> </span>the<span class="w"> </span>relative<span class="w"> </span>contributions<span class="w"> </span>of<span class="w"> </span>internal<span class="w"> </span>variability,<span class="w"> </span>natural<span class="w"> </span>forcing,<span class="w"> </span>and<span class="w"> </span>anthropogenic<span class="w"> </span>forcing<span class="w"> </span>to<span class="w"> </span>AMOC<span class="w"> </span>changes.<span class="w"> </span>Additionally,<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>low<span class="w"> </span>confidence<span class="w"> </span><span class="k">in</span><span class="w"> </span>reconstructed<span class="w"> </span>and<span class="w"> </span>modeled<span class="w"> </span>AMOC<span class="w"> </span>changes<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>20th<span class="w"> </span>century<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>limited<span class="w"> </span>agreement<span class="w"> </span><span class="k">in</span><span class="w"> </span>quantitative<span class="w"> </span>trends.<span class="w"> </span>While<span class="w"> </span>an<span class="w"> </span>abrupt<span class="w"> </span>collapse<span class="w"> </span>before<span class="w"> </span><span class="m">2100</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>expected,<span class="w"> </span>the<span class="w"> </span>decline<span class="w"> </span>could<span class="w"> </span>have<span class="w"> </span>significant<span class="w"> </span>implications<span class="w"> </span><span class="k">for</span><span class="w"> </span>global<span class="w"> </span>climate<span class="w"> </span>patterns.
+
+---<span class="w"> </span>常规检索结果<span class="w"> </span>---
+回答:<span class="w"> </span>The<span class="w"> </span>concerns<span class="w"> </span>surrounding<span class="w"> </span>the<span class="w"> </span>Atlantic<span class="w"> </span>Meridional<span class="w"> </span>Overturning<span class="w"> </span>Circulation<span class="w"> </span><span class="o">(</span>AMOC<span class="o">)</span><span class="w"> </span>primarily<span class="w"> </span>involve<span class="w"> </span>its<span class="w"> </span>projected<span class="w"> </span>decline<span class="w"> </span>over<span class="w"> </span>the<span class="w"> </span>21st<span class="w"> </span>century<span class="w"> </span>across<span class="w"> </span>all<span class="w"> </span>Shared<span class="w"> </span>Socioeconomic<span class="w"> </span>Pathway<span class="w"> </span><span class="o">(</span>SSP<span class="o">)</span><span class="w"> </span>scenarios.<span class="w"> </span>While<span class="w"> </span>an<span class="w"> </span>abrupt<span class="w"> </span>collapse<span class="w"> </span>before<span class="w"> </span><span class="m">2100</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>expected,<span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>high<span class="w"> </span>confidence<span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>decline,<span class="w"> </span>though<span class="w"> </span>quantitative<span class="w"> </span>projections<span class="w"> </span>remain<span class="w"> </span>uncertain.<span class="w"> </span>Observational<span class="w"> </span>records<span class="w"> </span>since<span class="w"> </span>the<span class="w"> </span>mid-2000s<span class="w"> </span>are<span class="w"> </span>too<span class="w"> </span>short<span class="w"> </span>to<span class="w"> </span>clearly<span class="w"> </span>distinguish<span class="w"> </span>the<span class="w"> </span>contributions<span class="w"> </span>of<span class="w"> </span>internal<span class="w"> </span>variability,<span class="w"> </span>natural<span class="w"> </span>forcing,<span class="w"> </span>and<span class="w"> </span>anthropogenic<span class="w"> </span>forcing<span class="w"> </span>to<span class="w"> </span>these<span class="w"> </span>changes.<span class="w"> </span>This<span class="w"> </span>uncertainty<span class="w"> </span>highlights<span class="w"> </span>the<span class="w"> </span>need<span class="w"> </span><span class="k">for</span><span class="w"> </span>further<span class="w"> </span>research<span class="w"> </span>to<span class="w"> </span>better<span class="w"> </span>understand<span class="w"> </span>and<span class="w"> </span>predict<span class="w"> </span>AMOC<span class="w"> </span>behavior<span class="w"> </span>and<span class="w"> </span>its<span class="w"> </span>broader<span class="w"> </span>climate<span class="w"> </span>impacts.
+</code></pre></div></p>
+<p>从输出结果中可以观察到：</p>
+<ul>
+<li><strong>两个答案都抓住了核心</strong>：两个引擎都正确地识别出，对AMOC的主要担忧是其在21世纪预计的衰退。</li>
+<li><strong>句子窗口检索的答案更详尽、更连贯</strong>：句子窗口检索的回答不仅指出了衰退的趋势，还补充了关于“定量预测的置信度低”、“观测记录时间过短”、“20世纪重建和模拟的变化置信度低”等多个维度的细节。这使得答案的信息量更大，上下文更完整，更像一个综述。</li>
+<li><strong>常规检索的答案相对宽泛</strong>：常规检索的回答虽然正确，但内容相对概括，最后以“需要进一步研究”这样较为笼同的结论收尾。</li>
+</ul>
+<p>这种差异正是句子窗口检索策略优势的体现。它通过“精确检索小文本块（单个句子），再扩展上下文（句子窗口）”的方式，为大语言模型提供了高度相关且信息丰富的上下文，从而生成了质量更高的答案。</p>
+<blockquote>
+<p><a href="https://github.com/datawhalechina/all-in-rag/blob/main/code/C3/05_sentence_window_retrieval.py">完整代码</a></p>
+</blockquote>
+<h2 id="_3">三、检索优化</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="site-stats">
+    <span id="busuanzi_container_site_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+        总访问量 <strong id="busuanzi_value_site_pv">--</strong> 次
+      </span>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.07 10.41a5 5 0 0 0 0-5.82A3.4 3.4 0 0 1 15 4a3.5 3.5 0 0 1 0 7 3.4 3.4 0 0 1-1.93-.59M5.5 7.5A3.5 3.5 0 1 1 9 11a3.5 3.5 0 0 1-3.5-3.5m2 0A1.5 1.5 0 1 0 9 6a1.5 1.5 0 0 0-1.5 1.5M16 17v2H2v-2s0-4 7-4 7 4 7 4m-2 0c-.14-.78-1.33-2-5-2s-4.93 1.31-5 2m11.95-4A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4Z"/></svg>
+        访客数 <strong id="busuanzi_value_site_uv">--</strong> 人
+      </span>
+    </span>
+    <span id="busuanzi_container_page_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+        本页阅读 <strong id="busuanzi_value_page_pv">--</strong> 次
+      </span>
+    </span>
+    
+      <span
+        class="site-stats__item"
+        id="gh-stats"
+        data-api="https://api.github.com/repos/LiZH0911/LiZH0911.github.io"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25"/></svg>
+        GitHub <strong data-gh="stars">--</strong> Star ·
+        <strong data-gh="forks">--</strong> Fork
+      </span>
+    
+  </div>
+
+  <div class="md-copyright__highlight">
+    Copyright &copy; 2026 LiZH0911 · 记录学习路上的点点滴滴
+  </div>
+
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+    </div>
+  
+</div>
+
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<script>
+  (function () {
+    var el = document.getElementById("gh-stats")
+    if (!el || !el.dataset.api) return
+
+    fetch(el.dataset.api)
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status)
+        return res.json()
+      })
+      .then(function (data) {
+        el.querySelector('[data-gh="stars"]').textContent = data.stargazers_count
+        el.querySelector('[data-gh="forks"]').textContent = data.forks_count
+        el.hidden = false
+      })
+      .catch(function () {
+        // 取不到数据就保持隐藏，不影响页面其他内容
+      })
+  })()
+</script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

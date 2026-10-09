@@ -1,0 +1,41 @@
+/* 成果展示页 */
+.achievement-intro {
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto 1.5rem;
+}
+
+.achievement-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+}
+
+/* 卡片内的图片：圆角 + 细边框 */
+.md-typeset .grid.cards li > img {
+  border-radius: 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* 图文条目的配图 */
+.md-typeset figure {
+  text-align: center;
+  margin: 1.5rem auto;
+}
+
+.md-typeset figure img {
+  border-radius: 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset figcaption {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
