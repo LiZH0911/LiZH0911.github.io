@@ -14,7 +14,7 @@
         <link rel="prev" href="../JavaScript/">
       
       
-        <link rel="next" href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        <link rel="next" href="../Maven/">
       
       
         
@@ -1236,10 +1236,110 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Ajax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Ajax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Ajax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Axios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Axios 请求方式别名（推荐）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ajax 案例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Vue 生命周期
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2281,6 +2381,78 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、Ajax
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Ajax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Ajax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Axios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-axios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Axios 请求方式别名（推荐）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ajax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ajax 案例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Vue 生命周期
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2306,15 +2478,15 @@
 <h3 id="11-vue">1.1 <strong>Vue 快速入门</strong></h3>
 <p><strong>Vue 简介</strong>：Vue 是一款用于<strong>构建用户界面</strong>的<strong>渐进式</strong>的 JavaScript <strong>框架</strong></p>
 <ul>
-<li>构建用户界面：基于数据（如服务端返回的原始数据）渲染出用户看到的界面</li>
-<li>渐进式：根据需求选择 Vue 提供的功能</li>
-<li>框架：就是一套完整的项目解决方案，用于快速构建项目</li>
-<li>优点：大大提升前端项目的开发效率</li>
-<li>缺点：需要理解记忆框架的使用规则（参照 <a href="https://cn.vuejs.org/">Vue 官网</a>）</li>
+<li><strong>构建用户界面</strong>：基于数据（如服务端返回的原始数据）渲染出用户看到的界面</li>
+<li><strong>渐进式</strong>：根据需求选择 Vue 提供的功能</li>
+<li><strong>框架</strong>：一套完整的项目解决方案，用于快速构建项目（大大提升前端项目的开发效率）</li>
+<li><a href="https://cn.vuejs.org/">Vue 官网</a></li>
 </ul>
+<p><img alt="Vue.png" src="images/Vue.png" /></p>
 <p><strong>Vue 的使用步骤</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="cm">&lt;!-- 3. 准备元素，被Vue控制 --&gt;</span>
+  <span class="cm">&lt;!-- 3. 准备元素（div），被 Vue 控制 --&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- 通过插值表达式渲染页面 --&gt;</span>
     <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{message}}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> 
@@ -2322,12 +2494,13 @@
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
   <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="c1">// 1. 引入Vue模块（通过 CDN 以及原生 ES 模块使用 Vue）</span>
+<span class="w">    </span><span class="c1">// 1. 引入 Vue 模块（通过 CDN 以及原生 ES 模块使用 Vue）</span>
 <span class="w">    </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createApp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// 2. 创建Vue的应用实例，控制视图的元素</span>
+<span class="w">    </span><span class="c1">// 2. 创建 Vue 的应用实例，控制视图的元素</span>
 <span class="w">    </span><span class="nx">createApp</span><span class="p">({</span>
 <span class="w">      </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 准备数据</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Hello Vue&#39;</span><span class="p">,</span>
 <span class="w">          </span><span class="nx">count</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span>
@@ -2343,7 +2516,7 @@
   <span class="p">&lt;</span><span class="nt">p</span> <span class="na">v-xxx</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></div>
-<p><strong>v-for</strong>：</p>
+<p><strong><code>v-for</code></strong>：</p>
 <ul>
 <li>作用：列表渲染，遍历容器的元素或者对象的属性</li>
 <li>语法：<code>&lt;tr v-for="(item, index) in items" :key="item.id"&gt; {{item}}&lt;/tr&gt;</code></li>
@@ -2351,31 +2524,31 @@
 <blockquote>
 <p>key: 唯一标识，推荐使用 id 作为 key</p>
 </blockquote>
-<p><strong>v-bind</strong>：</p>
+<p><strong><code>v-bind</code></strong>：</p>
 <ul>
 <li>作用：动态为 HTML 标签绑定属性值</li>
 <li>语法：<code>v-bind:属性名="属性值"</code></li>
 </ul>
-<p><strong>v-if</strong>：</p>
+<p><strong><code>v-if</code></strong>：</p>
 <ul>
 <li>作用：控制元素的显示和隐藏</li>
 <li>语法：<code>v-if="表达式"</code>、<code>v-else-if="表达式"</code>、<code>v-else="表达式"</code>，表达式为 true 才渲染</li>
-<li>原理：基于条件判断，来控制创建或移除元素节点（条件渲染）</li>
+<li>原理：基于条件判断，来控制创建或移除元素节点（<strong>条件渲染</strong>）</li>
 <li>场景：不频繁切换</li>
 </ul>
-<p><strong>v-show</strong>：</p>
+<p><strong><code>v-show</code></strong>：</p>
 <ul>
 <li>作用：控制元素的显示和隐藏</li>
 <li>语法：<code>v-show="表达式"</code>，表达式为 true 才显示</li>
-<li>原理：基于 CSS 样式 display 来控制显示与隐藏（渲染后条件显示）</li>
+<li>原理：基于 CSS 样式 display 来控制显示与隐藏（<strong>渲染后条件显示</strong>）</li>
 <li>场景：频繁切换</li>
 </ul>
-<p><strong>v-model</strong>：</p>
+<p><strong><code>v-model</code></strong>：</p>
 <ul>
 <li>作用：在表单元素上使用，双向数据绑定。可以方便的 获取 或 设置 表单项数据</li>
 <li>语法：<code>v-model="变量名”</code></li>
 </ul>
-<p><strong>v-on</strong>：</p>
+<p><strong><code>v-on</code></strong>：</p>
 <ul>
 <li>作用：为 html 标签绑定事件（添加事件监听）</li>
 <li>语法：<code>v-on:事件名="方法名"</code>，简写为<code>@事件名="..."</code></li>
@@ -2626,6 +2799,175 @@
 </code></pre></div>
 
 </details>
+
+<h2 id="ajax">二、Ajax</h2>
+<h3 id="21-ajax">2.1 <strong>Ajax</strong></h3>
+<p><strong>Ajax</strong>：Asynchronous JavaScript And XML，异步的 JavaScript 和 XML。</p>
+<p><strong>作用</strong>：</p>
+<ul>
+<li><strong>数据交换</strong>：通过 Ajax 可以给服务器发送请求，并获取服务器响应的数据。</li>
+<li><strong>异步交互</strong>：可以在<strong>不重新加载整个页面</strong>的情况下，与服务器交换数据并<strong>更新部分网页</strong>的技术，如：搜索联想、用户名是否可用的校验等等。</li>
+</ul>
+<h3 id="22-axios">2.2 <strong>Axios</strong></h3>
+<p><strong>Axios</strong>：Axios 对原生的 Ajax 进行了封装，简化书写，快速开发。</p>
+<ul>
+<li><a href="https://www.axios-http.cn/">Axios 官网</a></li>
+</ul>
+<p><strong>步骤</strong>：</p>
+<ul>
+<li>引入 Axios 的 <code>.js</code> 文件（参照官网）</li>
+<li>使用 Axios 发送请求，并获取响应结果</li>
+</ul>
+<p><img alt="Axios.png" src="images/Axios.png" /></p>
+<ul>
+<li><code>method</code>：请求方式，如 <code>GET</code>、<code>POST</code></li>
+<li><code>url</code>：请求路径</li>
+<li><code>data</code>：请求数据（<code>method</code>为 <code>POST</code> 时）</li>
+<li><code>params</code>：发送请求时携带的 url 参数 如：...?key=val</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;获取数据GET&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btnGet&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;操作数据POST&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btnPost&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/axios.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="c1">//发送GET请求</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btnGet&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">//axios发起异步请求</span>
+<span class="w">            </span><span class="nx">axios</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://mock.apifox.cn/m1/3083103-0-default/emps/list&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;GET&#39;</span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//成功回调函数</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//失败回调函数</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">})</span>
+
+<span class="w">        </span><span class="c1">//发送POST请求</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btnPost&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">//axios发起异步请求</span>
+<span class="w">            </span><span class="nx">axios</span><span class="p">({</span>
+<span class="w">                </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;https://mock.apifox.cn/m1/3083103-0-default/emps/update&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;id=1&#39;</span><span class="w"> </span><span class="c1">//POST请求方式 , 请求体</span>
+<span class="w">            </span><span class="p">}).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//成功回调函数</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//失败回调函数</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="23-axios">2.3 <strong>Axios 请求方式别名（推荐）</strong></h3>
+<p>为了方便起见，Axios 已经为所有支持的请求方法提供了别名</p>
+<p>格式：<code>axios.请求方式(url [, data [, config]])</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;获取数据GET&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btnGet&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;操作数据POST&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btnPost&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/axios.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">        </span><span class="c1">//发送GET请求</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btnGet&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;https://mock.apifox.cn/m1/3083103-0-default/emps/list&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">            </span><span class="p">})</span>
+<span class="w">            </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//失败回调函数</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;==========================&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 这行比上面的先输出（异步交互）</span>
+<span class="w">        </span><span class="p">})</span>
+
+
+<span class="w">        </span><span class="c1">//发送POST请求</span>
+<span class="w">        </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btnPost&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;https://mock.apifox.cn/m1/3083103-0-default/emps/update&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;id=1&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="24-ajax">2.4 <strong>Ajax 案例</strong></h3>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    // ...省略页面内容定义
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/axios.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createApp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;</span>
+
+<span class="w">      </span><span class="nx">createApp</span><span class="p">({</span>
+<span class="w">        </span><span class="c1">// data() 函数定义组件要用到的所有&quot;响应式数据&quot;</span>
+<span class="w">        </span><span class="c1">// 每个组件实例调用一次 data()，就得到一份全新独立的数据。保证每个组件实例的数据互相独立。</span>
+<span class="w">        </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">searchForm</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//封装用户输入的查询条件</span>
+<span class="w">                </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">gender</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="nx">job</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">empList</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="c1">// 员工列表</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// methods 对象定义组件中的方法</span>
+<span class="w">        </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// async、await将异步变为同步</span>
+<span class="w">            </span><span class="k">async</span><span class="w"> </span><span class="nx">search</span><span class="p">(){</span>
+<span class="w">                </span><span class="c1">// 发送ajax请求，获取数据</span>
+<span class="w">                </span><span class="c1">// 代码可读性、可维护性不强</span>
+<span class="w">                </span><span class="c1">// axios.get(`https://web-server.itheima.net/emps/list?name=${this.searchForm.name}&amp;gender=${this.searchForm.gender}&amp;job=${this.searchForm.job}`).then((result) =&gt; {</span>
+<span class="w">                </span><span class="c1">//     this.empList = result.data.data;</span>
+<span class="w">                </span><span class="c1">// })</span>
+<span class="w">                </span><span class="c1">// console.log(&#39;===========================&#39;);</span>
+
+<span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="sb">`https://web-server.itheima.net/emps/list?name=</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">searchForm</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">&amp;gender=</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">searchForm</span><span class="p">.</span><span class="nx">gender</span><span class="si">}</span><span class="sb">&amp;job=</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">searchForm</span><span class="p">.</span><span class="nx">job</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">empList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nx">clear</span><span class="p">(){</span>
+<span class="w">                </span><span class="c1">//清空表单项数据</span>
+<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">searchForm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">gender</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">job</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">}</span>
+<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">search</span><span class="p">()</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="c1">// 生命周期-钩子函数 mounted</span>
+<span class="w">        </span><span class="nx">mounted</span><span class="p">(){</span>
+<span class="w">            </span><span class="c1">// 页面加载完成之后，自动发送 ajax 请求，获取数据</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">search</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}).</span><span class="nx">mount</span><span class="p">(</span><span class="s1">&#39;#container&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="vue_2">三、Vue 生命周期</h2>
+<p><strong>生命周期</strong>：指一个对象从创建到销毁的整个过程。</p>
+<p><strong>生命周期的八个阶段</strong>：每触发一个生命周期事件，会自动执行一个<strong>生命周期方法（钩子）</strong>。</p>
+<p><img alt="Vue生命周期.png" src="images/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" /></p>
+<p><strong>典型应用场景</strong>：在页面加载完毕时，发起异步请求，加载数据，渲染页面</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    // ...省略页面内容定义
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/axios.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createApp</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;</span>
+
+<span class="w">      </span><span class="nx">createApp</span><span class="p">({</span>
+<span class="w">        </span><span class="c1">// ...省略 data() 函数 和 methods 对象</span>
+
+<span class="w">        </span><span class="c1">// 生命周期-钩子函数 mounted</span>
+<span class="w">        </span><span class="nx">mounted</span><span class="p">(){</span>
+<span class="w">            </span><span class="c1">// 页面加载完成之后，自动发送 ajax 请求，获取数据</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">search</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}).</span><span class="nx">mount</span><span class="p">(</span><span class="s1">&#39;#container&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
 
 
 

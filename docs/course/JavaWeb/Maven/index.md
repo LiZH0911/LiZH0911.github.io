@@ -213,6 +213,12 @@ default 生命周期包含以下阶段：
 
 执行某个阶段时，会按顺序先执行它之前的所有阶段。例如 `mvn package` 会依次执行 `validate` → `compile` → `test` → `package`
 
+**1.6.4 site 生命周期**
+
+1. `pre-site`：生成站点前的工作
+2. `site`：生成项目站点文档
+3. `post-site`：生成站点后的工作
+4. `site-deploy`：将站点发布到服务器
 
 ### 1.7 **Maven 项目目录结构**
 

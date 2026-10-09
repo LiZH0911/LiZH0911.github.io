@@ -2,7 +2,7 @@
 
 - [Python](Python/index.md)
 - [Python 后端开发](Python后端/FastAPI/index.md)
-- [Java 基础](Java/index.md)
+- [Java 基础](Java%2FJava%E5%9F%BA%E7%A1%80-JavaGuide%2Findex.md)
 - [JavaWeb 开发](JavaWeb/index.md)
 - [数据库](%E6%95%B0%E6%8D%AE%E5%BA%93%2Findex.md)
 - [Agent 基础](Agent/index.md)

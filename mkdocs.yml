@@ -50,6 +50,11 @@ extra_css:
   - assets/home.css
   - assets/about.css
   - assets/footer.css
+  - assets/achievements.css
+
+# 可选：让正文图片点击放大（先安装：pip install mkdocs-glightbox）
+# plugins:
+#   - glightbox
 
 nav:
   - 主页: index.md
@@ -98,10 +103,10 @@ nav:
         - 十、智能体通信协议: course/Agent/十、智能体通信协议/index.md
         - 十一、Agentic-RL: course/Agent/十一、Agentic-RL/index.md
         - 十二、智能体性能评估: course/Agent/十二、智能体性能评估/index.md
+    - RAG: course/RAG/index.md
     - AI 应用开发-JavaGuide:
         - 大模型基础: course/AI 应用开发/大模型基础/index.md
         - AI Agent: course/AI 应用开发/AI Agent/index.md
-        - RAG: course/AI 应用开发/RAG/index.md
         - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
 #        - 面试题: course/AI 应用开发/面试题/index.md
 
@@ -114,8 +119,11 @@ nav:
         - Claude Code: course/常用工具/Claude Code/index.md
         - Skill: course/常用工具/Skill/index.md
         - Docker: course/常用工具/Docker/index.md
+        - Linux: course/常用工具/Linux/index.md
+        - Shell: course/常用工具/Shell/index.md
 
   - 留言板: guestbook/index.md
+  - 个人经历: achievements/index.md
   - 关于: about/index.md
 
 extra:
