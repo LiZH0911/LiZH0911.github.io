@@ -104,12 +104,18 @@ nav:
         - 十一、Agentic-RL: course/Agent/十一、Agentic-RL/index.md
         - 十二、智能体性能评估: course/Agent/十二、智能体性能评估/index.md
     - RAG: course/RAG/index.md
-    - AI 应用开发-JavaGuide:
-        - 大模型基础: course/AI 应用开发/大模型基础/index.md
-        - AI Agent: course/AI 应用开发/AI Agent/index.md
-        - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
+#    - AI 应用开发-JavaGuide:
+#        - 大模型基础: course/AI 应用开发/大模型基础/index.md
+#        - AI Agent: course/AI 应用开发/AI Agent/index.md
+#        - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
 #        - 面试题: course/AI 应用开发/面试题/index.md
-
+    - 计算机视觉:
+        - 传统数字图像处理: course/计算机视觉/传统数字图像处理/index.md
+        - 视频编解码基础: course/计算机视觉/视频编解码基础/index.md
+        - 2D 目标检测: course/计算机视觉/2D目标检测/index.md
+        - 3D 视觉算法: course/计算机视觉/3D视觉算法/index.md
+        - 工业视觉-HALCON: course/计算机视觉/工业视觉-HALCON/index.md
+#    - 模型部署: course/模型部署/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
         - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
