@@ -109,6 +109,7 @@ nav:
 #        - AI Agent: course/AI 应用开发/AI Agent/index.md
 #        - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
 #        - 面试题: course/AI 应用开发/面试题/index.md
+    - 机器学习: course/机器学习/index.md
     - 计算机视觉:
         - 传统数字图像处理: course/计算机视觉/传统数字图像处理/index.md
         - 视频编解码基础: course/计算机视觉/视频编解码基础/index.md
