@@ -1,0 +1,7463 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lizh0911.github.io/course/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
+      
+      
+        <link rel="prev" href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+      
+      
+        <link rel="next" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%BC%A0%E7%BB%9F%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>深度学习 - LiZH0911的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/home.css">
+    
+      <link rel="stylesheet" href="../../assets/about.css">
+    
+      <link rel="stylesheet" href="../../assets/footer.css">
+    
+      <link rel="stylesheet" href="../../assets/achievements.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-header__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiZH0911的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              深度学习
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  技术栈
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../guestbook/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  留言板
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../achievements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  个人经历
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LiZH0911的学习笔记" class="md-nav__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    LiZH0911的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技术栈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技术栈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 后端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 后端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python%E5%90%8E%E7%AB%AF/FastAPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python%E5%90%8E%E7%AB%AF/Web%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web 开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%9F%BA%E7%A1%80-%E9%BB%91%E9%A9%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-黑马
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%9F%BA%E7%A1%80-JavaGuide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 集合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/Java%E5%B9%B6%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 并发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/JavaIO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java IO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/JVM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Java/%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    新特性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaWeb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/HTML-CSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML-CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/JavaScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/Vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaWeb/Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 基础-Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent 基础-Hello-Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%80%E3%80%81%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二、智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%89%E3%80%81%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%9B%9B%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四、智能体经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%BA%94%E3%80%81%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、基于低代码平台的智能体搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AD%E3%80%81%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B8%83%E3%80%81%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%20Agent%20%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    七、构建你的 Agent 框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%85%AB%E3%80%81%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E4%B9%9D%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    九、上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十、智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%B8%80%E3%80%81Agentic-RL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十一、Agentic-RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent/%E5%8D%81%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十二、智能体性能评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RAG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、深度学习导论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、深度学习导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 深度学习的定义，与人工智能、机器学习的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 "深度"的优势：层次化特征表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 深度学习 vs 传统机器学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 表示学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 深度学习的核心假设：分层特征提取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 深度学习的核心特征，与浅层模型相比的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 深度学习依赖的三大支柱：数据、算力、算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 深度学习的局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 深度学习与统计学习、概率模型的联系与区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.10 端到端学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.11 深度学习在小数据场景下的解决方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.12 可解释性问题及其解决方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.13 深度学习在不同数据模态上的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.14 模型评估指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.15 大模型时代的深度学习：基础模型范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-gpucuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.16 GPU、CUDA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、神经网络基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、神经网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 人工神经元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 感知机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 多层感知机（MLP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 偏置项（Bias）的作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 通用近似定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 宽度与深度对模型的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 全零初始化的对称性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 对称性破坏方法：随机初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-fnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 前馈神经网络（FNN）的结构和前向传播过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 全连接层的参数量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 过拟合和欠拟合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 L 范数正则化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.12 Dropout 正则化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213-bn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.13 批归一化（BN）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.14 回归与分类任务的常用损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-mse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.15 交叉熵损失与均方误差损失（MSE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-mini-batch-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.16 神经网络的训练过程，Mini-batch SGD的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.17 学习率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.18 学习率调度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.19 计算图、自动微分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.20 梯度消失和梯度爆炸
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-bp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.21 反向传播（BP）算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.22 自动微分、反向模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-pytorch-tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.23 PyTorch 或 TensorFlow 中反向传播的底层实现机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-batch-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.24 批大小（Batch Size）对反向传播和梯度更新的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-sgdmomentumrmspropadam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.25 梯度下降的变体（SGD、Momentum、RMSProp、Adam）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、激活函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、激活函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 激活函数的核心作用：引入非线性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 理想激活函数的性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 激活函数的饱和性：导致梯度消失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 激活函数的输出分布对后续层的训练的影响、零中心化的重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 激活函数的计算效率对工业部署的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 经典激活函数——Sigmoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 经典激活函数——Tanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-relu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 经典激活函数——ReLU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-dying-reluleaky-relu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 "神经元死亡"（Dying ReLU）问题、Leaky ReLU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-elu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 ELU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 经典激活函数选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-gelu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 现代激活函数——GELU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机视觉
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机视觉
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E4%BC%A0%E7%BB%9F%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传统数字图像处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E8%A7%86%E9%A2%91%E7%BC%96%E8%A7%A3%E7%A0%81%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视频编解码基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/2D%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D 目标检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/3D%E8%A7%86%E8%A7%89%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D 视觉算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/%E5%B7%A5%E4%B8%9A%E8%A7%86%E8%A7%89-HALCON/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工业视觉-HALCON
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Python%E5%8C%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包与环境管理工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Nodejs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Claude%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/ROS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guestbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    留言板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../achievements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人经历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、深度学习导论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、深度学习导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 深度学习的定义，与人工智能、机器学习的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 "深度"的优势：层次化特征表示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 深度学习 vs 传统机器学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 表示学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 深度学习的核心假设：分层特征提取
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 深度学习的核心特征，与浅层模型相比的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 深度学习依赖的三大支柱：数据、算力、算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 深度学习的局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 深度学习与统计学习、概率模型的联系与区别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.10 端到端学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.11 深度学习在小数据场景下的解决方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.12 可解释性问题及其解决方案
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.13 深度学习在不同数据模态上的应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.14 模型评估指标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.15 大模型时代的深度学习：基础模型范式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-gpucuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.16 GPU、CUDA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、神经网络基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、神经网络基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 人工神经元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 感知机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 多层感知机（MLP）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-bias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 偏置项（Bias）的作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 通用近似定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 宽度与深度对模型的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 全零初始化的对称性问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 对称性破坏方法：随机初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-fnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 前馈神经网络（FNN）的结构和前向传播过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 全连接层的参数量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.10 过拟合和欠拟合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#211-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.11 L 范数正则化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#212-dropout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.12 Dropout 正则化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#213-bn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.13 批归一化（BN）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#214" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.14 回归与分类任务的常用损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#215-mse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.15 交叉熵损失与均方误差损失（MSE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#216-mini-batch-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.16 神经网络的训练过程，Mini-batch SGD的优势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#217" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.17 学习率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#218" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.18 学习率调度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#219" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.19 计算图、自动微分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#220" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.20 梯度消失和梯度爆炸
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#221-bp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.21 反向传播（BP）算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.22 自动微分、反向模式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223-pytorch-tensorflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.23 PyTorch 或 TensorFlow 中反向传播的底层实现机制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#224-batch-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.24 批大小（Batch Size）对反向传播和梯度更新的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#225-sgdmomentumrmspropadam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.25 梯度下降的变体（SGD、Momentum、RMSProp、Adam）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、激活函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、激活函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 激活函数的核心作用：引入非线性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 理想激活函数的性质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 激活函数的饱和性：导致梯度消失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 激活函数的输出分布对后续层的训练的影响、零中心化的重要性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 激活函数的计算效率对工业部署的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-sigmoid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 经典激活函数——Sigmoid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-tanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 经典激活函数——Tanh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-relu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 经典激活函数——ReLU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-dying-reluleaky-relu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 "神经元死亡"（Dying ReLU）问题、Leaky ReLU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-elu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 ELU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 经典激活函数选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-gelu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 现代激活函数——GELU
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">深度学习</h1>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://github.com/WeThinkIn/AIGC-Interview-Book/tree/main/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80">AIGC-Interview-Book-深度学习基础</a></li>
+</ul>
+<h2 id="_2">一、深度学习导论</h2>
+<h3 id="11">1.1 <strong>深度学习的定义，与人工智能、机器学习的关系</strong></h3>
+<p><strong>1.1.1 定义</strong></p>
+<p><strong>深度学习（Deep Learning）</strong> 是机器学习的一个子领域，其核心思想是通过<strong>多层神经网络</strong>自动从数据中学习层次化的特征表示，而无需人工设计特征。</p>
+<table>
+<thead>
+<tr>
+<th>领域</th>
+<th>定义</th>
+<th>核心特点</th>
+<th>代表技术</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>人工智能 (AI)</strong></td>
+<td>让机器展现出智能行为的广泛领域</td>
+<td>最广泛的概念，包含所有智能系统</td>
+<td>专家系统、搜索算法、知识图谱</td>
+</tr>
+<tr>
+<td><strong>机器学习 (ML)</strong></td>
+<td>AI的子集，让机器从数据中学习规律</td>
+<td>数据驱动，自动改进性能</td>
+<td>决策树、SVM、随机森林</td>
+</tr>
+<tr>
+<td><strong>深度学习 (DL)</strong></td>
+<td>ML的子集，使用深层神经网络</td>
+<td>多层特征学习，端到端训练</td>
+<td>CNN、RNN、Transformer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.1.2 深度学习的核心特征</strong>：</p>
+<ol>
+<li><strong>层次化特征学习</strong>：自动从原始数据中学习多层抽象特征</li>
+<li><strong>端到端训练</strong>：直接从输入到输出优化，无需人工特征工程</li>
+<li><strong>大规模数据驱动</strong>：数据量越大，性能提升越明显</li>
+<li><strong>高计算需求</strong>：依赖 GPU/TPU 等并行计算硬件</li>
+</ol>
+<hr />
+<h3 id="12">1.2 <strong>"深度"的优势：层次化特征表示</strong></h3>
+<p>"深度"指的是神经网络中<strong>隐藏层（Hidden Layers）的数量</strong>，即从输入到输出之间数据经过的层数。</p>
+<p><strong>1.2.1 深度带来的核心优势</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+<th>数学直觉</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>层次化特征表示</strong></td>
+<td>浅层学简单特征，深层学复杂特征</td>
+<td>低层：边缘 → 中层：形状 → 高层：物体</td>
+</tr>
+<tr>
+<td><strong>指数级表达能力</strong></td>
+<td>深层网络比浅层网络参数效率更高</td>
+<td>深度网络可用更少参数表达相同函数</td>
+</tr>
+<tr>
+<td><strong>抽象层次递进</strong></td>
+<td>每一层对上一层的特征进行抽象组合</td>
+<td><span class="arithmatex">\(h^{(l)} = f(W^{(l)}h^{(l-1)} + b^{(l)})\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>深度与特征层次的关系（以图像识别为例）</strong></p>
+<div class="highlight"><pre><span></span><code>Layer 1-2:  边缘检测（线条、角点、简单纹理）
+Layer 3-4:  局部形状（眼睛、耳朵、轮廓）
+Layer 5-6:  物体部件（人脸、车身）
+Layer 7+:   完整物体（人、汽车、场景）
+</code></pre></div>
+<p><strong>1.2.2 多深的网络才算"深度学习"？</strong></p>
+<table>
+<thead>
+<tr>
+<th>网络类型</th>
+<th>隐藏层数</th>
+<th>典型应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>浅层网络</td>
+<td>1-2层</td>
+<td>简单分类、早期感知机</td>
+</tr>
+<tr>
+<td>中层网络</td>
+<td>3-10层</td>
+<td>LeNet、AlexNet</td>
+</tr>
+<tr>
+<td>深层网络</td>
+<td>10-100层</td>
+<td>ResNet、VGG</td>
+</tr>
+<tr>
+<td>超深层网络</td>
+<td>100+层</td>
+<td>ResNet-152、Transformer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.2.3 三大领域应用</strong>：</p>
+<ul>
+<li><strong>AIGC领域</strong>：Stable Diffusion的U-Net有数十层，浅层学习图像的低频信息（整体布局），深层学习高频细节（纹理、边缘），最终生成高质量图像。</li>
+<li><strong>传统深度学习</strong>：ResNet-152通过152层实现ImageNet分类，残差连接让深层网络可训练，证明了深度的价值。</li>
+<li><strong>自动驾驶</strong>：感知网络通常有50-100层，浅层检测车道线、交通标志，深层理解场景语义、预测行人意图。</li>
+<li><strong>最新补充（2026年视角）</strong>：2024-2025年的研究表明，网络深度的重要性正在发生变化。<strong>Mamba等状态空间模型</strong>通过序列建模实现了线性复杂度，而<strong>混合专家（MoE）架构</strong>则通过"宽度"（专家数量）而非"深度"来扩展模型能力。GPT-4等模型虽然参数量巨大，但实际推理时只激活部分参数，"有效深度"的概念变得更加复杂。</li>
+</ul>
+<hr />
+<h3 id="13-vs">1.3 <strong>深度学习 vs 传统机器学习</strong></h3>
+<p>深度学习与传统机器学习最本质的区别在于<strong>特征表示的获取方式</strong>：</p>
+<ul>
+<li>传统机器学习依赖<strong>人工设计特征</strong>；</li>
+<li>深度学习则<strong>自动学习特征表示</strong>。</li>
+</ul>
+<p><strong>1.3.1 差异分析</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统机器学习</th>
+<th>深度学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>特征工程</strong></td>
+<td>需要领域专家手工设计</td>
+<td>自动从数据中学习</td>
+</tr>
+<tr>
+<td><strong>数据需求</strong></td>
+<td>小样本即可有效</td>
+<td>需要大量数据</td>
+</tr>
+<tr>
+<td><strong>计算资源</strong></td>
+<td>CPU即可，计算量小</td>
+<td>需要GPU/TPU，计算量大</td>
+</tr>
+<tr>
+<td><strong>模型可解释性</strong></td>
+<td>较好（决策树、线性模型）</td>
+<td>较差（黑盒特性）</td>
+</tr>
+<tr>
+<td><strong>性能上限</strong></td>
+<td>受特征质量限制</td>
+<td>随数据和模型规模提升</td>
+</tr>
+<tr>
+<td><strong>训练时间</strong></td>
+<td>较短（分钟到小时）</td>
+<td>较长（小时到周）</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>传统机器学习流程：
+┌─────────┐    ┌─────────────────┐    ┌─────────────┐
+│ 原始数据 │ → │ 人工特征工程     │ → │ 分类器/回归器 │
+│         │    │ (SIFT, HOG, TF-IDF)│    │ (SVM, RF)   │
+└─────────┘    └─────────────────┘    └─────────────┘
+                     ↑
+              需要领域专业知识！
+
+深度学习流程：
+┌─────────┐    ┌─────────────────────────────────┐
+│ 原始数据 │ → │        端到端神经网络            │
+│         │    │  (特征学习 + 分类一体化)         │
+└─────────┘    └─────────────────────────────────┘
+                     ↑
+              自动学习特征，无需人工干预！
+</code></pre></div>
+<p><strong>1.3.2 数学视角的差异</strong>：</p>
+<ul>
+<li><strong>传统机器学习</strong>：固定特征映射 + 可学习分类器，即 <span class="arithmatex">\(y = f(\phi(x); \theta)\)</span>。其中 <span class="arithmatex">\(\phi(x)\)</span> 是人工设计的特征提取函数。</li>
+<li><strong>深度学习</strong>：特征映射和分类器联合学习，即 <span class="arithmatex">\(y = f(x; \theta) = f_L(f_{L-1}(...f_1(x; \theta_1)...); \theta_L)\)</span>。所有层的参数 <span class="arithmatex">\(\{\theta_1, ..., \theta_L\}\)</span> 同时优化。</li>
+</ul>
+<p><strong>1.3.3 适用场景分析</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方法</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结构化表格数据</td>
+<td>传统 ML（XGBoost、LightGBM）</td>
+<td>特征有意义，数据量适中</td>
+</tr>
+<tr>
+<td>图像/语音/视频</td>
+<td>深度学习</td>
+<td>原始特征复杂，需要自动学习</td>
+</tr>
+<tr>
+<td>小样本场景</td>
+<td>传统 ML + 迁移学习</td>
+<td>深度学习容易过拟合</td>
+</tr>
+<tr>
+<td>实时推理（低延迟）</td>
+<td>传统 ML</td>
+<td>模型小，推理快</td>
+</tr>
+<tr>
+<td>追求极致性能</td>
+<td>深度学习</td>
+<td>大数据+大模型=最佳性能</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.3.4 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：文本生成不可能手工设计"好的文本"的特征，必须用深度学习从海量文本中自动学习语言规律。</li>
+<li><strong>传统深度学习</strong>：ImageNet分类准确率从传统方法的 ~70% 提升到深度学习的 ~90%+，证明了自动特征学习的威力。</li>
+<li><strong>自动驾驶</strong>：传统方法需要人工设计"车道线检测算法"、"行人检测算法"，深度学习则端到端学习从图像到驾驶决策。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2025年出现了<strong>基础模型+微调</strong>的新范式。现在可以用少量数据微调大模型（如 LoRA、Adapter），既享受深度学习的表示能力，又只需要传统 ML 级别的数据量。同时，<strong>AutoML</strong> 工具正在自动化传统机器学习的特征工程，两种方法的边界正在融合。</li>
+</ul>
+<hr />
+<h3 id="14">1.4 <strong>表示学习</strong></h3>
+<p><strong>表示学习（Representation Learning）</strong> 是指让机器自动学习数据的<strong>有效表示（Representation）</strong>，使得后续任务（如分类、回归）变得更容易。深度学习通过<strong>多层非线性变换</strong>实现层次化的表示学习。</p>
+<p><strong>1.4.1 表示学习的核心思想</strong></p>
+<p>原始数据 → 学习到的表示 → 下游任务</p>
+<div class="arithmatex">\[
+x \xrightarrow{f_\theta} h \xrightarrow{g_\phi} y
+\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(x\)</span>：原始输入（如图像像素、文本词向量）</li>
+<li><span class="arithmatex">\(h\)</span>：学习到的表示（高层特征）</li>
+<li><span class="arithmatex">\(y\)</span>：任务输出（如分类标签）</li>
+<li><span class="arithmatex">\(f_\theta\)</span>：表示学习函数（神经网络前几层）</li>
+<li><span class="arithmatex">\(g_\phi\)</span>：任务特定函数（神经网络后几层）</li>
+</ul>
+<p><strong>1.4.2 什么是"好的表示"？</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>判别性</strong></td>
+<td>不同类别的表示差异大</td>
+<td>猫和狗的特征向量距离远</td>
+</tr>
+<tr>
+<td><strong>不变性</strong></td>
+<td>对无关变化保持稳定</td>
+<td>同一只猫不同角度的特征相似</td>
+</tr>
+<tr>
+<td><strong>解耦性</strong></td>
+<td>各维度相互独立</td>
+<td>一个维度控制颜色，一个控制形状</td>
+</tr>
+<tr>
+<td><strong>抽象性</strong></td>
+<td>逐层更加抽象</td>
+<td>边缘→形状→物体→概念</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.4.3 深度学习实现表示学习的机制</strong></p>
+<div class="highlight"><pre><span></span><code>输入图像         Layer 1          Layer 2          Layer 3         表示向量
+┌───────┐      ┌───────┐       ┌───────┐       ┌───────┐       ┌───────┐
+│ 像素  │  →   │ 边缘  │   →   │ 纹理  │   →   │ 部件  │   →   │ 语义  │
+│ 224×224│     │ 112×112│      │ 56×56 │       │ 28×28 │       │ 1×512 │
+└───────┘      └───────┘       └───────┘       └───────┘       └───────┘
+   原始          低级特征        中级特征         高级特征        抽象表示
+
+每一层通过非线性变换提取更抽象的特征：
+h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
+</code></pre></div>
+<p><strong>1.4.4 表示学习的两种范式</strong></p>
+<table>
+<thead>
+<tr>
+<th>范式</th>
+<th>训练方式</th>
+<th>代表方法</th>
+<th>优势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>监督表示学习</strong></td>
+<td>有标签数据驱动</td>
+<td>分类任务训练CNN</td>
+<td>任务特定，效果好</td>
+</tr>
+<tr>
+<td><strong>自监督表示学习</strong></td>
+<td>无标签，自造监督信号</td>
+<td>BERT、MAE、SimCLR</td>
+<td>数据效率高，泛化性强</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.4.5 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：CLIP模型学习图像和文本的统一表示空间，使得"用文字搜索图片"成为可能。Stable Diffusion 的文本编码器将 prompt 转换为语义表示向量。</li>
+<li><strong>传统深度学习</strong>：预训练的 ResNet、BERT 作为特征提取器，在下游任务上只需少量数据即可达到优异性能。迁移学习的核心就是表示的复用。</li>
+<li><strong>自动驾驶</strong>：BEV（鸟瞰图）表示学习将多摄像头图像统一到3D空间表示，使感知、预测、规划在同一表示空间进行。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2024-2025年，<strong>自监督表示学习</strong>取得重大突破。<strong>MAE（Masked Autoencoder）</strong>、<strong>DINOv2</strong> 等方法证明了无标签数据可以学习到与监督学习相当甚至更好的表示。<strong>多模态表示学习</strong>（如GPT-4V、Gemini）正在构建统一的视觉-语言表示空间，朝着"通用表示"的目标迈进。</li>
+</ul>
+<hr />
+<h3 id="15">1.5 <strong>深度学习的核心假设：分层特征提取</strong></h3>
+<p>深度学习的核心假设是<strong>层次化表示假设（Hierarchical Representation Hypothesis）</strong>：自然界的复杂概念可以分解为层次化的简单概念组合，深层网络正是通过逐层组合低级特征来构建高级概念。</p>
+<p><strong>1.5.1 核心假设的内容</strong>：</p>
+<ul>
+<li><strong>假设1：层次化结构假设</strong></li>
+</ul>
+<blockquote>
+<p>自然数据（图像、语音、文本）具有内在的层次结构，复杂概念由简单概念组合而成。</p>
+</blockquote>
+<ul>
+<li><strong>假设2：分布式表示假设</strong></li>
+</ul>
+<blockquote>
+<p>概念应该用多个维度的向量表示，而非单一符号。每个维度编码一个属性。</p>
+</blockquote>
+<ul>
+<li><strong>假设3：特征复用假设</strong></li>
+</ul>
+<blockquote>
+<p>低级特征可以被多个高级特征共享和复用，形成参数高效的表示。</p>
+</blockquote>
+<p><strong>1.5.2 为什么分层特征提取有效？</strong></p>
+<p><strong>（1）组合爆炸的解决方案</strong></p>
+<p>假设要识别 <span class="arithmatex">\(10^6\)</span> 种物体，每种物体有 <span class="arithmatex">\(10^3\)</span> 个变体：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>需要学习的模式数量</th>
+<th>可行性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接学习每种变体</td>
+<td><span class="arithmatex">\(10^6 \times 10^3 = 10^9\)</span></td>
+<td>不可行</td>
+</tr>
+<tr>
+<td>分层组合（10层，每层10种）</td>
+<td><span class="arithmatex">\(10 \times 10 = 100\)</span></td>
+<td>完全可行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（2）与大脑视觉皮层的对应</strong></p>
+<div class="highlight"><pre><span></span><code>V1区（初级视觉皮层）  ←→  网络浅层：边缘、方向检测
+V2区                  ←→  网络中层：纹理、简单形状
+V4区                  ←→  网络中高层：复杂形状、物体部件
+IT区（下颞叶皮层）    ←→  网络高层：物体识别、语义理解
+</code></pre></div>
+<p><strong>（3）数学上的表达能力优势</strong></p>
+<p><strong>定理（深度网络的指数优势）</strong>：对于某些函数，深度为 <span class="arithmatex">\(d\)</span> 的网络可以用 <span class="arithmatex">\(O(d)\)</span> 个参数表示，而深度为 <span class="arithmatex">\(O(1)\)</span> 的网络需要 <span class="arithmatex">\(O(2^d)\)</span> 个参数。</p>
+<p><strong>例子</strong>：表示 <span class="arithmatex">\(d\)</span> 位奇偶函数</p>
+<ul>
+<li>深度网络：<span class="arithmatex">\(O(d)\)</span> 个神经元</li>
+<li>浅层网络：<span class="arithmatex">\(O(2^d)\)</span> 个神经元</li>
+</ul>
+<p><strong>1.5.3 三大领域应用：</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：Stable Diffusion 的 U-Net 编码器分层提取图像特征，浅层编码布局，深层编码细节，实现了可控的图像生成。</li>
+<li><strong>传统深度学习</strong>：CNN 的成功正是因为卷积操作的层次堆叠完美匹配图像的层次结构——局部相关性 + 平移不变性。</li>
+<li><strong>自动驾驶</strong>：感知系统分层处理——底层检测车道线和障碍物，中层预测运动轨迹，高层进行行为决策，每一层都建立在前一层的基础上。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2025年的研究对层次化假设提出了新的理解。<strong>Vision Transformer（ViT）</strong> 的成功表明，即使没有明确的层次结构（ViT是各向同性的），通过<strong>自注意力机制</strong>也能学习到隐式的层次表示。同时，<strong>Mamba 等 SSM 架构</strong>提供了另一种组织信息的方式，挑战了"必须深层才能表达复杂概念"的传统假设。</li>
+</ul>
+<hr />
+<h3 id="16">1.6 <strong>深度学习的核心特征，与浅层模型相比的优势</strong></h3>
+<p><strong>1.6.1 深度学习的核心特征</strong></p>
+<p>深度学习的核心特征可以概括为<strong>"三层特性"</strong>：层次化特征学习、分布式表示、端到端优化。这些特性使其在复杂任务上显著优于浅层模型。</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>定义</th>
+<th>优势体现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>层次化特征学习</strong></td>
+<td>多层网络逐层提取抽象特征</td>
+<td>自动学习从低级到高级的特征层次</td>
+</tr>
+<tr>
+<td><strong>分布式表示</strong></td>
+<td>概念用高维向量表示，每个维度编码属性</td>
+<td>指数级的表示能力，泛化性强</td>
+</tr>
+<tr>
+<td><strong>端到端优化</strong></td>
+<td>从原始输入到最终输出的联合优化</td>
+<td>避免误差累积，全局最优</td>
+</tr>
+<tr>
+<td><strong>非线性变换</strong></td>
+<td>激活函数引入非线性</td>
+<td>可以拟合任意复杂函数</td>
+</tr>
+<tr>
+<td><strong>参数共享</strong></td>
+<td>卷积等操作复用参数</td>
+<td>参数效率高，泛化能力强</td>
+</tr>
+</tbody>
+</table>
+<p><strong>与浅层模型的对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>浅层模型（SVM、决策树等）</th>
+<th>深度学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>表示能力</strong></td>
+<td>有限，依赖特征工程</td>
+<td>强大，自动学习特征</td>
+</tr>
+<tr>
+<td><strong>数据利用</strong></td>
+<td>小数据即可，大数据提升有限</td>
+<td>小数据易过拟合，大数据持续提升</td>
+</tr>
+<tr>
+<td><strong>特征复用</strong></td>
+<td>特征独立，难以复用</td>
+<td>低层特征被高层共享</td>
+</tr>
+<tr>
+<td><strong>抽象能力</strong></td>
+<td>无法自动抽象</td>
+<td>逐层抽象，捕捉高级语义</td>
+</tr>
+<tr>
+<td><strong>泛化机制</strong></td>
+<td>正则化、核技巧</td>
+<td>Dropout、归一化、数据增强</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.6.2 分布式表示的威力</strong></p>
+<p><strong>例子：表示"红色的圆形苹果"</strong></p>
+<ul>
+<li><strong>局部表示（传统方法）</strong>：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>需要为每种组合分配一个符号：
+红苹果-001, 绿苹果-002, 红橙子-003...
+组合爆炸：N个属性 × M个值 = N×M 个符号
+</code></pre></div>
+<ul>
+<li><strong>分布式表示（深度学习）</strong>：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>向量 [颜色, 形状, 类别, ...]
+红苹果 ≈ [0.9, 0.1, 0.8, ...]  # 红、圆、水果
+绿苹果 ≈ [0.2, 0.1, 0.8, ...]  # 绿、圆、水果
+
+只需 N 个维度，可以表示 M^N 种组合！
+</code></pre></div>
+<p><strong>1.6.3 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：大语言模型的分布式表示使"国王-男人+女人=女王"这样的语义运算成为可能，这是传统符号AI无法实现的。</li>
+<li><strong>传统深度学习</strong>：ImageNet 上深度网络（ResNet）达到 96%+ 准确率，而传统方法（SIFT+SVM）只能达到~70%。</li>
+<li><strong>自动驾驶</strong>：浅层模型只能检测简单的车道线，深度学习可以理解复杂的城市场景、预测行人行为、做出驾驶决策。</li>
+<li><strong>最新补充（2026年视角）：</strong> 随着模型规模的扩大，深度学习展现出了<strong>涌现能力（Emergent Abilities）</strong>——在小模型中不存在的某些能力（如思维链推理、上下文学习）在大模型中突然出现。这是浅层模型完全无法比拟的，也说明"深度"的价值正在向"规模+深度"的综合优势演变。</li>
+</ul>
+<hr />
+<h3 id="17">1.7 <strong>深度学习依赖的三大支柱：数据、算力、算法</strong></h3>
+<p>深度学习的成功依赖三大支柱：海量数据、强大算力、有效算法。这三者缺一不可，且相互促进，形成了"数据-算力-算法"的飞轮效应。</p>
+<p><strong>1.7.1 三大支柱详解</strong></p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>作用</th>
+<th>具体要求</th>
+<th>2026年现状</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据</strong></td>
+<td>提供学习素材</td>
+<td>数量、质量、多样性</td>
+<td>GPT-4训练数据~13万亿tokens</td>
+</tr>
+<tr>
+<td><strong>算力</strong></td>
+<td>执行计算任务</td>
+<td>GPU/TPU集群、显存、带宽</td>
+<td>万卡H100集群，ExaFLOPS级别</td>
+</tr>
+<tr>
+<td><strong>算法</strong></td>
+<td>定义学习规则</td>
+<td>架构设计、优化方法、正则化</td>
+<td>Transformer、MoE、混合精度训练</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（1）数据质量维度</strong>：</p>
+<ul>
+<li><strong>准确性</strong>：标签正确无误</li>
+<li><strong>多样性</strong>：覆盖各种场景和边界情况</li>
+<li><strong>平衡性</strong>：类别分布合理，无严重偏差</li>
+<li><strong>时效性</strong>：反映当前任务的数据分布</li>
+</ul>
+<p><strong>（2）算力演进历程</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>硬件</th>
+<th>典型算力</th>
+<th>代表模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2012</td>
+<td>GTX 580</td>
+<td>~1 TFLOPS</td>
+<td>AlexNet</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>Pascal P100</td>
+<td>~10 TFLOPS</td>
+<td>ResNet</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>Ampere A100</td>
+<td>~312 TFLOPS</td>
+<td>GPT-3</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>Hopper H100</td>
+<td>~2000 TFLOPS</td>
+<td>GPT-4</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>Blackwell B200</td>
+<td>~4500 TFLOPS</td>
+<td>下一代大模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（3）算法关键突破</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>突破点</th>
+<th>贡献</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>激活函数</strong></td>
+<td>缓解梯度消失</td>
+<td>ReLU、GELU</td>
+</tr>
+<tr>
+<td><strong>归一化</strong></td>
+<td>加速训练收敛</td>
+<td>BatchNorm、LayerNorm</td>
+</tr>
+<tr>
+<td><strong>残差连接</strong></td>
+<td>支持超深网络</td>
+<td>ResNet</td>
+</tr>
+<tr>
+<td><strong>注意力机制</strong></td>
+<td>捕捉长距离依赖</td>
+<td>Transformer</td>
+</tr>
+<tr>
+<td><strong>预训练范式</strong></td>
+<td>充分利用无标签数据</td>
+<td>BERT、GPT</td>
+</tr>
+<tr>
+<td><strong>高效架构</strong></td>
+<td>降低计算成本</td>
+<td>MoE、FlashAttention</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.7.2 三要素的协同关系</strong></p>
+<div class="highlight"><pre><span></span><code>        ┌─────────┐
+        │  数据   │
+        └────┬────┘
+             │ 更多数据需要更强算力处理
+             ↓
+        ┌─────────┐
+        │  算力   │ ←── 更好算法提高算力利用率
+        └────┬────┘
+             │ 更强算力支持更复杂算法
+             ↓
+        ┌─────────┐
+        │  算法   │ ←── 更好算法减少数据需求
+        └────┬────┘
+             │ 算法改进提升数据效率
+             ↓
+        ┌─────────┐
+        │  数据   │ （形成正向循环）
+        └─────────┘
+</code></pre></div>
+<p><strong>1.7.3 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：ChatGPT的训练需要数万张GPU、PB级文本数据、以及Transformer架构和RLHF算法的完美结合，三者缺一不可。</li>
+<li><strong>传统深度学习</strong>：工业质检场景中，需要采集大量产品图像、部署边缘计算设备、设计适合的CNN架构才能达到生产级精度。</li>
+<li><strong>自动驾驶</strong>：特斯拉的FSD需要百万车队数据采集、自研Dojo超算、以及BEV+Transformer的感知算法，三管齐下。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2025年出现了<strong>"算力效率竞赛"</strong>的新趋势。由于高端GPU供应受限，研究者开始关注：<ul>
+<li><strong>小模型高效训练</strong>：Phi系列、Gemma证明小模型通过高质量数据也能达到好效果</li>
+<li><strong>数据效率提升</strong>：合成数据、课程学习减少对真实数据的依赖</li>
+<li><strong>算法效率优化</strong>：FlashAttention-3、量化训练降低算力需求</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="18">1.8 <strong>深度学习的局限性</strong></h3>
+<p>尽管深度学习取得了巨大成功，但仍面临可解释性、数据依赖、泛化能力、安全性和计算成本等多方面的挑战。理解这些局限对于正确应用深度学习至关重要。</p>
+<p><strong>1.8.1 主要局限性</strong></p>
+<table>
+<thead>
+<tr>
+<th>挑战</th>
+<th>问题描述</th>
+<th>影响程度</th>
+<th>当前进展</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>可解释性差</strong></td>
+<td>黑盒模型难以理解决策原因</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>SHAP、Attention 可视化</td>
+</tr>
+<tr>
+<td><strong>数据饥渴</strong></td>
+<td>需要大量标注数据</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>自监督学习、合成数据</td>
+</tr>
+<tr>
+<td><strong>分布外泛化</strong></td>
+<td>对训练分布外的数据表现差</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>域适应、因果学习</td>
+</tr>
+<tr>
+<td><strong>对抗脆弱性</strong></td>
+<td>小扰动可导致错误预测</td>
+<td>⭐⭐⭐⭐</td>
+<td>对抗训练、鲁棒优化</td>
+</tr>
+<tr>
+<td><strong>计算成本高</strong></td>
+<td>训练和部署资源消耗大</td>
+<td>⭐⭐⭐⭐</td>
+<td>模型压缩、高效架构</td>
+</tr>
+<tr>
+<td><strong>缺乏常识</strong></td>
+<td>缺乏物理世界常识</td>
+<td>⭐⭐⭐⭐</td>
+<td>知识增强、多模态学习</td>
+</tr>
+<tr>
+<td><strong>灾难性遗忘</strong></td>
+<td>学习新任务会遗忘旧任务</td>
+<td>⭐⭐⭐</td>
+<td>持续学习方法</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（1）可解释性挑战的解决方案</strong>：</p>
+<ul>
+<li><strong>事后解释</strong>：LIME、SHAP、Grad-CAM</li>
+<li><strong>内在可解释</strong>：注意力权重、决策树混合模型</li>
+<li><strong>概念解释</strong>：TCAV（Testing with Concept Activation Vectors）</li>
+</ul>
+<p><strong>（2）数据依赖问题的解决方案</strong>：</p>
+<ul>
+<li>数据增强、合成数据</li>
+<li>迁移学习、预训练+微调</li>
+<li>少样本学习、元学习</li>
+</ul>
+<p><strong>（3）分布外（OOD）泛化问题</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>训练分布</th>
+<th>测试分布</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常</td>
+<td>晴天驾驶图像</td>
+<td>晴天驾驶图像</td>
+<td>✓ 高准确率</td>
+</tr>
+<tr>
+<td>OOD</td>
+<td>晴天驾驶图像</td>
+<td>雨雪天气图像</td>
+<td>✗ 性能骤降</td>
+</tr>
+<tr>
+<td>域偏移</td>
+<td>医院A的X光片</td>
+<td>医院B的X光片</td>
+<td>✗ 诊断错误</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（4）对抗鲁棒性问题</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 对抗攻击示例</span>
+<span class="n">原始图像</span> <span class="n">x</span> <span class="err">→</span> <span class="n">模型预测</span><span class="p">:</span> <span class="s2">&quot;熊猫&quot;</span> <span class="p">(</span><span class="n">置信度</span> <span class="mf">57.7</span><span class="o">%</span><span class="p">)</span>
+
+<span class="n">添加人眼不可见的扰动</span> <span class="n">ε</span><span class="p">:</span>
+<span class="n">x_adv</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">ε</span> <span class="err">·</span> <span class="n">sign</span><span class="p">(</span><span class="err">∇</span><span class="n">_x</span> <span class="n">Loss</span><span class="p">)</span>
+
+<span class="n">对抗样本</span> <span class="n">x_adv</span> <span class="err">→</span> <span class="n">模型预测</span><span class="p">:</span> <span class="s2">&quot;长臂猿&quot;</span> <span class="p">(</span><span class="n">置信度</span> <span class="mf">99.3</span><span class="o">%</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>1.8.2 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：大语言模型的"幻觉"问题——自信地输出错误信息；版权争议——训练数据的合法性；偏见问题——反映训练数据中的社会偏见。</li>
+<li><strong>传统深度学习</strong>：医疗AI的诊断结果难以被医生采纳，因为无法解释决策依据；金融风控模型必须可解释才能满足监管要求。</li>
+<li><strong>自动驾驶</strong>：长尾场景问题——遇到训练中罕见的场景（如穿着怪异服装的行人）可能误判；安全问题——对抗攻击可能导致错误决策。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2024-2025年，<strong>AI安全与对齐</strong>成为研究热点：<ul>
+<li><strong>Constitutional AI</strong>：通过宪法原则约束模型行为</li>
+<li><strong>RLHF/RLAIF</strong>：人类/AI反馈强化学习，使模型更符合人类价值观</li>
+<li><strong>红队测试</strong>：系统性发现模型漏洞和潜在风险</li>
+<li><strong>可解释性突破</strong>：机械可解释性（Mechanistic Interpretability）开始揭示大模型的内部工作机制</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="19">1.9 <strong>深度学习与统计学习、概率模型的联系与区别</strong></h3>
+<p>深度学习和统计学习都源自<strong>从数据中学习模式</strong>这一共同目标，但在方法论、假设和侧重点上有显著差异。现代深度学习正在与概率模型融合，形成新的研究方向。</p>
+<hr />
+<h3 id="110">1.10 <strong>端到端学习</strong></h3>
+<p><strong>端到端学习（End-to-End Learning）</strong> 是指使用单个可微分模型直接从原始输入学习到最终输出，跳过传统流水线中的手工设计中间步骤，通过联合优化所有模块来最小化最终任务损失。</p>
+<p><strong>1.10.1 传统流水线 vs 端到端学习</strong></p>
+<ul>
+<li><strong>传统流水线方法</strong>：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>┌───────┐   ┌───────────┐   ┌───────────┐   ┌───────────┐   ┌───────┐
+│原始输入│ → │预处理     │ → │特征提取   │ → │特征选择   │ → │分类器 │ → 输出
+│       │   │(手工设计) │   │(SIFT/HOG) │   │(PCA/LDA)  │   │(SVM)  │
+└───────┘   └───────────┘   └───────────┘   └───────────┘   └───────┘
+                 ↑               ↑               ↑            ↑
+            每个模块独立设计，误差累积，次优解
+</code></pre></div>
+<ul>
+<li><strong>端到端学习方法</strong>：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>┌───────┐                                          ┌───────┐
+│原始输入│ ──────────→ [深度神经网络] ──────────→ │ 输出  │
+└───────┘                                          └───────┘
+                        ↑
+            所有模块联合优化，全局最优
+</code></pre></div>
+<p><strong>1.10.2 端到端学习的核心要素</strong></p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>说明</th>
+<th>为什么重要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>可微分</strong></td>
+<td>整个流程可计算梯度</td>
+<td>允许反向传播优化所有参数</td>
+</tr>
+<tr>
+<td><strong>联合优化</strong></td>
+<td>所有模块共同训练</td>
+<td>避免模块间误差累积</td>
+</tr>
+<tr>
+<td><strong>原始输入</strong></td>
+<td>直接从数据学习</td>
+<td>不损失原始信息</td>
+</tr>
+<tr>
+<td><strong>任务驱动</strong></td>
+<td>以最终目标为导向</td>
+<td>学习任务相关的特征</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.10.3 端到端学习的优势</strong></p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>简化系统设计</strong></td>
+<td>无需设计多个模块</td>
+<td>语音识别：声学模型+语言模型统一</td>
+</tr>
+<tr>
+<td><strong>避免误差累积</strong></td>
+<td>全局优化</td>
+<td>传统OCR：字符分割错误影响识别</td>
+</tr>
+<tr>
+<td><strong>自动特征学习</strong></td>
+<td>学习任务最优特征</td>
+<td>CNN自动学习图像特征</td>
+</tr>
+<tr>
+<td><strong>更好的性能</strong></td>
+<td>理论上达到更优解</td>
+<td>神经机器翻译超越统计方法</td>
+</tr>
+<tr>
+<td><strong>减少人工干预</strong></td>
+<td>不需要领域专家</td>
+<td>自动驾驶直接从图像到控制</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.10.4 端到端学习的挑战</strong></p>
+<table>
+<thead>
+<tr>
+<th>挑战</th>
+<th>说明</th>
+<th>应对策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据需求大</strong></td>
+<td>需要足够数据学习所有层次</td>
+<td>预训练、迁移学习</td>
+</tr>
+<tr>
+<td><strong>可解释性差</strong></td>
+<td>中间过程难以理解</td>
+<td>注意力可视化、探针任务</td>
+</tr>
+<tr>
+<td><strong>训练困难</strong></td>
+<td>深层网络优化挑战</td>
+<td>残差连接、归一化</td>
+</tr>
+<tr>
+<td><strong>调试复杂</strong></td>
+<td>难以定位问题模块</td>
+<td>模块化设计、渐进训练</td>
+</tr>
+<tr>
+<td><strong>缺乏先验知识</strong></td>
+<td>忽略领域知识</td>
+<td>知识蒸馏、混合架构</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.10.5 端到端 vs 模块化：何时选择？</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐方法</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据充足</td>
+<td>端到端</td>
+<td>充分发挥自动学习优势</td>
+</tr>
+<tr>
+<td>数据稀缺</td>
+<td>模块化</td>
+<td>利用领域知识弥补数据不足</td>
+</tr>
+<tr>
+<td>安全关键</td>
+<td>混合方法</td>
+<td>保留可解释性和可调试性</td>
+</tr>
+<tr>
+<td>研究原型</td>
+<td>端到端</td>
+<td>快速迭代，简化开发</td>
+</tr>
+<tr>
+<td>生产部署</td>
+<td>混合方法</td>
+<td>可维护性和稳定性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.10.6 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：ChatGPT 是端到端学习的极致体现——从用户输入直接到生成回复，没有分词、句法分析、语义理解等独立模块，所有能力都在训练中涌现。</li>
+<li><strong>传统深度学习</strong>：语音识别从传统的"声学模型→发音词典→语言模型"流水线，发展为端到端的"波形→文本"（如 Whisper），大幅提升了性能和简化了系统。</li>
+<li><strong>自动驾驶</strong>：Tesla FSD 采用端到端方法——从摄像头图像直接输出驾驶控制，取代了传统的"感知→预测→规划→控制"分离架构。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2025年出现了<strong>"混合端到端"</strong>的新趋势：<ul>
+<li><strong>模块化端到端</strong>：保持模块结构但联合训练，如自动驾驶的 UniAD</li>
+<li><strong>知识引导的端到端</strong>：将领域知识作为约束或先验融入模型</li>
+<li><strong>可解释端到端</strong>：如思维链（Chain-of-Thought）使大模型的推理过程可追溯</li>
+</ul>
+</li>
+</ul>
+<p>端到端与模块化不再是二选一，而是根据场景灵活组合的设计选择。</p>
+<hr />
+<h3 id="111">1.11 <strong>深度学习在小数据场景下的解决方案</strong></h3>
+<p>深度学习在大数据时代的突破源于其<strong>高容量模型与海量数据的完美匹配</strong>：模型的数百万甚至数千亿参数可以从数据中学习复杂的模式。在小数据场景下，需要通过<strong>迁移学习、数据增强、元学习</strong>等技术来弥补数据不足。</p>
+<p><strong>1.11.1 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：大语言模型需要万亿级tokens训练，但通过<strong>指令微调</strong>，只需几万条高质量指令数据就能让模型遵循人类意图。</li>
+<li><strong>传统深度学习</strong>：医疗影像诊断通常只有几百张标注图像，通过ImageNet预训练+领域微调，可以达到专家级诊断水平。</li>
+<li><strong>自动驾驶</strong>：真实事故数据极其稀少，通过<strong>仿真环境生成</strong>、<strong>域适应技术</strong>来学习处理危险场景。</li>
+<li><strong>最新补充（2026年视角）：</strong> 2024-2025年小数据学习取得重要进展：<ul>
+<li><strong>合成数据</strong>：用大模型生成高质量训练数据，Microsoft的Phi系列证明了"教科书质量数据"的重要性</li>
+<li><strong>数据效率革命</strong>：Llama 3用15T tokens训练，但推理能力相当的小模型正在涌现</li>
+<li><strong>课程学习</strong>：从简单到复杂组织训练数据，提高学习效率</li>
+<li><strong>主动学习</strong>：智能选择最有价值的样本进行标注，最大化标注效率</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="112">1.12 <strong>可解释性问题及其解决方案</strong></h3>
+<p><strong>可解释性问题</strong>是指深度神经网络的决策过程难以被人类理解的特性。由于深度网络通常包含数百万到数千亿参数，其决策逻辑分布在大量神经元中，形成"黑盒"特性。当前解决方案分为<strong>事后解释</strong>和<strong>内在可解释</strong>两大类。</p>
+<hr />
+<h3 id="113">1.13 <strong>深度学习在不同数据模态上的应用</strong></h3>
+<p>不同数据模态具有<strong>不同的结构特性</strong>，这决定了适合的神经网络架构。但 <strong>Transformer 架构的通用性</strong>正在打破模态边界，实现"一种架构统治所有模态"的愿景。</p>
+<hr />
+<h3 id="114">1.14 <strong>模型评估指标</strong></h3>
+<p>评估深度学习模型需要从<strong>多个维度</strong>进行：准确性、效率、鲁棒性、公平性等。不同任务类型有对应的评估指标，选择合适的指标对于正确评估模型至关重要。</p>
+<p><strong>1.14.1 评估维度全景</strong></p>
+<div class="highlight"><pre><span></span><code>                    模型评估
+                       │
+       ┌───────────────┼───────────────┐
+       │               │               │
+    准确性           效率性          可靠性
+       │               │               │
+   ┌───┴───┐       ┌───┴───┐       ┌───┴───┐
+  分类    回归    推理速度  模型大小   鲁棒性  不确定性
+  指标    指标    训练时间  内存占用   公平性  可解释性
+</code></pre></div>
+<p><strong>1.14.2 分类任务评估指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>公式</th>
+<th>适用场景</th>
+<th>局限性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>准确率（Accuracy）</strong></td>
+<td><span class="arithmatex">\(\frac{TP+TN}{TP+TN+FP+FN}\)</span></td>
+<td>类别平衡</td>
+<td>不适合不平衡数据</td>
+</tr>
+<tr>
+<td><strong>精确率（Precision）</strong></td>
+<td><span class="arithmatex">\(\frac{TP}{TP+FP}\)</span></td>
+<td>假正代价高</td>
+<td>忽略假负</td>
+</tr>
+<tr>
+<td><strong>召回率（Recall）</strong></td>
+<td><span class="arithmatex">\(\frac{TP}{TP+FN}\)</span></td>
+<td>假负代价高</td>
+<td>忽略假正</td>
+</tr>
+<tr>
+<td><strong>F1-Score</strong></td>
+<td><span class="arithmatex">\(\frac{2 \cdot P \cdot R}{P + R}\)</span></td>
+<td>平衡P和R</td>
+<td>不适合所有场景</td>
+</tr>
+<tr>
+<td><strong>AUC-ROC</strong></td>
+<td>ROC曲线下面积</td>
+<td>类别不平衡评估</td>
+<td>不适合极度不平衡</td>
+</tr>
+</tbody>
+</table>
+<p><strong>混淆矩阵</strong>：</p>
+<div class="highlight"><pre><span></span><code>                 预测
+              正例    负例
+        ┌────────┬────────┐
+   正例  │   TP   │   FN   │  ← 召回率 = TP/(TP+FN)
+真实     ├────────┼────────┤
+   负例  │   FP   │   TN   │
+        └────────┴────────┘
+            ↑
+     精确率 = TP/(TP+FP)
+</code></pre></div>
+<p><strong>1.14.3 回归任务评估指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>公式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAE</strong></td>
+<td>$\frac{1}{n}\sum</td>
+<td>y_i - \hat{y}_i</td>
+</tr>
+<tr>
+<td><strong>MSE</strong></td>
+<td><span class="arithmatex">\(\frac{1}{n}\sum(y_i - \hat{y}_i)^2\)</span></td>
+<td>惩罚大误差</td>
+</tr>
+<tr>
+<td><strong>RMSE</strong></td>
+<td><span class="arithmatex">\(\sqrt{MSE}\)</span></td>
+<td>与原数据同量纲</td>
+</tr>
+<tr>
+<td><strong>R²</strong></td>
+<td><span class="arithmatex">\(1 - \frac{SS_{res}}{SS_{tot}}\)</span></td>
+<td>解释方差比例</td>
+</tr>
+<tr>
+<td><strong>MAPE</strong></td>
+<td>$\frac{100\%}{n}\sum</td>
+<td>\frac{y_i - \hat{y}_i}{y_i}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.14.4 生成任务评估指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>适用任务</th>
+<th>原理</th>
+<th>局限性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BLEU</strong></td>
+<td>机器翻译</td>
+<td>N-gram匹配</td>
+<td>忽略语义</td>
+</tr>
+<tr>
+<td><strong>ROUGE</strong></td>
+<td>文本摘要</td>
+<td>召回率导向</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>Perplexity</strong></td>
+<td>语言模型</td>
+<td>困惑度</td>
+<td>不完全反映质量</td>
+</tr>
+<tr>
+<td><strong>FID</strong></td>
+<td>图像生成</td>
+<td>特征分布距离</td>
+<td>需要预训练模型</td>
+</tr>
+<tr>
+<td><strong>CLIP Score</strong></td>
+<td>文生图</td>
+<td>图文匹配度</td>
+<td>依赖CLIP模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.14.5 效率指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>说明</th>
+<th>重要性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>推理延迟</strong></td>
+<td>单次推理时间</td>
+<td>实时应用关键</td>
+</tr>
+<tr>
+<td><strong>吞吐量</strong></td>
+<td>单位时间处理量</td>
+<td>批量处理场景</td>
+</tr>
+<tr>
+<td><strong>参数量</strong></td>
+<td>模型参数总数</td>
+<td>存储需求</td>
+</tr>
+<tr>
+<td><strong>FLOPs</strong></td>
+<td>浮点运算次数</td>
+<td>计算需求</td>
+</tr>
+<tr>
+<td><strong>显存占用</strong></td>
+<td>GPU内存需求</td>
+<td>硬件限制</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.14.6 鲁棒性与公平性</strong></p>
+<p><strong>鲁棒性评估</strong>：</p>
+<ul>
+<li>对抗鲁棒性：对抗样本上的准确率</li>
+<li>分布偏移：OOD 数据上的性能</li>
+<li>自然扰动：噪声、模糊、遮挡等</li>
+</ul>
+<p><strong>公平性评估</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>人口统计学均等</strong></td>
+<td>预测与敏感属性独立</td>
+</tr>
+<tr>
+<td><strong>机会均等</strong></td>
+<td>各组的TPR相同</td>
+</tr>
+<tr>
+<td><strong>预测平价</strong></td>
+<td>各组的精确率相同</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="115">1.15 <strong>大模型时代的深度学习：基础模型范式</strong></h3>
+<p>大模型时代正在<strong>重新定义深度学习</strong>：从"针对特定任务训练特定模型"到"训练通用大模型，适配多种任务"。<strong>基础模型（Foundation Model）</strong> 代表了这一范式转变：在大规模数据上预训练，具备广泛能力，可通过微调或提示适应各种下游任务。</p>
+<p><strong>1.15.1 深度学习范式的演变</strong></p>
+<div class="highlight"><pre><span></span><code>传统范式（2012-2018）：
+┌────────────────────────────────────────┐
+│  任务A数据 → 训练模型A → 解决任务A     │
+│  任务B数据 → 训练模型B → 解决任务B     │
+│  任务C数据 → 训练模型C → 解决任务C     │
+└────────────────────────────────────────┘
+问题：每个任务都需要从头训练，数据和算力浪费
+
+预训练范式（2018-2020）：
+┌────────────────────────────────────────┐
+│  大规模数据 → 预训练模型 → 微调 → 任务A│
+│                        ↘ 微调 → 任务B  │
+│                         ↘ 微调 → 任务C │
+└────────────────────────────────────────┘
+进步：预训练知识可复用，但仍需微调
+
+基础模型范式（2020-至今）：
+┌────────────────────────────────────────┐
+│  超大规模数据 → 基础模型 → 提示 → 任务A│
+│                        ↘ 提示 → 任务B  │
+│                         ↘ 提示 → 任务C │
+└────────────────────────────────────────┘
+革命：零样本/少样本能力，无需参数更新
+</code></pre></div>
+<hr />
+<h3 id="116-gpucuda">1.16 <strong>GPU、CUDA</strong></h3>
+<p><strong>1.16.1 定义</strong></p>
+<ul>
+<li><strong>GPU（图形处理器）的并行计算能力</strong>是深度学习爆发的硬件基础。</li>
+<li><strong>CUDA（Compute Unified Device Architecture）</strong>作为 NVIDIA 推出的并行计算平台，使 GPU 从图形渲染扩展到通用计算，为训练大规模神经网络提供了<strong>数百倍的加速</strong>。</li>
+</ul>
+<p><strong>1.16.2 CPU vs GPU 架构对比</strong></p>
+<div class="highlight"><pre><span></span><code>CPU（4-64核心）：
+┌────────────────────────────────────┐
+│ ████████████████████████████████   │ ← 大容量缓存
+│ ████████████████████████████████   │ ← 复杂控制逻辑
+│ ┌───┐ ┌───┐ ┌───┐ ┌───┐           │ ← 少量强大核心
+│ │ALU│ │ALU│ │ALU│ │ALU│           │
+│ └───┘ └───┘ └───┘ └───┘           │
+│ 专为串行、复杂任务设计              │
+└────────────────────────────────────┘
+
+GPU（数千核心）：
+┌────────────────────────────────────┐
+│ ┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐│
+│ │A││A││A││A││A││A││A││A││A││A││A││ ← 数千小核心
+│ └─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘│
+│ ┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐│
+│ │A││A││A││A││A││A││A││A││A││A││A││
+│ └─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘└─┘│
+│ 专为大规模并行计算设计              │
+└────────────────────────────────────┘
+</code></pre></div>
+<p><strong>1.16.3 CPU vs GPU 性能对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>CPU时间</th>
+<th>GPU时间</th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>矩阵乘法 (1024×1024)</td>
+<td>2.5秒</td>
+<td>0.02秒</td>
+<td>125x</td>
+</tr>
+<tr>
+<td>CNN前向传播</td>
+<td>1.0秒</td>
+<td>0.01秒</td>
+<td>100x</td>
+</tr>
+<tr>
+<td>训练AlexNet (90 epochs)</td>
+<td>数周</td>
+<td>5-6天</td>
+<td>10-50x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.16.4 CUDA 简介</strong></p>
+<p>CUDA 是 NVIDIA 于 2007 年推出的<strong>并行计算平台和编程模型</strong>：</p>
+<ul>
+<li>让开发者可以用类 C 语言编写 GPU 程序</li>
+<li>提供了丰富的库（cuBLAS、cuDNN等）</li>
+<li>使 GPU 从"图形专用"变为"通用并行计算"</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp"># CUDA C 代码示例：向量加法</span>
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">vectorAdd</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 简单直观，类似C语言！</span>
+</code></pre></div>
+<p><strong>CUDA 生态</strong></p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>功能</th>
+<th>深度学习中的作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CUDA Runtime</strong></td>
+<td>GPU执行管理</td>
+<td>基础运行环境</td>
+</tr>
+<tr>
+<td><strong>cuBLAS</strong></td>
+<td>GPU线性代数</td>
+<td>矩阵乘法加速</td>
+</tr>
+<tr>
+<td><strong>cuDNN</strong></td>
+<td>深度学习原语</td>
+<td>卷积、池化等加速</td>
+</tr>
+<tr>
+<td><strong>NCCL</strong></td>
+<td>多GPU通信</td>
+<td>分布式训练</td>
+</tr>
+</tbody>
+</table>
+<p><strong>1.16.5 多GPU训练技术</strong></p>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据并行</strong></td>
+<td>每卡处理不同数据</td>
+<td>大batch训练</td>
+</tr>
+<tr>
+<td><strong>模型并行</strong></td>
+<td>模型切分到多卡</td>
+<td>超大模型</td>
+</tr>
+<tr>
+<td><strong>流水线并行</strong></td>
+<td>层间并行</td>
+<td>超深网络</td>
+</tr>
+<tr>
+<td><strong>ZeRO优化</strong></td>
+<td>优化器状态分片</td>
+<td>大模型训练</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">二、神经网络基础</h2>
+<h3 id="21">2.1 <strong>人工神经元</strong></h3>
+<p>人工神经元的数学模型是<strong>加权求和 + 非线性激活</strong>：</p>
+<div class="arithmatex">\[
+y = f\left(\sum_{i=1}^{n} w_i x_i + b\right)
+\]</div>
+<p>包含四个核心部分：<strong>输入（<span class="arithmatex">\(x\)</span>）、权重（<span class="arithmatex">\(w\)</span>）、偏置（<span class="arithmatex">\(b\)</span>）、激活函数（<span class="arithmatex">\(f\)</span>）</strong>。</p>
+<hr />
+<h3 id="22">2.2 <strong>感知机</strong></h3>
+<p><strong>感知机（Perceptron）</strong> 是由Frank Rosenblatt于1958年提出的最简单的<strong>单层神经网络</strong>，用于<strong>二分类</strong>任务。它由<strong>输入层</strong>和<strong>输出层</strong>组成，使用<strong>阶跃激活函数</strong>，通过<strong>感知机学习规则</strong>调整权重。</p>
+<p><strong>感知机的结构</strong></p>
+<div class="highlight"><pre><span></span><code>感知机结构：
+
+        x₁ ───→ w₁ ──┐
+                    │
+        x₂ ───→ w₂ ──┼──→ z = Σwᵢxᵢ + b ──→ sign(z) ──→ y ∈ {-1, +1}
+                    │
+        xₙ ───→ wₙ ──┘
+
+输入层（无计算）     加权求和            阶跃激活函数      输出
+</code></pre></div>
+<p><strong>数学表达式</strong></p>
+<div class="arithmatex">\[
+y = \operatorname{sign}\left(\sum_{i=1}^{n} w_i x_i + b\right)
+=
+\begin{cases}
++1, &amp; \text{if } \mathbf{w}^T \mathbf{x} + b &gt; 0, \\
+-1, &amp; \text{otherwise.}
+\end{cases}
+\]</div>
+<p><strong>几何解释</strong></p>
+<p>感知机学习的是一个<strong>超平面</strong>决策边界：</p>
+<div class="highlight"><pre><span></span><code>以 AND 为例
+
+x₂
+1 |    ○ (0,1)          ● (1,1)
+  |
+0 |    ○ (0,0)          ○ (1,0)
+  |
+  +------------------------------- x₁
+       0                  1
+
+图例：
+○ 表示类别 0
+● 表示类别 1
+
+可用一条直线分开
+</code></pre></div>
+<p><strong>决策边界的数学形式</strong>：</p>
+<div class="arithmatex">\[
+\mathbf{w}^T \mathbf{x} + b = 0
+\]</div>
+<ul>
+<li>权重 <span class="arithmatex">\(\mathbf{w}\)</span> 决定超平面的<strong>方向</strong>（法向量）</li>
+<li>偏置 <span class="arithmatex">\(b\)</span> 决定超平面的<strong>位置</strong>（到原点的距离）</li>
+</ul>
+<p><strong>感知机学习算法</strong></p>
+<p><strong>初始化</strong>：随机初始化权重 <span class="arithmatex">\(\mathbf{w}\)</span> 和偏置 <span class="arithmatex">\(b\)</span></p>
+<p><strong>对于每个训练样本 <span class="arithmatex">\((x^{(i)}, y^{(i)})\)</span></strong>：</p>
+<ol>
+<li>计算预测值：<span class="arithmatex">\(\hat{y}^{(i)} = \text{sign}(\mathbf{w}^T \mathbf{x}^{(i)} + b)\)</span></li>
+<li>如果 <span class="arithmatex">\(\hat{y}^{(i)} \neq y^{(i)}\)</span>（预测错误）：<ul>
+<li><span class="arithmatex">\(\mathbf{w} \leftarrow \mathbf{w} + \eta \cdot y^{(i)} \cdot \mathbf{x}^{(i)}\)</span></li>
+<li><span class="arithmatex">\(b \leftarrow b + \eta \cdot y^{(i)}\)</span></li>
+</ul>
+</li>
+</ol>
+<p>其中 <span class="arithmatex">\(\eta\)</span> 是学习率。</p>
+<p><strong>感知机的特点</strong></p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>结构简单</strong></td>
+<td>只有一层，无隐藏层</td>
+</tr>
+<tr>
+<td><strong>线性分类</strong></td>
+<td>只能解决线性可分问题</td>
+</tr>
+<tr>
+<td><strong>在线学习</strong></td>
+<td>样本可以逐个输入学习</td>
+</tr>
+<tr>
+<td><strong>收敛保证</strong></td>
+<td>如果数据线性可分，必定收敛</td>
+</tr>
+</tbody>
+</table>
+<p><strong>感知机的局限性</strong></p>
+<div class="highlight"><pre><span></span><code>感知机无法解决的问题：XOR
+
+x₂
+1 |    ● (0,1)          ○ (1,1)
+  |
+0 |    ○ (0,0)          ● (1,0)
+  |
+  +------------------------------- x₁
+       0                  1
+
+图例：
+○ 表示类别 0
+● 表示类别 1
+
+无法用一条直线分开！
+需要多层感知机（MLP）才能解决
+</code></pre></div>
+<hr />
+<h3 id="23-mlp">2.3 <strong>多层感知机（MLP）</strong></h3>
+<p><strong>多层感知机（MLP）</strong> 通过添加<strong>隐藏层</strong>和<strong>非线性激活函数</strong>，克服了单层感知机的线性限制。隐藏层进行<strong>特征变换</strong>，将原始输入映射到新的空间，使原本线性不可分的数据变得可分。</p>
+<p><strong>为什么需要非线性激活函数？</strong> —— 如果没有非线性激活函数，多层网络等价于单层网络！</p>
+<hr />
+<h3 id="24-bias">2.4 <strong>偏置项（Bias）的作用</strong></h3>
+<p><strong>偏置项（Bias）</strong> 的作用是<strong>调整神经元的激活阈值</strong>，使决策边界可以<strong>平移</strong>而不必经过原点。去掉偏置会限制模型的表达能力，因为所有决策边界都必须经过原点。</p>
+<hr />
+<h3 id="25">2.5 <strong>通用近似定理</strong></h3>
+<p><strong>通用近似定理</strong>（Universal Approximation Theorem）表明：具有<strong>单隐藏层</strong>和<strong>足够多神经元</strong>的前馈神经网络，使用适当的非线性激活函数，可以以任意精度<strong>逼近任何连续函数</strong>。这证明了神经网络的<strong>理论表达能力</strong>，但并不保证实际可学习性。</p>
+<p><strong>定理的数学表述 —— Cybenko (1989) / Hornik (1991) 版本</strong></p>
+<blockquote>
+<p>设 <span class="arithmatex">\(\sigma\)</span> 是非常数、有界、连续的函数（如Sigmoid）。对于任意连续函数 <span class="arithmatex">\(f: [0,1]^n \to \mathbb{R}\)</span> 和任意 <span class="arithmatex">\(\epsilon &gt; 0\)</span>，存在整数 <span class="arithmatex">\(N\)</span>、常数 <span class="arithmatex">\(\alpha_i, b_i \in \mathbb{R}\)</span> 和向量 <span class="arithmatex">\(\mathbf{w}_i \in \mathbb{R}^n\)</span>，使得：</p>
+<div class="arithmatex">\[
+\left| f(\mathbf{x}) - \sum_{i=1}^{N} \alpha_i \sigma(\mathbf{w}_i^T \mathbf{x} + b_i) \right| &lt; \epsilon
+\]</div>
+<p>对所有 <span class="arithmatex">\(\mathbf{x} \in [0,1]^n\)</span> 成立。</p>
+</blockquote>
+<p><strong>定理的局限性</strong></p>
+<p><strong>（1）存在性 vs 构造性</strong></p>
+<div class="highlight"><pre><span></span><code>定理告诉我们：
+  &quot;存在一个网络能够逼近目标函数&quot;
+
+定理没有告诉我们：
+  - 这个网络有多大（N 是多少）
+  - 如何找到这个网络（权重是多少）
+  - 多少数据才能学习这个网络
+</code></pre></div>
+<p><strong>（2）实际学习困难</strong></p>
+<table>
+<thead>
+<tr>
+<th>困难</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>优化困难</strong></td>
+<td>非凸优化，可能陷入局部最优</td>
+</tr>
+<tr>
+<td><strong>数据需求</strong></td>
+<td>理论上的网络可能需要海量数据</td>
+</tr>
+<tr>
+<td><strong>过拟合风险</strong></td>
+<td>参数太多容易过拟合</td>
+</tr>
+<tr>
+<td><strong>计算成本</strong></td>
+<td>极宽网络计算成本高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="26">2.6 <strong>宽度与深度对模型的影响</strong></h3>
+<p>神经网络的<strong>宽度</strong>（每层神经元数量）和<strong>深度</strong>（网络层数）影响模型的表达能力和训练难度：</p>
+<ul>
+<li><strong>宽度（Width）</strong>决定了模型在同一层级能并行提取多少种不同的特征；</li>
+<li><strong>深度（Depth）</strong>决定了模型能进行多少次特征的非线性组合与抽象。</li>
+<li><strong>表达能力上</strong>，深度带来指数级的抽象能力提升，比单纯增加宽度更高效；</li>
+<li><strong>训练难度上</strong>，网络越深，越容易出现梯度消失/爆炸和退化问题，优化难度急剧上升。</li>
+</ul>
+<hr />
+<h3 id="27">2.7 <strong>全零初始化的对称性问题</strong></h3>
+<p><strong>参数初始化</strong>对神经网络的训练至关重要，因为<strong>初始值决定了优化起点</strong>，影响收敛速度和最终性能。</p>
+<p><strong>全零初始化</strong>会导致<strong>对称性问题</strong>——所有神经元学习相同的特征，无法进行有效的特征学习。</p>
+<p><strong>2.7.1 全零初始化的对称性（Symmetry）问题</strong></p>
+<div class="highlight"><pre><span></span><code>全零初始化的对称性：
+
+时刻 t=0（初始化）：
+  w₁ = w₂ = ... = wₙ = 0
+
+时刻 t=1（第一次更新后）：
+  w₁ = w₂ = ... = wₙ = Δw
+
+（因为梯度相同，更新量相同）
+
+时刻 t=k（任意时刻）：
+  w₁ = w₂ = ... = wₙ
+
+对称性永远无法打破！
+</code></pre></div>
+<p>全零初始化无法学习不同特征！</p>
+<div class="highlight"><pre><span></span><code>随机初始化（正确）：
+
+        输入层        隐藏层
+          ○ ────────→ ○ (学习特征A)
+          ○ ────────→ ○ (学习特征B)
+          ○ ────────→ ○ (学习特征C)
+
+每个神经元有不同的初始权重，学习不同特征
+
+
+全零初始化（错误）：
+
+        输入层        隐藏层
+          ○ ────────→ ○ (相同)
+          ○ ────────→ ○ (相同)
+          ○ ────────→ ○ (相同)
+
+所有神经元永远相同，等于只有一个神经元
+</code></pre></div>
+<p><strong>2.7.2 偏置初始化</strong></p>
+<p>偏置通常初始化为 <strong>0</strong>（不会导致对称性问题）：<span class="arithmatex">\(\mathbf{b}^{(l)} = \mathbf{0}\)</span></p>
+<p>某些情况下使用小正值：<span class="arithmatex">\(\mathbf{b}^{(l)} = 0.01 \text{ 或 } 0.1\)</span></p>
+<p>这使 ReLU 神经元初始时更可能激活。</p>
+<hr />
+<h3 id="28">2.8 <strong>对称性破坏方法：随机初始化</strong></h3>
+<p><strong>对称性破坏（Symmetry Breaking）</strong> 是指通过<strong>随机初始化</strong>使各神经元的初始权重不同，从而打破对称性，让每个神经元能够学习<strong>不同的特征</strong>。随机初始化是最简单有效的对称性破坏方法。</p>
+<div class="highlight"><pre><span></span><code>随机初始化后：
+
+z₁ = w₁₁x₁ + w₁₂x₂ + ... + w₁ₙxₙ  ≠  z₂ = w₂₁x₁ + w₂₂x₂ + ...
+
+因为 w₁ᵢ ≠ w₂ᵢ（随机初始化）
+
+每个神经元的激活值不同！
+梯度也不同！
+更新后权重继续保持不同！
+</code></pre></div>
+<p><strong>2.8.1 常用随机初始化方法</strong></p>
+<p><strong>（1）随机小值初始化</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_out</span><span class="p">,</span> <span class="n">n_in</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+</code></pre></div>
+<ul>
+<li>简单，但深层网络可能有问题</li>
+<li>值太大会导致梯度爆炸</li>
+<li>值太小会导致梯度消失</li>
+</ul>
+<p><strong>（2）Xavier/Glorot 初始化</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 适用于Sigmoid、Tanh等激活函数</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_in</span> <span class="o">+</span> <span class="n">n_out</span><span class="p">))</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_out</span><span class="p">,</span> <span class="n">n_in</span><span class="p">)</span> <span class="o">*</span> <span class="n">std</span>
+</code></pre></div>
+<ul>
+<li><strong>原理</strong>：保持输入和输出的方差一致，即 <span class="arithmatex">\(\text{Var}(z^{(l)}) = \text{Var}(z^{(l-1)})\)</span></li>
+</ul>
+<p><strong>（3）He/Kaiming 初始化</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 适用于ReLU及其变体</span>
+<span class="n">std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="n">n_in</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_out</span><span class="p">,</span> <span class="n">n_in</span><span class="p">)</span> <span class="o">*</span> <span class="n">std</span>
+</code></pre></div>
+<ul>
+<li><strong>原理</strong>：考虑ReLU使一半神经元失活，需要额外2倍方差补偿 <span class="arithmatex">\(\text{Var}(z^{(l)}) = \text{Var}(z^{(l-1)})\)</span></li>
+</ul>
+<p><strong>2.8.2 Xavier初始化的推导</strong></p>
+<ul>
+<li>
+<p><strong>目标</strong>：使前向传播和反向传播的信号保持稳定</p>
+</li>
+<li>
+<p><strong>前向传播</strong>：</p>
+</li>
+</ul>
+<div class="arithmatex">\[z^{(l)} = W^{(l)} x^{(l-1)}\]</div>
+<p>假设 <span class="arithmatex">\(W^{(l)}_{ij}\)</span> 独立同分布，均值为0，方差为 <span class="arithmatex">\(\text{Var}(W)\)</span>：</p>
+<div class="arithmatex">\[\text{Var}(z^{(l)}) = n_{in} \cdot \text{Var}(W) \cdot \text{Var}(x^{(l-1)})\]</div>
+<p>为使 <span class="arithmatex">\(\text{Var}(z^{(l)}) = \text{Var}(x^{(l-1)})\)</span>：</p>
+<div class="arithmatex">\[n_{in} \cdot \text{Var}(W) = 1 \Rightarrow \text{Var}(W) = \frac{1}{n_{in}}\]</div>
+<ul>
+<li><strong>反向传播</strong>：</li>
+</ul>
+<div class="arithmatex">\[\frac{\partial L}{\partial x^{(l-1)}} = W^{(l)T} \frac{\partial L}{\partial z^{(l)}}\]</div>
+<p>类似分析得：</p>
+<div class="arithmatex">\[\text{Var}(W) = \frac{1}{n_{out}}\]</div>
+<ul>
+<li><strong>折中方案</strong>：</li>
+</ul>
+<div class="arithmatex">\[\text{Var}(W) = \frac{2}{n_{in} + n_{out}}\]</div>
+<p><strong>2.8.3 不同初始化方法对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>公式</th>
+<th>适用激活函数</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>随机小值</strong></td>
+<td><span class="arithmatex">\(W \sim \mathcal{N}(0, 0.01^2)\)</span></td>
+<td>通用</td>
+<td>简单，深层网络效果差</td>
+</tr>
+<tr>
+<td><strong>Xavier</strong></td>
+<td><span class="arithmatex">\(W \sim \mathcal{N}(0, \frac{2}{n_{in}+n_{out}})\)</span></td>
+<td>Sigmoid, Tanh</td>
+<td>保持方差稳定</td>
+</tr>
+<tr>
+<td><strong>He</strong></td>
+<td><span class="arithmatex">\(W \sim \mathcal{N}(0, \frac{2}{n_{in}})\)</span></td>
+<td>ReU系列</td>
+<td>ReU专用</td>
+</tr>
+<tr>
+<td><strong>LSUV</strong></td>
+<td>迭代调整</td>
+<td>通用</td>
+<td>更精确但复杂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.8.4 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：GPT、BERT 等大模型都使用精心设计的初始化（如He初始化），确保深层网络能够有效训练。</li>
+<li><strong>传统深度学习</strong>：ResNet 等深层网络的成功，很大程度上归功于正确的初始化策略。</li>
+<li><strong>自动驾驶</strong>：感知网络通常很深，正确的初始化对训练稳定性至关重要。</li>
+<li><strong>最新补充（2026年视角）：</strong> 初始化的现代实践：<ul>
+<li><strong>预训练主导</strong>：大多数情况下使用预训练权重初始化</li>
+<li><strong>数据相关初始化</strong>：根据数据分布调整初始化</li>
+<li><strong>元学习初始化</strong>：学习最优初始化策略</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="29-fnn">2.9 <strong>前馈神经网络（FNN）的结构和前向传播过程</strong></h3>
+<p><strong>2.9.1 前馈神经网络的基本结构</strong></p>
+<p><strong>前馈神经网络（Feedforward Neural Network, FNN）</strong> 是最基础的神经网络类型，也被称为多层感知机（MLP）。</p>
+<p>其基本结构由<strong>输入层（Input Layer）</strong>、<strong>隐藏层（Hidden Layer）</strong>和<strong>输出层（Output Layer）</strong>组成。</p>
+<p>其核心特征是：<strong>信息只单向流动</strong>，从输入到输出，网络中不存在反馈环路（Feedback Loop）。</p>
+<p><strong>2.9.2 前向传播过程</strong></p>
+<p>前向传播（Forward Propagation）是神经网络<strong>依据输入数据、当前权重和偏置，逐层计算并最终得到预测输出</strong>的过程。其本质是<strong>矩阵乘法与非线性激活的交替嵌套</strong>。</p>
+<div class="arithmatex">\[\begin{aligned}
+\mathbf{a}^{(0)} &amp;= \mathbf{x} \\
+\mathbf{a}^{(1)} &amp;= f_1(\mathbf{W}^{(1)}\mathbf{a}^{(0)} + \mathbf{b}^{(1)}) \\
+\mathbf{a}^{(2)} &amp;= f_2(\mathbf{W}^{(2)}\mathbf{a}^{(1)} + \mathbf{b}^{(2)}) \\
+&amp;\vdots \\
+\mathbf{\hat{y}} = \mathbf{a}^{(L)} &amp;= f_L(\mathbf{W}^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{(L)})
+\end{aligned}\]</div>
+<hr />
+<h3 id="29">2.9 <strong>全连接层的参数量</strong></h3>
+<p>在全连接层中，上一层的每一个神经元都与本层的每一个神经元相连。其参数总数包含<strong>权重参数</strong>和<strong>偏置参数</strong>。</p>
+<p>计算公式为：<strong>参数量 = （输入神经元数 <span class="arithmatex">\(\times\)</span> 输出神经元数） + 输出神经元数</strong>。</p>
+<p>参数过多会导致：<strong>模型极易过拟合</strong>、<strong>显存占用爆炸</strong>以及<strong>计算资源消耗剧增</strong>。</p>
+<p><strong>参数计算详解</strong></p>
+<p>设全连接层的输入维度为 <span class="arithmatex">\(N_{in}\)</span>，输出维度为 <span class="arithmatex">\(N_{out}\)</span>。</p>
+<ul>
+<li><strong>权重矩阵 <span class="arithmatex">\(\mathbf{W}\)</span> 的参数量</strong>：<span class="arithmatex">\(N_{in} \times N_{out}\)</span> （即两层之间连线的总数）</li>
+<li><strong>偏置向量 <span class="arithmatex">\(\mathbf{b}\)</span> 的参数量</strong>：<span class="arithmatex">\(N_{out}\)</span> （每个输出神经元配备一个偏置）</li>
+<li><strong>总参数量</strong>：<span class="arithmatex">\(N_{in} \times N_{out} + N_{out}\)</span></li>
+</ul>
+<hr />
+<h3 id="210">2.10 <strong>过拟合和欠拟合</strong></h3>
+<ul>
+<li><strong>过拟合（Overfitting）</strong>是指模型在训练集上表现极好，但在验证集/测试集上表现很差，模型"死记硬背"了训练数据的噪声。</li>
+<li><strong>欠拟合（Underfitting）</strong>是指模型在训练集和验证集上表现都很差，模型未能学习到数据的真实规律。</li>
+</ul>
+<p><strong>诊断方法与学习曲线</strong></p>
+<p>判断的核心在于<strong>观察训练损失（Train Loss）和验证损失（Validation Loss）的动态走势</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>训练损失</th>
+<th>验证损失</th>
+<th>诊断依据</th>
+<th>解决策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>正常拟合</strong></td>
+<td>持续下降</td>
+<td>持续下降后趋于稳定</td>
+<td>训练集和验证集指标同步提升。</td>
+<td>保持当前策略，适时早停（Early Stopping）。</td>
+</tr>
+<tr>
+<td><strong>欠拟合</strong></td>
+<td>居高不下</td>
+<td>居高不下</td>
+<td>模型容量不足或训练时间不够。</td>
+<td>增加模型复杂度（加深/加宽）、减少正则化、训练更久。</td>
+</tr>
+<tr>
+<td><strong>过拟合</strong></td>
+<td>逼近于0</td>
+<td><strong>先下降后反弹上升</strong></td>
+<td>泛化能力崩溃，模型开始拟合特定样本的噪声。</td>
+<td>增加数据量、引入数据增强、加大正则化（L2/Dropout）。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="211-l">2.11 <strong>L 范数正则化</strong></h3>
+<p><strong>正则化</strong>的本质是<strong>对模型的复杂度施加惩罚</strong>，通过在损失函数中引入额外项，限制模型参数的自由度，从而降低过拟合风险，提升泛化能力。</p>
+<p><strong>2.11.1 L1 正则化（Lasso）</strong></p>
+<div class="arithmatex">\[L = L_0 + \lambda \sum_{i} |w_i|\]</div>
+<ul>
+<li><strong>特点</strong>：倾向于产生<strong>稀疏权重矩阵</strong>（让许多权重变为绝对的0）。</li>
+<li><strong>作用</strong>：天然的特征选择器，忽略不重要的特征。</li>
+</ul>
+<p><strong>2.11.2 L2 正则化（Ridge / 权重衰减 Weight Decay）</strong></p>
+<div class="arithmatex">\[L = L_0 + \frac{\lambda}{2} \sum_{i} w_i^2\]</div>
+<ul>
+<li><strong>特点</strong>：倾向于让权重值变得<strong>均匀且接近于0</strong>，但不会绝对为0。</li>
+<li><strong>作用</strong>：限制权重突变，使模型对输入微小扰动不敏感，输出更加平滑。</li>
+</ul>
+<p><strong>最新补充（2026年视角）</strong>： 在 MMDetection 等现代框架中，纯粹的 L1/L2 已较少在配置中显式称为 Regularization，而是直接作为优化器参数 <code>weight_decay</code> 存在（主要指L2）。特别是在 AdamW 优化器中，解耦的权重衰减（Decoupled Weight Decay）被证明对训练 Transformer 架构（如 Grounding DINO）效果远胜传统的 L2 正则化。</p>
+<hr />
+<h3 id="212-dropout">2.12 <strong>Dropout 正则化</strong></h3>
+<p><strong>2.12.1 定义</strong></p>
+<p><strong>Dropout</strong> 通过在训练过程中<strong>随机将部分神经元的输出置为 0</strong>（即让它们暂时"失活"），强迫网络不依赖于任何一个局部特征，从而达到正则化效果。它是深度学习中最经典的集成学习（Ensemble）的近似。</p>
+<p><strong>2.12.2 Dropout 训练与推理机制的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>行为机制</th>
+<th>数学操作</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>训练 (Training)</strong></td>
+<td>以概率 <span class="arithmatex">\(p\)</span> 随机丢弃神经元。为了保持期望值不变，保留的神经元输出需<strong>放大</strong> <span class="arithmatex">\(1/(1-p)\)</span> 倍（Inverted Dropout）。</td>
+<td><span class="arithmatex">\(y = \frac{x \cdot m}{1-p}\)</span>，其中 <span class="arithmatex">\(m \sim \text{Bernoulli}(1-p)\)</span></td>
+<td>打破神经元之间的共适应性（Co-adaptation），防止过拟合。</td>
+</tr>
+<tr>
+<td><strong>推理 (Inference)</strong></td>
+<td>所有神经元全部激活，<strong>不丢弃</strong>任何节点。</td>
+<td><span class="arithmatex">\(y = x\)</span></td>
+<td>利用整个完整网络的表征能力进行预测，相当于无数个子网络的集成。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.12.3 最新补充（2026年视角）</strong>： 在全连接层时代 Dropout 是标配。但在现代视觉架构中：</p>
+<ul>
+<li>卷积层更倾向于使用 <strong>DropBlock</strong>（丢弃连续的特征区域）。</li>
+<li>Transformer 架构（如 ViT、DETR 系列）大量使用 <strong>DropPath (Stochastic Depth)</strong>，即随机跳过整个残差模块，而不是丢弃单个神经元，这在训练极深网络时效果极佳。</li>
+</ul>
+<hr />
+<h3 id="213-bn">2.13 <strong>批归一化（BN）</strong></h3>
+<p><strong>批归一化（Batch Normalization, BN）</strong> 主要解决了<strong>内部协变量偏移（Internal Covariate Shift）问题（现代研究更倾向于认为它平滑了损失函数的优化曲面</strong>）。它使得网络允许使用更大的学习率，显著加速收敛，并具有轻微的正则化效果。</p>
+<p><strong>2.13.1 数学推导过程</strong></p>
+<p>对于一个 Mini-batch 中的激活值 <span class="arithmatex">\(x\)</span>，包含 <span class="arithmatex">\(m\)</span> 个样本，BN 层在特征维度上进行如下计算：</p>
+<ol>
+<li>计算 Batch 均值： <span class="arithmatex">\(\mu_B = \frac{1}{m} \sum_{i=1}^m x_i\)</span></li>
+<li>计算 Batch 方差： <span class="arithmatex">\(\sigma_B^2 = \frac{1}{m} \sum_{i=1}^m (x_i - \mu_B)^2\)</span></li>
+<li><strong>标准化（零均值，单位方差）</strong>： <span class="arithmatex">\(\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}\)</span> （<span class="arithmatex">\(\epsilon\)</span> 防止除零）</li>
+<li><strong>仿射变换（恢复表达能力）</strong>： <span class="arithmatex">\(y_i = \gamma \hat{x}_i + \beta\)</span></li>
+</ol>
+<blockquote>
+<p><strong>注意</strong>：这里的 <span class="arithmatex">\(\gamma\)</span>（缩放）和 <span class="arithmatex">\(\beta\)</span>（平移）是<strong>可学习的网络参数</strong>，网络可以借此还原数据原本的分布特征。</p>
+</blockquote>
+<p><strong>2.13.2 三大领域应用</strong></p>
+<ul>
+<li><strong>目标检测</strong>：在恒源云等平台租用多卡 GPU 训练 YOLO 或目标检测模型时，由于每张卡的 Batch Size 往往较小，常规 BN 统计不准，必须使用 <strong>SyncBN（同步批归一化）</strong>，跨卡同步均值和方差，这是涨点的关键细节。</li>
+<li><strong>自然语言处理</strong>：在处理变长序列时 BN 效果很差，因此 Transformer 等架构抛弃了 BN，转向了 <strong>Layer Normalization (LN)</strong>（在样本内部跨特征维度归一化）。</li>
+</ul>
+<hr />
+<h3 id="214">2.14 <strong>回归与分类任务的常用损失函数</strong></h3>
+<p>损失函数（Loss Function）衡量了模型预测值与真实标签之间的差异。选择损失函数的<strong>核心原则是匹配任务的输出概率分布</strong>。</p>
+<p><strong>2.14.1 常用损失函数分类</strong></p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>目标属性</th>
+<th>常用损失函数</th>
+<th>优缺点/适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>回归任务</strong></td>
+<td>预测连续数值</td>
+<td><strong>MSE（均方误差 / L2 Loss）</strong></td>
+<td>对大误差惩罚极强，但容易受异常值（Outlier）主导。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>MAE（平均绝对误差 / L1 Loss）</strong></td>
+<td>对异常值鲁棒，但在0点处不可导，优化不稳定。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>Huber Loss / Smooth L1</strong></td>
+<td>结合前两者优点：小误差用L2，大误差用L1。目标检测边界框回归标配。</td>
+</tr>
+<tr>
+<td><strong>分类任务</strong></td>
+<td>预测离散类别/概率</td>
+<td><strong>Cross-Entropy (CE, 交叉熵)</strong></td>
+<td>梯度下降平稳，多分类标配（结合 Softmax）。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>BCE (二元交叉熵)</strong></td>
+<td>用于多标签分类或独立二分类任务。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.14.2 三大领域应用</strong></p>
+<p>在<strong>目标检测</strong>（如 DETR 或 YOLO 系列）中，这两类损失函数是同时存在的（Multi-task Learning）：</p>
+<ol>
+<li>预测边界框位置 <span class="arithmatex">\((x,y,w,h)\)</span> 时，这是一个<strong>回归任务</strong>，通常使用 Smooth L1 Loss 以及基于 IoU 的损失（如 GIoU Loss）。</li>
+<li>预测该框内是猫还是狗时，这是一个<strong>分类任务</strong>，通常使用 Cross-Entropy Loss 或者 Focal Loss（用于解决类别极度不平衡问题）。</li>
+</ol>
+<h3 id="215-mse">2.15 <strong>交叉熵损失与均方误差损失（MSE）</strong></h3>
+<p><strong>2.15.1 本质区别与适用场景</strong></p>
+<p>两者本质区别在于底层统计假设不同</p>
+<ul>
+<li><strong>MSE</strong> 假设模型误差服从<strong>高斯分布（正态分布）</strong>，由最大似然估计推导而来，适合<strong>拟合连续的数值空间</strong>。</li>
+<li><strong>交叉熵（Cross-Entropy）</strong> 假设数据服从<strong>伯努利分布或多项式分布</strong>，本质是衡量两个概率分布（预测概率与真实独热编码）之间的信息熵差异（KL散度）。</li>
+</ul>
+<p><strong>2.15.2 为什么分类任务不用 MSE，而用交叉熵损失？</strong></p>
+<p>在分类网络最后一层通常使用 Sigmoid 或 Softmax 激活函数：</p>
+<div class="arithmatex">\[f(z) = \frac{1}{1+e^{-z}}\]</div>
+<p>如果此时强行使用 MSE Loss，根据链式法则求导，梯度中会包含激活函数的导数项 <span class="arithmatex">\(f'(z)\)</span>。</p>
+<p>当预测极其错误（例如标签是1，预测接近0时），<span class="arithmatex">\(z\)</span> 是极小的负数，此时 <span class="arithmatex">\(f'(z)\)</span> 趋近于0！这意味着<strong>预测越错，梯度反而越小，模型陷入停滞（梯度消失）</strong>。</p>
+<p>而如果使用交叉熵损失：</p>
+<div class="arithmatex">\[L = -y \log(\hat{y}) - (1-y)\log(1-\hat{y})\]</div>
+<p>求导后，神奇地抵消了 <span class="arithmatex">\(f'(z)\)</span> 中的分母，最终梯度与误差直接成正比：<span class="arithmatex">\(\frac{\partial L}{\partial z} = \hat{y} - y\)</span>。<strong>预测越错，梯度越大，模型纠正越快！</strong></p>
+<hr />
+<h3 id="216-mini-batch-sgd">2.16 <strong>神经网络的训练过程，Mini-batch SGD的优势</strong></h3>
+<p>神经网络训练是一个迭代优化的闭环。核心步骤包含：<strong>数据采样、前向传播、计算损失、反向传播、权重更新</strong>。</p>
+<p><strong>Mini-batch SGD（小批量随机梯度下降）</strong> 是深度学习训练的基石，它在单样本更新（SGD）和全样本更新（BGD）之间取得了最佳的显存/计算平衡。</p>
+<p><strong>训练核心循环代码抽象</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>  <span class="c1"># 1. 采样 Mini-batch 数据</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>            <span class="c1"># 清空历史梯度</span>
+
+        <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_x</span><span class="p">)</span>           <span class="c1"># 2. 前向传播 (Forward)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">batch_y</span><span class="p">)</span> <span class="c1"># 3. 计算损失 (Loss)</span>
+
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>                  <span class="c1"># 4. 反向传播 (Backward，计算梯度)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>                 <span class="c1"># 5. 权重更新 (Update Weights)</span>
+</code></pre></div>
+<p><strong>Mini-batch SGD 的三大优势</strong></p>
+<ol>
+<li><strong>并行计算效率</strong>：利用现代 GPU（如恒源云上的 RTX 4090 或 A100）的强大矩阵并行计算能力。单样本无法打满 GPU 算力。</li>
+<li><strong>跳出局部最优</strong>：相较于全样本的确定性梯度，Mini-batch 引入了<strong>随机噪声</strong>，这种梯度的抖动有助于模型逃离鞍点（Saddle Points）或较差的局部极小值。</li>
+<li><strong>内存友好</strong>：无法将海量数据集（如上百万张的图片）一次性塞入显存，按 Batch 分块是唯一的工程解法。</li>
+</ol>
+<h3 id="217">2.17 <strong>学习率</strong></h3>
+<p><strong>学习率（Learning Rate，LR, <span class="arithmatex">\(\eta\)</span>）</strong> 是优化器在梯度下降时迈出的"步长"，是深度学习中最重要的超参数。</p>
+<ul>
+<li><strong>学习率过大</strong>：模型无法收敛，损失值剧烈震荡，甚至直接发散（Loss 变 NaN）。</li>
+<li><strong>学习率过小</strong>：训练极其缓慢，极易陷入局部最优解，耗费大量计算资源仍无法拟合。</li>
+</ul>
+<p><strong>如何选取：学习率预热与查找（LR Range Test）</strong></p>
+<p>在实践中，常用 <strong>LR Finder</strong> 策略寻找初始学习率：
+从一个极小的值（如 <span class="arithmatex">\(10^{-7}\)</span>）开始，每个 Batch 稍微增加学习率，记录对应的 Loss 值。画出 Loss 随 LR 变化的曲线：</p>
+<ol>
+<li>一开始 Loss 下降缓慢（LR 太小）。</li>
+<li>随后 Loss 陡峭下降（找到一个<strong>好区间</strong>）。</li>
+<li>最后 Loss 反弹飙升（LR 太大）。</li>
+</ol>
+<p><strong>合适的初始学习率通常选在 Loss 下降最陡峭区域的中点。</strong></p>
+<hr />
+<h3 id="218">2.18 <strong>学习率调度</strong></h3>
+<p><strong>学习率调度（Learning Rate Scheduling）</strong>是指在训练的不同阶段，<strong>动态调整学习率大小</strong>的策略。通常的原则是：训练初期使用较大学习率快速探索全局，中后期逐渐衰减学习率进行精细收敛。</p>
+<p>常见调度策略</p>
+<table>
+<thead>
+<tr>
+<th>策略名称</th>
+<th>工作原理</th>
+<th>适用场景与框架</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>StepLR (阶梯衰减)</strong></td>
+<td>每隔固定 Epoch，学习率乘以衰减系数（如 0.1）。</td>
+<td>经典图像分类任务的标配。</td>
+</tr>
+<tr>
+<td><strong>Cosine Annealing (余弦退火)</strong></td>
+<td>学习率按照余弦曲线平滑下降，初期降得慢，中期快，末期慢。</td>
+<td><strong>YOLO系列、DETR</strong>等现代目标检测框架中的绝对主力调度器。</td>
+</tr>
+<tr>
+<td><strong>Warmup (预热)</strong></td>
+<td>训练刚开始的几个 Epoch，学习率从极小值线性增长到初始设定值，然后才开始衰减。</td>
+<td>防止初始化极度不稳定阶段产生破坏性的大梯度。几乎是训练Transformer和大型骨干网络的必选项。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最新补充（2026年视角）：</strong> 在你熟悉的 <code>MMDetection</code> 配置文件中，常常可以看到结合策略：<code>LinearWarmup</code> 配合 <code>CosineAnnealingLR</code>，这就是目前最先进（SOTA）模型的标准训练流程。</p>
+<hr />
+<h3 id="219">2.19 <strong>计算图、自动微分</strong></h3>
+<p><strong>计算图（Computation Graph）</strong> 是将数学公式转化为<strong>有向无环图（DAG）的数据结构。节点代表变量（张量），边代表数学操作（算子）。
+它的核心作用是为自动微分（AutoDiff）提供拓扑追踪机制</strong>，使得复杂的偏导数计算可以自动化、模块化。</p>
+<p><strong>动态图 vs 静态图</strong></p>
+<ul>
+<li><strong>前向传播建图</strong>：在 PyTorch 中，每进行一步张量运算，底层都会在计算图上添加节点。</li>
+<li><strong>反向传播应用（链式法则）</strong>：当调用 <code>.backward()</code> 时，引擎只需沿着计算图的路径<strong>反向遍历</strong>。对于图中的任何一个节点，它只需要知道如何计算<strong>它自身操作的局部梯度</strong>，然后乘以上游传来的梯度，极其优雅地解决了海量参数的链式求导问题。</li>
+</ul>
+<p>（<em>注：这部分是深度学习框架底层的灵魂，2.21 节反向传播中会进行深入的链式法则数学推导。</em>）</p>
+<h3 id="220">2.20 <strong>梯度消失和梯度爆炸</strong></h3>
+<p>深层网络难训练的根本原因在于<strong>误差反向传播过程中的连乘效应</strong>。由于链式法则，数十层梯度相乘极易导致梯度呈现指数级衰减或增长，即<strong>梯度消失（Vanishing Gradient）和梯度爆炸（Exploding Gradient）</strong>。</p>
+<p><strong>2.20.1 数学根源（以简单线性网络为例）</strong></p>
+<p>假设一个深层网络（省略激活函数）每一层的权重为 <span class="arithmatex">\(W\)</span>，前向传播为 <span class="arithmatex">\(y = W^L x\)</span>。
+反向传播计算梯度时，误差传到第一层需要连乘 <span class="arithmatex">\(L\)</span> 次权重矩阵：</p>
+<div class="arithmatex">\[\frac{\partial L}{\partial W_1} \propto W_L^T \cdot W_{L-1}^T \cdots W_2^T\]</div>
+<ol>
+<li><strong>梯度消失</strong>：如果初始化权重 <span class="arithmatex">\(&lt; 1\)</span>（或者使用了 Sigmoid 激活函数，其最大导数为 0.25），连乘几十次后，梯度趋近于 0。<strong>表现为：深层网络的前几层参数根本得不到更新，模型依然像个浅层网络。</strong></li>
+<li><strong>梯度爆炸</strong>：如果初始化权重 <span class="arithmatex">\(&gt; 1\)</span>，连乘几十次后，梯度趋近于无穷大。<strong>表现为：参数更新步子太大，Loss 瞬间变成 NaN，模型崩溃。</strong></li>
+</ol>
+<p><strong>2.20.2 梯度爆炸的检测与裁剪（Gradient Clipping）</strong></p>
+<p><strong>检测方法</strong>：</p>
+<ol>
+<li>观察训练日志，Loss 突然变成 <code>NaN</code> 或 <code>Inf</code>。</li>
+<li>打印梯度的 L2 范数（Norm），如果发现梯度模长突然飙升到几千甚至上万。</li>
+</ol>
+<p><strong>梯度裁剪原理</strong>：
+梯度裁剪是一种暴力的工程手段。我们设定一个阈值 <span class="arithmatex">\(c\)</span>。每次算出所有参数的梯度向量 <span class="arithmatex">\(g\)</span> 后，计算其范数 <span class="arithmatex">\(\|g\|\)</span>。
+如果 <span class="arithmatex">\(\|g\| &gt; c\)</span>，则对梯度向量进行等比例缩放（保留方向，限制长度）：</p>
+<div class="arithmatex">\[g_{clipped} = \frac{c}{\|g\|} g\]</div>
+<p><strong>2.20.3 最新补充（2026年视角）：</strong>
+现代架构解决此问题的"三把斧"：</p>
+<ol>
+<li><strong>残差连接（ResNet/Transformer）</strong>：在计算图上强行开辟一条梯度的高速通道，加法操作（<span class="arithmatex">\(f(x)+x\)</span>）让梯度无损反传。</li>
+<li><strong>归一化层（BN/LN）</strong>：控制每一层激活值的方差，防止数值爆炸或衰减。</li>
+<li><strong>合理的激活函数（ReLU/GELU/SwiGLU）</strong>：在正半轴导数恒为 1，完美抵消了连乘衰减效应。</li>
+</ol>
+<hr />
+<h3 id="221-bp">2.21 <strong>反向传播（BP）算法</strong></h3>
+<p><strong>反向传播（Backpropagation, BP）算法</strong>的本质是<strong>基于微积分中链式法则（Chain Rule）的高效求导算法</strong>。
+它解决的核心问题是：在拥有数百万乃至上百亿参数的深度神经网络中，如何<strong>极速、精确地计算出损失函数对每一个独立权重和偏置的偏导数（梯度）</strong>，从而为梯度下降优化提供方向。如果没有 BP 算法，深度学习的参数更新将面临指数级的计算灾难。</p>
+<p><strong>2.21.1 完整推导过程：链式法则（Chain Rule）</strong></p>
+<p>反向传播的灵魂是<strong>链式法则</strong>。链式法则告诉我们，复合函数的导数等于各部分导数的乘积：如果 <span class="arithmatex">\(y = f(u)\)</span> 且 <span class="arithmatex">\(u = g(x)\)</span>，那么 <span class="arithmatex">\(\frac{\partial y}{\partial x} = \frac{\partial y}{\partial u} \cdot \frac{\partial u}{\partial x}\)</span>。在神经网络中，这意味着<strong>局部梯度 <span class="arithmatex">\(\times\)</span> 上游传来的梯度 = 传递给下游的梯度</strong>。</p>
+<p><strong>核心推导四大公式 (BP 四大基本方程)</strong></p>
+<p>我们定义一个关键的中间变量<strong>"误差项（Error Term）" <span class="arithmatex">\(\delta^{(l)}\)</span></strong>，它表示损失函数 <span class="arithmatex">\(L\)</span> 对第 <span class="arithmatex">\(l\)</span> 层未激活净输入 <span class="arithmatex">\(z^{(l)}\)</span> 的偏导数：</p>
+<div class="arithmatex">\[\delta^{(l)} = \frac{\partial L}{\partial z^{(l)}}\]</div>
+<ul>
+<li><strong>公式1：输出层的误差项（起点的误差）</strong>
+假设输出层为第 <span class="arithmatex">\(L\)</span> 层，激活函数为 <span class="arithmatex">\(f(\cdot)\)</span>，输出为 <span class="arithmatex">\(a^{(L)}\)</span>。</li>
+</ul>
+<div class="arithmatex">\[\delta^{(L)} = \frac{\partial L}{\partial a^{(L)}} \odot f'(z^{(L)})\]</div>
+<p><em>(释义：损失函数对输出的直接偏导 <span class="arithmatex">\(\times\)</span> 最后一层激活函数的导数。<span class="arithmatex">\(\odot\)</span> 表示哈达玛乘积，即逐元素相乘。)</em></p>
+<ul>
+<li><strong>公式2：隐藏层的误差传播（从后往前传递机制）</strong>
+已知第 <span class="arithmatex">\(l+1\)</span> 层的误差 <span class="arithmatex">\(\delta^{(l+1)}\)</span>，如何求第 <span class="arithmatex">\(l\)</span> 层的误差 <span class="arithmatex">\(\delta^{(l)}\)</span>？</li>
+</ul>
+<div class="arithmatex">\[\delta^{(l)} = \left( (W^{(l+1)})^T \delta^{(l+1)} \right) \odot f'(z^{(l)})\]</div>
+<p><em>(释义：这就是梯度逐层回传的本质！下一层的误差经过权重矩阵反向映射回来，再乘以当前层激活函数的导数。)</em></p>
+<ul>
+<li><strong>公式3：权重梯度的计算</strong>
+有了每层的误差项 <span class="arithmatex">\(\delta^{(l)}\)</span> 后，对该层权重矩阵的偏导数水到渠成：</li>
+</ul>
+<div class="arithmatex">\[\frac{\partial L}{\partial W^{(l)}} = \delta^{(l)} (a^{(l-1)})^T\]</div>
+<p><em>(释义：当前层的误差 <span class="arithmatex">\(\times\)</span> 上一层的输入激活值。这解释了为什么输入特征的尺度会直接影响梯度的尺度。)</em></p>
+<ul>
+<li><strong>公式4：偏置梯度的计算</strong></li>
+</ul>
+<div class="arithmatex">\[\frac{\partial L}{\partial b^{(l)}} = \delta^{(l)}\]</div>
+<p><em>(释义：偏置的梯度直接等于当前层的误差项自身。)</em></p>
+<p><strong>总结梯度流向</strong>：
+先计算输出层误差 <span class="arithmatex">\(\delta^{(L)}\)</span> <span class="arithmatex">\(\rightarrow\)</span> 计算最后层权重梯度 <span class="arithmatex">\(\rightarrow\)</span> 利用公式2回传得到 <span class="arithmatex">\(\delta^{(L-1)}\)</span> <span class="arithmatex">\(\rightarrow\)</span> 计算倒数第二层权重梯度 <span class="arithmatex">\(\rightarrow\)</span> ……一直推导到输入层。这就是"反向"的字面含义。</p>
+<hr />
+<h3 id="222">2.22 <strong>自动微分、反向模式</strong></h3>
+<p><strong>自动微分（AutoDiff）</strong> 是现代深度学习框架的核心引擎。它既不是手算公式（符号微分），也不是用极小值近似（数值微分），而是通过<strong>跟踪程序运行时的基础数学操作，构建计算图，并精确应用链式法则</strong>来求导。</p>
+<p><strong>2.22.1 三大求导方式对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>求导方式</th>
+<th>原理</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数值微分 (Numerical)</strong></td>
+<td>基于导数定义 <span class="arithmatex">\(\frac{f(x+h)-f(x)}{h}\)</span> 计算近似值。</td>
+<td>实现极其简单，无需知道公式。</td>
+<td><strong>计算极度缓慢</strong>（每个参数都要跑一次前向），存在截断误差。</td>
+<td>用于<strong>梯度检验</strong>，验证底层C++手写算子的正确性。</td>
+</tr>
+<tr>
+<td><strong>符号微分 (Symbolic)</strong></td>
+<td>像数学家一样进行代数公式推导（如Mathematica）。</td>
+<td>结果精确，给出解析式。</td>
+<td>会产生<strong>表达式膨胀（Expression Swell）</strong>，无法处理循环、条件分支等编程控制流。</td>
+<td>理论数学研究、简单方程求解。</td>
+</tr>
+<tr>
+<td><strong>自动微分 (AutoDiff)</strong></td>
+<td>记录基础算子（加、乘、sin）构建计算图，代入数值进行链式求导。</td>
+<td><strong>快、无误差、支持任意复杂代码逻辑。</strong></td>
+<td>需要占用额外内存来保存计算图和中间激活值。</td>
+<td><strong>深度学习框架的绝对基石。</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.22.2 正向模式 vs 反向模式</strong></p>
+<ul>
+<li><strong>正向模式（Forward Mode）</strong>：计算梯度的方向与前向传播一致。<strong>每一次计算只能求出一个输入对所有输出的偏导。</strong></li>
+<li><strong>反向模式（Reverse Mode）</strong>：前向传播结束后，从输出端倒推。<strong>每一次计算能求出所有输入对一个输出的偏导。</strong></li>
+</ul>
+<p><strong>2.22.3 为什么神经网络必须用反向模式？</strong></p>
+<ul>
+<li>因为神经网络是一个<strong>"极其头重脚轻"</strong>的函数：它有上千万甚至上亿个输入（参数 <span class="arithmatex">\(W\)</span>），但通常只有<strong>极少数或仅有1个输出（损失函数 Loss）</strong>。</li>
+<li>如果用正向模式，一亿个参数需要跑一亿次计算！而用反向模式（即我们常说的反向传播 BP），<strong>只需1次反向遍历，就能同时算出这一亿个参数的梯度！</strong></li>
+</ul>
+<hr />
+<h3 id="223-pytorch-tensorflow">2.23 <strong>PyTorch 或 TensorFlow 中反向传播的底层实现机制</strong></h3>
+<p>在 PyTorch 等框架中，反向传播的底层依赖于<strong>动态计算图（Dynamic Computation Graph, DAG）</strong>和 <strong>Autograd 引擎</strong>。它的核心机制是"算子级别的重载与记录"。</p>
+<p><strong>底层机制拆解</strong>：</p>
+<ol>
+<li><strong>张量标记（<code>requires_grad=True</code>）</strong>：当我们创建一个参数张量时，系统将其标记为需要求导的叶子节点（Leaf Node）。</li>
+<li><strong>前向建图（Forward Pass &amp; Build Graph）</strong>：当进行 <span class="arithmatex">\(y = Wx + b\)</span> 时，底层不仅计算了数值结果，还在内存中悄悄创建了一个<strong>有向无环图</strong>。节点是张量，边是 <code>Function</code> 对象（如 <code>AddBackward</code>，<code>MmBackward</code>）。</li>
+<li><strong>上下文保存（Saved Tensors）</strong>：为了后续套用 BP 四大公式，前向传播时会把必需的中间激活值（如 <span class="arithmatex">\(a^{(l-1)}\)</span> 和 <span class="arithmatex">\(z^{(l)}\)</span>）保存在显存中。这是为什么"训练比推理耗显存得多"的根本原因。</li>
+<li><strong>反向执行（<code>.backward()</code>）</strong>：当调用损失函数的 <code>.backward()</code> 时，C++ 层的 Autograd 引擎被唤醒。它从 Loss 节点出发，根据图的拓扑排序进行<strong>广度优先或深度优先遍历</strong>。遇到每个 <code>Function</code> 节点，就调用其内部预写好的 <code>.backward()</code> 方法实现局部求导，并将梯度乘以下游传来的梯度，最后累加到叶子节点的 <code>.grad</code> 属性中。</li>
+</ol>
+<p><strong>最新补充（2026年视角）：</strong> 在使用 MMDetection 构建复杂的检测头或实现自定义的 IoU 损失函数时，如果不用 PyTorch 自带的算子组合，开发者往往需要继承 <code>torch.autograd.Function</code>，手动编写 <code>forward()</code> 和 <code>backward()</code>，这时候就需要用到 CUDA 甚至 Triton 来编写底层算子以榨干硬件性能。</p>
+<hr />
+<h3 id="224-batch-size">2.24 <strong>批大小（Batch Size）对反向传播和梯度更新的影响</strong></h3>
+<p>Batch Size 决定了我们一次用多少个样本来估计真实的梯度方向。它是一个在<strong>内存约束、计算效率、梯度准确性和正则化效果</strong>之间走钢丝的超参数。</p>
+<table>
+<thead>
+<tr>
+<th>Batch Size</th>
+<th>对梯度的影响</th>
+<th>优缺点与应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>极大 (如 1024+)</strong></td>
+<td>梯度方差极小，非常接近全数据集的真实梯度。曲线平滑。</td>
+<td><strong>缺点</strong>：很容易陷入尖锐的局部最优（Sharp Minima），泛化能力差；极度消耗显存。</td>
+</tr>
+<tr>
+<td><strong>适中 (如 32~256)</strong></td>
+<td>梯度保留了一定的随机噪声，能较好地在Loss曲面上探索。</td>
+<td><strong>优点</strong>：计算效率高，泛化较好，是大多数CV和NLP任务的首选。</td>
+</tr>
+<tr>
+<td><strong>极小 (如 1~8)</strong></td>
+<td>梯度方差极大，更新路线"蛇皮走位"剧烈震荡。</td>
+<td><strong>缺点</strong>：无法发挥GPU的矩阵计算并行优势。<strong>场景</strong>：处理超大分辨率图像（如医疗影像）时的无奈之举。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最新补充（2026年视角与实战）：</strong>
+当你在恒源云等算力平台租用单卡 RTX 4090 或 A100 训练高分辨率的目标检测模型（如输入分辨率达 <span class="arithmatex">\(1024 \times 1024\)</span> 的 ViTDet 或 Grounding DINO）时，由于显存限制，往往只能把 Batch Size 设为 2 甚至 1。
+此时会遇到两个致命问题及解法：</p>
+<ol>
+<li><strong>梯度太抖</strong>：必须开启<strong>梯度累加（Gradient Accumulation）</strong>，即前向反向跑几次但不更新权重，把梯度累加起来，凑够虚拟的大 Batch Size 再一起更新。</li>
+<li><strong>BN 层失效</strong>：Batch 太小会导致 Batch Normalization 均值方差估算极其离谱，必须替换为 Group Norm (GN) 或者冻结 BN 层。</li>
+</ol>
+<hr />
+<h3 id="225-sgdmomentumrmspropadam">2.25 <strong>梯度下降的变体（SGD、Momentum、RMSProp、Adam）</strong></h3>
+<p>深度学习优化器的发展史，就是一部与"鞍点、病态曲率和梯度噪音"做斗争的历史。目前的优化器主要分为两大流派：<strong>动量流派（Momentum）</strong>和<strong>自适应学习率流派（Adaptive LR）</strong>，而 Adam 是两者的集大成者。</p>
+<p><strong>2.25.1 优化器进化史与优缺点</strong></p>
+<ol>
+<li>
+<p><strong>SGD (Stochastic Gradient Descent)</strong>：最基础的梯度下降。</p>
+</li>
+<li>
+<p><em>缺点</em>：在 Loss 曲面呈现"峡谷"形状（某一个方向陡峭，另一方向平缓）时，会在陡峭方向来回震荡，在平缓方向推进极其缓慢。</p>
+</li>
+<li>
+<p><strong>SGD + Momentum (动量法)</strong>：引入了物理学中的"惯性"。</p>
+</li>
+<li>
+<p><em>原理</em>：当前更新方向不仅仅看当前梯度，还要结合上一次的更新方向（历史梯度的指数移动平均）。</p>
+</li>
+<li>
+<p><em>优点</em>：极大抑制了震荡，冲出鞍点能力极强。<strong>在训练传统CNN（如ResNet、YOLO早期版本）时，调教得当的 SGD+Momentum 依然是达到极致泛化性能的王者。</strong></p>
+</li>
+<li>
+<p><strong>RMSProp / AdaGrad</strong>：自适应学习率流派。</p>
+</li>
+<li>
+<p><em>原理</em>：计算历史梯度的平方和。对于更新频繁的参数，减小其学习率；对于更新稀疏的参数，增大学习率。</p>
+</li>
+<li><em>优点</em>：无需极其精细地手动调节全局学习率。</li>
+</ol>
+<p><strong>2.25.2 Adam 优化器的封神原理</strong></p>
+<p><strong>Adam (Adaptive Moment Estimation)</strong> 将动量法（一阶矩）和 RMSProp（二阶矩）完美结合：</p>
+<ul>
+<li><strong>一阶矩估计 <span class="arithmatex">\(m_t\)</span></strong>：计算梯度的指数移动平均（类似动量），决定更新<strong>方向</strong>。</li>
+<li><strong>二阶矩估计 <span class="arithmatex">\(v_t\)</span></strong>：计算梯度平方的指数移动平均（类似RMSProp），为每个参数动态计算自适应<strong>步长</strong>。</li>
+<li><strong>参数更新公式</strong>：<span class="arithmatex">\(\theta = \theta - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\)</span> （其中 <span class="arithmatex">\(\hat{m}, \hat{v}\)</span> 为偏差修正后的值）。</li>
+</ul>
+<p><strong>为什么 Adam 表现优异？</strong>
+Adam 让每个参数都拥有了"独立且动态调整的学习率"。在面对含有大量噪声的数据（如电力、船舶板块的股票量化预测），或者复杂的、存在大量稀疏梯度的现代架构（如包含了庞大词表和注意力机制的 Transformer）时，Adam 能够极速收敛，对初始学习率不敏感，可以说是"开箱即用"的工程神器。</p>
+<p><em>(注：现代前沿应用中，多采用 </em><em>AdamW</em><em>，它修复了 Adam 在 L2 正则化（权重衰减）上的数学实现缺陷，是目前大模型训练的绝对主力。)</em></p>
+<hr />
+<h2 id="_4">三、激活函数</h2>
+<h3 id="31">3.1 <strong>激活函数的核心作用：引入非线性</strong></h3>
+<p>激活函数的核心作用是<strong>引入非线性</strong>，使神经网络能够学习和表示复杂的非线性关系。如果没有激活函数，无论神经网络有多少层，它本质上都只是一个<strong>线性变换</strong>，无法解决复杂的非线性问题。</p>
+<p><strong>3.1.1 激活函数的作用总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>引入非线性</strong></td>
+<td>使网络能表示复杂函数</td>
+</tr>
+<tr>
+<td><strong>特征变换</strong></td>
+<td>将输入映射到新的特征空间</td>
+</tr>
+<tr>
+<td><strong>门控机制</strong></td>
+<td>控制信息流动（如 ReLU 的"开关"特性）</td>
+</tr>
+<tr>
+<td><strong>梯度传播</strong></td>
+<td>影响反向传播中的梯度流动</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.1.2 非线性的必要性</strong></p>
+<ol>
+<li><strong>拟合复杂函数</strong></li>
+<li><strong>实现复杂决策边界</strong></li>
+<li><strong>层次化特征学习</strong></li>
+</ol>
+<p><strong>3.1.3 线性激活函数的唯一用途</strong></p>
+<p>线性激活函数仅在<strong>输出层</strong>用于回归任务：</p>
+<table>
+<thead>
+<tr>
+<th>任务类型</th>
+<th>隐藏层激活函数</th>
+<th>输出层激活函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二分类</td>
+<td>ReLU/GELU等</td>
+<td>Sigmoid</td>
+</tr>
+<tr>
+<td>多分类</td>
+<td>ReLU/GELU等</td>
+<td>Softmax</td>
+</tr>
+<tr>
+<td><strong>回归</strong></td>
+<td>ReLU/GELU等</td>
+<td><strong>线性（恒等函数）</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="32">3.2 <strong>理想激活函数的性质</strong></h3>
+<p>一个理想的激活函数应该具备以下性质：<strong>非线性、可微性、单调性、非饱和性、计算高效、零中心化输出</strong>。然而，现实中不存在完美的激活函数，各种激活函数都是在这些性质之间做权衡。</p>
+<p><strong>理想激活函数的性质清单</strong></p>
+<table>
+<thead>
+<tr>
+<th>性质</th>
+<th>重要性</th>
+<th>说明</th>
+<th>现实挑战</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>非线性</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>使网络能表示复杂函数</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>可微性</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>支持梯度反向传播</td>
+<td>ReLU在0点不可微</td>
+</tr>
+<tr>
+<td><strong>单调性</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>保持网络可训练性</td>
+<td>Swish等非单调激活函数</td>
+</tr>
+<tr>
+<td><strong>非饱和性</strong></td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>避免梯度消失</td>
+<td>Sigmoid/Tanh会饱和</td>
+</tr>
+<tr>
+<td><strong>计算高效</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>加速训练和推理</td>
+<td>GELU需要指数运算</td>
+</tr>
+<tr>
+<td><strong>零中心化</strong></td>
+<td>⭐⭐⭐⭐</td>
+<td>加速收敛</td>
+<td>ReLU/Sigmoid输出非零中心</td>
+</tr>
+<tr>
+<td><strong>输出有界</strong></td>
+<td>⭐⭐⭐</td>
+<td>数值稳定性</td>
+<td>ReLU输出无界</td>
+</tr>
+<tr>
+<td><strong>平滑性</strong></td>
+<td>⭐⭐⭐</td>
+<td>优化友好</td>
+<td>ReLU不平滑</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常见激活函数的性质对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>非线性</th>
+<th>可微</th>
+<th>单调</th>
+<th>非饱和</th>
+<th>计算快</th>
+<th>零中心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sigmoid</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>中</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Tanh</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>中</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>ReLU</td>
+<td>✓</td>
+<td>✗*</td>
+<td>✓</td>
+<td>✓</td>
+<td>快</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>Leaky ReLU</td>
+<td>✓</td>
+<td>✗*</td>
+<td>✓</td>
+<td>✓</td>
+<td>快</td>
+<td>✗</td>
+</tr>
+<tr>
+<td>ELU</td>
+<td>✓</td>
+<td>✗*</td>
+<td>✓</td>
+<td>✓</td>
+<td>慢</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>GELU</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+<td>慢</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Swish</td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✓</td>
+<td>慢</td>
+<td>✗</td>
+</tr>
+</tbody>
+</table>
+<p>*注：在x=0处不可微，但在实践中不是问题</p>
+<p><strong>性质之间的权衡</strong></p>
+<div class="highlight"><pre><span></span><code>                理想激活函数
+                     │
+        ┌────────────┼────────────┐
+        │            │            │
+    梯度特性     计算效率      输出特性
+   （非饱和）    （快速）    （零中心）
+        │            │            │
+        └────────────┼────────────┘
+                     │
+              不存在完美选择！
+
+实际选择需要根据：
+- 网络架构（CNN/RNN/Transformer）
+- 任务类型（分类/回归/生成）
+- 硬件限制（训练/推理）
+</code></pre></div>
+<p><strong>三大领域应用：</strong></p>
+<p><strong>AIGC领域</strong>：大语言模型选择GELU，因为它在平滑性和梯度特性之间取得了良好的平衡，有利于训练稳定性和模型性能。</p>
+<p><strong>传统深度学习</strong>：CNN通常选择ReLU或其变体，因为计算效率高，且CNN的卷积结构对激活函数的零中心性不那么敏感。</p>
+<p><strong>自动驾驶</strong>：实时性要求高的场景倾向于使用ReLU，因为推理速度快；训练阶段可能使用更复杂的激活函数以提升精度。</p>
+<p><strong>最新补充（2026年视角）：</strong> 2024-2025年的研究趋势：</p>
+<ul>
+<li><strong>SwiGLU</strong>：在大模型中流行，结合了Swish和GLU的优点</li>
+<li><strong>平滑激活函数</strong>：GELU、Swish等平滑函数在Transformer中表现更好</li>
+<li><strong>自适应激活函数</strong>：如PReLU，让模型自己学习最优的激活形状</li>
+</ul>
+<p>研究表明，对于大模型，激活函数的<strong>平滑性</strong>比<strong>计算效率</strong>更重要。</p>
+<hr />
+<h3 id="33">3.3 <strong>激活函数的饱和性：导致梯度消失</strong></h3>
+<p><strong>饱和性</strong>是指激活函数在输入取某些值时，输出变化非常缓慢甚至几乎不变的现象。在饱和区域，激活函数的<strong>梯度接近于零</strong>，这会导致反向传播时梯度消失，使得该层及之前层的参数难以更新。</p>
+<p><strong>3.3.1 饱和区域的定义</strong></p>
+<p>当 <span class="arithmatex">\(|x|\)</span> 很大时，如果 <span class="arithmatex">\(f'(x) \approx 0\)</span>，则称激活函数在该区域饱和。</p>
+<p><strong>数学定义</strong>：</p>
+<div class="arithmatex">\[\lim_{x \to +\infty} f'(x) = 0 \quad \text{（右饱和）}\]</div>
+<div class="arithmatex">\[\lim_{x \to -\infty} f'(x) = 0 \quad \text{（左饱和）}\]</div>
+<p><strong>3.3.2 Sigmoid 的饱和性分析</strong></p>
+<p><strong>Sigmoid 函数</strong>：</p>
+<div class="arithmatex">\[\sigma(x) = \frac{1}{1 + e^{-x}}\]</div>
+<p><strong>导数</strong>：</p>
+<div class="arithmatex">\[\sigma'(x) = \sigma(x)(1 - \sigma(x))\]</div>
+<p><strong>关键数值</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>σ(x)</th>
+<th>σ'(x)</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-6</td>
+<td>0.0025</td>
+<td>0.0025</td>
+<td>饱和</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>0.047</td>
+<td>0.045</td>
+<td>接近饱和</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0.5</td>
+<td>0.25</td>
+<td>最陡峭</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.953</td>
+<td>0.045</td>
+<td>接近饱和</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.9975</td>
+<td>0.0025</td>
+<td>饱和</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3.3 Tanh 的饱和性分析</strong></p>
+<p><strong>Tanh 函数</strong>：</p>
+<div class="arithmatex">\[\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}\]</div>
+<p><strong>导数</strong>：</p>
+<div class="arithmatex">\[\tanh'(x) = 1 - \tanh^2(x)\]</div>
+<p>Tanh 的梯度范围是 <span class="arithmatex">\([0, 1]\)</span>，比Sigmoid的 <span class="arithmatex">\([0, 0.25]\)</span> 更好，但仍然会饱和。</p>
+<p><strong>3.3.4 ReLU的非饱和性</strong></p>
+<p><strong>ReLU</strong>：</p>
+<div class="arithmatex">\[\text{ReLU}(x) = \max(0, x)\]</div>
+<p><strong>导数</strong>：</p>
+<div class="arithmatex">\[\text{ReLU}'(x) = \begin{cases} 1 &amp; x &gt; 0 \\ 0 &amp; x &lt; 0 \end{cases}\]</div>
+<p><strong>ReLU的优势</strong>：在 <span class="arithmatex">\(x &gt; 0\)</span> 区域，梯度恒为1，<strong>永不饱和</strong>！</p>
+<p><strong>3.3.5 饱和导致的梯度消失</strong></p>
+<p>考虑一个深层网络：</p>
+<div class="arithmatex">\[\frac{\partial L}{\partial w_1} = \frac{\partial L}{\partial a_L} \cdot \prod_{i=2}^{L} \frac{\partial a_i}{\partial z_i} \cdot \frac{\partial z_i}{\partial a_{i-1}}\]</div>
+<p>如果每层激活函数的导数 <span class="arithmatex">\(\frac{\partial a_i}{\partial z_i} &lt; 1\)</span>（在饱和区域），连乘后梯度指数级衰减：</p>
+<div class="highlight"><pre><span></span><code>梯度随层数的变化（假设每层梯度为0.1）：
+
+Layer 1    Layer 2    Layer 3    Layer 4    Layer 5
+  │           │          │          │          │
+  ▼           ▼          ▼          ▼          ▼
+0.00001  → 0.0001  →  0.001  →   0.01  →    0.1
+
+梯度在浅层几乎消失！
+</code></pre></div>
+<p><strong>3.3.6 各激活函数的梯度范围总结</strong></p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>导数范围</th>
+<th>最大导数</th>
+<th>梯度消失风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sigmoid</strong></td>
+<td>(0, 0.25]</td>
+<td>0.25</td>
+<td>⭐⭐⭐⭐⭐ 极高</td>
+</tr>
+<tr>
+<td><strong>Tanh</strong></td>
+<td>(0, 1]</td>
+<td>1.0</td>
+<td>⭐⭐⭐⭐ 高</td>
+</tr>
+<tr>
+<td><strong>ReLU</strong></td>
+<td>{0, 1}</td>
+<td>1.0</td>
+<td>⭐⭐ 低（但有死亡问题）</td>
+</tr>
+<tr>
+<td><strong>Leaky ReLU</strong></td>
+<td>{α, 1}</td>
+<td>1.0</td>
+<td>⭐ 低</td>
+</tr>
+<tr>
+<td><strong>GELU</strong></td>
+<td>≈(0, 1)</td>
+<td>≈0.8</td>
+<td>⭐⭐ 中低</td>
+</tr>
+<tr>
+<td><strong>Swish</strong></td>
+<td>≈(0, 1.1)</td>
+<td>≈1.1</td>
+<td>⭐⭐ 中低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3.7 饱和问题的解决方案</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>原理</th>
+<th>代表激活函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>使用非饱和激活函数</strong></td>
+<td>避免梯度消失</td>
+<td>ReLU、Leaky ReLU</td>
+</tr>
+<tr>
+<td><strong>归一化</strong></td>
+<td>将输入保持在非饱和区域</td>
+<td>BatchNorm、LayerNorm</td>
+</tr>
+<tr>
+<td><strong>残差连接</strong></td>
+<td>提供梯度直接传播路径</td>
+<td>ResNet</td>
+</tr>
+<tr>
+<td><strong>合适的初始化</strong></td>
+<td>避免初始就进入饱和区</td>
+<td>Xavier、Kaiming初始化</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.3.8 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC 领域</strong>：大语言模型的训练需要稳定的梯度流动，GELU 激活函数虽然没有完全避免饱和，但其平滑的特性使得梯度消失问题得到缓解。</li>
+<li><strong>传统深度学习</strong>：深层 CNN 使用 ReLU 正是因为它的非饱和性，使得几十层甚至上百层的网络能够成功训练。</li>
+<li><strong>自动驾驶</strong>：感知网络的训练稳定性至关重要，使用非饱和激活函数可以确保梯度能够传播到网络的每一层。</li>
+</ul>
+<h3 id="34">3.4 <strong>激活函数的输出分布对后续层的训练的影响、零中心化的重要性</strong></h3>
+<p>激活函数的输出分布影响后续层的<strong>梯度更新方向</strong>和<strong>收敛速度</strong>。</p>
+<p><strong>零中心化（Zero-Centered）</strong>（输出以0为中心）之所以重要，是因为它允许权重向两个方向更新，而非零中心的输出会导致<strong>梯度更新呈现锯齿形路径</strong>，显著降低收敛效率。</p>
+<p><strong>3.4.1 零中心化的定义</strong></p>
+<p><strong>零中心化</strong>：激活函数的输出分布以0为中心，即 <span class="arithmatex">\(E[f(x)] \approx 0\)</span>（假设输入以0为中心）</p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>输出范围</th>
+<th>是否零中心</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sigmoid</td>
+<td>(0, 1)</td>
+<td>✗ 均值约0.5</td>
+</tr>
+<tr>
+<td>Tanh</td>
+<td>(-1, 1)</td>
+<td>✓ 均值约0</td>
+</tr>
+<tr>
+<td>ReLU</td>
+<td>[0, +∞)</td>
+<td>✗ 均值 &gt; 0</td>
+</tr>
+<tr>
+<td>Leaky ReLU</td>
+<td>(-∞, +∞)</td>
+<td>✗ 均值 &gt; 0</td>
+</tr>
+<tr>
+<td>GELU</td>
+<td>≈(-0.17, +∞)</td>
+<td>≈ 基本零中心</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.4.2 非零中心导致的问题</strong></p>
+<p><strong>问题1：梯度更新方向受限</strong></p>
+<p>假设第 <span class="arithmatex">\(l\)</span> 层的输入（即第 <span class="arithmatex">\(l-1\)</span> 层的输出）都是正数（如使用ReLU），则：</p>
+<div class="arithmatex">\[\frac{\partial L}{\partial w_{ij}} = \frac{\partial L}{\partial z_j} \cdot a_i\]</div>
+<p>由于 <span class="arithmatex">\(a_i &gt; 0\)</span>，所有梯度的符号由 <span class="arithmatex">\(\frac{\partial L}{\partial z_j}\)</span> 决定，意味着<strong>该神经元的所有权重只能朝同一个方向更新</strong>！</p>
+<div class="highlight"><pre><span></span><code>非零中心输出的梯度更新问题：
+
+理想情况（零中心）：
+  权重空间
+    │       ★ 最优点
+    │      ╱
+    │     ╱
+    │    ╱
+    │   ╱
+    │  ╱
+    │ ╱
+    └─────────→
+  可以直接朝最优方向移动
+
+实际情况（非零中心）：
+  权重空间
+    │       ★ 最优点
+    │      ↑
+    │     ↗ ↖
+    │    ↗   ↖
+    │   ↗     ↖
+    │  ↗       ↖
+    │ ↗         ↖
+    └─────────→
+  只能走&quot;之&quot;字形路径
+</code></pre></div>
+<p><strong>问题2：收敛速度慢</strong></p>
+<div class="highlight"><pre><span></span><code>收敛路径对比：
+
+零中心（Tanh）：
+    起点 ────────────→ 最优点
+    （直线路径，快速）
+
+非零中心（ReLU）：
+    起点 → ↗ → ↖ → ↗ → ↖ → 最优点
+    （锯齿路径，缓慢）
+</code></pre></div>
+<p><strong>问题3：偏置补偿</strong></p>
+<p>非零中心的输出需要后续层的偏置来补偿，增加了学习负担。</p>
+<p><strong>数学分析</strong></p>
+<p>考虑一个简单的神经元：<span class="arithmatex">\(z = w^T a + b\)</span></p>
+<p><strong>梯度</strong>：<span class="arithmatex">\(\frac{\partial L}{\partial w} = \frac{\partial L}{\partial z} \cdot a\)</span></p>
+<p><strong>如果 <span class="arithmatex">\(a &gt; 0\)</span>（如ReLU输出）</strong>：</p>
+<ul>
+<li>当 <span class="arithmatex">\(\frac{\partial L}{\partial z} &gt; 0\)</span>：<span class="arithmatex">\(w\)</span> 减小</li>
+<li>当 <span class="arithmatex">\(\frac{\partial L}{\partial z} &lt; 0\)</span>：<span class="arithmatex">\(w\)</span> 增大</li>
+<li>但 <span class="arithmatex">\(w\)</span> 的所有维度<strong>必须同时增大或同时减小</strong>！</li>
+</ul>
+<p><strong>如果 <span class="arithmatex">\(a\)</span> 有正有负（如Tanh输出）</strong>：</p>
+<ul>
+<li><span class="arithmatex">\(w\)</span> 的不同维度可以独立地增大或减小</li>
+<li>更新方向更加灵活</li>
+</ul>
+<p><strong>3.4.3 为什么 ReLU 仍然有效？</strong></p>
+<p>尽管 ReLU 输出非零中心，但它仍然在实践中表现良好，原因：</p>
+<table>
+<thead>
+<tr>
+<th>因素</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BatchNorm</strong></td>
+<td>将激活后的输出归一化到零中心</td>
+</tr>
+<tr>
+<td><strong>残差连接</strong></td>
+<td>缓解了梯度方向受限的问题</td>
+</tr>
+<tr>
+<td><strong>足够的训练时间</strong></td>
+<td>虽然收敛慢，但最终能收敛</td>
+</tr>
+<tr>
+<td><strong>其他优势</strong></td>
+<td>非饱和性、计算效率弥补了零中心的不足</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.4.4 零中心化与其他因素的权衡</strong></p>
+<div class="highlight"><pre><span></span><code>激活函数选择的权衡：
+
+        零中心化
+          ▲
+          │
+          │            Tanh
+          │             ●
+          │
+          │     Sigmoid
+          │        ●
+          │
+          │                      ReLU
+          │                       ●
+          │
+          └──────────────────────────────▶ 非饱和性
+          低                          高
+
+ReLU牺牲了零中心化，换取了非饱和性
+在实践中，非饱和性往往更重要
+</code></pre></div>
+<p><strong>3.4.5 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：大语言模型通常使用GELU，它基本是零中心的（均值≈-0.17），同时保持良好的梯度特性。BatchNorm/LayerNorm也会将激活输出归一化到零中心。</li>
+<li><strong>传统深度学习</strong>：CNN中使用ReLU + BatchNorm是标准组合，BatchNorm解决了零中心问题，ReLU提供了非饱和性。</li>
+<li><strong>自动驾驶</strong>：实时性要求高的系统可能直接使用ReLU，通过增加训练时间来弥补收敛速度的不足。</li>
+</ul>
+<p><strong>3.4.6 最新补充（2026年视角）：</strong> 2024-2025年的新认识：</p>
+<ul>
+<li><strong>LayerNorm更重要</strong>：在Transformer中，LayerNorm在激活函数之前应用，部分解决了零中心问题</li>
+<li><strong>Swish/GELU的零中心性</strong>：这些现代激活函数的输出更接近零中心</li>
+<li><strong>批量大小的影响</strong>：大batch训练可以缓解非零中心带来的收敛问题</li>
+</ul>
+<hr />
+<h3 id="35">3.5 <strong>激活函数的计算效率对工业部署的影响</strong></h3>
+<p>激活函数的计算效率直接影响模型的<strong>推理延迟</strong>和<strong>吞吐量</strong>，在工业部署中尤为关键。需要在<strong>模型精度</strong>和<strong>计算效率</strong>之间权衡：简单的激活函数（如ReLU）计算快但表达能力有限，复杂的激活函数（如GELU）表达能力强但计算开销大。</p>
+<p><strong>3.5.1 激活函数的计算复杂度对比</strong></p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>数学形式</th>
+<th>计算操作</th>
+<th>相对复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ReLU</strong></td>
+<td><span class="arithmatex">\(\max(0, x)\)</span></td>
+<td>比较</td>
+<td>1x</td>
+</tr>
+<tr>
+<td><strong>Leaky ReLU</strong></td>
+<td><span class="arithmatex">\(\max(\alpha x, x)\)</span></td>
+<td>比较+乘法</td>
+<td>1.1x</td>
+</tr>
+<tr>
+<td><strong>Sigmoid</strong></td>
+<td><span class="arithmatex">\(\frac{1}{1+e^{-x}}\)</span></td>
+<td>指数+除法</td>
+<td>5-10x</td>
+</tr>
+<tr>
+<td><strong>Tanh</strong></td>
+<td><span class="arithmatex">\(\frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></td>
+<td>2×指数+除法</td>
+<td>5-10x</td>
+</tr>
+<tr>
+<td><strong>GELU（精确）</strong></td>
+<td><span class="arithmatex">\(x \cdot \Phi(x)\)</span></td>
+<td>误差函数</td>
+<td>15-20x</td>
+</tr>
+<tr>
+<td><strong>GELU（近似）</strong></td>
+<td><span class="arithmatex">\(0.5x(1+\tanh(\sqrt{2/\pi}(x+0.044715x^3)))\)</span></td>
+<td>Tanh+多项式</td>
+<td>8-12x</td>
+</tr>
+<tr>
+<td><strong>Swish</strong></td>
+<td><span class="arithmatex">\(x \cdot \sigma(x)\)</span></td>
+<td>Sigmoid+乘法</td>
+<td>6-10x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.5.2 GELU 的近似计算</strong></p>
+<p><strong>精确形式</strong>：</p>
+<div class="arithmatex">\[\text{GELU}(x) = x \cdot P(X \leq x) = x \cdot \Phi(x)\]</div>
+<p>其中 <span class="arithmatex">\(\Phi(x)\)</span> 是标准正态分布的CDF，需要计算误差函数erf()。</p>
+<p><strong>快速近似</strong>：</p>
+<div class="arithmatex">\[\text{GELU}(x) \approx 0.5x\left(1 + \tanh\left[\sqrt{2/\pi}(x + 0.044715x^3)\right]\right)\]</div>
+<p><strong>更快的近似</strong>：</p>
+<div class="arithmatex">\[\text{GELU}(x) \approx x \cdot \sigma(1.702x)\]</div>
+<p><strong>3.5.3 工业部署中的考量</strong></p>
+<p><strong>（1）推理延迟</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>延迟要求</th>
+<th>推荐激活函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>实时交互</strong>（如对话）</td>
+<td>&lt; 100ms</td>
+<td>ReLU、快速GELU近似</td>
+</tr>
+<tr>
+<td><strong>批量处理</strong></td>
+<td>秒级</td>
+<td>可用复杂激活函数</td>
+</tr>
+<tr>
+<td><strong>离线分析</strong></td>
+<td>分钟级</td>
+<td>精度优先</td>
+</tr>
+</tbody>
+</table>
+<p><strong>（2）吞吐量</strong></p>
+<div class="highlight"><pre><span></span><code>激活函数计算占比（典型Transformer层）：
+
+总计算时间
+├── 注意力机制  40%
+├── 前馈网络    35%
+│   ├── 矩阵乘法  80%
+│   └── 激活函数  20%  ← 可优化部分
+└── 归一化      15%
+└── 其他        10%
+
+激活函数约占总计算时间的5-10%
+</code></pre></div>
+<p><strong>（3）硬件适配</strong></p>
+<table>
+<thead>
+<tr>
+<th>硬件</th>
+<th>激活函数考量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPU</strong></td>
+<td>有专门的exp()、tanh()单元，复杂激活函数效率高</td>
+</tr>
+<tr>
+<td><strong>CPU</strong></td>
+<td>简单激活函数优势更明显</td>
+</tr>
+<tr>
+<td><strong>移动端NPU</strong></td>
+<td>通常只优化ReLU，复杂激活函数需要软件实现</td>
+</tr>
+<tr>
+<td><strong>边缘设备</strong></td>
+<td>内存和计算都受限，简单激活函数更合适</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.5.4 性能与效率的权衡策略</strong></p>
+<p><strong>策略1：训练用复杂，推理用简单</strong></p>
+<div class="highlight"><pre><span></span><code>训练阶段：使用GELU/Swish，追求最高精度
+    ↓
+模型蒸馏/微调
+    ↓
+推理阶段：转换为ReLU近似，牺牲少量精度换取速度
+</code></pre></div>
+<p><strong>策略2：混合激活函数</strong></p>
+<table>
+<thead>
+<tr>
+<th>层位置</th>
+<th>激活函数选择</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>靠近输入</td>
+<td>ReLU</td>
+<td>特征简单，简单激活足够</td>
+</tr>
+<tr>
+<td>中间层</td>
+<td>GELU</td>
+<td>关键特征提取，需要强表达力</td>
+</tr>
+<tr>
+<td>靠近输出</td>
+<td>ReLU</td>
+<td>减少计算，输出层影响小</td>
+</tr>
+</tbody>
+</table>
+<p><strong>策略3：量化友好的激活函数</strong></p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>INT8量化友好度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReLU</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>分段线性，量化无损</td>
+</tr>
+<tr>
+<td>Leaky ReLU</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>GELU</td>
+<td>⭐⭐⭐</td>
+<td>需要查表或多项式近似</td>
+</tr>
+<tr>
+<td>Swish</td>
+<td>⭐⭐⭐</td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.5.5 实际案例分析</strong></p>
+<p><strong>案例：大语言模型推理优化</strong></p>
+<table>
+<thead>
+<tr>
+<th>优化方法</th>
+<th>原始GELU</th>
+<th>GELU近似</th>
+<th>改用ReLU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>推理速度</td>
+<td>1x</td>
+<td>1.3x</td>
+<td>1.5x</td>
+</tr>
+<tr>
+<td>精度损失</td>
+<td>-</td>
+<td>&lt;0.1%</td>
+<td>1-2%</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>离线</td>
+<td>在线</td>
+<td>边缘</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.5.6 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：ChatGPT 等服务需要服务数亿用户，推理效率至关重要。使用 GELU 近似、量化、蒸馏等技术来平衡精度和效率。</li>
+<li><strong>传统深度学习</strong>：移动端部署通常将 GELU/Swish 替换为 ReLU，或使用量化友好的近似版本。</li>
+<li><strong>自动驾驶</strong>：车载计算资源有限，实时性要求高，通常使用 ReLU 或高度优化的激活函数实现。</li>
+</ul>
+<p><strong>3.5.7 最新补充（2026年视角）：</strong> 2024-2025年的优化趋势：</p>
+<ul>
+<li><strong>硬件感知设计</strong>：新一代激活函数考虑了GPU/NPU 的计算特性</li>
+<li><strong>稀疏激活</strong>：如 ReLU 的稀疏性被用于加速推理</li>
+<li><strong>查找表优化</strong>：对 GELU 等复杂函数使用预先计算的查找表</li>
+<li><strong>融合算子</strong>：将激活函数与前一层/后一层的计算融合，减少内存访问</li>
+</ul>
+<hr />
+<h3 id="36-sigmoid">3.6 <strong>经典激活函数——Sigmoid</strong></h3>
+<p><strong>Sigmoid 函数</strong>（也称逻辑函数）是最经典的激活函数之一，数学表达式为 <span class="arithmatex">\(\sigma(x) = \frac{1}{1+e^{-x}}\)</span>。它将任意实数映射到 <span class="arithmatex">\((0, 1)\)</span> 区间，输出可以解释为概率。但其梯度在饱和区域接近零，容易导致梯度消失问题。</p>
+<p><strong>3.6.1 Sigmoid 的数学定义</strong></p>
+<div class="arithmatex">\[\sigma(x) = \frac{1}{1 + e^{-x}} = \frac{e^x}{1 + e^x}\]</div>
+<p><strong>等价形式</strong>：</p>
+<div class="arithmatex">\[\sigma(x) = \frac{1}{2}\left(1 + \tanh\left(\frac{x}{2}\right)\right)\]</div>
+<p><strong>3.6.2 函数图像与特性</strong></p>
+<div class="highlight"><pre><span></span><code>Sigmoid 函数图像：σ(x) = 1 / (1 + e^(-x))
+
+     σ(x)
+     1 │                          ___________
+       │                       __/
+       │                     _/
+       │                   _/
+       │                 _/
+    0.5 ────────────────●────────────────────────
+       │              _/
+       │            _/
+       │          _/
+       │        _/
+     0 │______/
+       └────────────────────────────────────────▶ x
+        -6   -4   -2    0    2    4    6
+
+特点：
+- 输出范围：(0, 1)
+- 过点 (0, 0.5)
+- 两侧逐渐饱和
+- 不是零中心化函数
+</code></pre></div>
+<p><strong>3.6.3 梯度特性</strong></p>
+<p><strong>导数公式</strong>：</p>
+<div class="arithmatex">\[\sigma'(x) = \sigma(x)(1 - \sigma(x)) = \sigma(x) \cdot \sigma(-x)\]</div>
+<p><strong>重要性质</strong>：<span class="arithmatex">\(\sigma'(0) = 0.5 \times 0.5 = 0.25 \quad \text{（最大梯度）}\)</span></p>
+<p><strong>3.6.4 Sigmoid 的优缺点</strong></p>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输出有界</strong>：(0,1)，适合表示概率</td>
+<td><strong>梯度消失</strong>：饱和区梯度接近零</td>
+</tr>
+<tr>
+<td><strong>平滑可微</strong>：处处可导</td>
+<td><strong>非零中心</strong>：输出均值约0.5</td>
+</tr>
+<tr>
+<td><strong>单调性</strong>：保持优化稳定性</td>
+<td><strong>计算较慢</strong>：需要指数运算</td>
+</tr>
+<tr>
+<td><strong>生物学可解释性</strong>：类似神经元激活</td>
+<td><strong>最大梯度小</strong>：仅0.25</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最新补充（2026年视角）：</strong> Sigmoid在深度学习隐藏层中已被淘汰，但在以下场景仍有价值：</p>
+<ul>
+<li><strong>二分类输出层</strong>：输出概率的最自然选择</li>
+<li><strong>注意力机制</strong>：如Gate机制中的门控</li>
+<li><strong>强化学习</strong>：策略网络输出动作概率</li>
+<li><strong>知识蒸馏</strong>：软标签生成</li>
+</ul>
+<hr />
+<h3 id="37-tanh">3.7 <strong>经典激活函数——Tanh</strong></h3>
+<p><strong>Tanh（双曲正切）函数</strong>可以看作<strong>Sigmoid的缩放和平移版本</strong>：<span class="arithmatex">\(\tanh(x) = 2\sigma(2x) - 1\)</span>。Tanh解决了Sigmoid的<strong>非零中心问题</strong>（输出范围从(0,1)变为(-1,1)），但仍存在<strong>梯度消失</strong>问题。</p>
+<p><strong>3.7.1 Tanh 的数学定义</strong></p>
+<div class="arithmatex">\[\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}\]</div>
+<p><strong>与Sigmoid的关系</strong>：<span class="arithmatex">\(\tanh(x) = 2\sigma(2x) - 1\)</span></p>
+<p><strong>3.7.2 Tanh 解决的非零中心问题</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Sigmoid</th>
+<th>Tanh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输出范围</strong></td>
+<td>(0, 1)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr>
+<td><strong>输出均值</strong></td>
+<td>≈ 0.5</td>
+<td>≈ 0</td>
+</tr>
+<tr>
+<td><strong>零中心</strong></td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>梯度更新效率</strong></td>
+<td>低（锯齿路径）</td>
+<td>高（直线路径）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.7.3 Tanh 仍未解决的问题</strong></p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>Tanh</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>梯度消失</strong></td>
+<td>✗ 仍存在</td>
+<td>饱和区梯度→0</td>
+</tr>
+<tr>
+<td><strong>计算较慢</strong></td>
+<td>✗ 仍存在</td>
+<td>需要指数运算</td>
+</tr>
+<tr>
+<td><strong>零中心</strong></td>
+<td>✓ 已解决</td>
+<td>输出范围(-1,1)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最新补充（2026年视角）：</strong> Tanh在现代深度学习中的地位：</p>
+<ul>
+<li><strong>Transformer</strong>：几乎不使用Tanh（GELU更好）</li>
+<li><strong>RNN/LSTM</strong>：仍然使用Tanh作为隐藏状态激活</li>
+<li><strong>特定归一化</strong>：某些归一化技术使用Tanh将输出限制在[-1,1]</li>
+<li><strong>生成模型</strong>：某些GAN的判别器输出使用Tanh</li>
+</ul>
+<hr />
+<h3 id="38-relu">3.8 <strong>经典激活函数——ReLU</strong></h3>
+<p><strong>ReLU（Rectified Linear Unit）</strong> 函数定义为 <span class="arithmatex">\(f(x) = \max(0, x)\)</span>。它在正区间的导数恒为1，<strong>永不饱和</strong>，因此能够有效缓解梯度消失问题。ReLU是当今深度学习中最常用的激活函数，被称为"激活函数之王"。</p>
+<p><strong>3.8.1 ReLU 的数学定义</strong></p>
+<div class="arithmatex">\[\text{ReLU}(x) = \max(0, x) = \begin{cases} x &amp; \text{if } x &gt; 0 \\ 0 &amp; \text{if } x \leq 0 \end{cases}\]</div>
+<p><strong>3.8.2 ReLU的梯度特性</strong></p>
+<p><strong>导数</strong>：</p>
+<div class="arithmatex">\[\text{ReLU}'(x) = \begin{cases} 1 &amp; \text{if } x &gt; 0 \\ 0 &amp; \text{if } x &lt; 0 \\ \text{未定义} &amp; \text{if } x = 0 \end{cases}\]</div>
+<p><strong>关键特性</strong>：</p>
+<ul>
+<li><strong>正区间</strong>：梯度恒为1，<strong>永不衰减</strong></li>
+<li><strong>负区间</strong>：梯度为0，神经元"死亡"</li>
+<li><strong>x=0处</strong>：形式上不可微，但实践中取0或1均可</li>
+</ul>
+<p><strong>3.8.3 为什么ReLU能缓解梯度消失？</strong></p>
+<p><strong>（1）正区间梯度不衰减</strong></p>
+<table>
+<thead>
+<tr>
+<th>激活函数</th>
+<th>正区间梯度</th>
+<th>梯度消失风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sigmoid</td>
+<td>0 ~ 0.25</td>
+<td>高（最大0.25）</td>
+</tr>
+<tr>
+<td>Tanh</td>
+<td>0 ~ 1</td>
+<td>中（饱和区→0）</td>
+</tr>
+<tr>
+<td><strong>ReLU</strong></td>
+<td><strong>恒为1</strong></td>
+<td><strong>低（正区间不衰减）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>（2）梯度传播对比</strong></p>
+<div class="highlight"><pre><span></span><code>10层网络的梯度传播：
+
+Sigmoid: 0.25^10 ≈ 0.000001 （几乎消失）
+Tanh:    0.1^10 ≈ 0.00000001 （几乎消失）
+ReLU:    1^10 = 1           （完全不衰减！）
+</code></pre></div>
+<p><strong>（3）数学证明</strong></p>
+<p>对于 ReLU 网络，在正区间：</p>
+<div class="arithmatex">\[\frac{\partial L}{\partial W^{(l)}} = \frac{\partial L}{\partial a^{(L)}} \cdot \prod_{k=l+1}^{L} W^{(k)} \cdot 1\]</div>
+<p>梯度连乘中的激活函数导数部分恒为1，不会指数衰减！</p>
+<p><strong>3.8.4 ReLU 的非饱和性</strong></p>
+<div class="highlight"><pre><span></span><code>Sigmoid饱和性：
+  x → ∞: σ&#39;(x) → 0 （右饱和）
+  x → -∞: σ&#39;(x) → 0 （左饱和）
+
+ReLU非饱和性：
+  x → +∞: ReLU&#39;(x) = 1 （不饱和！）
+  x → -∞: ReLU&#39;(x) = 0 （半饱和）
+</code></pre></div>
+<p>ReLU 是<strong>半饱和</strong>（semi-saturating）的，只在负区间饱和。</p>
+<p><strong>3.8.5 ReLU 的其他优势</strong></p>
+<table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>计算极快</strong></td>
+<td>只需一次比较操作</td>
+</tr>
+<tr>
+<td><strong>稀疏激活</strong></td>
+<td>负输入产生0输出，天然稀疏</td>
+</tr>
+<tr>
+<td><strong>生物学合理</strong></td>
+<td>类似生物神经元的激活特性</td>
+</tr>
+<tr>
+<td><strong>线性特性</strong></td>
+<td>正区间保持线性，便于分析</td>
+</tr>
+</tbody>
+</table>
+<p><strong>计算速度对比</strong>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sigmoid</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># 需要exp()</span>
+
+<span class="c1"># ReLU</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># 只需比较！</span>
+
+<span class="c1"># ReLU快约5-10倍</span>
+</code></pre></div>
+<p><strong>3.8.6 三大领域应用</strong></p>
+<ul>
+<li><strong>AIGC领域</strong>：虽然大语言模型主要使用 GELU，但许多视觉模型（如 Stable Diffusion 的某些组件）仍使用 ReLU。</li>
+<li><strong>传统深度学习</strong>：ResNet、VGG、EfficientNet 等经典CNN架构都使用ReLU作为主要激活函数。它是计算机视觉领域的标准选择。</li>
+<li><strong>自动驾驶</strong>：感知网络的实时性要求高，ReLU 的计算效率使其成为首选。Tesla FSD、Waymo 等系统都大量使用 ReLU。</li>
+</ul>
+<p><strong>最新补充（2026年视角）：</strong> ReLU 仍然是 CNN 和 MLP 的首选激活函数，但在 Transformer 中已被 GELU/SwiGLU 取代。2024-2025 年的研究表明：</p>
+<ul>
+<li><strong>ReLU 的稀疏性</strong>有助于模型的可解释性</li>
+<li><strong>ReLU + BatchNorm</strong> 组合仍然高效</li>
+<li><strong>量化友好</strong>：ReLU 是最容易量化的激活函数</li>
+</ul>
+<hr />
+<h3 id="39-dying-reluleaky-relu">3.9 <strong>"神经元死亡"（Dying ReLU）问题、Leaky ReLU</strong></h3>
+<p><strong>神经元死亡（Dying ReLU）</strong> 是指 ReLU 神经元的输入在训练过程中变为恒定负值，导致输出恒为 0，梯度恒为 0，该神经元<strong>永远无法更新</strong>，实际上"死亡"了。解决方法包括：<strong>Leaky ReLU、Parametric ReLU、使用归一化、适当的学习率</strong>。</p>
+<p><strong>3.9.1 Leaky ReLU</strong></p>
+<p><strong>Leaky ReLU</strong>的提出动机是解决ReLU的<strong>神经元死亡问题</strong>，通过在负区间引入一个小的非零斜率，使神经元即使在负区间也能获得非零梯度，从而有机会"复活"。负半轴斜率参数 <span class="arithmatex">\(\alpha\)</span> 通常设置为 <strong>0.01</strong>。</p>
+<div class="arithmatex">\[\text{LeakyReLU}(x) = \begin{cases} x &amp; x &gt; 0 \\ \alpha x &amp; x \leq 0 \end{cases} = \max(\alpha x, x)\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 是一个小正数，通常取 0.01。</p>
+<p><strong>最新补充（2026年视角）：</strong> 神经元死亡问题在现代深度学习中已不是主要问题：</p>
+<ul>
+<li><strong>BatchNorm/LayerNorm</strong>的普及使输入更稳定</li>
+<li><strong>自适应优化器</strong>（Adam）能更好地处理梯度问题</li>
+<li><strong>现代激活函数</strong>（GELU、Swish）没有真正的死亡区</li>
+<li><strong>残差连接</strong>提供了梯度直接传播路径</li>
+</ul>
+<hr />
+<h3 id="310-elu">3.10 <strong>ELU</strong></h3>
+<p><strong>ELU（Exponential Linear Unit）</strong> 的设计思路是结合ReLU的正区间特性和指数函数的负区间平滑过渡，实现<strong>零中心输出</strong>和<strong>平滑的梯度曲线</strong>。与ReLU相比，ELU的主要优势是<strong>输出更接近零中心</strong>和<strong>负区间的平滑过渡</strong>，但代价是计算更复杂。</p>
+<p><strong>ELU的数学定义</strong></p>
+<div class="arithmatex">\[\text{ELU}(x) = \begin{cases} x &amp; x &gt; 0 \\ \alpha(e^x - 1) &amp; x \leq 0 \end{cases}\]</div>
+<p>其中 <span class="arithmatex">\(\alpha\)</span> 是超参数，通常取1.0。</p>
+<h3 id="311">3.11 <strong>经典激活函数选型</strong></h3>
+<p>激活函数的选择需要根据<strong>网络架构、任务类型、计算资源和部署环境</strong>综合考虑。<strong>ReLU是隐藏层的默认选择</strong>，<strong>Leaky ReLU/ELU用于解决死亡问题</strong>，<strong>Sigmoid/Tanh仅用于特定场景</strong>。现代大模型倾向于使用<strong>GELU/Swish</strong>。</p>
+<p><strong>3.11.1 全面对比表</strong></p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Sigmoid</th>
+<th>Tanh</th>
+<th>ReLU</th>
+<th>Leaky ReLU</th>
+<th>ELU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>输出范围</strong></td>
+<td>(0,1)</td>
+<td>(-1,1)</td>
+<td>[0,+∞)</td>
+<td>(-∞,+∞)</td>
+<td>(-α,+∞)</td>
+</tr>
+<tr>
+<td><strong>零中心</strong></td>
+<td>✗</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>≈✓</td>
+</tr>
+<tr>
+<td><strong>梯度消失</strong></td>
+<td>严重</td>
+<td>严重</td>
+<td>轻微</td>
+<td>轻微</td>
+<td>轻微</td>
+</tr>
+<tr>
+<td><strong>死亡问题</strong></td>
+<td>无</td>
+<td>无</td>
+<td>有</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td><strong>计算速度</strong></td>
+<td>慢</td>
+<td>慢</td>
+<td><strong>最快</strong></td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td><strong>平滑性</strong></td>
+<td>✓</td>
+<td>✓</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>稀疏性</strong></td>
+<td>无</td>
+<td>无</td>
+<td><strong>高</strong></td>
+<td>低</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>推荐场景</strong></td>
+<td>二分类输出</td>
+<td>RNN隐藏</td>
+<td>CNN/MLP</td>
+<td>深层网络</td>
+<td>生成模型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.11.2 不同架构的推荐</strong></p>
+<table>
+<thead>
+<tr>
+<th>架构</th>
+<th>首选</th>
+<th>次选</th>
+<th>避免使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CNN</strong></td>
+<td>ReLU</td>
+<td>Leaky ReLU, GELU</td>
+<td>Sigmoid</td>
+</tr>
+<tr>
+<td><strong>RNN/LSTM</strong></td>
+<td>Tanh（隐藏状态）</td>
+<td>ReLU</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Transformer</strong></td>
+<td>GELU</td>
+<td>Swish</td>
+<td>ReLU</td>
+</tr>
+<tr>
+<td><strong>MLP</strong></td>
+<td>ReLU</td>
+<td>Leaky ReLU</td>
+<td>Sigmoid</td>
+</tr>
+<tr>
+<td><strong>GAN</strong></td>
+<td>Leaky ReLU</td>
+<td>ELU</td>
+<td>ReLU</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.11.3 不同任务的推荐</strong></p>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>隐藏层激活</th>
+<th>输出层激活</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>图像分类</strong></td>
+<td>ReLU/GELU</td>
+<td>Softmax</td>
+</tr>
+<tr>
+<td><strong>目标检测</strong></td>
+<td>ReLU</td>
+<td>Sigmoid（置信度）</td>
+</tr>
+<tr>
+<td><strong>语义分割</strong></td>
+<td>ReLU</td>
+<td>Softmax</td>
+</tr>
+<tr>
+<td><strong>文本分类</strong></td>
+<td>GELU</td>
+<td>Softmax</td>
+</tr>
+<tr>
+<td><strong>机器翻译</strong></td>
+<td>GELU</td>
+<td>Softmax</td>
+</tr>
+<tr>
+<td><strong>语音识别</strong></td>
+<td>GELU</td>
+<td>CTC/Softmax</td>
+</tr>
+<tr>
+<td><strong>二分类</strong></td>
+<td>ReLU</td>
+<td>Sigmoid</td>
+</tr>
+<tr>
+<td><strong>回归</strong></td>
+<td>ReLU</td>
+<td>线性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.11.4 不同部署环境的推荐</strong></p>
+<table>
+<thead>
+<tr>
+<th>环境</th>
+<th>推荐激活函数</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>云端训练</strong></td>
+<td>GELU/Swish</td>
+<td>精度优先</td>
+</tr>
+<tr>
+<td><strong>云端推理</strong></td>
+<td>GELU/ReLU</td>
+<td>平衡</td>
+</tr>
+<tr>
+<td><strong>移动端</strong></td>
+<td>ReLU</td>
+<td>计算效率</td>
+</tr>
+<tr>
+<td><strong>嵌入式</strong></td>
+<td>ReLU</td>
+<td>内存和计算限制</td>
+</tr>
+<tr>
+<td><strong>INT8量化</strong></td>
+<td>ReLU/Leaky ReLU</td>
+<td>量化友好</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.11.5 常见错误和修正</strong></p>
+<table>
+<thead>
+<tr>
+<th>错误</th>
+<th>问题</th>
+<th>修正</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CNN用Sigmoid</strong></td>
+<td>梯度消失，训练困难</td>
+<td>改用ReLU</td>
+</tr>
+<tr>
+<td><strong>深层网络用ReLU不配BN</strong></td>
+<td>可能神经元死亡</td>
+<td>加BatchNorm或用Leaky ReLU</td>
+</tr>
+<tr>
+<td><strong>Transformer用ReLU</strong></td>
+<td>性能不如GELU</td>
+<td>改用GELU</td>
+</tr>
+<tr>
+<td><strong>GAN生成器用ReLU</strong></td>
+<td>梯度问题</td>
+<td>改用Leaky ReLU</td>
+</tr>
+<tr>
+<td><strong>二分类输出用Softmax</strong></td>
+<td>参数浪费</td>
+<td>改用Sigmoid</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.11.6 通俗案例</strong></p>
+<p><strong>生活类比：</strong> 选择激活函数像"选工具"——</p>
+<ul>
+<li>ReLU是"瑞士军刀"：便宜、耐用、什么都能干，虽然不是最精细的</li>
+<li>Leaky ReLU是"升级版军刀"：多了一个小功能（负区间梯度），更可靠</li>
+<li>ELU是"专业工具"：精细但贵，特定场景好用</li>
+<li>Sigmoid是"老式工具"：经典但过时，只在特定场景（二分类输出）还有用</li>
+<li>Tanh是"特殊工具"：在RNN中不可替代</li>
+</ul>
+<p><strong>最新补充（2026年视角）：</strong> 激活函数选择的趋势：</p>
+<ul>
+<li><strong>Transformer时代</strong>：GELU成为主流，SwiGLU在大模型中流行</li>
+<li><strong>效率导向</strong>：移动端和边缘设备仍以ReLU为主</li>
+<li><strong>混合使用</strong>：不同层可能使用不同激活函数</li>
+<li><strong>NAS搜索</strong>：神经架构搜索自动发现最优激活函数组合</li>
+</ul>
+<hr />
+<h3 id="311-gelu">3.11 <strong>现代激活函数——GELU</strong></h3>
+<p><strong>GELU（Gaussian Error Linear Unit）</strong> 的数学定义为 <span class="arithmatex">\(\text{GELU}(x) = x \cdot \Phi(x)\)</span>，其中 <span class="arithmatex">\(\Phi(x)\)</span> 是标准正态分布的累积分布函数（CDF）。其设计直觉来自<strong>随机正则化</strong>的思想：输入<span class="arithmatex">\(x\)</span>被以概率<span class="arithmatex">\(\Phi(x)\)</span>保留，以概率<span class="arithmatex">\(1-\Phi(x)\)</span>置零，GELU是这一随机过程的<strong>确定性近似</strong>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="site-stats">
+    <span id="busuanzi_container_site_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+        总访问量 <strong id="busuanzi_value_site_pv">--</strong> 次
+      </span>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.07 10.41a5 5 0 0 0 0-5.82A3.4 3.4 0 0 1 15 4a3.5 3.5 0 0 1 0 7 3.4 3.4 0 0 1-1.93-.59M5.5 7.5A3.5 3.5 0 1 1 9 11a3.5 3.5 0 0 1-3.5-3.5m2 0A1.5 1.5 0 1 0 9 6a1.5 1.5 0 0 0-1.5 1.5M16 17v2H2v-2s0-4 7-4 7 4 7 4m-2 0c-.14-.78-1.33-2-5-2s-4.93 1.31-5 2m11.95-4A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4Z"/></svg>
+        访客数 <strong id="busuanzi_value_site_uv">--</strong> 人
+      </span>
+    </span>
+    <span id="busuanzi_container_page_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+        本页阅读 <strong id="busuanzi_value_page_pv">--</strong> 次
+      </span>
+    </span>
+    
+      <span
+        class="site-stats__item"
+        id="gh-stats"
+        data-api="https://api.github.com/repos/LiZH0911/LiZH0911.github.io"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25"/></svg>
+        GitHub <strong data-gh="stars">--</strong> Star ·
+        <strong data-gh="forks">--</strong> Fork
+      </span>
+    
+  </div>
+
+  <div class="md-copyright__highlight">
+    Copyright &copy; 2026 LiZH0911 · 记录学习路上的点点滴滴
+  </div>
+
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+    </div>
+  
+</div>
+
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<script>
+  (function () {
+    var el = document.getElementById("gh-stats")
+    if (!el || !el.dataset.api) return
+
+    fetch(el.dataset.api)
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status)
+        return res.json()
+      })
+      .then(function (data) {
+        el.querySelector('[data-gh="stars"]').textContent = data.stargazers_count
+        el.querySelector('[data-gh="forks"]').textContent = data.forks_count
+        el.hidden = false
+      })
+      .catch(function () {
+        // 取不到数据就保持隐藏，不影响页面其他内容
+      })
+  })()
+</script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
