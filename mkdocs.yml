@@ -69,7 +69,9 @@ nav:
     - Python: course/Python/index.md
     - Python 后端:
         - FastAPI: course/Python后端/FastAPI/index.md
+        - Web 开发: course/Python后端/Web开发/index.md
 #    - LangChain: course/LangChain/index.md
+#    - C++: course/C++/index.md
     - Java:
         - Java 基础-黑马: course/Java/Java基础-黑马/index.md
         - Java 基础-JavaGuide: course/Java/Java基础-JavaGuide/index.md
@@ -110,6 +112,7 @@ nav:
 #        - AI 系统设计: course/AI 应用开发/AI 系统设计/index.md
 #        - 面试题: course/AI 应用开发/面试题/index.md
     - 机器学习: course/机器学习/index.md
+    - 深度学习: course/深度学习/index.md
     - 计算机视觉:
         - 传统数字图像处理: course/计算机视觉/传统数字图像处理/index.md
         - 视频编解码基础: course/计算机视觉/视频编解码基础/index.md
@@ -119,7 +122,7 @@ nav:
 #    - 模型部署: course/模型部署/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md
-        - Python 包与环境管理工具: course/常用工具/Python 包与环境管理工具/index.md
+        - Python 包与环境管理工具: course/常用工具/Python包与环境管理工具/index.md
         - Git: course/常用工具/Git/index.md
         - Node.js: course/常用工具/Nodejs/index.md
         - Codex: course/常用工具/Codex/index.md
@@ -128,6 +131,7 @@ nav:
         - Docker: course/常用工具/Docker/index.md
         - Linux: course/常用工具/Linux/index.md
         - Shell: course/常用工具/Shell/index.md
+        - ROS: course/常用工具/ROS/index.md
 
   - 留言板: guestbook/index.md
   - 个人经历: achievements/index.md

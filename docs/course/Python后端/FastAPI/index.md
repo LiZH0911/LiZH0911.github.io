@@ -29,9 +29,6 @@
 
 **FastAPI 介绍**：FastAPI 是一个用于构建 API 的现代、快速（高性能）的 Web 框架，基于标准 Python 类型提示。
 
-- [FastAPI 网站](https://fastapi.org.cn/)
-- [FastAPI 教程](https://fastapi.org.cn/tutorial/)
-
 **API 接口**：应用程序编程接口（Application Programming Interface），即对外提供的功能入口，供别人来调用。
 
 ### 2.2 **入门**
