@@ -5147,17 +5147,42 @@
 </code></pre></div>
 <p><strong>列表常用方法</strong>：</p>
 <ul>
-<li><code>len()</code>：返回列表的长度</li>
-<li><code>append()</code>：添加元素</li>
-<li><code>insert()</code>：在指定位置添加元素</li>
-<li><code>pop()</code>：删除指定位置的元素</li>
-<li><code>remove()</code>：删除指定元素</li>
-<li><code>index()</code>：返回指定元素的索引</li>
-<li><code>count()</code>：返回指定元素的数量</li>
-<li><code>reverse()</code>：反转列表</li>
-<li><code>sort()</code>：排序列表</li>
-<li><code>copy()</code>：复制列表</li>
-<li><code>enumerate()</code>：返回一个枚举对象，枚举对象包含索引和元素</li>
+<li>
+<p><code>len(lst)</code>：返回列表的长度</p>
+</li>
+<li>
+<p><code>lst.append(x)</code>：添加元素</p>
+</li>
+<li><code>lst.insert(i, x)</code>：在指定位置添加元素</li>
+<li>
+<p><code>lst1 + lst2</code>：拼接列表</p>
+</li>
+<li>
+<p><code>lst.pop([i])</code>：删除指定位置的元素</p>
+</li>
+<li><code>lst.remove(x)</code>：删除指定元素</li>
+<li>
+<p><code>lst.clear()</code>：清空列表</p>
+</li>
+<li>
+<p><code>lst.index(x)</code>：返回第一个匹配元素的索引</p>
+</li>
+<li><code>lst.count(x)</code>：返回指定元素的数量</li>
+<li>
+<p><code>x in lst</code>：判断元素是否存在</p>
+</li>
+<li>
+<p><code>lst.sort(key=None, reverse=False)</code>：原地排序，<code>key</code> 为排序依据函数，作用于每个元素，<code>reverse=False</code> 默认升序</p>
+</li>
+<li><code>sorted(lst)</code>：返回一个新的排序后的列表</li>
+<li>
+<p><code>lst.reverse()</code>：原地反转</p>
+</li>
+<li>
+<p><code>lst.copy()</code>：浅拷贝复制</p>
+</li>
+<li><code>lst[:]</code>：切片拷贝</li>
+<li><code>list(lst)</code>：构造或转换为列表</li>
 </ul>
 <h3 id="32-str">3.2 <strong>字符串 str</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 定义字符串</span>
