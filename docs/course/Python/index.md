@@ -170,17 +170,28 @@ for 元素 in 数据集:
 
 **列表常用方法**：
 
-- `len()`：返回列表的长度
-- `append()`：添加元素
-- `insert()`：在指定位置添加元素
-- `pop()`：删除指定位置的元素
-- `remove()`：删除指定元素
-- `index()`：返回指定元素的索引
-- `count()`：返回指定元素的数量
-- `reverse()`：反转列表
-- `sort()`：排序列表
-- `copy()`：复制列表
-- `enumerate()`：返回一个枚举对象，枚举对象包含索引和元素
+- `len(lst)`：返回列表的长度
+
+- `lst.append(x)`：添加元素
+- `lst.insert(i, x)`：在指定位置添加元素
+- `lst1 + lst2`：拼接列表
+
+- `lst.pop([i])`：删除指定位置的元素
+- `lst.remove(x)`：删除指定元素
+- `lst.clear()`：清空列表
+
+- `lst.index(x)`：返回第一个匹配元素的索引
+- `lst.count(x)`：返回指定元素的数量
+- `x in lst`：判断元素是否存在
+
+- `lst.sort(key=None, reverse=False)`：原地排序，`key` 为排序依据函数，作用于每个元素，`reverse=False` 默认升序
+- `sorted(lst)`：返回一个新的排序后的列表
+- `lst.reverse()`：原地反转
+
+- `lst.copy()`：浅拷贝复制
+- `lst[:]`：切片拷贝
+- `list(lst)`：构造或转换为列表
+
 
 ### 3.2 **字符串 str**
 
