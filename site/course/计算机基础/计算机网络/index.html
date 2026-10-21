@@ -2823,11 +2823,17 @@
 <h3 id="12-tcpip">1.2 <strong>TCP/IP 四层模型</strong></h3>
 <p>TCP/IP 四层模型 是目前被广泛采用的一种模型，我们可以将 TCP/IP 模型看作是 OSI 七层模型的精简版本，由以下 4 层组成：</p>
 <ol>
-<li>应用层</li>
-<li>传输层</li>
-<li>网络层</li>
-<li>网络接口层</li>
+<li>应用层：负责各种不同应用之间的协议，如文件传输协议（FTP），远程登陆协议（Telnet），电子邮件协议（SMTP），网络文件服务协议（NFS），网络管理协议（SNMP）等。</li>
+<li>传输层：负责可靠传输的 TCP 协议、高效传输的 UDP 协议。</li>
+<li>网络层：负责寻址（准确找到对方设备）的 IP，ICMP，ARP，RARP 等协议。</li>
+<li>网络接口层：负责将数字信号在物理通道（网线）中准确传输。</li>
 </ol>
+<p><strong>四层模型逻辑</strong>：</p>
+<ul>
+<li>发送端是由上至下，把上层来的数据在头部加上各层协议的数据（部首）再下发给下层。</li>
+<li>接受端则由下而上，把从下层接收到的数据进行解密和去掉头部的部首后再发送给上层。</li>
+<li>层层加密和解密后，应用层最终拿到了需要的数据。</li>
+</ul>
 <p>需要注意的是，我们并不能将 TCP/IP 四层模型 和 OSI 七层模型完全精确地匹配起来，不过可以简单将两者对应起来，如下图所示：</p>
 <p><img alt="模型对应.png" src="images/%E6%A8%A1%E5%9E%8B%E5%AF%B9%E5%BA%94.png" /></p>
 <h3 id="13-url">1.3 <strong>在浏览器地址栏输入 URL 到页面展示</strong></h3>
@@ -3047,7 +3053,7 @@
 </ol>
 <p>另外，WebSocket 连接通常会配合<strong>心跳机制</strong>使用。比如定期发送 Ping/Pong 帧，或者在业务层发送心跳包，用来<strong>检测连接是否仍然可用</strong>，避免连接假死。</p>
 <p><strong>2.1.3 SMTP：简单邮件传输协议</strong></p>
-<p><strong>简单邮件传输协议（SMTP，Simple Mail Transfer Protocol）</strong> 是一种基于 TCP 的应用层协议，主要用于<strong>发送和转发电子邮件</strong>。</p>
+<p><strong>简单邮件传输协议（SMTP，Simple Mail Transfer Protocol）</strong> 是一种基于 TCP 的<strong>应用层协议</strong>，主要用于<strong>发送和转发电子邮件</strong>。</p>
 <p><img alt="SMTP.png" src="images/SMTP.png" /></p>
 <p>需要注意的是，SMTP 负责邮件发送和邮件服务器之间的转发；POP3/IMAP 负责用户从邮箱服务器收取邮件。</p>
 <p>也就是说，邮件从你的邮箱服务器发送到对方邮箱服务器，这个过程通常还是 SMTP；而用户使用客户端查看邮箱里的邮件，通常使用 POP3 或 IMAP。</p>
@@ -3069,7 +3075,7 @@
 <li>用户 <code>&lt;xiaoma@qq.com&gt;</code> 通过 POP3 或 IMAP 协议从 QQ 邮箱服务器读取邮件。</li>
 </ol>
 <p><strong>2.1.4 POP3/IMAP：邮件接收协议</strong></p>
-<p><strong>POP3</strong> 和 <strong>IMAP</strong> 都是用于接收邮件的协议，二者也都是基于 TCP 的应用层协议。</p>
+<p><strong>POP3</strong> 和 <strong>IMAP</strong> 都是用于接收邮件的协议，二者也都是基于 TCP 的<strong>应用层协议</strong>。</p>
 <p><img alt="POP3、IMAP.png" src="images/POP3%E3%80%81IMAP.png" /></p>
 <p>POP3 的设计比较简单，常见模式是把邮件从服务器下载到本地。它适合单设备收信，但<strong>多设备同步体验较差</strong>。</p>
 <p>IMAP 是<strong>更现代、更常用的邮件接收协议</strong>。它支持<strong>在服务器端管理邮件</strong>，能够同步邮件状态，比如已读、未读、删除、归档、文件夹分类等。因此，如果你同时在手机、电脑、网页端查看同一个邮箱，IMAP 的体验通常会更好。</p>

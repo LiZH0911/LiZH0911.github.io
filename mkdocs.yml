@@ -76,10 +76,10 @@ nav:
         - Java 基础-黑马: course/Java/Java基础-黑马/index.md
         - Java 基础-JavaGuide: course/Java/Java基础-JavaGuide/index.md
         - Java 集合: course/Java/Java集合/index.md
-        - Java 并发: course/Java/Java并发/index.md
-        - Java IO: course/Java/JavaIO/index.md
-        - JVM: course/Java/JVM/index.md
-        - 新特性: course/Java/新特性/index.md
+#        - Java 并发: course/Java/Java并发/index.md
+#        - Java IO: course/Java/JavaIO/index.md
+#        - JVM: course/Java/JVM/index.md
+#        - 新特性: course/Java/新特性/index.md
     - JavaWeb:
         - 概述: course/JavaWeb/index.md
         - HTML-CSS: course/JavaWeb/HTML-CSS/index.md

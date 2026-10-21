@@ -23,6 +23,7 @@ print("Hello, World!")
 
 </details>
 
+<font color=#C00000>突出的字体</font>
 
 ## 第三部分：链接与图片
 

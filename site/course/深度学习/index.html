@@ -1874,7 +1874,7 @@
   <a href="#15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.5 深度学习的核心假设：分层特征提取
+        1.5 深度学习的核心假设：层次化表示假设
       
     </span>
   </a>
@@ -1885,7 +1885,7 @@
   <a href="#16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6 深度学习的核心特征，与浅层模型相比的优势
+        1.6 深度学习的核心特征
       
     </span>
   </a>
@@ -3801,7 +3801,7 @@
   <a href="#15" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.5 深度学习的核心假设：分层特征提取
+        1.5 深度学习的核心假设：层次化表示假设
       
     </span>
   </a>
@@ -3812,7 +3812,7 @@
   <a href="#16" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.6 深度学习的核心特征，与浅层模型相比的优势
+        1.6 深度学习的核心特征
       
     </span>
   </a>
@@ -5084,13 +5084,6 @@ Layer 3-4:  局部形状（眼睛、耳朵、轮廓）
 Layer 5-6:  物体部件（人脸、车身）
 Layer 7+:   完整物体（人、汽车、场景）
 </code></pre></div>
-<p><strong>1.2.2 三大领域应用</strong>：</p>
-<ul>
-<li><strong>AIGC领域</strong>：Stable Diffusion的U-Net有数十层，浅层学习图像的低频信息（整体布局），深层学习高频细节（纹理、边缘），最终生成高质量图像。</li>
-<li><strong>传统深度学习</strong>：ResNet-152通过152层实现ImageNet分类，残差连接让深层网络可训练，证明了深度的价值。</li>
-<li><strong>自动驾驶</strong>：感知网络通常有50-100层，浅层检测车道线、交通标志，深层理解场景语义、预测行人意图。</li>
-<li><strong>最新补充（2026年视角）</strong>：2024-2025年的研究表明，网络深度的重要性正在发生变化。<strong>Mamba等状态空间模型</strong>通过序列建模实现了线性复杂度，而<strong>混合专家（MoE）架构</strong>则通过"宽度"（专家数量）而非"深度"来扩展模型能力。GPT-4等模型虽然参数量巨大，但实际推理时只激活部分参数，"有效深度"的概念变得更加复杂。</li>
-</ul>
 <hr />
 <h3 id="13-vs">1.3 <strong>深度学习 vs 传统机器学习</strong></h3>
 <p>深度学习与传统机器学习最本质的区别在于<strong>特征表示的获取方式</strong>：</p>
@@ -5198,13 +5191,7 @@ Layer 7+:   完整物体（人、汽车、场景）
 </tr>
 </tbody>
 </table>
-<p><strong>1.3.4 三大领域应用</strong></p>
-<ul>
-<li><strong>AIGC领域</strong>：文本生成不可能手工设计"好的文本"的特征，必须用深度学习从海量文本中自动学习语言规律。</li>
-<li><strong>传统深度学习</strong>：ImageNet 分类准确率从传统方法的 ~70% 提升到深度学习的 ~90%+，证明了自动特征学习的威力。</li>
-<li><strong>自动驾驶</strong>：传统方法需要人工设计"车道线检测算法"、"行人检测算法"，深度学习则端到端学习从图像到驾驶决策。</li>
-<li><strong>最新补充（2026年视角）：</strong> 2025 年出现了<strong>基础模型+微调</strong>的新范式。现在可以用少量数据微调大模型（如 LoRA、Adapter），既享受深度学习的表示能力，又只需要传统 ML 级别的数据量。同时，<strong>AutoML</strong> 工具正在自动化传统机器学习的特征工程，两种方法的边界正在融合。</li>
-</ul>
+<p><strong>最新补充（2026年视角）：</strong> 2025 年出现了<strong>基础模型+微调</strong>的新范式。现在可以用少量数据微调大模型（如 LoRA、Adapter），既享受深度学习的表示能力，又只需要传统 ML 级别的数据量。同时，<strong>AutoML</strong> 工具正在自动化传统机器学习的特征工程，两种方法的边界正在融合。</p>
 <hr />
 <h3 id="14">1.4 <strong>表示学习</strong></h3>
 <p><strong>表示学习（Representation Learning）</strong> 是指让机器自动学习数据的<strong>有效表示（Representation）</strong>，使得后续任务（如分类、回归）变得更容易。深度学习通过<strong>多层非线性变换</strong>实现层次化的表示学习。</p>
@@ -5291,13 +5278,13 @@ h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
 </table>
 <p><strong>1.4.5 三大领域应用</strong></p>
 <ul>
-<li><strong>AIGC领域</strong>：CLIP模型学习图像和文本的统一表示空间，使得"用文字搜索图片"成为可能。Stable Diffusion 的文本编码器将 prompt 转换为语义表示向量。</li>
+<li><strong>AIGC领域</strong>：CLIP 模型学习图像和文本的统一表示空间，使得"用文字搜索图片"成为可能。Stable Diffusion 的文本编码器将 prompt 转换为语义表示向量。</li>
 <li><strong>传统深度学习</strong>：预训练的 ResNet、BERT 作为特征提取器，在下游任务上只需少量数据即可达到优异性能。迁移学习的核心就是表示的复用。</li>
 <li><strong>自动驾驶</strong>：BEV（鸟瞰图）表示学习将多摄像头图像统一到3D空间表示，使感知、预测、规划在同一表示空间进行。</li>
 <li><strong>最新补充（2026年视角）：</strong> 2024-2025年，<strong>自监督表示学习</strong>取得重大突破。<strong>MAE（Masked Autoencoder）</strong>、<strong>DINOv2</strong> 等方法证明了无标签数据可以学习到与监督学习相当甚至更好的表示。<strong>多模态表示学习</strong>（如GPT-4V、Gemini）正在构建统一的视觉-语言表示空间，朝着"通用表示"的目标迈进。</li>
 </ul>
 <hr />
-<h3 id="15">1.5 <strong>深度学习的核心假设：分层特征提取</strong></h3>
+<h3 id="15">1.5 <strong>深度学习的核心假设：层次化表示假设</strong></h3>
 <p>深度学习的核心假设是<strong>层次化表示假设（Hierarchical Representation Hypothesis）</strong>：自然界的复杂概念可以分解为层次化的简单概念组合，深层网络正是通过逐层组合低级特征来构建高级概念。</p>
 <p><strong>1.5.1 核心假设的内容</strong>：</p>
 <ul>
@@ -5333,7 +5320,7 @@ h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
 <li><strong>最新补充（2026年视角）：</strong> 2025年的研究对层次化假设提出了新的理解。<strong>Vision Transformer（ViT）</strong> 的成功表明，即使没有明确的层次结构（ViT是各向同性的），通过<strong>自注意力机制</strong>也能学习到隐式的层次表示。同时，<strong>Mamba 等 SSM 架构</strong>提供了另一种组织信息的方式，挑战了"必须深层才能表达复杂概念"的传统假设。</li>
 </ul>
 <hr />
-<h3 id="16">1.6 <strong>深度学习的核心特征，与浅层模型相比的优势</strong></h3>
+<h3 id="16">1.6 <strong>深度学习的核心特征</strong></h3>
 <p><strong>1.6.1 深度学习的核心特征</strong></p>
 <p>深度学习的核心特征可以概括为<strong>"三层特性"</strong>：层次化特征学习、分布式表示、端到端优化。</p>
 <table>
@@ -5683,19 +5670,6 @@ h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
 
 <span class="n">对抗样本</span> <span class="n">x_adv</span> <span class="err">→</span> <span class="n">模型预测</span><span class="p">:</span> <span class="s2">&quot;长臂猿&quot;</span> <span class="p">(</span><span class="n">置信度</span> <span class="mf">99.3</span><span class="o">%</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>1.8.2 三大领域应用</strong></p>
-<ul>
-<li><strong>AIGC领域</strong>：大语言模型的"幻觉"问题——自信地输出错误信息；版权争议——训练数据的合法性；偏见问题——反映训练数据中的社会偏见。</li>
-<li><strong>传统深度学习</strong>：医疗AI的诊断结果难以被医生采纳，因为无法解释决策依据；金融风控模型必须可解释才能满足监管要求。</li>
-<li><strong>自动驾驶</strong>：长尾场景问题——遇到训练中罕见的场景（如穿着怪异服装的行人）可能误判；安全问题——对抗攻击可能导致错误决策。</li>
-<li><strong>最新补充（2026年视角）：</strong> 2024-2025年，<strong>AI安全与对齐</strong>成为研究热点：<ul>
-<li><strong>Constitutional AI</strong>：通过宪法原则约束模型行为</li>
-<li><strong>RLHF/RLAIF</strong>：人类/AI反馈强化学习，使模型更符合人类价值观</li>
-<li><strong>红队测试</strong>：系统性发现模型漏洞和潜在风险</li>
-<li><strong>可解释性突破</strong>：机械可解释性（Mechanistic Interpretability）开始揭示大模型的内部工作机制</li>
-</ul>
-</li>
-</ul>
 <hr />
 <h3 id="19">1.9 <strong>深度学习与统计学习、概率模型的联系与区别</strong></h3>
 <p>深度学习和统计学习都源自<strong>从数据中学习模式</strong>这一共同目标，但在方法论、假设和侧重点上有显著差异。现代深度学习正在与概率模型融合，形成新的研究方向。</p>
@@ -5883,12 +5857,12 @@ h^{(l)} = \sigma(W^{(l)} h^{(l-1)} + b^{(l)})
 <p>深度学习在大数据时代的突破源于其<strong>高容量模型与海量数据的完美匹配</strong>：模型的数百万甚至数千亿参数可以从数据中学习复杂的模式。在小数据场景下，需要通过<strong>迁移学习、数据增强、元学习</strong>等技术来弥补数据不足。</p>
 <p><strong>1.11.1 三大领域应用</strong></p>
 <ul>
-<li><strong>AIGC领域</strong>：大语言模型需要万亿级tokens训练，但通过<strong>指令微调</strong>，只需几万条高质量指令数据就能让模型遵循人类意图。</li>
-<li><strong>传统深度学习</strong>：医疗影像诊断通常只有几百张标注图像，通过ImageNet预训练+领域微调，可以达到专家级诊断水平。</li>
+<li><strong>AIGC领域</strong>：大语言模型需要万亿级 tokens 训练，但通过<strong>指令微调</strong>，只需几万条高质量指令数据就能让模型遵循人类意图。</li>
+<li><strong>传统深度学习</strong>：医疗影像诊断通常只有几百张标注图像，通过 ImageNet 预训练+领域微调，可以达到专家级诊断水平。</li>
 <li><strong>自动驾驶</strong>：真实事故数据极其稀少，通过<strong>仿真环境生成</strong>、<strong>域适应技术</strong>来学习处理危险场景。</li>
-<li><strong>最新补充（2026年视角）：</strong> 2024-2025年小数据学习取得重要进展：<ul>
-<li><strong>合成数据</strong>：用大模型生成高质量训练数据，Microsoft的Phi系列证明了"教科书质量数据"的重要性</li>
-<li><strong>数据效率革命</strong>：Llama 3用15T tokens训练，但推理能力相当的小模型正在涌现</li>
+<li><strong>最新补充（2026年视角）：</strong> 2024-2025 年小数据学习取得重要进展：<ul>
+<li><strong>合成数据</strong>：用大模型生成高质量训练数据，Microsoft 的 Phi 系列证明了"教科书质量数据"的重要性</li>
+<li><strong>数据效率革命</strong>：Llama 3 用 15T tokens 训练，但推理能力相当的小模型正在涌现</li>
 <li><strong>课程学习</strong>：从简单到复杂组织训练数据，提高学习效率</li>
 <li><strong>主动学习</strong>：智能选择最有价值的样本进行标注，最大化标注效率</li>
 </ul>
