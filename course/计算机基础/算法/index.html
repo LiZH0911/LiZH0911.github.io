@@ -696,18 +696,7 @@
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 算法无处不在
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 算法是什么
+        1.1 算法是什么
       
     </span>
   </a>
@@ -1060,118 +1049,6 @@
     
   
     Java 集合
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Java/Java%E5%B9%B6%E5%8F%91/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Java 并发
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Java/JavaIO/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Java IO
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Java/JVM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JVM
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Java/%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    新特性
   
 
     
@@ -2619,18 +2496,7 @@
   <a href="#11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.1 算法无处不在
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1.2 算法是什么
+        1.1 算法是什么
       
     </span>
   </a>
@@ -2730,46 +2596,38 @@
 <li><a href="https://javaguide.cn/cs-basics/algorithms/">JavaGuide-算法</a></li>
 </ul>
 <h2 id="_2">一、初识算法</h2>
-<h3 id="11">1.1 <strong>算法无处不在</strong></h3>
-<p>在正式探讨算法之前，有一个有趣的事实值得分享：<strong>你已经在不知不觉中学会了许多算法，并习惯将它们应用到日常生活中了</strong></p>
-<ul>
-<li><strong>查字典</strong>：“二分查找”算法</li>
-<li><strong>整理扑克</strong>：排序算法</li>
-<li><strong>货币找零</strong>：贪心算法</li>
-</ul>
-<h3 id="12">1.2 <strong>算法是什么</strong></h3>
-<p><strong>1.2.1 算法定义</strong></p>
-<p><u>算法（algorithm）</u>是在有限时间内解决特定问题的一组指令或操作步骤</p>
+<h3 id="11">1.1 <strong>算法是什么</strong></h3>
+<p><strong>1.1.1 算法定义</strong></p>
+<p><u>算法（algorithm）</u>是在有限时间内解决特定问题的一组指令或操作步骤。它具有以下特性：</p>
 <ul>
 <li>问题是明确的，包含清晰的输入和输出定义。</li>
 <li>具有可行性，能够在有限步骤、时间和内存空间下完成。</li>
 <li>各步骤都有确定的含义，在相同的输入和运行条件下，输出始终相同。</li>
 </ul>
-<p><strong>1.2.2 数据结构定义</strong></p>
-<p><u>数据结构（data structure）</u>是组织和存储数据的方式，涵盖数据内容、数据之间关系和数据操作方法，它具有以下设计目标。</p>
+<p><strong>1.1.2 数据结构定义</strong></p>
+<p><u>数据结构（data structure）</u>是组织和存储数据的方式，涵盖数据内容、数据之间关系和数据操作方法。它具有以下设计目标：</p>
 <ul>
 <li>空间占用尽量少，以节省计算机内存。</li>
 <li>数据操作尽可能快速，涵盖数据访问、添加、删除、更新等。</li>
 <li>提供简洁的数据表示和逻辑信息，以便算法高效运行。</li>
 </ul>
-<p><strong>数据结构设计是一个充满权衡的过程</strong>。如果想在某方面取得提升，往往需要在另一方面作出妥协。下面举两个例子。</p>
+<p><strong>数据结构设计是一个充满权衡的过程</strong>。举两个例子：</p>
 <ul>
-<li>链表相较于数组，在数据添加和删除操作上更加便捷，但牺牲了数据访问速度。</li>
-<li>图相较于链表，提供了更丰富的逻辑信息，但需要占用更大的内存空间。</li>
+<li><strong>链表</strong>相较于数组，在数据添加和删除操作上更加便捷，但<strong>牺牲了数据访问速度</strong>。</li>
+<li><strong>图</strong>相较于链表，提供了更丰富的逻辑信息，但需要占用<strong>更大的内存空间</strong>。</li>
 </ul>
-<p><strong>1.2.3 数据结构与算法的关系</strong></p>
-<p>数据结构与算法高度相关、紧密结合，具体表现在以下三个方面。</p>
+<p><strong>1.1.3 数据结构与算法的关系</strong></p>
 <ul>
-<li>数据结构是算法的基石。数据结构为算法提供了结构化存储的数据，以及操作数据的方法。</li>
-<li>算法为数据结构注入生命力。数据结构本身仅存储数据信息，结合算法才能解决特定问题。</li>
+<li>数据结构为算法提供了结构化存储的数据，以及操作数据的方法。</li>
+<li>数据结构本身仅存储数据信息，结合算法才能解决特定问题。</li>
 <li>算法通常可以基于不同的数据结构实现，但执行效率可能相差很大，选择合适的数据结构是关键。</li>
 </ul>
 <h2 id="_3">二、复杂度分析</h2>
 <h3 id="21">2.1 <strong>算法效率评估</strong></h3>
 <p><strong>2.1.1 算法设计的目标</strong></p>
 <ol>
-<li><strong>找到问题解法</strong>：算法需要在规定的输入范围内可靠地求得问题的正确解。</li>
-<li><strong>寻求最优解法</strong>：同一个问题可能存在多种解法，我们希望找到尽可能高效的算法。</li>
+<li><strong>找到问题解法</strong></li>
+<li><strong>寻求最优解法</strong></li>
 </ol>
 <p><strong>2.1.2 效率评估维度</strong></p>
 <ul>
@@ -2777,30 +2635,29 @@
 <li><strong>空间效率</strong>：算法占用内存空间的大小。</li>
 </ul>
 <p><strong>2.1.3 效率评估方法——实际测试</strong></p>
-<p>假设我们现在有算法 <code>A</code> 和算法 <code>B</code> ，它们都能解决同一问题，现在需要对比这两个算法的效率。最直接的方法是找一台计算机，运行这两个算法，并监控记录它们的运行时间和内存占用情况。这种评估方式能够反映真实情况，但也存在较大的局限性。</p>
+<p><strong>实际测试</strong>：直接在计算机上运行要对比的算法，并监控它们的运行时间和内存占用情况。</p>
+<p>这种评估方式能够反映真实情况，但也存在较大的<strong>局限性</strong>：</p>
 <ul>
 <li><strong>难以排除测试环境的干扰因素</strong>。</li>
 <li><strong>展开完整测试非常耗费资源</strong></li>
 </ul>
 <p><strong>2.1.4 效率评估方法——理论估算</strong></p>
-<p>由于实际测试具有较大的局限性，我们可以考虑仅通过一些计算来评估算法的效率。这种估算方法被称为<u>渐近复杂度分析（asymptotic complexity analysis）</u>，简称<u>复杂度分析</u>。</p>
-<p>复杂度分析能够体现算法运行所需的时间和空间资源与输入数据规模之间的关系。<strong>它描述了随着输入数据规模的增加，算法执行所需时间和空间的增长趋势</strong>：</p>
+<p>由于实际测试具有较大的局限性，我们可以考虑仅通过一些计算来评估算法的效率。</p>
+<p>这种估算方法被称为<u>渐近复杂度分析（asymptotic complexity analysis）</u>，简称<u>复杂度分析</u>。</p>
+<p>复杂度分析描述了<strong>随着输入数据规模的增加，算法执行所需时间和空间的增长趋势</strong>。</p>
+<p><strong>复杂度分析的好处</strong>：</p>
 <ul>
-<li>“时间和空间资源”分别对应<u>时间复杂度（time complexity）</u>和<u>空间复杂度（space complexity）</u>。</li>
-<li>“随着输入数据规模的增加”意味着复杂度反映了算法运行效率与输入数据规模之间的关系。</li>
-<li>“时间和空间的增长趋势”表示复杂度分析关注的不是运行时间或占用空间的具体值，而是时间或空间增长的“快慢”。</li>
+<li>无需实际运行代码</li>
+<li>独立于测试环境</li>
+<li>可以体现不同数据量下的算法效率</li>
 </ul>
-<p><strong>复杂度分析克服了实际测试方法的弊端</strong>：</p>
-<ul>
-<li>它无需实际运行代码，更加绿色节能。</li>
-<li>它独立于测试环境，分析结果适用于所有运行平台。</li>
-<li>它可以体现不同数据量下的算法效率，尤其是在大数据量下的算法性能。</li>
-</ul>
+<hr />
 <h3 id="22">2.2 <strong>迭代与递归</strong></h3>
 <p><strong>2.2.1 迭代</strong></p>
 <p><u>迭代（iteration）</u>是一种重复执行某个任务的控制结构。在迭代中，程序会在满足一定的条件下重复执行某段代码，直到这个条件不再满足。</p>
 <p><strong>（1）for 循环</strong></p>
-<p>for` 循环是最常见的迭代形式之一，<strong>适合在预先知道迭代次数时使用</strong>。</p>
+<p><code>for</code> 循环<strong>适合在预先知道迭代次数时使用</strong>。</p>
+<p>以下函数基于 for 循环实现了求和 1+2+...+n，求和结果使用变量 <code>res</code> 记录</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* for 循环 */</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">forLoop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2811,9 +2668,18 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>需要注意的是，Python 中 <code>range(a, b)</code> 对应的区间是<strong>左闭右开</strong>的</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">for_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;for 循环&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># 循环求和 1, 2, ..., n-1, n</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
 <p><strong>（2）while 循环</strong></p>
-<p><code>while</code> 循环也是一种实现迭代的方法。在 <code>while</code> 循环中，程序每轮都会先检查条件，如果条件为真，则继续执行，否则就结束循环。</p>
-<p><strong><code>while</code> 循环比 <code>for</code> 循环的自由度更高</strong>。在 <code>while</code> 循环中，我们可以自由地设计条件变量的初始化和更新步骤。</p>
+<p>在 <code>while</code> 循环中，程序每轮都会先检查条件，如果条件为真，则继续执行，否则就结束循环。</p>
+<p><strong><code>while</code> 循环比 <code>for</code> 循环的自由度更高</strong>。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* while 循环 */</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">whileLoop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -2825,6 +2691,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">while_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;while 循环&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 初始化条件变量</span>
+    <span class="c1"># 循环求和 1, 2, ..., n-1, n</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="n">i</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># 更新条件变量</span>
+    <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
 <p><strong>（3）嵌套循环</strong></p>
 <p>每一次嵌套都是一次“升维”，将会使时间复杂度提高至“立方关系”“四次方关系”，以此类推。</p>
@@ -2840,6 +2716,16 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
 <span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">nested_for_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;双层 for 循环&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="c1"># 循环 i = 1, 2, ..., n-1, n</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># 循环 j = 1, 2, ..., n-1, n</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">), &quot;</span>
+    <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
 <p><strong>2.2.2 递归</strong></p>
 <p><u>递归（recursion）</u>是一种算法策略，通过函数调用自身来解决问题。</p>
@@ -2861,6 +2747,21 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">recur</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;递归&quot;&quot;&quot;</span>
+    <span class="c1"># 终止条件</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="c1"># 递：递归调用</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">recur</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># 归：返回结果</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="n">res</span>
+</code></pre></div>
+<p>虽然从计算角度看，迭代与递归可以得到相同的结果，但它们代表了两种完全不同的思考和解决问题的范式：</p>
+<ul>
+<li><strong>迭代</strong>：“自下而上”地解决问题。从最基础的步骤开始，然后不断重复或累加这些步骤，直到任务完成。</li>
+<li><strong>递归</strong>：“自上而下”地解决问题。将原问题分解为更小的子问题，这些子问题和原问题具有相同的形式。接下来将子问题继续分解为更小的子问题，直到基本情况时停止（基本情况的解是已知的）。</li>
+</ul>
 <p><strong>（1）调用栈</strong></p>
 <p>递归函数每次调用自身时，系统都会为新开启的函数分配内存，以存储局部变量、调用地址和其他信息等。这将导致两方面的结果：</p>
 <ul>
@@ -2885,7 +2786,7 @@
 </ul>
 <p><strong>（3）递归树</strong></p>
 <p>当处理与“分治”相关的算法问题时，递归往往比迭代的思路更加直观、代码更加易读。以“斐波那契数列”为例。</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/* 斐波那契数列：递归 */</span>
+<p><div class="highlight"><pre><span></span><code><span class="cm">/* 斐波那契数列：递归 */</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 终止条件 f(1) = 0, f(2) = 1</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
@@ -2896,11 +2797,46 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+观察以上代码，我们在函数内递归调用了两个函数，<strong>这意味着从一个调用产生了两个调用分支</strong>。</p>
+<p>这样不断递归调用下去，最终将产生一棵层数为 <span class="arithmatex">\(n\)</span> 的<u>递归树（recursion tree）</u>。</p>
 <p>从本质上看，递归体现了“将问题分解为更小子问题”的思维范式，这种分治策略至关重要。</p>
 <ul>
 <li>从算法角度看，搜索、排序、回溯、分治、动态规划等许多重要算法策略直接或间接地应用了这种思维方式。</li>
 <li>从数据结构角度看，递归天然适合处理链表、树和图的相关问题，因为它们非常适合用分治思想进行分析。</li>
 </ul>
+<p><strong>2.2.3 迭代与递归对比</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>迭代</th>
+<th>递归</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实现方式</td>
+<td>循环结构</td>
+<td>函数调用自身</td>
+</tr>
+<tr>
+<td>时间效率</td>
+<td>效率通常较高，无函数调用开销</td>
+<td>每次函数调用都会产生开销</td>
+</tr>
+<tr>
+<td>内存使用</td>
+<td>通常使用固定大小的内存空间</td>
+<td>累积函数调用可能使用大量的栈帧空间</td>
+</tr>
+<tr>
+<td>适用问题</td>
+<td>适用于简单循环任务，代码直观、可读性好</td>
+<td>适用于子问题分解，如树、图、分治、回溯等，代码结构简洁、清晰</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h3 id="23">2.3 <strong>时间复杂度</strong></h3>
 <p><strong>2.3.1 函数渐近上界</strong></p>
 <p>设算法的操作数量是一个关于输入数据大小 <span class="arithmatex">\(n\)</span> 的函数，记为 <span class="arithmatex">\(T(n)\)</span> </p>
@@ -2908,14 +2844,14 @@
 <p>时间复杂度分析本质上是计算“操作数量 <span class="arithmatex">\(T(n)\)</span>”的渐近上界</p>
 <p><strong>2.3.2 推算方法</strong></p>
 <p><strong>第一步：统计操作数量</strong></p>
-<p>计数简化技巧：</p>
+<p>针对代码，逐行从上到下计算即可。计数简化技巧：</p>
 <ol>
 <li><strong>忽略 <span class="arithmatex">\(T(n)\)</span> 中的常数</strong>。</li>
 <li><strong>省略所有系数</strong>。</li>
 <li><strong>循环嵌套时使用乘法</strong>。</li>
 </ol>
 <p><strong>第二步：判断渐近上界</strong></p>
-<p><strong>时间复杂度由 <span class="arithmatex">\(T(n)\)</span> 中最高阶的项来决定</strong>。这是因为在 <span class="arithmatex">\(n\)</span> 趋于无穷大时，最高阶的项将发挥主导作用，其他项的影响都可以忽略。</p>
+<p><strong>时间复杂度由 <span class="arithmatex">\(T(n)\)</span> 中最高阶的项来决定</strong>。</p>
 <table>
 <thead>
 <tr>
@@ -2946,16 +2882,235 @@
 </tr>
 </tbody>
 </table>
-<p><strong>2.3.3 常见类型</strong></p>
-<p>设输入数据大小为 <span class="arithmatex">\(n\)</span> ，常见的时间复杂度类型如下图所示（按照从低到高的顺序排列）。</p>
+<p><strong>2.3.3 常见时间复杂度类型</strong></p>
 <div class="arithmatex">\[
 \begin{aligned}
 &amp; O(1) &lt; O(\log n) &lt; O(n) &lt; O(n \log n) &lt; O(n^2) &lt; O(2^n) &lt; O(n!) \newline
 &amp; \text{常数阶} &lt; \text{对数阶} &lt; \text{线性阶} &lt; \text{线性对数阶} &lt; \text{平方阶} &lt; \text{指数阶} &lt; \text{阶乘阶}
 \end{aligned}
 \]</div>
+<p><strong>1. 常数阶 <span class="arithmatex">\(O(1)\)</span></strong></p>
+<p>常数阶的操作数量与输入数据大小 <span class="arithmatex">\(n\)</span> 无关，即不随着 <span class="arithmatex">\(n\)</span> 的变化而变化。</p>
+<p>在以下函数中，尽管操作数量 <code>size</code> 可能很大，但由于其与输入数据大小 <span class="arithmatex">\(n\)</span> 无关，因此时间复杂度仍为 <span class="arithmatex">\(O(1)\)</span> ：</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 常数阶 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">constant</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>2. 线性阶 <span class="arithmatex">\(O(n)\)</span></strong></p>
+<p>线性阶的操作数量相对于输入数据大小 <span class="arithmatex">\(n\)</span> 以线性级别增长。线性阶通常出现在单层循环中：</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 线性阶 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">linear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>遍历数组和遍历链表等操作的时间复杂度均为 <span class="arithmatex">\(O(n)\)</span> ，其中 <span class="arithmatex">\(n\)</span> 为数组或链表的长度：</p>
+<p><strong>3. 平方阶 <span class="arithmatex">\(O(n^2)\)</span></strong></p>
+<p>平方阶的操作数量相对于输入数据大小 <span class="arithmatex">\(n\)</span> 以平方级别增长。平方阶通常出现在嵌套循环中，外层循环和内层循环的时间复杂度都为 <span class="arithmatex">\(O(n)\)</span> ，因此总体的时间复杂度为 <span class="arithmatex">\(O(n^2)\)</span> ：</p>
+<p>以冒泡排序为例，外层循环执行 <span class="arithmatex">\(n - 1\)</span> 次，内层循环执行 <span class="arithmatex">\(n-1\)</span>、<span class="arithmatex">\(n-2\)</span>、<span class="arithmatex">\(\dots\)</span>、<span class="arithmatex">\(2\)</span>、<span class="arithmatex">\(1\)</span> 次，平均为 <span class="arithmatex">\(n / 2\)</span> 次，因此时间复杂度为 <span class="arithmatex">\(O((n - 1) n / 2) = O(n^2)\)</span> ：</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 平方阶（冒泡排序） */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 计数器</span>
+<span class="w">    </span><span class="c1">// 外循环：未排序区间为 [0, i]</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 内循环：将未排序区间 [0, i] 中的最大元素交换至该区间的最右端</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// 交换 nums[j] 与 nums[j + 1]</span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="w">                </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="w">                </span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+<span class="w">                </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">// 元素交换包含 3 个单元操作</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>4. 指数阶 <span class="arithmatex">\(O(2^n)\)</span></strong></p>
+<p>生物学的“细胞分裂”是指数阶增长的典型例子：初始状态为 <span class="arithmatex">\(1\)</span> 个细胞，分裂一轮后变为 <span class="arithmatex">\(2\)</span> 个，分裂两轮后变为 <span class="arithmatex">\(4\)</span> 个，以此类推，分裂 <span class="arithmatex">\(n\)</span> 轮后有 <span class="arithmatex">\(2^n\)</span> 个细胞。</p>
+<p>下图和以下代码模拟了细胞分裂的过程，时间复杂度为 <span class="arithmatex">\(O(2^n)\)</span> 。请注意，输入 <span class="arithmatex">\(n\)</span> 表示分裂轮数，返回值 <code>count</code> 表示总分裂次数。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 指数阶（循环实现） */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">exponential</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 细胞每轮一分为二，形成数列 1, 2, 4, 8, ..., 2^(n-1)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">base</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">base</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// count = 1 + 2 + 4 + 8 + .. + 2^(n-1) = 2^n - 1</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>指数阶增长非常迅速，在<strong>穷举法（暴力搜索、回溯等）</strong>中比较常见。对于数据规模较大的问题，指数阶是不可接受的，通常需要使用<strong>动态规划或贪心算法</strong>等来解决。</p>
+<p><strong>5. 对数阶 <span class="arithmatex">\(O(\log n)\)</span></strong></p>
+<p>与指数阶相反，对数阶反映了“每轮缩减到一半”的情况。设输入数据大小为 <span class="arithmatex">\(n\)</span> ，由于每轮缩减到一半，因此循环次数是 <span class="arithmatex">\(\log_2 n\)</span> ，即 <span class="arithmatex">\(2^n\)</span> 的反函数。</p>
+<p>以下代码模拟了“每轮缩减到一半”的过程，时间复杂度为 <span class="arithmatex">\(O(\log_2 n)\)</span> ，简记为 <span class="arithmatex">\(O(\log n)\)</span> ：</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 对数阶（循环实现） */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">logarithmic</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>与指数阶类似，对数阶也常出现于递归函数中。一棵高度为 <span class="arithmatex">\(\log_2 n\)</span> 的递归树：</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 对数阶（递归实现） */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">logRecur</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">logRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>对数阶常出现于基于分治策略的算法中，体现了“一分为多”和“化繁为简”的算法思想。它增长缓慢，是仅次于常数阶的理想的时间复杂度。</p>
+<div class="admonition tip">
+<p class="admonition-title"><span class="arithmatex">\(O(\log n)\)</span> 的底数是多少？</p>
+<p>准确来说，“一分为 <span class="arithmatex">\(m\)</span>”对应的时间复杂度是 <span class="arithmatex">\(O(\log_m n)\)</span> 。而通过对数换底公式，我们可以得到具有不同底数、相等的时间复杂度：</p>
+<div class="arithmatex">\[
+O(\log_m n) = O(\log_k n / \log_k m) = O(\log_k n)
+\]</div>
+<p>也就是说，底数 <span class="arithmatex">\(m\)</span> 可以在不影响复杂度的前提下转换。因此我们通常会省略底数 <span class="arithmatex">\(m\)</span> ，将对数阶直接记为 <span class="arithmatex">\(O(\log n)\)</span> 。</p>
+</div>
+<p><strong>6. 线性对数阶 <span class="arithmatex">\(O(n \log n)\)</span></strong></p>
+<p>线性对数阶常出现于嵌套循环中，两层循环的时间复杂度分别为 <span class="arithmatex">\(O(\log n)\)</span> 和 <span class="arithmatex">\(O(n)\)</span> 。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 线性对数阶 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">linearLogRecur</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">linearLogRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">linearLogRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="线性对数阶的时间复杂度.png" src="images/%E7%BA%BF%E6%80%A7%E5%AF%B9%E6%95%B0%E9%98%B6%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.png" /></p>
+<p><strong>7. 阶乘阶 <span class="arithmatex">\(O(n!)\)</span></strong></p>
+<p>阶乘阶对应数学上的“全排列”问题。给定 <span class="arithmatex">\(n\)</span> 个互不重复的元素，求其所有可能的排列方案，方案数量为：</p>
+<div class="arithmatex">\[
+n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
+\]</div>
+<p>阶乘通常使用<strong>递归</strong>实现。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 阶乘阶（递归实现） */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">factorialRecur</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// 从 1 个分裂出 n 个</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">factorialRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>阶乘阶比指数阶增长得更快，在 <span class="arithmatex">\(n\)</span> 较大时也是不可接受的。</p>
+<p><strong>2.3.4 最差、最佳、平均时间复杂度</strong></p>
+<p><strong>算法的时间效率往往不是固定的，而是与输入数据的分布有关</strong>。</p>
+<ul>
+<li><strong>最差时间复杂度</strong>对应函数渐近上界，使用大 <span class="arithmatex">\(O\)</span> 记号表示。<ul>
+<li>最差时间复杂度更为实用，因为它给出了一个效率安全值。</li>
+</ul>
+</li>
+<li><strong>最佳时间复杂度</strong>对应函数渐近下界，用 <span class="arithmatex">\(\Omega\)</span> 记号表示。</li>
+<li><strong>平均时间复杂度可以体现算法在随机输入数据下的运行效率</strong>，用 <span class="arithmatex">\(\Theta\)</span> 记号来表示。<ul>
+<li>对于部分算法，可以简单地推算出随机数据分布下的平均情况。</li>
+<li>但对于较为复杂的算法，计算平均时间复杂度往往比较困难。在这种情况下，我们通常使用最差时间复杂度作为算法效率的评判标准。</li>
+</ul>
+</li>
+</ul>
+<p>假设输入一个长度为 <span class="arithmatex">\(n\)</span> 的数组 <code>nums</code> ，其中 <code>nums</code> 由从 <span class="arithmatex">\(1\)</span> 至 <span class="arithmatex">\(n\)</span> 的数字组成，每个数字只出现一次；但元素顺序是随机打乱的，任务目标是返回元素 <span class="arithmatex">\(1\)</span> 的索引：</p>
+<ul>
+<li>当 <code>nums = [?, ?, ..., 1]</code> ，即当末尾元素是 <span class="arithmatex">\(1\)</span> 时，需要完整遍历数组，<strong>达到最差时间复杂度 <span class="arithmatex">\(O(n)\)</span></strong> 。</li>
+<li>当 <code>nums = [1, ?, ?, ...]</code> ，即当首个元素为 <span class="arithmatex">\(1\)</span> 时，无论数组多长都不需要继续遍历，<strong>达到最佳时间复杂度 <span class="arithmatex">\(\Omega(1)\)</span></strong> 。</li>
+<li>平均时间复杂度为 <span class="arithmatex">\(\Theta(n / 2) = \Theta(n)\)</span></li>
+</ul>
+<hr />
 <h3 id="24">2.4 <strong>空间复杂度</strong></h3>
-<p><u>空间复杂度（space complexity）</u>用于衡量算法占用内存空间随着数据量变大时的增长趋势。这个概念与时间复杂度非常类似，只需将“运行时间”替换为“占用内存空间”。</p>
+<p><u>空间复杂度（space complexity）</u>用于衡量算法占用内存空间随着数据量变大时的增长趋势。</p>
+<p><strong>2.4.1 算法相关空间</strong></p>
+<ul>
+<li><strong>输入空间</strong>：用于存储算法的输入数据。</li>
+<li><strong>暂存空间</strong>：用于存储算法在运行过程中的变量、对象、函数上下文等数据。</li>
+<li><strong>输出空间</strong>：用于存储算法的输出数据。</li>
+</ul>
+<p>一般情况下，空间复杂度的统计范围是“暂存空间”加上“输出空间”。</p>
+<p>暂存空间可以进一步划分为三个部分：</p>
+<ul>
+<li><strong>暂存数据</strong>：用于保存算法运行过程中的各种常量、变量、对象等。</li>
+<li><strong>栈帧空间</strong>：用于保存调用函数的上下文数据。系统在每次调用函数时都会在栈顶部创建一个栈帧，函数返回后，栈帧空间会被释放。</li>
+<li><strong>指令空间</strong>：用于保存编译后的程序指令，在实际统计中通常忽略不计。</li>
+</ul>
+<p>在分析一段程序的空间复杂度时，<strong>我们通常统计暂存数据、栈帧空间和输出数据三部分</strong>，如下图所示。</p>
+<p><img alt="算法相关空间.png" src="images/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E7%A9%BA%E9%97%B4.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* 结构体 */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="cm">/* 函数 */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 执行某些操作...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">algorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span><span class="c1">// 输入数据</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">          </span><span class="c1">// 暂存数据（常量）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                </span><span class="c1">// 暂存数据（变量）</span>
+<span class="w">    </span><span class="n">Node</span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 暂存数据（对象）</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">();</span><span class="w">           </span><span class="c1">// 栈帧空间（调用函数）</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w">         </span><span class="c1">// 输出数据</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>2.4.2 推算方法</strong></p>
+<p><strong>我们通常只关注最差空间复杂度</strong>。这是因为内存空间是一项硬性要求，我们必须确保在所有输入数据下都有足够的内存空间预留。</p>
+<p>观察以下代码，最差空间复杂度中的“最差”有两层含义。</p>
+<ol>
+<li><strong>以最差输入数据为准</strong>：当 <span class="arithmatex">\(n &lt; 10\)</span> 时，空间复杂度为 <span class="arithmatex">\(O(1)\)</span> ；但当 <span class="arithmatex">\(n &gt; 10\)</span> 时，初始化的数组 <code>nums</code> 占用 <span class="arithmatex">\(O(n)\)</span> 空间，因此最差空间复杂度为 <span class="arithmatex">\(O(n)\)</span> 。</li>
+<li><strong>以算法运行中的峰值内存为准</strong>：例如，程序在执行最后一行之前，占用 <span class="arithmatex">\(O(1)\)</span> 空间；当初始化数组 <code>nums</code> 时，程序占用 <span class="arithmatex">\(O(n)\)</span> 空间，因此最差空间复杂度为 <span class="arithmatex">\(O(n)\)</span> 。</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">algorithm</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">               </span><span class="c1">// O(1)</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span><span class="w">    </span><span class="c1">// O(1)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// O(n)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>在递归函数中，需要注意统计栈帧空间</strong>。观察以下代码：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 执行某些操作</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/* 循环的空间复杂度为 O(1) */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">func</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/* 递归的空间复杂度为 O(n) */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">recur</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="n">recur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>函数 <code>loop()</code> 和 <code>recur()</code> 的时间复杂度都为 <span class="arithmatex">\(O(n)\)</span> ，但空间复杂度不同。</p>
+<ul>
+<li>函数 <code>loop()</code> 在循环中调用了 <span class="arithmatex">\(n\)</span> 次 <code>function()</code> ，每轮中的 <code>function()</code> 都返回并释放了栈帧空间，因此空间复杂度仍为 <span class="arithmatex">\(O(1)\)</span> 。</li>
+<li>递归函数 <code>recur()</code> 在运行过程中会同时存在 <span class="arithmatex">\(n\)</span> 个未返回的 <code>recur()</code> ，从而占用 <span class="arithmatex">\(O(n)\)</span> 的栈帧空间。</li>
+</ul>
+<p><strong>2.4.3 常见类型</strong></p>
 
 
 

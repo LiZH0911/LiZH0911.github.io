@@ -924,118 +924,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Java/Java%E5%B9%B6%E5%8F%91/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Java 并发
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Java/JavaIO/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Java IO
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Java/JVM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    JVM
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Java/%E6%96%B0%E7%89%B9%E6%80%A7/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    新特性
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -3727,8 +3615,8 @@
 <ol>
 <li><strong>监督学习（Supervised Learning）</strong>：<ul>
 <li><strong>定义</strong>：模型在训练过程中使用带有标签的数据。</li>
-<li><strong>目标</strong>：学习从输入到输出的映射关系，能够对新输入进行准确预测。</li>
-<li><strong>应用</strong>：分类、回归。</li>
+<li><strong>目标</strong>：学习从输入到输出的映射关系。</li>
+<li><strong>应用</strong>：分类、回归。如图像分类、目标检测、人脸识别、车牌识别。</li>
 <li><strong>经典算法</strong>：<ul>
 <li><strong>分类算法</strong>：逻辑回归、支持向量机（SVM）、决策树、随机森林、k-近邻（k-NN）、神经网络等。</li>
 <li><strong>回归算法</strong>：线性回归、岭回归、Lasso回归、支持向量回归（SVR）等。</li>
@@ -3739,16 +3627,16 @@
 <li><strong>无监督学习（Unsupervised Learning）</strong>：<ul>
 <li><strong>定义</strong>：模型在训练过程中使用未标记的数据，即只有输入数据而没有对应的输出标签。</li>
 <li><strong>目标</strong>：发现数据中的结构和模式，如聚类、降维等。</li>
-<li><strong>应用</strong>：客户细分、市场分析、降维和特征提取。</li>
+<li><strong>应用</strong>：客户细分、市场分析、降维和特征提取。人群聚类分析、异常检测。</li>
 <li><strong>例子</strong>：<ul>
-<li><strong>聚类算法</strong>：k-均值（k-Means）、层次聚类、高斯混合模型（GMM）、DBSCAN等。</li>
+<li><strong>聚类算法</strong>：k-均值（k-Means）、层次聚类、高斯混合模型（GMM）、DBSCAN 等。</li>
 <li><strong>降维算法</strong>：主成分分析（PCA）、t-SNE、线性判别分析（LDA）、独立成分分析（ICA）等。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><strong>半监督学习（Semi-Supervised Learning）</strong>：<ul>
-<li><strong>定义</strong>：结合了少量标记数据和大量未标记数据进行训练。</li>
+<li><strong>定义</strong>：同时使用少量标注数据和大量未标注数据。</li>
 <li><strong>目标</strong>：利用未标记数据提升模型的泛化能力和准确性。</li>
 <li><strong>应用</strong>：在标记数据获取成本高或困难时，如医学图像分析。</li>
 <li><strong>例子</strong>：半监督支持向量机、图神经网络等。</li>
@@ -3771,7 +3659,7 @@
 <li><strong>定义</strong>：利用数据内部的结构信息自动生成标签。</li>
 <li><strong>目标</strong>：通过生成自标签，利用大规模未标记数据进行训练。</li>
 <li><strong>应用</strong>：自然语言处理（如 BERT、GPT）、计算机视觉（如 SimCLR、BYOL）。</li>
-<li><strong>例子</strong>：对比学习、生成对抗网络（GAN）的某些变体。</li>
+<li><strong>例子</strong>：对比学习（SimCLR、MoCo）、掩码图像建模（MAE、BEiT）、旋转预测、生成对抗网络（GAN）的某些变体。</li>
 </ul>
 </li>
 <li><strong>联邦学习（Federated Learning）</strong>:<ul>
@@ -3788,7 +3676,7 @@
 <p><strong>偏差（Bias）</strong>：模型预测值的期望与真实值之间的差距，衡量了模型<strong>拟合训练数据</strong>的能力。
      - 高偏差：模型过于简单，拟合能力弱（可能欠拟合）。
      - 低偏差：模型足够复杂，拟合能力强。</p>
-<p><strong>方差（Variance）</strong>：描述预测值的变化范围、离散程度（离期望值的距离）。衡量模型的<strong>在测试数据上的泛化性</strong>。
+<p><strong>方差（Variance）</strong>：模型对数据变化的敏感程度，反映模型的稳定性。衡量模型的<strong>在测试数据上的泛化性</strong>。
      - 高方差：测试误差相对于训练误差的增量较高（可能过拟合）。
      - 低方差：泛化能力强。</p>
 <p><strong>噪声（Noise）</strong>：描述了在当前任务上任何机器学习算法所能达到的期望泛化误差的下界，即刻画了<strong>任务的难度</strong>。</p>
