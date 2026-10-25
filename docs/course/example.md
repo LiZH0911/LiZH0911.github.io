@@ -25,6 +25,18 @@ print("Hello, World!")
 
 <font color=#C00000>突出的字体</font>
 
+=== "C++"
+
+    ```C++
+
+    ```
+
+=== "Python"
+
+    ```python
+
+    ```
+
 ## 第三部分：链接与图片
 
 [这是一个链接](https://example.com)

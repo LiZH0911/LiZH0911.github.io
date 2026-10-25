@@ -901,6 +901,44 @@ df.groupby('产品类别').agg({'销售量': 'sum', '销售额': 'sum'})
 - [Matplotlib 官方文档](https://matplotlib.org/stable/contents.html)
 
 
+## X、sys 模块
+
+
+**输入读取**
+
+一次读入全部：
+
+```python
+import sys
+data = sys.stdin.read().split()   # 一次读入全部，按空白切分 → str 列表
+```
+
+逐行迭代读入：
+
+```python
+for line in sys.stdin:
+    line = line.strip()          # 去掉行尾 \n 和首尾空白
+    if not line:                 # 跳过空行
+        continue
+    a, b = map(int, line.split()) # 按任意空白切分
+    print(a + b)
+```
+
+需要先读一行 n，再读 n 行：`sys.stdin.readline()`
+
+```python
+import sys
+
+n = int(sys.stdin.readline())                       # 读第一行
+arr = list(map(int, sys.stdin.readline().split()))  # 读第二行
+
+# 循环读 n 行
+for _ in range(n):
+    line = sys.stdin.readline().strip()
+    if not line:
+        continue
+    # 处理
+```
 
 
 ## X、线程与进程

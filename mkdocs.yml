@@ -42,6 +42,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
@@ -64,8 +66,8 @@ nav:
     - 计算机基础:
         - 计算机网络: course/计算机基础/计算机网络/index.md
         - 操作系统: course/计算机基础/操作系统/index.md
-        - 数据结构: course/计算机基础/数据结构/index.md
-        - 算法: course/计算机基础/算法/index.md
+#        - 数据结构: course/计算机基础/数据结构/index.md
+        - 算法与数据结构: course/计算机基础/算法/index.md
     - Python: course/Python/index.md
     - Python 后端:
         - FastAPI: course/Python后端/FastAPI/index.md

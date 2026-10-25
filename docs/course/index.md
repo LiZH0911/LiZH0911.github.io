@@ -8,6 +8,7 @@
 - [数据库](%E6%95%B0%E6%8D%AE%E5%BA%93%2Findex.md)
 - [Agent 基础](Agent/index.md)
 - [机器学习](机器学习/index.md)
+- [深度学习](深度学习/index.md)
 - [传统数字图像处理](计算机视觉/传统数字图像处理/index.md)
 - [目标检测](计算机视觉/2D目标检测/index.md)
 - [常用工具](常用工具/index.md)
