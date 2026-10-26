@@ -591,34 +591,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    数据结构
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
@@ -626,7 +598,7 @@
   <span class="md-ellipsis">
     
   
-    算法
+    算法与数据结构
   
 
     
@@ -1271,6 +1243,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xsys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、sys 模块
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4192,6 +4175,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#xsys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        X、sys 模块
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#x_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5645,6 +5639,33 @@
 <ul>
 <li><a href="https://matplotlib.org/stable/contents.html">Matplotlib 官方文档</a></li>
 </ul>
+<h2 id="xsys">X、sys 模块</h2>
+<p><strong>输入读取</strong></p>
+<p>一次读入全部：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>   <span class="c1"># 一次读入全部，按空白切分 → str 列表</span>
+</code></pre></div>
+<p>逐行迭代读入：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>          <span class="c1"># 去掉行尾 \n 和首尾空白</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>                 <span class="c1"># 跳过空行</span>
+        <span class="k">continue</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="c1"># 按任意空白切分</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
+<p>需要先读一行 n，再读 n 行：<code>sys.stdin.readline()</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>                       <span class="c1"># 读第一行</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>  <span class="c1"># 读第二行</span>
+
+<span class="c1"># 循环读 n 行</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="c1"># 处理</span>
+</code></pre></div>
 <h2 id="x_1">X、线程与进程</h2>
 <h3 id="x1_1">x.1 <strong>基本概念</strong></h3>
 <p>线程与进程是操作系统里面的术语，简单来讲，每一个应用程序都有一个自己的进程。</p>

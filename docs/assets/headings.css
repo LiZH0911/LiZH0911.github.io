@@ -1,0 +1,43 @@
+/* ==========================================================================
+   正文标题配色：Markdown 的 ## / ### / #### 会渲染为 <h2> / <h3> / <h4>，
+   这里统一改成蓝色（h1 为页面大标题，保持原样）
+   - 浅色模式：深蓝，保证白底上的对比度
+   - 深色模式（slate）：浅蓝，避免在深色背景上发灰
+   - 只作用于正文容器 .md-typeset，不影响导航栏 / 目录中的标题
+   ========================================================================== */
+
+:root {
+  --doc-heading-color: #1565c0;
+}
+
+[data-md-color-scheme="slate"] {
+  --doc-heading-color: #64b5f6;
+}
+
+/* ## -> h2  |  ### -> h3  |  #### -> h4 */
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: var(--doc-heading-color);
+}
+
+/* 标题被锚点跳转命中时（点击目录），保持蓝色而不是被高亮覆盖 */
+.md-typeset h2:target,
+.md-typeset h3:target,
+.md-typeset h4:target {
+  color: var(--doc-heading-color);
+}
+
+/* 鼠标悬停时出现的锚点链接（¶）跟随标题颜色 */
+.md-typeset h2 .headerlink,
+.md-typeset h3 .headerlink,
+.md-typeset h4 .headerlink {
+  color: var(--doc-heading-color);
+  opacity: 0.6;
+}
+
+.md-typeset h2:hover .headerlink,
+.md-typeset h3:hover .headerlink,
+.md-typeset h4:hover .headerlink {
+  opacity: 1;
+}

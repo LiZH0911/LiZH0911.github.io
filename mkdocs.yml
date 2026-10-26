@@ -44,6 +44,8 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
+  - toc:
+      toc_depth: 4   # 或 "2-4" 表示显示 2 到 4 级
 
 extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
@@ -53,6 +55,7 @@ extra_css:
   - assets/about.css
   - assets/footer.css
   - assets/achievements.css
+  - assets/headings.css
 
 # 可选：让正文图片点击放大（先安装：pip install mkdocs-glightbox）
 # plugins:
@@ -66,6 +69,7 @@ nav:
     - 计算机基础:
         - 计算机网络: course/计算机基础/计算机网络/index.md
         - 操作系统: course/计算机基础/操作系统/index.md
+        - Linux: course/计算机基础/Linux/index.md
 #        - 数据结构: course/计算机基础/数据结构/index.md
         - 算法与数据结构: course/计算机基础/算法/index.md
     - Python: course/Python/index.md
@@ -131,7 +135,7 @@ nav:
         - Claude Code: course/常用工具/Claude Code/index.md
         - Skill: course/常用工具/Skill/index.md
         - Docker: course/常用工具/Docker/index.md
-        - Linux: course/常用工具/Linux/index.md
+
         - Shell: course/常用工具/Shell/index.md
         - ROS: course/常用工具/ROS/index.md
 

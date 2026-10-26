@@ -1,13 +1,24 @@
-# 传统数字图像处理
+# 数字图像处理
 
 相关链接：
 
-- 《数字图像处理》书籍
+- 冈萨雷斯《数字图像处理》
 - [CV 算法工程师成长之路-数字图像处理](https://harleyszhang.github.io/cv_note/6-computer_vision/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/0-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0.html)
+- [华为云《从零到壹•Python图像处理及识别》电子书](https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/CloudBook/PythonCloudShare0712.pdf)
 
-## 一、绪论
+
+## 一、数字图像处理基础知识
 
 ### 1.1 **什么是数字图像处理**
+
+**数字图像处理（Digital Image Processing）**：又称为计算机图像处理（Computer Image Processing），指借助计算机处理数字图像的过程。
+
+![图像处理相关的应用方法.png](images%2F%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BA%94%E7%94%A8%E6%96%B9%E6%B3%95.png)
+
+* 数字图像处理作为一门学科大约形成于 20 世纪 60 年代初期。早期的图像处理的目的是改善图像的质量，常用的处理方法包括图像增强、复原、编码、压缩等。
+* 随着图像处理技术的深入发展，从 70 年代中期开始，计算机技术和人工智能、思维科学研究迅速发展，数字图像处理向更高、更深层次发展。人们已开始研究如何用计算机系统解释图像，实现类似人类视觉系统理解外部世界，这被称为图像理解或计算机视觉。
+
+### 1.2 **图像处理基础**
 
 **图像**：一个二维函数 $f(x,y)$，其中 $x$ 和 $y$ 是空间（平面）坐标，任意一对空间坐标 $(x,y)$ 处的幅度值 $f$ 称为图像在该坐标点的强度或灰度。
 
@@ -15,42 +26,553 @@
 
 > 注意，数字图像由有限数量的元素组成，每个元素都有一定的位置和数值，这些元素称为像素。
 
-**数字图像处理**：指借助于数字计算机来处理数字图像。
+图像通常分为二值图像、灰度图像和彩色图像。
 
-图像处理止于何处或其他相关领域（如图像分析和计算机视觉）始于何处，目前人们的看法并不一致。在本书中，将**数字图像处理定义为其输入和输出都是图像的处理**。
+- 二值图像又称为黑白图像，图像中任何一个点要么为白色（像素为 255），要么为黑色（像素为 0）。
+- 灰度图像是指每个像素的信息由一个量化的灰度级来描述的图像，没有彩色信息。
+- 彩色图像是 RGB 图像，RGB 表示红、绿、蓝三原色。
 
-### 1.2 **数字图像处理的起源**
+## 二、OpenCV 图像显示、读取、像素值访问、保存
 
-略
+OpenCV 是一个轻量级高效的跨平台计算机视觉库，实现了图像处理和计算机视觉方面的多种通用算法。
 
-### 1.3 **数字图像处理技术应用实例**
+Python 安装 OpenCV：`pip install opencv-python`
 
-根据电磁波谱，可得到以下电磁波谱成像：
+### 2.1 **常见数据类型**
 
-* **伽玛射线成像**：伽玛射线成像的主要用途包括核医学和天文观测。在核医学中，方法是将放射性同位素注入人体，同位素衰变时会发射伽玛射线，图像则由伽玛射线检测器收集到的放射线产生。下图展示了一幅使用伽玛射线成像得到的人体骨骼扫描图像。
-* **X 射线成像**：X 射线成像除了应用于医学诊断，还被广泛应用于工业和其他领域，如天文学。
-* **紫外波段成像**。
-* **可见光和红外波段成像**：应用领域最广，如光学显微镜、遥感图像、气象监测图像、工业自动视觉检测等。
-* **微波波段成像**：主要应用是雷达。
-* **无线电波成像**：应用领域如医学等磁共振成像（MRI）。
+- 点 Point
 
-### 1.4 **数字图像处理的基本步骤**
+=== "Python"
 
-![数字图像处理的基本步骤.png](images%2F%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4.png)
+    ```python
+    points_list = [(160, 160), (136, 160)]
+    ```
 
-### 1.5 **图像处理系统的组成**
+=== "C++"
 
-略
+    ```C++
+    Point p; 
+    p.x=1;
+    p.y=2;
+    Point p=Point(1, 2);
+    ```
+
+- 颜色 Scalar
+
+=== "Python"
+
+    ```python
+    (0, 0, 255)
+    ```
+
+=== "C++"
+
+    ```C++
+    Scalar(b, g, r);·
+    ```
+
+- 尺寸 Size
+
+=== "Python"
+
+    ```python
+    width, height = img.shape
+    ```
+
+=== "C++"
+
+    ```C++
+    Size(5, 5);
+    Size_(_Tp _width, _Tp _height);
+    ```
+
+- 矩形 Rect
+
+=== "Python"
+
+    ```python
+    cv2.rectangle(img, (20,20), (150,250), (255,0,0), 2)
+    ```
+
+=== "C++"
+
+    ```C++
+    Rect rect = rect1 & rect2; #求两矩形交集
+    Rect rect = rect1 | rect2; #求两矩形并集
+    Rect rectShift = rect + point; #矩形平移
+    Rect rect = rect1 + size; #矩形缩放
+    ```
+
+- 矩阵 Mat
+
+=== "Python"
+
+    ```python
+    np.zeros((256,256,3), np.uint8)
+    ```
+
+=== "C++"
+
+    ```C++
+    Mat M(3,2, CV_8UC3, Scalar(0,0,255));
+    ```
+
+### 2.2 **图像读取与显示**
+
+**2.2.1 图像读取**：`retval = cv2.imread(filename[, flags])`
+
+**2.2.2 图像显示**：`cv2.imshow(winname, mat)`
+
+在显示图像过程中，通常还会调用操作窗口的函数
+
+- `retval = cv2.waitKey([, delay]))`：键盘绑定函数，共一个参数 `delay`，表示等待的毫秒数，看键盘是否有输入，返回值为 ASCII 值。
+- `cv2.destroyAllWindows()`：删除所有建立的窗口
+- `cv2.destroyWindow(winname)`，并在括号内输入要删除的窗口名。
+
+示例：
+
+```python
+import cv2
+
+#读取图片
+img = cv2.imread("Lena.png")
+
+#显示图像
+cv2.imshow("Demo", img)
+
+#等待显示
+cv2.waitKey(0) # 等待键盘单击
+cv2.destroyAllWindows()
+```
+
+在对比实验中，我们通常需要显示多张图片，此时可以调用 NumPy 和 Matplotlib 库辅助完成
+
+### 2.3 **访问像素值**
+
+OpenCV 中读取的图像相当于二维（灰度）或三维（彩色）的 NumPy 矩阵，可以直接通过位置索引访问像素值。
+
+```python
+import cv2
+
+#读取图片
+img = cv2.imread("flower.png", cv2.IMREAD_UNCHANGED)
+test = img[88,142]
+print(test)
+img[88,142] = [255, 255, 255]
+print(test)
+
+#分别获取 BGR 通道像素
+blue = img[88,142,0]
+print(blue)
+green = img[88,142,1]
+print(green)
+red = img[88,142,2]
+print(red)
+
+#该区域设置为白色
+img[100:200, 150:250] = [255,255,255]
+```
+
+### 2.4 **创建图像**
+
+由于在 OpenCV 中没有 CreateImage 函数，如果需要创建图像，则需要使用 Numpy 库函数实现。
+
+`emptyImage = np.zeros(img.shape, np.uint8)`
+
+### 2.5 **复制图像**
+
+`emptyImage2 = img.copy()`
+
+### 2.6 **保存图像**
+
+`retval = cv2.imwrite(filename, img[, params])`
+
+## 三、OpenCV 绘制几何图形
+
+### 3.1 **绘制直线**
+
+`cv2.line(img, pt1, pt2, color, thickness)`
+
+```python
+import cv2
+import numpy as np
+
+# 创建一张黑色背景图 (高, 宽, 通道)
+img = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# 绘制一条红色直线：从 (50, 50) 到 (450, 450)
+cv2.line(img, (50, 50), (450, 450), (0, 0, 255), thickness=3)
+
+# 显示
+cv2.imshow("Line", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 3.2 **绘制矩形**
+
+`cv2.rectangle(img, pt1, pt2, color, thickness)`
+
+```python
+import cv2
+import numpy as np
+
+# 创建黑色背景图
+img = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# 绘制绿色矩形边框：左上 (100, 100) 到右下 (400, 400)
+cv2.rectangle(img, (100, 100), (400, 400), (0, 255, 0), thickness=3)
+
+cv2.imshow("Rectangle", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 3.3 **绘制圆形**
+
+`cv2.circle(img, center, radius, color, thickness)`
+
+```python
+import cv2
+import numpy as np
+
+# 创建黑色背景图
+img = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# 绘制绿色圆环：圆心 (250, 250)，半径 100
+cv2.circle(img, (250, 250), 100, (0, 255, 0), thickness=3)
+
+cv2.imshow("Circle", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 3.4 **绘制椭圆**
+
+`cv2.ellipse(img, center, axes, angle, startAngle, endAngle, color, thickness)`
+
+```python
+import cv2
+import numpy as np
+
+# 创建黑色背景图
+img = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# 完整椭圆：中心 (250, 250)，半轴 (150, 80)，不旋转
+cv2.ellipse(img, (250, 250), (150, 80),
+            0, 0, 360, (0, 255, 0), thickness=3)
+
+cv2.imshow("Ellipse", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 3.5 **绘制多边形**
+
+`cv2.polylines(img, pts, isClosed, color, thickness)`
+
+```python
+import cv2
+import numpy as np
+
+# 创建黑色背景图
+img = np.zeros((500, 500, 3), dtype=np.uint8)
+
+# 定义三角形顶点，必须是 int32 类型
+pts = np.array([[250, 100], [100, 400], [400, 400]], dtype=np.int32)
+
+# 绘制闭合多边形
+cv2.polylines(img, [pts], isClosed=True,
+              color=(0, 255, 0), thickness=3)
+
+cv2.imshow("Triangle", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 3.6 **绘制文字**
+
+`cv2.putText(img, text, org, fontFace, fontScale, color, thickness)`
+
+## 四、图像算术与逻辑运算
+
+### 4.1 **图像加法**
+
+图像加法运算主要有两种方法：
+
+1. Numpy：`+` 或 `np.add()`，超过 255 的值取模 256，会发生溢出回绕
+2. OpenCV（推荐）：`cv2.add()`，饱和截断
+
+```python
+import cv2
+import numpy as np
+
+# 创建两张测试图
+img1 = np.full((300, 300, 3), 200, dtype=np.uint8)  # 值 200
+img2 = np.full((300, 300, 3), 100, dtype=np.uint8)  # 值 100
+
+# 饱和加法：200 + 100 = 300 → 截断为 255
+result = cv2.add(img1, img2)
+print(result[0, 0])  # [255 255 255]
+
+cv2.imshow("Img1", img1)
+cv2.imshow("Img2", img2)
+cv2.imshow("cv2.add", result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 4.2 **图像减法**
+
+1. Numpy：`-` 或 `np.subtract()`，小于 0 的值取模 256，会发生溢出回绕
+2. OpenCV（推荐）：`cv2.subtract()`，饱和截断
+
+```python
+import cv2
+import numpy as np
+
+# 创建两张测试图
+img1 = np.full((300, 300, 3), 100, dtype=np.uint8)  # 值 100
+img2 = np.full((300, 300, 3), 200, dtype=np.uint8)  # 值 200
+
+# 饱和减法：100 - 200 = -100 → 截断为 0
+result = cv2.subtract(img1, img2)
+print(result[0, 0])  # [0 0 0]
+
+cv2.imshow("Img1", img1)
+cv2.imshow("Img2", img2)
+cv2.imshow("cv2.subtract", result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 4.3 **图像与运算**
+
+图像的与运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“与”操作。
+
+`cv2.bitwise_and(src1, src2[, dst[, mask]])`
+
+```python
+import cv2
+import numpy as np
+
+# 单个像素值运算
+a = np.uint8(0b11001100)  # 204
+b = np.uint8(0b10101010)  # 170
+
+print(a & b)  # 0b10001000 = 136
+
+# 用图像演示
+img1 = np.full((200, 300, 3), 204, dtype=np.uint8)
+img2 = np.full((200, 300, 3), 170, dtype=np.uint8)
+
+result = cv2.bitwise_and(img1, img2)
+print(result[0, 0])  # [136 136 136]
+```
+
+**应用场景**：掩膜抠图、颜色提取
+
+![图像与运算.png](images%2F%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%BF%90%E7%AE%97.png)
+
+### 4.4 **图像或运算**
+
+图像的或运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“或”操作。
+
+`cv2.bitwise_or(src1, src2[, dst[, mask]])`
+
+**应用场景**：掩膜合并
+
+![图像或运算.png](images%2F%E5%9B%BE%E5%83%8F%E6%88%96%E8%BF%90%E7%AE%97.png)
+
+### 4.5 **图像非运算**
+
+图像非运算就是图像的像素反色处理，
+
+`cv2.bitwise_not(src[, dst[, mask]])`
+
+**应用场景**：掩膜取反
+
+### 4.5 **图像异或运算**
+
+图像的异或运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“异或”操作。
+
+`cv2.bitwise_xor(src1, src2[, dst[, mask]])`
+
+**应用场景**：二值掩膜差异对比
+
+## 五、其他常见图像操作
+
+### 5.2 **图像 ROI 区域定位**
+
+ROI（Region of Interest）表示感兴趣区域，是指从被处理图像以方框、圆形、椭圆、不规则多边形等方式勾勒出需要处理的区域。
+可以通过各种算子（Operator）和函数求得感兴趣 ROI 区域，被广泛应用于热点地图、人脸识别、图像分割等领域。
+
+核心原理：NumPy 切片
+
+`roi = img[y1:y2, x1:x2]`
+
+### 5.3 **图像属性**
+
+```python
+import cv2
+
+img = cv2.imread("photo.jpg")
+
+print("形状 shape:", img.shape) # 返回元组 (height, width, channels)
+print("尺寸 size:", img.size) # 像素总数（高 × 宽 × 通道）
+print("数据类型 dtype:", img.dtype) # uint8 表示 0~255
+print("维度 ndim:", img.ndim) # 2 表示单通道灰度图、3 表示多通道图
+print("字节数 nbytes:", img.nbytes)
+```
+
+输出示例：
+
+```
+形状 shape: (720, 1280, 3)
+尺寸 size: 2764800
+数据类型 dtype: uint8
+维度 ndim: 3
+字节数 nbytes: 2764800
+```
+
+### 5.4 **图像通道分离及合并 **
+
+| 操作 | 函数 | 说明 |
+|------|------|------|
+| 分离通道 | `cv2.split(img)` | 拆成 B、G、R 三个单通道图 |
+| 合并通道 | `cv2.merge([b, g, r])` | 把三个单通道合成彩色图 |
+| NumPy 切片分离 | `img[:, :, 0]` 等 | 更高效，推荐大图使用 |
+
+> ⚠️ OpenCV 默认通道顺序是 **BGR**，不是 RGB。
+
+示例：
+
+```python
+import cv2
+
+img = cv2.imread("photo.jpg")
+
+# # cv2.split 分离成 B、G、R 三个单通道
+# b, g, r = cv2.split(img)
+
+# NumPy 方式分离（比 cv2.split 快）
+b = img[:, :, 0]
+g = img[:, :, 1]
+r = img[:, :, 2]
+
+print("原图形状:", img.shape)   # (h, w, 3)
+print("单通道形状:", b.shape)    # (h, w)
+
+# 合并回彩色图
+merged = cv2.merge([b, g, r])
+
+cv2.imshow("Original", img)
+cv2.imshow("Merged", merged)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 5.5 **图像颜色空间转换**
+
+在日常生活中，我们看到的大多数彩色图像都是 RGB 类型，但是在图像处理过程中，常常需要用到灰度图像、二值图像、HSV、HSI 等颜色。
+
+**图像颜色空间转换**是指将一种颜色空间转换到另一种颜色空间，比如彩色图像转换为灰度图像、BGR 图像转换为 RGB 图像。
+
+图像颜色空间转换函数：`cv2.cvtColor`
+
+```python
+#encoding:utf-8
+import cv2  
+import matplotlib.pyplot as plt
+
+#读取原始图像
+img_BGR = cv2.imread('miao.jpg')
+
+#BGR转换为RGB
+img_RGB = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2RGB)
+
+#灰度化处理
+img_GRAY = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2GRAY)
+
+#BGR转HSV
+img_HSV = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2HSV)
+
+#BGR转YCrCb
+img_YCrCb = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2YCrCb)
+
+#BGR转HLS
+img_HLS = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2HLS)
+
+#BGR转XYZ
+img_XYZ = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2XYZ)
+
+#BGR转LAB
+img_LAB = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2LAB)
+
+#BGR转YUV
+img_YUV = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2YUV)
+
+#调用matplotlib显示处理结果
+titles = ['BGR', 'RGB', 'GRAY', 'HSV', 'YCrCb', 'HLS', 'XYZ', 'LAB', 'YUV']  
+images = [img_BGR, img_RGB, img_GRAY, img_HSV, img_YCrCb,
+          img_HLS, img_XYZ, img_LAB, img_YUV]  
+for i in range(9):
+   plt.subplot(3, 3, i+1), plt.imshow(images[i], 'gray')  
+   plt.title(titles[i])  
+   plt.xticks([]),plt.yticks([])  
+plt.show()
+```
+
+## 六、图像几何变换
+
+### 6.1 **基本概念**
+
+图像几何变换的目的是**改变图像中像素的空间排列**。由两种基本运算组成：
+
+1. **坐标的空间变换**：包括平移、缩放、旋转和正平行投影等，需要用它来表示输出图像与输入图像之间的像素映射关系（通常为反向映射关系）。
+2. **插值**：为变换后的像素赋灰度值（灰度图）
+     * **最近邻插值**：直接取离目标点最近的输入像素的灰度值。
+     * **双线性插值**（最常用）：利用目标点周围 2×2 的四个已知像素，分别在水平和垂直方向做两次线性插值。
+     * **双三次插值**：利用目标点周围 4×4 的十六个已知像素，分别在水平和垂直方向做两次三次插值。
+
+> 关键问题：坐标变换后，输出图像中的像素位置通常是非整数的。而数字图像的像素坐标必须是整数。
+> 
+> 反向思考：对于输出图像中的每一个整数坐标位置，如何确定灰度值？——插值
+
+**仿射变换**：平移、旋转、缩放和剪切的组合。可用**齐次坐标变换公式**表示：
+
+![齐次坐标变换公式.png](images%2F%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F.png)
+
+> 仿射变换矩阵只有 6 个自由度
+
+**常见仿射变换**：
+
+![常见图像几何操作.png](images%2F%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E6%93%8D%E4%BD%9C.png)
+
+### 6.2 **图像平移**
+
+`cv2.warpAffine(src, M, dsize, dst=None, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)`
+
+- `M = np.float32([[1, 0, x], [0, 1, y]])`表示平移矩阵，其中 x 表示水平平移量，y 表示垂直平移量
+
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `src` | `np.ndarray` | 必填 | 输入图像（单通道/多通道均可） |
+| `M` | `np.ndarray` (2×3, `float32`) | 必填 | 2×3 仿射变换矩阵 |
+| `dsize` | `tuple (width, height)` | 必填 | 输出图像尺寸，**注意是 (宽, 高)** |
+| `dst` | `np.ndarray` | `None` | 输出图像，一般传 `None` 由函数创建 |
+| `flags` | `int` | `cv2.INTER_LINEAR` | 插值方式，见下表 |
+| `borderMode` | `int` | `cv2.BORDER_CONSTANT` | 边界填充方式，见下表 |
+| `borderValue` | `scalar/tuple` | `0` | 边界填充值，灰度填标量，彩色填 `(B,G,R)` |
+
+
+
 
 ## 二、数字图像基础
 
 **相机成像的原理**：针孔相机( Pinhole Camera )通过投影变换，可以将三维相机（Camera）坐标转换为二维的图像坐标，这个变换矩阵是相机的内在属性，称为相机内参（Camera Intrinsic） K。
 
 > yaw 航向角，pitch 俯仰角，roll 翻滾角。
-
-### 2.1 **视觉感知要素**
-
-略
 
 ### 2.2 **电磁波谱**
 
@@ -136,30 +658,6 @@
 > 所谓的邻域运算就是对特定 roi 区域的所有像素做特定操作：以指定位置 $(x,y)$ 为中心，邻域范围为 $m\times n$，对这个范围内的像素取平均/求和/最大值/等得到输出像素。
 >
 > 典型的就是 CNN 模型中卷积层的滤波器操作。
-
-
-**2.6.5.3 几何变换**：改变图像中像素的空间排列。由两种基本运算组成：
-
-1. **坐标的空间变换**
-2. **插值**：为变换后的像素赋灰度值（灰度图）
-    * **最近邻插值**：直接取离目标点最近的输入像素的灰度值。
-    * **双线性插值**（最常用）：利用目标点周围 2×2 的四个已知像素，分别在水平和垂直方向做两次线性插值。
-    * **双三次插值**：利用目标点周围 4×4 的十六个已知像素，分别在水平和垂直方向做两次三次插值。
-
-> 关键问题：坐标变换后，输出图像中的像素位置通常是非整数的。而数字图像的像素坐标必须是整数。
-> 
-> 反向思考：对于输出图像中的每一个整数坐标位置，如何确定灰度值？——插值
-
-
-**仿射变换**：平移、旋转、缩放和剪切的组合。可用**齐次坐标变换公式**表示：
-
-![齐次坐标变换公式.png](images%2F%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F.png)
-
-> 仿射变换矩阵只有 6 个自由度
-
-**常见仿射变换**：
-
-![常见图像几何操作.png](images%2F%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E6%93%8D%E4%BD%9C.png)
 
 ## 三、灰度变换与空间滤波
 

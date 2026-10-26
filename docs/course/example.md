@@ -37,6 +37,13 @@ print("Hello, World!")
 
     ```
 
+=== "C++"
+
+    ```C++
+
+    ```
+
+
 ## 第三部分：链接与图片
 
 [这是一个链接](https://example.com)
