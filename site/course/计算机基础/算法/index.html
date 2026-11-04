@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://lizh0911.github.io/course/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/">
       
       
-        <link rel="prev" href="../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+        <link rel="prev" href="../Linux/">
       
       
         <link rel="next" href="../../Python/">
@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../../assets/footer.css">
     
       <link rel="stylesheet" href="../../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../../assets/headings.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -573,6 +575,34 @@
     
   
     操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
   
 
     
@@ -2902,34 +2932,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
         
   
@@ -3944,7 +3946,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">for_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;for 循环&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""for 循环"""</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="c1"># 循环求和 1, 2, ..., n-1, n</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
@@ -3976,7 +3978,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">while_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;while 循环&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""while 循环"""</span>
     <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 初始化条件变量</span>
     <span class="c1"># 循环求和 1, 2, ..., n-1, n</span>
@@ -4000,7 +4002,7 @@
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 循环 j = 1, 2, ..., n-1, n</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;(&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;), &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"("</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">", "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"), "</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
@@ -4009,13 +4011,13 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">nested_for_loop</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;双层 for 循环&quot;&quot;&quot;</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""双层 for 循环"""</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="c1"># 循环 i = 1, 2, ..., n-1, n</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="c1"># 循环 j = 1, 2, ..., n-1, n</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">), &quot;</span>
+            <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">), "</span>
     <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
 </div>
@@ -4047,7 +4049,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">recur</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;递归&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""递归"""</span>
     <span class="c1"># 终止条件</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">1</span>
@@ -4360,7 +4362,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="k">struct</span><span class="w"> </span><span class="nc">Node</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Node</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="n">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">};</span>
 
 <span class="cm">/* 函数 */</span>
@@ -4461,7 +4463,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <p>以下递归函数的递归深度为 <span class="arithmatex">\(n\)</span> ，即同时存在 <span class="arithmatex">\(n\)</span> 个未返回的 <code>linear_recur()</code> 函数，使用 <span class="arithmatex">\(O(n)\)</span> 大小的栈帧空间。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* 线性阶（递归实现） */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">linearRecur</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;递归 n = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"递归 n = "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="n">linearRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -4488,7 +4490,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">nums</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;递归 n = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; 中的 nums 长度 = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"递归 n = "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" 中的 nums 长度 = "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">nums</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">quadraticRecur</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -4497,7 +4499,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 指数阶（建立满二叉树） */</span>
 <span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="nf">buildTree</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildTree</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildTree</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -4801,7 +4803,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="k">struct</span><span class="w"> </span><span class="nc">ListNode</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">         </span><span class="c1">// 节点值</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w">  </span><span class="c1">// 指向下一节点的指针</span>
-<span class="w">    </span><span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// 构造函数</span>
+<span class="w">    </span><span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// 构造函数</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><strong>4.2.1 链表常用操作</strong></p>
@@ -4833,7 +4835,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <p><strong>只需改变一个节点的引用（指针）即可</strong>。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">/* 删除链表的节点 n0 之后的首个节点 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">n0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n0</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n0</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// n0 -&gt; P -&gt; n1</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">P</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n0</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
@@ -4848,8 +4850,8 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 访问链表中索引为 index 的节点 */</span>
 <span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="nf">access</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">        </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
@@ -4860,7 +4862,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 在链表中查找值为 target 的首个节点 */</span>
 <span class="kt">int</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">index</span><span class="p">;</span>
 <span class="w">        </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
@@ -4922,7 +4924,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">         </span><span class="c1">// 节点值</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w">  </span><span class="c1">// 指向后继节点的指针</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w">  </span><span class="c1">// 指向前驱节点的指针</span>
-<span class="w">    </span><span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">prev</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// 构造函数</span>
+<span class="w">    </span><span class="n">ListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">prev</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w">  </span><span class="c1">// 构造函数</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><img alt="常见链表种类.png" src="images/%E5%B8%B8%E8%A7%81%E9%93%BE%E8%A1%A8%E7%A7%8D%E7%B1%BB.png" /></p>
@@ -5272,7 +5274,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">LinkedListStack</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">stackTop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">stackTop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">        </span><span class="n">stkSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5313,7 +5315,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问栈顶元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;栈为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"栈为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stackTop</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5363,7 +5365,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问栈顶元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;栈为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"栈为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="n">back</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5492,8 +5494,8 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">LinkedListQueue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">        </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">        </span><span class="n">queSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5517,7 +5519,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">        </span><span class="c1">// 在尾节点后添加 num</span>
 <span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 如果队列为空，则令头、尾节点都指向该节点</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">front</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">front</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 <span class="w">            </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
@@ -5544,7 +5546,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问队首元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5563,24 +5565,24 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LinkedListQueue</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于链表实现的队列&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""基于链表实现的队列"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;构造方法&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""构造方法"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_front</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 头节点 front</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rear</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 尾节点 rear</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取队列的长度&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""获取队列的长度"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">is_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;判断队列是否为空&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""判断队列是否为空"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">==</span> <span class="mi">0</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;入队&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""入队"""</span>
         <span class="c1"># 在尾节点后添加 num</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
         <span class="c1"># 如果队列为空，则令头、尾节点都指向该节点</span>
@@ -5594,7 +5596,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
         <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;出队&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""出队"""</span>
         <span class="n">num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
         <span class="c1"># 删除头节点</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_front</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_front</span><span class="o">.</span><span class="n">next</span>
@@ -5602,13 +5604,13 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
         <span class="k">return</span> <span class="n">num</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;访问队首元素&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""访问队首元素"""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;队列为空&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">"队列为空"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_front</span><span class="o">.</span><span class="n">val</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">to_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;转化为列表用于打印&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""转化为列表用于打印"""</span>
         <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_front</span>
         <span class="k">while</span> <span class="n">temp</span><span class="p">:</span>
@@ -5668,7 +5670,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 入队 */</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">queSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">queCapacity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;队列已满&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"队列已满"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 计算队尾指针，指向队尾索引 + 1</span>
@@ -5691,7 +5693,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问队首元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peek</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">front</span><span class="p">];</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5825,7 +5827,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">              </span><span class="c1">// 节点值</span>
 <span class="w">    </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="c1">// 后继节点指针</span>
 <span class="w">    </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="n">prev</span><span class="p">;</span><span class="w"> </span><span class="c1">// 前驱节点指针</span>
-<span class="w">    </span><span class="n">DoublyListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">val</span><span class="p">),</span><span class="w"> </span><span class="n">prev</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DoublyListNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">val</span><span class="p">),</span><span class="w"> </span><span class="n">prev</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">next</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 
@@ -5837,17 +5839,17 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="cm">/* 构造方法 */</span>
-<span class="w">    </span><span class="n">LinkedListDeque</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">front</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">rear</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">LinkedListDeque</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">front</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">rear</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 析构方法 */</span>
 <span class="w">    </span><span class="o">~</span><span class="n">LinkedListDeque</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 遍历链表删除节点，释放内存</span>
-<span class="w">        </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="n">pre</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">front</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="k">pre</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">front</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
 <span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">pre</span><span class="p">;</span>
+<span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="k">pre</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -5896,22 +5898,22 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 出队操作 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pop</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">isFront</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// 队列长度为 1 时, 头尾指向同一节点</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">queSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">front</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指向同一节点，释放其一即可</span>
-<span class="w">            </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">            </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 队首出队操作</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isFront</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="c1">// 暂存头节点值</span>
 <span class="w">            </span><span class="c1">// 删除头节点</span>
 <span class="w">            </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="n">fNext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
-<span class="w">            </span><span class="n">fNext</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">            </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">fNext</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">front</span><span class="p">;</span>
 <span class="w">            </span><span class="n">front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fNext</span><span class="p">;</span><span class="w"> </span><span class="c1">// 更新头节点</span>
 <span class="w">        </span><span class="c1">// 队尾出队操作</span>
@@ -5919,8 +5921,8 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">            </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rear</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span><span class="w"> </span><span class="c1">// 暂存尾节点值</span>
 <span class="w">            </span><span class="c1">// 删除尾节点</span>
 <span class="w">            </span><span class="n">DoublyListNode</span><span class="w"> </span><span class="o">*</span><span class="n">rPrev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rear</span><span class="o">-&gt;</span><span class="n">prev</span><span class="p">;</span>
-<span class="w">            </span><span class="n">rPrev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">            </span><span class="n">rear</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">rPrev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
+<span class="w">            </span><span class="n">rear</span><span class="o">-&gt;</span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">            </span><span class="k">delete</span><span class="w"> </span><span class="n">rear</span><span class="p">;</span>
 <span class="w">            </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rPrev</span><span class="p">;</span><span class="w"> </span><span class="c1">// 更新尾节点</span>
 <span class="w">        </span><span class="p">}</span>
@@ -5941,14 +5943,14 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问队首元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peekFirst</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;双向队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"双向队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">front</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 访问队尾元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peekLast</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;双向队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"双向队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">rear</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6007,7 +6009,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 队首入队 */</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">pushFirst</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">queSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">capacity</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;双向队列已满&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"双向队列已满"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 队首指针向左移动一位</span>
@@ -6021,7 +6023,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 队尾入队 */</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">pushLast</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">queSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">capacity</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;双向队列已满&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"双向队列已满"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="c1">// 计算队尾指针，指向队尾索引 + 1</span>
@@ -6050,14 +6052,14 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 访问队首元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peekFirst</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;双向队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"双向队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">front</span><span class="p">];</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 访问队尾元素 */</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">peekLast</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;双向队列为空&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"双向队列为空"</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 计算尾元素索引</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">index</span><span class="p">(</span><span class="n">front</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">queSize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="n">last</span><span class="p">];</span>
@@ -6130,11 +6132,11 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="cm">/* 添加操作 */</span>
 <span class="c1">// 在哈希表中添加键值对 (key, value)</span>
-<span class="n">map</span><span class="p">[</span><span class="mi">12836</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;小哈&quot;</span><span class="p">;</span>
-<span class="n">map</span><span class="p">[</span><span class="mi">15937</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;小啰&quot;</span><span class="p">;</span>
-<span class="n">map</span><span class="p">[</span><span class="mi">16750</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;小算&quot;</span><span class="p">;</span>
-<span class="n">map</span><span class="p">[</span><span class="mi">13276</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;小法&quot;</span><span class="p">;</span>
-<span class="n">map</span><span class="p">[</span><span class="mi">10583</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;小鸭&quot;</span><span class="p">;</span>
+<span class="n">map</span><span class="p">[</span><span class="mi">12836</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"小哈"</span><span class="p">;</span>
+<span class="n">map</span><span class="p">[</span><span class="mi">15937</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"小啰"</span><span class="p">;</span>
+<span class="n">map</span><span class="p">[</span><span class="mi">16750</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"小算"</span><span class="p">;</span>
+<span class="n">map</span><span class="p">[</span><span class="mi">13276</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"小法"</span><span class="p">;</span>
+<span class="n">map</span><span class="p">[</span><span class="mi">10583</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"小鸭"</span><span class="p">;</span>
 
 <span class="cm">/* 查询操作 */</span>
 <span class="c1">// 向哈希表中输入键 key ，得到值 value</span>
@@ -6151,11 +6153,11 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="c1"># 添加操作</span>
 <span class="c1"># 在哈希表中添加键值对 (key, value)</span>
-<span class="n">hmap</span><span class="p">[</span><span class="mi">12836</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;小哈&quot;</span>
-<span class="n">hmap</span><span class="p">[</span><span class="mi">15937</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;小啰&quot;</span>
-<span class="n">hmap</span><span class="p">[</span><span class="mi">16750</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;小算&quot;</span>
-<span class="n">hmap</span><span class="p">[</span><span class="mi">13276</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;小法&quot;</span>
-<span class="n">hmap</span><span class="p">[</span><span class="mi">10583</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;小鸭&quot;</span>
+<span class="n">hmap</span><span class="p">[</span><span class="mi">12836</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"小哈"</span>
+<span class="n">hmap</span><span class="p">[</span><span class="mi">15937</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"小啰"</span>
+<span class="n">hmap</span><span class="p">[</span><span class="mi">16750</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"小算"</span>
+<span class="n">hmap</span><span class="p">[</span><span class="mi">13276</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"小法"</span>
+<span class="n">hmap</span><span class="p">[</span><span class="mi">10583</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"小鸭"</span>
 
 <span class="c1"># 查询操作</span>
 <span class="c1"># 向哈希表中输入键 key ，得到值 value</span>
@@ -6175,11 +6177,11 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 遍历哈希表 */</span>
 <span class="c1">// 遍历键值对 key-&gt;value</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">kv</span><span class="o">:</span><span class="w"> </span><span class="n">map</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; -&gt; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" -&gt; "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">// 使用迭代器遍历 key-&gt;value</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;-&gt;&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">first</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"-&gt;"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">iter</span><span class="o">-&gt;</span><span class="n">second</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -6187,7 +6189,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="c1"># 遍历哈希表</span>
 <span class="c1"># 遍历键值对 key-&gt;value</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">hmap</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 <span class="c1"># 单独遍历键 key</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">hmap</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -6252,8 +6254,8 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">get</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hashFunc</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Pair</span><span class="w"> </span><span class="o">*</span><span class="n">pair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">pair</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6269,14 +6271,14 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hashFunc</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 释放内存并置为 nullptr</span>
 <span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
-<span class="w">        </span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">buckets</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 获取所有键值对 */</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Pair</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">pairSet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Pair</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">pairSet</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="w"> </span><span class="o">*</span><span class="n">pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">buckets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">pairSet</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pair</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -6287,7 +6289,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keySet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keySet</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="w"> </span><span class="o">*</span><span class="n">pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">buckets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">keySet</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pair</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -6298,7 +6300,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">valueSet</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">valueSet</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="w"> </span><span class="o">*</span><span class="n">pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">buckets</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pair</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">valueSet</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pair</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
@@ -6308,7 +6310,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 打印哈希表 */</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Pair</span><span class="w"> </span><span class="o">*</span><span class="n">kv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">pairSet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="o">-&gt;</span><span class="n">key</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; -&gt; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="o">-&gt;</span><span class="n">key</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" -&gt; "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">kv</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
@@ -6363,13 +6365,13 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">          </span><span class="c1">// 节点值</span>
 <span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="p">;</span><span class="w">   </span><span class="c1">// 左子节点指针</span>
 <span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="p">;</span><span class="w">  </span><span class="c1">// 右子节点指针</span>
-<span class="w">    </span><span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="k">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">val</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">left</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">),</span><span class="w"> </span><span class="n">right</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TreeNode</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;二叉树节点类&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""二叉树节点类"""</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">val</span>                <span class="c1"># 节点值</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># 左子节点引用</span>
@@ -6508,9 +6510,9 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">        </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="n">front</span><span class="p">();</span>
 <span class="w">        </span><span class="n">queue</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span><span class="w">              </span><span class="c1">// 队列出队</span>
 <span class="w">        </span><span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span><span class="w"> </span><span class="c1">// 保存节点值</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">            </span><span class="n">queue</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span><span class="w"> </span><span class="c1">// 左子节点入队</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">            </span><span class="n">queue</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span><span class="w"> </span><span class="c1">// 右子节点入队</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">vec</span><span class="p">;</span>
@@ -6519,7 +6521,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">level_order</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;层序遍历&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""层序遍历"""</span>
     <span class="c1"># 初始化队列，加入根节点</span>
     <span class="n">queue</span><span class="p">:</span> <span class="n">deque</span><span class="p">[</span><span class="n">TreeNode</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
     <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
@@ -6551,7 +6553,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cm">/* 前序遍历 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">preOrder</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 访问优先级：根节点 -&gt; 左子树 -&gt; 右子树</span>
 <span class="w">    </span><span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">);</span>
@@ -6561,7 +6563,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="cm">/* 中序遍历 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">inOrder</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 访问优先级：左子树 -&gt; 根节点 -&gt; 右子树</span>
 <span class="w">    </span><span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
@@ -6571,7 +6573,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 
 <span class="cm">/* 后序遍历 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">postOrder</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 访问优先级：左子树 -&gt; 右子树 -&gt; 根节点</span>
 <span class="w">    </span><span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
@@ -6582,7 +6584,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">pre_order</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;前序遍历&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""前序遍历"""</span>
     <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="c1"># 访问优先级：根节点 -&gt; 左子树 -&gt; 右子树</span>
@@ -6591,7 +6593,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
     <span class="n">pre_order</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">in_order</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;中序遍历&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""中序遍历"""</span>
     <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="c1"># 访问优先级：左子树 -&gt; 根节点 -&gt; 右子树</span>
@@ -6600,7 +6602,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
     <span class="n">in_order</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">post_order</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;后序遍历&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""后序遍历"""</span>
     <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
     <span class="c1"># 访问优先级：左子树 -&gt; 右子树 -&gt; 根节点</span>
@@ -6701,21 +6703,21 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="cm">/* 前序遍历 */</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">preOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
-<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pre&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"pre"</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 中序遍历 */</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
-<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"in"</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="cm">/* 后序遍历 */</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">postOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
-<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;post&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
+<span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"post"</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -6728,15 +6730,15 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INT_MAX</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// 前序遍历</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;pre&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"pre"</span><span class="p">)</span>
 <span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
 <span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">left</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 中序遍历</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;in&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"in"</span><span class="p">)</span>
 <span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
 <span class="w">        </span><span class="n">dfs</span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// 后序遍历</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;post&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">order</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"post"</span><span class="p">)</span>
 <span class="w">            </span><span class="n">res</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
@@ -6744,37 +6746,37 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ArrayBinaryTree</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;数组表示下的二叉树类&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""数组表示下的二叉树类"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;构造方法&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""构造方法"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;列表容量&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""列表容量"""</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取索引为 i 节点的值&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""获取索引为 i 节点的值"""</span>
         <span class="c1"># 若索引越界，则返回 None ，代表空位</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">():</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取索引为 i 节点的左子节点的索引&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""获取索引为 i 节点的左子节点的索引"""</span>
         <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取索引为 i 节点的右子节点的索引&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""获取索引为 i 节点的右子节点的索引"""</span>
         <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;获取索引为 i 节点的父节点的索引&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""获取索引为 i 节点的父节点的索引"""</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">level_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;层序遍历&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""层序遍历"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="c1"># 直接遍历数组</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()):</span>
@@ -6783,37 +6785,37 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;深度优先遍历&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""深度优先遍历"""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="c1"># 前序遍历</span>
-        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;pre&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">"pre"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">order</span><span class="p">)</span>
         <span class="c1"># 中序遍历</span>
-        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;in&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">"in"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">order</span><span class="p">)</span>
         <span class="c1"># 后序遍历</span>
-        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;post&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">"post"</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">val</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">pre_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;前序遍历&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""前序遍历"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"pre"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">in_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;中序遍历&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""中序遍历"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;in&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"in"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">post_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;后序遍历&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""后序遍历"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"post"</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">res</span>
 </code></pre></div>
 </div>
@@ -6842,7 +6844,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="nf">search</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 循环查找，越过叶节点后跳出</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 目标节点在 cur 的右子树中</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
 <span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
@@ -6860,7 +6862,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;查找节点&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""查找节点"""</span>
     <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
     <span class="c1"># 循环查找，越过叶节点后跳出</span>
     <span class="k">while</span> <span class="n">cur</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -6896,17 +6898,17 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 插入节点 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 若树为空，则初始化根节点</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="k">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 循环查找，越过叶节点后跳出</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 找到重复节点，直接返回</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
-<span class="w">        </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="w">        </span><span class="k">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// 插入位置在 cur 的右子树中</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
 <span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
@@ -6916,16 +6918,16 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// 插入节点</span>
 <span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
-<span class="w">        </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
+<span class="w">        </span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">        </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
+<span class="w">        </span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;插入节点&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""插入节点"""</span>
     <span class="c1"># 若树为空，则初始化根节点</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="o">=</span> <span class="n">TreeNode</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -6968,15 +6970,15 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <div class="highlight"><pre><span></span><code><span class="cm">/* 删除节点 */</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 若树为空，直接提前返回</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="k">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 循环查找，越过叶节点后跳出</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 找到待删除节点，跳出循环</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
-<span class="w">        </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="w">        </span><span class="k">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// 待删除节点在 cur 的右子树中</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">num</span><span class="p">)</span>
 <span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
@@ -6985,18 +6987,18 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// 若无待删除节点，则直接返回</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="c1">// 子节点数量 = 0 or 1</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 当子节点数量 = 0 / 1 时， child = nullptr / 该子节点</span>
-<span class="w">        </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+<span class="w">        </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">child</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
 <span class="w">        </span><span class="c1">// 删除节点 cur</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">cur</span><span class="p">)</span>
-<span class="w">                </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">;</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">cur</span><span class="p">)</span>
+<span class="w">                </span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">;</span>
 <span class="w">            </span><span class="k">else</span>
-<span class="w">                </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">;</span>
+<span class="w">                </span><span class="k">pre</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="c1">// 若删除节点为根节点，则重新指定根节点</span>
 <span class="w">            </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">child</span><span class="p">;</span>
@@ -7008,7 +7010,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// 获取中序遍历中 cur 的下一个节点</span>
 <span class="w">        </span><span class="n">TreeNode</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tmp</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">tmpVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
@@ -7022,7 +7024,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;删除节点&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""删除节点"""</span>
     <span class="c1"># 若树为空，直接提前返回</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span>
@@ -7291,15 +7293,15 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">left</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取左子节点的索引&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""获取左子节点的索引"""</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">right</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取右子节点的索引&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""获取右子节点的索引"""</span>
     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取父节点的索引&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""获取父节点的索引"""</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 向下整除</span>
 </code></pre></div>
 </div>
@@ -7317,7 +7319,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;访问堆顶元素&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""访问堆顶元素"""</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_heap</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
 </div>
@@ -7356,14 +7358,14 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;元素入堆&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""元素入堆"""</span>
     <span class="c1"># 添加节点</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_heap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
     <span class="c1"># 从底至顶堆化</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sift_up</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sift_up</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;从节点 i 开始，从底至顶堆化&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""从节点 i 开始，从底至顶堆化"""</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 获取节点 i 的父节点</span>
         <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -7394,7 +7396,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 <span class="kt">void</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 判空处理</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">&quot;堆为空&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">out_of_range</span><span class="p">(</span><span class="s">"堆为空"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="c1">// 交换根节点与最右叶节点（交换首元素与尾元素）</span>
 <span class="w">    </span><span class="n">swap</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">maxHeap</span><span class="p">[</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
@@ -7425,10 +7427,10 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;元素出堆&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""元素出堆"""</span>
     <span class="c1"># 判空处理</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;堆为空&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">"堆为空"</span><span class="p">)</span>
     <span class="c1"># 交换根节点与最右叶节点（交换首元素与尾元素）</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c1"># 删除节点</span>
@@ -7439,7 +7441,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
     <span class="k">return</span> <span class="n">val</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sift_down</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;从节点 i 开始，从顶至底堆化&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""从节点 i 开始，从顶至底堆化"""</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># 判断节点 i, l, r 中值最大的节点，记为 ma</span>
         <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">ma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">i</span>
@@ -7495,7 +7497,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;构造方法，根据输入列表建堆&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""构造方法，根据输入列表建堆"""</span>
     <span class="c1"># 将列表元素原封不动添加进堆</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_heap</span> <span class="o">=</span> <span class="n">nums</span>
     <span class="c1"># 堆化除叶节点以外的其他所有节点</span>
@@ -7552,7 +7554,7 @@ n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">top_k_heap</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于堆查找数组中最大的 k 个元素&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""基于堆查找数组中最大的 k 个元素"""</span>
     <span class="c1"># 初始化小顶堆</span>
     <span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># 将数组的前 k 个元素入堆</span>
@@ -7656,7 +7658,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">binary_search</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;二分查找（双闭区间）&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""二分查找（双闭区间）"""</span>
     <span class="c1"># 初始化双闭区间 [0, n-1] ，即 i, j 分别指向数组首元素、尾元素</span>
     <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="c1"># 循环，当搜索区间为空时跳出（当 i &gt; j 时为空）</span>
@@ -7700,20 +7702,20 @@ G &amp; = \{ V, E \} \newline
 <p>稳定排序是多级排序场景的必要条件。假设我们有一个存储学生信息的表格，第 1 列和第 2 列分别是姓名和年龄。在这种情况下，<u>非稳定排序</u>可能导致输入数据的有序性丧失：</p>
 <div class="highlight"><pre><span></span><code># 输入数据是按照姓名排序好的
 # (name, age)
-  (&#39;A&#39;, 19)
-  (&#39;B&#39;, 18)
-  (&#39;C&#39;, 21)
-  (&#39;D&#39;, 19)
-  (&#39;E&#39;, 23)
+  ('A', 19)
+  ('B', 18)
+  ('C', 21)
+  ('D', 19)
+  ('E', 23)
 
 # 假设使用非稳定排序算法按年龄排序列表，
-# 结果中 (&#39;D&#39;, 19) 和 (&#39;A&#39;, 19) 的相对位置改变，
+# 结果中 ('D', 19) 和 ('A', 19) 的相对位置改变，
 # 输入数据按姓名排序的性质丢失
-  (&#39;B&#39;, 18)
-  (&#39;D&#39;, 19)
-  (&#39;A&#39;, 19)
-  (&#39;C&#39;, 21)
-  (&#39;E&#39;, 23)
+  ('B', 18)
+  ('D', 19)
+  ('A', 19)
+  ('C', 21)
+  ('E', 23)
 </code></pre></div>
 <p><strong>11.1.2 理想排序算法</strong></p>
 <p><strong>运行快、原地、稳定、自适应、通用性好</strong>。显然，迄今为止尚未发现兼具以上所有特性的排序算法。因此，在选择排序算法时，需要根据具体的数据特点和问题需求来决定。</p>
@@ -7749,7 +7751,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">selection_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;选择排序&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""选择排序"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="c1"># 外循环：未排序区间为 [i, n-1]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
@@ -7800,7 +7802,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bubble_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;冒泡排序&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""冒泡排序"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="c1"># 外循环：未排序区间为 [0, i]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -7841,7 +7843,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bubble_sort_with_flag</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;冒泡排序（标志优化）&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""冒泡排序（标志优化）"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
     <span class="c1"># 外循环：未排序区间为 [0, i]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -7893,7 +7895,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;插入排序&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""插入排序"""</span>
     <span class="c1"># 外循环：已排序区间为 [0, i-1]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
         <span class="n">base</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -7951,7 +7953,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;哨兵划分&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""哨兵划分"""</span>
     <span class="c1"># 以 nums[left] 为基准数</span>
     <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span>
     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
@@ -7993,7 +7995,7 @@ G &amp; = \{ V, E \} \newline
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">quick_sort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;快速排序&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""快速排序"""</span>
     <span class="c1"># 子数组长度为 1 时终止递归</span>
     <span class="k">if</span> <span class="n">left</span> <span class="o">&gt;=</span> <span class="n">right</span><span class="p">:</span>
         <span class="k">return</span>
@@ -8168,10 +8170,10 @@ G &amp; = \{ V, E \} \newline
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

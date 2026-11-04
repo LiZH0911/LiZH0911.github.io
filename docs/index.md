@@ -8,6 +8,8 @@
 
 <div class="hero-buttons" markdown>
 <a href="course/" class="hero-btn-primary">:material-book-open-variant: 开始学习</a>
+<a href="achievements/" class="hero-btn-secondary">:material-trophy-outline: 个人经历</a>
+<a href="guestbook/" class="hero-btn-secondary">:material-message-text-outline: 留言板</a>
 <a href="about/" class="hero-btn-secondary">:material-information-outline: 关于我</a>
 </div>
 

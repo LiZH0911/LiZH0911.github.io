@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/footer.css">
     
       <link rel="stylesheet" href="../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../assets/headings.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -571,6 +573,34 @@
     
   
     操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
   
 
     
@@ -2565,34 +2595,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
         
   
@@ -3337,12 +3339,12 @@
 <p>SQL 语句可以写成一行，也可以分写为多行：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 一行 SQL 语句</span>
 
-<span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">'robot'</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">'robot'</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'root'</span><span class="p">;</span>
 
 <span class="c1">-- 多行 SQL 语句</span>
 <span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span>
-<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">'robot'</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">'robot'</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'root'</span><span class="p">;</span>
 </code></pre></div>
 <p>SQL 支持三种注释：</p>
 <div class="highlight"><pre><span></span><code><span class="o">##</span><span class="w"> </span><span class="err">注释</span><span class="mi">1</span>
@@ -3373,15 +3375,15 @@
 <p><code>INSERT INTO</code> 语句用于向表中插入新记录。</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">插入一行</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">'root'</span><span class="p">,</span><span class="w"> </span><span class="s1">'root'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">);</span>
 
 <span class="o">#</span><span class="w"> </span><span class="err">插入多行</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;user2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">'root'</span><span class="p">,</span><span class="w"> </span><span class="s1">'root'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="s1">'user1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'user1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s1">'user2'</span><span class="p">,</span><span class="w"> </span><span class="s1">'user2'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">);</span>
 
 <span class="o">#</span><span class="w"> </span><span class="err">插入行的一部分</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">'admin'</span><span class="p">,</span><span class="w"> </span><span class="s1">'admin'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">);</span>
 
 <span class="o">#</span><span class="w"> </span><span class="err">插入查询出来的数据</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">user</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
@@ -3391,15 +3393,15 @@
 <p><strong>3.4.2 更新数据</strong></p>
 <p><code>UPDATE</code> 语句用于更新表中的记录。</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="k">user</span>
-<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">&#39;robot&#39;</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">username</span><span class="o">=</span><span class="s1">'robot'</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="o">=</span><span class="s1">'robot'</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'root'</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>3.4.3 删除数据</strong></p>
 <p><code>DELETE</code> 语句用于删除表中的记录。</p>
 <p><code>TRUNCATE TABLE</code> 可以清空表，也就是删除所有行。说明：<code>TRUNCATE</code> 语句不属于 DML 语法而是 DDL 语法。</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">删除表中的指定数据</span>
 <span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">user</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;robot&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'robot'</span><span class="p">;</span>
 
 <span class="o">#</span><span class="w"> </span><span class="err">清空表中的数据</span>
 <span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">user</span><span class="p">;</span>
@@ -3513,7 +3515,7 @@
 <span class="w">                  </span><span class="k">FROM</span><span class="w"> </span><span class="n">orders</span>
 <span class="w">                  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">order_num</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">order_num</span>
 <span class="w">                                      </span><span class="k">FROM</span><span class="w"> </span><span class="n">orderitems</span>
-<span class="w">                                      </span><span class="k">WHERE</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;RGAN01&#39;</span><span class="p">));</span>
+<span class="w">                                      </span><span class="k">WHERE</span><span class="w"> </span><span class="n">prod_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'RGAN01'</span><span class="p">));</span>
 </code></pre></div>
 <p>内部查询首先在其父查询之前执行，以便可以将内部查询的结果传递给外部查询。</p>
 <h3 id="38-where">3.8 <strong>WHERE</strong></h3>
@@ -3525,16 +3527,16 @@
 </ul>
 <p><strong><code>SELECT</code> 语句中的 <code>WHERE</code> 子句</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Kids Place&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Kids Place'</span><span class="p">;</span>
 </code></pre></div>
 <p><strong><code>UPDATE</code> 语句中的 <code>WHERE</code> 子句</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="n">Customers</span>
-<span class="k">SET</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Jack Jones&#39;</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Kids Place&#39;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Jack Jones'</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Kids Place'</span><span class="p">;</span>
 </code></pre></div>
 <p><strong><code>DELETE</code> 语句中的 <code>WHERE</code> 子句</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Customers</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Kids Place&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">cust_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Kids Place'</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="39-in-between">3.9 <strong>IN 和 BETWEEN</strong></h3>
 <ul>
@@ -3544,7 +3546,7 @@
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="err">操作符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;DLL01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BRS01&#39;</span><span class="p">);</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">'DLL01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'BRS01'</span><span class="p">);</span>
 
 <span class="o">#</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="err">操作符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
@@ -3562,12 +3564,12 @@
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="err">操作符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DLL01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'DLL01'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">prod_price</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 
 <span class="o">#</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="err">操作符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;DLL01&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;BRS01&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'DLL01'</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">vend_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'BRS01'</span><span class="p">;</span>
 
 <span class="o">#</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="err">操作符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
@@ -3586,12 +3588,12 @@
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="err">通配符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">prod_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%bean bag%&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">prod_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%bean bag%'</span><span class="p">;</span>
 
 <span class="o">#</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="err">通配符</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">prod_id</span><span class="p">,</span><span class="w"> </span><span class="n">prod_name</span><span class="p">,</span><span class="w"> </span><span class="n">prod_price</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">products</span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">prod_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;__ inch teddy bear&#39;</span><span class="p">;</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">prod_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'__ inch teddy bear'</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="312">3.12 <strong>连接</strong></h3>
 <p>JOIN 是“连接”的意思，顾名思义，SQL JOIN 子句用于将两个或者多个表联合起来进行查询。</p>
@@ -3672,11 +3674,11 @@
 <p><strong>创建数据表</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span><span class="w"> </span><span class="err">普通创建</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;Id&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;用户名&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">password</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;密码&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;邮箱&#39;</span>
-<span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;用户表&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'Id'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">username</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'用户名'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">password</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'密码'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'邮箱'</span>
+<span class="p">)</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">'用户表'</span><span class="p">;</span>
 
 <span class="o">#</span><span class="w"> </span><span class="err">根据已有的表创建新表</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">vip_user</span><span class="w"> </span><span class="k">AS</span>
@@ -3772,13 +3774,13 @@ DROP INDEX user_index;
 </ul>
 <p>创建表时使用约束条件：</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Users</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="n">Id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;自增Id&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;用户名&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Password</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;密码&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;邮箱地址&#39;</span><span class="p">,</span>
-<span class="w">  </span><span class="n">Enabled</span><span class="w"> </span><span class="n">TINYINT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">&#39;是否有效&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'自增Id'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'用户名'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Password</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'密码'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">'default'</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'邮箱地址'</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Enabled</span><span class="w"> </span><span class="n">TINYINT</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">COMMENT</span><span class="w"> </span><span class="s1">'是否有效'</span><span class="p">,</span>
 <span class="w">  </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">Id</span><span class="p">)</span>
-<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">&#39;用户表&#39;</span><span class="p">;</span>
+<span class="p">)</span><span class="w"> </span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8mb4</span><span class="w"> </span><span class="k">COMMENT</span><span class="o">=</span><span class="s1">'用户表'</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="315">3.15 <strong>事务处理</strong></h3>
 <p>接下来，我们来介绍 TCL 语句用法。TCL 的主要功能是管理数据库中的事务。</p>
@@ -3797,14 +3799,14 @@ DROP INDEX user_index;
 
 <span class="c1">-- 插入操作 A</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="k">user</span><span class="o">`</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">'root1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'root1'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">);</span>
 
 <span class="c1">-- 创建保留点 updateA</span>
 <span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">updateA</span><span class="p">;</span>
 
 <span class="c1">-- 插入操作 B</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">`</span><span class="k">user</span><span class="o">`</span>
-<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;root2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xxxx@163.com&#39;</span><span class="p">);</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">'root2'</span><span class="p">,</span><span class="w"> </span><span class="s1">'root2'</span><span class="p">,</span><span class="w"> </span><span class="s1">'xxxx@163.com'</span><span class="p">);</span>
 
 <span class="c1">-- 回滚到保留点 updateA</span>
 <span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">updateA</span><span class="p">;</span>
@@ -3941,10 +3943,10 @@ DROP INDEX user_index;
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

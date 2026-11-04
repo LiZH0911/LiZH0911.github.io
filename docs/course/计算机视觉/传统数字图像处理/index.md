@@ -24,15 +24,15 @@
 
 **数字图像**：$x,y$ 和灰度值 $f$ 都是有限离散量的图像。
 
-> 注意，数字图像由有限数量的元素组成，每个元素都有一定的位置和数值，这些元素称为像素。
+**像素**：数字图像由有限数量的元素组成，每个元素都有一定的位置和数值，这些元素称为像素。
 
-图像通常分为二值图像、灰度图像和彩色图像。
+数字图像分类：二值图像、灰度图像和彩色图像。
 
 - 二值图像又称为黑白图像，图像中任何一个点要么为白色（像素为 255），要么为黑色（像素为 0）。
 - 灰度图像是指每个像素的信息由一个量化的灰度级来描述的图像，没有彩色信息。
 - 彩色图像是 RGB 图像，RGB 表示红、绿、蓝三原色。
 
-## 二、OpenCV 图像显示、读取、像素值访问、保存
+## 二、OpenCV 图像读取、显示、像素访问、保存
 
 OpenCV 是一个轻量级高效的跨平台计算机视觉库，实现了图像处理和计算机视觉方面的多种通用算法。
 
@@ -117,19 +117,19 @@ Python 安装 OpenCV：`pip install opencv-python`
     Mat M(3,2, CV_8UC3, Scalar(0,0,255));
     ```
 
-### 2.2 **图像读取与显示**
+### 2.2 **图像读取**
 
-**2.2.1 图像读取**：`retval = cv2.imread(filename[, flags])`
+函数：`retval = cv2.imread(filename[, flags])`
 
-**2.2.2 图像显示**：`cv2.imshow(winname, mat)`
+### 2.3 **图像显示**
 
-在显示图像过程中，通常还会调用操作窗口的函数
+函数：`cv2.imshow(winname, mat)`
+
+在显示图像过程中，通常还会调用操作窗口的函数：
 
 - `retval = cv2.waitKey([, delay]))`：键盘绑定函数，共一个参数 `delay`，表示等待的毫秒数，看键盘是否有输入，返回值为 ASCII 值。
 - `cv2.destroyAllWindows()`：删除所有建立的窗口
 - `cv2.destroyWindow(winname)`，并在括号内输入要删除的窗口名。
-
-示例：
 
 ```python
 import cv2
@@ -147,7 +147,7 @@ cv2.destroyAllWindows()
 
 在对比实验中，我们通常需要显示多张图片，此时可以调用 NumPy 和 Matplotlib 库辅助完成
 
-### 2.3 **访问像素值**
+### 2.4 **访问像素**
 
 OpenCV 中读取的图像相当于二维（灰度）或三维（彩色）的 NumPy 矩阵，可以直接通过位置索引访问像素值。
 
@@ -173,25 +173,25 @@ print(red)
 img[100:200, 150:250] = [255,255,255]
 ```
 
-### 2.4 **创建图像**
+### 2.5 **创建图像**
 
 由于在 OpenCV 中没有 CreateImage 函数，如果需要创建图像，则需要使用 Numpy 库函数实现。
 
-`emptyImage = np.zeros(img.shape, np.uint8)`
+函数：`emptyImage = np.zeros(img.shape, np.uint8)`
 
 ### 2.5 **复制图像**
 
-`emptyImage2 = img.copy()`
+函数：`emptyImage2 = img.copy()`
 
 ### 2.6 **保存图像**
 
-`retval = cv2.imwrite(filename, img[, params])`
+函数：`retval = cv2.imwrite(filename, img[, params])`
 
 ## 三、OpenCV 绘制几何图形
 
 ### 3.1 **绘制直线**
 
-`cv2.line(img, pt1, pt2, color, thickness)`
+函数：`cv2.line(img, pt1, pt2, color, thickness)`
 
 ```python
 import cv2
@@ -211,7 +211,7 @@ cv2.destroyAllWindows()
 
 ### 3.2 **绘制矩形**
 
-`cv2.rectangle(img, pt1, pt2, color, thickness)`
+函数：`cv2.rectangle(img, pt1, pt2, color, thickness)`
 
 ```python
 import cv2
@@ -230,7 +230,7 @@ cv2.destroyAllWindows()
 
 ### 3.3 **绘制圆形**
 
-`cv2.circle(img, center, radius, color, thickness)`
+函数：`cv2.circle(img, center, radius, color, thickness)`
 
 ```python
 import cv2
@@ -249,7 +249,7 @@ cv2.destroyAllWindows()
 
 ### 3.4 **绘制椭圆**
 
-`cv2.ellipse(img, center, axes, angle, startAngle, endAngle, color, thickness)`
+函数：`cv2.ellipse(img, center, axes, angle, startAngle, endAngle, color, thickness)`
 
 ```python
 import cv2
@@ -269,7 +269,7 @@ cv2.destroyAllWindows()
 
 ### 3.5 **绘制多边形**
 
-`cv2.polylines(img, pts, isClosed, color, thickness)`
+函数：`cv2.polylines(img, pts, isClosed, color, thickness)`
 
 ```python
 import cv2
@@ -292,7 +292,7 @@ cv2.destroyAllWindows()
 
 ### 3.6 **绘制文字**
 
-`cv2.putText(img, text, org, fontFace, fontScale, color, thickness)`
+函数：`cv2.putText(img, text, org, fontFace, fontScale, color, thickness)`
 
 ## 四、图像算术与逻辑运算
 
@@ -402,7 +402,7 @@ print(result[0, 0])  # [136 136 136]
 
 ## 五、其他常见图像操作
 
-### 5.2 **图像 ROI 区域定位**
+### 5.1 **图像 ROI 区域定位**
 
 ROI（Region of Interest）表示感兴趣区域，是指从被处理图像以方框、圆形、椭圆、不规则多边形等方式勾勒出需要处理的区域。
 可以通过各种算子（Operator）和函数求得感兴趣 ROI 区域，被广泛应用于热点地图、人脸识别、图像分割等领域。
@@ -411,7 +411,7 @@ ROI（Region of Interest）表示感兴趣区域，是指从被处理图像以�
 
 `roi = img[y1:y2, x1:x2]`
 
-### 5.3 **图像属性**
+### 5.2 **图像属性**
 
 ```python
 import cv2
@@ -435,7 +435,8 @@ print("字节数 nbytes:", img.nbytes)
 字节数 nbytes: 2764800
 ```
 
-### 5.4 **图像通道分离及合并 **
+### 5.3 **图像通道分离、合并**
+
 
 | 操作 | 函数 | 说明 |
 |------|------|------|
@@ -472,7 +473,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-### 5.5 **图像颜色空间转换**
+### 5.4 **图像颜色空间转换**
 
 在日常生活中，我们看到的大多数彩色图像都是 RGB 类型，但是在图像处理过程中，常常需要用到灰度图像、二值图像、HSV、HSI 等颜色。
 
@@ -527,45 +528,747 @@ plt.show()
 
 ### 6.1 **基本概念**
 
-图像几何变换的目的是**改变图像中像素的空间排列**。由两种基本运算组成：
+图像几何变换的目的是**改变图像中像素的空间排列**。适当的几何变换可以最大程度地消除由于成像角度、透视关系乃至镜头自身原因所造成的几何失真所产生的负面影响。
 
-1. **坐标的空间变换**：包括平移、缩放、旋转和正平行投影等，需要用它来表示输出图像与输入图像之间的像素映射关系（通常为反向映射关系）。
-2. **插值**：为变换后的像素赋灰度值（灰度图）
+图像几何变换由两种基本运算组成：
+
+1. **空间变换**：包括平移、缩放、旋转和正平行投影等，需要用它来表示输出图像与输入图像之间的像素映射关系（通常为反向映射关系）。
+2. **灰度插值**：为变换后的像素赋灰度值。因为空间变换可能会产生浮点坐标值。对于输出图像中的每一个整数坐标位置，需要进行灰度插值。
      * **最近邻插值**：直接取离目标点最近的输入像素的灰度值。
      * **双线性插值**（最常用）：利用目标点周围 2×2 的四个已知像素，分别在水平和垂直方向做两次线性插值。
      * **双三次插值**：利用目标点周围 4×4 的十六个已知像素，分别在水平和垂直方向做两次三次插值。
 
-> 关键问题：坐标变换后，输出图像中的像素位置通常是非整数的。而数字图像的像素坐标必须是整数。
+
+
+### 6.2 **图像平移**
+
+图像平移就是将图像沿 x 轴、y 轴方向移动指定像素。
+
+平移矩阵是一个 2×3 的仿射变换矩阵：
+
+```
+[1  0  tx]
+[0  1  ty]
+```
+
+OpenCV 中使用 `cv2.warpAffine()` 函数实现图像平移。
+
+语法：`cv2.warpAffine(src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]])`
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+
+# 获取图像尺寸
+rows, cols = img.shape[:2]
+
+# 定义平移矩阵:向右平移 100 像素,向下平移 50 像素
+tx, ty = 100, 50
+M = np.float32([[1, 0, tx],
+                [0, 1, ty]])
+
+# 执行平移
+# dsize = (宽度, 高度)
+translated = cv2.warpAffine(img, M, (cols, rows))
+```
+
+### 6.3 **图像缩放**
+
+图像缩放（image scaling）用于改变图像尺寸。OpenCV 中主要使用 `cv2.resize()` 函数实现。
+
+语法：`cv2.resize(src, dsize[, dst[, fx[, fy[, interpolation]]]])`
+
+**（1）指定目标尺寸**
+
+```python
+import cv2
+
+img = cv2.imread('image.jpg')
+
+# 缩放到固定尺寸 (宽, 高)
+resized = cv2.resize(img, (300, 200))
+```
+
+**（2）指定缩放比例**
+
+```python
+import cv2
+
+img = cv2.imread('image.jpg')
+
+# 宽高各缩小一半
+resized = cv2.resize(img, None, fx=0.5, fy=0.5)
+```
+
+### 6.4 **图像旋转**
+
+图像旋转是指图像以某一点为中心旋转一定的角度，形成一幅新的图像的过程。旋转中心一般为图像的中心。
+
+OpenCV 中主要用 `cv2.getRotationMatrix2D()` 生成旋转矩阵，再用 `cv2.warpAffine()` 执行旋转。
+
+语法：`cv2.getRotationMatrix2D(center, angle, scale)` 返回一个 2×3 的变换矩阵：
+
+```
+[ α   β   (1-α)·cx - β·cy ]
+[ -β  α   β·cx + (1-α)·cy ]
+```
+
+其中 `α = scale·cos(angle)`，`β = scale·sin(angle)`。
+
+
+```python
+import cv2
+
+img = cv2.imread('image.jpg')
+h, w = img.shape[:2]
+
+# 以图像中心为旋转中心,逆时针旋转 45 度,不缩放
+center = (w // 2, h // 2)
+M = cv2.getRotationMatrix2D(center, 45, 1.0)
+
+# 执行旋转(输出尺寸保持原图大小)
+rotated = cv2.warpAffine(img, M, (w, h))
+```
+
+> 上面的写法有个明显问题：旋转后四个角会被裁掉，因为输出画布仍是原图尺寸。
 > 
-> 反向思考：对于输出图像中的每一个整数坐标位置，如何确定灰度值？——插值
+> 解决思路：先计算旋转后图像的外接矩形尺寸，扩大输出画布，并调整旋转矩阵使图像居中。
 
-**仿射变换**：平移、旋转、缩放和剪切的组合。可用**齐次坐标变换公式**表示：
+### 6.6 **图像翻转（镜像）**
 
-![齐次坐标变换公式.png](images%2F%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E5%85%AC%E5%BC%8F.png)
+图像翻转（镜像）是沿某条轴对图像做对称翻转。OpenCV 中用 `cv2.flip()` 函数实现。
 
-> 仿射变换矩阵只有 6 个自由度
+语法：`cv2.flip(src, flipCode[, dst])`
+
+```python
+import cv2
+
+img = cv2.imread('image.jpg')
+
+# 水平翻转(左右镜像,最常用)
+flip_h = cv2.flip(img, 1)
+
+# 垂直翻转(上下翻转)
+flip_v = cv2.flip(img, 0)
+
+# 双向翻转(等价于旋转 180°)
+flip_both = cv2.flip(img, -1)
+```
+
+### 6.7 **图像仿射变换**
+
+仿射变换（Affine Transform）是**线性变换（旋转、缩放、错切、镜像） + 平移**的组合，具有以下性质：
+
+* 保持直线仍是直线（不会弯曲）
+* 保持平行线仍平行
+* 保持点的共线性比例关系
+
+仿射变换用 2×3 矩阵表示：
+
+```
+[ a  b  tx ]
+[ c  d  ty ]
+```
+
+对点 `(x, y)` 变换后：
+
+```
+x' = a·x + b·y + tx
+y' = c·x + d·y + ty
+```
+
+其中：
+
+* `a, b, c, d` 控制线性部分（旋转、缩放、错切、镜像）
+* `tx, ty` 控制平移部分
+
+写成矩阵形式（用**齐次坐标**统一）：
+
+```
+[x']   [a b tx] [x]
+[y'] = [c d ty] [y]
+[1 ]   [0 0 1 ] [1]
+```
 
 **常见仿射变换**：
 
 ![常见图像几何操作.png](images%2F%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%83%8F%E5%87%A0%E4%BD%95%E6%93%8D%E4%BD%9C.png)
 
-### 6.2 **图像平移**
 
-`cv2.warpAffine(src, M, dsize, dst=None, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=0)`
+**（1）已知变换矩阵，直接变换**
 
-- `M = np.float32([[1, 0, x], [0, 1, y]])`表示平移矩阵，其中 x 表示水平平移量，y 表示垂直平移量
+**平移、缩放、旋转**都可以先构造矩阵再 `cv2.warpAffine(src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]])`
 
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `src` | `np.ndarray` | 必填 | 输入图像（单通道/多通道均可） |
-| `M` | `np.ndarray` (2×3, `float32`) | 必填 | 2×3 仿射变换矩阵 |
-| `dsize` | `tuple (width, height)` | 必填 | 输出图像尺寸，**注意是 (宽, 高)** |
-| `dst` | `np.ndarray` | `None` | 输出图像，一般传 `None` 由函数创建 |
-| `flags` | `int` | `cv2.INTER_LINEAR` | 插值方式，见下表 |
-| `borderMode` | `int` | `cv2.BORDER_CONSTANT` | 边界填充方式，见下表 |
-| `borderValue` | `scalar/tuple` | `0` | 边界填充值，灰度填标量，彩色填 `(B,G,R)` |
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+h, w = img.shape[:2]
+
+# —— 平移：直接写矩阵 ——
+M_translate = np.float32([[1, 0, 100],   # x 方向平移 100
+                          [0, 1, 50]])   # y 方向平移 50
+
+# —— 缩放：对角元素为缩放比例 ——
+M_scale = np.float32([[1.5, 0, 0],
+                      [0, 1.5, 0]])
+
+# —— 旋转：用 getRotationMatrix2D 生成 ——
+M_rotate = cv2.getRotationMatrix2D((w/2, h/2), 45, 1.0)
+
+# —— 镜像（水平）：用负号 ——
+M_flip = np.float32([[-1, 0, w],   # 注意 tx=w 把图像挪回来
+                     [0, 1, 0]])
+
+# 执行
+out = cv2.warpAffine(img, M_translate, (w, h))
+```
+
+**（2）已知 3 个点对，自动求矩阵**
+
+一些复杂的仿射变换很难直接构造变换矩阵。
+
+OpenCV 提供了根据**变换前后三个点的对应关系**自动求矩阵的函数：`cv2.getAffineTransform(src, dst)`
+
+仿射变换有 **6 个未知数**`（a,b,c,d,tx,ty）`，需要 **3 个点对**（6 个方程）即可唯一确定。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+h, w = img.shape[:2]
+
+# 原图上的 3 个点（左上、右上、左下）
+pts_src = np.float32([[0, 0], [w-1, 0], [0, h-1]])
+
+# 目标图像中对应的 3 个点
+pts_dst = np.float32([[50, 50], [w-1, 20], [30, h-1]])
+
+# 自动计算变换矩阵
+M = cv2.getAffineTransform(pts_src, pts_dst)
+
+# 执行
+out = cv2.warpAffine(img, M, (w, h))
+```
+
+### 6.8 **图像透视**
+
+透视变换（Perspective Transform）也叫投影变换，比仿射变换更自由，本质是将图像投影到一个新的视平面，能处理"近大远小"的透视效果。
+
+> **透视是仿射的超集**：仿射能做到的，透视都能做到；但透视能处理的"梯形→矩形"仿射做不到。
+
+典型应用：文档矫正、车牌识别、鸟瞰图、AR 贴图等。
+
+透视变换用 **3×3 齐次矩阵**表示：
+
+```
+[ a  b  c ]
+[ d  e  f ]
+[ g  h  1 ]
+```
+
+变换时要用**齐次坐标**，注意最后要**除以第三分量做归一化**：
+
+```
+[x']       [x]
+[y'] = M · [y]
+[w ]       [1]
+```
+
+实际坐标：
+
+```
+X = x' / w'
+Y = y' / w'
+```
+
+> 这个除法是关键——正是它产生了"近大远小"的透视效果（w 随位置变化）
+
+**基础示例：四点映射**
+
+1. 由 4 个点对生成 3×3 透视矩阵：`M = cv2.getPerspectiveTransform(src, dst)`
+2. 执行透视变换：`out = cv2.warpPerspective(src, M, dsize[, dst[, flags[, borderMode[, borderValue]]]])`
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+h, w = img.shape[:2]
+
+# 原图 4 个点(按 左上、右上、右下、左下 顺序)
+pts_src = np.float32([[50, 50], [w-50, 50], [w-50, h-50], [50, h-50]])
+
+# 目标 4 个点
+pts_dst = np.float32([[0, 0], [w-1, 0], [w-1, h-1], [0, h-1]])
+
+# 1. 生成透视矩阵
+M = cv2.getPerspectiveTransform(pts_src, pts_dst)
+
+# 2. 执行透视变换
+out = cv2.warpPerspective(img, M, (w, h))
+```
+
+> 透视矩阵可求逆，实现反向变换
 
 
+## 七、图像量化、采样
+
+### 7.1 **图像量化处理**
+
+图像量化（Image Quantization）是将图像的连续颜色值减少到有限个离散级别的过程，常用于减少颜色数量、压缩图像、实现油画/海报效果等。
+
+量化等级越多，图像层次越丰富，灰度分辨率越高，图像的质量也越好。
+
+**（1）灰度图量化**
+
+一张 8 位灰度图有 256 个灰度级，量化就是把它们映射到更少的级别。公式：
+
+```
+quantized = (pixel // step) * step
+```
+
+其中 `step = 256 // levels`，`levels` 是想要保留的级别数。
+
+```python
+import cv2
+
+img = cv2.imread('input.jpg', cv2.IMREAD_GRAYSCALE)
+
+def quantize_gray(img, levels=4):
+    """将灰度图量化到指定级别数"""
+    step = 256 // levels
+    # 方式1：整除取整
+    q = (img // step) * step
+    # 方式2：等价写法，用位运算（levels 为 2 的幂时更快）
+    # bits = int(np.log2(levels))
+    # q = (img >> bits) << bits
+    return q
+
+q4 = quantize_gray(img, 4)    # 4级量化
+q8 = quantize_gray(img, 8)    # 8级量化
+```
+
+**（2）彩色图量化**
+
+彩色图有 3 个通道（BGR），可以逐通道量化，也可以用 **K-Means 聚类**量化。
+
+```python
+import cv2
+import numpy as np
+
+def quantize_kmeans(img, k=8):
+    # 转为浮点并 reshape 成 (N, 3)
+    data = img.reshape((-1, 3)).astype(np.float32)
+    
+    # 定义中心
+    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0)
+    #设置标签
+    flags = cv2.KMEANS_PP_CENTERS 
+    _, labels, centers = cv2.kmeans(data, k, None, criteria, 10, flags) # type: ignore
+    
+    centers = np.uint8(centers)
+    result = centers[labels.flatten()].reshape(img.shape)
+    return result
+
+img = cv2.imread('input.jpg')
+for k in [2, 4, 8, 16]:
+    q = quantize_kmeans(img, k)
+    cv2.imshow(f'k={k}', q)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+### 7.2 **图像采样处理**
+
+图像采样（Image Sampling）处理是将一幅连续图像在空间上分割成 M×N 个网格，每个网格用一个灰度值来表示。
+
+图像采样的间隔越大，所得图像像素数越少，空间分辨率越低，图像质量越差，甚至出现**马赛克效应**；相反，图像采样的间隔越小，图像质量越好，但数据量会相应的增大。
+
+### 7.3 **图像金字塔之降采样和上采样**
+
+图像金字塔是同一幅图像的一组分辨率逐级递减（或递增）的图像集合，按尺寸从大到小（或从小到大）堆叠起来，形似金字塔，故得名。它是多尺度图像分析的基础工具。
+
+金字塔就是用一组图像同时表达不同尺度，便于算法在多个尺度上处理图像。
+
+* **大尺度**（底层,高分辨率）：细节丰富
+* **小尺度**（顶层,低分辨率）：整体轮廓、概貌
+
+```
+        /\        ← 顶层(最小,分辨率最低)
+       /  \
+      /    \
+     /      \
+    /________\    ← 底层(最大,原始分辨率)
+```
+
+生成图像金字塔主要包括两种方式：
+
+* 降采样：`cv2.pyrDown`
+* 上采样：`cv2.pyrUp`
+
+**（1）高斯金字塔（Gaussian Pyramid）—— 用于降采样**
+
+设 $G_0 = I$，则：
+
+$$
+G_l = \text{pyrDown}(G_{l-1}), \quad l = 1,2,\dots,N
+$$
+
+降采样算子 `pyrDown` = 高斯低通滤波 + 隔行隔列取样：
+
+```python
+import cv2
+
+img = cv2.imread('image.jpg')
+G = [img]
+for i in range(3):
+    G.append(cv2.pyrDown(G[-1]))
+# G[0] 原始, G[1] 1/2, G[2] 1/4, G[3] 1/8
+```
+
+**（2）拉普拉斯金字塔（Laplacian Pyramid）—— 用于保存细节**
+
+拉普拉斯金字塔的每一层 = 高斯金字塔该层 − 该层上采样后的重建,即保存"丢失的高频细节":
+
+$$
+L_l = G_l - \text{pyrUp}(G_{l+1}), \quad l = 0,1,\dots,N-1
+$$
+
+顶层保留高斯层：
+
+$$
+L_N = G_N
+$$
+
+上采样算子 `pyrUp` = 插零放大 + 高斯滤波
+
+```python
+import cv2
+
+def build_laplacian(img, levels=3):
+    G = [img]
+    for _ in range(levels):
+        G.append(cv2.pyrDown(G[-1]))
+
+    L = []
+    for i in range(levels):
+        up = cv2.pyrUp(G[i+1])
+        # 尺寸对齐(奇数尺寸时 pyrUp 可能差 1 像素)
+        up = cv2.resize(up, (G[i].shape[1], G[i].shape[0]))
+        L.append(cv2.subtract(G[i], up))
+    L.append(G[-1])   # 顶层保留高斯层
+    return L
+```
+
+无损重建（逆过程）：
+
+$$
+G_l = L_l + \text{pyrUp}(G_{l+1})
+$$
+
+## 八、图像运算和图像增强
+
+### 8.1 **图像点运算**
+
+图像点运算（Point Operation）指对于一幅输入图像，将产生一幅输出图像，输出图像的每个像素点的灰度值由输入像素点决定。
+点运算实际上是灰度到灰度的映射过程，通过映射变换来达到增强或者减弱图像的灰度。还可以对图像进行求灰度直方图、线性变换、非线性变换以及图像骨架的提取。
+
+* 与几何运算的区别：不会改变图像内像素点之间的空间位置关系。
+* 与局部（领域）运算的区别：输入像素和输出像素一一对应。
+
+**数学形式**：
+
+$$g(x, y) = T[f(x, y)]$$
+
+其中：
+
+- $f(x, y)$：输入图像
+- $g(x, y)$：输出图像
+- $T$：灰度变换函数
+
+应用：光度学标定、对比度增强、对比度扩展、显示标定、轮廓线确定
+
+### 8.2 **图像灰度化**
+
+图像灰度化是将一幅彩色图像转换为灰度化图像的过程。彩色图像通常包括 R、G、B 三个分量，分别显示出红绿蓝等各种颜色，
+灰度化就是使彩色图像的 R、G、B 三个分量相等的过程。
+
+**加权平均法（亮度法，Luminance）—— 最标准**
+
+基于人眼视觉特性（人眼对绿色最敏感、蓝色最不敏感）:
+
+$$Gray = 0.299 R + 0.587 G + 0.114 B$$
+
+这是 **ITU-R BT.601** 标准,也是 OpenCV `cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)` 实际采用的公式（注意 OpenCV 读入是 BGR 顺序,内部按 R/G/B 权重计算）。
+
+### 8.3 **图像灰度线性变换**
+
+灰度线性变换是最基础的**点运算**（逐像素操作），通过一个线性函数把原灰度值映射到新灰度值，用于**调整图像对比度和亮度**。
+
+$$
+g(x,y) = a \cdot f(x,y) + b
+$$
+
+其中:
+- $f(x,y)$:原图像在 $(x,y)$ 处的灰度值
+- $g(x,y)$:变换后的灰度值
+- $a$:**斜率(增益 / 对比度控制)**
+- $b$:**截距(偏移 / 亮度控制)**
+
+> 约束:输出通常需裁剪到 $[0, 255]$,即 $g = \text{clip}(a f + b,\ 0, 255)$。
+
+参数 $b$ 控制对比度：
+
+| $a$ 取值 | 效果 |
+|---------|------|
+| $a > 1$ | 对比度**增强**(亮的更亮、暗的更暗),斜率变陡 |
+| $0 < a < 1$ | 对比度**减弱**(灰度向中间压缩),斜率变缓 |
+| $a = 1$ | 对比度不变 |
+| $a < 0$ | 灰度**反转**(负片效果) |
+
+参数 $b$ 控制亮度：
+
+| $b$ 取值 | 效果 |
+|---------|------|
+| $b > 0$ | 整体**变亮**(灰度整体上移) |
+| $b < 0$ | 整体**变暗**(灰度整体下移) |
+| $b = 0$ | 亮度不变 |
+
+
+### 8.4 **图像灰度非线性变换**
+
+- **对数变换**：`s = c·log(1+r)`，压缩高灰度、扩展低灰度，用于显示傅里叶频谱
+- **指数/伽马变换**：`s = c·r^γ`，γ<1 提亮暗部，γ>1 压暗亮部，用于显示校正
+- **幂律变换**：伽马的一般形式
+- **阈值化**：`s = 0 if r<T else 255`
+- **分段线性/非线性拉伸**：对比度拉伸、S型曲线
+- **直方图均衡化**：基于累积分布函数的非线性映射（严格说是全局非线性点运算）
+
+### 8.5 **图像阈值化处理**
+
+**固定阈值化**：`retval, dst = cv2.threshold(src, thresh, maxval, type)`
+
+```python
+import cv2
+
+img = cv2.imread('input.jpg', cv2.IMREAD_GRAYSCALE)
+
+# 固定阈值二值化
+ret, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+
+# 反二值化
+ret, th2 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY_INV)
+
+# 截断
+ret, th3 = cv2.threshold(img, 127, 255, cv2.THRESH_TRUNC)
+
+# 低于阈值置 0
+ret, th4 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO)
+
+# 高于阈值置 0
+ret, th5 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO_INV)
+```
+
+**自适应阈值化**：`dst = cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C)`
+
+```python
+import cv2
+
+# 均值自适应
+adap_mean = cv2.adaptiveThreshold(
+    img, 255,
+    cv2.ADAPTIVE_THRESH_MEAN_C,
+    cv2.THRESH_BINARY,
+    blockSize=11,
+    C=2
+)
+
+# 高斯自适应（更平滑，常用）
+adap_gauss = cv2.adaptiveThreshold(
+    img, 255,
+    cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+    cv2.THRESH_BINARY,
+    blockSize=11,
+    C=2
+)
+```
+
+### 8.6 **图像形态学处理：腐蚀、膨胀**
+
+图像的腐蚀（Erosion）和膨胀（Dilation）是两种基本的形态学运算，主要用来寻找图像中的极小区域和极大区域。
+
+#### **8.6.1 图像腐蚀**
+
+- 作用：缩小图像中的白色区域（前景）
+- 核心函数：`cv2.erode(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    - `kernel` 越大、`iterations` 越多，效果越明显
+- 典型应用场景：去除噪点、断开物体连接、提取骨架
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
+
+# 定义 5x5 结构元素
+kernel = np.ones((5, 5), np.uint8)
+
+# 腐蚀
+eroded = cv2.erode(img, kernel, iterations=1)
+
+cv2.imshow('Original', img)
+cv2.imshow('Eroded', eroded)
+cv2.waitKey(0)
+```
+
+常用结构元素：
+
+```python
+# 矩形
+k1 = cv2.getStructuringElement(cv2.MORPH_RECT,    (5, 5))
+# 椭圆（圆形）
+k2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+# 十字形
+k3 = cv2.getStructuringElement(cv2.MORPH_CROSS,   (5, 5))
+```
+
+#### **8.6.2 图像膨胀**
+
+* 作用：扩大图像中的白色区域（前景）
+* 函数：`cv2.dilate(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    * 参数与 `cv2.erode` 完全一致，只是效果相反。
+* 应用场景：填补孔洞、连接断裂物体、加粗线条
+
+### 8.7 **图像形态学处理：开运算、闭运算、形态学梯度**
+
+#### **8.7.1 图像开运算**
+
+- 定义：**先腐蚀后膨胀**：`open = dilate(erode(img))`。
+- 作用：去除小的白色噪点/毛刺，同时保持物体主体大小基本不变。 
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_OPEN, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    - 等价于：`cv2.dilate(cv2.erode(img, kernel, iterations), kernel, iterations)`
+
+```python
+import cv2
+
+img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
+
+# 5x5 结构元素
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+
+# 开运算
+opened = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+
+cv2.imshow('Original', img)
+cv2.imshow('Opened', opened)
+cv2.waitKey(0)
+```
+
+#### **8.7.2 图像闭运算**
+
+* 定义：**先膨胀后腐蚀**：`close = erode(dilate(img))`。
+* 作用：填补物体内部的小孔洞、连接断裂的缝隙，同时保持物体主体大小基本不变。
+* 函数：`cv2.morphologyEx(src, cv2.MORPH_CLOSE, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+
+#### **8.7.3 图像形态学梯度**
+
+- 定义：膨胀图减去腐蚀图：`gradient = dilate(img) - erode(img)`。
+- 作用：提取物体的轮廓/边缘，得到的是物体的"厚度"边界。
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_GRADIENT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+
+### 8.8 **图像形态学处理：顶帽运算、底帽运算**
+
+#### **8.8.1 顶帽运算**
+
+- 定义：**原图减去开运算结果**：`tophat = img - open(img)`。
+- 作用：提取比周围亮的细小物体/细节，即图像中"突出的小亮点、细线、局部高亮区域"。
+- 原理：
+    * 开运算（先腐蚀后膨胀）会去掉比 kernel 小的亮细节，只保留主体。
+    * 原图 − 开运算结果 = 被开运算去掉的那些小亮细节
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_TOPHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+- 应用场景：
+    * 提取图像中的小亮点/高光
+    * 不均匀光照校正（背景估计）：顶帽能去掉大范围缓慢变化的背景，保留局部亮细节，常用于光照不均的图像预处理
+    * 提取细小文字/笔画（OCR 预处理）
+    * 检测缺陷/划痕（工业视觉）
+    * 细胞/颗粒计数预处理
+
+#### **8.8.2 底帽运算**
+
+* 定义：**闭运算结果减去原图**：`blackhat = close(img) - img`。
+* 作用：提取比周围暗的细小物体/细节，即图像中"隐藏在亮背景里的小暗点、孔洞、暗缝、局部阴影"
+* 原理：
+    * 闭运算（先膨胀后腐蚀）会填补比 kernel 小的暗细节（孔洞、缝隙），让暗区域变亮。
+    * 闭运算结果 − 原图 = 被闭运算填掉的那些小暗细节
+* 函数：`cv2.morphologyEx(src, cv2.MORPH_BLACKHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+* 应用场景：
+    * 提取图像中的小暗点/孔洞
+    * 暗缺陷/暗划痕检测（工业视觉）
+    * 文字提取（暗文字、亮背景）
+    * 不均匀光照下的暗细节增强
+
+### 8.9 **图像直方图**
+
+图像直方图（Image Histogram）用统计图表的形式，描述一幅图像中**各个灰度级（或颜色通道取值）出现的频率**。
+
+#### **8.9.1 直方图的计算**
+
+令 $r_k (k = 0,1,2...L-1)$ 表示一幅 $L$ 级灰度数字图像 $f(x,y)$ 的灰度。
+
+$f$ 的**非归一化直方图**定义为：
+
+$$h(r_{k}) = n_{k}$$
+
+式中，$n_k$ 是 $f$ 中灰度为 $r_k$ 的像素的数量。。
+
+类似地，**归一化直方图**定义为：
+
+$$p(r_{k}) = \frac{h(r_{k})}{MN} = \frac{n_{k}}{MN}$$
+
+式中，$M$ 和 $N$ 分别是图像的行数和列数。对 $k$ 的所有值，$p(r_{k})$ 的和总是 1.
+
+**4 种基本灰度特性的图像**：
+
+![不同灰度特性的图像.png](images%2F%E4%B8%8D%E5%90%8C%E7%81%B0%E5%BA%A6%E7%89%B9%E6%80%A7%E7%9A%84%E5%9B%BE%E5%83%8F.png)
+
+#### **8.9.2 OpenCV 绘制直方图**
+
+1. 直方图计算：`cv2.calcHist(images, channels, mask, histSize, ranges)`
+2. 直方图绘制：Matplotlib 或 OpenCV 绘图函数
+
+以 Matplotlib 绘制灰度图像的直方图为例：
+
+```python
+import cv2
+import matplotlib.pyplot as plt
+
+# 以灰度模式读取
+img = cv2.imread('lena.jpg', cv2.IMREAD_GRAYSCALE)
+
+# 计算直方图
+hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+
+# 绘制
+plt.figure(figsize=(10, 4))
+plt.subplot(1, 2, 1)
+plt.imshow(img, cmap='gray')
+plt.title('Image')
+plt.axis('off')
+
+plt.subplot(1, 2, 2)
+plt.plot(hist, color='black')
+plt.title('Grayscale Histogram')
+plt.xlabel('Pixel Value')
+plt.ylabel('Count')
+plt.xlim([0, 256])
+plt.tight_layout()
+plt.show()
+```
 
 
 ## 二、数字图像基础
@@ -702,23 +1405,7 @@ $$g(x, y) = T[f(x, y)]$$
 
 ### 3.3 **直方图处理**
 
-令 $r_k (k = 0,1,2...L-1)$ 表示一幅 $L$ 级灰度数字图像 $f(x,y)$ 的灰度。
 
-$f$ 的**非归一化直方图**定义为：
-
-$$h(r_{k}) = n_{k}$$
-
-式中，$n_k$ 是 $f$ 中灰度为 $r_k$ 的像素的数量。。
-
-类似地，**归一化直方图**定义为：
-
-$$p(r_{k}) = \frac{h(r_{k})}{MN} = \frac{n_{k}}{MN}$$
-
-式中，$M$ 和 $N$ 分别是图像的行数和列数。对 $k$ 的所有值，$p(r_{k})$ 的和总是 1.
-
-**4 种基本灰度特性的图像**：
-
-![不同灰度特性的图像.png](images%2F%E4%B8%8D%E5%90%8C%E7%81%B0%E5%BA%A6%E7%89%B9%E6%80%A7%E7%9A%84%E5%9B%BE%E5%83%8F.png)
 
 **3.3.1 直方图均衡化**
 

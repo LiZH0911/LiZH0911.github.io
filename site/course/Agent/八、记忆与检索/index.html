@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../../assets/footer.css">
     
       <link rel="stylesheet" href="../../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../../assets/headings.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -571,6 +573,34 @@
     
   
     操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
   
 
     
@@ -2452,34 +2482,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
         
   
@@ -2989,16 +2991,16 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># 第七章的Agent使用方式</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
 
-<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;学习助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"学习助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
 
 <span class="c1"># 第一次对话</span>
-<span class="n">response1</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;我叫张三，正在学习Python，目前掌握了基础语法&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response1</span><span class="p">)</span>  <span class="c1"># &quot;很好！Python基础语法是编程的重要基础...&quot;</span>
+<span class="n">response1</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"我叫张三，正在学习Python，目前掌握了基础语法"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response1</span><span class="p">)</span>  <span class="c1"># "很好！Python基础语法是编程的重要基础..."</span>
 
 <span class="c1"># 第二次对话（新的会话，例如重启程序后重新创建Agent）</span>
-<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;学习助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
-<span class="n">response2</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;你还记得我的学习进度吗？&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">response2</span><span class="p">)</span>  <span class="c1"># &quot;抱歉，我不知道您的学习进度...&quot;</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"学习助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+<span class="n">response2</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"你还记得我的学习进度吗？"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response2</span><span class="p">)</span>  <span class="c1"># "抱歉，我不知道您的学习进度..."</span>
 </code></pre></div>
 <p>需要注意的是，第七章中的 <code>SimpleAgent</code> 会在同一个实例的 <code>_history</code> 中暂存当前对话，因此同一进程、同一实例内的连续对话可以携带最近上下文。但这种历史只是临时消息列表，不会跨会话持久化，也不能进行长期检索、遗忘和整合。</p>
 <p>要解决这个问题，我们的框架需要引入<strong>记忆系统</strong>。</p>
@@ -3083,7 +3085,7 @@
 <p><strong>安装HelloAgents框架</strong></p>
 <p>可以通过以下命令安装本章对应的版本：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 0.2.0版本若遇到模型不可用，查看issue#320或切换0.2.9版本进行测试</span>
-pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;hello-agents[all]==0.2.0&quot;</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hello-agents[all]==0.2.0"</span>
 python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>zh_core_web_sm
 python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </span>download<span class="w"> </span>en_core_web_sm
 </code></pre></div>
@@ -3160,23 +3162,23 @@ python<span class="w"> </span>-m<span class="w"> </span>spacy<span class="w"> </
 <span class="n">tool_registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
 
 <span class="c1"># 添加记忆工具</span>
-<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">&quot;user123&quot;</span><span class="p">)</span>
+<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">"user123"</span><span class="p">)</span>
 <span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">memory_tool</span><span class="p">)</span>
 
 <span class="c1"># 添加RAG工具</span>
-<span class="n">rag_tool</span> <span class="o">=</span> <span class="n">RAGTool</span><span class="p">(</span><span class="n">knowledge_base_path</span><span class="o">=</span><span class="s2">&quot;./knowledge_base&quot;</span><span class="p">)</span>
+<span class="n">rag_tool</span> <span class="o">=</span> <span class="n">RAGTool</span><span class="p">(</span><span class="n">knowledge_base_path</span><span class="o">=</span><span class="s2">"./knowledge_base"</span><span class="p">)</span>
 <span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">rag_tool</span><span class="p">)</span>
 
 <span class="c1"># 创建Agent并配置工具</span>
 <span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;智能助手&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"智能助手"</span><span class="p">,</span>
     <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span>
-    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;你是一个有记忆和知识检索能力的AI助手&quot;</span><span class="p">,</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">"你是一个有记忆和知识检索能力的AI助手"</span><span class="p">,</span>
     <span class="n">tool_registry</span><span class="o">=</span><span class="n">tool_registry</span>
 <span class="p">)</span>
 
 <span class="c1"># 开始对话</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;你好！请记住我叫张三，我是一名Python开发者&quot;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"你好！请记住我叫张三，我是一名Python开发者"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div>
 
@@ -3201,14 +3203,14 @@ INFO:hello_agents.memory.types.semantic:✅ 加载英文spaCy模型: en_core_web
 INFO:hello_agents.memory.types.semantic:🎯 主要使用中文spaCy模型
 INFO:hello_agents.memory.types.semantic:📚 可用语言模型: 中文, 英文
 INFO:hello_agents.memory.types.semantic:增强语义记忆初始化完成（使用Qdrant+Neo4j专业数据库）
-INFO:hello_agents.memory.manager:MemoryManager初始化完成，启用记忆类型: [&#39;working&#39;, &#39;episodic&#39;, &#39;semantic&#39;]
-✅ 工具 &#39;memory&#39; 已注册。
+INFO:hello_agents.memory.manager:MemoryManager初始化完成，启用记忆类型: ['working', 'episodic', 'semantic']
+✅ 工具 'memory' 已注册。
 INFO:hello_agents.memory.storage.qdrant_store:✅ 成功连接到Qdrant云服务: https://16408d29-7aa9-40fe-a83d-889caf7396c6.eu-west-2-0.aws.cloud.qdrant.io
 INFO:hello_agents.memory.storage.qdrant_store:✅ 创建Qdrant集合: rag_knowledge_base
 ✅ RAG工具初始化成功: namespace=default, collection=rag_knowledge_base
-✅ 工具 &#39;rag&#39; 已注册。
-INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;HTTP/1.1 200 OK&quot;
-INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;HTTP/1.1 200 OK&quot;
+✅ 工具 'rag' 已注册。
+INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
 好的，张三！我已经记住了你的信息——你是一名Python开发者。记忆已成功保存（ID: 8bf62b95...），以后我会记得这一点。
 </code></pre></div>
 
@@ -3248,36 +3250,36 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
 
 <span class="c1"># 创建记忆工具</span>
-<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">&quot;user123&quot;</span><span class="p">)</span>
+<span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s2">"user123"</span><span class="p">)</span>
 <span class="n">tool_registry</span> <span class="o">=</span> <span class="n">ToolRegistry</span><span class="p">()</span>
 <span class="n">tool_registry</span><span class="o">.</span><span class="n">register_tool</span><span class="p">(</span><span class="n">memory_tool</span><span class="p">)</span>
 
 <span class="c1"># 创建具有记忆能力的Agent</span>
-<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;记忆助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">tool_registry</span><span class="o">=</span><span class="n">tool_registry</span><span class="p">)</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"记忆助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">,</span> <span class="n">tool_registry</span><span class="o">=</span><span class="n">tool_registry</span><span class="p">)</span>
 
 <span class="c1"># 体验记忆功能</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== 添加多个记忆 ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"=== 添加多个记忆 ==="</span><span class="p">)</span>
 
 <span class="c1"># 添加第一个记忆</span>
-<span class="n">result1</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户张三是一名Python开发者，专注于机器学习和数据分析&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆1: </span><span class="si">{</span><span class="n">result1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">result1</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">"用户张三是一名Python开发者，专注于机器学习和数据分析"</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"记忆1: </span><span class="si">{</span><span class="n">result1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 添加第二个记忆</span>
-<span class="n">result2</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;李四是前端工程师，擅长React和Vue.js开发&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆2: </span><span class="si">{</span><span class="n">result2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">"李四是前端工程师，擅长React和Vue.js开发"</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"记忆2: </span><span class="si">{</span><span class="n">result2</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># 添加第三个记忆</span>
-<span class="n">result3</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;王五是产品经理，负责用户体验设计和需求分析&quot;</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;记忆3: </span><span class="si">{</span><span class="n">result3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">result3</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="s2">"王五是产品经理，负责用户体验设计和需求分析"</span><span class="p">,</span> <span class="n">memory_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"记忆3: </span><span class="si">{</span><span class="n">result3</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 搜索特定记忆 ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== 搜索特定记忆 ==="</span><span class="p">)</span>
 <span class="c1"># 搜索前端相关的记忆</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔍 搜索 &#39;前端工程师&#39;:&quot;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&quot;前端工程师&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"🔍 搜索 '前端工程师':"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">"前端工程师"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== 记忆摘要 ===&quot;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">=== 记忆摘要 ==="</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"summary"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
 
@@ -3290,7 +3292,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 execute 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;执行记忆操作</span>
+<span class="w">    </span><span class="sd">"""执行记忆操作</span>
 
 <span class="sd">    支持的操作：</span>
 <span class="sd">    - add: 添加记忆（支持4种类型: working/episodic/semantic/perceptual）</span>
@@ -3302,13 +3304,13 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <span class="sd">    - forget: 遗忘记忆（多种策略）</span>
 <span class="sd">    - consolidate: 整合记忆（短期→长期）</span>
 <span class="sd">    - clear_all: 清空所有记忆</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"add"</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_memory</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;search&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"search"</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_memory</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;summary&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">action</span> <span class="o">==</span> <span class="s2">"summary"</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_summary</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="c1"># ... 其他操作</span>
 </code></pre></div>
@@ -3323,29 +3325,29 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_add_memory</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;working&quot;</span><span class="p">,</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"working"</span><span class="p">,</span>
     <span class="n">importance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
     <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">modality</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">metadata</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;添加记忆&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""添加记忆"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 确保会话ID存在</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;session_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"session_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 
         <span class="c1"># 感知记忆文件支持</span>
-        <span class="k">if</span> <span class="n">memory_type</span> <span class="o">==</span> <span class="s2">&quot;perceptual&quot;</span> <span class="ow">and</span> <span class="n">file_path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">memory_type</span> <span class="o">==</span> <span class="s2">"perceptual"</span> <span class="ow">and</span> <span class="n">file_path</span><span class="p">:</span>
             <span class="n">inferred</span> <span class="o">=</span> <span class="n">modality</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_infer_modality</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;modality&quot;</span><span class="p">,</span> <span class="n">inferred</span><span class="p">)</span>
-            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;raw_data&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"modality"</span><span class="p">,</span> <span class="n">inferred</span><span class="p">)</span>
+            <span class="n">metadata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"raw_data"</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
 
         <span class="c1"># 添加会话信息到元数据</span>
         <span class="n">metadata</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-            <span class="s2">&quot;session_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span><span class="p">,</span>
-            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+            <span class="s2">"session_id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_session_id</span><span class="p">,</span>
+            <span class="s2">"timestamp"</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
         <span class="p">})</span>
 
         <span class="n">memory_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">add_memory</span><span class="p">(</span>
@@ -3356,10 +3358,10 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
             <span class="n">auto_classify</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;✅ 记忆已添加 (ID: </span><span class="si">{</span><span class="n">memory_id</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">...)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"✅ 记忆已添加 (ID: </span><span class="si">{</span><span class="n">memory_id</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">...)"</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 添加记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"❌ 添加记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 
 </details>
@@ -3376,36 +3378,36 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>不同类型记忆的使用示例</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. 工作记忆 - 临时信息，容量有限</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户刚才问了关于Python函数的问题&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;working&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">"用户刚才问了关于Python函数的问题"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"working"</span><span class="p">,</span>
     <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span>
 <span class="p">)</span>
 
 <span class="c1"># 2. 情景记忆 - 具体事件和经历</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;2024年3月15日，用户张三完成了第一个Python项目&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">"2024年3月15日，用户张三完成了第一个Python项目"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
     <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-    <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;milestone&quot;</span><span class="p">,</span>
-    <span class="n">location</span><span class="o">=</span><span class="s2">&quot;在线学习平台&quot;</span>
+    <span class="n">event_type</span><span class="o">=</span><span class="s2">"milestone"</span><span class="p">,</span>
+    <span class="n">location</span><span class="o">=</span><span class="s2">"在线学习平台"</span>
 <span class="p">)</span>
 
 <span class="c1"># 3. 语义记忆 - 抽象知识和概念</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Python是一种解释型、面向对象的编程语言&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">"Python是一种解释型、面向对象的编程语言"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span>
     <span class="n">importance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-    <span class="n">knowledge_type</span><span class="o">=</span><span class="s2">&quot;factual&quot;</span>
+    <span class="n">knowledge_type</span><span class="o">=</span><span class="s2">"factual"</span>
 <span class="p">)</span>
 
 <span class="c1"># 4. 感知记忆 - 多模态信息</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;用户上传了一张Python代码截图，包含函数定义&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;perceptual&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"add"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">"用户上传了一张Python代码截图，包含函数定义"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"perceptual"</span><span class="p">,</span>
     <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
-    <span class="n">modality</span><span class="o">=</span><span class="s2">&quot;image&quot;</span><span class="p">,</span>
-    <span class="n">file_path</span><span class="o">=</span><span class="s2">&quot;./uploads/code_screenshot.png&quot;</span>
+    <span class="n">modality</span><span class="o">=</span><span class="s2">"image"</span><span class="p">,</span>
+    <span class="n">file_path</span><span class="o">=</span><span class="s2">"./uploads/code_screenshot.png"</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -3424,7 +3426,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="n">memory_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">min_importance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;搜索记忆&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""搜索记忆"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 参数标准化处理</span>
         <span class="k">if</span> <span class="n">memory_type</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">memory_types</span><span class="p">:</span>
@@ -3438,29 +3440,29 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
         <span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🔍 未找到与 &#39;</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&#39; 相关的记忆&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">"🔍 未找到与 '</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">' 相关的记忆"</span>
 
         <span class="c1"># 格式化结果</span>
         <span class="n">formatted_results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔍 找到 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> 条相关记忆:&quot;</span><span class="p">)</span>
+        <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🔍 找到 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2"> 条相关记忆:"</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">memory</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">memory_type_label</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;working&quot;</span><span class="p">:</span> <span class="s2">&quot;工作记忆&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;episodic&quot;</span><span class="p">:</span> <span class="s2">&quot;情景记忆&quot;</span><span class="p">,</span> 
-                <span class="s2">&quot;semantic&quot;</span><span class="p">:</span> <span class="s2">&quot;语义记忆&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;perceptual&quot;</span><span class="p">:</span> <span class="s2">&quot;感知记忆&quot;</span>
+                <span class="s2">"working"</span><span class="p">:</span> <span class="s2">"工作记忆"</span><span class="p">,</span>
+                <span class="s2">"episodic"</span><span class="p">:</span> <span class="s2">"情景记忆"</span><span class="p">,</span> 
+                <span class="s2">"semantic"</span><span class="p">:</span> <span class="s2">"语义记忆"</span><span class="p">,</span>
+                <span class="s2">"perceptual"</span><span class="p">:</span> <span class="s2">"感知记忆"</span>
             <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">memory_type</span><span class="p">,</span> <span class="n">memory</span><span class="o">.</span><span class="n">memory_type</span><span class="p">)</span>
 
-            <span class="n">content_preview</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">80</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="k">else</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span>
+            <span class="n">content_preview</span> <span class="o">=</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">80</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"..."</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">memory</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="k">else</span> <span class="n">memory</span><span class="o">.</span><span class="n">content</span>
             <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. [</span><span class="si">{</span><span class="n">memory_type_label</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">content_preview</span><span class="si">}</span><span class="s2"> (重要性: </span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">importance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. [</span><span class="si">{</span><span class="n">memory_type_label</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">content_preview</span><span class="si">}</span><span class="s2"> (重要性: </span><span class="si">{</span><span class="n">memory</span><span class="o">.</span><span class="n">importance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)"</span>
             <span class="p">)</span>
 
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 搜索记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"❌ 搜索记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 
 </details>
@@ -3471,19 +3473,19 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>搜索功能的使用示例</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 基础搜索</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">&quot;Python编程&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span> <span class="n">query</span><span class="o">=</span><span class="s2">"Python编程"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="c1"># 指定记忆类型搜索</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
-    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;学习进度&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">"学习进度"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
     <span class="n">limit</span><span class="o">=</span><span class="mi">3</span>
 <span class="p">)</span>
 
 <span class="c1"># 多类型搜索</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span>
-    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;函数定义&quot;</span><span class="p">,</span>
-    <span class="n">memory_types</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span> <span class="s2">&quot;episodic&quot;</span><span class="p">],</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span>
+    <span class="n">query</span><span class="o">=</span><span class="s2">"函数定义"</span><span class="p">,</span>
+    <span class="n">memory_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"semantic"</span><span class="p">,</span> <span class="s2">"episodic"</span><span class="p">],</span>
     <span class="n">min_importance</span><span class="o">=</span><span class="mf">0.5</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3500,17 +3502,17 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <details>
 <summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _forget 私有函数</summary>
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_forget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;importance_based&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">max_age_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;遗忘记忆（支持多种策略）&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_forget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"importance_based"</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">max_age_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""遗忘记忆（支持多种策略）"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">forget_memories</span><span class="p">(</span>
             <span class="n">strategy</span><span class="o">=</span><span class="n">strategy</span><span class="p">,</span>
             <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span>
             <span class="n">max_age_days</span><span class="o">=</span><span class="n">max_age_days</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🧹 已遗忘 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆（策略: </span><span class="si">{</span><span class="n">strategy</span><span class="si">}</span><span class="s2">）&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"🧹 已遗忘 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆（策略: </span><span class="si">{</span><span class="n">strategy</span><span class="si">}</span><span class="s2">）"</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 遗忘记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"❌ 遗忘记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 
 </details>
@@ -3519,20 +3521,20 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>三种遗忘策略的使用示例</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. 基于重要性的遗忘 - 删除重要性低于阈值的记忆</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
-    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;importance_based&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"forget"</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">"importance_based"</span><span class="p">,</span>
     <span class="n">threshold</span><span class="o">=</span><span class="mf">0.2</span>
 <span class="p">)</span>
 
 <span class="c1"># 2. 基于时间的遗忘 - 删除超过指定天数的记忆</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
-    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;time_based&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"forget"</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">"time_based"</span><span class="p">,</span>
     <span class="n">max_age_days</span><span class="o">=</span><span class="mi">30</span>
 <span class="p">)</span>
 
 <span class="c1"># 3. 基于容量的遗忘 - 当记忆数量超限时删除最不重要的</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;forget&quot;</span><span class="p">,</span>
-    <span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;capacity_based&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"forget"</span><span class="p">,</span>
+    <span class="n">strategy</span><span class="o">=</span><span class="s2">"capacity_based"</span><span class="p">,</span>
     <span class="n">threshold</span><span class="o">=</span><span class="mf">0.3</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3543,17 +3545,17 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <details>
 <summary>hello_agents/tools/builtin/memory_tool.py 中 MemoryTool 类的 _consolidate 私有函数</summary>
 
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_consolidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;working&quot;</span><span class="p">,</span> <span class="n">to_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;episodic&quot;</span><span class="p">,</span> <span class="n">importance_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;整合记忆（将重要的短期记忆提升为长期记忆）&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_consolidate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"working"</span><span class="p">,</span> <span class="n">to_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"episodic"</span><span class="p">,</span> <span class="n">importance_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""整合记忆（将重要的短期记忆提升为长期记忆）"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span><span class="o">.</span><span class="n">consolidate_memories</span><span class="p">(</span>
             <span class="n">from_type</span><span class="o">=</span><span class="n">from_type</span><span class="p">,</span>
             <span class="n">to_type</span><span class="o">=</span><span class="n">to_type</span><span class="p">,</span>
             <span class="n">importance_threshold</span><span class="o">=</span><span class="n">importance_threshold</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;🔄 已整合 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆为长期记忆（</span><span class="si">{</span><span class="n">from_type</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">to_type</span><span class="si">}</span><span class="s2">，阈值=</span><span class="si">{</span><span class="n">importance_threshold</span><span class="si">}</span><span class="s2">）&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"🔄 已整合 </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> 条记忆为长期记忆（</span><span class="si">{</span><span class="n">from_type</span><span class="si">}</span><span class="s2"> → </span><span class="si">{</span><span class="n">to_type</span><span class="si">}</span><span class="s2">，阈值=</span><span class="si">{</span><span class="n">importance_threshold</span><span class="si">}</span><span class="s2">）"</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;❌ 整合记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"❌ 整合记忆失败: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 
 </details>
@@ -3564,16 +3566,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>记忆整合的使用示例</summary>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 将重要的工作记忆转为情景记忆</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;consolidate&quot;</span><span class="p">,</span>
-    <span class="n">from_type</span><span class="o">=</span><span class="s2">&quot;working&quot;</span><span class="p">,</span>
-    <span class="n">to_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"consolidate"</span><span class="p">,</span>
+    <span class="n">from_type</span><span class="o">=</span><span class="s2">"working"</span><span class="p">,</span>
+    <span class="n">to_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
     <span class="n">importance_threshold</span><span class="o">=</span><span class="mf">0.7</span>
 <span class="p">)</span>
 
 <span class="c1"># 将重要的情景记忆转为语义记忆</span>
-<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;consolidate&quot;</span><span class="p">,</span>
-    <span class="n">from_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
-    <span class="n">to_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span>
+<span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"consolidate"</span><span class="p">,</span>
+    <span class="n">from_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
+    <span class="n">to_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span>
     <span class="n">importance_threshold</span><span class="o">=</span><span class="mf">0.8</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3589,30 +3591,30 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/tools/builtin/memory_tool.py 中的 MemoryTool 类</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MemoryTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;记忆工具 - 为Agent提供记忆功能&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""记忆工具 - 为Agent提供记忆功能"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default_user&quot;</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default_user"</span><span class="p">,</span>
         <span class="n">memory_config</span><span class="p">:</span> <span class="n">MemoryConfig</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">memory_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="p">,</span>
-            <span class="n">description</span><span class="o">=</span><span class="s2">&quot;记忆工具 - 可以存储和检索对话历史、知识和经验&quot;</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"memory"</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">=</span><span class="s2">"记忆工具 - 可以存储和检索对话历史、知识和经验"</span>
         <span class="p">)</span>
 
         <span class="c1"># 初始化记忆管理器</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_config</span> <span class="o">=</span> <span class="n">memory_config</span> <span class="ow">or</span> <span class="n">MemoryConfig</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span> <span class="o">=</span> <span class="n">memory_types</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;working&quot;</span><span class="p">,</span> <span class="s2">&quot;episodic&quot;</span><span class="p">,</span> <span class="s2">&quot;semantic&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span> <span class="o">=</span> <span class="n">memory_types</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">"working"</span><span class="p">,</span> <span class="s2">"episodic"</span><span class="p">,</span> <span class="s2">"semantic"</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_manager</span> <span class="o">=</span> <span class="n">MemoryManager</span><span class="p">(</span>
             <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_config</span><span class="p">,</span>
             <span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span>
-            <span class="n">enable_working</span><span class="o">=</span><span class="s2">&quot;working&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
-            <span class="n">enable_episodic</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
-            <span class="n">enable_semantic</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
-            <span class="n">enable_perceptual</span><span class="o">=</span><span class="s2">&quot;perceptual&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span>
+            <span class="n">enable_working</span><span class="o">=</span><span class="s2">"working"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_episodic</span><span class="o">=</span><span class="s2">"episodic"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_semantic</span><span class="o">=</span><span class="s2">"semantic"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">,</span>
+            <span class="n">enable_perceptual</span><span class="o">=</span><span class="s2">"perceptual"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span>
         <span class="p">)</span>
 </code></pre></div>
 
@@ -3623,12 +3625,12 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/manager.py 中的 MemoryManager 类</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MemoryManager</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;记忆管理器 - 统一的记忆操作接口&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""记忆管理器 - 统一的记忆操作接口"""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MemoryConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default_user&quot;</span><span class="p">,</span>
+        <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default_user"</span><span class="p">,</span>
         <span class="n">enable_working</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">enable_episodic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">enable_semantic</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -3643,16 +3645,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">if</span> <span class="n">enable_working</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;working&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">WorkingMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">'working'</span><span class="p">]</span> <span class="o">=</span> <span class="n">WorkingMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">enable_episodic</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;episodic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">EpisodicMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">'episodic'</span><span class="p">]</span> <span class="o">=</span> <span class="n">EpisodicMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">enable_semantic</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;semantic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SemanticMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">'semantic'</span><span class="p">]</span> <span class="o">=</span> <span class="n">SemanticMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">enable_perceptual</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">&#39;perceptual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PerceptualMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">memory_types</span><span class="p">[</span><span class="s1">'perceptual'</span><span class="p">]</span> <span class="o">=</span> <span class="n">PerceptualMemory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -3666,14 +3668,14 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/types/working.py 中的 WorkingMemory 类</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WorkingMemory</span><span class="p">(</span><span class="n">BaseMemory</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;工作记忆实现</span>
+<span class="w">    </span><span class="sd">"""工作记忆实现</span>
 
 <span class="sd">    特点：</span>
 <span class="sd">    - 容量有限（通常10-20条记忆）</span>
 <span class="sd">    - 时效性强（会话级别）</span>
 <span class="sd">    - 优先级管理</span>
 <span class="sd">    - 自动清理过期记忆</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MemoryConfig</span><span class="p">,</span> <span class="n">storage_backend</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">storage_backend</span><span class="p">)</span>
@@ -3682,7 +3684,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
         <span class="bp">self</span><span class="o">.</span><span class="n">max_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">working_memory_capacity</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_tokens</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">working_memory_tokens</span>
         <span class="c1"># 纯内存TTL（分钟），可通过在 MemoryConfig 上挂载 working_memory_ttl_minutes 覆盖</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">max_age_minutes</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s1">&#39;working_memory_ttl_minutes&#39;</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_age_minutes</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="s1">'working_memory_ttl_minutes'</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_tokens</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">session_start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
@@ -3693,7 +3695,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_heap</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># (priority, timestamp, memory_item)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memory_item</span><span class="p">:</span> <span class="n">MemoryItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;添加工作记忆&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""添加工作记忆"""</span>
         <span class="c1"># 过期清理</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_expire_old_memories</span><span class="p">()</span>
         <span class="c1"># 计算优先级（重要性 + 时间衰减）</span>
@@ -3712,7 +3714,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
         <span class="k">return</span> <span class="n">memory_item</span><span class="o">.</span><span class="n">id</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">MemoryItem</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;检索工作记忆 - 混合语义向量检索和关键词匹配&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""检索工作记忆 - 混合语义向量检索和关键词匹配"""</span>
     <span class="o">...</span>
 </code></pre></div>
 
@@ -3792,22 +3794,22 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/tools/builtin/rag_tool.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RAGTool</span><span class="p">(</span><span class="n">Tool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;RAG工具</span>
+<span class="w">    </span><span class="sd">"""RAG工具</span>
 
 <span class="sd">    提供完整的 RAG 能力：</span>
 <span class="sd">    - 添加多格式文档（PDF、Office、图片、音频等）</span>
 <span class="sd">    - 智能检索与召回</span>
 <span class="sd">    - LLM 增强问答</span>
 <span class="sd">    - 知识库管理</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">knowledge_base_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;./knowledge_base&quot;</span><span class="p">,</span>
+        <span class="n">knowledge_base_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"./knowledge_base"</span><span class="p">,</span>
         <span class="n">qdrant_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">qdrant_api_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">collection_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rag_knowledge_base&quot;</span><span class="p">,</span>
-        <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+        <span class="n">collection_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"rag_knowledge_base"</span><span class="p">,</span>
+        <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span>
     <span class="p">):</span>
         <span class="c1"># 初始化RAG管道</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pipelines</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -3836,7 +3838,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _convert_to_markdown 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_convert_to_markdown</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Universal document reader using MarkItDown with enhanced PDF processing.</span>
 <span class="sd">    核心功能：将任意格式文档转换为Markdown文本</span>
 
@@ -3846,13 +3848,13 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <span class="sd">    - 音频：MP3、WAV、M4A（通过转录）</span>
 <span class="sd">    - 文本：TXT、CSV、JSON、XML、HTML</span>
 <span class="sd">    - 代码：Python、JavaScript、Java等</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">""</span>
 
     <span class="c1"># 对PDF文件使用增强处理</span>
-    <span class="n">ext</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;.pdf&#39;</span><span class="p">:</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">or</span> <span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">'.pdf'</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_enhanced_pdf_processing</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
     <span class="c1"># 其他格式使用MarkItDown统一转换</span>
@@ -3862,13 +3864,13 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">md_instance</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">markdown_text</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">&quot;text_content&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">markdown_text</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">"text_content"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">markdown_text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] MarkItDown转换成功: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> chars Markdown&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[RAG] MarkItDown转换成功: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">markdown_text</span><span class="p">)</span><span class="si">}</span><span class="s2"> chars Markdown"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">markdown_text</span>
-        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">""</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] MarkItDown转换失败 </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[WARNING] MarkItDown转换失败 </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">_fallback_text_reader</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </code></pre></div>
 
@@ -3888,7 +3890,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _split_paragraphs_with_headings 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_split_paragraphs_with_headings</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据标题层次分割段落，保持语义完整性&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""根据标题层次分割段落，保持语义完整性"""</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
     <span class="n">heading_stack</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">paragraphs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3898,23 +3900,23 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="k">def</span><span class="w"> </span><span class="nf">flush_buf</span><span class="p">(</span><span class="n">end_pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">buf</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">content</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">paragraphs</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
-            <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="s2">&quot; &gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">heading_stack</span><span class="p">)</span> <span class="k">if</span> <span class="n">heading_stack</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_pos</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)),</span>
-            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end_pos</span><span class="p">,</span>
+            <span class="s2">"content"</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+            <span class="s2">"heading_path"</span><span class="p">:</span> <span class="s2">" &gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">heading_stack</span><span class="p">)</span> <span class="k">if</span> <span class="n">heading_stack</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"start"</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_pos</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)),</span>
+            <span class="s2">"end"</span><span class="p">:</span> <span class="n">end_pos</span><span class="p">,</span>
         <span class="p">})</span>
 
     <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
         <span class="n">raw</span> <span class="o">=</span> <span class="n">ln</span>
-        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"#"</span><span class="p">):</span>
             <span class="c1"># 处理标题行</span>
             <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
-            <span class="n">level</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">))</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">level</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'#'</span><span class="p">))</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">'#'</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">level</span> <span class="o">=</span> <span class="mi">1</span>
@@ -3926,7 +3928,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
             <span class="k">continue</span>
 
         <span class="c1"># 段落内容累积</span>
-        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">raw</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">""</span><span class="p">:</span>
             <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
             <span class="n">buf</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">else</span><span class="p">:</span>
@@ -3936,7 +3938,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="n">flush_buf</span><span class="p">(</span><span class="n">char_pos</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">paragraphs</span><span class="p">:</span>
-        <span class="n">paragraphs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)}]</span>
+        <span class="n">paragraphs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"content"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span> <span class="s2">"heading_path"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"start"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"end"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)}]</span>
 
     <span class="k">return</span> <span class="n">paragraphs</span>
 </code></pre></div>
@@ -3949,7 +3951,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _chunk_paragraphs 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_chunk_paragraphs</span><span class="p">(</span><span class="n">paragraphs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">chunk_tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">overlap_tokens</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于Token数量的智能分块&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""基于Token数量的智能分块"""</span>
     <span class="n">chunks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">cur</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">cur_tokens</span> <span class="o">=</span> <span class="mi">0</span>
@@ -3957,7 +3959,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
     <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">paragraphs</span><span class="p">):</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">paragraphs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">p_tokens</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
+        <span class="n">p_tokens</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s2">"content"</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
 
         <span class="k">if</span> <span class="n">cur_tokens</span> <span class="o">+</span> <span class="n">p_tokens</span> <span class="o">&lt;=</span> <span class="n">chunk_tokens</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">cur</span><span class="p">:</span>
             <span class="n">cur</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
@@ -3965,16 +3967,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># 生成当前分块</span>
-            <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
-            <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
-            <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
-            <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;heading_path&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading_path&quot;</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"content"</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"start"</span><span class="p">]</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"end"</span><span class="p">]</span>
+            <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">"heading_path"</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"heading_path"</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
 
             <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
-                <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
-                <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
-                <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
+                <span class="s2">"content"</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+                <span class="s2">"start"</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+                <span class="s2">"end"</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+                <span class="s2">"heading_path"</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
             <span class="p">})</span>
 
             <span class="c1"># 构建重叠部分</span>
@@ -3982,7 +3984,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
                 <span class="n">kept</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
                 <span class="n">kept_tokens</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">):</span>
-                    <span class="n">t</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="n">_approx_token_len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"content"</span><span class="p">])</span> <span class="ow">or</span> <span class="mi">1</span>
                     <span class="k">if</span> <span class="n">kept_tokens</span> <span class="o">+</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="n">overlap_tokens</span><span class="p">:</span>
                         <span class="k">break</span>
                     <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -3995,16 +3997,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
     <span class="c1"># 处理最后一个分块</span>
     <span class="k">if</span> <span class="n">cur</span><span class="p">:</span>
-        <span class="n">content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
-        <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;heading_path&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading_path&quot;</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">"content"</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"start"</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">cur</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">"end"</span><span class="p">]</span>
+        <span class="n">heading_path</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s2">"heading_path"</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"heading_path"</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
 
         <span class="n">chunks</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
-            <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
-            <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
-            <span class="s2">&quot;heading_path&quot;</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
+            <span class="s2">"content"</span><span class="p">:</span> <span class="n">content</span><span class="p">,</span>
+            <span class="s2">"start"</span><span class="p">:</span> <span class="n">start</span><span class="p">,</span>
+            <span class="s2">"end"</span><span class="p">:</span> <span class="n">end</span><span class="p">,</span>
+            <span class="s2">"heading_path"</span><span class="p">:</span> <span class="n">heading_path</span><span class="p">,</span>
         <span class="p">})</span>
 
     <span class="k">return</span> <span class="n">chunks</span>
@@ -4017,7 +4019,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _approx_token_len 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_approx_token_len</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;近似估计Token长度，支持中英文混合&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""近似估计Token长度，支持中英文混合"""</span>
     <span class="c1"># CJK字符按1 token计算</span>
     <span class="n">cjk</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span> <span class="k">if</span> <span class="n">_is_cjk</span><span class="p">(</span><span class="n">ch</span><span class="p">))</span>
     <span class="c1"># 其他字符按空白分词计算</span>
@@ -4025,7 +4027,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="k">return</span> <span class="n">cjk</span> <span class="o">+</span> <span class="n">non_cjk_tokens</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_is_cjk</span><span class="p">(</span><span class="n">ch</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;判断是否为CJK字符&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""判断是否为CJK字符"""</span>
     <span class="n">code</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="mh">0x4E00</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mh">0x9FFF</span> <span class="ow">or</span>  <span class="c1"># CJK统一汉字</span>
@@ -4051,14 +4053,14 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="n">chunks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
     <span class="n">cache_db</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
     <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
-    <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+    <span class="n">rag_namespace</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Index markdown chunks with unified embedding and Qdrant storage.</span>
 <span class="sd">    Uses百炼 API with fallback to sentence-transformers.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">chunks</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[RAG] No chunks to index&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"[RAG] No chunks to index"</span><span class="p">)</span>
         <span class="k">return</span>
 
     <span class="c1"># 使用统一嵌入模型</span>
@@ -4068,16 +4070,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="c1"># 创建默认Qdrant存储</span>
     <span class="k">if</span> <span class="n">store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">store</span> <span class="o">=</span> <span class="n">_create_default_vector_store</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Created default Qdrant store with dimension </span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[RAG] Created default Qdrant store with dimension </span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="c1"># 预处理Markdown文本以获得更好的嵌入质量</span>
     <span class="n">processed_texts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
-        <span class="n">raw_content</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+        <span class="n">raw_content</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s2">"content"</span><span class="p">]</span>
         <span class="n">processed_content</span> <span class="o">=</span> <span class="n">_preprocess_markdown_for_embedding</span><span class="p">(</span><span class="n">raw_content</span><span class="p">)</span>
         <span class="n">processed_texts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">processed_content</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Embedding start: total_texts=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2"> batch_size=</span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[RAG] Embedding start: total_texts=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2"> batch_size=</span><span class="si">{</span><span class="n">batch_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="c1"># 批量编码</span>
     <span class="n">vecs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -4089,7 +4091,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
             <span class="c1"># 标准化为List[List[float]]格式</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">,</span> <span class="s2">&quot;tolist&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">,</span> <span class="s2">"tolist"</span><span class="p">):</span>
                     <span class="n">part_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_vecs</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">part_vecs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">part_vecs</span><span class="p">)]</span>
@@ -4097,13 +4099,13 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
             <span class="c1"># 处理向量格式和维度</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">part_vecs</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;tolist&quot;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">"tolist"</span><span class="p">):</span>
                         <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
                     <span class="n">v_norm</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
 
                     <span class="c1"># 维度检查和调整</span>
                     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span> <span class="o">!=</span> <span class="n">dimension</span><span class="p">:</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] 向量维度异常: 期望</span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">, 实际</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[WARNING] 向量维度异常: 期望</span><span class="si">{</span><span class="n">dimension</span><span class="si">}</span><span class="s2">, 实际</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
                         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dimension</span><span class="p">:</span>
                             <span class="n">v_norm</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dimension</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)))</span>
                         <span class="k">else</span><span class="p">:</span>
@@ -4111,15 +4113,15 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
                     <span class="n">vecs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v_norm</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] 向量转换失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, 使用零向量&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[WARNING] 向量转换失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">, 使用零向量"</span><span class="p">)</span>
                     <span class="n">vecs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dimension</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[WARNING] Batch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> encoding failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[WARNING] Batch </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> encoding failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="c1"># 实现重试机制</span>
             <span class="c1"># ... 重试逻辑 ...</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[RAG] Embedding progress: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">))</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[RAG] Embedding progress: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">batch_size</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">))</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">processed_texts</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 
 </details>
@@ -4142,16 +4144,16 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _prompt_mqe 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_prompt_mqe</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;使用LLM生成多样化的查询扩展&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""使用LLM生成多样化的查询扩展"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">...core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
         <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
         <span class="n">prompt</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;你是检索查询扩展助手。生成语义等价或互补的多样化查询。使用中文，简短，避免标点。&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;原始查询：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请给出</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">个不同表述的查询，每行一个。&quot;</span><span class="p">}</span>
+            <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"你是检索查询扩展助手。生成语义等价或互补的多样化查询。使用中文，简短，避免标点。"</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"原始查询：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请给出</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">个不同表述的查询，每行一个。"</span><span class="p">}</span>
         <span class="p">]</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;- </span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"- </span><span class="se">\t</span><span class="s2">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="p">(</span><span class="n">text</span> <span class="ow">or</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()]</span>
         <span class="n">outs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ln</span> <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">lines</span> <span class="k">if</span> <span class="n">ln</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">outs</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="n">query</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
@@ -4168,13 +4170,13 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>hello_agents/memory/rag/pipeline.py 中的 _prompt_hyde 函数</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_prompt_hyde</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成假设性文档用于改善检索&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""生成假设性文档用于改善检索"""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">from</span><span class="w"> </span><span class="nn">...core.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelloAgentsLLM</span>
         <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
         <span class="n">prompt</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;根据用户问题，先写一段可能的答案性段落，用于向量检索的查询文档（不要分析过程）。&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;问题：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请直接写一段中等长度、客观、包含关键术语的段落。&quot;</span><span class="p">}</span>
+            <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"根据用户问题，先写一段可能的答案性段落，用于向量检索的查询文档（不要分析过程）。"</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"问题：</span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="se">\n</span><span class="s2">请直接写一段中等长度、客观、包含关键术语的段落。"</span><span class="p">}</span>
         <span class="p">]</span>
         <span class="k">return</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
@@ -4198,7 +4200,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">search_vectors_expanded</span><span class="p">(</span>
     <span class="n">store</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
     <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
     <span class="n">rag_namespace</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">only_rag_data</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -4208,9 +4210,9 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="n">enable_hyde</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">candidate_pool_multiplier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Search with query expansion using unified embedding and Qdrant.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">query</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[]</span>
 
@@ -4240,12 +4242,12 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     <span class="n">per</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pool</span> <span class="o">//</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">expansions</span><span class="p">)))</span>
 
     <span class="c1"># 构建RAG数据过滤器</span>
-    <span class="n">where</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;memory_type&quot;</span><span class="p">:</span> <span class="s2">&quot;rag_chunk&quot;</span><span class="p">}</span>
+    <span class="n">where</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"memory_type"</span><span class="p">:</span> <span class="s2">"rag_chunk"</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">only_rag_data</span><span class="p">:</span>
-        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;is_rag_data&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;data_source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rag_pipeline&quot;</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">"is_rag_data"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">"data_source"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"rag_pipeline"</span>
     <span class="k">if</span> <span class="n">rag_namespace</span><span class="p">:</span>
-        <span class="n">where</span><span class="p">[</span><span class="s2">&quot;rag_namespace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rag_namespace</span>
+        <span class="n">where</span><span class="p">[</span><span class="s2">"rag_namespace"</span><span class="p">]</span> <span class="o">=</span> <span class="n">rag_namespace</span>
 
     <span class="c1"># 收集所有扩展查询的结果</span>
     <span class="n">agg</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4258,14 +4260,14 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
             <span class="n">where</span><span class="o">=</span><span class="n">where</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hits</span><span class="p">:</span>
-            <span class="n">mid</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;metadata&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_id&quot;</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">))</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">mid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">agg</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"metadata"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"memory_id"</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"id"</span><span class="p">))</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"score"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">mid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">agg</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="nb">float</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"score"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
                 <span class="n">agg</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span>
 
     <span class="c1"># 按分数排序返回</span>
     <span class="n">merged</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">agg</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="n">merged</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">merged</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"score"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">merged</span><span class="p">[:</span><span class="n">top_k</span><span class="p">]</span>
 </code></pre></div>
 
@@ -4299,27 +4301,27 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>chapter8/11_Q&A_Assistant.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PDFLearningAssistant</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;智能文档问答助手&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""智能文档问答助手"""</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default_user&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;初始化学习助手</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default_user"</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""初始化学习助手</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            user_id: 用户ID，用于隔离不同用户的数据</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user_id</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;session_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"session_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y%m</span><span class="si">%d</span><span class="s1">_%H%M%S'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
 
         <span class="c1"># 初始化工具</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span> <span class="o">=</span> <span class="n">MemoryTool</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span> <span class="o">=</span> <span class="n">RAGTool</span><span class="p">(</span><span class="n">rag_namespace</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;pdf_</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span> <span class="o">=</span> <span class="n">RAGTool</span><span class="p">(</span><span class="n">rag_namespace</span><span class="o">=</span><span class="sa">f</span><span class="s2">"pdf_</span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="c1"># 学习统计</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stats</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;session_start&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
-            <span class="s2">&quot;documents_loaded&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;questions_asked&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;concepts_learned&quot;</span><span class="p">:</span> <span class="mi">0</span>
+            <span class="s2">"session_start"</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="s2">"documents_loaded"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"questions_asked"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"concepts_learned"</span><span class="p">:</span> <span class="mi">0</span>
         <span class="p">}</span>
 
         <span class="c1"># 当前加载的文档</span>
@@ -4340,22 +4342,22 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>chapter8/11_Q&A_Assistant.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_document</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pdf_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;加载PDF文档到知识库</span>
+<span class="w">    </span><span class="sd">"""加载PDF文档到知识库</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        pdf_path: PDF文件路径</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Dict: 包含success和message的结果</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;文件不存在: </span><span class="si">{</span><span class="n">pdf_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"success"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"文件不存在: </span><span class="si">{</span><span class="n">pdf_path</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
 
     <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
     <span class="c1"># 【RAGTool】处理PDF: MarkItDown转换 → 智能分块 → 向量化</span>
     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;add_document&quot;</span><span class="p">,</span>
+        <span class="s2">"add_document"</span><span class="p">,</span>
         <span class="n">file_path</span><span class="o">=</span><span class="n">pdf_path</span><span class="p">,</span>
         <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
         <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span>
@@ -4363,29 +4365,29 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
     <span class="n">process_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
 
-    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"success"</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;documents_loaded&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"documents_loaded"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="c1"># 【MemoryTool】记录到学习记忆</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-            <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-            <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;加载了文档《</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_document</span><span class="si">}</span><span class="s2">》&quot;</span><span class="p">,</span>
-            <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+            <span class="s2">"add"</span><span class="p">,</span>
+            <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">"加载了文档《</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_document</span><span class="si">}</span><span class="s2">》"</span><span class="p">,</span>
+            <span class="n">memory_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
             <span class="n">importance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-            <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;document_loaded&quot;</span><span class="p">,</span>
+            <span class="n">event_type</span><span class="o">=</span><span class="s2">"document_loaded"</span><span class="p">,</span>
             <span class="n">session_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;加载成功！(耗时: </span><span class="si">{</span><span class="n">process_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">秒)&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;document&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span>
+            <span class="s2">"success"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"加载成功！(耗时: </span><span class="si">{</span><span class="n">process_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">秒)"</span><span class="p">,</span>
+            <span class="s2">"document"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span>
         <span class="p">}</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;加载失败: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;未知错误&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="s2">"success"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">"message"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"加载失败: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span><span class="w"> </span><span class="s1">'未知错误'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">}</span>
 </code></pre></div>
 
@@ -4393,7 +4395,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
 <p>我们通过一行代码就能完成PDF的处理：</p>
 <div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;add_document&quot;</span><span class="p">,</span>
+    <span class="s2">"add_document"</span><span class="p">,</span>
     <span class="n">file_path</span><span class="o">=</span><span class="n">pdf_path</span><span class="p">,</span>
     <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span>
@@ -4408,11 +4410,11 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 </ul>
 <p>文档加载成功后，我们使用 MemoryTool 记录到情景记忆：</p>
 <div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-    <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;加载了文档《</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_document</span><span class="si">}</span><span class="s2">》&quot;</span><span class="p">,</span>
-    <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+    <span class="s2">"add"</span><span class="p">,</span>
+    <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">"加载了文档《</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_document</span><span class="si">}</span><span class="s2">》"</span><span class="p">,</span>
+    <span class="n">memory_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
     <span class="n">importance</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-    <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;document_loaded&quot;</span><span class="p">,</span>
+    <span class="n">event_type</span><span class="o">=</span><span class="s2">"document_loaded"</span><span class="p">,</span>
     <span class="n">session_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -4426,7 +4428,7 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>chapter8/11_Q&A_Assistant.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">question</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">use_advanced_search</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;向文档提问</span>
+<span class="w">    </span><span class="sd">"""向文档提问</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        question: 用户问题</span>
@@ -4434,22 +4436,22 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
 <span class="sd">    Returns:</span>
 <span class="sd">        str: 答案</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;⚠️ 请先加载文档！&quot;</span>
+        <span class="k">return</span> <span class="s2">"⚠️ 请先加载文档！"</span>
 
     <span class="c1"># 【MemoryTool】记录问题到工作记忆</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-        <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;提问: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;working&quot;</span><span class="p">,</span>
+        <span class="s2">"add"</span><span class="p">,</span>
+        <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">"提问: </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">memory_type</span><span class="o">=</span><span class="s2">"working"</span><span class="p">,</span>
         <span class="n">importance</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
         <span class="n">session_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
     <span class="p">)</span>
 
     <span class="c1"># 【RAGTool】使用高级检索获取答案</span>
     <span class="n">answer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;ask&quot;</span><span class="p">,</span>
+        <span class="s2">"ask"</span><span class="p">,</span>
         <span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span>
         <span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
         <span class="n">enable_advanced_search</span><span class="o">=</span><span class="n">use_advanced_search</span><span class="p">,</span>
@@ -4459,15 +4461,15 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 
     <span class="c1"># 【MemoryTool】记录到情景记忆</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;add&quot;</span><span class="p">,</span>
-        <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;关于&#39;</span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">&#39;的学习&quot;</span><span class="p">,</span>
-        <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;episodic&quot;</span><span class="p">,</span>
+        <span class="s2">"add"</span><span class="p">,</span>
+        <span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">"关于'</span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">'的学习"</span><span class="p">,</span>
+        <span class="n">memory_type</span><span class="o">=</span><span class="s2">"episodic"</span><span class="p">,</span>
         <span class="n">importance</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
-        <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;qa_interaction&quot;</span><span class="p">,</span>
+        <span class="n">event_type</span><span class="o">=</span><span class="s2">"qa_interaction"</span><span class="p">,</span>
         <span class="n">session_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
     <span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;questions_asked&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"questions_asked"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">answer</span>
 </code></pre></div>
@@ -4478,10 +4480,10 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <p><strong>多查询扩展（MQE）</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 生成多样化查询</span>
 <span class="n">expanded_queries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_multi_queries</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
-<span class="c1"># 例如，对于&quot;什么是大语言模型？&quot;，可能生成：</span>
-<span class="c1"># - &quot;大语言模型的定义是什么？&quot;</span>
-<span class="c1"># - &quot;请解释一下大语言模型&quot;</span>
-<span class="c1"># - &quot;LLM是什么意思？&quot;</span>
+<span class="c1"># 例如，对于"什么是大语言模型？"，可能生成：</span>
+<span class="c1"># - "大语言模型的定义是什么？"</span>
+<span class="c1"># - "请解释一下大语言模型"</span>
+<span class="c1"># - "LLM是什么意思？"</span>
 </code></pre></div>
 <p>MQE 通过 LLM 生成语义等价但表述不同的查询，从多个角度理解用户意图，提升召回率 30%-50%。</p>
 <p><strong>假设文档嵌入（HyDE）</strong>：</p>
@@ -4496,64 +4498,64 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
 <summary>chapter8/11_Q&A_Assistant.py</summary>
 
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">add_note</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">concept</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;添加学习笔记&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""添加学习笔记"""</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+        <span class="s2">"add"</span><span class="p">,</span>
         <span class="n">content</span><span class="o">=</span><span class="n">content</span><span class="p">,</span>
-        <span class="n">memory_type</span><span class="o">=</span><span class="s2">&quot;semantic&quot;</span><span class="p">,</span>
+        <span class="n">memory_type</span><span class="o">=</span><span class="s2">"semantic"</span><span class="p">,</span>
         <span class="n">importance</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-        <span class="n">concept</span><span class="o">=</span><span class="n">concept</span> <span class="ow">or</span> <span class="s2">&quot;general&quot;</span><span class="p">,</span>
+        <span class="n">concept</span><span class="o">=</span><span class="n">concept</span> <span class="ow">or</span> <span class="s2">"general"</span><span class="p">,</span>
         <span class="n">session_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span>
     <span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;concepts_learned&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"concepts_learned"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">recall</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;回顾学习历程&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""回顾学习历程"""</span>
     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-        <span class="s2">&quot;search&quot;</span><span class="p">,</span>
+        <span class="s2">"search"</span><span class="p">,</span>
         <span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span>
         <span class="n">limit</span><span class="o">=</span><span class="n">limit</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取学习统计&quot;&quot;&quot;</span>
-    <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;session_start&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+<span class="w">    </span><span class="sd">"""获取学习统计"""</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"session_start"</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;会话时长&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">秒&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;加载文档&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;documents_loaded&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;提问次数&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;questions_asked&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;学习笔记&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;concepts_learned&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;当前文档&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span> <span class="ow">or</span> <span class="s2">&quot;未加载&quot;</span>
+        <span class="s2">"会话时长"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">秒"</span><span class="p">,</span>
+        <span class="s2">"加载文档"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"documents_loaded"</span><span class="p">],</span>
+        <span class="s2">"提问次数"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"questions_asked"</span><span class="p">],</span>
+        <span class="s2">"学习笔记"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"concepts_learned"</span><span class="p">],</span>
+        <span class="s2">"当前文档"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_document</span> <span class="ow">or</span> <span class="s2">"未加载"</span>
     <span class="p">}</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">save_to_file</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;生成学习报告&quot;&quot;&quot;</span>
-    <span class="n">memory_summary</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">rag_stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;stats&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">"""生成学习报告"""</span>
+    <span class="n">memory_summary</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"summary"</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">rag_stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rag_tool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"stats"</span><span class="p">)</span>
 
-    <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;session_start&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+    <span class="n">duration</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"session_start"</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
     <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;session_info&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;session_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span>
-            <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span>
-            <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;session_start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
-            <span class="s2">&quot;duration_seconds&quot;</span><span class="p">:</span> <span class="n">duration</span>
+        <span class="s2">"session_info"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"session_id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span>
+            <span class="s2">"user_id"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_id</span><span class="p">,</span>
+            <span class="s2">"start_time"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"session_start"</span><span class="p">]</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s2">"duration_seconds"</span><span class="p">:</span> <span class="n">duration</span>
         <span class="p">},</span>
-        <span class="s2">&quot;learning_metrics&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;documents_loaded&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;documents_loaded&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;questions_asked&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;questions_asked&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;concepts_learned&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;concepts_learned&quot;</span><span class="p">]</span>
+        <span class="s2">"learning_metrics"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"documents_loaded"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"documents_loaded"</span><span class="p">],</span>
+            <span class="s2">"questions_asked"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"questions_asked"</span><span class="p">],</span>
+            <span class="s2">"concepts_learned"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">[</span><span class="s2">"concepts_learned"</span><span class="p">]</span>
         <span class="p">},</span>
-        <span class="s2">&quot;memory_summary&quot;</span><span class="p">:</span> <span class="n">memory_summary</span><span class="p">,</span>
-        <span class="s2">&quot;rag_status&quot;</span><span class="p">:</span> <span class="n">rag_stats</span>
+        <span class="s2">"memory_summary"</span><span class="p">:</span> <span class="n">memory_summary</span><span class="p">,</span>
+        <span class="s2">"rag_status"</span><span class="p">:</span> <span class="n">rag_stats</span>
     <span class="p">}</span>
 
     <span class="k">if</span> <span class="n">save_to_file</span><span class="p">:</span>
-        <span class="n">report_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;learning_report_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">report_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">report_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"learning_report_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json"</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">report_file</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-        <span class="n">report</span><span class="p">[</span><span class="s2">&quot;report_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">report_file</span>
+        <span class="n">report</span><span class="p">[</span><span class="s2">"report_file"</span><span class="p">]</span> <span class="o">=</span> <span class="n">report_file</span>
 
     <span class="k">return</span> <span class="n">report</span>
 </code></pre></div>
@@ -4705,10 +4707,10 @@ INFO:httpx2:HTTP Request: POST https://api.deepseek.com/chat/completions &quot;H
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

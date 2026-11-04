@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../../assets/footer.css">
     
       <link rel="stylesheet" href="../../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../../assets/headings.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -571,6 +573,34 @@
     
   
     操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
   
 
     
@@ -2280,34 +2310,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
         
   
@@ -2641,11 +2643,11 @@
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">//1. 内部脚本</span>
-<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Hello JS&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s1">'Hello JS'</span><span class="p">);</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
   <span class="cm">&lt;!-- 2. 外部脚本 --&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;js/demo.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"js/demo.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 <h3 id="13">1.3 <strong>变量和常量</strong></h3>
@@ -2660,7 +2662,7 @@
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">//1. 声明变量</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
-<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">;</span>
 <span class="w">    </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 声明一个变量b=20</span>
@@ -2695,8 +2697,8 @@
 <span class="w">    </span><span class="c1">// alert(typeof true); //boolean</span>
 <span class="w">    </span><span class="c1">// alert(typeof false); //boolean</span>
 
-<span class="w">    </span><span class="c1">// alert(typeof &quot;Hello&quot;); //string</span>
-<span class="w">    </span><span class="c1">// alert(typeof &#39;JS&#39;); //string</span>
+<span class="w">    </span><span class="c1">// alert(typeof "Hello"); //string</span>
+<span class="w">    </span><span class="c1">// alert(typeof 'JS'); //string</span>
 <span class="w">    </span><span class="c1">// alert(typeof `JavaScript`); //string 反引号，在键盘Tab上方</span>
 
 <span class="w">    </span><span class="c1">// alert(typeof null); //null ? -&gt; object</span>
@@ -2705,11 +2707,11 @@
 <span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">a</span><span class="p">);</span><span class="w"> </span><span class="c1">//undefined</span>
 
 <span class="w">    </span><span class="c1">//2. 模板字符串 - 简化字符串拼接</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Tom'</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">18</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 模板字符串${}</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;我是&#39;</span><span class="o">+</span><span class="nx">name</span><span class="o">+</span><span class="s1">&#39;, 我今年&#39;</span><span class="o">+</span><span class="nx">age</span><span class="o">+</span><span class="s1">&#39;岁&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'我是'</span><span class="o">+</span><span class="nx">name</span><span class="o">+</span><span class="s1">', 我今年'</span><span class="o">+</span><span class="nx">age</span><span class="o">+</span><span class="s1">'岁'</span><span class="p">);</span>
 <span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`我是</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb">, 我今年</span><span class="si">${</span><span class="nx">age</span><span class="si">}</span><span class="sb">岁`</span><span class="p">);</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -2758,29 +2760,29 @@
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">//1. 自定义对象</span>
 <span class="w">    </span><span class="c1">// let user = {</span>
-<span class="w">    </span><span class="c1">//   name: &#39;Tom&#39;,</span>
+<span class="w">    </span><span class="c1">//   name: 'Tom',</span>
 <span class="w">    </span><span class="c1">//   age: 18,</span>
-<span class="w">    </span><span class="c1">//   gender: &#39;男&#39;,</span>
+<span class="w">    </span><span class="c1">//   gender: '男',</span>
 <span class="w">    </span><span class="c1">//   sing: function(){</span>
-<span class="w">    </span><span class="c1">//     alert(this.name + &#39;悠悠的唱着最炫的民族风~&#39;)</span>
+<span class="w">    </span><span class="c1">//     alert(this.name + '悠悠的唱着最炫的民族风~')</span>
 <span class="w">    </span><span class="c1">//   }</span>
 <span class="w">    </span><span class="c1">// }</span>
 
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span>
+<span class="w">     </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'Tom'</span><span class="p">,</span>
 <span class="w">     </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span>
-<span class="w">     </span><span class="nx">gender</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;男&#39;</span><span class="p">,</span>
+<span class="w">     </span><span class="nx">gender</span><span class="o">:</span><span class="w"> </span><span class="s1">'男'</span><span class="p">,</span>
 <span class="w">     </span><span class="nx">sing</span><span class="p">(){</span>
-<span class="w">       </span><span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;悠悠的唱着最炫的民族风~&#39;</span><span class="p">)</span>
+<span class="w">       </span><span class="nx">alert</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">'悠悠的唱着最炫的民族风~'</span><span class="p">)</span>
 <span class="w">     </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// let user = {</span>
-<span class="w">    </span><span class="c1">//   name: &#39;Tom&#39;,</span>
+<span class="w">    </span><span class="c1">//   name: 'Tom',</span>
 <span class="w">    </span><span class="c1">//   age: 18,</span>
-<span class="w">    </span><span class="c1">//   gender: &#39;男&#39;,</span>
+<span class="w">    </span><span class="c1">//   gender: '男',</span>
 <span class="w">    </span><span class="c1">//   sing: () =&gt; { //注意: 在箭头函数中, this并不指向当前对象 - 指向的是当前对象的父级 【不推荐】</span>
-<span class="w">    </span><span class="c1">//     alert(this + &#39;:悠悠的唱着最炫的民族风~&#39;)</span>
+<span class="w">    </span><span class="c1">//     alert(this + ':悠悠的唱着最炫的民族风~')</span>
 <span class="w">    </span><span class="c1">//   }</span>
 <span class="w">    </span><span class="c1">// }</span>
 
@@ -2802,13 +2804,13 @@
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">// JSON - JS 对象标记法</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;itcast&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'itcast'</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">gender</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;男&#39;</span>
+<span class="w">      </span><span class="nx">gender</span><span class="o">:</span><span class="w"> </span><span class="s1">'男'</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">person</span><span class="p">));</span><span class="w"> </span><span class="c1">// js 对象 --&gt; json 字符串</span>
 
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">personJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;name&quot;: &quot;heima&quot;, &quot;age&quot;: 18}&#39;</span><span class="p">;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">纯文本的</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="nx">字符串</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">personJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'{"name": "heima", "age": 18}'</span><span class="p">;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">纯文本的</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="nx">字符串</span>
 <span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">personJson</span><span class="p">).</span><span class="nx">name</span><span class="p">);</span><span class="c1">// json 字符串 --&gt; js 对象</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -2839,22 +2841,22 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;title1&quot;</span><span class="p">&gt;</span>11111<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">"title1"</span><span class="p">&gt;</span>11111<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>22222<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>33333<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
 
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">// 修改第一个h1标签中的文本内容</span>
 <span class="w">    </span><span class="c1">// 1. 获取DOM对象（获取单个h1标签）</span>
-<span class="w">    </span><span class="c1">// let h1 = document.querySelector(&#39;#title1&#39;);</span>
-<span class="w">    </span><span class="c1">// let h1 = document.querySelector(&#39;h1&#39;); // 获取第一个h1标签</span>
+<span class="w">    </span><span class="c1">// let h1 = document.querySelector('#title1');</span>
+<span class="w">    </span><span class="c1">// let h1 = document.querySelector('h1'); // 获取第一个h1标签</span>
 <span class="w">    </span><span class="c1">// 2. 调用DOM对象中属性或方法</span>
-<span class="w">    </span><span class="c1">// h1.innerHTML = &#39;修改后的文本内容&#39;;</span>
+<span class="w">    </span><span class="c1">// h1.innerHTML = '修改后的文本内容';</span>
 
 <span class="w">    </span><span class="c1">// 1. 获取DOM对象（获取多个h1标签）</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">hs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">);</span><span class="w"> </span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">hs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'h1'</span><span class="p">);</span><span class="w"> </span>
 <span class="w">    </span><span class="c1">// 2. 调用DOM对象中属性或方法</span>
-<span class="w">    </span><span class="nx">hs</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;修改后的文本内容&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">hs</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'修改后的文本内容'</span><span class="p">;</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -2869,24 +2871,24 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn1&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;点我一下试试1&quot;</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn2&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;点我一下试试2&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn1"</span> <span class="na">value</span><span class="o">=</span><span class="s">"点我一下试试1"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"button"</span> <span class="na">id</span><span class="o">=</span><span class="s">"btn2"</span> <span class="na">value</span><span class="o">=</span><span class="s">"点我一下试试2"</span><span class="p">&gt;</span>
 
   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">    </span><span class="c1">//事件监听 - addEventListener (可以多次绑定同一事件)</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btn1&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;试试就试试~~&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#btn1'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'试试就试试~~'</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btn1&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;试试就试试22~~&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#btn1'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'试试就试试22~~'</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 
 <span class="w">    </span><span class="c1">//事件绑定-早期写法 - onclick (如果多次绑定同一事件, 覆盖) - 了解</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btn2&#39;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;试试就试试~~&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#btn2'</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'试试就试试~~'</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#btn2&#39;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;试试就试试22~~&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#btn2'</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'试试就试试22~~'</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
@@ -2894,51 +2896,51 @@
 <p><strong>1.9.2 常见事件</strong></p>
 <p>为了优化代码的复用性，对 HTML 中的 JS 代码进行模块化，各个模块如下：</p>
 <p><code>./js/eventDemo.js</code>模块：</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">printLog</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./utils.js&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">printLog</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./utils.js"</span><span class="p">;</span>
 
 <span class="c1">//click: 鼠标点击事件</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#b2&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;我被点击了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#b2'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"我被点击了..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//mouseenter: 鼠标移入</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#last&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mouseenter&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;鼠标移入了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#last'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'mouseenter'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"鼠标移入了..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//mouseleave: 鼠标移出</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#last&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;mouseleave&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;鼠标移出了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#last'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'mouseleave'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"鼠标移出了..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//keydown: 某个键盘的键被按下</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#username&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;keydown&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;键盘被按下了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#username'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'keydown'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"键盘被按下了..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//keyup: 某个键盘的键被抬起</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#username&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;键盘被抬起了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#username'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'keyup'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"键盘被抬起了..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//blur: 失去焦点事件</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#age&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;失去焦点...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#age'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'blur'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"失去焦点..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//focus: 元素获得焦点</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#age&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;focus&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;获得焦点...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#age'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'focus'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"获得焦点..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//input: 用户输入时触发</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#age&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">&quot;用户输入时触发...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#age'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'input'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">printLog</span><span class="p">(</span><span class="s2">"用户输入时触发..."</span><span class="p">);</span>
 <span class="p">})</span>
 
 <span class="c1">//submit: 提交表单事件</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;submit&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;表单被提交了...&quot;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'submit'</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">"表单被提交了..."</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></div>
 <p><code>./js/utils.js</code>模块：</p>
@@ -2948,7 +2950,7 @@
 </code></pre></div>
 <p>在 HTML 文档中引入<code>./js/eventDemo.js</code>模块：</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./js/eventDemo.js&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"./js/eventDemo.js"</span> <span class="na">type</span><span class="o">=</span><span class="s">"module"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 
@@ -3066,10 +3068,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

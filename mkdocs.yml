@@ -67,7 +67,8 @@ nav:
     - 目录: course/index.md
     # - 示例: course/example.md
     - 计算机基础:
-        - 计算机网络: course/计算机基础/计算机网络/index.md
+        - 计算机网络基础: course/计算机基础/计算机网络基础/index.md
+        - 计算机网络-JavaGuide: course/计算机基础/计算机网络/index.md
         - 操作系统: course/计算机基础/操作系统/index.md
         - Linux: course/计算机基础/Linux/index.md
 #        - 数据结构: course/计算机基础/数据结构/index.md
@@ -133,9 +134,9 @@ nav:
         - Node.js: course/常用工具/Nodejs/index.md
         - Codex: course/常用工具/Codex/index.md
         - Claude Code: course/常用工具/Claude Code/index.md
+        - DeepSeek Harness: course/常用工具/DeepSeek Harness/index.md
         - Skill: course/常用工具/Skill/index.md
         - Docker: course/常用工具/Docker/index.md
-
         - Shell: course/常用工具/Shell/index.md
         - ROS: course/常用工具/ROS/index.md
 

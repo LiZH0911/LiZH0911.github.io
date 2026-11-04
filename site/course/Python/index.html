@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -58,6 +58,8 @@
       <link rel="stylesheet" href="../../assets/footer.css">
     
       <link rel="stylesheet" href="../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../assets/headings.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -571,6 +573,34 @@
     
   
     操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
   
 
     
@@ -3415,34 +3445,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Linux/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Linux
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
         
   
@@ -5068,7 +5070,7 @@
 </ul>
 <h3 id="32-str">3.2 <strong>字符串 str</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 定义字符串</span>
-<span class="n">字符串名称</span> <span class="o">=</span> <span class="s2">&quot;字符串内容&quot;</span>
+<span class="n">字符串名称</span> <span class="o">=</span> <span class="s2">"字符串内容"</span>
 </code></pre></div>
 <p><strong>特点</strong>：元素均为字符，元素有序（支持索引访问、切片）、可重复、不可修改</p>
 <p><strong>切片</strong>：同列表</p>
@@ -5158,33 +5160,33 @@
 <h3 id="x1">x.1 <strong>迭代</strong></h3>
 <p><strong>迭代</strong>：迭代（Iteration）就是“逐个取出”一个容器（比如列表、字符串）里的每一个元素，并对其执行相同操作的过程。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1、for 循环迭代字符串</span>
-<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s1">&#39;liangdianshui&#39;</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">char</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="s1">'liangdianshui'</span> <span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">char</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="c1"># 2、for 循环迭代 list</span>
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">num1</span> <span class="ow">in</span> <span class="n">list1</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">num1</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">num1</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="c1"># 3、for 循环也可以迭代 dict （字典）</span>
-<span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="s1">&#39;23&#39;</span><span class="p">,</span><span class="s1">&#39;sex&#39;</span><span class="p">:</span><span class="s1">&#39;男&#39;</span><span class="p">}</span>
+<span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'name'</span><span class="p">:</span><span class="s1">'两点水'</span><span class="p">,</span><span class="s1">'age'</span><span class="p">:</span><span class="s1">'23'</span><span class="p">,</span><span class="s1">'sex'</span><span class="p">:</span><span class="s1">'男'</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dict1</span> <span class="p">:</span>    <span class="c1"># 迭代 dict 中的 key</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">key</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">key</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dict1</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="p">:</span>   <span class="c1"># 迭代 dict 中的 value</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">value</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">value</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="c1"># 如果 list 里面一个元素有两个变量，也是很容易迭代的</span>
-<span class="k">for</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="p">]</span> <span class="p">:</span>
+<span class="k">for</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">'a'</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s1">'b'</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">'c'</span><span class="p">)</span> <span class="p">]</span> <span class="p">:</span>
     <span class="nb">print</span> <span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="x2">x.2 <strong>迭代器</strong></h3>
@@ -5193,7 +5195,7 @@
 <p><strong>迭代器的创建</strong>：字符串、列表或元组对象都可用于创建迭代器</p>
 <p><strong>迭代器的遍历</strong>：可以使用常规 for 语句进行遍历，也可以使用 <code>next()</code> 函数来遍历。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1、字符创创建迭代器对象</span>
-<span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;liangdianshui&#39;</span>
+<span class="n">str1</span> <span class="o">=</span> <span class="s1">'liangdianshui'</span>
 <span class="n">iter1</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span>
 
 <span class="c1"># 2、list对象创建迭代器</span>
@@ -5206,9 +5208,9 @@
 
 <span class="c1"># for 循环遍历迭代器对象</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">iter1</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">------------------------'</span><span class="p">)</span>
 
 <span class="c1"># next() 函数遍历迭代器</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -5238,11 +5240,11 @@
 <p>生成器和函数的执行流程不一样。函数是顺序执行，遇到 return 语句或者最后一行函数语句就返回。</p>
 <p>而生成器在每次调用 next() 的时候执行，遇到 yield 语句返回，再次执行时从上次返回的 yield 语句处继续执行。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_generator</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"开始"</span><span class="p">)</span>
     <span class="k">yield</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;继续&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"继续"</span><span class="p">)</span>
     <span class="k">yield</span> <span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;结束&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"结束"</span><span class="p">)</span>
     <span class="k">yield</span> <span class="mi">3</span>
 
 <span class="c1"># 调用函数不会执行代码，而是返回一个生成器对象</span>
@@ -5265,19 +5267,19 @@
 
 <span class="c1"># 引用函数</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fibon</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="x5">x.5 <strong>综合例子</strong></h3>
 <p><strong>反向迭代</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">num1</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">list1</span><span class="p">)</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="s1">' '</span><span class="p">)</span>
 </code></pre></div>
 <p>注意：反向迭代只有当<strong>对象的大小可预先确定</strong>或者<strong>对象实现了 <code>__reversed__()</code> 的特殊方法</strong>时才能生效。如果两者都不符合，那你必须先将对象转换为一个列表。</p>
 <p><strong>同时迭代多个序列</strong></p>
 <p>为了同时迭代多个序列，使用 <code>zip()</code> 函数</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># -*- coding: UTF-8 -*-</span>
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;laingdianshui&#39;</span><span class="p">,</span> <span class="s1">&#39;twowater&#39;</span><span class="p">,</span> <span class="s1">&#39;两点水&#39;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'laingdianshui'</span><span class="p">,</span> <span class="s1">'twowater'</span><span class="p">,</span> <span class="s1">'两点水'</span><span class="p">]</span>
 <span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">ages</span><span class="p">):</span>
      <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">age</span><span class="p">)</span>
@@ -5430,23 +5432,23 @@
 <p><strong>异常捕获</strong>：使用 try-except 语句捕获异常</p>
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="c1"># 可能抛出异常的代码</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;请输入数字: &quot;</span><span class="p">))</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">"请输入数字: "</span><span class="p">))</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">num</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="c1"># 捕获特定类型的异常</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：不能除以零！&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"错误：不能除以零！"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;错误：请输入有效的数字！&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"错误：请输入有效的数字！"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="c1"># 捕获所有其他未知异常，并打印错误信息</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发生了未知错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"发生了未知错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># 如果没有发生异常，执行此块（可选）</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;计算成功！&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"计算成功！"</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="c1"># 无论是否发生异常，都会执行（通常用于释放资源，如关闭文件）</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;程序执行结束。&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"程序执行结束。"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="_8">八、面向对象高级</h2>
 <h3 id="81">8.1 <strong>封装</strong></h3>
@@ -5461,10 +5463,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">attr2</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">method1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent method1&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Parent method1"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">method2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent method2&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Parent method2"</span><span class="p">)</span>
 <span class="c1"># 定义子类</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">ChildClass</span><span class="p">(</span><span class="n">ParentClass</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">,</span> <span class="n">attr3</span><span class="p">):</span>
@@ -5472,7 +5474,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">attr3</span> <span class="o">=</span> <span class="n">attr3</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">method3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Child method3&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Child method3"</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>重写</strong>：重写是指子类继承父类后，如果父类中的方法不满足需求，可以在子类中重新定义父类中已有的方法（方法名相同），从而用子类的实现替换父类的实现。</p>
 <blockquote>
@@ -5493,11 +5495,11 @@
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;汪汪&quot;</span>
+        <span class="k">return</span> <span class="s2">"汪汪"</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">speak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;喵喵&quot;</span>
+        <span class="k">return</span> <span class="s2">"喵喵"</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">animal_talk</span><span class="p">(</span><span class="n">animal</span><span class="p">:</span> <span class="n">Animal</span><span class="p">):</span>  <span class="c1"># 传入任何Animal的子类</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">animal</span><span class="o">.</span><span class="n">speak</span><span class="p">())</span>
@@ -5509,11 +5511,11 @@
 <p><strong>鸭子类型</strong>：鸭子类型是一种动态类型，它关注对象的属性和方法，而不关注对象的类型。</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Duck</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;呱呱呱&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"呱呱呱"</span><span class="p">)</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">quack</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;我在模仿鸭子叫！&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"我在模仿鸭子叫！"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">make_it_quack</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
     <span class="c1"># 我不关心 thing 是 Duck 还是 Person，我只关心它能不能 quack()</span>
@@ -5549,8 +5551,8 @@
 <p><strong>DataFrame</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+    <span class="s1">'A'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">'B'</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
@@ -5562,9 +5564,9 @@
 <p><strong>数据读取和写入</strong>：基于 Pandas 中提供的 API，可以很方便地读取和写入各类数据文件，如 CSV、Excel、数据库、网络数据等。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 数据读取，以 csv 文件为例</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data.csv'</span><span class="p">)</span>
 <span class="c1"># 数据写入</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">'data.csv'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>数据查看</strong>：</p>
 <ul>
@@ -5601,37 +5603,37 @@
 <span class="c1"># 2. 重复值处理</span>
 <span class="c1"># 检查重复值</span>
 <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span> <span class="c1"># 检查重复值，返回布尔值矩阵，True表示重复值，False表示非重复值</span>
-<span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">])</span> <span class="c1"># 检查指定列的重复值</span>
+<span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'列1'</span><span class="p">,</span> <span class="s1">'列2'</span><span class="p">])</span> <span class="c1"># 检查指定列的重复值</span>
 <span class="c1"># 删除重复值</span>
-<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>  <span class="c1"># 删除重复值，保留第一个</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">'列1'</span><span class="p">,</span> <span class="s1">'列2'</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">'first'</span><span class="p">)</span>  <span class="c1"># 删除重复值，保留第一个</span>
 
 <span class="c1"># 3. 异常值处理</span>
 <span class="c1"># 检查异常值</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span> <span class="c1"># 检查异常值</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span> <span class="c1"># 检查异常值</span>
 <span class="c1"># 删除异常值</span>
-<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">值1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">值2</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 <span class="c1"># 修复异常值，根据具体需求灵活处理</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span> <span class="c1"># 取绝对值</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span> <span class="c1"># 取绝对值</span>
 
 <span class="c1"># 4. 数据格式统一</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">数据类型</span><span class="p">)</span> <span class="c1"># 将列数据类型转换为指定数据类型</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># 将列数据转换为小写</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># 将列数据转换为大写</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="c1"># 将列数据转换为首字母大写</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># 将列数据两端的空格去掉</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">旧值</span><span class="p">,</span> <span class="n">新值</span><span class="p">)</span> <span class="c1"># 将列数据中的旧值替换为新值</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">分隔符</span><span class="p">)</span> <span class="c1"># 将列数据按分隔符分割成列表</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">数据类型</span><span class="p">)</span> <span class="c1"># 将列数据类型转换为指定数据类型</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># 将列数据转换为小写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># 将列数据转换为大写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="c1"># 将列数据转换为首字母大写</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1"># 将列数据两端的空格去掉</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">旧值</span><span class="p">,</span> <span class="n">新值</span><span class="p">)</span> <span class="c1"># 将列数据中的旧值替换为新值</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'列名'</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">分隔符</span><span class="p">)</span> <span class="c1"># 将列数据按分隔符分割成列表</span>
 </code></pre></div>
 <p><strong>数据排序</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 数据排序</span>
-<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;列名&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 按列名排序，ascending=False表示降序</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">'列名'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># 按列名排序，ascending=False表示降序</span>
 <span class="c1"># 多列排序</span>
-<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;列1&#39;</span><span class="p">,</span> <span class="s1">&#39;列2&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span> <span class="c1"># 按多列排序，ascending=[True, False]表示按列1升序，列2降序</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">'列1'</span><span class="p">,</span> <span class="s1">'列2'</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span> <span class="c1"># 按多列排序，ascending=[True, False]表示按列1升序，列2降序</span>
 </code></pre></div>
 <p><strong>数据分组</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 分组统计：根据‘分组列名’分组，计算每个类别 某个统计列名的统计值</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;分组列名&#39;</span><span class="p">)</span><span class="o">.</span><span class="p">[</span><span class="s1">&#39;统计列名&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;产品类别&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;销售量&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;销售额&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'分组列名'</span><span class="p">)</span><span class="o">.</span><span class="p">[</span><span class="s1">'统计列名'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> 
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'产品类别'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'销售量'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'销售额'</span><span class="p">:</span> <span class="s1">'sum'</span><span class="p">})</span> 
 </code></pre></div>
 <h3 id="93-matplotlib">9.3 <strong>Matplotlib</strong></h3>
 <p><strong>Matplotlib 介绍</strong>：Matplotlib 是一个功能强大的数据可视化开源 Python 库，也是 Python 中使用的最多的图形绘图库，可以创建静态、动态、交互式的图表。</p>
@@ -5722,12 +5724,12 @@
 <span class="k">class</span><span class="w"> </span><span class="nc">MyThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, @number: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, @number: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start main threading&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Start main threading"</span><span class="p">)</span>
 
     <span class="c1"># 创建三个线程</span>
     <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyThread</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
@@ -5735,10 +5737,10 @@
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
         <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End Main threading&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"End Main threading"</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <p>运行结果：</p>
@@ -5774,12 +5776,12 @@ thread Thread-1, @number: 4
 <span class="k">class</span><span class="w"> </span><span class="nc">MyThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, @number: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">, @number: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start main threading&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Start main threading"</span><span class="p">)</span>
 
     <span class="c1"># 创建三个线程</span>
     <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyThread</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
@@ -5791,10 +5793,10 @@ thread Thread-1, @number: 4
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
         <span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End Main threading&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"End Main threading"</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <p>运行结果：</p>
@@ -5855,16 +5857,16 @@ End Main threading
         <span class="c1"># 确保先运行Seeker中的方法</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 我这两件商品一起买，可以便宜点吗&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 我这两件商品一起买，可以便宜点吗'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 我已经提交订单了，你修改下价格&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 我已经提交订单了，你修改下价格'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 收到，我支付成功了&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 收到，我支付成功了'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 等待收货&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 等待收货'</span><span class="p">)</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Producer</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
@@ -5877,20 +5879,20 @@ End Main threading
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
         <span class="c1"># 释放对琐的占用，同时线程挂起在这里，直到被 notify 并重新占有琐。</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 可以的，你提交订单吧&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 可以的，你提交订单吧'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 好了，已经修改了&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 好了，已经修改了'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 嗯，收款成功，马上给你发货&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 嗯，收款成功，马上给你发货'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cond</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;: 发货商品&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">': 发货商品'</span><span class="p">)</span>
 
 
 <span class="n">cond</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Condition</span><span class="p">()</span>
-<span class="n">consumer</span> <span class="o">=</span> <span class="n">Consumer</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;买家（两点水）&#39;</span><span class="p">)</span>
-<span class="n">producer</span> <span class="o">=</span> <span class="n">Producer</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="s1">&#39;卖家（三点水）&#39;</span><span class="p">)</span>
+<span class="n">consumer</span> <span class="o">=</span> <span class="n">Consumer</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="s1">'买家（两点水）'</span><span class="p">)</span>
+<span class="n">producer</span> <span class="o">=</span> <span class="n">Producer</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="s1">'卖家（三点水）'</span><span class="p">)</span>
 <span class="n">consumer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">producer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
@@ -5914,8 +5916,8 @@ End Main threading
 
 <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="c1"># 写数据进程</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="s1">&#39;三点水&#39;</span><span class="p">,</span> <span class="s1">&#39;四点水&#39;</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;写进 Queue 的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'两点水'</span><span class="p">,</span> <span class="s1">'三点水'</span><span class="p">,</span> <span class="s1">'四点水'</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'写进 Queue 的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># 写完放一个结束标记</span>
 
@@ -5926,10 +5928,10 @@ End Main threading
         <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># 读到结束标记就退出</span>
             <span class="k">break</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;从 Queue 读取的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'从 Queue 读取的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
     <span class="n">t1</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
     <span class="n">t2</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">read</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
@@ -6013,15 +6015,15 @@ End Main threading
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;running...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"running..."</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">t</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>      <span class="c1"># 主线程退出时，这个线程自动结束</span>
 <span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;main done&quot;</span><span class="p">)</span>   <span class="c1"># 主线程结束后，程序直接退出，不会卡在 worker</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"main done"</span><span class="p">)</span>   <span class="c1"># 主线程结束后，程序直接退出，不会卡在 worker</span>
 </code></pre></div>
 <p>总结：</p>
 <ul>
@@ -6049,24 +6051,24 @@ End Main threading
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;【start】&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'【start】'</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;【end】&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span> <span class="o">+</span> <span class="s1">'【end】'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">p1</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;两点水1&#39;</span><span class="p">))</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;两点水2&#39;</span><span class="p">))</span>
-    <span class="n">p3</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;两点水3&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'两点水1'</span><span class="p">))</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">'两点水2'</span><span class="p">))</span>
+    <span class="n">p3</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">'两点水3'</span><span class="p">))</span>
 
     <span class="n">p1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">p2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">p3</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of CPU is:&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"The number of CPU is:"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()))</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">active_children</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;child   p.name:&quot;</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">p.id&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">pid</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;END!!!!!!!!!!!!!!!!!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"child   p.name:"</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\t</span><span class="s2">p.id"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">pid</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"END!!!!!!!!!!!!!!!!!"</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果：</p>
 <div class="highlight"><pre><span></span><code>两点水1【start】
@@ -6097,12 +6099,12 @@ END!!!!!!!!!!!!!!!!!
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
         <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;当前时间: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"当前时间: </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
             <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">ClockProcess</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
@@ -6122,16 +6124,16 @@ END!!!!!!!!!!!!!!!!!
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;工作开始时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'工作开始时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;工作结果时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'工作结果时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
     <span class="n">p</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;【EMD】&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'【EMD】'</span><span class="p">)</span>
 </code></pre></div>
 <p>输出结果：</p>
 <div class="highlight"><pre><span></span><code>【EMD】
@@ -6143,17 +6145,17 @@ END!!!!!!!!!!!!!!!!!
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">(</span><span class="n">interval</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;工作开始时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'工作开始时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;工作结果时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'工作结果时间：</span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
     <span class="n">p</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">p</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;【EMD】&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'【EMD】'</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果：</p>
 <div class="highlight"><pre><span></span><code>工作开始时间：Thu Sep 10 17:08:27 2026
@@ -6170,22 +6172,22 @@ END!!!!!!!!!!!!!!!!!
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">long_time_task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;进程的名称：</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> ；进程的PID: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1"> &#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'进程的名称：</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> ；进程的PID: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1"> '</span><span class="p">)</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;进程 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 运行了 </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'进程 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 运行了 </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">}</span><span class="s1"> 秒'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;主进程的 PID：</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'主进程的 PID：</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
         <span class="n">p</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">long_time_task</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,))</span>
     <span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="c1"># 等待所有子进程结束后在关闭主进程</span>
     <span class="n">p</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;【End】&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'【End】'</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果如下：</p>
 <div class="highlight"><pre><span></span><code>主进程的 PID：41680
@@ -6228,22 +6230,22 @@ END!!!!!!!!!!!!!!!!!
 
 <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="c1"># 写数据进程</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;写进程的PID:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="s1">&#39;三点水&#39;</span><span class="p">,</span> <span class="s1">&#39;四点水&#39;</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;写进 Queue 的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'写进程的PID:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'两点水'</span><span class="p">,</span> <span class="s1">'三点水'</span><span class="p">,</span> <span class="s1">'四点水'</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'写进 Queue 的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
         <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">())</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
     <span class="c1"># 读取数据进程</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;读进程的PID:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'读进程的PID:</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;从 Queue 读取的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'从 Queue 读取的值为：</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="c1"># 父进程创建 Queue，并传给各个子进程</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
     <span class="n">pw</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">write</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">q</span><span class="p">,))</span>
@@ -6274,12 +6276,12 @@ END!!!!!!!!!!!!!!!!!
 <p>下面通过实例，一步一步来初步认识正则表达式。</p>
 <p>比如在一段字符串中寻找是否含有某个字符或某些字符，通常我们使用内置函数来实现，如下：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 设定一个常量</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;两点水|twowater|liangdianshui|草根程序员|ReadingWithU&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'两点水|twowater|liangdianshui|草根程序员|ReadingWithU'</span>
 
 <span class="c1"># 判断是否有 “两点水” 这个字符串，使用 PY 自带函数</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;是否含有“两点水”这个字符串：</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;两点水&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;是否含有“两点水”这个字符串：</span><span class="si">{</span><span class="s2">&quot;两点水&quot;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'是否含有“两点水”这个字符串：</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">"两点水"</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'是否含有“两点水”这个字符串：</span><span class="si">{</span><span class="s2">"两点水"</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">a</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果如下：</p>
 <div class="highlight"><pre><span></span><code>是否含有“两点水”这个字符串：True
@@ -6293,20 +6295,20 @@ END!!!!!!!!!!!!!!!!!
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="c1"># 设定一个常量</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;两点水|twowater|liangdianshui|草根程序员|ReadingWithU&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'两点水|twowater|liangdianshui|草根程序员|ReadingWithU'</span>
 
 <span class="c1"># 正则表达式</span>
 
-<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'两点水'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">findall</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a 含有“两点水”这个字符串&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'a 含有“两点水”这个字符串'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a 不含有“两点水”这个字符串&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'a 不含有“两点水”这个字符串'</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;两点水&#39;]
+<div class="highlight"><pre><span></span><code>['两点水']
 a 含有“两点水”这个字符串
 </code></pre></div>
 <p>从输出结果可以看到，可以实现和内置函数一样的功能。</p>
@@ -6318,16 +6320,16 @@ a 含有“两点水”这个字符串
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="c1"># 设定一个常量</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;两点水|twowater|liangdianshui|草根程序员|ReadingWithU&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'两点水|twowater|liangdianshui|草根程序员|ReadingWithU'</span>
 
 <span class="c1"># 选择 a 里面的所有小写英文字母</span>
 
-<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[a-z]&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[a-z]'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">re_findall</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;t&#39;, &#39;w&#39;, &#39;o&#39;, &#39;w&#39;, &#39;a&#39;, &#39;t&#39;, &#39;e&#39;, &#39;r&#39;, &#39;l&#39;, &#39;i&#39;, &#39;a&#39;, &#39;n&#39;, &#39;g&#39;, &#39;d&#39;, &#39;i&#39;, &#39;a&#39;, &#39;n&#39;, &#39;s&#39;, &#39;h&#39;, &#39;u&#39;, &#39;i&#39;, &#39;e&#39;, &#39;a&#39;, &#39;d&#39;, &#39;i&#39;, &#39;n&#39;, &#39;g&#39;, &#39;i&#39;, &#39;t&#39;, &#39;h&#39;]
+<div class="highlight"><pre><span></span><code>['t', 'w', 'o', 'w', 'a', 't', 'e', 'r', 'l', 'i', 'a', 'n', 'g', 'd', 'i', 'a', 'n', 's', 'h', 'u', 'i', 'e', 'a', 'd', 'i', 'n', 'g', 'i', 't', 'h']
 </code></pre></div>
 <p>这样我们就拿到了字符串中的所有小写字母了。</p>
 <h3 id="x2_2">x.2 <strong>字符集</strong></h3>
@@ -6341,57 +6343,57 @@ a 含有“两点水”这个字符串
 </ul>
 <p>下面看一个例子：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;uav,ubv,ucv,uwv,uzv,ucv,uov&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'uav,ubv,ucv,uwv,uzv,ucv,uov'</span>
 
 <span class="c1"># 字符集</span>
 
 <span class="c1"># 取 u 和 v 中间是 a 或 b 或 c 的字符</span>
-<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;u[abc]v&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'u[abc]v'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall</span><span class="p">)</span>
 <span class="c1"># 如果是连续的字母，数字可以使用 - 来代替</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;u[a-c]v&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'u[a-c]v'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 
 <span class="c1"># 取 u 和 v 中间不是 a 或 b 或 c 的字符</span>
-<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;u[^abc]v&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'u[^abc]v'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re_findall</span><span class="p">)</span>
 </code></pre></div>
 <p>输出结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;uav&#39;, &#39;ubv&#39;, &#39;ucv&#39;, &#39;ucv&#39;]
-[&#39;uav&#39;, &#39;ubv&#39;, &#39;ucv&#39;, &#39;ucv&#39;]
-[&#39;uwv&#39;, &#39;uzv&#39;, &#39;uov&#39;]
+<div class="highlight"><pre><span></span><code>['uav', 'ubv', 'ucv', 'ucv']
+['uav', 'ubv', 'ucv', 'ucv']
+['uwv', 'uzv', 'uov']
 </code></pre></div>
 <p>正则表达式本身就定义了一些规则，比如 <code>\d</code> 匹配所有数字字符,其实它是等价于 <code>[0-9]</code>，下面也写了个例子，通过字符集的形式解释了这些特殊字符</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;uav_ubv_ucv_uwv_uzv_ucv_uov&amp;123-456-789&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'uav_ubv_ucv_uwv_uzv_ucv_uov&amp;123-456-789'</span>
 
 <span class="c1"># 概括字符集</span>
 
 <span class="c1"># \d 相当于 [0-9] ,匹配所有数字字符</span>
 <span class="c1"># \D 相当于 [^0-9] ， 匹配所有非数字字符</span>
-<span class="n">findall1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;\d&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">findall2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[0-9]&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">findall3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;\D&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">findall4</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[^0-9]&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'\d'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[0-9]'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'\D'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall4</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[^0-9]'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall3</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall4</span><span class="p">)</span>
 
 <span class="c1"># \w 匹配包括下划线的任何单词字符，等价于 [A-Za-z0-9_]</span>
-<span class="n">findall5</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;\w&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">findall6</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[A-Za-z0-9_]&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall5</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'\w'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall6</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[A-Za-z0-9_]'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall6</span><span class="p">)</span>
 </code></pre></div>
 <p>输出结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]
-[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]
-[&#39;u&#39;, &#39;a&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;b&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;w&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;z&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;o&#39;, &#39;v&#39;, &#39;&amp;&#39;, &#39;-&#39;, &#39;-&#39;]
-[&#39;u&#39;, &#39;a&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;b&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;w&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;z&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;o&#39;, &#39;v&#39;, &#39;&amp;&#39;, &#39;-&#39;, &#39;-&#39;]
-[&#39;u&#39;, &#39;a&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;b&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;w&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;z&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;o&#39;, &#39;v&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]
-[&#39;u&#39;, &#39;a&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;b&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;w&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;z&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;c&#39;, &#39;v&#39;, &#39;_&#39;, &#39;u&#39;, &#39;o&#39;, &#39;v&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;]
+<div class="highlight"><pre><span></span><code>['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&amp;', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&amp;', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 </code></pre></div>
 <h3 id="x3_2">x.3 <strong>数量词</strong></h3>
 <p><strong>为什么要用数量词</strong>：当要匹配几十上百长度的字符时，一个一个的写太麻烦，所以就出现了数量词。</p>
@@ -6401,28 +6403,28 @@ a 含有“两点水”这个字符串
 <p>下面看一个实例，匹配出字符串中 4 到 7 个字母的英文</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;java*&amp;39android##@@python&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'java*&amp;39android##@@python'</span>
 
 <span class="c1"># 数量词</span>
 
-<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[a-z]{4,7}&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[a-z]{4,7}'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">findall</span><span class="p">)</span>
 </code></pre></div>
 <p>输出结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;java&#39;, &#39;android&#39;, &#39;python&#39;]
+<div class="highlight"><pre><span></span><code>['java', 'android', 'python']
 </code></pre></div>
 <p>注意，上面例子是贪婪模式，它的宗旨是读尽可能多的字符</p>
 <p>如果要使用懒惰模式，则加一个 <code>?</code> ，上面的例子修改如下：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;java*&amp;39android##@@python&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'java*&amp;39android##@@python'</span>
 
 <span class="c1"># 非贪婪</span>
-<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">&#39;[a-z]{4,7}?&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">re_findall</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[a-z]{4,7}?'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">re_findall</span><span class="p">)</span>
 </code></pre></div>
 <p>输出结果：</p>
-<div class="highlight"><pre><span></span><code>[&#39;java&#39;, &#39;andr&#39;, &#39;pyth&#39;]
+<div class="highlight"><pre><span></span><code>['java', 'andr', 'pyth']
 </code></pre></div>
 <p>除了<code>{min, max}</code>，还有一些特殊字符也是可以表示数量的，比如：</p>
 <ul>
@@ -6550,14 +6552,14 @@ a 含有“两点水”这个字符串
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Python*Android*Java-888&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="s1">'Python*Android*Java-888'</span>
 
 <span class="c1"># 把字符串中的 * 字符替换成 &amp; 字符</span>
-<span class="n">sub1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\*&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">sub1</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'\*'</span><span class="p">,</span> <span class="s1">'&amp;'</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sub1</span><span class="p">)</span>
 
 <span class="c1"># 把字符串中的第一个 * 字符替换成 &amp; 字符</span>
-<span class="n">sub2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;\*&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">sub2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'\*'</span><span class="p">,</span> <span class="s1">'&amp;'</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sub2</span><span class="p">)</span>
 
 
@@ -6566,14 +6568,14 @@ a 含有“两点水”这个字符串
 <span class="c1"># 1、先定义一个函数</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">convert</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="n">group</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">&#39;*&#39;</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;&amp;&#39;</span>
-    <span class="k">elif</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s1">&#39;|&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">'*'</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'&amp;'</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">group</span> <span class="o">==</span> <span class="s1">'-'</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">'|'</span>
 
 
 <span class="c1"># 第二个参数，要替换的字符可以为一个函数</span>
-<span class="n">sub3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;[\*-]&#39;</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="n">sub3</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'[\*-]'</span><span class="p">,</span> <span class="n">convert</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sub3</span><span class="p">)</span>
 </code></pre></div>
 <p>输出的结果：</p>
@@ -6614,20 +6616,20 @@ Python&amp;Android&amp;Java|888
 <p><code>re.search</code> 从左到右扫描整个字符串，找到第一个匹配正则表达式的位置，返回 <code>Match</code> 对象；找不到返回 <code>None</code>。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;xabc&quot;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"xabc"</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>    <span class="c1"># None</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>   <span class="c1"># &lt;re.Match ... match=&#39;abc&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">'abc'</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>    <span class="c1"># None</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'abc'</span><span class="p">,</span> <span class="n">text</span><span class="p">))</span>   <span class="c1"># &lt;re.Match ... match='abc'&gt;</span>
 </code></pre></div>
 <p><code>re.search</code> 配合捕获组使用：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d</span><span class="si">{4}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="s2">&quot;日期是 2024-01-15 哦&quot;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\d</span><span class="si">{4}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)-(\d</span><span class="si">{2}</span><span class="s1">)'</span><span class="p">,</span> <span class="s2">"日期是 2024-01-15 哦"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>    <span class="c1"># 2024-01-15</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>   <span class="c1"># 2024</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>   <span class="c1"># 01</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>   <span class="c1"># 15</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>   <span class="c1"># (&#39;2024&#39;, &#39;01&#39;, &#39;15&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">())</span>   <span class="c1"># ('2024', '01', '15')</span>
 </code></pre></div>
 <p>最后，正则表达式是非常厉害的工具，通常可以用来解决字符串内置函数无法解决的问题，而且正则表达式大部分语言都是有的。</p>
 <p>特别是在 Python 的爬虫和数据分析应用中离不开正则表达式。</p>
@@ -6645,7 +6647,7 @@ Python&amp;Android&amp;Java|888
         <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>       <span class="c1"># 引用外层变量 x</span>
     <span class="k">return</span> <span class="n">inner</span>           <span class="c1"># 返回内层函数</span>
 
-<span class="n">add5</span> <span class="o">=</span> <span class="n">outer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>            <span class="c1"># x = 5 被&quot;记住&quot;</span>
+<span class="n">add5</span> <span class="o">=</span> <span class="n">outer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>            <span class="c1"># x = 5 被"记住"</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">add5</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>             <span class="c1"># 8</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">add5</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>            <span class="c1"># 15</span>
 </code></pre></div>
@@ -6710,16 +6712,16 @@ Python&amp;Android&amp;Java|888
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">punch</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;昵称：两点水  部门：做鸭事业部 上班打卡成功&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'昵称：两点水  部门：做鸭事业部 上班打卡成功'</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">add_time</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">'%Y-%m-</span><span class="si">%d</span><span class="s1">'</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())))</span>
     <span class="n">func</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">holiday</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;天气太冷，今天放假&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'天气太冷，今天放假'</span><span class="p">)</span>
 
 
 <span class="n">add_time</span><span class="p">(</span><span class="n">punch</span><span class="p">)</span>
@@ -6736,7 +6738,7 @@ Python&amp;Android&amp;Java|888
 <p>装饰器结合了<strong>函数式编程的思想</strong>与<strong>闭包</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">logger</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>              <span class="c1"># 接收一个函数</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>   <span class="c1"># 内层函数</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;调用 </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"调用 </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># 调用原函数</span>
     <span class="k">return</span> <span class="n">wrapper</span>             <span class="c1"># 返回新函数</span>
 
@@ -6766,11 +6768,11 @@ Python&amp;Android&amp;Java|888
 <p><strong>自动补全</strong></p>
 <p>让我们从一个简单的例子开始：</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_full_name</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">):</span>
-    <span class="n">full_name</span> <span class="o">=</span> <span class="n">first_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">last_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+    <span class="n">full_name</span> <span class="o">=</span> <span class="n">first_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">last_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">full_name</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="n">get_full_name</span><span class="p">(</span><span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="s2">&quot;doe&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_full_name</span><span class="p">(</span><span class="s2">"john"</span><span class="p">,</span> <span class="s2">"doe"</span><span class="p">))</span>
 </code></pre></div>
 <p>这个函数做了下面这些事情：</p>
 <ul>
@@ -6824,9 +6826,9 @@ Python&amp;Android&amp;Java|888
 <p>你可以声明一个值的类型是某种类型（比如 str），但它也可能是 None。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">say_hi</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hey </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Hey </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="xpathlib">X、pathlib 路径处理</h2>
 <h3 id="x1-path">x.1 <strong>第一个 Path</strong></h3>
@@ -6834,15 +6836,15 @@ Python&amp;Android&amp;Java|888
 <p>老的路径拼接：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="n">base</span> <span class="o">=</span> <span class="s1">&#39;/tmp&#39;</span>
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="s1">&#39;demo&#39;</span><span class="p">,</span> <span class="s1">&#39;sub&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.txt&#39;</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="s1">'/tmp'</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="s1">'demo'</span><span class="p">,</span> <span class="s1">'sub'</span><span class="p">,</span> <span class="s1">'foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
 </code></pre></div>
 <p><code>pathlib</code> 的路径拼接：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp&#39;</span><span class="p">)</span>
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">base</span> <span class="o">/</span> <span class="s1">&#39;demo&#39;</span> <span class="o">/</span> <span class="s1">&#39;sub&#39;</span> <span class="o">/</span> <span class="s1">&#39;foo.txt&#39;</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp'</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">base</span> <span class="o">/</span> <span class="s1">'demo'</span> <span class="o">/</span> <span class="s1">'sub'</span> <span class="o">/</span> <span class="s1">'foo.txt'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
 </code></pre></div>
 <p>输出都是：</p>
@@ -6855,40 +6857,40 @@ Python&amp;Android&amp;Java|888
 <p><strong><code>.name</code>：完整文件名（带后缀）</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="c1"># foo.txt</span>
 </code></pre></div>
 <p>相当于 os.path.basename(...)</p>
 <p><strong><code>.stem</code>：去掉后缀的「主干」</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span> <span class="c1"># foo</span>
 </code></pre></div>
 <p><strong><code>.suffix</code>：扩展名（带点）</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span> <span class="c1"># .txt</span>
 
 <span class="c1"># 不带点</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="c1"># txt</span>
 
 <span class="c1"># 多后缀</span>
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;archive.tar.gz&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'archive.tar.gz'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span> <span class="c1"># .gz</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffixes</span><span class="p">)</span> <span class="c1"># [&#39;.tar&#39;, &#39;.gz&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">suffixes</span><span class="p">)</span> <span class="c1"># ['.tar', '.gz']</span>
 </code></pre></div>
 <p><strong><code>.parent</code>：父目录</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/sub/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/sub/foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span> <span class="c1"># /tmp/demo/sub</span>
 </code></pre></div>
 <p><strong><code>.parents</code>：所有祖先目录</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/sub/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/sub/foo.txt'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ancestor</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">parents</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ancestor</span><span class="p">)</span>
 </code></pre></div>
@@ -6901,21 +6903,21 @@ Python&amp;Android&amp;Java|888
 <p>锚点是路径的「根」部分。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/tmp/demo/foo.txt&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/tmp/demo/foo.txt'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">anchor</span><span class="p">)</span> <span class="c1"># /</span>
 </code></pre></div>
 <p>在 Linux / macOS 上一般就是 <code>/</code>，在 Windows 上可能是 <code>C:\</code> 这种盘符。这个属性平时用得不多，但跨平台代码里偶尔会派上用场。</p>
 <p><strong>综合演示</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/Users/two_water/projects/demo/main.py&#39;</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/Users/two_water/projects/demo/main.py'</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;name    :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;stem    :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;suffix  :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parent  :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchor  :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">anchor</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;parts   :&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'name    :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'stem    :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'suffix  :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'parent  :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'anchor  :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">anchor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'parts   :'</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
 </code></pre></div>
 <p>输出：</p>
 <div class="highlight"><pre><span></span><code>name    : main.py
@@ -6923,7 +6925,7 @@ stem    : main
 suffix  : .py
 parent  : /Users/two_water/projects/demo
 anchor  : /
-parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;, &#39;demo&#39;, &#39;main.py&#39;)
+parts   : ('/', 'Users', 'two_water', 'projects', 'demo', 'main.py')
 </code></pre></div>
 <h3 id="x4_2">x.4 <strong>判断和信息</strong></h3>
 <p>光能拼路径还不够，我们经常要判断「这文件存不存在啊」、「是文件还是目录啊」。</p>
@@ -6947,11 +6949,11 @@ parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;
     <span class="n">salary</span><span class="p">:</span> <span class="nb">float</span>
 
 
-<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mf">12000.0</span><span class="p">)</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'两点水'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="mf">12000.0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </code></pre></div>
 <p>输出：</p>
-<div class="highlight"><pre><span></span><code>name=&#39;两点水&#39; age=28 salary=12000.0
+<div class="highlight"><pre><span></span><code>name='两点水' age=28 salary=12000.0
 </code></pre></div>
 <p>各位是不是觉得这写法跟 dataclass 几乎一样？没错——继承 <code>BaseModel</code>，写带类型注解的字段，剩下的 Pydantic 全包了。</p>
 <p>它会自动生成 <code>__init__</code>、<code>__repr__</code>、<code>__eq__</code>，还会做一件 dataclass 不做的事——<strong>类型校验和强制转换</strong>。</p>
@@ -6964,14 +6966,14 @@ parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;
     <span class="n">salary</span><span class="p">:</span> <span class="nb">float</span>
 
 
-<span class="c1"># 注意：age 我传的是字符串 &#39;28&#39;，salary 传的是字符串 &#39;12000.5&#39;</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;两点水&#39;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">&#39;28&#39;</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="s1">&#39;12000.5&#39;</span><span class="p">)</span>
+<span class="c1"># 注意：age 我传的是字符串 '28'，salary 传的是字符串 '12000.5'</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">Employee</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'两点水'</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="s1">'28'</span><span class="p">,</span> <span class="n">salary</span><span class="o">=</span><span class="s1">'12000.5'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">age</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">))</span>
 </code></pre></div>
 <p>输出：</p>
-<div class="highlight"><pre><span></span><code>name=&#39;两点水&#39; age=28 salary=12000.5
-&lt;class &#39;int&#39;&gt; &lt;class &#39;float&#39;&gt;
+<div class="highlight"><pre><span></span><code>name='两点水' age=28 salary=12000.5
+&lt;class 'int'&gt; &lt;class 'float'&gt;
 </code></pre></div>
 <p>看到了吗？传的 <code>age='28'</code> 是字符串，但 Pydantic 自动转成了 int。</p>
 <p><code>salary='12000.5'</code> 也被转成了 float。这就是 Pydantic 的「智能转换」——只要类型能合理转换，它就帮你转。</p>
@@ -6987,16 +6989,16 @@ parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;
 
 <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成'</span>
 
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-<span class="n">r1</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;打卡&#39;</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;查询&#39;</span><span class="p">)</span>
-<span class="n">r3</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">&#39;上传&#39;</span><span class="p">)</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">'打卡'</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">'查询'</span><span class="p">)</span>
+<span class="n">r3</span> <span class="o">=</span> <span class="n">task</span><span class="p">(</span><span class="s1">'上传'</span><span class="p">)</span>
 <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒'</span><span class="p">)</span>
 </code></pre></div>
 运行结果:</p>
 <div class="highlight"><pre><span></span><code>打卡 完成 查询 完成 上传 完成
@@ -7009,19 +7011,19 @@ parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
     <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;打卡&#39;</span><span class="p">),</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;查询&#39;</span><span class="p">),</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;上传&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'打卡'</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'查询'</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'上传'</span><span class="p">),</span>
     <span class="p">)</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'总共 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7036,13 +7038,13 @@ parts   : (&#39;/&#39;, &#39;Users&#39;, &#39;two_water&#39;, &#39;projects&#39;
 <p><strong>async：定义协程函数</strong></p>
 <p>普通函数加一个 <code>async</code> 关键字，就成了<strong>协程函数（coroutine function）</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;两点水好&#39;</span>
+    <span class="k">return</span> <span class="s1">'两点水好'</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">hello</span><span class="p">())</span>
 </code></pre></div>
 <p>输出：</p>
 <div class="highlight"><pre><span></span><code>&lt;coroutine object hello at 0x...&gt;
-RuntimeWarning: coroutine &#39;hello&#39; was never awaited
+RuntimeWarning: coroutine 'hello' was never awaited
 </code></pre></div>
 <p>同样是 <code>print(hello())</code> ，普通函数返回的是字符串 '两点水好' ，协程函数返回的却是一个 <strong>协程对象</strong>——一个 <coroutine object> ，而不是字符串</p>
 <p>更要命的是，Python 还甩了一句警告：这协程从来没被 <code>await</code> 过（coroutine was never awaited）。</p>
@@ -7058,7 +7060,7 @@ RuntimeWarning: coroutine &#39;hello&#39; was never awaited
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">hello</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s1">&#39;两点水好&#39;</span>
+    <span class="k">return</span> <span class="s1">'两点水好'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
@@ -7085,9 +7087,9 @@ RuntimeWarning: coroutine &#39;hello&#39; was never awaited
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我在异步世界里&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'我在异步世界里'</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我又在异步世界里&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'我又在异步世界里'</span><span class="p">)</span>
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
@@ -7105,19 +7107,19 @@ RuntimeWarning: coroutine &#39;hello&#39; was never awaited
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">task</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
     <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">),</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">),</span>
-        <span class="n">task</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'A'</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'B'</span><span class="p">),</span>
+        <span class="n">task</span><span class="p">(</span><span class="s1">'C'</span><span class="p">),</span>
     <span class="p">)</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7143,21 +7145,21 @@ RuntimeWarning: coroutine &#39;hello&#39; was never awaited
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成&#39;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> 完成'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-    <span class="n">t1</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
-    <span class="n">t2</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;两个任务已经派出去了，main 还能干别的&#39;</span><span class="p">)</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'两个任务已经派出去了，main 还能干别的'</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;我先打个卡&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'我先打个卡'</span><span class="p">)</span>
     <span class="n">r1</span> <span class="o">=</span> <span class="k">await</span> <span class="n">t1</span>
     <span class="n">r2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">t2</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'用了 </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> 秒'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7189,7 +7191,7 @@ A 完成 B 完成
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;终于好了&#39;</span>
+    <span class="k">return</span> <span class="s1">'终于好了'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
@@ -7197,7 +7199,7 @@ A 完成 B 完成
         <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">slow_job</span><span class="p">(),</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;超时了，不等了&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'超时了，不等了'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7212,7 +7214,7 @@ A 完成 B 完成
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">slow_job</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s1">&#39;终于好了&#39;</span>
+    <span class="k">return</span> <span class="s1">'终于好了'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
@@ -7221,7 +7223,7 @@ A 完成 B 完成
             <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">slow_job</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;超时了，不等了&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'超时了，不等了'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7239,10 +7241,10 @@ A 完成 B 完成
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">long_running</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;还在跑 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'还在跑 </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
             <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;被取消了，清理一下&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'被取消了，清理一下'</span><span class="p">)</span>
         <span class="k">raise</span> <span class="c1"># 把刚才捕获到的那个异常，原封不动地重新抛出去</span>
 
 
@@ -7253,7 +7255,7 @@ A 完成 B 完成
     <span class="k">try</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">t</span>
     <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;任务确实被取消了&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'任务确实被取消了'</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7277,28 +7279,28 @@ A 完成 B 完成
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">good</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">delay</span><span class="p">):</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> ok&#39;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> ok'</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">bad</span><span class="p">():</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;坏了&#39;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'坏了'</span><span class="p">)</span>
 
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">async</span> <span class="k">with</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TaskGroup</span><span class="p">()</span> <span class="k">as</span> <span class="n">tg</span><span class="p">:</span>
-            <span class="n">t_a</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+            <span class="n">t_a</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
             <span class="n">t_bad</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">bad</span><span class="p">())</span>
-            <span class="n">t_b</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+            <span class="n">t_b</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">good</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
     <span class="k">except</span><span class="o">*</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">eg</span><span class="p">:</span> <span class="c1"># except* 是 Python 3.11 引入的 PEP 654「异常组」专用语法</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TaskGroup 捕获到异常组：&#39;</span><span class="p">,</span> <span class="n">eg</span><span class="o">.</span><span class="n">exceptions</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">'TaskGroup 捕获到异常组：'</span><span class="p">,</span> <span class="n">eg</span><span class="o">.</span><span class="n">exceptions</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </code></pre></div>
 <p>输出：</p>
-<div class="highlight"><pre><span></span><code>TaskGroup 捕获到异常组： (ValueError(&#39;坏了&#39;),)
+<div class="highlight"><pre><span></span><code>TaskGroup 捕获到异常组： (ValueError('坏了'),)
 </code></pre></div>
 <p><code>TaskGroup</code> 的几个优点：</p>
 <ul>
@@ -7318,7 +7320,7 @@ A 完成 B 完成
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://httpbin.org/get&#39;</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'https://httpbin.org/get'</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
 
 
@@ -7333,9 +7335,9 @@ A 完成 B 完成
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
-        <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;https://httpbin.org/stream/3&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'https://httpbin.org/stream/3'</span><span class="p">)</span> <span class="k">as</span> <span class="n">resp</span><span class="p">:</span>
             <span class="k">async</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">resp</span><span class="o">.</span><span class="n">aiter_lines</span><span class="p">():</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;line:&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">'line:'</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
 
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
@@ -7418,75 +7420,75 @@ A 完成 B 完成
 <span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span>
 
 <span class="c1"># 目标 Python 版本，影响某些规则的判断</span>
-<span class="n">target-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;py312&quot;</span>
+<span class="n">target-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"py312"</span>
 
 <span class="c1"># 排除哪些目录</span>
 <span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;.git&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;.venv&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;dist&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;__pycache__&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;migrations&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">".git"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">".venv"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"build"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"dist"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"__pycache__"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"migrations"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="k">[tool.ruff.lint]</span>
 <span class="c1"># 启用哪些规则集</span>
-<span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;UP&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SIM&quot;</span><span class="p">]</span>
+<span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"E"</span><span class="p">,</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w"> </span><span class="s2">"I"</span><span class="p">,</span><span class="w"> </span><span class="s2">"UP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SIM"</span><span class="p">]</span>
 
 <span class="c1"># 忽略哪些具体规则</span>
-<span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;E501&quot;</span><span class="p">]</span>
+<span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"E501"</span><span class="p">]</span>
 
 <span class="k">[tool.ruff.format]</span>
 <span class="c1"># 引号风格：双引号优先（black 风格）</span>
-<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;double&quot;</span>
+<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"double"</span>
 <span class="c1"># 缩进风格：空格</span>
-<span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;space&quot;</span>
+<span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"space"</span>
 </code></pre></div>
 <p><strong>完整配置示例</strong>：</p>
 <p>放一份生产可用的 <code>pyproject.toml</code> 配置，各位可以直接抄回去改：</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.ruff]</span>
 <span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span>
-<span class="n">target-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;py312&quot;</span>
+<span class="n">target-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"py312"</span>
 <span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;.git&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;.venv&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;dist&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;__pycache__&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;migrations&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;*.ipynb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">".git"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">".venv"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"build"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"dist"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"__pycache__"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"migrations"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"*.ipynb"</span><span class="p">,</span>
 <span class="p">]</span>
 
 <span class="k">[tool.ruff.lint]</span>
 <span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;E&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># pycodestyle errors</span>
-<span class="w">    </span><span class="s2">&quot;W&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># pycodestyle warnings</span>
-<span class="w">    </span><span class="s2">&quot;F&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># pyflakes</span>
-<span class="w">    </span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># isort</span>
-<span class="w">    </span><span class="s2">&quot;UP&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># pyupgrade</span>
-<span class="w">    </span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># flake8-bugbear</span>
-<span class="w">    </span><span class="s2">&quot;SIM&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># flake8-simplify</span>
-<span class="w">    </span><span class="s2">&quot;C4&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># flake8-comprehensions</span>
-<span class="w">    </span><span class="s2">&quot;N&quot;</span><span class="p">,</span><span class="w">   </span><span class="c1"># pep8-naming</span>
-<span class="w">    </span><span class="s2">&quot;RET&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># flake8-return</span>
+<span class="w">    </span><span class="s2">"E"</span><span class="p">,</span><span class="w">   </span><span class="c1"># pycodestyle errors</span>
+<span class="w">    </span><span class="s2">"W"</span><span class="p">,</span><span class="w">   </span><span class="c1"># pycodestyle warnings</span>
+<span class="w">    </span><span class="s2">"F"</span><span class="p">,</span><span class="w">   </span><span class="c1"># pyflakes</span>
+<span class="w">    </span><span class="s2">"I"</span><span class="p">,</span><span class="w">   </span><span class="c1"># isort</span>
+<span class="w">    </span><span class="s2">"UP"</span><span class="p">,</span><span class="w">  </span><span class="c1"># pyupgrade</span>
+<span class="w">    </span><span class="s2">"B"</span><span class="p">,</span><span class="w">   </span><span class="c1"># flake8-bugbear</span>
+<span class="w">    </span><span class="s2">"SIM"</span><span class="p">,</span><span class="w"> </span><span class="c1"># flake8-simplify</span>
+<span class="w">    </span><span class="s2">"C4"</span><span class="p">,</span><span class="w">  </span><span class="c1"># flake8-comprehensions</span>
+<span class="w">    </span><span class="s2">"N"</span><span class="p">,</span><span class="w">   </span><span class="c1"># pep8-naming</span>
+<span class="w">    </span><span class="s2">"RET"</span><span class="p">,</span><span class="w"> </span><span class="c1"># flake8-return</span>
 <span class="p">]</span>
 <span class="n">ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;E501&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># 行太长，交给 formatter 处理</span>
-<span class="w">    </span><span class="s2">&quot;B008&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># 函数默认参数里调用函数，FastAPI 的 Depends 用法</span>
+<span class="w">    </span><span class="s2">"E501"</span><span class="p">,</span><span class="w">  </span><span class="c1"># 行太长，交给 formatter 处理</span>
+<span class="w">    </span><span class="s2">"B008"</span><span class="p">,</span><span class="w">  </span><span class="c1"># 函数默认参数里调用函数，FastAPI 的 Depends 用法</span>
 <span class="p">]</span>
 
 <span class="k">[tool.ruff.lint.per-file-ignores]</span>
-<span class="s2">&quot;__init__.py&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;F401&quot;</span><span class="p">]</span>
-<span class="s2">&quot;tests/*&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;S101&quot;</span><span class="p">]</span>
+<span class="s2">"__init__.py"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"F401"</span><span class="p">]</span>
+<span class="s2">"tests/*"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"S101"</span><span class="p">]</span>
 
 <span class="k">[tool.ruff.lint.isort]</span>
-<span class="n">known-first-party</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my_project&quot;</span><span class="p">]</span>
+<span class="n">known-first-party</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"my_project"</span><span class="p">]</span>
 
 <span class="k">[tool.ruff.format]</span>
-<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;double&quot;</span>
-<span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;space&quot;</span>
-<span class="n">line-ending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span>
+<span class="n">quote-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"double"</span>
+<span class="n">indent-style</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"space"</span>
+<span class="n">line-ending</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"auto"</span>
 </code></pre></div>
 <p>抄这份过去，改一下 <code>target-version</code> 和 <code>known-first-party</code>，基本就能用。</p>
 <h3 id="x3_4">x.3 <strong>自动修复</strong></h3>
@@ -7525,7 +7527,7 @@ uv<span class="w"> </span>add<span class="w"> </span>--dev<span class="w"> </spa
 
 <span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;除数不能为 0&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"除数不能为 0"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
 </code></pre></div>
 <p>然后写一个测试文件 test_mymath.py：</p>
@@ -7600,24 +7602,24 @@ test_mymath.py ...                                                              
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 
-<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;调试看的，临时变量&quot;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;正常流程的关键节点&quot;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;不对劲但能继续&quot;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;这次操作失败了&quot;</span><span class="p">)</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">&quot;整个程序要挂&quot;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"调试看的，临时变量"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"正常流程的关键节点"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"不对劲但能继续"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"这次操作失败了"</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s2">"整个程序要挂"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="x2-basicconfig">x.2 <strong>basicConfig：最简的一行配置</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
     <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="c1"># 日志级别</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="c1"># 每条日志的格式</span>
-    <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;app.log&quot;</span><span class="p">,</span> <span class="c1"># 日志文件名</span>
-    <span class="n">filemode</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="c1"># 写文件的模式，&#39;a&#39; 追加（默认），&#39;w&#39; 覆盖</span>
-    <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="c1"># 文件编码，强烈建议加 encoding=&#39;utf-8&#39;，不然 Windows 上中文很容易挂</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">"</span><span class="p">,</span> <span class="c1"># 每条日志的格式</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s2">"app.log"</span><span class="p">,</span> <span class="c1"># 日志文件名</span>
+    <span class="n">filemode</span><span class="o">=</span><span class="s2">"a"</span><span class="p">,</span> <span class="c1"># 写文件的模式，'a' 追加（默认），'w' 覆盖</span>
+    <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">,</span> <span class="c1"># 文件编码，强烈建议加 encoding='utf-8'，不然 Windows 上中文很容易挂</span>
 <span class="p">)</span>
 
-<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;两点水准备打卡&quot;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"两点水准备打卡"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="x3-loggergetloggername">x.3 <strong>每个模块开独立的 logger：getLogger(<strong>name</strong>)</strong></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
@@ -7625,14 +7627,14 @@ test_mymath.py ...                                                              
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">punch_in</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;用户 </span><span class="si">%s</span><span class="s2"> 开始打卡&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"用户 </span><span class="si">%s</span><span class="s2"> 开始打卡"</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="x4-format">x.4 <strong>format 字符串：常用占位符</strong></h3>
 <p>最常用的搭配是：</p>
-<div class="highlight"><pre><span></span><code>&quot;%(asctime)s - %(name)s - %(levelname)s - %(message)s&quot;
+<div class="highlight"><pre><span></span><code>"%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 </code></pre></div>
 <p>要追查 bug 时常用的更详细版本：</p>
-<div class="highlight"><pre><span></span><code>&quot;%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s&quot;
+<div class="highlight"><pre><span></span><code>"%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s"
 </code></pre></div>
 <h2 id="x_7">X、打包发布</h2>
 <p>让全世界一行 <code>pip install</code> 用上你的工具</p>
@@ -7751,10 +7753,10 @@ test_mymath.py ...                                                              
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
