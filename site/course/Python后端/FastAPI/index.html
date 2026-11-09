@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -537,6 +537,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
         
   
@@ -544,7 +572,7 @@
   <span class="md-ellipsis">
     
   
-    计算机网络
+    计算机网络-JavaGuide
   
 
     
@@ -2249,6 +2277,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/DeepSeek%20Harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeepSeek Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
         
   
@@ -2640,19 +2696,19 @@
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
 <span class="c1"># 3. 创建路径操作函数，定义访问路径</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span> <span class="c1"># 接口的访问路径为 /，请求方式为GET</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="c1"># 接口的访问路径为 /，请求方式为GET</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">read_root</span><span class="p">():</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Hello World"</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">}</span>
 
 <span class="c1"># 4. 运行 FastAPI 服务</span>
 <span class="c1"># 方式1 命令行</span>
-<span class="o">&gt;&gt;</span><span class="n">fastapi</span> <span class="n">dev</span> <span class="s2">"xxxx.py"</span> 
+<span class="o">&gt;&gt;</span><span class="n">fastapi</span> <span class="n">dev</span> <span class="s2">&quot;xxxx.py&quot;</span> 
 <span class="c1"># 方式2 命令行</span>
 <span class="o">&gt;&gt;</span><span class="n">uvicorn</span> <span class="n">xxxx</span><span class="p">:</span><span class="n">app</span> <span class="o">--</span><span class="n">reload</span> 
 <span class="c1"># 方式3 .py文件运行（推荐方式）</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">uvicorn</span>
-    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>  <span class="c1"># host="127.0.0.1" 表示只允许本机访问</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>  <span class="c1"># host=&quot;127.0.0.1&quot; 表示只允许本机访问</span>
 </code></pre></div>
 <h2 id="ai">三、AI汉字迷盒案例</h2>
 <h3 id="31">3.1 <strong>开发规范</strong></h3>
@@ -2690,20 +2746,20 @@ PUT https://localhost:8000/users 修改用户
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.staticfiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticFiles</span>
 
 <span class="c1"># 创建FastAPI实例</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"汉字谜盒"</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;汉字谜盒&quot;</span><span class="p">)</span>
 
 <span class="c1"># 挂载静态文件的存放目录，当用户访问 /static 路径时，去 static 文件夹里找文件</span>
-<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/static"</span><span class="p">,</span> <span class="n">StaticFiles</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">"static"</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"static"</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/static&quot;</span><span class="p">,</span> <span class="n">StaticFiles</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;static&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;static&quot;</span><span class="p">)</span>
 
 <span class="c1"># 定义路径操作函数 ---&gt; http://localhost:8000/</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="s2">"static/index.html"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="s2">&quot;static/index.html&quot;</span><span class="p">)</span>
 
 <span class="c1"># 启动项目</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">uvicorn</span>
-    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span> <span class="c1"># access_log=False : 关闭访问日志</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span> <span class="c1"># access_log=False : 关闭访问日志</span>
 </code></pre></div>
 <p><strong>挂载静态文件</strong>：在特定路径中添加一个完整的“独立”应用程序，然后它将负责处理所有子路径。主应用程序的 OpenAPI 和文档不会包含挂载应用程序中的任何内容。</p>
 <ul>
@@ -2714,11 +2770,11 @@ PUT https://localhost:8000/users 修改用户
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="c1"># 创建会话存放的目录 sessions</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"sessions"</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"sessions"</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">)</span>
 
 <span class="c1"># 新建会话</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/api/sessions"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/sessions&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_session</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
 
     <span class="c1"># 1. 生成会话的标识（名字）</span>
@@ -2726,16 +2782,16 @@ PUT https://localhost:8000/users 修改用户
 
     <span class="c1"># 2. 组装会话信息, 保存到文件</span>
     <span class="n">session_data</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"current_session"</span><span class="p">:</span> <span class="n">session_id</span><span class="p">,</span>
-        <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="s2">&quot;current_session&quot;</span><span class="p">:</span> <span class="n">session_id</span><span class="p">,</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[]</span>
     <span class="p">}</span>
-    <span class="c1"># with open(os.path.join("sessions", session_id + ".json"), "w") as f:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">"sessions/</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="c1"># with open(os.path.join(&quot;sessions&quot;, session_id + &quot;.json&quot;), &quot;w&quot;) as f:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sessions/</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">session_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># ensure_ascii=False 表示中文不转义，indent=2 表示缩进为2个空格</span>
 
     <span class="c1"># 3. 返回数据</span>
-    <span class="c1"># return {"code": 200, "message": "创建会话成功", "data": session_id} # 直接返回字典容易把 key 写错，建议使用响应模型返回封装好的对象</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"创建会话成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
+    <span class="c1"># return {&quot;code&quot;: 200, &quot;message&quot;: &quot;创建会话成功&quot;, &quot;data&quot;: session_id} # 直接返回字典容易把 key 写错，建议使用响应模型返回封装好的对象</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;创建会话成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_id</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>响应模型</strong>：</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
@@ -2760,10 +2816,10 @@ PUT https://localhost:8000/users 修改用户
     <span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">message</span><span class="p">:</span> <span class="nb">str</span>
 <span class="c1"># 与AI交互（获取请求数据）</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/api/chat"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/chat&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">ChatRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"与AI交互的请求数据: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"请求成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s2">"AI大模型返回的数据"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;与AI交互的请求数据: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">session_id</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;请求成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="s2">&quot;AI大模型返回的数据&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>与AI交互的逻辑</strong>：</p>
 <ol>
@@ -2777,30 +2833,30 @@ PUT https://localhost:8000/users 修改用户
 </ol>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 <span class="c1"># 创建与AI大模型交互的客户端对象（提前在环境变量中新建DEEPSEEK_API_KEY，其值设置为DeepSeek的API_KEY）</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'DEEPSEEK_API_KEY'</span><span class="p">),</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://api.deepseek.com"</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DEEPSEEK_API_KEY&#39;</span><span class="p">),</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://api.deepseek.com&quot;</span><span class="p">)</span>
 
 <span class="c1"># 根据session_id获取文件名</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_session_file_name</span><span class="p">(</span><span class="n">session_id</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">"sessions/</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json"</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;sessions/</span><span class="si">{</span><span class="n">session_id</span><span class="si">}</span><span class="s2">.json&quot;</span>
 
 <span class="c1"># 与AI交互（逻辑实现）</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/api/chat"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/chat&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">ChatRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
 
     <span class="c1"># 1. 加载json文件中的会话数据</span>
     <span class="n">session_path</span> <span class="o">=</span> <span class="n">get_session_file_name</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">session_id</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">session_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
     <span class="c1"># 2. 构建消息列表 messages（列表的每个元素为字典）</span>
-    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">SYSTEM_PROMPT</span><span class="p">}]</span> <span class="c1"># 系统提示词</span>
-    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">session_data</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]:</span> <span class="c1"># 历史消息内容</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">SYSTEM_PROMPT</span><span class="p">}]</span> <span class="c1"># 系统提示词</span>
+    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">session_data</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]:</span> <span class="c1"># 历史消息内容</span>
         <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
-    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">message</span><span class="p">})</span> <span class="c1"># 本次消息内容</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">message</span><span class="p">})</span> <span class="c1"># 本次消息内容</span>
 
     <span class="c1"># 3. 调用AI大模型 DeepSeek</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="s2">"deepseek-v4-flash"</span><span class="p">,</span> <span class="c1"># 调用的模型</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-v4-flash&quot;</span><span class="p">,</span> <span class="c1"># 调用的模型</span>
         <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
         <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="c1"># 非流式响应</span>
         <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span> <span class="c1"># 温度参数，即模型生成结果的随机性、多样性默认1.0，范围 [0.0, 2.0]，不同使用场景可调；思考模式下不生效</span>
@@ -2811,49 +2867,49 @@ PUT https://localhost:8000/users 修改用户
 
     <span class="c1"># 5. 更新新的消息列表，移除系统提示词并添加AI的响应</span>
     <span class="n">messages</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"assistant"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">ai_response</span><span class="p">})</span>
-    <span class="n">session_data</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span> <span class="o">=</span> <span class="n">messages</span>
+    <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">ai_response</span><span class="p">})</span>
+    <span class="n">session_data</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">messages</span>
 
     <span class="c1"># 6. 保存会话信息到json文件中</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">session_data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># 7. 返回数据</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"请求成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ai_response</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;请求成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ai_response</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>功能3——会话列表</strong>：将所有会话名称展示在页面的左侧侧边栏，并且根据时间倒序排序。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 获取会话列表</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/api/sessions"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/sessions&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_sessions</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
 
     <span class="c1"># 1. 获取 sessions 目录下的所有文件名</span>
-    <span class="n">session_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">"sessions"</span><span class="p">)</span>
+    <span class="n">session_files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;sessions&quot;</span><span class="p">)</span>
 
     <span class="c1"># 2. 获取文件名中的会话ID</span>
-    <span class="n">session_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">session_files</span><span class="p">]</span>
+    <span class="n">session_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">session_files</span><span class="p">]</span>
     <span class="n">session_ids</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># 排序, 降序排列</span>
 
     <span class="c1"># 3. 返回数据</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"获取会话列表成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_ids</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;获取会话列表成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_ids</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>功能4——加载指定会话</strong>：在点击左侧的会话名称之后，就要查询出该会话对应的会话信息，并在消息展示栏将其展示出来。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 获取指定的会话信息 ---&gt; /api/sessions/2026-04-21_22-20-30 , /api/sessions/2026-04-21_22-20-55 [路径参数]</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/api/sessions/</span><span class="si">{session_id}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/sessions/</span><span class="si">{session_id}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_session</span><span class="p">(</span><span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
 
     <span class="c1"># 1. 获取会话文件名</span>
     <span class="n">session_file</span> <span class="o">=</span> <span class="n">get_session_file_name</span><span class="p">(</span><span class="n">session_id</span><span class="p">)</span>
 
     <span class="c1"># 2. 读取会话文件</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">session_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">session_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
     <span class="c1"># 3. 返回数据</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"获取会话信息成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;获取会话信息成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">session_data</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>功能5——删除会话</strong>：在点击左侧会话名称之后的x，就要将当前的会话信息直接删除掉。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 删除指定的会话</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"/api/sessions/</span><span class="si">{session_id}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;/api/sessions/</span><span class="si">{session_id}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">delete_session</span><span class="p">(</span><span class="n">session_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiResponse</span><span class="p">:</span>
 
     <span class="c1"># 1. 获取会话文件名</span>
@@ -2864,7 +2920,7 @@ PUT https://localhost:8000/users 修改用户
         <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">session_file</span><span class="p">)</span>
 
     <span class="c1"># 3. 返回数据</span>
-    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">"删除会话成功"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ApiResponse</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;删除会话成功&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="34">3.4 <strong>程序优化</strong></h3>
 <p><strong>日志记录</strong>：为了能够灵活的控制项目中日志的输出，我们可以通过官方提供的 logging 模块来输出日志。</p>
@@ -2873,13 +2929,13 @@ PUT https://localhost:8000/users 修改用户
 <span class="c1"># %(asctime)s :  时间 ;  %(levelname)s: 日志级别； %(filename)s: 文件名; %(lineno)d: 行数;  %(message)s: 日志信息</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
     <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">,</span>  <span class="c1"># 日志级别，level=logging.ERROR表示现在只想看ERROR及以上级别的日志</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">"</span> <span class="c1"># 日志格式</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(asctime)s</span><span class="s2"> - </span><span class="si">%(levelname)s</span><span class="s2"> - </span><span class="si">%(filename)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;</span> <span class="c1"># 日志格式</span>
 <span class="p">)</span>
 <span class="c1"># 定义路径操作函数</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">():</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"访问项目首页"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="s2">"static/index.html"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;访问项目首页&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FileResponse</span><span class="p">(</span><span class="s2">&quot;static/index.html&quot;</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <p>日志级别：给日志信息贴上的"重要性标签"，常见的级别有:DEBUG、INFO、WARNING、ERROR、FATAL（日志级别依次升高）</p>
@@ -2888,8 +2944,8 @@ PUT https://localhost:8000/users 修改用户
 <div class="highlight"><pre><span></span><code><span class="c1"># 定义异常处理器, 捕获所有异常 ---&gt; 返回的对象的类型得是 Response</span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">exception_handler</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_exception</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">exc</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">):</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"处理异常, 请求路径: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">,  捕获到异常: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"服务器内部错误, 请联系管理员~"</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;处理异常, 请求路径: </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">,  捕获到异常: </span><span class="si">{</span><span class="n">exc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;服务器内部错误, 请联系管理员~&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
 </code></pre></div>
 <ul>
 <li><a href="https://fastapi.org.cn/tutorial/handling-errors/">FastAPI 教程-异常处理</a></li>
@@ -3009,10 +3065,10 @@ PUT https://localhost:8000/users 修改用户
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

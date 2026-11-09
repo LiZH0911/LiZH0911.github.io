@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -537,6 +537,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
         
   
@@ -544,7 +572,7 @@
   <span class="md-ellipsis">
     
   
-    计算机网络
+    计算机网络-JavaGuide
   
 
     
@@ -2377,6 +2405,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/DeepSeek%20Harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeepSeek Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
         
   
@@ -2931,11 +2987,11 @@
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">autogen_ext.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">create_openai_model_client</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""创建并配置 OpenAI 模型客户端"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建并配置 OpenAI 模型客户端&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_MODEL_ID"</span><span class="p">,</span> <span class="s2">"gpt-4o"</span><span class="p">),</span>
-        <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_API_KEY"</span><span class="p">),</span>
-        <span class="n">base_url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_BASE_URL"</span><span class="p">,</span> <span class="s2">"https://api.openai.com/v1"</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_MODEL_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;gpt-4o&quot;</span><span class="p">),</span>
+        <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">),</span>
+        <span class="n">base_url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;https://api.openai.com/v1&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>（2）智能体角色的定义</p>
@@ -2943,8 +2999,8 @@
 <p><strong>产品经理 (ProductManager)</strong></p>
 <p>产品经理负责启动整个流程。它的系统消息不仅定义了其职责，还规范了其输出的结构，并包含了引导对话转向下一环节（工程师）的明确指令。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_product_manager</span><span class="p">(</span><span class="n">model_client</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""创建产品经理智能体"""</span>
-    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">"""你是一位经验丰富的产品经理，专门负责软件产品的需求分析和项目规划。</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建产品经理智能体&quot;&quot;&quot;</span>
+    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;你是一位经验丰富的产品经理，专门负责软件产品的需求分析和项目规划。</span>
 
 <span class="s2">你的核心职责包括：</span>
 <span class="s2">1. **需求分析**：深入理解用户需求，识别核心功能和边界条件</span>
@@ -2959,10 +3015,10 @@
 <span class="s2">4. 实现优先级排序</span>
 <span class="s2">5. 验收标准定义</span>
 
-<span class="s2">请简洁明了地回应，并在分析完成后说"请工程师开始实现"。"""</span>
+<span class="s2">请简洁明了地回应，并在分析完成后说&quot;请工程师开始实现&quot;。&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">AssistantAgent</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">"ProductManager"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ProductManager&quot;</span><span class="p">,</span>
         <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
         <span class="n">system_message</span><span class="o">=</span><span class="n">system_message</span><span class="p">,</span>
     <span class="p">)</span>
@@ -2970,8 +3026,8 @@
 <p><strong>工程师 (Engineer)</strong></p>
 <p>工程师的系统消息聚焦于技术实现。它列举了工程师的技术专长，并规定了其在接收到任务后的具体行动步骤，同样也包含了引导流程转向代码审查员的指令。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_engineer</span><span class="p">(</span><span class="n">model_client</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""创建软件工程师智能体"""</span>
-    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">"""你是一位资深的软件工程师，擅长 Python 开发和 Web 应用构建。</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建软件工程师智能体&quot;&quot;&quot;</span>
+    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;你是一位资深的软件工程师，擅长 Python 开发和 Web 应用构建。</span>
 
 <span class="s2">你的技术专长包括：</span>
 <span class="s2">1. **Python 编程**：熟练掌握 Python 语法和最佳实践</span>
@@ -2986,10 +3042,10 @@
 <span class="s2">4. 添加必要的注释和说明</span>
 <span class="s2">5. 考虑边界情况和异常处理</span>
 
-<span class="s2">请提供完整的可运行代码，并在完成后说"请代码审查员检查"。"""</span>
+<span class="s2">请提供完整的可运行代码，并在完成后说&quot;请代码审查员检查&quot;。&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">AssistantAgent</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">"Engineer"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span>
         <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
         <span class="n">system_message</span><span class="o">=</span><span class="n">system_message</span><span class="p">,</span>
     <span class="p">)</span>
@@ -2997,8 +3053,8 @@
 <p><strong>代码审查员 (CodeReviewer)</strong></p>
 <p>代码审查员的定义则侧重于代码的质量、安全性和规范性。它的系统消息详细列出了审查的重点和流程，确保了代码交付前的质量关卡。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_code_reviewer</span><span class="p">(</span><span class="n">model_client</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""创建代码审查员智能体"""</span>
-    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">"""你是一位经验丰富的代码审查专家，专注于代码质量和最佳实践。</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建代码审查员智能体&quot;&quot;&quot;</span>
+    <span class="n">system_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;你是一位经验丰富的代码审查专家，专注于代码质量和最佳实践。</span>
 
 <span class="s2">你的审查重点包括：</span>
 <span class="s2">1. **代码质量**：检查代码的可读性、可维护性和性能</span>
@@ -3013,10 +3069,10 @@
 <span class="s2">4. 提供具体的修改建议</span>
 <span class="s2">5. 评估代码的整体质量</span>
 
-<span class="s2">请提供具体的审查意见，完成后说"代码审查完成，请用户代理测试"。"""</span>
+<span class="s2">请提供具体的审查意见，完成后说&quot;代码审查完成，请用户代理测试&quot;。&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">AssistantAgent</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">"CodeReviewer"</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CodeReviewer&quot;</span><span class="p">,</span>
         <span class="n">model_client</span><span class="o">=</span><span class="n">model_client</span><span class="p">,</span>
         <span class="n">system_message</span><span class="o">=</span><span class="n">system_message</span><span class="p">,</span>
     <span class="p">)</span>
@@ -3024,16 +3080,16 @@
 <p><strong>用户代理 (UserProxy)</strong></p>
 <p><code>UserProxyAgent</code> 是一个特殊的智能体，它不依赖 LLM 进行回复，而是作为用户在系统中的代理。它的 <code>description</code> 字段清晰地描述了其职责，尤其重要的是，它负责在任务最终完成后发出 <code>TERMINATE</code> 指令，以正常结束整个协作流程。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">create_user_proxy</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""创建用户代理智能体"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;创建用户代理智能体&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">UserProxyAgent</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">"UserProxy"</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">"""用户代理，负责以下职责：</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;UserProxy&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;用户代理，负责以下职责：</span>
 <span class="s2">1. 代表用户提出开发需求</span>
 <span class="s2">2. 执行最终的代码实现</span>
 <span class="s2">3. 验证功能是否符合预期</span>
 <span class="s2">4. 提供用户反馈和建议</span>
 
-<span class="s2">完成测试后请回复 TERMINATE。"""</span><span class="p">,</span>
+<span class="s2">完成测试后请回复 TERMINATE。&quot;&quot;&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>通过这四个独立的定义函数，我们不仅构建了一支功能完备的“虚拟团队”，也展示了通过系统消息进行“提示工程” ，是设计高效多智能体应用的核心环节。</p>
@@ -3050,7 +3106,7 @@
         <span class="n">code_reviewer</span><span class="p">,</span>
         <span class="n">user_proxy</span>
     <span class="p">],</span>
-    <span class="n">termination_condition</span><span class="o">=</span><span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">"TERMINATE"</span><span class="p">),</span>
+    <span class="n">termination_condition</span><span class="o">=</span><span class="n">TextMentionTermination</span><span class="p">(</span><span class="s2">&quot;TERMINATE&quot;</span><span class="p">),</span>
     <span class="n">max_turns</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3065,7 +3121,7 @@
     <span class="c1"># ... 初始化客户端和智能体 ...</span>
 
     <span class="c1"># 定义任务描述</span>
-    <span class="n">task</span> <span class="o">=</span> <span class="s2">"""我们需要开发一个比特币价格显示应用，具体要求如下：</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;我们需要开发一个比特币价格显示应用，具体要求如下：</span>
 <span class="s2">            核心功能：</span>
 <span class="s2">            - 实时显示比特币当前价格（USD）</span>
 <span class="s2">            - 显示24小时价格变化趋势（涨跌幅和涨跌额）</span>
@@ -3076,14 +3132,14 @@
 <span class="s2">            - 界面简洁美观，用户友好</span>
 <span class="s2">            - 添加适当的错误处理和加载状态</span>
 
-<span class="s2">            请团队协作完成这个任务，从需求分析到最终实现。"""</span>
+<span class="s2">            请团队协作完成这个任务，从需求分析到最终实现。&quot;&quot;&quot;</span>
 
     <span class="c1"># 异步执行团队协作，并流式输出对话过程</span>
     <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Console</span><span class="p">(</span><span class="n">team_chat</span><span class="o">.</span><span class="n">run_stream</span><span class="p">(</span><span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">result</span>
 
 <span class="c1"># 主程序入口</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_software_development_team</span><span class="p">())</span>
 </code></pre></div>
 <p>当程序运行时，<code>task</code> 作为初始消息被传入 <code>team_chat</code>，产品经理作为第一个参与者接收到该消息，随后整个自动化协作流程便开始了。</p>
@@ -3138,24 +3194,24 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 
 <span class="c1"># 页面配置</span>
 <span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span>
-    <span class="n">page_title</span><span class="o">=</span><span class="s2">"Bitcoin Price Tracker"</span><span class="p">,</span>
-    <span class="n">page_icon</span><span class="o">=</span><span class="s2">"₿"</span><span class="p">,</span>
-    <span class="n">layout</span><span class="o">=</span><span class="s2">"centered"</span>
+    <span class="n">page_title</span><span class="o">=</span><span class="s2">&quot;Bitcoin Price Tracker&quot;</span><span class="p">,</span>
+    <span class="n">page_icon</span><span class="o">=</span><span class="s2">&quot;₿&quot;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="s2">&quot;centered&quot;</span>
 <span class="p">)</span>
 
-<span class="n">API_URL</span> <span class="o">=</span> <span class="s2">"https://api.coingecko.com/api/v3/coins/bitcoin"</span>
+<span class="n">API_URL</span> <span class="o">=</span> <span class="s2">&quot;https://api.coingecko.com/api/v3/coins/bitcoin&quot;</span>
 
 
 <span class="c1"># 使用 cache_data，TTL=30秒；命中缓存时不显示 spinner，未命中时显示自定义提示</span>
-<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_spinner</span><span class="o">=</span><span class="s2">"Fetching latest Bitcoin price..."</span><span class="p">)</span>
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show_spinner</span><span class="o">=</span><span class="s2">&quot;Fetching latest Bitcoin price...&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">fetch_bitcoin_data</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">"""获取比特币市场数据"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;获取比特币市场数据&quot;&quot;&quot;</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"localization"</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-        <span class="s2">"tickers"</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-        <span class="s2">"market_data"</span><span class="p">:</span> <span class="s2">"true"</span><span class="p">,</span>
-        <span class="s2">"community_data"</span><span class="p">:</span> <span class="s2">"false"</span><span class="p">,</span>
-        <span class="s2">"developer_data"</span><span class="p">:</span> <span class="s2">"false"</span>
+        <span class="s2">&quot;localization&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tickers&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;market_data&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;community_data&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;developer_data&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
     <span class="p">}</span>
 
     <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">API_URL</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -3163,32 +3219,32 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
     <span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"price"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"market_data"</span><span class="p">][</span><span class="s2">"current_price"</span><span class="p">][</span><span class="s2">"usd"</span><span class="p">],</span>
-        <span class="s2">"price_change_24h"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"market_data"</span><span class="p">][</span><span class="s2">"price_change_24h"</span><span class="p">],</span>
-        <span class="s2">"price_change_24h_pct"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"market_data"</span><span class="p">][</span><span class="s2">"price_change_percentage_24h"</span><span class="p">],</span>
-        <span class="s2">"high_24h"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"market_data"</span><span class="p">][</span><span class="s2">"high_24h"</span><span class="p">][</span><span class="s2">"usd"</span><span class="p">],</span>
-        <span class="s2">"low_24h"</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">"market_data"</span><span class="p">][</span><span class="s2">"low_24h"</span><span class="p">][</span><span class="s2">"usd"</span><span class="p">]</span>
+        <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;market_data&quot;</span><span class="p">][</span><span class="s2">&quot;current_price&quot;</span><span class="p">][</span><span class="s2">&quot;usd&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;price_change_24h&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;market_data&quot;</span><span class="p">][</span><span class="s2">&quot;price_change_24h&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;price_change_24h_pct&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;market_data&quot;</span><span class="p">][</span><span class="s2">&quot;price_change_percentage_24h&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;high_24h&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;market_data&quot;</span><span class="p">][</span><span class="s2">&quot;high_24h&quot;</span><span class="p">][</span><span class="s2">&quot;usd&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;low_24h&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;market_data&quot;</span><span class="p">][</span><span class="s2">&quot;low_24h&quot;</span><span class="p">][</span><span class="s2">&quot;usd&quot;</span><span class="p">]</span>
     <span class="p">}</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">show_error</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""显示错误信息及重试按钮"""</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"⚠️ </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"🔄 重试"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;显示错误信息及重试按钮&quot;&quot;&quot;</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🔄 重试&quot;</span><span class="p">):</span>
         <span class="n">fetch_bitcoin_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># 顶部标题区</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"₿ Bitcoin Price Tracker"</span><span class="p">)</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s2">"Live BTC/USD price and 24-hour performance"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;₿ Bitcoin Price Tracker&quot;</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s2">&quot;Live BTC/USD price and 24-hour performance&quot;</span><span class="p">)</span>
 
     <span class="c1"># 布局：按钮放左上角，内容居中</span>
     <span class="n">col_top_left</span><span class="p">,</span> <span class="n">col_top_center</span><span class="p">,</span> <span class="n">col_top_right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
     <span class="k">with</span> <span class="n">col_top_left</span><span class="p">:</span>
         <span class="c1"># 手动刷新（只清除该函数缓存）</span>
-        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">"🔄 Refresh"</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;🔄 Refresh&quot;</span><span class="p">,</span> <span class="n">use_container_width</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="n">fetch_bitcoin_data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
             <span class="n">st</span><span class="o">.</span><span class="n">rerun</span><span class="p">()</span>
 
@@ -3196,47 +3252,47 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
     <span class="k">try</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_bitcoin_data</span><span class="p">()</span>
     <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">Timeout</span><span class="p">:</span>
-        <span class="n">show_error</span><span class="p">(</span><span class="s2">"请求超时，网络连接不稳定。"</span><span class="p">)</span>
+        <span class="n">show_error</span><span class="p">(</span><span class="s2">&quot;请求超时，网络连接不稳定。&quot;</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">show_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"网络错误：</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">show_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;网络错误：</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">show_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"API 返回数据格式异常：</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">show_error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;API 返回数据格式异常：</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
     <span class="c1"># 成功获取数据后展示</span>
-    <span class="n">price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span>
-    <span class="n">change_abs</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"price_change_24h"</span><span class="p">]</span>
-    <span class="n">change_pct</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">"price_change_24h_pct"</span><span class="p">]</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span>
+    <span class="n">change_abs</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;price_change_24h&quot;</span><span class="p">]</span>
+    <span class="n">change_pct</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;price_change_24h_pct&quot;</span><span class="p">]</span>
 
     <span class="c1"># 涨跌方向与颜色</span>
     <span class="k">if</span> <span class="n">change_pct</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">arrow</span> <span class="o">=</span> <span class="s2">"🚀"</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="s2">"normal"</span>
+        <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;🚀&quot;</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">arrow</span> <span class="o">=</span> <span class="s2">"📉"</span>
-        <span class="n">color</span> <span class="o">=</span> <span class="s2">"inverse"</span>
+        <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;📉&quot;</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;inverse&quot;</span>
 
     <span class="c1"># 核心价格指标</span>
     <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span>
-        <span class="n">label</span><span class="o">=</span><span class="s2">"Bitcoin (BTC) Price"</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">"$</span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-        <span class="n">delta</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">change_abs</span><span class="si">:</span><span class="s2">+,.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">change_pct</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bitcoin (BTC) Price&quot;</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">price</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">delta</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">change_abs</span><span class="si">:</span><span class="s2">+,.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">change_pct</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">,</span>
         <span class="n">delta_color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-        <span class="n">help</span><span class="o">=</span><span class="s2">"24小时价格变化（金额和百分比）"</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;24小时价格变化（金额和百分比）&quot;</span>
     <span class="p">)</span>
 
     <span class="c1"># 24h 高/低</span>
     <span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">arrow</span><span class="si">}</span><span class="s2"> 24小时最高：$</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'high_24h'</span><span class="p">]</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2"> | 最低：$</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'low_24h'</span><span class="p">]</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">"</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arrow</span><span class="si">}</span><span class="s2"> 24小时最高：$</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;high_24h&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2"> | 最低：$</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;low_24h&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="p">)</span>
 
     <span class="c1"># 更新说明</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s2">"数据来源：CoinGecko | 每30秒自动更新，也可手动刷新"</span><span class="p">)</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s2">&quot;数据来源：CoinGecko | 每30秒自动更新，也可手动刷新&quot;</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 
@@ -3263,17 +3319,17 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">autogen_ext.models.openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAIChatCompletionClient</span>
 
 <span class="n">model_client</span> <span class="o">=</span> <span class="n">OpenAIChatCompletionClient</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="s2">"deepseek-chat"</span><span class="p">,</span>
-    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"DEEPSEEK_API_KEY"</span><span class="p">),</span>
-    <span class="n">base_url</span><span class="o">=</span><span class="s2">"https://api.deepseek.com/v1"</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;deepseek-chat&quot;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DEEPSEEK_API_KEY&quot;</span><span class="p">),</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;https://api.deepseek.com/v1&quot;</span><span class="p">,</span>
     <span class="n">model_info</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">"function_calling"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s2">"max_tokens"</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
-        <span class="s2">"context_length"</span><span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
-        <span class="s2">"vision"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-        <span class="s2">"json_output"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s2">"family"</span><span class="p">:</span> <span class="s2">"deepseek"</span><span class="p">,</span>
-        <span class="s2">"structured_output"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;function_calling&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="mi">4096</span><span class="p">,</span>
+        <span class="s2">&quot;context_length&quot;</span><span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
+        <span class="s2">&quot;vision&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;json_output&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="s2">&quot;deepseek&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;structured_output&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3294,13 +3350,13 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 
 <span class="c1"># 消息的标准结构</span>
 <span class="n">message</span> <span class="o">=</span> <span class="n">Msg</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"Alice"</span><span class="p">,</span>           <span class="c1"># 发送者名称</span>
-    <span class="n">content</span><span class="o">=</span><span class="s2">"Hello, Bob!"</span><span class="p">,</span>  <span class="c1"># 消息内容</span>
-    <span class="n">role</span><span class="o">=</span><span class="s2">"user"</span><span class="p">,</span>           <span class="c1"># 角色类型</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>           <span class="c1"># 发送者名称</span>
+    <span class="n">content</span><span class="o">=</span><span class="s2">&quot;Hello, Bob!&quot;</span><span class="p">,</span>  <span class="c1"># 消息内容</span>
+    <span class="n">role</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>           <span class="c1"># 角色类型</span>
     <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>             <span class="c1"># 元数据信息</span>
-        <span class="s2">"timestamp"</span><span class="p">:</span> <span class="s2">"2024-01-15T10:30:00Z"</span><span class="p">,</span>
-        <span class="s2">"message_type"</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">,</span>
-        <span class="s2">"priority"</span><span class="p">:</span> <span class="s2">"normal"</span>
+        <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2024-01-15T10:30:00Z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;message_type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="s2">&quot;normal&quot;</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3323,7 +3379,7 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
     <span class="k">def</span><span class="w"> </span><span class="nf">reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Msg</span><span class="p">:</span>
         <span class="c1"># 智能体的核心响应逻辑</span>
         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Msg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">"assistant"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Msg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;assistant&quot;</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Msg</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># 智能体的观察逻辑（可选）</span>
@@ -3392,36 +3448,36 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <p>每个节点都是一个接收当前状态作为输入、并返回一个更新后的状态作为输出的 Python 函数。节点是执行具体工作的单元。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 定义一个“规划者”节点函数</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">planner_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentState</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""根据当前任务制定计划，并更新状态。"""</span>
-    <span class="n">current_task</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"current_task"</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;根据当前任务制定计划，并更新状态。&quot;&quot;&quot;</span>
+    <span class="n">current_task</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;current_task&quot;</span><span class="p">]</span>
     <span class="c1"># ... 调用LLM生成计划 ...</span>
-    <span class="n">plan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"为任务 '</span><span class="si">{</span><span class="n">current_task</span><span class="si">}</span><span class="s2">' 生成的计划..."</span>
+    <span class="n">plan</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;为任务 &#39;</span><span class="si">{</span><span class="n">current_task</span><span class="si">}</span><span class="s2">&#39; 生成的计划...&quot;</span>
 
     <span class="c1"># 将新消息追加到状态中</span>
-    <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
+    <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plan</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">state</span>
 
 <span class="c1"># 定义一个“执行者”节点函数</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">executor_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AgentState</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""执行最新计划，并更新状态。"""</span>
-    <span class="n">latest_plan</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;执行最新计划，并更新状态。&quot;&quot;&quot;</span>
+    <span class="n">latest_plan</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="c1"># ... 执行计划并获得结果 ...</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"执行计划 '</span><span class="si">{</span><span class="n">latest_plan</span><span class="si">}</span><span class="s2">' 的结果..."</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;执行计划 &#39;</span><span class="si">{</span><span class="n">latest_plan</span><span class="si">}</span><span class="s2">&#39; 的结果...&quot;</span>
 
-    <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">state</span>
 </code></pre></div>
 <p>（3）边（Edges）</p>
 <p>边负责连接节点，定义工作流的方向。最简单的边是常规边，它指定了一个节点的输出总是流向另一个固定的节点。而 LangGraph 最强大的功能在于条件边（Conditional Edges）。它通过一个函数来判断当前的状态，然后动态地决定下一步应该跳转到哪个节点。这正是实现循环和复杂逻辑分支的关键。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">should_continue</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""条件函数：根据状态决定下一步路由。"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;条件函数：根据状态决定下一步路由。&quot;&quot;&quot;</span>
     <span class="c1"># 假设如果消息少于3条，则需要继续规划</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
         <span class="c1"># 返回的字符串需要与添加条件边时定义的键匹配</span>
-        <span class="k">return</span> <span class="s2">"continue_to_planner"</span>
+        <span class="k">return</span> <span class="s2">&quot;continue_to_planner&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">state</span><span class="p">[</span><span class="s2">"final_answer"</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">return</span> <span class="s2">"end_workflow"</span>
+        <span class="n">state</span><span class="p">[</span><span class="s2">&quot;final_answer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s2">&quot;end_workflow&quot;</span>
 </code></pre></div>
 <p>在定义了状态、节点和边之后，我们可以像搭积木一样将它们组装成一个可执行的工作流。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">END</span>
@@ -3430,25 +3486,25 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">AgentState</span><span class="p">)</span>
 
 <span class="c1"># 将节点函数添加到图中</span>
-<span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"planner"</span><span class="p">,</span> <span class="n">planner_node</span><span class="p">)</span>
-<span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"executor"</span><span class="p">,</span> <span class="n">executor_node</span><span class="p">)</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;planner&quot;</span><span class="p">,</span> <span class="n">planner_node</span><span class="p">)</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;executor&quot;</span><span class="p">,</span> <span class="n">executor_node</span><span class="p">)</span>
 
 <span class="c1"># 设置图的入口点</span>
-<span class="n">workflow</span><span class="o">.</span><span class="n">set_entry_point</span><span class="p">(</span><span class="s2">"planner"</span><span class="p">)</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">set_entry_point</span><span class="p">(</span><span class="s2">&quot;planner&quot;</span><span class="p">)</span>
 
 <span class="c1"># 添加常规边，连接 planner 和 executor</span>
-<span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"planner"</span><span class="p">,</span> <span class="s2">"executor"</span><span class="p">)</span>
+<span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;planner&quot;</span><span class="p">,</span> <span class="s2">&quot;executor&quot;</span><span class="p">)</span>
 
 <span class="c1"># 添加条件边，实现动态路由</span>
 <span class="n">workflow</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span>
     <span class="c1"># 起始节点</span>
-    <span class="s2">"executor"</span><span class="p">,</span>
+    <span class="s2">&quot;executor&quot;</span><span class="p">,</span>
     <span class="c1"># 判断函数</span>
     <span class="n">should_continue</span><span class="p">,</span>
     <span class="c1"># 路由映射：将判断函数的返回值映射到目标节点</span>
     <span class="p">{</span>
-        <span class="s2">"continue_to_planner"</span><span class="p">:</span> <span class="s2">"planner"</span><span class="p">,</span> <span class="c1"># 如果返回"continue_to_planner"，则跳回planner节点</span>
-        <span class="s2">"end_workflow"</span><span class="p">:</span> <span class="n">END</span>               <span class="c1"># 如果返回"end_workflow"，则结束流程</span>
+        <span class="s2">&quot;continue_to_planner&quot;</span><span class="p">:</span> <span class="s2">&quot;planner&quot;</span><span class="p">,</span> <span class="c1"># 如果返回&quot;continue_to_planner&quot;，则跳回planner节点</span>
+        <span class="s2">&quot;end_workflow&quot;</span><span class="p">:</span> <span class="n">END</span>               <span class="c1"># 如果返回&quot;end_workflow&quot;，则结束流程</span>
     <span class="p">}</span>
 <span class="p">)</span>
 
@@ -3456,7 +3512,7 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <span class="n">app</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
 
 <span class="c1"># 运行图</span>
-<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"current_task"</span><span class="p">:</span> <span class="s2">"分析最近的AI行业新闻"</span><span class="p">,</span> <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;current_task&quot;</span><span class="p">:</span> <span class="s2">&quot;分析最近的AI行业新闻&quot;</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[]}</span>
 <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">app</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
 </code></pre></div>
@@ -3497,89 +3553,89 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <span class="c1"># 初始化模型</span>
 <span class="c1"># 我们将使用这个 llm 实例来驱动所有节点的智能</span>
 <span class="n">llm</span> <span class="o">=</span> <span class="n">ChatOpenAI</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_MODEL_ID"</span><span class="p">,</span> <span class="s2">"gpt-4o-mini"</span><span class="p">),</span>
-    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_API_KEY"</span><span class="p">),</span>
-    <span class="n">base_url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"LLM_BASE_URL"</span><span class="p">,</span> <span class="s2">"https://api.openai.com/v1"</span><span class="p">),</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_MODEL_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">),</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_API_KEY&quot;</span><span class="p">),</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LLM_BASE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;https://api.openai.com/v1&quot;</span><span class="p">),</span>
     <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span>
 <span class="p">)</span>
 <span class="c1"># 初始化Tavily客户端</span>
-<span class="n">tavily_client</span> <span class="o">=</span> <span class="n">TavilyClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"TAVILY_API_KEY"</span><span class="p">))</span>
+<span class="n">tavily_client</span> <span class="o">=</span> <span class="n">TavilyClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p><strong>理解与查询节点</strong>：此节点是工作流的第一步，此节点的职责是理解用户意图，并为其生成一个最优化的搜索查询。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">understand_query_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">SearchState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""步骤1：理解用户查询并生成搜索关键词"""</span>
-    <span class="n">user_message</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;步骤1：理解用户查询并生成搜索关键词&quot;&quot;&quot;</span>
+    <span class="n">user_message</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">content</span>
 
-    <span class="n">understand_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""分析用户的查询："</span><span class="si">{</span><span class="n">user_message</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">understand_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;分析用户的查询：&quot;</span><span class="si">{</span><span class="n">user_message</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="s2">请完成两个任务：</span>
 <span class="s2">1. 简洁总结用户想要了解什么</span>
 <span class="s2">2. 生成最适合搜索引擎的关键词（中英文均可，要精准）</span>
 
 <span class="s2">格式：</span>
 <span class="s2">理解：[用户需求总结]</span>
-<span class="s2">搜索词：[最佳搜索关键词]"""</span>
+<span class="s2">搜索词：[最佳搜索关键词]&quot;&quot;&quot;</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">([</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">understand_prompt</span><span class="p">)])</span>
     <span class="n">response_text</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span>
 
     <span class="c1"># 解析LLM的输出，提取搜索关键词</span>
     <span class="n">search_query</span> <span class="o">=</span> <span class="n">user_message</span> <span class="c1"># 默认使用原始查询</span>
-    <span class="k">if</span> <span class="s2">"搜索词："</span> <span class="ow">in</span> <span class="n">response_text</span><span class="p">:</span>
-        <span class="n">search_query</span> <span class="o">=</span> <span class="n">response_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"搜索词："</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s2">&quot;搜索词：&quot;</span> <span class="ow">in</span> <span class="n">response_text</span><span class="p">:</span>
+        <span class="n">search_query</span> <span class="o">=</span> <span class="n">response_text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;搜索词：&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"user_query"</span><span class="p">:</span> <span class="n">response_text</span><span class="p">,</span>
-        <span class="s2">"search_query"</span><span class="p">:</span> <span class="n">search_query</span><span class="p">,</span>
-        <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"understood"</span><span class="p">,</span>
-        <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">"我将为您搜索：</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s2">"</span><span class="p">)]</span>
+        <span class="s2">&quot;user_query&quot;</span><span class="p">:</span> <span class="n">response_text</span><span class="p">,</span>
+        <span class="s2">&quot;search_query&quot;</span><span class="p">:</span> <span class="n">search_query</span><span class="p">,</span>
+        <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;understood&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;我将为您搜索：</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)]</span>
     <span class="p">}</span>
 </code></pre></div>
 <p>该节点通过一个结构化的提示，要求 LLM 同时完成“意图理解”和“关键词生成”两个任务，并将解析出的专用搜索关键词更新到状态的 search_query 字段中，为下一步的精确搜索做好准备。</p>
 <p><strong>搜索节点</strong>：负责执行智能体的“工具使用”能力，它将调用 Tavily API 进行真实的互联网搜索，并具备基础的错误处理功能</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tavily_search_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">SearchState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""步骤2：使用Tavily API进行真实搜索"""</span>
-    <span class="n">search_query</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"search_query"</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;步骤2：使用Tavily API进行真实搜索&quot;&quot;&quot;</span>
+    <span class="n">search_query</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;search_query&quot;</span><span class="p">]</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"🔍 正在搜索: </span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔍 正在搜索: </span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">tavily_client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-            <span class="n">query</span><span class="o">=</span><span class="n">search_query</span><span class="p">,</span> <span class="n">search_depth</span><span class="o">=</span><span class="s2">"basic"</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span>
+            <span class="n">query</span><span class="o">=</span><span class="n">search_query</span><span class="p">,</span> <span class="n">search_depth</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span>
         <span class="p">)</span>
         <span class="c1"># ... (处理和格式化搜索结果) ...</span>
         <span class="n">search_results</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># 格式化后的结果字符串</span>
 
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">"search_results"</span><span class="p">:</span> <span class="n">search_results</span><span class="p">,</span>
-            <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"searched"</span><span class="p">,</span>
-            <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">"✅ 搜索完成！正在整理答案..."</span><span class="p">)]</span>
+            <span class="s2">&quot;search_results&quot;</span><span class="p">:</span> <span class="n">search_results</span><span class="p">,</span>
+            <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;searched&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;✅ 搜索完成！正在整理答案...&quot;</span><span class="p">)]</span>
         <span class="p">}</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="c1"># ... (处理错误) ...</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">"search_results"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"搜索失败：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
-            <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"search_failed"</span><span class="p">,</span>
-            <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">"❌ 搜索遇到问题..."</span><span class="p">)]</span>
+            <span class="s2">&quot;search_results&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;搜索失败：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;search_failed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;❌ 搜索遇到问题...&quot;</span><span class="p">)]</span>
         <span class="p">}</span>
 </code></pre></div>
 <p>此节点通过 <code>tavily_client.search</code> 发起真实的 API 调用。它被包裹在 <code>try...except</code> 块中，用于捕获可能的异常。如果搜索失败，它会更新 <code>step</code> 状态为 "<code>search_failed</code>"，这个状态将被下一个节点用来触发备用方案。</p>
 <p><strong>回答节点</strong>：最后的回答节点能够根据上一步的搜索是否成功，来选择不同的回答策略，具备了一定的弹性。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_answer_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">SearchState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""步骤3：基于搜索结果生成最终答案"""</span>
-    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="s2">"step"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"search_failed"</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;步骤3：基于搜索结果生成最终答案&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;search_failed&quot;</span><span class="p">:</span>
         <span class="c1"># 如果搜索失败，执行回退策略，基于LLM自身知识回答</span>
-        <span class="n">fallback_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"搜索API暂时不可用，请基于您的知识回答用户的问题：</span><span class="se">\n</span><span class="s2">用户问题：</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'user_query'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">fallback_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;搜索API暂时不可用，请基于您的知识回答用户的问题：</span><span class="se">\n</span><span class="s2">用户问题：</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;user_query&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">([</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">fallback_prompt</span><span class="p">)])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># 搜索成功，基于搜索结果生成答案</span>
-        <span class="n">answer_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""基于以下搜索结果为用户提供完整、准确的答案：</span>
-<span class="s2">用户问题：</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'user_query'</span><span class="p">]</span><span class="si">}</span>
-<span class="s2">搜索结果：</span><span class="se">\n</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'search_results'</span><span class="p">]</span><span class="si">}</span>
-<span class="s2">请综合搜索结果，提供准确、有用的回答..."""</span>
+        <span class="n">answer_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;基于以下搜索结果为用户提供完整、准确的答案：</span>
+<span class="s2">用户问题：</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;user_query&#39;</span><span class="p">]</span><span class="si">}</span>
+<span class="s2">搜索结果：</span><span class="se">\n</span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;search_results&#39;</span><span class="p">]</span><span class="si">}</span>
+<span class="s2">请综合搜索结果，提供准确、有用的回答...&quot;&quot;&quot;</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">([</span><span class="n">SystemMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">answer_prompt</span><span class="p">)])</span>
 
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">"final_answer"</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
-        <span class="s2">"step"</span><span class="p">:</span> <span class="s2">"completed"</span><span class="p">,</span>
-        <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)]</span>
+        <span class="s2">&quot;final_answer&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+        <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="s2">&quot;completed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)]</span>
     <span class="p">}</span>
 </code></pre></div>
 <p>该节点通过检查 <code>state["step"]</code> 的值来执行条件逻辑。如果搜索失败，它会利用 LLM 的内部知识回答并告知用户情况。如果搜索成功，它则会使用包含实时搜索结果的提示，来生成一个有时效性且有据可依的回答。</p>
@@ -3591,15 +3647,15 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
     <span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">SearchState</span><span class="p">)</span>
 
     <span class="c1"># 添加节点</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"understand"</span><span class="p">,</span> <span class="n">understand_query_node</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span> <span class="n">tavily_search_node</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"answer"</span><span class="p">,</span> <span class="n">generate_answer_node</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;understand&quot;</span><span class="p">,</span> <span class="n">understand_query_node</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="n">tavily_search_node</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">generate_answer_node</span><span class="p">)</span>
 
     <span class="c1"># 设置线性流程</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"understand"</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"understand"</span><span class="p">,</span> <span class="s2">"search"</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"search"</span><span class="p">,</span> <span class="s2">"answer"</span><span class="p">)</span>
-    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"answer"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">&quot;understand&quot;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;understand&quot;</span><span class="p">,</span> <span class="s2">&quot;search&quot;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">,</span> <span class="s2">&quot;answer&quot;</span><span class="p">)</span>
+    <span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
 
     <span class="c1"># 编译图</span>
     <span class="n">memory</span> <span class="o">=</span> <span class="n">InMemorySaver</span><span class="p">()</span>
@@ -3615,7 +3671,7 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
 <div class="highlight"><pre><span></span><code>🔍 智能搜索助手启动！
 我会使用Tavily API为您搜索最新、最准确的信息
 支持各种问题：新闻、技术、知识问答等
-(输入 'quit' 退出)
+(输入 &#39;quit&#39; 退出)
 
 🤔 您想了解什么: 明天我要去北京，天气怎么样？有合适的景点吗
 
@@ -3779,10 +3835,10 @@ Enter<span class="w"> </span>your<span class="w"> </span>response:<span class="w
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

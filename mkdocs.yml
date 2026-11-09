@@ -68,6 +68,7 @@ nav:
     # - 示例: course/example.md
     - 计算机基础:
         - 计算机网络基础: course/计算机基础/计算机网络基础/index.md
+        - 计算机组成原理: course/计算机基础/计算机组成原理/index.md
         - 计算机网络-JavaGuide: course/计算机基础/计算机网络/index.md
         - 操作系统: course/计算机基础/操作系统/index.md
         - Linux: course/计算机基础/Linux/index.md

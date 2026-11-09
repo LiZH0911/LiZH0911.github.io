@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -537,6 +537,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
         
   
@@ -544,7 +572,7 @@
   <span class="md-ellipsis">
     
   
-    计算机网络
+    计算机网络-JavaGuide
   
 
     
@@ -2338,6 +2366,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/DeepSeek%20Harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeepSeek Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
         
   
@@ -2803,12 +2859,12 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">CalculatorTool</span><span class="p">,</span> <span class="n">SearchTool</span>
 
 <span class="n">llm</span> <span class="o">=</span> <span class="n">HelloAgentsLLM</span><span class="p">()</span>
-<span class="n">agent</span> <span class="o">=</span> <span class="n">ReActAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"AI助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">)</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">ReActAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;AI助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">llm</span><span class="p">)</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">CalculatorTool</span><span class="p">())</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">SearchTool</span><span class="p">())</span>
 
 <span class="c1"># 智能体可以独立完成任务</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"搜索最新的AI新闻，并计算相关公司的市值总和"</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;搜索最新的AI新闻，并计算相关公司的市值总和&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>这个智能体工作得很好，但它面临着三个根本性的限制。</p>
 <ol>
@@ -2819,19 +2875,19 @@
 <p>让我们通过一个更具体的例子来理解这些限制。假设你要构建一个智能研究助手，它需要：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 传统方式：手动集成每个服务</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">GitHubTool</span><span class="p">(</span><span class="n">BaseTool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""需要手写GitHub API适配器"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;需要手写GitHub API适配器&quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_url</span><span class="p">):</span>
         <span class="c1"># 大量的API调用代码...</span>
         <span class="k">pass</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">DatabaseTool</span><span class="p">(</span><span class="n">BaseTool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""需要手写数据库适配器"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;需要手写数据库适配器&quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
         <span class="c1"># 数据库连接和查询代码...</span>
         <span class="k">pass</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">WeatherTool</span><span class="p">(</span><span class="n">BaseTool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""需要手写天气API适配器"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;需要手写天气API适配器&quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="c1"># 天气API调用代码...</span>
         <span class="k">pass</span>
@@ -2857,8 +2913,8 @@
 <span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">()</span>  <span class="c1"># 内置服务器提供基础工具</span>
 
 <span class="c1"># 或者连接到专业的MCP服务器</span>
-<span class="n">github_mcp</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-github"</span><span class="p">])</span>
-<span class="n">database_mcp</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"database_mcp_server.py"</span><span class="p">])</span>
+<span class="n">github_mcp</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-github&quot;</span><span class="p">])</span>
+<span class="n">database_mcp</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;database_mcp_server.py&quot;</span><span class="p">])</span>
 
 <span class="c1"># 智能体自动获得所有能力，无需手写适配器</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">mcp_tool</span><span class="p">)</span>
@@ -2929,7 +2985,7 @@
 </code></pre></div>
 <p>对于这一章的内容，主要是应用为主，学习目标是能拥有在自己项目中应用协议的能力。并且协议目前发展处于早期，所以无需花费太多精力去造轮子。在开始实战之前，让我们先准备好开发环境：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 安装HelloAgents框架（第10章版本）</span>
-pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hello-agents[protocol]==0.2.2"</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;hello-agents[protocol]==0.2.2&quot;</span>
 
 <span class="c1"># 安装NodeJS, 可以参考Additional-Chapter中的文档</span>
 </code></pre></div>
@@ -2939,26 +2995,26 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="c1"># 1. MCP：访问工具</span>
 <span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">()</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"call_tool"</span><span class="p">,</span>
-    <span class="s2">"tool_name"</span><span class="p">:</span> <span class="s2">"add"</span><span class="p">,</span>
-    <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;call_tool&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
 <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"MCP计算结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># 输出: 30.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MCP计算结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 输出: 30.0</span>
 
 <span class="c1"># 2. ANP：服务发现</span>
 <span class="n">anp_tool</span> <span class="o">=</span> <span class="n">ANPTool</span><span class="p">()</span>
 <span class="n">anp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"register_service"</span><span class="p">,</span>
-    <span class="s2">"service_id"</span><span class="p">:</span> <span class="s2">"calculator"</span><span class="p">,</span>
-    <span class="s2">"service_type"</span><span class="p">:</span> <span class="s2">"math"</span><span class="p">,</span>
-    <span class="s2">"endpoint"</span><span class="p">:</span> <span class="s2">"http://localhost:8080"</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;register_service&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service_id&quot;</span><span class="p">:</span> <span class="s2">&quot;calculator&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;service_type&quot;</span><span class="p">:</span> <span class="s2">&quot;math&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:8080&quot;</span>
 <span class="p">})</span>
-<span class="n">services</span> <span class="o">=</span> <span class="n">anp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">"action"</span><span class="p">:</span> <span class="s2">"discover_services"</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"发现的服务: </span><span class="si">{</span><span class="n">services</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">services</span> <span class="o">=</span> <span class="n">anp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;discover_services&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;发现的服务: </span><span class="si">{</span><span class="n">services</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># 3. A2A：智能体通信</span>
-<span class="n">a2a_tool</span> <span class="o">=</span> <span class="n">A2ATool</span><span class="p">(</span><span class="s2">"http://localhost:5000"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"A2A工具创建成功"</span><span class="p">)</span>
+<span class="n">a2a_tool</span> <span class="o">=</span> <span class="n">A2ATool</span><span class="p">(</span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A2A工具创建成功&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="102-mcp">10.2 <strong>MCP 协议实战</strong></h2>
 <p>现在，让我们深入学习 MCP，掌握如何让智能体访问外部工具和资源。</p>
@@ -3031,16 +3087,16 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="c1"># OpenAI格式</span>
 <span class="n">openai_tools</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"function"</span><span class="p">,</span>
-        <span class="s2">"function"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"search_github"</span><span class="p">,</span>
-            <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"搜索GitHub仓库"</span><span class="p">,</span>
-            <span class="s2">"parameters"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"object"</span><span class="p">,</span>
-                <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">"query"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span> <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"搜索关键词"</span><span class="p">}</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;search_github&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;搜索GitHub仓库&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;搜索关键词&quot;</span><span class="p">}</span>
                 <span class="p">},</span>
-                <span class="s2">"required"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"query"</span><span class="p">]</span>
+                <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -3049,14 +3105,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="c1"># Claude格式</span>
 <span class="n">claude_tools</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"search_github"</span><span class="p">,</span>
-        <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"搜索GitHub仓库"</span><span class="p">,</span>
-        <span class="s2">"input_schema"</span><span class="p">:</span> <span class="p">{</span>  <span class="c1"># 注意：不是parameters</span>
-            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"object"</span><span class="p">,</span>
-            <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">"query"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"string"</span><span class="p">,</span> <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"搜索关键词"</span><span class="p">}</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;search_github&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;搜索GitHub仓库&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;input_schema&quot;</span><span class="p">:</span> <span class="p">{</span>  <span class="c1"># 注意：不是parameters</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;搜索关键词&quot;</span><span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">"required"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"query"</span><span class="p">]</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">]</span>
@@ -3065,8 +3121,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="k">def</span><span class="w"> </span><span class="nf">search_github</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-        <span class="s2">"https://api.github.com/search/repositories"</span><span class="p">,</span>
-        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">"q"</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
+        <span class="s2">&quot;https://api.github.com/search/repositories&quot;</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">}</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
@@ -3077,7 +3133,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
     <span class="n">result</span> <span class="o">=</span> <span class="n">search_github</span><span class="p">(</span><span class="o">**</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">tool_call</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span><span class="p">))</span>
 
 <span class="c1"># Claude的响应</span>
-<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"tool_use"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;tool_use&quot;</span><span class="p">:</span>
     <span class="n">tool_use</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">search_github</span><span class="p">(</span><span class="o">**</span><span class="n">tool_use</span><span class="o">.</span><span class="n">input</span><span class="p">)</span>
 </code></pre></div>
@@ -3086,11 +3142,11 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 
 <span class="c1"># 步骤1：连接到社区提供的MCP服务器（无需自己实现）</span>
 <span class="n">github_client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span>
-    <span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-github"</span>
+    <span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-github&quot;</span>
 <span class="p">])</span>
 
 <span class="n">fs_client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span>
-    <span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span>
+    <span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span>
 <span class="p">])</span>
 
 <span class="c1"># 步骤2：统一的调用方式（与模型无关）</span>
@@ -3100,8 +3156,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 
     <span class="c1"># 调用工具（标准化接口）</span>
     <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">github_client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span>
-        <span class="s2">"search_repositories"</span><span class="p">,</span>
-        <span class="p">{</span><span class="s2">"query"</span><span class="p">:</span> <span class="s2">"AI agents"</span><span class="p">}</span>
+        <span class="s2">&quot;search_repositories&quot;</span><span class="p">,</span>
+        <span class="p">{</span><span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;AI agents&quot;</span><span class="p">}</span>
     <span class="p">)</span>
 
 <span class="c1"># 步骤3：任何支持MCP的模型都能使用</span>
@@ -3125,19 +3181,19 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
     <span class="c1"># 方式1：连接到社区提供的文件系统服务器</span>
     <span class="c1"># npx会自动下载并运行@modelcontextprotocol/server-filesystem包</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span>
-        <span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span>
-        <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span>
-        <span class="s2">"."</span>  <span class="c1"># 指定根目录</span>
+        <span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;.&quot;</span>  <span class="c1"># 指定根目录</span>
     <span class="p">])</span>
 
     <span class="c1"># 使用async with确保连接正确关闭</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 在这里使用client</span>
         <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"可用工具: </span><span class="si">{</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tools</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;可用工具: </span><span class="si">{</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">tools</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># 方式2：连接到自定义的Python MCP服务器</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"my_mcp_server.py"</span><span class="p">])</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;my_mcp_server.py&quot;</span><span class="p">])</span>
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 使用client...</span>
         <span class="k">pass</span>
@@ -3148,26 +3204,26 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <p><strong>（2）发现可用工具</strong></p>
 <p>连接成功后，第一步通常是查询服务器提供了哪些工具：</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">discover_tools</span><span class="p">():</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">])</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">])</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 获取所有可用工具</span>
         <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"服务器提供了 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个工具："</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;服务器提供了 </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个工具：&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">工具名称: </span><span class="si">{</span><span class="n">tool</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"描述: </span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'description'</span><span class="p">,</span><span class="w"> </span><span class="s1">'无描述'</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">工具名称: </span><span class="si">{</span><span class="n">tool</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;描述: </span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;无描述&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># 打印参数信息</span>
-            <span class="k">if</span> <span class="s1">'inputSchema'</span> <span class="ow">in</span> <span class="n">tool</span><span class="p">:</span>
-                <span class="n">schema</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s1">'inputSchema'</span><span class="p">]</span>
-                <span class="k">if</span> <span class="s1">'properties'</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">"参数:"</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">param_name</span><span class="p">,</span> <span class="n">param_info</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">[</span><span class="s1">'properties'</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                        <span class="n">param_type</span> <span class="o">=</span> <span class="n">param_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'type'</span><span class="p">,</span> <span class="s1">'any'</span><span class="p">)</span>
-                        <span class="n">param_desc</span> <span class="o">=</span> <span class="n">param_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'description'</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
-                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  - </span><span class="si">{</span><span class="n">param_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">param_desc</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;inputSchema&#39;</span> <span class="ow">in</span> <span class="n">tool</span><span class="p">:</span>
+                <span class="n">schema</span> <span class="o">=</span> <span class="n">tool</span><span class="p">[</span><span class="s1">&#39;inputSchema&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="s1">&#39;properties&#39;</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;参数:&quot;</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">param_name</span><span class="p">,</span> <span class="n">param_info</span> <span class="ow">in</span> <span class="n">schema</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">param_type</span> <span class="o">=</span> <span class="n">param_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;any&#39;</span><span class="p">)</span>
+                        <span class="n">param_desc</span> <span class="o">=</span> <span class="n">param_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">param_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">param_desc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">discover_tools</span><span class="p">())</span>
 
@@ -3188,37 +3244,37 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <p><strong>（3）调用工具</strong></p>
 <p>调用工具时，只需提供工具名称和符合 JSON Schema 的参数：</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">use_tools</span><span class="p">():</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">])</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">])</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 读取文件</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"read_file"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"path"</span><span class="p">:</span> <span class="s2">"my_README.md"</span><span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"文件内容：</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;read_file&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;my_README.md&quot;</span><span class="p">})</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;文件内容：</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># 列出目录</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"list_directory"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"path"</span><span class="p">:</span> <span class="s2">"."</span><span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"当前目录文件：</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;list_directory&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">})</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;当前目录文件：</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># 写入文件</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"write_file"</span><span class="p">,</span> <span class="p">{</span>
-            <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"output.txt"</span><span class="p">,</span>
-            <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Hello from MCP!"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;write_file&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;output.txt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello from MCP!&quot;</span>
         <span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"写入结果：</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;写入结果：</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">use_tools</span><span class="p">())</span>
 </code></pre></div>
 <p>在这里提供一种更为安全的方式来调用 MCP 服务，可供参考：</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">safe_tool_call</span><span class="p">():</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">])</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">([</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">])</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># 尝试读取可能不存在的文件</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"read_file"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"path"</span><span class="p">:</span> <span class="s2">"nonexistent.txt"</span><span class="p">})</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;read_file&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;nonexistent.txt&quot;</span><span class="p">})</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"工具调用失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;工具调用失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="c1"># 可以选择重试、使用默认值或向用户报告错误</span>
 
 <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">safe_tool_call</span><span class="p">())</span>
@@ -3227,53 +3283,53 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <p>除了工具，MCP 服务器还可以提供资源（Resources）：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 列出可用资源</span>
 <span class="n">resources</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_resources</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"可用资源：</span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s1">'uri'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">resources</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;可用资源：</span><span class="si">{</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">resources</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># 读取资源</span>
-<span class="n">resource_content</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">read_resource</span><span class="p">(</span><span class="s2">"file:///path/to/resource"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"资源内容：</span><span class="si">{</span><span class="n">resource_content</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">resource_content</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">read_resource</span><span class="p">(</span><span class="s2">&quot;file:///path/to/resource&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;资源内容：</span><span class="si">{</span><span class="n">resource_content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>（5）使用提示模板</p>
 <p>MCP 服务器可以提供预定义的提示模板（Prompts）：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 列出可用提示</span>
 <span class="n">prompts</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">list_prompts</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"可用提示：</span><span class="si">{</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">prompts</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;可用提示：</span><span class="si">{</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">prompts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># 获取提示内容</span>
-<span class="n">prompt</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_prompt</span><span class="p">(</span><span class="s2">"code_review"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"language"</span><span class="p">:</span> <span class="s2">"python"</span><span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"提示内容：</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">prompt</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_prompt</span><span class="p">(</span><span class="s2">&quot;code_review&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;提示内容：</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>（6）完整示例：使用 GitHub MCP 服务</p>
 <p>让我们通过一个完整的例子来看如何使用社区提供的 GitHub MCP 服务，我们将采用封装好的 MCP Tools 来：</p>
-<div class="highlight"><pre><span></span><code><span class="sd">"""</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">GitHub MCP 服务示例</span>
 
 <span class="sd">注意：需要设置环境变量</span>
-<span class="sd">    Windows: $env:GITHUB_PERSONAL_ACCESS_TOKEN="your_token_here"</span>
-<span class="sd">    Linux/macOS: export GITHUB_PERSONAL_ACCESS_TOKEN="your_token_here"</span>
-<span class="sd">"""</span>
+<span class="sd">    Windows: $env:GITHUB_PERSONAL_ACCESS_TOKEN=&quot;your_token_here&quot;</span>
+<span class="sd">    Linux/macOS: export GITHUB_PERSONAL_ACCESS_TOKEN=&quot;your_token_here&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPTool</span>
 
 <span class="c1"># 创建 GitHub MCP 工具</span>
 <span class="n">github_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-github"</span><span class="p">]</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-github&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 
 <span class="c1"># 1. 列出可用工具</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"📋 可用工具："</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">github_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">"action"</span><span class="p">:</span> <span class="s2">"list_tools"</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📋 可用工具：&quot;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">github_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;list_tools&quot;</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 <span class="c1"># 2. 搜索仓库</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">🔍 搜索仓库："</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔍 搜索仓库：&quot;</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">github_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"call_tool"</span><span class="p">,</span>
-    <span class="s2">"tool_name"</span><span class="p">:</span> <span class="s2">"search_repositories"</span><span class="p">,</span>
-    <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"query"</span><span class="p">:</span> <span class="s2">"AI agents language:python"</span><span class="p">,</span>
-        <span class="s2">"page"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">"perPage"</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;call_tool&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;search_repositories&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;AI agents language:python&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;perPage&quot;</span><span class="p">:</span> <span class="mi">3</span>
     <span class="p">}</span>
 <span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -3293,15 +3349,15 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 
 <span class="c1"># 2. Stdio Transport - 标准输入输出传输（本地开发）</span>
 <span class="c1"># 使用命令列表启动本地服务器</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"examples/mcp_example_server.py"</span><span class="p">])</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;examples/mcp_example_server.py&quot;</span><span class="p">])</span>
 
 <span class="c1"># 3. Stdio Transport with Args - 带参数的命令传输</span>
 <span class="c1"># 可以传递额外参数</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"examples/mcp_example_server.py"</span><span class="p">,</span> <span class="s2">"--debug"</span><span class="p">])</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;examples/mcp_example_server.py&quot;</span><span class="p">,</span> <span class="s2">&quot;--debug&quot;</span><span class="p">])</span>
 
 <span class="c1"># 4. Stdio Transport - 社区服务器（npx方式）</span>
 <span class="c1"># 使用npx启动社区MCP服务器</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">])</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">])</span>
 
 <span class="c1"># 5. HTTP/SSE/StreamableHTTP Transport</span>
 <span class="c1"># 注意：MCPTool主要用于Stdio和Memory传输</span>
@@ -3315,14 +3371,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">()</span>
 
 <span class="c1"># 列出可用工具</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">"action"</span><span class="p">:</span> <span class="s2">"list_tools"</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;list_tools&quot;</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 <span class="c1"># 调用工具</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"call_tool"</span><span class="p">,</span>
-    <span class="s2">"tool_name"</span><span class="p">:</span> <span class="s2">"add"</span><span class="p">,</span>
-    <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"a"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;call_tool&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
 <span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
@@ -3331,20 +3387,20 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPTool</span>
 
 <span class="c1"># 方式1：使用自定义Python服务器</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"my_mcp_server.py"</span><span class="p">])</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;my_mcp_server.py&quot;</span><span class="p">])</span>
 
 <span class="c1"># 方式2：使用社区服务器（文件系统）</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">])</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">])</span>
 
 <span class="c1"># 列出工具</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">"action"</span><span class="p">:</span> <span class="s2">"list_tools"</span><span class="p">})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span><span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;list_tools&quot;</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 <span class="c1"># 调用工具</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">mcp_tool</span><span class="o">.</span><span class="n">run</span><span class="p">({</span>
-    <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"call_tool"</span><span class="p">,</span>
-    <span class="s2">"tool_name"</span><span class="p">:</span> <span class="s2">"read_file"</span><span class="p">,</span>
-    <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"path"</span><span class="p">:</span> <span class="s2">"README.md"</span><span class="p">}</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;call_tool&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tool_name&quot;</span><span class="p">:</span> <span class="s2">&quot;read_file&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;README.md&quot;</span><span class="p">}</span>
 <span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
@@ -3358,19 +3414,19 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_http_transport</span><span class="p">():</span>
     <span class="c1"># 连接到远程 HTTP MCP 服务器</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">(</span><span class="s2">"http://api.example.com/mcp"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">(</span><span class="s2">&quot;http://api.example.com/mcp&quot;</span><span class="p">)</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 获取服务器信息</span>
         <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"远程服务器工具: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;远程服务器工具: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个&quot;</span><span class="p">)</span>
 
         <span class="c1"># 调用远程工具</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"process_data"</span><span class="p">,</span> <span class="p">{</span>
-            <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"Hello, World!"</span><span class="p">,</span>
-            <span class="s2">"operation"</span><span class="p">:</span> <span class="s2">"uppercase"</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;process_data&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello, World!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;operation&quot;</span><span class="p">:</span> <span class="s2">&quot;uppercase&quot;</span>
         <span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"远程处理结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;远程处理结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># 注意：需要实际的 HTTP MCP 服务器</span>
 <span class="c1"># asyncio.run(test_http_transport())</span>
@@ -3386,17 +3442,17 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_sse_transport</span><span class="p">():</span>
     <span class="c1"># 连接到 SSE MCP 服务器</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">(</span>
-        <span class="s2">"http://localhost:8080/sse"</span><span class="p">,</span>
-        <span class="n">transport_type</span><span class="o">=</span><span class="s2">"sse"</span>
+        <span class="s2">&quot;http://localhost:8080/sse&quot;</span><span class="p">,</span>
+        <span class="n">transport_type</span><span class="o">=</span><span class="s2">&quot;sse&quot;</span>
     <span class="p">)</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># SSE 特别适合流式处理</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">"stream_process"</span><span class="p">,</span> <span class="p">{</span>
-            <span class="s2">"input"</span><span class="p">:</span> <span class="s2">"大量数据处理请求"</span><span class="p">,</span>
-            <span class="s2">"stream"</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">call_tool</span><span class="p">(</span><span class="s2">&quot;stream_process&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s2">&quot;input&quot;</span><span class="p">:</span> <span class="s2">&quot;大量数据处理请求&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">True</span>
         <span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"流式处理结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;流式处理结果: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># 注意：需要支持 SSE 的 MCP 服务器</span>
 <span class="c1"># asyncio.run(test_sse_transport())</span>
@@ -3412,14 +3468,14 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">test_streamable_http_transport</span><span class="p">():</span>
     <span class="c1"># 连接到 StreamableHTTP MCP 服务器</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">MCPClient</span><span class="p">(</span>
-        <span class="s2">"http://localhost:8080/mcp"</span><span class="p">,</span>
-        <span class="n">transport_type</span><span class="o">=</span><span class="s2">"streamable_http"</span>
+        <span class="s2">&quot;http://localhost:8080/mcp&quot;</span><span class="p">,</span>
+        <span class="n">transport_type</span><span class="o">=</span><span class="s2">&quot;streamable_http&quot;</span>
     <span class="p">)</span>
 
     <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="p">:</span>
         <span class="c1"># 支持双向流式通信</span>
         <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">list_tools</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"StreamableHTTP 服务器工具: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;StreamableHTTP 服务器工具: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="si">}</span><span class="s2"> 个&quot;</span><span class="p">)</span>
 
 <span class="c1"># 注意：需要支持 StreamableHTTP 的 MCP 服务器</span>
 <span class="c1"># asyncio.run(test_streamable_http_transport())</span>
@@ -3434,15 +3490,15 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPTool</span>
 
-<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
 
 <span class="c1"># 无需任何配置，自动使用内置演示服务器</span>
-<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"calculator"</span><span class="p">)</span>
+<span class="n">mcp_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;calculator&quot;</span><span class="p">)</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">mcp_tool</span><span class="p">)</span>
-<span class="c1"># ✅ MCP工具 'calculator' 已展开为 6 个独立工具</span>
+<span class="c1"># ✅ MCP工具 &#39;calculator&#39; 已展开为 6 个独立工具</span>
 
 <span class="c1"># 智能体可以直接使用展开后的工具</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"计算 25 乘以 16"</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;计算 25 乘以 16&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>  <span class="c1"># 输出：25 乘以 16 的结果是 400</span>
 </code></pre></div>
 <p>自动展开后的工具：</p>
@@ -3464,27 +3520,27 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPTool</span>
 
-<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"文件助手"</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
+<span class="n">agent</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;文件助手&quot;</span><span class="p">,</span> <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">())</span>
 
 <span class="c1"># 示例1：连接到社区提供的文件系统服务器</span>
 <span class="n">fs_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"filesystem"</span><span class="p">,</span>  <span class="c1"># 指定唯一名称</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">"访问本地文件系统"</span><span class="p">,</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;filesystem&quot;</span><span class="p">,</span>  <span class="c1"># 指定唯一名称</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;访问本地文件系统&quot;</span><span class="p">,</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">fs_tool</span><span class="p">)</span>
 
 <span class="c1"># 示例2：连接到自定义的 Python MCP 服务器</span>
 <span class="c1"># 关于如何编写自定义MCP服务器，请参考10.5章节</span>
 <span class="n">custom_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"custom_server"</span><span class="p">,</span>  <span class="c1"># 使用不同的名称</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">"自定义业务逻辑服务器"</span><span class="p">,</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"python"</span><span class="p">,</span> <span class="s2">"my_mcp_server.py"</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom_server&quot;</span><span class="p">,</span>  <span class="c1"># 使用不同的名称</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;自定义业务逻辑服务器&quot;</span><span class="p">,</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;my_mcp_server.py&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">custom_tool</span><span class="p">)</span>
 
 <span class="c1"># Agent现在可以自动使用这些工具！</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"请读取my_README.md文件，并总结其中的主要内容"</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;请读取my_README.md文件，并总结其中的主要内容&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 </code></pre></div>
 <p>当使用多个 MCP 服务器时，务必为每个 MCPTool 指定不同的 name，这个 name 会作为前缀添加到展开的工具名前，避免冲突。</p>
@@ -3492,7 +3548,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <p>（2）MCP 工具自动展开的工作原理</p>
 <p>理解自动展开机制有助于你更好地使用 MCP 工具。让我们深入了解它是如何工作的：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 用户代码</span>
-<span class="n">fs_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"fs"</span><span class="p">,</span> <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
+<span class="n">fs_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span> <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">])</span>
 <span class="n">agent</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">fs_tool</span><span class="p">)</span>
 
 <span class="c1"># 内部发生的事情：</span>
@@ -3504,77 +3560,77 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="c1"># 3. 注册到Agent的工具注册表</span>
 
 <span class="c1"># Agent调用</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"读取README.md"</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;读取README.md&quot;</span><span class="p">)</span>
 
 <span class="c1"># Agent内部：</span>
 <span class="c1"># 1. 识别需要调用 fs_read_text_file</span>
 <span class="c1"># 2. 生成参数：path=README.md</span>
 <span class="c1"># 3. 包装器转换为MCP格式：</span>
-<span class="c1">#    {"action": "call_tool", "tool_name": "read_text_file", "arguments": {"path": "README.md"}}</span>
+<span class="c1">#    {&quot;action&quot;: &quot;call_tool&quot;, &quot;tool_name&quot;: &quot;read_text_file&quot;, &quot;arguments&quot;: {&quot;path&quot;: &quot;README.md&quot;}}</span>
 <span class="c1"># 4. 调用MCP服务器</span>
 <span class="c1"># 5. 返回文件内容</span>
 </code></pre></div>
 <p>系统会根据工具的参数定义自动转换类型：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Agent调用计算器</span>
-<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"计算 25 乘以 16"</span><span class="p">)</span>
+<span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;计算 25 乘以 16&quot;</span><span class="p">)</span>
 
 <span class="c1"># Agent生成：a=25,b=16 (字符串)</span>
-<span class="c1"># 系统自动转换为：{"a": 25.0, "b": 16.0} (数字)</span>
+<span class="c1"># 系统自动转换为：{&quot;a&quot;: 25.0, &quot;b&quot;: 16.0} (数字)</span>
 <span class="c1"># MCP服务器接收到正确的数字类型</span>
 </code></pre></div>
 <p>（3）实战案例：智能文档助手</p>
 <p>让我们构建一个完整的智能文档助手，这里我们用一个简单的多智能体编排进行演示：</p>
-<div class="highlight"><pre><span></span><code><span class="sd">"""</span>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">多Agent协作的智能文档助手</span>
 
 <span class="sd">使用两个SimpleAgent分工协作：</span>
 <span class="sd">- Agent1：GitHub搜索专家</span>
 <span class="sd">- Agent2：文档生成专家</span>
-<span class="sd">"""</span>
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleAgent</span><span class="p">,</span> <span class="n">HelloAgentsLLM</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">hello_agents.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">MCPTool</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
 
 <span class="c1"># 加载.env文件中的环境变量</span>
-<span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="o">=</span><span class="s2">"../HelloAgents/.env"</span><span class="p">)</span>
+<span class="n">load_dotenv</span><span class="p">(</span><span class="n">dotenv_path</span><span class="o">=</span><span class="s2">&quot;../HelloAgents/.env&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"多Agent协作的智能文档助手"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;多Agent协作的智能文档助手&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
 
 <span class="c1"># ============================================================</span>
 <span class="c1"># Agent 1: GitHub搜索专家</span>
 <span class="c1"># ============================================================</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【步骤1】创建GitHub搜索专家..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">【步骤1】创建GitHub搜索专家...&quot;</span><span class="p">)</span>
 
 <span class="n">github_searcher</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"GitHub搜索专家"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;GitHub搜索专家&quot;</span><span class="p">,</span>
     <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">(),</span>
-    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">"""你是一个GitHub搜索专家。</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;你是一个GitHub搜索专家。</span>
 <span class="s2">你的任务是搜索GitHub仓库并返回结果。</span>
 <span class="s2">请返回清晰、结构化的搜索结果，包括：</span>
 <span class="s2">- 仓库名称</span>
 <span class="s2">- 简短描述</span>
 
-<span class="s2">保持简洁，不要添加额外的解释。"""</span>
+<span class="s2">保持简洁，不要添加额外的解释。&quot;&quot;&quot;</span>
 <span class="p">)</span>
 
 <span class="c1"># 添加GitHub工具</span>
 <span class="n">github_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"gh"</span><span class="p">,</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-github"</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gh&quot;</span><span class="p">,</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-github&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">github_searcher</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">github_tool</span><span class="p">)</span>
 
 <span class="c1"># ============================================================</span>
 <span class="c1"># Agent 2: 文档生成专家</span>
 <span class="c1"># ============================================================</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【步骤2】创建文档生成专家..."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">【步骤2】创建文档生成专家...&quot;</span><span class="p">)</span>
 
 <span class="n">document_writer</span> <span class="o">=</span> <span class="n">SimpleAgent</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"文档生成专家"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;文档生成专家&quot;</span><span class="p">,</span>
     <span class="n">llm</span><span class="o">=</span><span class="n">HelloAgentsLLM</span><span class="p">(),</span>
-    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">"""你是一个文档生成专家。</span>
+    <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;你是一个文档生成专家。</span>
 <span class="s2">你的任务是根据提供的信息生成结构化的Markdown报告。</span>
 
 <span class="s2">报告应该包括：</span>
@@ -3583,38 +3639,38 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="s2">- 主要内容（分点列出，包括项目名称、描述等）</span>
 <span class="s2">- 总结</span>
 
-<span class="s2">请直接输出完整的Markdown格式报告内容，不要使用工具保存。"""</span>
+<span class="s2">请直接输出完整的Markdown格式报告内容，不要使用工具保存。&quot;&quot;&quot;</span>
 <span class="p">)</span>
 
 <span class="c1"># 添加文件系统工具</span>
 <span class="n">fs_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"fs"</span><span class="p">,</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@modelcontextprotocol/server-filesystem"</span><span class="p">,</span> <span class="s2">"."</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fs&quot;</span><span class="p">,</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@modelcontextprotocol/server-filesystem&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">document_writer</span><span class="o">.</span><span class="n">add_tool</span><span class="p">(</span><span class="n">fs_tool</span><span class="p">)</span>
 
 <span class="c1"># ============================================================</span>
 <span class="c1"># 执行任务</span>
 <span class="c1"># ============================================================</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"开始执行任务..."</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;开始执行任务...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># 步骤1：GitHub搜索</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【步骤3】Agent1 搜索GitHub..."</span><span class="p">)</span>
-    <span class="n">search_task</span> <span class="o">=</span> <span class="s2">"搜索关于'AI agent'的GitHub仓库，返回前5个最相关的结果"</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">【步骤3】Agent1 搜索GitHub...&quot;</span><span class="p">)</span>
+    <span class="n">search_task</span> <span class="o">=</span> <span class="s2">&quot;搜索关于&#39;AI agent&#39;的GitHub仓库，返回前5个最相关的结果&quot;</span>
 
     <span class="n">search_results</span> <span class="o">=</span> <span class="n">github_searcher</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">search_task</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">搜索结果:"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">搜索结果:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">search_results</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
 
     <span class="c1"># 步骤2：生成报告</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【步骤4】Agent2 生成报告..."</span><span class="p">)</span>
-    <span class="n">report_task</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">【步骤4】Agent2 生成报告...&quot;</span><span class="p">)</span>
+    <span class="n">report_task</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">根据以下GitHub搜索结果，生成一份Markdown格式的研究报告：</span>
 
 <span class="si">{</span><span class="n">search_results</span><span class="si">}</span>
@@ -3626,35 +3682,35 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="s2">4. 总结：总结这些项目的共同特点</span>
 
 <span class="s2">请直接输出完整的Markdown格式报告。</span>
-<span class="s2">"""</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
     <span class="n">report_content</span> <span class="o">=</span> <span class="n">document_writer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">report_task</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">报告内容:"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">报告内容:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">report_content</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
 
     <span class="c1"># 步骤3：保存报告</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">【步骤5】保存报告到文件..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">【步骤5】保存报告到文件...&quot;</span><span class="p">)</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"report.md"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;report.md&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">report_content</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"✅ 报告已保存到 report.md"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ 报告已保存到 report.md&quot;</span><span class="p">)</span>
 
         <span class="c1"># 验证文件</span>
-        <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="s2">"report.md"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ 文件大小: </span><span class="si">{</span><span class="n">file_size</span><span class="si">}</span><span class="s2"> 字节"</span><span class="p">)</span>
+        <span class="n">file_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="s2">&quot;report.md&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ 文件大小: </span><span class="si">{</span><span class="n">file_size</span><span class="si">}</span><span class="s2"> 字节&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"❌ 保存失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ 保存失败: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"任务完成！"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;任务完成！&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
 
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">❌ 错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">❌ 错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
     <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
 </code></pre></div>
@@ -3693,8 +3749,8 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
 <span class="c1"># - 截图验证结果</span>
 <span class="c1"># - 生成测试报告</span>
 <span class="n">playwright_tool</span> <span class="o">=</span> <span class="n">MCPTool</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">"playwright"</span><span class="p">,</span>
-    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">"npx"</span><span class="p">,</span> <span class="s2">"-y"</span><span class="p">,</span> <span class="s2">"@playwright/mcp"</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;playwright&quot;</span><span class="p">,</span>
+    <span class="n">server_command</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;npx&quot;</span><span class="p">,</span> <span class="s2">&quot;-y&quot;</span><span class="p">,</span> <span class="s2">&quot;@playwright/mcp&quot;</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <p><strong>（2）智能笔记助手（Obsidian + Perplexity）</strong></p>
@@ -3894,10 +3950,10 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"hell
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

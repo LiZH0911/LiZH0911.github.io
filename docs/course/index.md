@@ -1,7 +1,10 @@
 这里记录我学习过程中整理的笔记。
 
+- [计算机网络基础](计算机基础/计算机网络基础/index.md)
+- [计算机组成原理](计算机基础/计算机组成原理/index.md)
+- [算法与数据结构](计算机基础/算法/index.md)
+- [Linux](计算机基础/Linux/index.md)
 - [Python](Python/index.md)
-- [Python 包与环境管理工具](常用工具/Python包与环境管理工具/index.md)
 - [机器学习](机器学习/index.md)
 - [深度学习](深度学习/index.md)
 - [传统数字图像处理](计算机视觉/传统数字图像处理/index.md)

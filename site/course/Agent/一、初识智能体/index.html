@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -537,6 +537,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
         
   
@@ -544,7 +572,7 @@
   <span class="md-ellipsis">
     
   
-    计算机网络
+    计算机网络-JavaGuide
   
 
     
@@ -2360,6 +2388,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/DeepSeek%20Harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeepSeek Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
         
   
@@ -2938,7 +2994,7 @@
 </ul>
 <div class="highlight"><pre><span></span><code>// 一个正在规划旅行的智能体可能会生成如下格式化的输出：
 Thought: 用户想知道北京的天气。我需要调用天气查询工具。
-Action: get_weather("北京")
+Action: get_weather(&quot;北京&quot;)
 
 // 然后一个外部的解析器 (Parser) 会捕捉到这个指令，并调用相应的get_weather函数，可能返回一个包含详细天气数据的 JSON 对象
 // 感知系统将这个原始输出处理并封装成一段简洁、清晰的自然语言文本，即观察
@@ -2961,7 +3017,7 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <p>（1）指令模板</p>
 <p>驱动真实 LLM 的关键在于<strong>提示工程（Prompt Engineering）</strong>。</p>
 <p>我们需要设计一个“指令模板”，告诉 LLM 它应该扮演什么角色、拥有哪些工具、以及如何格式化它的思考和行动。这是我们智能体的“说明书”，它将作为<code>system_prompt</code>传递给 LLM。</p>
-<div class="highlight"><pre><span></span><code><span class="n">AGENT_SYSTEM_PROMPT</span> <span class="o">=</span> <span class="s2">"""</span>
+<div class="highlight"><pre><span></span><code><span class="n">AGENT_SYSTEM_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">你是一个智能旅行助手。你的任务是分析用户的请求，并使用可用工具一步步地解决问题。</span>
 
 <span class="s2"># 可用工具:</span>
@@ -2975,7 +3031,7 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <span class="s2">Action: [你要执行的具体行动]</span>
 
 <span class="s2">Action的格式必须是以下之一：</span>
-<span class="s2">1. 调用工具：function_name(arg_name="arg_value")</span>
+<span class="s2">1. 调用工具：function_name(arg_name=&quot;arg_value&quot;)</span>
 <span class="s2">2. 结束任务：Finish[最终答案]</span>
 
 <span class="s2"># 重要提示:</span>
@@ -2984,18 +3040,18 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <span class="s2">- 当收集到足够信息可以回答用户问题时，必须使用 Action: Finish[最终答案] 格式结束</span>
 
 <span class="s2">请开始吧！</span>
-<span class="s2">"""</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </code></pre></div>
 <p>（2）工具 1：查询真实天气</p>
 <p>我们将使用免费的天气查询服务 <code>wttr.in</code>，它能以 JSON 格式返回指定城市的天气数据。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    通过调用 wttr.in API 查询真实的天气信息。</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># API端点，我们请求JSON格式的数据</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"https://wttr.in/</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">?format=j1"</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://wttr.in/</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">?format=j1&quot;</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 发起网络请求</span>
@@ -3006,19 +3062,19 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
         <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
         <span class="c1"># 提取当前天气状况</span>
-        <span class="n">current_condition</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'current_condition'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">weather_desc</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">'weatherDesc'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'value'</span><span class="p">]</span>
-        <span class="n">temp_c</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">'temp_C'</span><span class="p">]</span>
+        <span class="n">current_condition</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">weather_desc</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">&#39;weatherDesc&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+        <span class="n">temp_c</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">&#39;temp_C&#39;</span><span class="p">]</span>
 
         <span class="c1"># 格式化成自然语言返回</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">当前天气:</span><span class="si">{</span><span class="n">weather_desc</span><span class="si">}</span><span class="s2">，气温</span><span class="si">{</span><span class="n">temp_c</span><span class="si">}</span><span class="s2">摄氏度"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">当前天气:</span><span class="si">{</span><span class="n">weather_desc</span><span class="si">}</span><span class="s2">，气温</span><span class="si">{</span><span class="n">temp_c</span><span class="si">}</span><span class="s2">摄氏度&quot;</span>
 
     <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="c1"># 处理网络错误</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"错误:查询天气时遇到网络问题 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;错误:查询天气时遇到网络问题 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="c1"># 处理数据解析错误</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"错误:解析天气数据失败，可能是城市名称无效 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;错误:解析天气数据失败，可能是城市名称无效 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>（3）工具 2：搜索并推荐旅游景点</p>
 <p>我们将定义一个新工具 <code>get_attraction</code>，它会根据城市和天气状况，在互联网上搜索合适的景点：</p>
@@ -3026,47 +3082,47 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <span class="kn">from</span><span class="w"> </span><span class="nn">tavily</span><span class="w"> </span><span class="kn">import</span> <span class="n">TavilyClient</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_attraction</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">weather</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    根据城市和天气，使用Tavily Search API搜索并返回优化后的景点推荐。</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># 1. 从环境变量中读取API密钥</span>
-    <span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"TAVILY_API_KEY"</span><span class="p">)</span>
+    <span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">api_key</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"错误:未配置TAVILY_API_KEY环境变量。"</span>
+        <span class="k">return</span> <span class="s2">&quot;错误:未配置TAVILY_API_KEY环境变量。&quot;</span>
 
     <span class="c1"># 2. 初始化Tavily客户端</span>
     <span class="n">tavily</span> <span class="o">=</span> <span class="n">TavilyClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
 
     <span class="c1"># 3. 构造一个精确的查询</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"'</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">' 在'</span><span class="si">{</span><span class="n">weather</span><span class="si">}</span><span class="s2">'天气下最值得去的旅游景点推荐及理由"</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&#39; 在&#39;</span><span class="si">{</span><span class="n">weather</span><span class="si">}</span><span class="s2">&#39;天气下最值得去的旅游景点推荐及理由&quot;</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># 4. 调用API，include_answer=True会返回一个综合性的回答</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">tavily</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">search_depth</span><span class="o">=</span><span class="s2">"basic"</span><span class="p">,</span> <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">tavily</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">search_depth</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="c1"># 5. Tavily返回的结果已经非常干净，可以直接使用</span>
-        <span class="c1"># response['answer'] 是一个基于所有搜索结果的总结性回答</span>
-        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"answer"</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">"answer"</span><span class="p">]</span>
+        <span class="c1"># response[&#39;answer&#39;] 是一个基于所有搜索结果的总结性回答</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span>
 
         <span class="c1"># 如果没有综合性回答，则格式化原始结果</span>
         <span class="n">formatted_results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"results"</span><span class="p">,</span> <span class="p">[]):</span>
-            <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">'content'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">formatted_results</span><span class="p">:</span>
-             <span class="k">return</span> <span class="s2">"抱歉，没有找到相关的旅游景点推荐。"</span>
+             <span class="k">return</span> <span class="s2">&quot;抱歉，没有找到相关的旅游景点推荐。&quot;</span>
 
-        <span class="k">return</span> <span class="s2">"根据搜索，为您找到以下信息:</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;根据搜索，为您找到以下信息:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"错误:执行Tavily搜索时出现问题 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;错误:执行Tavily搜索时出现问题 - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>最后，我们将所有工具函数放入一个字典，供主循环调用：</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 将所有工具函数放入一个字典，方便后续调用</span>
 <span class="n">available_tools</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"get_weather"</span><span class="p">:</span> <span class="n">get_weather</span><span class="p">,</span>
-    <span class="s2">"get_attraction"</span><span class="p">:</span> <span class="n">get_attraction</span><span class="p">,</span>
+    <span class="s2">&quot;get_weather&quot;</span><span class="p">:</span> <span class="n">get_weather</span><span class="p">,</span>
+    <span class="s2">&quot;get_attraction&quot;</span><span class="p">:</span> <span class="n">get_attraction</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="132"><strong>1.3.2 接入大语言模型</strong></h3>
@@ -3075,20 +3131,20 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">OpenAICompatibleClient</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">"""</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    一个用于调用任何兼容OpenAI接口的LLM服务的客户端。</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">"""调用LLM API来生成回应。"""</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"正在调用大语言模型..."</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;调用LLM API来生成回应。&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正在调用大语言模型...&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">{</span><span class="s1">'role'</span><span class="p">:</span> <span class="s1">'system'</span><span class="p">,</span> <span class="s1">'content'</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
-                <span class="p">{</span><span class="s1">'role'</span><span class="p">:</span> <span class="s1">'user'</span><span class="p">,</span> <span class="s1">'content'</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+                <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
             <span class="p">]</span>
             <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
                 <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
@@ -3096,11 +3152,11 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
                 <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
             <span class="p">)</span>
             <span class="n">answer</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"大语言模型响应成功。"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;大语言模型响应成功。&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">answer</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"调用LLM API时发生错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s2">"错误:调用语言模型服务时出错。"</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;调用LLM API时发生错误: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;错误:调用语言模型服务时出错。&quot;</span>
 </code></pre></div>
 <p>要实例化此类，需要提供三个信息：<code>API_KEY</code>、<code>BASE_URL</code> 和 <code>MODEL_ID</code>，具体值取决于您使用的服务商（如 OpenAI 官方、Azure、或 Ollama 等本地模型）。</p>
 <h3 id="133"><strong>1.3.3 执行行动循环</strong></h3>
@@ -3108,11 +3164,11 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 
 <span class="c1"># --- 1. 配置LLM客户端 ---</span>
 <span class="c1"># 请根据您使用的服务，将这里替换成对应的凭证和地址</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">"YOUR_API_KEY"</span>
-<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">"YOUR_BASE_URL"</span>
-<span class="n">MODEL_ID</span> <span class="o">=</span> <span class="s2">"YOUR_MODEL_ID"</span>
-<span class="n">TAVILY_API_KEY</span><span class="o">=</span><span class="s2">"YOUR_Tavily_KEY"</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'TAVILY_API_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"YOUR_TAVILY_API_KEY"</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BASE_URL&quot;</span>
+<span class="n">MODEL_ID</span> <span class="o">=</span> <span class="s2">&quot;YOUR_MODEL_ID&quot;</span>
+<span class="n">TAVILY_API_KEY</span><span class="o">=</span><span class="s2">&quot;YOUR_Tavily_KEY&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TAVILY_API_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_TAVILY_API_KEY&quot;</span>
 
 <span class="n">llm</span> <span class="o">=</span> <span class="n">OpenAICompatibleClient</span><span class="p">(</span>
     <span class="n">model</span><span class="o">=</span><span class="n">MODEL_ID</span><span class="p">,</span>
@@ -3121,57 +3177,57 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 <span class="p">)</span>
 
 <span class="c1"># --- 2. 初始化 ---</span>
-<span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">"你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。"</span>
-<span class="n">prompt_history</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"用户请求: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span>
+<span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">&quot;你好，请帮我查询一下今天北京的天气，然后根据天气推荐一个合适的旅游景点。&quot;</span>
+<span class="n">prompt_history</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;用户请求: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"用户输入: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;用户输入: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 
 <span class="c1"># --- 3. 运行主循环 ---</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="c1"># 设置最大循环次数</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- 循环 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- 循环 </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="c1"># 3.1. 构建Prompt</span>
-    <span class="n">full_prompt</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prompt_history</span><span class="p">)</span>
+    <span class="n">full_prompt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prompt_history</span><span class="p">)</span>
 
     <span class="c1"># 3.2. 调用LLM进行思考</span>
     <span class="n">llm_output</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">full_prompt</span><span class="p">,</span> <span class="n">system_prompt</span><span class="o">=</span><span class="n">AGENT_SYSTEM_PROMPT</span><span class="p">)</span>
     <span class="c1"># 模型可能会输出多余的Thought-Action，需要截断</span>
-    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)'</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)&#39;</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
         <span class="n">truncated</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">truncated</span> <span class="o">!=</span> <span class="n">llm_output</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
             <span class="n">llm_output</span> <span class="o">=</span> <span class="n">truncated</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"已截断多余的 Thought-Action 对"</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"模型输出:</span><span class="se">\n</span><span class="si">{</span><span class="n">llm_output</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;已截断多余的 Thought-Action 对&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;模型输出:</span><span class="se">\n</span><span class="si">{</span><span class="n">llm_output</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
 
     <span class="c1"># 3.3. 解析并执行行动</span>
-    <span class="n">action_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Action: (.*)"</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+    <span class="n">action_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Action: (.*)&quot;</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">action_match</span><span class="p">:</span>
-        <span class="n">observation</span> <span class="o">=</span> <span class="s2">"错误: 未能解析到 Action 字段。请确保你的回复严格遵循 'Thought: ... Action: ...' 的格式。"</span>
-        <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">"</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+        <span class="n">observation</span> <span class="o">=</span> <span class="s2">&quot;错误: 未能解析到 Action 字段。请确保你的回复严格遵循 &#39;Thought: ... Action: ...&#39; 的格式。&quot;</span>
+        <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
         <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observation_str</span><span class="p">)</span>
         <span class="k">continue</span>
     <span class="n">action_str</span> <span class="o">=</span> <span class="n">action_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">action_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Finish"</span><span class="p">):</span>
-        <span class="n">final_answer</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Finish\[(.*)\]"</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"任务完成，最终答案: </span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">action_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Finish&quot;</span><span class="p">):</span>
+        <span class="n">final_answer</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Finish\[(.*)\]&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;任务完成，最终答案: </span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">break</span>
 
-    <span class="n">tool_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\w+)\("</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">args_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\((.*)\)"</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">'(\w+)="([^"]*)"'</span><span class="p">,</span> <span class="n">args_str</span><span class="p">))</span>
+    <span class="n">tool_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+)\(&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">args_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\((.*)\)&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+)=&quot;([^&quot;]*)&quot;&#39;</span><span class="p">,</span> <span class="n">args_str</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">available_tools</span><span class="p">:</span>
         <span class="n">observation</span> <span class="o">=</span> <span class="n">available_tools</span><span class="p">[</span><span class="n">tool_name</span><span class="p">](</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">observation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"错误:未定义的工具 '</span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2">'"</span>
+        <span class="n">observation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;错误:未定义的工具 &#39;</span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
 
     <span class="c1"># 3.4. 记录观察结果</span>
-    <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">"</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
     <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observation_str</span><span class="p">)</span>
 </code></pre></div>
 <p>通过以上步骤，我们构建了一个完整的、由真实 LLM 驱动的智能体。其核心在于“工具”和“提示工程”的结合，这正是当前主流智能体框架（如 LangChain、LlamaIndex 等）的设计精髓。</p>
@@ -3185,7 +3241,7 @@ Observation: 北京当前天气为晴，气温25摄氏度，微风。
 大语言模型响应成功。
 模型输出:
 Thought: 首先需要获取北京今天的天气情况，之后再根据天气情况来推荐旅游景点。
-Action: get_weather(city="北京")
+Action: get_weather(city=&quot;北京&quot;)
 
 Observation: 北京当前天气:Sunny，气温26摄氏度
 ========================================      
@@ -3195,7 +3251,7 @@ Observation: 北京当前天气:Sunny，气温26摄氏度
 大语言模型响应成功。
 模型输出:
 Thought: 现在已经知道了北京今天的天气是晴朗且温度适中，接下来可以基于这个信息来推荐一个适合的旅游景点了。
-Action: get_attraction(city="北京", weather="Sunny")
+Action: get_attraction(city=&quot;北京&quot;, weather=&quot;Sunny&quot;)
 
 Observation: 北京在晴天最值得去的旅游景点是颐和园，因其美丽的湖景和古建筑。另一个推荐是长城，因其壮观的景观和历史意义。
 ========================================
@@ -3372,10 +3428,10 @@ Action: Finish[今天北京的天气是晴朗的，气温26摄氏度，非常适
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
