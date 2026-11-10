@@ -46,35 +46,51 @@
 
 ### **基于机器视觉的伺服阀气隙测量装置研制**（课题组横向，2024.10 ~ 2024.11）
 
-**1. 背景**
+#### **1. 背景**
 
-- **电液伺服阀**是电液伺服系统中的重要控制元件，能将电信号转换为液压信号。**力矩马达**将输入的电信号转换成力/力矩，使衔铁偏转，实现伺服阀前端的电-机转换，是电液伺服阀的重要组成部分。
-力矩马达由导磁体、线圈、衔铁等组件组成。
+- **电液伺服阀**是电液伺服系统中的重要控制元件，能将电信号转换为液压信号。
+- **力矩马达**将输入的电信号转换成力/力矩，使衔铁偏转，实现伺服阀前端的电-机转换，是电液伺服阀的重要组成部分。力矩马达由**导磁体、线圈、衔铁**等组件组成。
 - **气隙**是伺服阀力矩马达导磁体与衔铁间的工作空间，其均匀对称性对伺服阀性能影响显著。
 - **传统气隙测量**主要依靠经验丰富的工人在显微镜下完成。测量过程存在操作复杂、效率不高、精度不足等问题，因此迫切需要引入**自动检测技术**。
 
-**2. 主要工作**
-
-- 采用**机器视觉**方案，通过工业相机配合镜头采集图像数据，并传输到计算机中，利用图像处理算法对图像进行分析（包括相机标定、图像滤波、图像增强、基于灰度阈值的气隙边缘检测、尺寸计算）
-- **硬件选型**：
-    - **显微镜镜头**：镜头的视野范围覆盖检测区域，镜头接口类型（C口）
-    - **工业相机**：像素分辨率满足测量精度要求，输出颜色（黑白），输出方式（以太网），镜头接口类型（C口）
-    - **光源**：保证镜头视野内的光照均匀，可采用环形光源，并用点光源辅助补光。
-- **技术栈**：**Python · OpenCV 图像处理 · shell 自动化 · 工业相机图像采集 SDK**
-
-**3. 成果**
-
-- 研制了一台伺服阀气隙测量装置，能够对伺服阀力矩马达的气隙进行实时检测和尺寸测量
-- 以人工测量作为真值（通过螺旋测微器读数计算），该装置的测量偏差在 3 微米的允许范围内
-
 <figure markdown="span">
-  ![气隙试验台研制方案示意图.png](images%2F%E6%B0%94%E9%9A%99%E8%AF%95%E9%AA%8C%E5%8F%B0%E7%A0%94%E5%88%B6%E6%96%B9%E6%A1%88%E7%A4%BA%E6%84%8F%E5%9B%BE.png){ width="640" loading="lazy" }
-  <figcaption>气隙试验台研制方案示意图</figcaption>
+  ![伺服阀结构示意图.png](images%2F%E4%BC%BA%E6%9C%8D%E9%98%80%E7%BB%93%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png){ width="320" loading="lazy" }
+  <figcaption>伺服阀结构示意图</figcaption>
 </figure>
 
+#### **2. 主要工作**
+
+**方案描述**
+
+- 采用**机器视觉**方案，通过工业相机配合镜头采集图像数据，并传输到计算机中，利用图像处理算法对图像进行分析（包括相机标定、图像滤波、图像增强、基于灰度阈值的气隙边缘检测、尺寸计算）
+- **技术栈**：**机器视觉硬件系统搭建 · Python · OpenCV · shell · 工业相机 SDK**
+
+**硬件选型**：选型步骤参考 [机器视觉学习笔记 - 1.3.10 镜头选型](../course/视觉/机器视觉/index.md#1310-镜头选型)
+
+- **镜头**：深圳市海约电子有限公司的**显微镜头**
+    - 物距：100 - 105 mm
+    - **视野范围**：2 - 10 mm
+    - 接口：C-mount
+
 <figure markdown="span">
-  ![气隙测量算法流程.png](images%2F%E6%B0%94%E9%9A%99%E6%B5%8B%E9%87%8F%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B.png){ width="640" loading="lazy" }
-  <figcaption>气隙测量算法流程</figcaption>
+  ![显微镜镜头.png](images%2F%E6%98%BE%E5%BE%AE%E9%95%9C%E9%95%9C%E5%A4%B4.png){ width="320" loading="lazy" }
+  <figcaption>显微镜头</figcaption>
+</figure>
+
+- **工业相机**：杭州微图视觉公司的 Mars5000-gm
+
+<figure markdown="span">
+  ![工业相机.png](images%2F%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA.png){ width="640" loading="lazy" }
+  <figcaption>工业相机</figcaption>
+</figure>
+
+- **光源**：
+    - 考虑因素：保证镜头视野内的光照充分且均匀
+    - 选型：环形光源 + 点光源辅助补光
+
+<figure markdown="span">
+  ![光源.png](images%2F%E5%85%89%E6%BA%90.png){ width="400" loading="lazy" }
+  <figcaption>光源</figcaption>
 </figure>
 
 <figure markdown="span">
@@ -87,15 +103,513 @@
   <figcaption>硬件实物图 2</figcaption>
 </figure>
 
+**软件实现**
+
+- **气隙测量算法流程**：
+
+<figure markdown="span">
+  ![气隙测量算法流程.png](images%2F%E6%B0%94%E9%9A%99%E6%B5%8B%E9%87%8F%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B.png){ width="640" loading="lazy" }
+  <figcaption>气隙测量算法流程</figcaption>
+</figure>
+
+<details>
+<summary>相关代码</summary>
+
+```python
+# -- coding: utf-8 --
+
+import sys
+from ctypes import *
+import datetime
+import numpy
+import cv2
+import gc
+#from screeninfo import get_monitors
+import matplotlib.pyplot as plt
+import os
+import time
+
+sys.path.append("../MVSDK")
+from IMVApi import *
+
+def displayDeviceInfo(deviceInfoList):  
+    print("Idx  Type   Vendor              Model           S/N                 DeviceUserID    IP Address")
+    print("------------------------------------------------------------------------------------------------")
+    for i in range(0, deviceInfoList.nDevNum):
+        pDeviceInfo = deviceInfoList.pDevInfo[i]
+        strType = ""
+        strVendorName = pDeviceInfo.vendorName.decode("ascii")
+        strModeName = pDeviceInfo.modelName.decode("ascii")
+        strSerialNumber = pDeviceInfo.serialNumber.decode("ascii")
+        strCameraname = pDeviceInfo.cameraName.decode("ascii")
+        strIpAdress = pDeviceInfo.DeviceSpecificInfo.gigeDeviceInfo.ipAddress.decode("ascii")
+        if pDeviceInfo.nCameraType == typeGigeCamera:
+            strType = "Gige"
+        elif pDeviceInfo.nCameraType == typeU3vCamera:
+            strType = "U3V"
+        print ("[%d]  %s   %s    %s      %s     %s           %s" % (i+1, strType,strVendorName,strModeName,strSerialNumber,strCameraname,strIpAdress))
+
+
+# 分段线性拉伸变换, divided linear strength transformation
+def DLST(img, x1, x2):
+
+    lut = numpy.zeros(256)
+    for i in range(256):
+        if i < x1:
+            lut[i] = 0
+        elif i < x2:
+            lut[i] = 255.0 / (x2 - x1) * (i - x1)  # k2=(y2-y1)/(x2-x1)
+        else:
+            lut[i] = 255.0
+    imgStretch = cv2.LUT(img, lut)
+    imgStretch = numpy.uint8(imgStretch + 0.5)
+    return imgStretch
+
+
+# 子图像的气隙检测算法
+def detect(cvImage,color_image,row1,row2,accuracy):
+
+    left_valid = False
+    right_valid = False
+    left_width = 0
+    right_width = 0
+    left_width_acc = 0
+    right_width_acc = 0
+
+    # 高度方向裁剪
+    crop_cvImage = cvImage[row1:row2, :]
+    rows = crop_cvImage.shape[0]
+    cols = crop_cvImage.shape[1]
+
+
+    # 计算图像每一列的灰度均值
+    col_avg = numpy.zeros(cols, dtype=float)
+    for col in range(cols):
+        col_avg[col] = numpy.mean(crop_cvImage[:,col])
+
+
+    # 存储边缘列索引值
+    col_boundary = numpy.zeros(4, dtype=int)
+    # 存储当前遍历到第几条边缘，左右气隙总共4条边缘，取值为0，1，2，3
+    col_boundary_index = 0
+    col_flag = True
+    # 气隙边缘列索引检测
+    for col in range(cols):
+        if col_avg[col] < gray_threshold:
+            if col < 1250:
+                # left_pixels = left_pixels + 1
+                if (col_flag == True) & (col_boundary_index == 0 ):
+                    col_boundary[col_boundary_index] = col
+                    col_boundary_index += 1
+                    col_flag = False
+            else:
+                if (col_flag == True) & (col_boundary_index == 2):
+                    col_boundary[col_boundary_index] = col
+                    col_boundary_index += 1
+                    col_flag = False
+        elif (col_avg[col] >= gray_threshold) & (col_flag == False) & (col_boundary_index < 4):
+            col_boundary[col_boundary_index] = col - 1
+            col_boundary_index = col_boundary_index + 1
+            col_flag = True
+
+    # 标注数据时的位置参数
+    row_mark = int((row1 + row2) / 2) + 20
+    col_mark_left = int((col_boundary[0] + col_boundary[1]) / 2) - 200
+    col_mark_right = int((col_boundary[2] + col_boundary[3]) / 2) - 200
+
+    # 左右气隙的像素数量
+    left_pixels = col_boundary[1] - col_boundary[0] + 1
+    right_pixels = col_boundary[3] - col_boundary[2] + 1
+    # # 导磁体间距的像素数量
+    # lr_pixels = col_boundary[3] - col_boundary[0] + 1
+
+    # 左气隙标注
+    if (left_pixels < 70) | (left_pixels > 700):
+        cv2.rectangle(color_image, (10, row1), (1250, row2), (0, 255, 0), 3)
+        error_text = 'Undetectable'
+        cv2.putText(color_image, error_text, (400, row_mark), cv2.FONT_ITALIC, 3, (0, 0, 255), 6,
+                    cv2.LINE_AA, False)
+    else:
+        left_valid = True
+        # 画框
+        cv2.rectangle(color_image, (col_boundary[0], row1), (col_boundary[1], row2), (0, 255, 0), 3)
+        # 标注左气隙的边缘列像素索引
+        text_col_boundary_0 = str(col_boundary[0])
+        text_col_boundary_1 = str(col_boundary[1])
+        cv2.putText(color_image, 'Pixel:' , (50, row1), cv2.FONT_ITALIC, 2, (0, 127, 255), 5,
+                    cv2.LINE_AA, False)
+        cv2.putText(color_image, text_col_boundary_0, (col_boundary[0], row1), cv2.FONT_ITALIC, 2, (0, 127, 255), 4,
+                    cv2.LINE_AA, False)
+        cv2.putText(color_image, text_col_boundary_1, (col_boundary[1], row1), cv2.FONT_ITALIC, 2, (0, 127, 255), 4,
+                    cv2.LINE_AA, False)
+        # 计算左气隙的实际宽度
+        left_width_acc = left_pixels * accuracy * 0.001
+        left_width = '%.3f' % (left_pixels * accuracy * 0.001)
+        left_width_text = str(left_width) + 'mm'
+        # 标注左气隙的实际宽度
+        cv2.putText(color_image, left_width_text, (col_mark_left, row_mark), cv2.FONT_ITALIC, 4, (0, 0, 255), 8,
+                    cv2.LINE_AA, False)
+
+    # 右气隙标注
+    if  (right_pixels < 70) | (left_pixels > 700):
+        cv2.rectangle(color_image, (1250, row1), (cols-10, row2), (0, 255, 0), 3)
+        error_text = 'Undetectable'
+        cv2.putText(color_image, error_text, (1500, row_mark), cv2.FONT_ITALIC, 3, (0, 0, 255), 6,
+                    cv2.LINE_AA, False)
+    else:
+        right_valid = True
+        # 画框
+        cv2.rectangle(color_image, (col_boundary[2], row1), (col_boundary[3], row2), (0, 255, 0), 3)
+
+        # 标注右气隙的边缘列像素索引
+        text_col_boundary_2 = str(col_boundary[2])
+        text_col_boundary_3 = str(col_boundary[3])
+        cv2.putText(color_image, text_col_boundary_2, (col_boundary[2], row1), cv2.FONT_ITALIC, 2, (0, 127, 255), 4,
+                    cv2.LINE_AA, False)
+        cv2.putText(color_image, text_col_boundary_3, (col_boundary[3], row1), cv2.FONT_ITALIC, 2, (0, 127, 255), 4,
+                    cv2.LINE_AA, False)
+        # 计算右气隙的实际宽度
+        right_width_acc = right_pixels * accuracy * 0.001
+        right_width = '%.3f' % (right_pixels * accuracy * 0.001 )
+        right_width_text = str(right_width) + 'mm'
+        # 标注左气隙的实际宽度
+        cv2.putText(color_image, right_width_text, (col_mark_right, row_mark), cv2.FONT_ITALIC, 4, (0, 0, 255), 8,
+                    cv2.LINE_AA, False)
+
+    # lr_width = '%.3f' % (lr_pixels * accuracy * 0.001)
+    # lr_width_text = str(lr_width) + 'mm'
+    # # 标注导磁体间距的实际宽度
+    # cv2.putText(color_image, lr_width_text, (int((col_mark_left+col_mark_right)/2), row_mark), cv2.FONT_ITALIC, 4, (0, 0, 255), 8,
+    #             cv2.LINE_AA, False)
+
+    return color_image, left_valid, right_valid, left_width_acc, right_width_acc
+
+if __name__ == "__main__":
+    deviceList=IMV_DeviceList()
+    interfaceType=IMV_EInterfaceType.interfaceTypeAll
+    #stRecordParam=IMV_RecordParam()
+    nWidth=c_uint()
+    nHeight=c_uint()
+
+    # 枚举设备
+    nRet=MvCamera.IMV_EnumDevices(deviceList,interfaceType)
+    if IMV_OK != nRet:
+        print("Enumeration devices failed! ErrorCode",nRet)
+        sys.exit()
+    if deviceList.nDevNum == 0:
+        print ("find no device!")
+        sys.exit()
+
+    print("deviceList size is",deviceList.nDevNum)
+
+    displayDeviceInfo(deviceList)
+
+    #nConnectionNum = input("Please input the camera index: ")
+    nConnectionNum = 1
+
+    if int(nConnectionNum) > deviceList.nDevNum:
+        print ("intput error!")
+        sys.exit()
+
+    cam=MvCamera()
+    # 创建设备句柄
+    nRet=cam.IMV_CreateHandle(IMV_ECreateHandleMode.modeByIndex,byref(c_void_p(int(nConnectionNum)-1)))
+    if IMV_OK != nRet:
+        print("Create devHandle failed! ErrorCode",nRet)
+        sys.exit()
+        
+    # 打开相机
+    nRet=cam.IMV_Open()
+    if IMV_OK != nRet:
+        print("Open devHandle failed! ErrorCode",nRet)
+        sys.exit()
+    
+   # 通用属性设置:设置触发模式为off
+    nRet=IMV_OK
+    nRet=cam.IMV_SetEnumFeatureSymbol("TriggerSource","Software")
+    if IMV_OK != nRet:
+        print("Set triggerSource value failed! ErrorCode[%d]" % nRet)
+        sys.exit()
+        
+    nRet=cam.IMV_SetEnumFeatureSymbol("TriggerSelector","FrameStart")
+    if IMV_OK != nRet:
+        print("Set triggerSelector value failed! ErrorCode[%d]" % nRet)
+        sys.exit()
+
+    nRet=cam.IMV_SetEnumFeatureSymbol("TriggerMode","Off")
+    if IMV_OK != nRet:
+        print("Set triggerMode value failed! ErrorCode[%d]" % nRet)
+        sys.exit()
+
+    # 开始拉流
+    nRet=cam.IMV_StartGrabbing()
+    if IMV_OK != nRet:
+        print("Start grabbing failed! ErrorCode",nRet)
+        sys.exit()
+    
+    isGrab = True
+
+    # 进入循环前需要获取的全局参数
+    # 获取屏幕分辨率
+    # monitor = get_monitors()[0]  # 获取第一个显示器的信息
+    # width, height = monitor.width, monitor.height
+
+    accuracy = 1.5388
+
+    # 从文件中读取精度值，即尺寸/像素
+    # 打开文件
+    f = open("Calibration.txt", encoding='utf-8')
+    # 读取文件
+    accuracy = float(f.read())
+    # 关闭文件
+    f.close()
+
+    gray_threshold = 153
+    # 从文件中读取灰度阈值
+    # 打开文件
+    f = open("Grayscale threshold.txt", encoding='utf-8')
+    # 读取文件
+    gray_threshold = float(f.read())
+    # 关闭文件
+    f.close()
+
+    # # 从文件中读取竖线位置
+    # # 以绝对路径打开文件
+    # f = open("C://Users/26533/Desktop/Line.txt", encoding='utf-8')
+    # # 读取文件
+    # lines_index = f.readlines()
+    # # 关闭文件
+    # f.close()
+
+    while isGrab :
+        # 主动取图
+        start_time = time.time()  # 记录程序开始时间
+
+        frame = IMV_Frame()
+        stPixelConvertParam=IMV_PixelConvertParam()
+
+        nRet = cam.IMV_GetFrame(frame, 50)
+        
+        if  IMV_OK != nRet :
+            print("getFrame fail! Timeout:[1000]ms")
+            continue
+        else:
+            print("getFrame success BlockId = [" + str(frame.frameInfo.blockId) + "], get frame time: " + str(datetime.datetime.now()))
+          
+        if  None==byref(frame) :
+            print("pFrame is NULL!")
+            continue
+        # 给转码所需的参数赋值
+
+        if IMV_EPixelType.gvspPixelMono8==frame.frameInfo.pixelFormat:
+            nDstBufSize=frame.frameInfo.width * frame.frameInfo.height
+        else:
+            nDstBufSize=frame.frameInfo.width * frame.frameInfo.height*3
+        
+        pDstBuf=(c_ubyte*nDstBufSize)()
+        memset(byref(stPixelConvertParam), 0, sizeof(stPixelConvertParam))
+        
+        stPixelConvertParam.nWidth = frame.frameInfo.width
+        stPixelConvertParam.nHeight = frame.frameInfo.height
+        stPixelConvertParam.ePixelFormat = frame.frameInfo.pixelFormat
+        stPixelConvertParam.pSrcData = frame.pData
+        stPixelConvertParam.nSrcDataLen = frame.frameInfo.size
+        stPixelConvertParam.nPaddingX = frame.frameInfo.paddingX
+        stPixelConvertParam.nPaddingY = frame.frameInfo.paddingY
+        stPixelConvertParam.eBayerDemosaic = IMV_EBayerDemosaic.demosaicNearestNeighbor
+        stPixelConvertParam.eDstPixelFormat = frame.frameInfo.pixelFormat
+        stPixelConvertParam.pDstBuf = pDstBuf
+        stPixelConvertParam.nDstBufSize = nDstBufSize
+        
+        # 释放驱动图像缓存
+        # release frame resource at the end of use
+        
+        nRet = cam.IMV_ReleaseFrame(frame)
+        if IMV_OK != nRet:
+            print("Release frame failed! ErrorCode[%d]\n", nRet)
+            sys.exit()
+        
+        # 如果图像格式是 Mono8 直接使用
+        # no format conversion required for Mono8
+        if stPixelConvertParam.ePixelFormat == IMV_EPixelType.gvspPixelMono8:
+            imageBuff=stPixelConvertParam.pSrcData
+            userBuff = c_buffer(b'\0', stPixelConvertParam.nDstBufSize)
+        
+            memmove(userBuff,imageBuff,stPixelConvertParam.nDstBufSize)
+            grayByteArray = bytearray(userBuff)
+            
+            cvImage = numpy.array(grayByteArray).reshape(stPixelConvertParam.nHeight, stPixelConvertParam.nWidth)
+            
+        else:
+            # 转码 => BGR24
+            # convert to BGR24
+            stPixelConvertParam.eDstPixelFormat=IMV_EPixelType.gvspPixelBGR8
+            #stPixelConvertParam.nDstBufSize=nDstBufSize
+
+            nRet=cam.IMV_PixelConvert(stPixelConvertParam)
+            if IMV_OK!=nRet:
+                print("image convert to failed! ErrorCode[%d]" % nRet)
+                del pDstBuf
+                sys.exit()
+            rgbBuff = c_buffer(b'\0', stPixelConvertParam.nDstBufSize)
+            memmove(rgbBuff,stPixelConvertParam.pDstBuf,stPixelConvertParam.nDstBufSize)
+            colorByteArray = bytearray(rgbBuff)
+            cvImage = numpy.array(colorByteArray).reshape(stPixelConvertParam.nHeight, stPixelConvertParam.nWidth, 3)
+            if None!=pDstBuf:
+                del pDstBuf
+                pass
+
+                
+       # --- end if ---
+        # 添加图像处理算法，处理cvImage
+
+        # 原始灰度图转为彩色图，彩色图用于显示数据和划线，原始灰度图用于做图像处理和分析
+        color_image = cv2.cvtColor(cvImage, cv2.COLOR_GRAY2BGR)
+
+        # 原始图像像素尺寸
+        rows_origin = cvImage.shape[0]
+        cols_origin = cvImage.shape[1]
+
+        # 中值滤波
+        cvImage = cv2.medianBlur(cvImage, 5)
+        # test_Image = cvImage
+        #test_Image = cvImage[1024 + (0 - 2) * 400:1023 + (0 - 1) * 400, 1750:2050]
+        # 图像的灰度直方图
+        # plt.hist(test_Image.ravel(), 256)
+        # plt.show()
+
+
+        # 分段线性拉伸
+        cvImage = DLST(cvImage, 10,100)  # 调用子程序 DLST(Divided linear strength)
+
+        # gray_threshold, test_Image = cv2.threshold(cvImage, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        # print(f"自适应阈值：{gray_threshold}")
+
+
+        row_change = 400
+        if 4 * row_change < rows_origin - 200:
+
+            left_width_sum = 0
+            right_width_sum = 0
+            left_width = numpy.zeros(4, dtype=float)
+            right_width = numpy.zeros(4, dtype=float)
+            left_valid = [False,False,False,False]
+            right_valid = [False, False, False, False]
+            left_valid_sum = 0
+            right_valid_sum = 0
+
+            # 气隙检测算法
+            for i in range(4):
+                color_image, left_valid[i],right_valid[i],left_width[i],right_width[i] = (
+                    detect(cvImage, color_image, 1024 + (i-2)*row_change, 1023 + (i-1)*row_change, accuracy))
+                if left_valid[i] == True:
+                    left_width_sum += left_width[i]
+                    left_valid_sum += 1
+                if right_valid[i] == True:
+                    right_width_sum += right_width[i]
+                    right_valid_sum += 1
+
+
+            # 计算左右气隙的平均值
+            if left_valid_sum > 0:
+
+                left_width_avg = '%.3f' %(left_width_sum / left_valid_sum)
+                left_width_text = str(left_width_avg) + 'mm' + '  <Average>'
+                cv2.putText(color_image, left_width_text, (260, 1950), cv2.FONT_ITALIC, 4,
+                            (0, 0, 255), 7, cv2.LINE_AA, False)
+
+            if right_valid_sum > 0:
+                right_width_avg= '%.3f' %(right_width_sum / right_valid_sum)
+                right_width_text = str(right_width_avg) + 'mm'
+                cv2.putText(color_image, right_width_text, (1900, 1950), cv2.FONT_ITALIC, 4,
+                            (0, 0, 255), 7, cv2.LINE_AA, False)
+
+
+
+        # 标注像素尺寸
+        cv2.putText(color_image, 'Pixel Size = ' + str(accuracy) + 'um', (1000, 200), cv2.FONT_ITALIC, 2, (0, 0, 255),
+                    6,cv2.LINE_AA, False)
+
+        # for line in lines_index:
+        #     cv2.line(color_image, (int(line), 0), (int(line), rows_origin), (0, 255, 255), 4)
+
+        # 显示结果
+        cv2.namedWindow('myWindow', cv2.WINDOW_NORMAL)
+        #cv2.namedWindow('myWindow', cv2.WINDOW_AUTOSIZE )
+        cv2.setWindowProperty('myWindow', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
+        # #显示原图
+        #cv2.imshow('myWindow', cvImage)
+        # #显示中间过程的测试图像
+        #cv2.imshow('myWindow', test_Image)
+
+        # 显示标注气隙尺寸后的图像
+        cv2.imshow('myWindow', color_image)
+
+
+
+
+        end_time = time.time()  # 记录程序结束时间
+        elapsed_time = end_time - start_time  # 计算程序执行的总时间
+        print(f"单帧图像耗时：{elapsed_time}秒")
+
+        gc.collect()
+
+        if (cv2.waitKey(1) >= 0):
+            isGrab = False
+            break
+
+    
+    # 停止拉流
+    nRet=cam.IMV_StopGrabbing()
+    if IMV_OK != nRet:
+        print("Stop grabbing failed! ErrorCode",nRet)
+        sys.exit()
+    
+    # 关闭相机
+    nRet=cam.IMV_Close()
+    if IMV_OK != nRet:
+        print("Close camera failed! ErrorCode",nRet)
+        sys.exit()
+    
+    # 销毁句柄
+    if(cam.handle):
+        nRet=cam.IMV_DestroyHandle()
+    
+    print("---Demo end---")
+```
+
+</details>
+
+<figure markdown="span">
+  ![显微镜专用测微标尺.png](images%2F%E6%98%BE%E5%BE%AE%E9%95%9C%E4%B8%93%E7%94%A8%E6%B5%8B%E5%BE%AE%E6%A0%87%E5%B0%BA.png){ width="640" loading="lazy" }
+  <figcaption>显微镜专用测微标尺</figcaption>
+</figure>
+
+<figure markdown="span">
+  ![图像预处理结果示例.png](images%2F%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%9C%E7%A4%BA%E4%BE%8B.png){ width="640" loading="lazy" }
+  <figcaption>图像预处理结果示例</figcaption>
+</figure>
+
 <figure markdown="span">
   ![基于机器视觉的伺服阀气隙测量装置研制-软件.png](images%2F%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E7%9A%84%E4%BC%BA%E6%9C%8D%E9%98%80%E6%B0%94%E9%9A%99%E6%B5%8B%E9%87%8F%E8%A3%85%E7%BD%AE%E7%A0%94%E5%88%B6-%E8%BD%AF%E4%BB%B6.png){ width="640" loading="lazy" }
-  <figcaption>程序实时运行界面</figcaption>
+  <figcaption>程序实时运行界面示例</figcaption>
 </figure>
+
+#### **3. 成果**
+
+- 研制了一台伺服阀气隙测量装置，能够对气隙进行实时检测和尺寸测量
+- 多次测量实验表明，以人工测量作为真值（通过螺旋测微器读数计算），该装置的测量偏差在 3 微米的允许范围内
+
+
+
+
+
 
 
 ### **基于深度学习的红外和可见光图像融合方法研究**（硕士课题，2025.01 ~ 2026.07）
 
-**1. 背景**
+#### **1. 背景**
 
 **红外和可见光图像融合（Infrared and visible image fusion，IVIF）**是一种多传感器信息融合方法，通过整合多源图像中的互补信息生成兼具显著目标信息和丰富纹理细节的融合图像，
 对于克服单一类型传感器的局限性、提升成像系统在复杂场景中的感知能力具有重要的理论意义和实际应用价值，已广泛应用于安防监控、自动驾驶和军事侦察等领域。
@@ -116,7 +630,7 @@
 
 针对恶劣天气（雨、雾、雪）场景中因红外和可见光图像退化导致的图像融合效果不佳的问题，提出一种基于深度学习的端到端融合方法以同时实现图像退化去除与互补信息整合。
 
-**2. 主要工作**：
+#### **2. 主要工作**
 
 **目标**：
 
@@ -188,7 +702,7 @@
   <figcaption>评估指标</figcaption>
 </figure>
 
-**3. 成果**
+#### **3. 成果**
 
 在 AWMM-100k 数据集上完成模型训练和评估，在三种恶劣天气条件下图像融合的 QAB/F、SCD、VIF 等指标均有提升。
 
@@ -219,7 +733,7 @@
 
 ### 基于激光雷达和 IMU 融合的高频高精定位方法研究（本科毕业设计，2023.9 ~ 2024.6）
 
-**1. 动机**
+#### **1. 背景**
 
 针对复杂城市环境下智能汽车定位的精度和频率难以兼顾的问题，提出一种基于激光雷达和 IMU 融合的高频高精定位方法。
 
@@ -227,7 +741,7 @@
 - 纯 IMU 积分定位方案：能到 100Hz 以上，但加速度计/陀螺仪会累积漂移。
 - 所以核心思路是用 IMU 做高频递推，用激光雷达做低频高精校正。
 
-**2. 主要工作**：
+#### **2. 主要工作**
 
 ```text
 离线建图（一次性）:   改进 LeGO-LOAM  →  全局点云地图 (pcd)
@@ -288,7 +802,7 @@
 
 - **技术栈**：**C++ · linux · ROS · PCL 点云库**
 
-**3. 成果**
+#### **3. 成果**
 
 在 KITTI 数据集上完成对比实验，相比 LeGO-LOAM，所提方法在 KITTI 00 序列上的 ATE RMSE 由 2.84 m 降至 2.10 m，降低约 26%；位姿输出频率从 10Hz提升到了 100Hz。该本科毕业设计被评为院级优秀。
 
