@@ -1,0 +1,3785 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lizh0911.github.io/course/%E8%A7%86%E8%A7%89/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+      
+      
+        <link rel="next" href="../2D%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>机器视觉 - LiZH0911的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/home.css">
+    
+      <link rel="stylesheet" href="../../../assets/about.css">
+    
+      <link rel="stylesheet" href="../../../assets/footer.css">
+    
+      <link rel="stylesheet" href="../../../assets/achievements.css">
+    
+      <link rel="stylesheet" href="../../../assets/headings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="LiZH0911的学习笔记" class="md-header__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LiZH0911的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              机器视觉
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  技术栈
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../guestbook/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  留言板
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../achievements/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  个人经历
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="LiZH0911的学习笔记" class="md-nav__button md-logo" aria-label="LiZH0911的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    LiZH0911的学习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LiZH0911/LiZH0911.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiZH0911.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    技术栈
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    技术栈
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机组成原理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    算法与数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 后端
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python 后端
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E5%90%8E%E7%AB%AF/FastAPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python%E5%90%8E%E7%AB%AF/Web%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web 开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Java
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/Java%E5%9F%BA%E7%A1%80-%E9%BB%91%E9%A9%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-黑马
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/Java%E5%9F%BA%E7%A1%80-JavaGuide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 基础-JavaGuide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/Java%E9%9B%86%E5%90%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Java 集合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaWeb
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaWeb
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/HTML-CSS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML-CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/JavaScript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/Vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../JavaWeb/Maven/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maven
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent 基础-Hello-Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent 基础-Hello-Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%B8%80%E3%80%81%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一、初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二、智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%B8%89%E3%80%81%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三、大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%9B%9B%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四、智能体经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%BA%94%E3%80%81%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    五、基于低代码平台的智能体搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%85%AD%E3%80%81%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六、框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%B8%83%E3%80%81%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84%20Agent%20%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    七、构建你的 Agent 框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%85%AB%E3%80%81%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    八、记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E4%B9%9D%E3%80%81%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    九、上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%8D%81%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十、智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%8D%81%E4%B8%80%E3%80%81Agentic-RL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十一、Agentic-RL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Agent/%E5%8D%81%E4%BA%8C%E3%80%81%E6%99%BA%E8%83%BD%E4%BD%93%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    十二、智能体性能评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    视觉
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数字图像处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器视觉
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器视觉
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、机器视觉概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、机器视觉概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 计算机视觉、机器视觉、数字图像处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 光源
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 光源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 照明光源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 照明技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 镜头
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 镜头">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 镜头的作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 成像尺寸/靶面尺寸
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 焦距与视场角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 镜头分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 镜头分辨率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.6 光圈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.7 景深
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#138" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.8 快门
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#139" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.9 镜头接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1310" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.10 镜头选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 相机
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 相机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-ccd-cmos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 相机分类：CCD 相机与 CMOS 相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 相机分类：面阵相机与线阵相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、数字图像基础
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#halcon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Halcon 软件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、图像增强
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、图像分割
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、特征提取
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、形态学处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、相机标定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、模板匹配
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、立体视觉
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2D%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D 目标检测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A8%A1%E5%9E%8B%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常用工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    常用工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具列表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Python%E5%8C%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包与环境管理工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Nodejs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Codex
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Claude%20Code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/DeepSeek%20Harness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DeepSeek Harness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Skill/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/Shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/ROS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guestbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    留言板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../achievements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    个人经历
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、机器视觉概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、机器视觉概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 计算机视觉、机器视觉、数字图像处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 光源
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 光源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 照明光源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 照明技术
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 镜头
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 镜头">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 镜头的作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 成像尺寸/靶面尺寸
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 焦距与视场角
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 镜头分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5 镜头分辨率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.6 光圈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#137" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.7 景深
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#138" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.8 快门
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#139" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.9 镜头接口
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1310" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.10 镜头选型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 相机
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 相机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-ccd-cmos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 相机分类：CCD 相机与 CMOS 相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 相机分类：面阵相机与线阵相机
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、数字图像基础
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#halcon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Halcon 软件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、图像增强
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、图像分割
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、特征提取
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、形态学处理
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、相机标定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、模板匹配
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、立体视觉
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">机器视觉</h1>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1qmcfzEEjK/?spm_id_from=333.337.search-card.all.click&amp;vd_source=46f99c7c1ed609a31f70615a4551767f">机器视觉入门到精通</a></li>
+</ul>
+<hr />
+<h2 id="_2">一、机器视觉概述</h2>
+<hr />
+<h3 id="11">1.1 <strong>计算机视觉、机器视觉、数字图像处理</strong></h3>
+<ul>
+<li><strong>计算机视觉（Computer Vision, CV）</strong>：研究如何让计算机“看”和“理解”图像和视频中的内容。<ul>
+<li>形象地说，就是给计算机安装上眼睛（<strong>相机</strong>）和大脑（<strong>算法</strong>），让计算机能够<strong>感知</strong>环境。</li>
+</ul>
+</li>
+<li><strong>机器视觉（Machine Vision, MV）</strong>：用机器代替人眼来做<strong>测量和判断</strong>=。<ul>
+<li>机器视觉系统通过光学装置和非接触传感器自动采集和处理一个真实物体的图像，通过分析（<strong>各种运算</strong>）获得所需信息（<strong>目标的特征</strong>），进而<strong>控制现场设备的动作</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="计算机视觉与机器视觉.png" src="images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E4%B8%8E%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89.png" /></p>
+<p>计算机视觉和机器视觉都离不开数字图像处理。</p>
+<p><strong>数字图像处理（Digital Image Processing，DIP）</strong>：通过计算机对图像进行去噪、增强、复原、分割、提取特征等处理。</p>
+<p><strong>机器视觉系统组成</strong>：</p>
+<ul>
+<li>硬件：包括光源、镜头、相机、（图像采集卡）等，</li>
+<li>软件：包括图像处理模块、交互界面等。</li>
+</ul>
+<p><img alt="机器视觉系统工作原理.png" src="images/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E7%B3%BB%E7%BB%9F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.png" /></p>
+<hr />
+<h3 id="12">1.2 <strong>光源</strong></h3>
+<h4 id="121"><strong>1.2.1 照明光源</strong></h4>
+<ul>
+<li>荧光灯</li>
+<li>卤素灯</li>
+<li><strong>LED 灯</strong>（推荐）</li>
+</ul>
+<h4 id="122"><strong>1.2.2 照明技术</strong></h4>
+<ul>
+<li>暗视野</li>
+<li>亮视野</li>
+</ul>
+<p><img alt="照明技术.png" src="images/%E7%85%A7%E6%98%8E%E6%8A%80%E6%9C%AF.png" /></p>
+<p><strong>（1）低角度照明</strong></p>
+<p><img alt="低角度照明.png" src="images/%E4%BD%8E%E8%A7%92%E5%BA%A6%E7%85%A7%E6%98%8E.png" /></p>
+<p><img alt="低角度照明示例.png" src="images/%E4%BD%8E%E8%A7%92%E5%BA%A6%E7%85%A7%E6%98%8E%E7%A4%BA%E4%BE%8B.png" /></p>
+<p><strong>（2）前向光直射照明</strong></p>
+<p><img alt="前向光直射照明.png" src="images/%E5%89%8D%E5%90%91%E5%85%89%E7%9B%B4%E5%B0%84%E7%85%A7%E6%98%8E.png" /></p>
+<p><img alt="前向光直射照明示例.png" src="images/%E5%89%8D%E5%90%91%E5%85%89%E7%9B%B4%E5%B0%84%E7%85%A7%E6%98%8E%E7%A4%BA%E4%BE%8B.png" /></p>
+<p><strong>（3）前向光漫射照明</strong></p>
+<p><img alt="前向光漫射照明.png" src="images/%E5%89%8D%E5%90%91%E5%85%89%E6%BC%AB%E5%B0%84%E7%85%A7%E6%98%8E.png" /></p>
+<p><img alt="前向光漫射照明示例.png" src="images/%E5%89%8D%E5%90%91%E5%85%89%E6%BC%AB%E5%B0%84%E7%85%A7%E6%98%8E%E7%A4%BA%E4%BE%8B.png" /></p>
+<p><img alt="前向光漫射照明示例2.png" src="images/%E5%89%8D%E5%90%91%E5%85%89%E6%BC%AB%E5%B0%84%E7%85%A7%E6%98%8E%E7%A4%BA%E4%BE%8B2.png" /></p>
+<p><strong>（4）背光照明</strong></p>
+<p><img alt="背光照明.png" src="images/%E8%83%8C%E5%85%89%E7%85%A7%E6%98%8E.png" /></p>
+<p><strong>（5）补色</strong></p>
+<p><strong>补色（Complementary Color）</strong>：在色环上相对（相差180°）的两种颜色。两种补色光按适当比例混合，得到白光（加色模型）或黑色（减色模型）。</p>
+<p>机器视觉中"用补色光增强对比"本质是减色吸收原理：光源颜色被物体补色成分吸收。</p>
+<ul>
+<li>检测红色缺陷 → 用青色光照射，红色区域吸收青光大面积变暗，缺陷突出</li>
+<li>检测蓝色标记 → 用黄色光</li>
+</ul>
+<p><strong>（6）偏光技术</strong></p>
+<hr />
+<h3 id="13">1.3 <strong>镜头</strong></h3>
+<h4 id="131"><strong>1.3.1 镜头的作用</strong></h4>
+<p>镜头是与相机配套使用的一种成像设备，作用包括：</p>
+<ol>
+<li>成像</li>
+<li>聚焦</li>
+<li>曝光</li>
+<li>变焦</li>
+</ol>
+<p><strong>镜头是影响图像质量的关键因素</strong>。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">图像质量参数</th>
+<th style="text-align: center;">影响图像质量的因素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">分辨率（Resolution）</td>
+<td style="text-align: center;">镜头 摄像机 显示设备</td>
+</tr>
+<tr>
+<td style="text-align: center;">对比度（Contrast）</td>
+<td style="text-align: center;">镜头 光源 摄像机</td>
+</tr>
+<tr>
+<td style="text-align: center;">景深（Depth of Field）</td>
+<td style="text-align: center;">镜头</td>
+</tr>
+<tr>
+<td style="text-align: center;">失真（Distortion），也叫畸变</td>
+<td style="text-align: center;">镜头</td>
+</tr>
+<tr>
+<td style="text-align: center;">投影误差</td>
+<td style="text-align: center;">镜头</td>
+</tr>
+</tbody>
+</table>
+<h4 id="132"><strong>1.3.2 成像尺寸/靶面尺寸</strong></h4>
+<p><strong>成像尺寸</strong>通常指的是相机图像传感器的<strong>物理靶面尺寸</strong>（Sensor Size）。它决定了相机能够接收光线的有效面积，是镜头选型和视场计算的基础。</p>
+<p><img alt="成像尺寸.png" src="images/%E6%88%90%E5%83%8F%E5%B0%BA%E5%AF%B8.png" /></p>
+<p>工业视觉中常见的靶面规格及实际尺寸如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">标称尺寸</th>
+<th style="text-align: left;">对角线 (约)</th>
+<th style="text-align: left;">长宽尺寸 (宽 × 高)</th>
+<th style="text-align: left;">常见宽高比</th>
+<th style="text-align: left;">适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>1/4"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(4\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(3.2 \times 2.4\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">微型相机、内窥镜</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1/3"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(6\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(4.8 \times 3.6\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">常规低像素工业相机</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1/2"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(8\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(6.4 \times 4.8\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">安防监控、常规视觉</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1/1.8"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(9\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(7.2 \times 5.4\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">500万像素主流相机</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>2/3"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(11\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(8.8 \times 6.6\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">中高端工业面阵相机</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>1"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(16\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(12.8 \times 9.6\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">高分辨率测量、检测</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>4/3"</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(21.6\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(17.3 \times 13.0\text{mm}\)</span></td>
+<td style="text-align: left;">4:3</td>
+<td style="text-align: left;">高端机器视觉相机</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>APS-C</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(28.3\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(23.5 \times 15.6\text{mm}\)</span></td>
+<td style="text-align: left;">3:2</td>
+<td style="text-align: left;">单反级机器视觉</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>全画幅 (FF)</strong></td>
+<td style="text-align: left;"><span class="arithmatex">\(43.3\text{mm}\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(36.0 \times 24.0\text{mm}\)</span></td>
+<td style="text-align: left;">3:2</td>
+<td style="text-align: left;">超大视野摄影测量</td>
+</tr>
+</tbody>
+</table>
+<h4 id="133"><strong>1.3.3 焦距与视场角</strong></h4>
+<p>在机器视觉和光学成像中，<strong>焦距</strong>和<strong>视场角</strong>是决定系统视野大小和空间分辨率的最核心参数。</p>
+<p><strong>焦距 (Focal Length, f)</strong></p>
+<ul>
+<li><strong>定义</strong>：透镜中心到平行光（无穷远处的物体）汇聚于焦点的距离。单位通常为毫米 (mm)。</li>
+<li><strong>物理意义</strong>：决定了镜头的“放大倍率”。</li>
+</ul>
+<p><strong>视场角 (Field of View, FOV / 视角 / 视野角)</strong></p>
+<ul>
+<li><strong>定义</strong>：镜头能覆盖的物体空间角度范围。通常分为水平视场角 (HFOV)、垂直视场角 (VFOV) 和对角线视场角 (DFOV)。</li>
+<li><strong>物理意义</strong>：决定了在特定距离下，相机能“看多宽”。</li>
+</ul>
+<p><strong>计算公式</strong>：</p>
+<ul>
+<li><strong>视场角 (Field of View Angle, θ)</strong>：假设镜头的焦距为 <span class="arithmatex">\(f\)</span>，图像传感器的靶面尺寸（水平或垂直）为 <span class="arithmatex">\(h\)</span>，则：</li>
+</ul>
+<div class="arithmatex">\[
+ \theta = 2 \times \arctan \left( \frac{h}{2f} \right) 
+\]</div>
+<ul>
+<li><strong>视场大小 (FOV Size)</strong>：设工作距离为 <span class="arithmatex">\(WD\)</span>，则：</li>
+</ul>
+<div class="arithmatex">\[
+ \text{FOV 宽度} = \frac{\text{传感器宽度}}{f} \times WD 
+\]</div>
+<div class="arithmatex">\[
+ \text{FOV 高度} = \frac{\text{传感器高度}}{f} \times WD 
+\]</div>
+<ul>
+<li><strong>光学放大倍率 (Magnification, β)</strong></li>
+</ul>
+<div class="arithmatex">\[
+ \beta = \frac{\text{传感器尺寸}}{\text{实际视场尺寸}} = \frac{f}{WD} 
+\]</div>
+<p><strong>焦距与视场角的关系（负相关）</strong>： 在<strong>传感器靶面尺寸固定</strong>和<strong>工作距离固定</strong>的前提下：</p>
+<ul>
+<li><strong>焦距 f 越大</strong> ➡️ <strong>视场角 θ 越小</strong> ➡️ <strong>视场范围 (FOV) 越小</strong> ➡️ <strong>放大倍率越大，细节越清晰</strong>。</li>
+<li><strong>焦距 f 越小</strong> ➡️ <strong>视场角 θ 越大</strong> ➡️ <strong>视场范围 (FOV) 越大</strong> ➡️ <strong>放大倍率越小，可见范围越广</strong>。</li>
+</ul>
+<h4 id="134"><strong>1.3.4 镜头分类</strong></h4>
+<p><strong>按焦距与视场角分类</strong>（最常见）：</p>
+<ul>
+<li><strong>广角镜头 (Wide-angle Lens)</strong><ul>
+<li><strong>特点</strong>：焦距短（通常 <span class="arithmatex">\(f &lt; 25\text{mm}\)</span>），视场角大（通常 <span class="arithmatex">\(&gt; 60^\circ\)</span>）。</li>
+<li><strong>应用</strong>：近距离大视野检测、空间受限的场景。</li>
+<li><strong>缺点</strong>：边缘容易产生桶形畸变。</li>
+</ul>
+</li>
+<li><strong>标准镜头 (Standard Lens)</strong><ul>
+<li><strong>特点</strong>：焦距适中（通常 <span class="arithmatex">\(25\text{mm} \sim 50\text{mm}\)</span>），视场角约 <span class="arithmatex">\(45^\circ \sim 50^\circ\)</span>，接近人眼视角。</li>
+<li><strong>应用</strong>：常规尺寸物体的检测、定位，畸变较小。</li>
+</ul>
+</li>
+<li><strong>中长焦镜头 (Telephoto Lens)</strong><ul>
+<li><strong>特点</strong>：焦距长（通常 <span class="arithmatex">\(f &gt; 50\text{mm}\)</span>），视场角小。</li>
+<li><strong>应用</strong>：远距离观测、需要较高放大倍率且工作距离较远的场景。</li>
+<li><strong>缺点</strong>：景深较浅，对光强要求较高。</li>
+</ul>
+</li>
+</ul>
+<p><strong>按放大倍率与成像特性分类</strong>：</p>
+<ul>
+<li><strong>定焦镜头 (Fixed Focal Lens)</strong><ul>
+<li>焦距固定不可调，结构简单、稳定性高，是工业检测中最常用的类型。</li>
+</ul>
+</li>
+<li><strong>变焦镜头 (Zoom Lens)</strong><ul>
+<li>焦距可在一定范围内连续调节（如 18-55mm）。</li>
+<li><strong>应用</strong>：需要频繁改变视野范围，但又不需要极高精度的场景（通常用于安防或初步视觉定位）。</li>
+</ul>
+</li>
+<li><strong>远心镜头 (Telecentric Lens)</strong><ul>
+<li><strong>特点</strong>：具有“无透视误差”和“恒定放大倍率”的特性（只有平行于光轴的光线才能通过）。</li>
+<li><strong>应用</strong>：高精度尺寸测量（如测量圆柱体直径、孔距），不受物体景深变化影响。</li>
+<li><strong>分类</strong>：物方远心、像方远心、双远心。</li>
+</ul>
+</li>
+<li><strong>微距镜头 (Macro Lens)</strong><ul>
+<li><strong>特点</strong>：专为极近距离拍摄设计，具有极高的放大倍率（通常 <span class="arithmatex">\(&gt; 1:1\)</span>）。</li>
+<li><strong>应用</strong>：微小零件（如芯片引脚、精密齿轮）的表面缺陷检测。</li>
+</ul>
+</li>
+</ul>
+<p><strong>按光圈类型分类</strong>：</p>
+<ul>
+<li><strong>手动光圈镜头 (Manual Iris)</strong><ul>
+<li>需要人工手动调节光圈大小，一旦固定后不再改变。适合光照条件稳定的工业流水线。</li>
+</ul>
+</li>
+<li><strong>自动光圈镜头 (Auto Iris, DC Drive)</strong><ul>
+<li>内置马达，根据环境光线变化自动调节光圈。适合户外或光照变化剧烈的场景。</li>
+</ul>
+</li>
+<li><strong>P-IRIS (精确光圈)</strong><ul>
+<li>结合了手动和自动光圈的优点，提供更高精度的光圈控制，常用于高端机器视觉。</li>
+</ul>
+</li>
+</ul>
+<p><strong>按相机接口分类</strong>：镜头的卡口必须与相机的接口匹配：</p>
+<ul>
+<li><strong>C 接口 (C-mount)</strong>：法兰距 17.526mm，靶面通常支持 1" 及以下，最普遍的工业视觉接口。</li>
+<li><strong>CS 接口 (CS-mount)</strong>：法兰距 12.5mm，比 C 接口短。可通过 5mm 转接环用于 C 接口镜头。</li>
+<li><strong>F 接口 (F-mount)</strong>：尼康单反接口，常用于大幅面、高分辨率的工业相机。</li>
+<li><strong>M42 / M58 / M72 接口</strong>：常用于大靶面线扫相机或高端面阵相机。</li>
+<li><strong>其他特殊接口</strong>：如 M12 (S-mount，常用于板载小型镜头)。</li>
+</ul>
+<h4 id="135"><strong>1.3.5 镜头分辨率</strong></h4>
+<p><strong>镜头分辨率</strong>是指镜头在成像平面上能够区分两个相邻物点（或像点）的最小距离。分辨率越高，镜头还原细节的能力越强。它是决定整个视觉系统成像清晰度的上限——如果镜头分辨率不足，再高像素的相机也无法获得清晰的图像。</p>
+<p><img alt="镜头分辨率.png" src="images/%E9%95%9C%E5%A4%B4%E5%88%86%E8%BE%A8%E7%8E%87.png" /></p>
+<p><strong>与相机分辨率的区别</strong>：</p>
+<ul>
+<li><strong>相机分辨率</strong>：由传感器的像素数量决定（如 500万像素），侧重于“采样能力”。</li>
+<li><strong>镜头分辨率</strong>：由镜头的光学设计和制造精度决定，侧重于“解析能力”。</li>
+</ul>
+<blockquote>
+<p><strong>木桶效应</strong>：系统最终清晰度 = <code>min(镜头分辨率, 相机分辨率)</code>。两者必须匹配，否则会造成资源浪费或成像模糊。</p>
+</blockquote>
+<p><strong>核心评价指标</strong>：</p>
+<ol>
+<li>空间频率与 MTF (调制传递函数)<ul>
+<li><strong>线对/毫米 (lp/mm, line pairs per millimeter)</strong>：最常用的客观指标。指在 1 毫米的像面上，镜头能清晰分辨出的黑白相间线条的对数。数值越大，分辨率越高。</li>
+<li><strong>MTF 曲线</strong>：描述镜头在不同空间频率下，对比度（调制传递）的衰减情况。MTF 值越接近 1，成像质量越好；通常在 MTF 降至 0.2~0.3 时的频率被视为镜头的极限分辨率。</li>
+</ul>
+</li>
+<li>瑞利判据 (Rayleigh Criterion) 与艾里斑<ul>
+<li><strong>物理限制</strong>：从纯光学理论计算，镜头的极限分辨率受衍射限制（取决于光圈 F 数）。</li>
+<li><strong>计算公式</strong>：<strong>极限分辨率 <span class="arithmatex">\(d \approx 1.22 \times \lambda \times F\#\)</span></strong>，(其中 <span class="arithmatex">\(\lambda\)</span> 为光波长，<span class="arithmatex">\(F\#\)</span> 为光圈值)</li>
+<li><strong>工程结论</strong>：<strong>光圈越小（F数越大，如 F16），衍射越严重，极限光学分辨率反而越低。</strong>（通常镜头在 F4~F5.6 时分辨率达到最佳）。</li>
+</ul>
+</li>
+</ol>
+<h4 id="136"><strong>1.3.6 光圈</strong></h4>
+<p><strong>光圈</strong>是控制镜头进光量的核心机械装置。它不仅决定了图像的明暗，还深刻影响着景深、分辨率和成像质量。</p>
+<p>光圈是由镜头内部多片金属叶片组成的多边形（或圆形）孔径。通过收缩或放大孔径，可以控制进入相机的光通量。</p>
+<p>光圈大小通常用 <strong>F 数</strong>（F-number 或 <span class="arithmatex">\(F\#\)</span>）表示，计算公式为：</p>
+<div class="arithmatex">\[
+ F\# = \frac{\text{镜头焦距 } f}{\text{有效通光孔径直径 } D} 
+\]</div>
+<ul>
+<li><strong>F 数越小</strong>（如 F1.4、F2.8）：孔径越大，进光量越多，画面越亮。</li>
+<li><strong>F 数越大</strong>（如 F8、F16）：孔径越小，进光量越少，画面越暗。</li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：F 数是一个比值，相邻两档标准光圈的进光量相差一倍（例如 F2.8 的进光量是 F4.0 的两倍）。</p>
+<p><strong>标准光圈级数</strong>：F1.0, F1.4, F2.0, F2.8, F4.0, F5.6, F8.0, F11, F16, F22...</p>
+</blockquote>
+<p>光圈对成像的三大核心影响：</p>
+<ul>
+<li><strong>影响亮度</strong>：进光量直接决定传感器的曝光量。在光源亮度固定的工业流水线上：<ul>
+<li>若光圈开得过大，会导致图像过曝（死白）</li>
+<li>光圈过小，则图像欠曝（暗黑）或需要增加曝光时间（降低帧率）。</li>
+</ul>
+</li>
+<li><strong>影响景深</strong>：景深是指图像中能保持清晰聚焦的物方空间深度范围。<ul>
+<li><strong>大光圈（F 数小，如 F2.8）</strong>：景深<strong>浅</strong>。适合突出特定平面的目标，背景虚化。</li>
+<li><strong>小光圈（F 数大，如 F11）</strong>：景深<strong>大</strong>。适合拍摄有高度差的物体（如表面不平整的零件），使高低处均清晰。</li>
+</ul>
+</li>
+<li><strong>影响分辨率与画质</strong>：<ul>
+<li><strong>像差问题</strong>：光圈全开（F 数极小）时，球差、色差等光学像差最严重，边缘画质下降。</li>
+<li><strong>衍射问题</strong>：光圈缩得极小（如 F16 以上）时，光线通过小孔会产生明显的衍射现象（艾里斑变大），导致整体图像变软、分辨率下降。</li>
+<li><strong>最佳光圈</strong>：通常镜头在收缩 2~3 档时（常见为 <strong>F4.0 ~ F5.6</strong>），各类像差与衍射达到平衡，此时镜头的分辨率和画质最佳。</li>
+</ul>
+</li>
+</ul>
+<p>根据调节方式的不同，工业机器视觉镜头的<strong>光圈主要分为三类</strong>：</p>
+<ul>
+<li><strong>手动光圈 (Manual Iris, MI)</strong><ul>
+<li>需人工手动旋转光圈环调节，调节后用锁紧螺丝固定。</li>
+<li><strong>应用</strong>：光照条件稳定的室内生产线（最常见）。</li>
+</ul>
+</li>
+<li><strong>自动光圈 (Auto Iris, AI / DC Drive)</strong><ul>
+<li>镜头内置微型马达，通过相机或控制器根据环境光强自动调整光圈大小。</li>
+<li><strong>应用</strong>：户外监控、光照变化剧烈的工业场景。</li>
+</ul>
+</li>
+<li><strong>P-IRIS (精确光圈 / 步进光圈)</strong><ul>
+<li>采用步进电机控制，可精确、可重复地设定光圈值，且无传统自动光圈的“呼吸效应”。</li>
+<li><strong>应用</strong>：要求极高重复精度的机器视觉测量任务。</li>
+</ul>
+</li>
+</ul>
+<h4 id="137"><strong>1.3.7 景深</strong></h4>
+<p>景深是指图像中能保持清晰聚焦的物方空间深度范围。</p>
+<p>固定镜头焦距和拍摄距离，则<strong>光圈越小，景深越大</strong>。</p>
+<p>景深计算：</p>
+<p><img alt="景深计算.png" src="images/%E6%99%AF%E6%B7%B1%E8%AE%A1%E7%AE%97.png" /></p>
+<h4 id="138"><strong>1.3.8 快门</strong></h4>
+<p>工业相机的“快门”在现代语境下，通常指代<strong>曝光时间</strong>的设定。</p>
+<ul>
+<li><strong>定义</strong>：传感器从开始收集光子到结束收集光子的时间跨度。单位通常为微秒 (μs) 或毫秒 (ms)。</li>
+<li><strong>影响</strong>：<ul>
+<li><strong>时间越长</strong>：进光量越大，图像越亮；但拍摄运动物体时容易产生<strong>运动模糊</strong>。</li>
+<li><strong>时间越短</strong>：进光量越小，图像越暗；但能“冻结”高速运动的物体。</li>
+</ul>
+</li>
+</ul>
+<h4 id="139"><strong>1.3.9 镜头接口</strong></h4>
+<p>理解接口，首先必须理解<strong>法兰距</strong>。</p>
+<ul>
+<li><strong>定义</strong>：镜头卡口端面到相机传感器（感光面）之间的物理距离。</li>
+<li><strong>重要性</strong>：当镜头的法兰距设计值与相机的法兰距完全一致时，无穷远处的物体才能准确聚焦在传感器上。如果不一致，镜头将无法对焦到无穷远（或无法合焦）。</li>
+</ul>
+<blockquote>
+<p><strong>转接环的本质</strong>：就是通过增加物理厚度（法兰距），将一种接口的镜头转接到另一种接口的相机上。</p>
+</blockquote>
+<p>工业视觉中最常见的接口以螺纹接口为主，其次是单反卡口和大靶面专用接口。</p>
+<p><strong>C 接口 (C-mount) —— 工业视觉的“绝对标准”</strong></p>
+<ul>
+<li><strong>特征</strong>：螺纹直径为 1 英寸（25.4mm），螺距 32 牙/英寸 (1-32UN)。</li>
+<li><strong>法兰距</strong>：<strong>17.526 mm</strong>。</li>
+<li><strong>靶面支持</strong>：通常兼容 2/3" 及以下靶面（部分高分辨率镜头可兼容 1"）。</li>
+<li><strong>应用</strong>：绝大多数 500万及以下像素的工业面阵相机均采用此接口。</li>
+</ul>
+<h4 id="1310"><strong>1.3.10 镜头选型</strong></h4>
+<p>在进行机器视觉镜头选型时，可遵循以下逻辑：</p>
+<p><strong>第一步：明确需求与系统边界</strong></p>
+<p>在计算任何参数之前，必须先明确以下基本需求：</p>
+<ul>
+<li><strong>检测目标 (FOV)</strong>：被测物体的长宽尺寸是多少？</li>
+<li><strong>检测精度</strong>：系统要求能分辨的最小缺陷或尺寸公差是多少？（决定了相机像素）</li>
+<li><strong>安装空间限制</strong>：相机到物体的物理距离范围（工作距离 WD）。</li>
+<li><strong>环境限制</strong>：是否需要防震、防水、耐高温，或是否有空间高度限制。</li>
+<li><strong>景深要求</strong>：被测物表面是否有高度差？（需要足够景深保证全清晰）。</li>
+</ul>
+<p><strong>第二步：相机选型（确定靶面与像素）</strong></p>
+<p>镜头必须与相机匹配，先定相机：</p>
+<ol>
+<li><strong>靶面尺寸</strong>：根据视野大小选择合适靶面的相机（如 <span class="arithmatex">\(1/1.8"\)</span>、<span class="arithmatex">\(2/3"\)</span>、<span class="arithmatex">\(1"\)</span>）。</li>
+<li>
+<p><strong>分辨率计算</strong>：根据精度要求计算所需像素。(注：若被测物是正方形，靶面是 4:3，须用<strong>靶面短边</strong>对应视野短边来计算)</p>
+<div class="arithmatex">\[
+ \text{相机单方向像素} \ge \frac{\text{视野单方向尺寸}}{\text{系统精度要求}} 
+\]</div>
+</li>
+<li>
+<p><strong>像元尺寸</strong>：记录选定的像元大小（如 <span class="arithmatex">\(3.45 \mu m \)</span>），后续计算精度需用到。</p>
+</li>
+</ol>
+<p><strong>第三步：计算光学放大倍率 (<span class="arithmatex">\(m\)</span> 或 <span class="arithmatex">\(\beta\)</span>)</strong></p>
+<p>放大倍率是连接物方（现实世界）与像方（相机传感器）的桥梁。</p>
+<div class="arithmatex">\[
+ \text{放大倍率 } m = \frac{\text{相机靶面尺寸（短边或长边）}}{\text{对应视场 FOV 尺寸}} 
+\]</div>
+<ul>
+<li><strong>验证精度</strong>：计算实际精度是否达标。</li>
+</ul>
+<div class="arithmatex">\[
+ \text{实际精度} = \frac{\text{像元尺寸}}{\text{放大倍率 } m} \le \text{系统精度要求} 
+\]</div>
+<p><strong>第四步：计算所需焦距 (<span class="arithmatex">\(f\)</span>)</strong></p>
+<p>根据相似三角形原理或高斯成像公式推导，计算理论焦距：</p>
+<div class="arithmatex">\[
+ f = \frac{\text{工作距离 } WD \times \text{靶面尺寸}}{\text{视场尺寸}} 
+\]</div>
+<p>或者使用带放大率的公式：</p>
+<div class="arithmatex">\[
+ f = \frac{WD}{1 + 1/m} 
+\]</div>
+<ul>
+<li>若计算出的焦距为非标准值（如 <span class="arithmatex">\(16.1\text{ mm}\)</span>），向上或向下<strong>就近选择标准焦距</strong>（如 <span class="arithmatex">\(16\text{ mm}\)</span>）。</li>
+</ul>
+<p><strong>第五步：确定景深 (DOF) 与光圈</strong></p>
+<ul>
+<li><strong>估算景深</strong>：被测物若有高度差，需利用景深公式验证。</li>
+</ul>
+<div class="arithmatex">\[
+ \text{景深} \propto \text{光圈值 } F\# \times \text{允许弥散圆直径} 
+\]</div>
+<ul>
+<li><strong>光圈调节</strong>：如果景深不够，需缩小光圈（增大 <span class="arithmatex">\(F\)</span> 数）；如果亮度不够，需开大光圈（减小 <span class="arithmatex">\(F\)</span> 数）。</li>
+</ul>
+<p><strong>第六步：确认接口与物理参数</strong></p>
+<p><strong>第七步：选择镜头类型（特殊需求评估）</strong></p>
+<p>根据应用场景的苛刻程度，决定是否升级镜头类型：</p>
+<ul>
+<li><strong>高精度尺寸测量</strong> ➡️ 选择 <strong>远心镜头</strong>（消除透视误差）。</li>
+<li><strong>高速飞拍</strong> ➡️ 选择 <strong>大光圈镜头</strong>（配合频闪光源）。</li>
+<li><strong>微小缺陷检测</strong> ➡️ 选择 <strong>微距镜头</strong> 或 <strong>显微镜头</strong>。</li>
+<li><strong>超高像素相机</strong> ➡️ 必须选择标称分辨率（<span class="arithmatex">\(lp/mm\)</span>）足够高的 <strong>高解像力镜头</strong>。</li>
+</ul>
+<p><strong>选型示例</strong>：</p>
+<p><img alt="镜头选型.png" src="images/%E9%95%9C%E5%A4%B4%E9%80%89%E5%9E%8B.png" /></p>
+<p><img alt="镜头选型2.png" src="images/%E9%95%9C%E5%A4%B4%E9%80%89%E5%9E%8B2.png" /></p>
+<hr />
+<h3 id="14">1.4 <strong>相机</strong></h3>
+<h4 id="141"><strong>1.4.1 相机</strong></h4>
+<p>相机是一种将现场的影像转化成数字信号或模拟信号的工具。相机的选型主要关注以下参数：</p>
+<ol>
+<li>分辨率</li>
+<li>像素尺寸</li>
+<li>帧率</li>
+<li>像素深度</li>
+<li>数字接口</li>
+</ol>
+<h4 id="142-ccd-cmos"><strong>1.4.2 相机分类：CCD 相机与 CMOS 相机</strong></h4>
+<p>在工业相机中，图像传感器是将光信号转换为电信号的核心芯片。</p>
+<p>目前主流市场主要由 <strong>CCD (电荷耦合器件)</strong> 和 <strong>CMOS (互补金属氧化物半导体)</strong> 两大类占据。如今 <strong>CMOS 已成为绝对主流</strong>。</p>
+<ul>
+<li><strong>CCD (Charge-Coupled Device)</strong><ul>
+<li><strong>工作原理</strong>：光子在像素阵列中转化为电荷后，电荷会像“接力赛”一样，逐行逐列地转移到芯片边缘的输出放大器，再统一转换为电压信号。</li>
+<li><strong>特点</strong>：<strong>统一放大、统一输出</strong>。这保证了信号的一致性。</li>
+<li><strong>制造工艺</strong>：特殊工艺，难以与外围电路集成，成本高、功耗大。</li>
+</ul>
+</li>
+<li><strong>CMOS (Complementary Metal-Oxide-Semiconductor)</strong><ul>
+<li><strong>工作原理</strong>：每个像素点都自带一个光电二极管和独立的放大器（即“像素内放大”）。电荷直接在像素处转换为电压信号，像内存一样按行（或列）直接读取。</li>
+<li><strong>特点</strong>：<strong>分散放大、独立输出</strong>。</li>
+<li><strong>制造工艺</strong>：与标准集成电路工艺高度兼容，易于集成 AD 转换器、时序控制等，成本低、功耗小。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="CCD 与 CMOS 图像传感器.png" src="images/CCD%20%E4%B8%8E%20CMOS%20%E5%9B%BE%E5%83%8F%E4%BC%A0%E6%84%9F%E5%99%A8.png" /></p>
+<h4 id="142"><strong>1.4.2 相机分类：面阵相机与线阵相机</strong></h4>
+<p>根据传感器的物理排列方式和成像逻辑，工业相机主要分为<strong>面阵相机</strong>和<strong>线阵相机</strong>两大类。</p>
+<ul>
+<li><strong>面阵相机 (Area Scan Camera)</strong><ul>
+<li><strong>成像方式</strong>：传感器呈二维矩阵（如 <span class="arithmatex">\(1920 \times 1080\)</span> 的像素网格），一次性曝光捕获整个二维平面的图像，就像我们使用手机拍照一样。</li>
+<li><strong>物理类比</strong>：像一只“眼睛”或一张“照片”。</li>
+<li><strong>优势</strong>：技术成熟、易于使用、安装调试简单。</li>
+<li><strong>劣势</strong>：受限于传感器尺寸和镜头视场角，难以在保持高分辨率的同时覆盖极大的视野。</li>
+</ul>
+</li>
+<li><strong>线阵相机 (Line Scan Camera)</strong><ul>
+<li><strong>成像方式</strong>：传感器呈一维线状排列（如 <span class="arithmatex">\(2048 \times 1\)</span>、<span class="arithmatex">\(4096 \times 1\)</span> 或 <span class="arithmatex">\(8192 \times 1\)</span> 个像素）。每次曝光只能获取物体的一行（或少数几行）像素。</li>
+<li><strong>成像前提</strong>：必须配合物体的<strong>匀速相对运动</strong>（如传送带、卷绕机），相机连续扫描并拼接，最终在软件中“拼”出一幅二维图像。</li>
+<li><strong>物理类比</strong>：像一台“扫描仪”或“复印机”。</li>
+<li><strong>优势</strong>：在连续运动中可实现极高的横向分辨率，且视野（宽度）不受镜头限制，理论上长度无限。</li>
+<li><strong>劣势</strong>：系统复杂（需编码器触发），对运动平稳性、光照均匀性要求极高。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="面阵相机与线阵相机.png" src="images/%E9%9D%A2%E9%98%B5%E7%9B%B8%E6%9C%BA%E4%B8%8E%E7%BA%BF%E9%98%B5%E7%9B%B8%E6%9C%BA.png" /></p>
+<ul>
+<li>模拟相机：输出模拟视频流。需要经过图像采集卡后转换为数字图像。</li>
+<li>数字相机：直接输出数字图像。再经过计算机进行图像处理。</li>
+<li>智能相机：内置图像处理软件。</li>
+</ul>
+<h2 id="_3">二、数字图像基础</h2>
+<h2 id="halcon">三、Halcon 软件</h2>
+<h2 id="_4">四、图像增强</h2>
+<h2 id="_5">五、图像分割</h2>
+<h2 id="_6">六、特征提取</h2>
+<h2 id="_7">七、形态学处理</h2>
+<h2 id="_8">八、相机标定</h2>
+<h2 id="_9">九、模板匹配</h2>
+<h2 id="_10">十、立体视觉</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="site-stats">
+    <span id="busuanzi_container_site_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+        总访问量 <strong id="busuanzi_value_site_pv">--</strong> 次
+      </span>
+    </span>
+    <span id="busuanzi_container_site_uv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.07 10.41a5 5 0 0 0 0-5.82A3.4 3.4 0 0 1 15 4a3.5 3.5 0 0 1 0 7 3.4 3.4 0 0 1-1.93-.59M5.5 7.5A3.5 3.5 0 1 1 9 11a3.5 3.5 0 0 1-3.5-3.5m2 0A1.5 1.5 0 1 0 9 6a1.5 1.5 0 0 0-1.5 1.5M16 17v2H2v-2s0-4 7-4 7 4 7 4m-2 0c-.14-.78-1.33-2-5-2s-4.93 1.31-5 2m11.95-4A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4Z"/></svg>
+        访客数 <strong id="busuanzi_value_site_uv">--</strong> 人
+      </span>
+    </span>
+    <span id="busuanzi_container_page_pv">
+      <span class="site-stats__item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+        本页阅读 <strong id="busuanzi_value_page_pv">--</strong> 次
+      </span>
+    </span>
+    
+      <span
+        class="site-stats__item"
+        id="gh-stats"
+        data-api="https://api.github.com/repos/LiZH0911/LiZH0911.github.io"
+        hidden
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25"/></svg>
+        GitHub <strong data-gh="stars">--</strong> Star ·
+        <strong data-gh="forks">--</strong> Fork
+      </span>
+    
+  </div>
+
+  <div class="md-copyright__highlight">
+    Copyright &copy; 2026 LiZH0911 · 记录学习路上的点点滴滴
+  </div>
+
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+    </div>
+  
+</div>
+
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<script>
+  (function () {
+    var el = document.getElementById("gh-stats")
+    if (!el || !el.dataset.api) return
+
+    fetch(el.dataset.api)
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status)
+        return res.json()
+      })
+      .then(function (data) {
+        el.querySelector('[data-gh="stars"]').textContent = data.stargazers_count
+        el.querySelector('[data-gh="forks"]').textContent = data.forks_count
+        el.hidden = false
+      })
+      .catch(function () {
+        // 取不到数据就保持隐藏，不影响页面其他内容
+      })
+  })()
+</script>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
