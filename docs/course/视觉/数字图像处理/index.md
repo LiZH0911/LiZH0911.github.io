@@ -1015,6 +1015,20 @@ for i in range(9):
 plt.show()
 ```
 
+#### **5.4.1 图像灰度化**
+
+图像灰度化是将一幅彩色图像转换为灰度化图像的过程。彩色图像通常包括 R、G、B 三个分量，分别显示出红绿蓝等各种颜色，
+灰度化就是使彩色图像的 R、G、B 三个分量相等的过程。
+
+**加权平均法（亮度法，Luminance）—— 最标准**
+
+基于人眼视觉特性（人眼对绿色最敏感、蓝色最不敏感）:
+
+$$Gray = 0.299 R + 0.587 G + 0.114 B$$
+
+这是 **ITU-R BT.601** 标准,也是 OpenCV `cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)` 实际采用的公式（注意 OpenCV 读入是 BGR 顺序,内部按 R/G/B 权重计算）。
+
+
 ## 六、图像几何变换
 
 ### 6.1 **基本概念**
@@ -1472,70 +1486,65 @@ $$
 * **空间滤波**: 如图像平滑和锐化，对图像中的每个像素的邻域进行操作。
 
 > 空间域技术直接操作图像中的像素，而频率域技术操作的是图像的傅立叶变换而非图像本身。
-> 
-> 尽管灰度变换和空间滤波的应用范围广泛，但本书中的大多数例子是关于图像增强的。所谓图像增强技术，是为了某些特定应用对原图像进行加工的技术，不具备通用性。
 
+### 8.2 **灰度变换：线性与非线性**
 
-### 8.2 **灰度变换**
-
-灰度变换（点运算）是对图像中**每一个像素独立**进行操作，输出像素值只取决于该位置的输入像素值，与周围像素无关。
+灰度变换（点运算）是对**灰度图像**中**每一个像素独立**进行操作，输出像素值只取决于该位置的输入像素值，与周围像素无关。
 
 * 与几何运算的区别：不会改变图像内像素点之间的空间位置关系。
 * 与局部（领域）运算的区别：输入像素和输出像素一一对应。
 
 **数学形式**：
 
-$$g(x, y) = T[f(x, y)]$$
+$$s = T(r)$$
 
 其中：
 
-- $f(x, y)$：输入图像
-- $g(x, y)$：输出图像
+- $r$：输入灰度值（原始像素值）
+- $s$：输出灰度值（变换后像素值）
 - $T$：灰度变换函数
 
-**灰度变换的常见类型**
+**灰度变换方法分类**：
 
-| 类型 | 变换函数 | 作用 |
-| :--- | :--- | :--- |
-| 图像反转 | $g = 255 - f$ | 负片效果，黑变白、白变黑 |
-| 对数变换 | $g = c\log(1+f)$ | 压缩动态范围，扩展暗部细节 |
-| 幂律（伽马）变换 | $g = c \cdot f^\gamma$ | 伽马校正，调整亮度感知 |
-| 对比度拉伸 | 分段线性函数 | 扩展灰度范围，增强对比度 |
-| 阈值处理 | $g = 0$ 或 $255$ | 二值化，用于图像分割 |
-| 直方图均衡化 | 累积分布函数映射 | 增强整体对比度 |
+按**映射函数的数学性质**分类：
 
-应用：光度学标定、对比度增强、对比度扩展、显示标定、轮廓线确定
+- **线性灰度变换**：映射函数为线性：$s = a \cdot r + b$
 
-### 8.3 **灰度图像转换**
+| 子类 | 参数条件 | 效果 |
+|---|---|---|
+| 恒等变换 | $a=1,\ b=0$ | 图像不变 |
+| 反色（负像）变换 | $a=-1,\ b=255$ | 黑白反转 |
+| 对比度拉伸 | $a>1$ | 扩展动态范围 |
+| 对比度压缩 | $0<a<1$ | 压缩动态范围 |
+| 灰度平移 | $a=1,\ b\neq0$ | 整体变亮/变暗 |
 
-图像灰度化是将一幅彩色图像转换为灰度化图像的过程。彩色图像通常包括 R、G、B 三个分量，分别显示出红绿蓝等各种颜色，
-灰度化就是使彩色图像的 R、G、B 三个分量相等的过程。
+- **非线性灰度变换**：映射函数为非线性
+    * **对数变换**：$s = c \cdot \log(1+r)$，扩展暗部、压缩亮部，用于显示频谱等
+    * **幂律（伽马）变换**：$s = c \cdot r^\gamma$，$\gamma<1$ 提亮暗部，$\gamma>1$ 压暗亮部，最常用
+    * **指数（反对数）变换**：与对数互补，扩展亮部、压缩暗部
+    * **S 形变换**（Sigmoid）：增强中间灰度对比度，压缩两端
+    * **阈值化**：二值化，用于图像分割
+    * **直方图处理**：直方图均衡化、直方图规定化，以累积分布函数为映射，本质属非线性
 
-**加权平均法（亮度法，Luminance）—— 最标准**
+按**分段结构**分类：
 
-基于人眼视觉特性（人眼对绿色最敏感、蓝色最不敏感）:
+- **全局变换**：整幅图像使用统一映射函数
+- **分段变换**：按灰度区间分段处理，如分段线性（对比度拉伸、灰度切分）、分段非线性
 
-$$Gray = 0.299 R + 0.587 G + 0.114 B$$
+按**处理对象与实现方式**分类：
 
-这是 **ITU-R BT.601** 标准,也是 OpenCV `cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)` 实际采用的公式（注意 OpenCV 读入是 BGR 顺序,内部按 R/G/B 权重计算）。
+- **逐点运算**：仅依赖当前像素灰度值（上述全部属于此类）
+- **查表变换（LUT）**：工程实现方式，预计算映射表，不改变分类本质
 
-### 8.4 **灰度线性变换**
+### 8.3 **线性灰度变换**
 
-灰度线性变换是最基础的**点运算**（逐像素操作），通过一个线性函数把原灰度值映射到新灰度值，用于**调整图像对比度和亮度**。
+线性灰度变换是最基础的**点运算**（逐像素操作），通过一个线性函数把原灰度值映射到新灰度值，用于**调整图像对比度和亮度**。
 
 $$
-g(x,y) = a \cdot f(x,y) + b
+s = a \cdot r + b
 $$
 
-其中:
-- $f(x,y)$:原图像在 $(x,y)$ 处的灰度值
-- $g(x,y)$:变换后的灰度值
-- $a$:**斜率(增益 / 对比度控制)**
-- $b$:**截距(偏移 / 亮度控制)**
-
-> 约束:输出通常需裁剪到 $[0, 255]$,即 $g = \text{clip}(a f + b,\ 0, 255)$。
-
-参数 $b$ 控制对比度：
+参数 $a$ 控制对比度：
 
 | $a$ 取值 | 效果 |
 |---------|------|
@@ -1548,27 +1557,171 @@ $$
 
 | $b$ 取值 | 效果 |
 |---------|------|
-| $b > 0$ | 整体**变亮**(灰度整体上移) |
-| $b < 0$ | 整体**变暗**(灰度整体下移) |
+| $b > 0$ | 整体**变亮**(灰度上移) |
+| $b < 0$ | 整体**变暗**(灰度下移) |
 | $b = 0$ | 亮度不变 |
 
+> 约束：输出通常需裁剪到 $[0, 255]$,即 $g = \text{clip}(a f + b,\ 0, 255)$。
 
-### 8.5 **灰度非线性变换**
 
-- **对数变换**：`s = c·log(1+r)`，压缩高灰度、扩展低灰度，用于显示傅里叶频谱
-- **指数/伽马变换**：`s = c·r^γ`，γ<1 提亮暗部，γ>1 压暗亮部，用于显示校正
-- **幂律变换**：伽马的一般形式
-- **阈值化**：`s = 0 if r<T else 255`
-- **分段线性/非线性拉伸**：对比度拉伸、S型曲线
-- **直方图均衡化**：基于累积分布函数的非线性映射（严格说是全局非线性点运算）
+### 8.4 **对数变换**
 
-### 8.5 **阈值化**
+对数变换是一类典型的**非线性灰度变换**，其映射函数为：
 
-**固定阈值化**：`retval, dst = cv2.threshold(src, thresh, maxval, type)`
+$$
+s = c \cdot \log(1 + r)
+$$
+
+其中：
+
+- $c$：尺度常数（归一化系数），用于控制输出动态范围
+- $\log$：通常取自然对数 $\ln$，也可取以 10 为底的对数
+
+**作用**：**扩展低灰度（暗部）细节，压缩高灰度（亮部）范围**。
+
+**尺度常数 c 的确定**：
+
+为保证输出落在有效灰度范围（如 8 位图像的 $[0,255]$），常取：
+
+$$
+c = \frac{255}{\log(1 + r_{\max})}
+$$
+
+其中 $r_{\max}$ 为输入图像的最大灰度值（8 位图像通常为 255）。这样可将 $r_{\max}$ 映射到 255，实现动态范围的充分利用。
+
+**典型应用场景**：
+
+- **频谱图显示**：傅里叶变换得到的幅度谱动态范围极大（中心亮、四周暗），直接显示几乎全黑，经对数变换后可清晰显示频谱结构，这是对数变换最经典的应用。
+- **高动态范围（HDR）图像显示**：将大动态范围数据压缩到显示器可呈现的范围。
+- **暗部细节增强**：医学影像、夜视图像、遥感图像等暗部信息丰富的场景。
+- **光照不均校正的预处理**：与后续处理配合使用。
+
+### 8.5 **幂律（伽马）变换**
+
+幂律变换（又称伽马变换、幂次变换）是应用最广泛的**非线性灰度变换**之一，其映射函数为：
+
+$$
+s = c \cdot r^{\gamma}
+$$
+
+其中：
+
+- $c$：尺度常数（归一化系数），用于控制输出动态范围
+- $\gamma$：伽马参数（幂指数），控制变换曲线的弯曲方向和程度，是幂律变换的核心调节量
+
+**作用**：**$\gamma < 1$ 扩展暗部、$\gamma > 1$ 扩展亮部**，$\gamma$ 可连续调节，过渡平滑。
+
+**尺度常数 c 的确定**：
+
+$$
+c = \frac{255}{r_{\max}^{\gamma}}
+$$
+
+> 说明：当输入按 $[0,1]$ 归一化时（即 $r \in [0,1]$），通常取 $c=1$，此时 $s = r^{\gamma}$，形式最简洁，输出再按需乘以 255 还原；
+> 
+> 当处理 8 位图像（$r \in [0,255]$）时，需引入 $c$ 做尺度还原。
+
+**典型应用场景：**
+
+- **伽马校正（Gamma Correction）**：显示器、相机传感器对人眼亮度的响应是非线性的，用 $\gamma$ 变换做预补偿，使显示效果符合人眼感知，是图像显示与成像链路的标准环节。
+- **图像增强**：对偏暗图像取 $\gamma<1$ 提亮暗部；对偏亮/雾感图像取 $\gamma>1$ 压暗、增强层次。
+- **HDR 与色调映射**：将大动态范围数据压缩映射到显示范围。
+- **医学影像、遥感图像**：调节暗部或亮部细节的可见性。
+- **与对数变换互补使用**：根据目标区域（暗部或亮部）选择合适变换。
+
+### 8.6 **指数（反对数）变换**
+
+指数变换（又称反对数变换、反对数变换）是与对数变换**互补**的一类**非线性灰度变换**，其映射函数为：
+
+$$
+s = c \cdot \left( e^{k r} - 1 \right)
+$$
+
+其中：
+
+- $c$：尺度常数（归一化系数），用于控制输出动态范围
+- $k$：指数参数（增长系数），控制曲线弯曲程度，是变换的核心调节量
+
+**作用**：**压缩低灰度（暗部）范围，扩展高灰度（亮部）细节**，与对数变换的作用方向完全互补。
+
+**尺度常数 c 的确定**：
+
+$$
+c = \frac{255}{e^{k \cdot r_{\max}} - 1}
+$$
+
+**典型应用场景：**
+
+- **显示端还原对数压缩数据**：数据在采集/传输端经对数变换压缩后，显示端用指数（反对数）变换还原，恢复亮部层次（如部分 HDR 显示流程）。
+- **亮部细节增强**：对整体偏亮、亮部信息丰富的图像（如逆光场景中的高光区、某些医学影像）做增强。
+- **曝光校正**：配合对数变换做双向调节，根据图像明暗分布选择合适的变换方向。
+- **传感器/显示非线性响应的建模**：与伽马校正配合描述成像链路的非线性特性。
+
+### 8.7 **阈值化（基于阈值的图像分割）**
+
+阈值化（又称二值化）是一类特殊的**非线性灰度变换**，其映射函数为分段常值函数，将连续灰度压缩为两个（或多个）离散等级。
+
+$$
+s =
+\begin{cases}
+s_1, & r > T \\[4pt]
+s_0, & r \le T
+\end{cases}
+$$
+
+其中：
+
+- $T$：阈值（分割门限），是变换的唯一核心参数
+- $s_1, s_0$：输出高低两个等级（二值化通常取 $255$ 与 $0$）
+
+> 注意：阈值化本质上是**图像分割**手段，而非增强手段。
+
+**阈值 T 的确定方法**
+
+阈值化效果几乎完全取决于 $T$ 的选取，常见方法包括：
+
+| 方法 | 思路 | 特点 |
+|---|---|---|
+| 手动/经验阈值 | 人工指定固定 $T$ | 简单，但依赖先验，适应性差 |
+| **Otsu 法（大津法）** | 最大化类间方差，自动选取使前景/背景分离度最大的 $T$ | 最经典的自适应单阈值方法，无需先验 |
+| 迭代法 | 以均值迭代逼近最优阈值 | 计算简单，对双峰直方图有效 |
+| 直方图双峰法 | 取直方图两峰之间谷底处灰度作为 $T$ | 直观，要求直方图呈明显双峰 |
+| 自适应/局部阈值 | 按局部邻域统计量逐像素确定 $T$（如局部均值、Sauvola 法） | 适合光照不均图像 |
+| 多阈值 | 设多个门限 $T_1<T_2<\cdots$，输出多等级 | 用于多类分割 |
+
+> Otsu 法是最常用的自动阈值方法，其原理是遍历候选 $T$，使前景与背景两类像素的**类间方差最大**（等价于类内方差最小），在直方图双峰明显时效果良好。
+
+#### **8.7.1 固定阈值化**
+
+**固定阈值化函数**：`retval, dst = cv2.threshold(src, thresh, maxval, type)`
+
+| 参数 | 含义 |
+|---|---|
+| `src` | 输入图像，**必须为单通道**（通常先转灰度） |
+| `thresh` | 阈值 $T$ |
+| `maxval` | 满足条件时赋予的最大值（二值化时通常为 255） |
+| `type` | 阈值化类型（见下节），决定映射规则 |
+| `retval` | 返回的实际使用阈值（用 Otsu/三角法时返回自动计算的 $T$） |
+| `dst` | 输出图像，尺寸与类型同 `src` |
+
+**阈值化类型（type 参数）**
+
+OpenCV 提供 5 种基础类型，外加 2 种自动阈值标志：
+
+| 类型常量 | 映射规则 | 说明 |
+|---|---|---|
+| `cv2.THRESH_BINARY` | $s = \begin{cases} \text{maxval}, & r > T \\ 0, & r \le T \end{cases}$ | 最常用二值化 |
+| `cv2.THRESH_BINARY_INV` | $s = \begin{cases} 0, & r > T \\ \text{maxval}, & r \le T \end{cases}$ | 反相二值化 |
+| `cv2.THRESH_TRUNC` | $s = \begin{cases} T, & r > T \\ r, & r \le T \end{cases}$ | 截断，超过阈值压为 $T$ |
+| `cv2.THRESH_TOZERO` | $s = \begin{cases} r, & r > T \\ 0, & r \le T \end{cases}$ | 低于阈值置零 |
+| `cv2.THRESH_TOZERO_INV` | $s = \begin{cases} 0, & r > T \\ r, & r \le T \end{cases}$ | 高于阈值置零 |
+| `cv2.THRESH_OTSU` | 自动选 $T$（需与上述基础类型按位或组合） | 大津法，仅适用 8 位单通道 |
+| `cv2.THRESH_TRIANGLE` | 自动选 $T$（三角法，需组合使用） | 适合直方图单峰情形 |
 
 ```python
 import cv2
 
+# 阈值化的输入为灰度图像
 img = cv2.imread('input.jpg', cv2.IMREAD_GRAYSCALE)
 
 # 固定阈值二值化
@@ -1585,170 +1738,127 @@ ret, th4 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO)
 
 # 高于阈值置 0
 ret, th5 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO_INV)
+
+# Otsu 自动阈值（thresh 传 0 即可，返回值 ret 为自动算出的阈值）
+ret, dst = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+# 三角法自动阈值
+ret, dst = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_TRIANGLE)
 ```
 
-**自适应阈值化**：`dst = cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C)`
+#### **8.7.2 自适应阈值化**
+
+全局阈值对**光照不均**图像效果差，OpenCV 提供 `cv2.adaptiveThreshold()` 按局部邻域逐像素计算阈值：
+
+**自适应阈值化函数**：`dst = cv2.adaptiveThreshold(src, maxValue, adaptiveMethod, thresholdType, blockSize, C)`
+
+| 参数 | 含义 |
+|---|---|
+| `src` | 8 位单通道输入 |
+| `maxValue` | 满足条件时赋予的值（同 `maxval`） |
+| `adaptiveMethod` | `cv2.ADAPTIVE_THRESH_MEAN_C`（邻域均值）或 `cv2.ADAPTIVE_THRESH_GAUSSIAN_C`（邻域高斯加权） |
+| `thresholdType` | 仅支持 `THRESH_BINARY` 或 `THRESH_BINARY_INV` |
+| `blockSize` | 邻域窗口大小，**必须为奇数**（如 11、21） |
+| `C` | 从邻域统计量中减去的常数，用于微调阈值 |
+
+**自动求阈值 T 的原理**：根据参数 `adaptiveMethod` 的选取：
+
+- 均值法：$T(x,y) = \text{mean}(\text{邻域}) - C$
+- 高斯法：$T(x,y) = \text{GaussianWeightedMean}(\text{邻域}) - C$
 
 ```python
 import cv2
 
-# 均值自适应
-adap_mean = cv2.adaptiveThreshold(
-    img, 255,
-    cv2.ADAPTIVE_THRESH_MEAN_C,
-    cv2.THRESH_BINARY,
-    blockSize=11,
-    C=2
-)
+img = cv2.imread("input.png")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)   # 1. 转灰度（threshold 要求单通道）
 
-# 高斯自适应（更平滑，常用）
-adap_gauss = cv2.adaptiveThreshold(
-    img, 255,
-    cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-    cv2.THRESH_BINARY,
-    blockSize=11,
-    C=2
-)
+# 2. 可选：滤波去噪，改善阈值稳定性
+gray = cv2.GaussianBlur(gray, (5, 5), 0)
+
+# 3a. 全局 + Otsu 自动阈值
+ret, binary = cv2.threshold(gray, 0, 255,
+      cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+# 3b. 或：光照不均时用自适应阈值
+# binary = cv2.adaptiveThreshold(gray, 255,
+#         cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 5)
+
+# 4. 后续处理：形态学去噪、连通域分析、轮廓提取等
+kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
 ```
-
-### 8.6 **图像形态学处理**
-
-图像的腐蚀（Erosion）和膨胀（Dilation）是两种基本的形态学运算，主要用来寻找图像中的极小区域和极大区域。
-
-#### **8.6.1 腐蚀**
-
-- 作用：缩小图像中的白色区域（前景）
-- 核心函数：`cv2.erode(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-    - `kernel` 越大、`iterations` 越多，效果越明显
-- 典型应用场景：去除噪点、断开物体连接、提取骨架
-
-```python
-import cv2
-import numpy as np
-
-img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
-
-# 定义 5x5 结构元素
-kernel = np.ones((5, 5), np.uint8)
-
-# 腐蚀
-eroded = cv2.erode(img, kernel, iterations=1)
-
-cv2.imshow('Original', img)
-cv2.imshow('Eroded', eroded)
-cv2.waitKey(0)
-```
-
-常用结构元素：
-
-```python
-# 矩形
-k1 = cv2.getStructuringElement(cv2.MORPH_RECT,    (5, 5))
-# 椭圆（圆形）
-k2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-# 十字形
-k3 = cv2.getStructuringElement(cv2.MORPH_CROSS,   (5, 5))
-```
-
-#### **8.6.2 膨胀**
-
-* 作用：扩大图像中的白色区域（前景）
-* 函数：`cv2.dilate(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-    * 参数与 `cv2.erode` 完全一致，只是效果相反。
-* 应用场景：填补孔洞、连接断裂物体、加粗线条
-
-#### **8.6.3 开运算**
-
-- 定义：**先腐蚀后膨胀**：`open = dilate(erode(img))`。
-- 作用：去除小的白色噪点/毛刺，同时保持物体主体大小基本不变。 
-- 函数：`cv2.morphologyEx(src, cv2.MORPH_OPEN, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-    - 等价于：`cv2.dilate(cv2.erode(img, kernel, iterations), kernel, iterations)`
-
-```python
-import cv2
-
-img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
-
-# 5x5 结构元素
-kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
-
-# 开运算
-opened = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
-
-cv2.imshow('Original', img)
-cv2.imshow('Opened', opened)
-cv2.waitKey(0)
-```
-
-#### **8.6.4 闭运算**
-
-* 定义：**先膨胀后腐蚀**：`close = erode(dilate(img))`。
-* 作用：填补物体内部的小孔洞、连接断裂的缝隙，同时保持物体主体大小基本不变。
-* 函数：`cv2.morphologyEx(src, cv2.MORPH_CLOSE, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-
-#### **8.6.5 形态学梯度**
-
-- 定义：膨胀图减去腐蚀图：`gradient = dilate(img) - erode(img)`。
-- 作用：提取物体的轮廓/边缘，得到的是物体的"厚度"边界。
-- 函数：`cv2.morphologyEx(src, cv2.MORPH_GRADIENT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-
-#### **8.6.6 顶帽运算**
-
-- 定义：**原图减去开运算结果**：`tophat = img - open(img)`。
-- 作用：提取比周围亮的细小物体/细节，即图像中"突出的小亮点、细线、局部高亮区域"。
-- 原理：
-    * 开运算（先腐蚀后膨胀）会去掉比 kernel 小的亮细节，只保留主体。
-    * 原图 − 开运算结果 = 被开运算去掉的那些小亮细节
-- 函数：`cv2.morphologyEx(src, cv2.MORPH_TOPHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-- 应用场景：
-    * 提取图像中的小亮点/高光
-    * 不均匀光照校正（背景估计）：顶帽能去掉大范围缓慢变化的背景，保留局部亮细节，常用于光照不均的图像预处理
-    * 提取细小文字/笔画（OCR 预处理）
-    * 检测缺陷/划痕（工业视觉）
-    * 细胞/颗粒计数预处理
-
-#### **8.6.7 底帽运算**
-
-* 定义：**闭运算结果减去原图**：`blackhat = close(img) - img`。
-* 作用：提取比周围暗的细小物体/细节，即图像中"隐藏在亮背景里的小暗点、孔洞、暗缝、局部阴影"
-* 原理：
-    * 闭运算（先膨胀后腐蚀）会填补比 kernel 小的暗细节（孔洞、缝隙），让暗区域变亮。
-    * 闭运算结果 − 原图 = 被闭运算填掉的那些小暗细节
-* 函数：`cv2.morphologyEx(src, cv2.MORPH_BLACKHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
-* 应用场景：
-    * 提取图像中的小暗点/孔洞
-    * 暗缺陷/暗划痕检测（工业视觉）
-    * 文字提取（暗文字、亮背景）
-    * 不均匀光照下的暗细节增强
 
 ### 8.7 **直方图处理**
 
-图像直方图（Image Histogram）用统计图表的形式，描述一幅图像中**各个灰度级（或颜色通道取值）出现的频率**。
+#### **8.7.1 灰度直方图**
 
-#### **8.7.1 直方图计算**
+**灰度直方图**是图像灰度分布的统计描述：对每个灰度级 $k$（$k=0,1,\dots,L-1$，8 位图像 $L=256$），统计该灰度级出现的频次 $n_k$ 或频率。
 
-令 $r_k (k = 0,1,2...L-1)$ 表示一幅 $L$ 级灰度数字图像 $f(x,y)$ 的灰度。
+**非归一化直方图（统计频次）**：
 
-$f$ 的**非归一化直方图**定义为：
+$$
+h(r_k) = n_k
+$$
 
-$$h(r_{k}) = n_{k}$$
+**归一化直方图（统计频率）**：
 
-式中，$n_k$ 是 $f$ 中灰度为 $r_k$ 的像素的数量。。
+$$
+p(r_k) = \frac{n_k}{N}, \qquad \sum_{k=0}^{L-1} p(r_k) = 1
+$$
 
-类似地，**归一化直方图**定义为：
-
-$$p(r_{k}) = \frac{h(r_{k})}{MN} = \frac{n_{k}}{MN}$$
-
-式中，$M$ 和 $N$ 分别是图像的行数和列数。对 $k$ 的所有值，$p(r_{k})$ 的和总是 1.
+其中 $N$ 为像素总数，$r_k$ 为第 $k$ 个灰度级。直方图只反映**各灰度出现频次**，丢失了像素的空间位置信息。
 
 **4 种基本灰度特性的图像**：
 
 ![不同灰度特性的图像.png](images%2F%E4%B8%8D%E5%90%8C%E7%81%B0%E5%BA%A6%E7%89%B9%E6%80%A7%E7%9A%84%E5%9B%BE%E5%83%8F.png)
 
-#### **8.7.2 直方图绘制**
+**直方图处理**：以直方图为依据、通过构造映射函数 $s = T(r)$ 改变灰度分布的一类方法。由于映射以**累积分布函数（CDF）**为基础，且一般不是线性函数，因此**本质上属于非线性灰度变换**。
 
-1. 直方图计算：`cv2.calcHist(images, channels, mask, histSize, ranges)`
-2. 直方图绘制：Matplotlib 或 OpenCV 绘图函数
+$$
+s = T(r)
+$$
+
+其中 $T$ 由输入直方图（或其 CDF）构造：
+
+- **直方图均衡化（Histogram Equalization）**：以输入图像的 CDF 作为映射函数，使输出直方图**尽量均匀分布**
+- **直方图规定化（Histogram Specification / Matching）**：指定目标直方图，构造映射使输出直方图**逼近目标分布**
+
+#### **8.7.2 直方图计算与可视化**
+
+**直方图计算函数**：`hist = cv2.calcHist(images, channels, mask, histSize, ranges)`
+
+| 参数 | 含义 |
+|---|---|
+| `images` | 输入图像列表，如 `[gray]`（需加方括号） |
+| `channels` | 参与统计的通道索引，灰度图为 `[0]`，BGR 为 `[0]`/`[1]`/`[2]` |
+| `mask` | 掩膜，只统计掩膜非零区域；不需要时传 `None` |
+| `histSize` | 直方图bin 数，如 `[256]` |
+| `ranges` | 灰度取值范围，8 位图像为 `[0, 256]`（注意上界取 256） |
+| 返回 `hist` | 形状为 `(histSize, 1)` 的数组，元素为该 bin 的像素数（float32） |
+
+```python
+import cv2
+import numpy as np
+
+# 计算灰度直方图
+img = cv2.imread("input.png")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+hist = cv2.calcHist([gray], [0], None, [256], [0, 256])
+
+# 彩色图像分通道直方图
+img = cv2.imread("input.png")
+for i, color in enumerate(("b", "g", "r")):
+   hist = cv2.calcHist([img], [i], None, [256], [0, 256])
+   
+# 带掩膜的直方图（只统计感兴趣区域）
+
+mask = np.zeros(gray.shape, np.uint8)
+mask[100:300, 100:300] = 255          # 只统计该矩形区域
+hist = cv2.calcHist([gray], [0], mask, [256], [0, 256])
+```
+
+**直方图可视化**：Matplotlib 或 `cv2.line`/`cv2.polylines`
 
 以 Matplotlib 绘制灰度图像的直方图为例：
 
@@ -1781,25 +1891,23 @@ plt.show()
 
 #### **8.7.3 直方图均衡化**
 
-直方图均衡化（Histogram Equalization）是一种**基于灰度直方图的灰度变换方法**。
+直方图均衡化（Histogram Equalization）是一种基于灰度直方图的**非线性灰度变换方法**。
 
 **核心思想**：通过变换函数将原图像的灰度直方图重新映射，使其**近似均匀分布**，从而增强图像的全局对比度。
 
-设输入图像灰度级为 $r$，范围 $[0, L-1]$（8 位图像 $L=256$）。
+对归一化灰度 $r \in [0,1]$，连续形式的均衡化映射为：
 
-**直方图均衡化的变换函数**为：
+$$
+s = T(r) = \int_0^r p_r(w)\,dw = \text{CDF}(r)
+$$
 
-$$s = T(r) = (L-1)\sum_{j=0}^{r} p_r(j)$$
+离散形式（8 位图像）为：
 
-其中：
+$$
+s_k = (L-1)\sum_{j=0}^{k} p(r_j)
+$$
 
-- $s$：输出灰度值
-- $p_r(j)$：第 $j$ 级灰度的概率（归一化直方图）
-- $\sum_{j=0}^{r} p_r(j)$：累积分布函数（CDF）
-
-**直方图均衡化变换函数的概率密度形式**（连续情况）：
-
-$$s = T(r) = (L-1)\int_0^r p_r(w)\,dw$$
+即把每个灰度级映射为其**累积频率乘以 $(L-1)$**，再**取整**。
 
 **直方图均衡化的计算步骤**：
 
@@ -1809,34 +1917,73 @@ $$s = T(r) = (L-1)\int_0^r p_r(w)\,dw$$
 4. **计算映射关系**：$s_k = \text{round}\left[(L-1)\cdot \text{CDF}(k)\right]$
 5. **逐像素映射**：将原图中每个灰度值 $r_k$ 替换为 $s_k$，得到均衡化后的图像。
 
-#### **8.7.3 直方图匹配（规定化）**
+**直方图均衡化函数**：`dst = cv2.equalizeHist(src)`
 
-直方图规定化（Histogram Specification），又称直方图匹配（Histogram Matching），是一种基于灰度直方图的灰度变换方法。
+- 全自动、无参数，对整体偏暗/偏亮、低对比度图像效果明显
+- 可能**放大噪声**、改变整体亮度/色调；对含大片纯色背景（直方图尖峰）的图像易产生伪影
+- 仅支持 8 位单通道；彩色图需先转灰度或对每个通道分别均衡化（分别均衡会改变色调，需谨慎）
+- **全局**处理，对光照不均图像效果有限 → 改用 CLAHE
+
+**自适应直方图均衡化函数**：`cv2.createCLAHE(clipLimit, tileGridSize)`
+
+| 参数 | 含义 |
+|---|---|
+| `clipLimit` | 对比度限制阈值，越大增强越强、噪声放大越明显（默认 40.0 常见，`2.0` 为温和设置） |
+| `tileGridSize` | 分块网格大小，图像被划分为该网格大小的子块分别均衡化（常用 8×8） |
+
+**原理**：把图像分成若干子块，**各自做均衡化**，再做块间双线性插值消除块边界；`clipLimit` 用于裁剪直方图尖峰、**限制对比度增强幅度**，从而抑制噪声放大与伪影。
+
+```python
+gray = cv2.cvtColor(cv2.imread("input.png"), cv2.COLOR_BGR2GRAY)
+clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+dst = clahe.apply(gray)
+```
+
+#### **8.7.4 直方图规定化（匹配）**
+
+直方图规定化（Histogram Specification），又称直方图匹配（Histogram Matching）。
 
 **核心思想**：通过变换函数将原图像的灰度直方图映射为用户指定的目标直方图，从而实现对图像对比度的灵活控制。
 
 > 直方图均衡化是规定化的一个特例（目标直方图为均匀分布）
 
-#### **8.7.4 局部直方图处理**
+**步骤**：
 
-直方图均衡化和直方图规定化的直方图处理方法都是全局性的，因为像素是由基于整个图像的灰度分布的变换函数修改的。
+1. 对输入做均衡化：$s = T(r) = \text{CDF}_r(r)$
+2. 对目标直方图求其均衡化映射：$v = G(z) = \text{CDF}_z(z)$
+3. 因均衡化后 $s$ 与 $v$ 都应服从均匀分布，令 $s = v$，得 $z = G^{-1}(s) = G^{-1}(T(r))$
 
-当目的是为了解决增强图像中几个小区域的细节时，解决方法是设计**基于像素邻域的灰度分布的变换函数**。
+即映射为 $T \to G^{-1}$ 的复合。离散实现中，通常对每个 $s_k$ 在目标 CDF 中找**最接近**的 $z$。
 
-#### **8.7.5 使用直方图统计增强图像**
+**用途**：使图像具有期望的灰度分布（如统一多幅图像色调、匹配参考图像风格），比均衡化更可控。
 
-直接从图像直方图得到的统计量信息可用于增强图像。
+OpenCV 未直接提供规定化函数，可按"**均衡化 + 逆映射**"思路手动实现：
 
-**均值是平均灰度的测度**:
+```python
+import cv2
+import numpy as np
 
-$$m = \sum_{i=0}^{L-1} r_{i}p(r_i)$$
+src = cv2.cvtColor(cv2.imread("input.png"), cv2.COLOR_BGR2GRAY)
 
-**方差（或标准差$\sigma$）是图像对比度的测度**：
+# 1. 输入图像 CDF（均衡化映射）
+hist_src = cv2.calcHist([src], [0], None, [256], [0, 256]).ravel()
+cdf_src = np.cumsum(hist_src) / src.size
 
-$$\sigma^2 = \mu_2 = \sum_{i=0}^{L-1}(r_{i}-m)^{2}p(r_i)$$
+# 2. 目标直方图（此处示例：均匀分布；也可自定义/取自参考图）
+hist_ref = np.ones(256) / 256
+cdf_ref = np.cumsum(hist_ref)
 
-> 简单理解：均值越大，图像越亮；方差越大，图像对比度越高
+# 3. 构造查找表：对每个灰度级，在目标 CDF 中找最接近的 z
+lut = np.zeros(256, np.uint8)
+for k in range(256):
+  z = np.argmin(np.abs(cdf_ref - cdf_src[k]))
+  lut[k] = z
 
+# 4. 应用映射
+matched = cv2.LUT(src, lut)
+```
+
+> 要点：`cv2.LUT()` 用于按查找表做逐像素映射，是实现任意灰度变换（含规定化）的通用工具；目标直方图可来自参考图像（先 `calcHist` 再归一化），实现"风格/色调匹配"。
 
 
 ## 九、空间滤波
@@ -1863,11 +2010,10 @@ $$
 
 - 线性空间滤波：输出是邻域像素的线性加权和，核心是卷积。
     - **平滑（低通）**：均值滤波、高斯滤波、加权平均滤波——抑制噪声、模糊细节。
-    - **锐化（高通）**：拉普拉斯核、Sobel/Prewitt 梯度核、非锐化掩蔽（unsharp masking）——增强边缘与细节。
+    - **锐化（高通）**：拉普拉斯核、Sobel/Prewitt、非锐化掩蔽——增强边缘与细节。
 - 非线性空间滤波：输出不是邻域像素的线性组合。
-    - **中值滤波**：取邻域中值，对椒盐噪声效果好且能保边；
-    - **最大值 / 最小值滤波**：形态学膨胀 / 腐蚀的基础；
-    - **双边滤波**：同时考虑空间距离与灰度相似性，保边平滑。
+    - 基于排序/集合：中值滤波、最大/最小值滤波、形态学处理
+    - 基于自适应权重：双边滤波
 
 
 ### 9.2 **图像平滑**
@@ -2224,24 +2370,16 @@ def Laplacian_of_laplacian(img, c=0.5, blur_ksize=5):
 
 #### **9.3.5 非锐化掩蔽**
 
-非锐化掩蔽是一种经典的锐化技术，其核心思想是：**原始图像减去其模糊版本得到高频细节（掩蔽信号），再将细节叠加回原图**。
+非锐化掩蔽（Unsharp Masking，USM）是一种经典的锐化技术，中文也常译作反锐化掩模/反锐化掩蔽、钝化掩蔽、模糊掩蔽。
 
-步骤：
+**核心思想**：**原始图像减去其模糊版本得到高频细节（掩蔽信号），再将细节叠加回原图**。
+
+**步骤**：
 
 1. 对原图 $f(x,y)$ 进行低通滤波（如高斯模糊），得到模糊图像 $f_{\text{blur}}(x,y)$。
-2. 计算掩蔽信号（高频细节）：
-
-$$\text{mask}(x,y) = f(x,y) - f_{\text{blur}}(x,y)$$
-
-3. 将掩蔽信号按强度系数 $k$ 叠加回原图：
-
-$$g(x,y) = f(x,y) + k \cdot \text{mask}(x,y)$$
-
-即：
-
-$$g(x,y) = f(x,y) + k \cdot \left[ f(x,y) - f_{\text{blur}}(x,y) \right]$$
-
-其中 $k$ 为锐化强度（通常 $k > 0$，$k$ 越大锐化越强）。
+2. 计算掩蔽信号（高频细节）：$\text{mask}(x,y) = f(x,y) - f_{\text{blur}}(x,y)$
+3. 将掩蔽信号按强度系数 $k$ 叠加回原图：$g(x,y) = f(x,y) + k \cdot \text{mask}(x,y)$
+     - 其中 $k$ 为锐化强度（通常 $k > 0$，$k$ 越大锐化越强）。
 
 ```python
 def unsharp_mask(image, sigma=1.0, k=1.0):
@@ -2317,62 +2455,518 @@ edges = cv2.Canny(
 
 #### **9.3.7 LOG 边缘检测**
 
+LoG（Laplacian of Gaussian，高斯拉普拉斯）边缘检测是一种**二阶微分边缘检测方法**。
+它把**高斯平滑**与**拉普拉斯二阶微分**结合，解决了纯 Laplacian 算子对噪声极度敏感的问题，又称**墨西哥帽算子（Mexican Hat Operator）**
 
-### 9.4 **低通、高通、带阻核带通滤波器**
+**算法流程**；
 
-![低通、高通、带阻核带通滤波器.png](images%2F%E4%BD%8E%E9%80%9A%E3%80%81%E9%AB%98%E9%80%9A%E3%80%81%E5%B8%A6%E9%98%BB%E6%A0%B8%E5%B8%A6%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8.png)
+1. **高斯平滑（降噪）**：用高斯滤波器对图像卷积，抑制噪声。二阶微分对噪声极其敏感，平滑是 LoG 可靠的前提。
+2. **拉普拉斯二阶微分**：对平滑图求二阶导，得到 LoG 响应。
+3. **等效 LoG 核（可选优化）**：由于卷积与微分可交换，可直接用 $\nabla^2 G_\sigma$ 对原图卷积，一次完成平滑+微分。
+     - **数学依据**：$\nabla^2 (G_\sigma * f) = (\nabla^2 G_\sigma) * f$。
+     - **解析形式**：$\nabla^2 G_\sigma(x,y) = \frac{x^2+y^2-2\sigma^2}{\sigma^4} e^{-\frac{x^2+y^2}{2\sigma^2}}$
+     - **常用 5×5 离散近似核**：$\text{LoG} \approx \begin{bmatrix} 0 & 0 & -1 & 0 & 0 \\ 0 & -1 & -2 & -1 & 0 \\ -1 & -2 & 16 & -2 & -1 \\ 0 & -1 & -2 & -1 & 0 \\ 0 & 0 & -1 & 0 & 0 \end{bmatrix}$
+4. **过零点检测（Zero-Crossing）**：LoG 响应为零的位置对应边缘，通过检测过零点定位边缘。
+     - **判定规则**：对每个像素，检查其 3×3 邻域内是否存在符号相反的相邻像素对；若存在，且两侧差值（过零斜率）足够大，则标记为边缘。
+     - **阈值控制**：用过零斜率阈值抑制弱响应（噪声引起的伪过零）。
+     - **作用**：把 LoG 的连续响应转化为二值边缘图，完成边缘定位。
+
+```python
+import cv2
+import numpy as np
+
+def log_edge(img, sigma=1.0, zero_cross_thresh=0):
+    """
+    LoG 边缘检测
+
+    参数:
+        img               : 灰度图 (uint8)
+        sigma             : 高斯标准差，控制检测尺度
+        zero_cross_thresh : 过零斜率阈值，越大边缘越少
+    """
+    # 1. 高斯平滑
+    smooth = cv2.GaussianBlur(img, (0, 0), sigma).astype(np.float32)
+
+    # 2. 拉普拉斯（ksize=1 用固定 3x3 四邻域核，中心为负）
+    log = cv2.Laplacian(smooth, cv2.CV_32F, ksize=1)
+
+    # 3. 过零点检测
+    h, w = log.shape
+    edges = np.zeros((h, w), np.uint8)
+    for y in range(1, h - 1):
+        for x in range(1, w - 1):
+            patch = log[y-1:y+2, x-1:x+2]
+            p = log[y, x]
+            # 邻域内是否存在符号相反的像素
+            if (patch.min() < 0 < patch.max()):
+                # 过零斜率（两侧极差）需超过阈值
+                if (patch.max() - patch.min()) > zero_cross_thresh:
+                    edges[y, x] = 255
+    return edges
+```
+
+**补充**：工程中常直接用 DoG（高斯差分） 近似 LoG，效率更高：
+
+```python
+def dog(img, sigma1=1.0, sigma2=1.6):
+    g1 = cv2.GaussianBlur(img, (0, 0), sigma1).astype(np.float32)
+    g2 = cv2.GaussianBlur(img, (0, 0), sigma2).astype(np.float32)
+    return g1 - g2
+```
+
+#### **9.3.8 二值图像轮廓提取**
+
+**轮廓**是连接所有连续点（沿边界）的曲线，是形状分析、目标提取、图像分割的基础工具。
+
+`cv2.findContours()` 用于在**二值图像**中查找轮廓（contour）。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread("input.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# 1. 二值化
+_, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+
+# 2. 查找轮廓
+contours, hierarchy = cv2.findContours(
+    thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+print("轮廓数量:", len(contours))
+
+# 3. 遍历轮廓，按面积筛选并绘制
+result = img.copy()
+for cnt in contours:
+    area = cv2.contourArea(cnt)
+    if area > 500:                                   # 过滤小噪点
+        # 绘制轮廓
+        cv2.drawContours(result, [cnt], -1, (0, 255, 0), 2)
+        # 外接矩形
+        x, y, w, h = cv2.boundingRect(cnt)
+        cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 2)
+        # 最小外接圆
+        (cx, cy), r = cv2.minEnclosingCircle(cnt)
+        cv2.circle(result, (int(cx), int(cy)), int(r), (0, 0, 255), 2)
+
+cv2.imshow("Contours", result)
+cv2.waitKey(0)
+```
+
+### 9.4 **形态学处理**
+
+图像的腐蚀（Erosion）和膨胀（Dilation）是两种基本的形态学运算，主要用来寻找图像中的极小区域和极大区域。
+
+#### **9.4.1 腐蚀**
+
+- 作用：缩小图像中的白色区域（前景）
+- 核心函数：`cv2.erode(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    - `kernel` 越大、`iterations` 越多，效果越明显
+- 典型应用场景：去除噪点、断开物体连接、提取骨架
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
+
+# 定义 5x5 结构元素
+kernel = np.ones((5, 5), np.uint8)
+
+# 腐蚀
+eroded = cv2.erode(img, kernel, iterations=1)
+
+cv2.imshow('Original', img)
+cv2.imshow('Eroded', eroded)
+cv2.waitKey(0)
+```
+
+常用结构元素：
+
+```python
+# 矩形
+k1 = cv2.getStructuringElement(cv2.MORPH_RECT,    (5, 5))
+# 椭圆（圆形）
+k2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+# 十字形
+k3 = cv2.getStructuringElement(cv2.MORPH_CROSS,   (5, 5))
+```
+
+#### **9.4.2 膨胀**
+
+* 作用：扩大图像中的白色区域（前景）
+* 函数：`cv2.dilate(src, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    * 参数与 `cv2.erode` 完全一致，只是效果相反。
+* 应用场景：填补孔洞、连接断裂物体、加粗线条
+
+#### **9.4.3 开运算**
+
+- 定义：**先腐蚀后膨胀**：`open = dilate(erode(img))`。
+- 作用：去除小的白色噪点/毛刺，同时保持物体主体大小基本不变。 
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_OPEN, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+    - 等价于：`cv2.dilate(cv2.erode(img, kernel, iterations), kernel, iterations)`
+
+```python
+import cv2
+
+img = cv2.imread('input.png', cv2.IMREAD_GRAYSCALE)
+
+# 5x5 结构元素
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+
+# 开运算
+opened = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+
+cv2.imshow('Original', img)
+cv2.imshow('Opened', opened)
+cv2.waitKey(0)
+```
+
+#### **9.4.4 闭运算**
+
+* 定义：**先膨胀后腐蚀**：`close = erode(dilate(img))`。
+* 作用：填补物体内部的小孔洞、连接断裂的缝隙，同时保持物体主体大小基本不变。
+* 函数：`cv2.morphologyEx(src, cv2.MORPH_CLOSE, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+
+#### **9.4.5 形态学梯度**
+
+- 定义：膨胀图减去腐蚀图：`gradient = dilate(img) - erode(img)`。
+- 作用：提取物体的轮廓/边缘，得到的是物体的"厚度"边界。
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_GRADIENT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+
+#### **9.4.6 顶帽运算**
+
+- 定义：**原图减去开运算结果**：`tophat = img - open(img)`。
+- 作用：提取比周围亮的细小物体/细节，即图像中"突出的小亮点、细线、局部高亮区域"。
+- 原理：
+    * 开运算（先腐蚀后膨胀）会去掉比 kernel 小的亮细节，只保留主体。
+    * 原图 − 开运算结果 = 被开运算去掉的那些小亮细节
+- 函数：`cv2.morphologyEx(src, cv2.MORPH_TOPHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+- 应用场景：
+    * 提取图像中的小亮点/高光
+    * 不均匀光照校正（背景估计）：顶帽能去掉大范围缓慢变化的背景，保留局部亮细节，常用于光照不均的图像预处理
+    * 提取细小文字/笔画（OCR 预处理）
+    * 检测缺陷/划痕（工业视觉）
+    * 细胞/颗粒计数预处理
+
+#### **9.4.7 底帽运算**
+
+* 定义：**闭运算结果减去原图**：`blackhat = close(img) - img`。
+* 作用：提取比周围暗的细小物体/细节，即图像中"隐藏在亮背景里的小暗点、孔洞、暗缝、局部阴影"
+* 原理：
+    * 闭运算（先膨胀后腐蚀）会填补比 kernel 小的暗细节（孔洞、缝隙），让暗区域变亮。
+    * 闭运算结果 − 原图 = 被闭运算填掉的那些小暗细节
+* 函数：`cv2.morphologyEx(src, cv2.MORPH_BLACKHAT, kernel, dst=None, anchor=(-1,-1), iterations=1, borderType=..., borderValue=...)`
+* 应用场景：
+    * 提取图像中的小暗点/孔洞
+    * 暗缺陷/暗划痕检测（工业视觉）
+    * 文字提取（暗文字、亮背景）
+    * 不均匀光照下的暗细节增强
+
+## 十、传统图像分割
+
+### 10.1 **图像分割概述**
+
+图像分割（Image Segmentation）是将数字图像划分为若干**互不重叠的区域**，使同一区域内像素具有相似属性（如灰度、颜色、纹理），不同区域间差异明显的过程。
+它是图像处理与计算机视觉中的核心基础任务，是从"像素级图像"到"语义级理解"的桥梁。
+
+**分割的本质**：给每个像素分配一个标签（区域编号或类别），即像素级分类/聚类问题。
+
+**输出形式**：
+
+- 二值掩膜（前景/背景）
+- 区域标签图（每像素一个区域 ID）
+- 语义分割图（每像素一个类别）
+- 实例分割图（区分同类不同个体）
+
+分割的分类体系
+
+| 层次 | 类型 | 说明 |
+|------|------|------|
+| 传统方法 | 基于阈值、边缘、区域、聚类、图论 | 依赖手工特征与规则 |
+| 深度学习 | 语义分割、实例分割、全景分割 | 端到端学习特征 |
 
 
+### 10.2 **基于阈值的图像分割（同 8.7）**
+
+基于阈值的图像分割利用灰度直方图，根据像素灰度值与一个或多个阈值的比较，将像素划分到不同类别（前景/背景或多个区域）。
+
+- **固定阈值化**
+- **自适应阈值**：按局部邻域统计量定阈值，适应光照不均。
+- **多阈值**：多个阈值分成多类。
+
+#### **10.2.1 Otsu 大津法**
+
+**原理**：遍历所有可能阈值，选取使**类间方差最大**（等价于类内方差最小）的阈值。
+
+设阈值 $T$ 将像素分为 $C_0$（灰度 $\le T$）与 $C_1$（灰度 $> T$），两类概率为 $\omega_0, \omega_1$，均值为 $\mu_0, \mu_1$，全局均值为 $\mu_T$。类间方差：
+
+$$\sigma_B^2(T) = \omega_0 (\mu_0 - \mu_T)^2 + \omega_1 (\mu_1 - \mu_T)^2$$
+
+最优阈值：
+
+$$T^* = \arg\max_T \sigma_B^2(T)$$
+
+**特点**：
+
+- 全自动、无需人工干预，计算快（可用直方图累加加速）。
+- 对双峰直方图效果最好。
+- 对噪声、光照不均、目标占比悬殊敏感。
+- 是工业界最常用的自动全局阈值方法。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread("input.jpg", cv2.IMREAD_GRAYSCALE)
+
+# 1. 手动全局阈值
+_, th_manual = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+
+# 2. Otsu 自动阈值（与 THRESH_BINARY 组合）
+t_otsu, th_otsu = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+print("Otsu 阈值:", t_otsu)
+
+# 3. 自适应阈值（均值 / 高斯）
+th_mean = cv2.adaptiveThreshold(
+    img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, blockSize=11, C=2)
+th_gauss = cv2.adaptiveThreshold(
+    img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, blockSize=11, C=2)
+```
 
 
+### 10.3 **基于边缘检测的图像分割**
+
+**图像中的边缘对应区域之间的边界**，基于边缘检测的图像分割先检测边缘（Sobel、Canny、LoG 等），再连接边缘形成闭合轮廓，轮廓内部即区域。
+
+**基本逻辑**：
+
+1. 边缘检测（Sobel、Canny、LoG 等）得到边缘像素/边缘图。
+2. 边缘连接 或 轮廓提取（`cv2.findContours()`），把离散边缘连成闭合轮廓。
+3. 轮廓内部填充（或轮廓外部分离），得到分割区域。
+
+**前提假设**：不同区域之间存在明显的灰度/颜色突变，边缘能反映区域边界。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread("input.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# 1. 预处理：降噪
+blur = cv2.GaussianBlur(gray, (5, 5), 1.4)
+
+# 2. 边缘检测（Canny）
+edges = cv2.Canny(blur, 50, 150)
+
+# 3. 形态学连接断裂边缘
+kernel = np.ones((3, 3), np.uint8)
+edges_closed = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel, iterations=2)
+
+# 4. 查找轮廓
+contours, hierarchy = cv2.findContours(
+    edges_closed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+# 5. 按面积筛选并填充为分割掩膜
+mask = np.zeros_like(gray)
+for cnt in contours:
+    if cv2.contourArea(cnt) > 500:          # 过滤小轮廓
+        cv2.drawContours(mask, [cnt], -1, 255, thickness=cv2.FILLED)
+
+# 6. 用掩膜提取分割结果
+segmented = cv2.bitwise_and(img, img, mask=mask)
+```
+
+### 10.4 **基于区域的图像分割**
+
+基于区域的图像分割**利用图像的空间局部特性，将具有相似属性（灰度、颜色、纹理等）的相邻像素合并成同一区域**，使区域内一致、区域间差异明显。
+
+与基于阈值/边缘的方法不同，区域法**显式利用像素的空间邻域关系与连通性**，输出的是连通的区域，而非孤立的像素分类或边界。
+
+**基本假设**：同一目标内部像素属性相似且空间连通；不同目标之间属性存在差异。
+
+**常见方法**：
+
+- 区域生长（Region Growing）：选种子点，按相似性准则逐步合并邻域像素。
+- 区域分裂与合并（Split and Merge）：四叉树分裂再合并相似区域。
+- 分水岭算法（Watershed）：把灰度图视为地形，模拟注水找分水岭，适合粘连目标分离（常配合标记点避免过分割）。
+
+**区域生长算法流程**
+
+1. 选取**种子点**（一个或多个）。
+2. 定义**相似性准则**（如灰度差小于阈值 $T$、颜色距离、纹理相似）。
+3. 从种子出发，检查其邻域像素，满足准则则并入区域，并以新并入像素继续扩张。
+4. 直到无新像素可并入，区域生长结束。
+
+### 10.5 **基于聚类的图像分割**
+
+基于聚类的图像分割把**像素看作数据样本**，把像素的灰度/颜色/纹理等属性看作**特征向量**，通过聚类算法将特征空间中相近的像素归为同一类，再把类别标签映射回图像空间，得到分割区域。
+
+与区域生长不同，聚类法通常**不需要种子点**，而是从全局特征分布出发划分像素。
+
+**基本流程**：
+
+1. 特征提取：为每个像素构造特征向量（如 RGB、Lab、灰度 + 位置坐标 $(x,y)$）。
+2. 聚类：用 K-means、Mean Shift、FCM 等算法对特征向量聚类。
+3. 标签映射：把每个像素的聚类标签还原为分割图。
+4. 后处理：形态学去噪、连通域过滤、小区域合并等。
+
+**常用方法**：
+
+- **K-means**：预先指定类数 $K$，迭代最小化类内平方误差，按颜色/灰度特征聚类成 $K$ 类。
+- **均值漂移（Mean Shift）**：基于核密度估计寻找密度峰值，**无需预设类数**，适合颜色分布复杂、类数未知的场景。
+- **模糊 C 均值（FCM）**：允许像素以**隶属度**属于多类，适合边界模糊、存在部分容积效应的图像。
+
+**K-means 目标函数**：
+
+$$J = \sum_{k=1}^{K} \sum_{x \in C_k} \| x - \mu_k \|^2$$
+
+其中 $C_k$ 为第 $k$ 类像素集合，$\mu_k$ 为第 $k$ 类中心。迭代执行“分配像素到最近中心”与“更新类中心”直至收敛。
+
+**Mean Shift 要点**：对每个像素在其特征空间邻域内计算均值漂移向量，沿密度梯度方向迭代移动，最终收敛到同一模态的像素归为一类；带宽 $h$ 决定邻域尺度，直接影响分割粒度。
+
+**FCM 目标函数**：
+
+$$J_m = \sum_{i=1}^{N} \sum_{k=1}^{K} u_{ik}^m \| x_i - \mu_k \|^2, \quad \sum_{k=1}^{K} u_{ik} = 1$$
+
+其中 $u_{ik}$ 为像素 $i$ 属于第 $k$ 类的隶属度，$m>1$ 为模糊指数（常取 2）。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread("input.jpg")
+# 转为 Lab 颜色空间，更符合人眼感知
+lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
+data = lab.reshape((-1, 3)).astype(np.float32)
+
+# 1. K-means 聚类（K=4）
+K = 4
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0)
+_, labels, centers = cv2.kmeans(
+    data, K, None, criteria, attempts=5, flags=cv2.KMEANS_PP_CENTERS)
+
+# 2. 标签映射回图像
+labels = labels.flatten()
+seg = centers[labels].reshape(lab.shape).astype(np.uint8)
+seg_bgr = cv2.cvtColor(seg, cv2.COLOR_LAB2BGR)
+
+# 3. Mean Shift 分割（无需预设类数）
+shifted = cv2.pyrMeanShiftFiltering(img, sp=15, sr=30)
+
+cv2.imshow("K-means", seg_bgr)
+cv2.imshow("Mean Shift", shifted)
+cv2.waitKey(0)
+```
 
 
-## 二、数字图像基础
+### 10.6 **基于图论的图像分割**
 
+**基于图论的图像分割**（Graph-based Image Segmentation）是一类将图像建模为图结构，并利用图论算法实现像素或区域划分的方法。其核心思想：
 
+- 将图像的每个像素（或超像素）视为图的**顶点**（node/vertex）；
+- 将像素之间的相似性（颜色、亮度、纹理、空间距离等）视为**边**（edge）及其**权重**（weight）；
+- 图像分割问题转化为图上的**顶点划分问题**——使同一子图内连接权重较大（相似度高），不同子图间连接权重较小（相似度低）。
 
+形式化地，给定无向图 $G=(V,E)$，其中 $V$ 为顶点集，$E$ 为边集，边权 $w(u,v)$ 表示顶点 $u,v$ 的相似度。目标是将 $V$ 划分为若干不相交子集 $V_1,V_2,\dots,V_k$，使得子图内部相似性高、子图间相似性低。
 
+典型算法：
 
+- **图割（Graph Cut）**：把图像建成图，最小割对应最优分割，可融合先验。
+- **GrabCut**：交互式前景分割，用户框选后迭代优化。
+- **归一化割（Normalized Cut）**：考虑区域间与区域内相似性。
+- ……
 
+#### **10.6.1 GrabCut**
 
+GrabCut 是 Microsoft Research 于 2004 年提出的**交互式前景分割算法**，是 Graph Cut 的改进版。用户只需用矩形框圈出目标（或涂几笔标记前景/背景），算法即可自动迭代优化，分离前景与背景。
 
+**核心思想**：用**高斯混合模型（GMM）** 建模前景/背景的颜色分布，用**图割（Graph Cut）** 最小化能量函数实现分割，并通过**迭代**不断更新 GMM 参数与分割结果，直至收敛。
 
+**基本假设**：同一区域（前景或背景）内颜色分布可用 GMM 描述；相邻且颜色相近的像素更可能属于同一类。
 
+**Graph Cut 与 GrabCut 对比**：
 
+| 对比项 | Graph Cut | GrabCut |
+|--------|-----------|---------|
+| 用户交互 | 需人工标注前景/背景种子点 | 只需矩形框（或少量涂抹） |
+| 颜色建模 | 直方图 | 高斯混合模型（GMM） |
+| 迭代优化 | 单次求解 | 迭代更新 GMM + 图割 |
+| 适用性 | 简单场景 | 更复杂、更自动 |
 
+GrabCut 在 Graph Cut 基础上做了三件事：**用 GMM 替代直方图**、**用矩形框自动初始化**、**引入迭代优化**。
 
-## 四、频率域滤波
+**原理**：
 
-### 4.1 **背景**
+1. **区域标记**：用矩形框初始化时，框外像素标记为**确定背景**，框内像素标记为**可能前景**。用户也可额外涂抹标记：
+     - $T_B$：确定背景
+     - $T_F$：确定前景
+     - $T_U$：未知区域（待分割）
+2. **GMM 颜色建模**：分别为前景和背景各建一个含 $K$ 个高斯分量的 GMM（通常 $K=5$）：$p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)$，每个像素根据其颜色被分配到最可能的高斯分量。
+3. **能量函数**：GrabCut 最小化 Gibbs 能量：$E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)$
+     - **数据项 $U$**：像素属于前景/背景的负对数似然（由 GMM 给出）：$U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)$
+     - **平滑项 $V$**：惩罚相邻像素标签不一致，鼓励边界平滑：$V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)$
+     - 其中 $\alpha$ 为标签，$\theta$ 为 GMM 参数，$z$ 为像素颜色，$\mathcal{N}$ 为邻域对，$\gamma, \beta$ 为权重参数。
+4. **迭代优化**（核心）：GrabCut 交替执行：
+      1. **固定分割 $\alpha$，更新 GMM 参数 $\theta$**：用当前前景/背景像素重新估计各高斯分量。
+      2. **固定 GMM $\theta$，用图割求最优 $\alpha$**：构建 s-t 图，源点连前景、汇点连背景，边权由数据项与平滑项给出，求最小割。
+      3. 重复直到能量收敛或达到最大迭代次数。
 
-* **傅里叶级数**: 任何**周期函数**都可表示为不同频率的正弦函数和/或余弦函数之和，其中每个正线函数和/或余弦函数都乘以不同的系数（我们现在称该和为傅里叶级数）。
-* **傅里叶变换**: 任何**非周期函数**都可表示为正弦函数和/或余弦函数乘以加权函数的积分。 
+```python
+import cv2
+import numpy as np
 
-略。
+img = cv2.imread("input.jpg")
+mask = np.zeros(img.shape[:2], np.uint8)
 
-### 4.2 **基本概念**
+# 初始化背景/前景 GMM 模型（OpenCV 内部使用，占位数组）
+bgd_model = np.zeros((1, 65), np.float64)
+fgd_model = np.zeros((1, 65), np.float64)
 
-1. 复数
-2. 傅里叶级数
-3. 冲激函数及其取样（筛选）性质
-4. 连续单变量函数的傅里叶变换
-5. 卷积
+# 矩形框 (x, y, w, h)，框外为确定背景
+rect = (50, 50, 400, 300)
 
-### 4.3 **取样和取样函数的傅里叶变换**
+# 1. 矩形框初始化 + 迭代分割
+cv2.grabCut(img, mask, rect, bgd_model, fgd_model,
+            iterCount=5, mode=cv2.GC_INIT_WITH_RECT)
 
-略。
+# 2. 生成二值掩膜（前景 + 可能前景）
+mask2 = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 255, 0).astype(np.uint8)
 
-### 4.8 **使用低通频率域滤波器平滑图像**
+# 3. 提取前景
+result = cv2.bitwise_and(img, img, mask=mask2)
 
-图像中的边缘和其他急剧的灰度变化（如噪声）主要影响其傅里叶变换的高频内容，因此，在频率域中是通过衰减高频（即低通滤波）来实现平滑（模糊）的。
+cv2.imshow("GrabCut", result)
+cv2.waitKey(0)
+```
 
-## 五、图像复原与重建
+### 10.7 **基于特定理论的图像分割**
+
+- 主动轮廓模型（Snake、Level Set）
+- 马尔可夫随机场（MRF）
+- 遗传算法、蚁群算法等优化方法
+
+## 十一、傅里叶变换
+
+### 11.1 **图像傅里叶变换和逆变换**
+
+### 11.2 **OpenCV 实现**
+
+### 11.3 **OpenCV 实现**
+
+## 十二、霍夫变换
+
+## 十三、图像复原与重建
 
 图像增强主要是一种主观处理，而图像复原很大程度上是一种**客观处理**技术。
 
-## 六、彩色图像处理
+### 13.1 **图像去雾**
 
-### 6.1 **彩色基础**
+## 十四、彩色图像处理
+
+### 14.1 **彩色基础**
 
 光的三原色：红（R）、绿（G）、蓝（B）
 
@@ -2382,7 +2976,7 @@ edges = cv2.Canny(
 * **色调**：色调是混合光波中与主导波长相关的属性，表示被观察者感知的主导色。即，当我们说一个物体颜色说红色、橙色或红色时，说的就是物体的色调。
 * **饱和度**：饱和度指的是相对的纯度（纯色被白光稀释的程度），或与一种色调混合的白光量。纯光谱颜色是完全饱和的，非光谱颜色如淡紫色（紫色加白色）是不饱和度，饱和度与所加白光量成反比。
 
-### 6.2 **彩色模型**
+### 14.2 **彩色模型**
 
 彩色模型（也称彩色空间或彩色系统）的目的是以某种标准的方式来方便地规定颜色。彩色模型本质上规定：（1）坐标系；（2）坐标系内的字空间，模型内的每种颜色都可由字空间内包含的一个点来表示。数字图像处理中的面向硬件的彩色模型常用有以下几种：
 
@@ -2390,13 +2984,13 @@ edges = cv2.Canny(
 * 针对彩色打印机开发的 **CMY（青、深红、黄）**模型和 **CMYK（青、深红色、黄、黑）**模型。
 * 针对人们描述和解释颜色的方式开发的 **HSI（色调、饱和度、亮度）**模型。HSI 模型的优点：它能够解除图像中颜色和灰度级信息的联系。
 
-**6.2.1 RGB 彩色模型**
+#### **14.2.1 RGB 彩色模型**
 
 在 RGB 模型中，每种颜色都以其红色、绿色和蓝色光谱成分显示，该模型是根据笛卡尔坐标系建立的。
 
 全彩色图像通常是指一幅 24 比特的 RGB 彩色图像（每幅分量图像都是 8 位，值域是 `[0, 255]`），颜色总数自然是 $(2^8)^3$=16777216。
 
-**6.2.2 HSI 彩色模型**
+#### **14.2.2 HSI 彩色模型**
 
 RGB 、CMY 和 CMYK 模型适合硬件实现但是并不能很好的描述人类世纪解释的颜色。
 
@@ -2406,23 +3000,26 @@ RGB 、CMY 和 CMYK 模型适合硬件实现但是并不能很好的描述人类
 
 ![RGB和HSI彩色变换.png](images%2FRGB%E5%92%8CHSI%E5%BD%A9%E8%89%B2%E5%8F%98%E6%8D%A2.png)
 
-### 6.4 **全彩色图像处理基础**
+### 14.4 **全彩色图像处理基础**
 
 全彩色图像处理方法主要分为两种：
 
 * 首先分布处理每幅灰度级分量图像，然后将处理后的各幅分量图像合成为一幅彩色图像。
 * 直接处理彩色像素。因为全彩色图像至少有 3 个分量，因此彩色像素是向量。
 
-### 6.5 **彩色变换**
 
-### 6.6 **彩色图像平滑和锐化**
 
-## 八、图像压缩和水印
+## 十一、图像分类
 
-图像压缩是一种减少表示一幅图像所需数据量的技术。
+## 十一、图像特效
 
-### 8.1 **基础**
+## 十一、OpenGL 入门
 
-### 8.2 **霍夫曼编码**
+## 十一、OpenCV 文字图像区域定位及提取分析
 
-### 8.12 **数字图像水印**
+## 十一、OpenCV 车牌检测及区域识别
+
+## 十一、OpenCV 人脸检测及视频人脸动态识别
+
+
+
