@@ -104,13 +104,13 @@
      - 4 邻域（4-neighborhood）：
      $$
      \begin{aligned}
-     N_4(p)=\{(x+1,y),\ (x-1,y),\ (x,y+1),\ (x,y-1)\}
+     N_4(p)=\{(x±1,y),\  (x,y±1)\}
      \end{aligned}
      $$
      - 对角邻域（diagonal neighborhood）：
      $$
      \begin{aligned}
-     N_D(p)=\{(x+1,y+1),\ (x+1,y-1),\ (x-1,y+1),\ (x-1,y-1)\}
+     N_D(p)=\{(x±1,y±1)\}
      \end{aligned}
      $$
      - 8 邻域（8-neighborhood）：
