@@ -9,9 +9,11 @@
 
 ## 一、数字图像处理基础
 
+---
+
 ### 1.1 **数字图像处理概述**
 
-#### **1.2.1 什么是数字图像处理**
+#### **1.1.1 什么是数字图像处理**
 
 **数字图像处理（Digital Image Processing）**：借助计算机处理数字图像的过程。
 
@@ -19,7 +21,7 @@
 - **数字图像**：$x,y$ 和幅度值 $f$ 均为**有限离散量**的图像，可用矩阵（数组）表示。
 - **像素**：数字图像中每一离散坐标位置上的最小独立单元，其数值表示该点的强度或灰度。一幅 $M\times N$ 的数字图像对应一个 $M\times N$ 的矩阵，矩阵元素即像素值。
 
-#### **1.2.2 数字图像的类别**
+#### **1.1.2 数字图像的类别**
 
 ```
 数字图像
@@ -42,7 +44,7 @@
     └── 三维图像（及高维图像）
 ```
 
-#### **1.2.3 数字图像处理的方法/任务**
+#### **1.1.3 数字图像处理的方法/任务**
 
 
 ```
@@ -93,24 +95,30 @@
 
 ![图像处理相关的应用方法.png](images%2F%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E7%9A%84%E5%BA%94%E7%94%A8%E6%96%B9%E6%B3%95.png)
 
-#### **1.2.4 像素间的基本关系**
+#### **1.1.4 像素间的基本关系**
 
 数字图像中，像素并非孤立存在，其灰度值与空间位置均与邻域像素存在关联。
 
 1. **像素间的邻域关系**
      - 设图像中某像素 \(p\) 的坐标为 \((x,y)\)。
-     - 4 邻域（4-neighborhood）
-$$
-N_4(p) = \{(x+1,y),\ (x-1,y),\ (x,y+1),\ (x,y-1)\}
-$$
-     - 对角邻域（diagonal neighborhood）
-$$
-N_D(p) = \{(x+1,y+1),\ (x+1,y-1),\ (x-1,y+1),\ (x-1,y-1)\}
-$$
-     - 8 邻域（8-neighborhood）
-$$
-N_8(p) = N_4(p) \cup N_D(p)
-$$
+     - 4 邻域（4-neighborhood）：
+     $$
+     \begin{aligned}
+     N_4(p)=\{(x+1,y),\ (x-1,y),\ (x,y+1),\ (x,y-1)\}
+     \end{aligned}
+     $$
+     - 对角邻域（diagonal neighborhood）：
+     $$
+     \begin{aligned}
+     N_D(p)=\{(x+1,y+1),\ (x+1,y-1),\ (x-1,y+1),\ (x-1,y-1)\}
+     \end{aligned}
+     $$
+     - 8 邻域（8-neighborhood）：
+     $$
+     \begin{aligned}
+     N_8(p)=N_4(p)\cup N_D(p)
+     \end{aligned}
+     $$
 2. **像素间的邻接关系**：邻接（adjacency）描述两个像素在空间上是否相邻，是连通性分析的前提。
      - 设像素 \(p\) 与 \(q\) 的灰度值分别为 \(f(p)\)、\(f(q)\)，灰度值集合为 \(V\)（例如二值图像中 \(V=\{1\}\)，灰度图像中 \(V=\{0,1,\dots,255\}\) 的子集）。
      - 4 邻接：若 \(q \in N_4(p)\)，且 \(f(p), f(q) \in V\)，则称 \(p\) 与 \(q\) **4 邻接**。
@@ -119,22 +127,22 @@ $$
 3. **像素间的距离度量**：
      - 设像素 \(p=(x,y)\)、\(q=(s,t)\)，常用的距离度量有三种。
      - 欧氏距离（Euclidean distance）
-$$
-D_e(p,q) = \sqrt{(x-s)^2 + (y-t)^2}
-$$
+     $$
+     D_e(p,q) = \sqrt{(x-s)^2 + (y-t)^2}
+     $$
      - 城市街区距离（\(D_4\) 距离）
-$$
-D_4(p,q) = |x-s| + |y-t|
-$$
+     $$
+     D_4(p,q) = |x-s| + |y-t|
+     $$
      - 棋盘距离（\(D_8\) 距离）
-$$
-D_8(p,q) = \max(|x-s|,\ |y-t|)
-$$
+     $$
+     D_8(p,q) = \max(|x-s|,\ |y-t|)
+     $$
 4. **连通性**
      - 通路：从像素 \(p\) 到像素 \(q\) 的一条**通路（path）** 是一组像素序列，其中相邻像素 \(p_{i-1}\) 与 \(p_i\) 满足相应的邻接关系（4 邻接、8 邻接或 m 邻接）。
-$$
-p = p_0, p_1, \dots, p_n = q
-$$
+     $$
+     p = p_0, p_1, \dots, p_n = q
+     $$
      - 连通：若通路中相邻像素均为 4 邻接（或 8 邻接、m 邻接），则称该通路为 4 连通（或 8 连通、m 连通）。若存在从 \(p\) 到 \(q\) 的通路，则称 \(p\) 与 \(q\) **连通**。
      - 连通分量：图像中满足连通关系的像素集合构成**连通分量（connected component）**。连通分量是区域标记、目标计数与形态学处理的基础。
 5. **区域与边界**
@@ -476,9 +484,11 @@ $$
 >
 > 典型的就是 CNN 模型中卷积层的滤波器操作。
 
-
+---
 
 ## 二、OpenCV 图像基本操作
+
+---
 
 OpenCV 是一个轻量级高效的跨平台计算机视觉库，实现了图像处理和计算机视觉方面的多种通用算法。
 
@@ -608,9 +618,13 @@ OpenCV 用若干轻量结构表示点、颜色、尺寸、矩形与矩阵。Pyth
     gray[y, x] = 128
     ```
 
+---
+
 ### 2.2 **图像读取**
 
 函数：`retval = cv2.imread(filename[, flags])`
+
+---
 
 ### 2.3 **图像显示**
 
@@ -638,6 +652,8 @@ cv2.destroyAllWindows()
 
 在对比实验中，我们通常需要显示多张图片，此时可以调用 NumPy 和 Matplotlib 库辅助完成
 
+---
+
 ### 2.4 **访问像素**
 
 OpenCV 中读取的图像相当于二维（灰度）或三维（彩色）的 NumPy 矩阵，可以直接通过位置索引访问像素值。
@@ -664,21 +680,31 @@ print(red)
 img[100:200, 150:250] = [255,255,255]
 ```
 
+---
+
 ### 2.5 **创建图像**
 
 由于在 OpenCV 中没有 CreateImage 函数，如果需要创建图像，则需要使用 Numpy 库函数实现。
 
 函数：`emptyImage = np.zeros(img.shape, np.uint8)`
 
+---
+
 ### 2.5 **复制图像**
 
 函数：`emptyImage2 = img.copy()`
+
+---
 
 ### 2.6 **保存图像**
 
 函数：`retval = cv2.imwrite(filename, img[, params])`
 
+---
+
 ## 三、OpenCV 绘制几何图形
+
+---
 
 ### 3.1 **绘制直线**
 
@@ -700,6 +726,8 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 3.2 **绘制矩形**
 
 函数：`cv2.rectangle(img, pt1, pt2, color, thickness)`
@@ -718,6 +746,8 @@ cv2.imshow("Rectangle", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+---
 
 ### 3.3 **绘制圆形**
 
@@ -738,6 +768,8 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 3.4 **绘制椭圆**
 
 函数：`cv2.ellipse(img, center, axes, angle, startAngle, endAngle, color, thickness)`
@@ -757,6 +789,8 @@ cv2.imshow("Ellipse", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+---
 
 ### 3.5 **绘制多边形**
 
@@ -781,11 +815,17 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 3.6 **绘制文字**
 
 函数：`cv2.putText(img, text, org, fontFace, fontScale, color, thickness)`
 
+---
+
 ## 四、图像算术与逻辑运算
+
+---
 
 ### 4.1 **图像加法**
 
@@ -813,6 +853,8 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 4.2 **图像减法**
 
 1. Numpy：`-` 或 `np.subtract()`，小于 0 的值取模 256，会发生溢出回绕
@@ -836,6 +878,8 @@ cv2.imshow("cv2.subtract", result)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+---
 
 ### 4.3 **图像与运算**
 
@@ -865,6 +909,8 @@ print(result[0, 0])  # [136 136 136]
 
 ![图像与运算.png](images%2F%E5%9B%BE%E5%83%8F%E4%B8%8E%E8%BF%90%E7%AE%97.png)
 
+---
+
 ### 4.4 **图像或运算**
 
 图像的或运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“或”操作。
@@ -875,6 +921,8 @@ print(result[0, 0])  # [136 136 136]
 
 ![图像或运算.png](images%2F%E5%9B%BE%E5%83%8F%E6%88%96%E8%BF%90%E7%AE%97.png)
 
+---
+
 ### 4.5 **图像非运算**
 
 图像非运算就是图像的像素反色处理，
@@ -882,6 +930,8 @@ print(result[0, 0])  # [136 136 136]
 `cv2.bitwise_not(src[, dst[, mask]])`
 
 **应用场景**：掩膜取反
+
+---
 
 ### 4.5 **图像异或运算**
 
@@ -891,7 +941,11 @@ print(result[0, 0])  # [136 136 136]
 
 **应用场景**：二值掩膜差异对比
 
+---
+
 ## 五、其他常见图像操作
+
+---
 
 ### 5.1 **图像 ROI 区域定位**
 
@@ -901,6 +955,8 @@ ROI（Region of Interest）表示感兴趣区域，是指从被处理图像以�
 核心原理：NumPy 切片
 
 `roi = img[y1:y2, x1:x2]`
+
+---
 
 ### 5.2 **图像属性**
 
@@ -925,6 +981,8 @@ print("字节数 nbytes:", img.nbytes)
 维度 ndim: 3
 字节数 nbytes: 2764800
 ```
+
+---
 
 ### 5.3 **图像通道分离、合并**
 
@@ -963,6 +1021,8 @@ cv2.imshow("Merged", merged)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+---
 
 ### 5.4 **图像颜色空间转换**
 
@@ -1028,8 +1088,11 @@ $$Gray = 0.299 R + 0.587 G + 0.114 B$$
 
 这是 **ITU-R BT.601** 标准,也是 OpenCV `cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)` 实际采用的公式（注意 OpenCV 读入是 BGR 顺序,内部按 R/G/B 权重计算）。
 
+---
 
 ## 六、图像几何变换
+
+---
 
 ### 6.1 **基本概念**
 
@@ -1043,7 +1106,7 @@ $$Gray = 0.299 R + 0.587 G + 0.114 B$$
      * **双线性插值**（最常用）：利用目标点周围 2×2 的四个已知像素，分别在水平和垂直方向做两次线性插值。
      * **双三次插值**：利用目标点周围 4×4 的十六个已知像素，分别在水平和垂直方向做两次三次插值。
 
-
+---
 
 ### 6.2 **图像平移**
 
@@ -1079,6 +1142,8 @@ M = np.float32([[1, 0, tx],
 translated = cv2.warpAffine(img, M, (cols, rows))
 ```
 
+---
+
 ### 6.3 **图像缩放**
 
 图像缩放（image scaling）用于改变图像尺寸。OpenCV 中主要使用 `cv2.resize()` 函数实现。
@@ -1106,6 +1171,8 @@ img = cv2.imread('image.jpg')
 # 宽高各缩小一半
 resized = cv2.resize(img, None, fx=0.5, fy=0.5)
 ```
+
+---
 
 ### 6.4 **图像旋转**
 
@@ -1141,6 +1208,8 @@ rotated = cv2.warpAffine(img, M, (w, h))
 > 
 > 解决思路：先计算旋转后图像的外接矩形尺寸，扩大输出画布，并调整旋转矩阵使图像居中。
 
+---
+
 ### 6.6 **图像翻转（镜像）**
 
 图像翻转（镜像）是沿某条轴对图像做对称翻转。OpenCV 中用 `cv2.flip()` 函数实现。
@@ -1162,7 +1231,9 @@ flip_v = cv2.flip(img, 0)
 flip_both = cv2.flip(img, -1)
 ```
 
-### 6.7 **图像仿射变换**
+---
+
+### 6.7 **仿射变换**
 
 仿射变换（Affine Transform）是**线性变换（旋转、缩放、错切、镜像） + 平移**的组合，具有以下性质：
 
@@ -1260,7 +1331,9 @@ M = cv2.getAffineTransform(pts_src, pts_dst)
 out = cv2.warpAffine(img, M, (w, h))
 ```
 
-### 6.8 **图像透视**
+---
+
+### 6.8 **透视变换（投影变换）**
 
 透视变换（Perspective Transform）也叫投影变换，比仿射变换更自由，本质是将图像投影到一个新的视平面，能处理"近大远小"的透视效果。
 
@@ -1320,8 +1393,11 @@ out = cv2.warpPerspective(img, M, (w, h))
 
 > 透视矩阵可求逆，实现反向变换
 
+---
 
-## 七、图像量化、采样
+## 七、图像量化与采样
+
+---
 
 ### 7.1 **图像量化处理**
 
@@ -1388,11 +1464,15 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+---
+
 ### 7.2 **图像采样处理**
 
 图像采样（Image Sampling）处理是将一幅连续图像在空间上分割成 M×N 个网格，每个网格用一个灰度值来表示。
 
 图像采样的间隔越大，所得图像像素数越少，空间分辨率越低，图像质量越差，甚至出现**马赛克效应**；相反，图像采样的间隔越小，图像质量越好，但数据量会相应的增大。
+
+---
 
 ### 7.3 **图像金字塔之降采样和上采样**
 
@@ -1476,7 +1556,11 @@ $$
 G_l = L_l + \text{pyrUp}(G_{l+1})
 $$
 
+---
+
 ## 八、图像灰度变换
+
+---
 
 ### 8.1 **空间域图像处理：灰度变换、空间滤波**
 
@@ -1486,6 +1570,8 @@ $$
 * **空间滤波**: 如图像平滑和锐化，对图像中的每个像素的邻域进行操作。
 
 > 空间域技术直接操作图像中的像素，而频率域技术操作的是图像的傅立叶变换而非图像本身。
+
+---
 
 ### 8.2 **灰度变换：线性与非线性**
 
@@ -1536,6 +1622,8 @@ $$s = T(r)$$
 - **逐点运算**：仅依赖当前像素灰度值（上述全部属于此类）
 - **查表变换（LUT）**：工程实现方式，预计算映射表，不改变分类本质
 
+---
+
 ### 8.3 **线性灰度变换**
 
 线性灰度变换是最基础的**点运算**（逐像素操作），通过一个线性函数把原灰度值映射到新灰度值，用于**调整图像对比度和亮度**。
@@ -1563,6 +1651,7 @@ $$
 
 > 约束：输出通常需裁剪到 $[0, 255]$,即 $g = \text{clip}(a f + b,\ 0, 255)$。
 
+---
 
 ### 8.4 **对数变换**
 
@@ -1595,6 +1684,8 @@ $$
 - **高动态范围（HDR）图像显示**：将大动态范围数据压缩到显示器可呈现的范围。
 - **暗部细节增强**：医学影像、夜视图像、遥感图像等暗部信息丰富的场景。
 - **光照不均校正的预处理**：与后续处理配合使用。
+
+---
 
 ### 8.5 **幂律（伽马）变换**
 
@@ -1629,6 +1720,8 @@ $$
 - **医学影像、遥感图像**：调节暗部或亮部细节的可见性。
 - **与对数变换互补使用**：根据目标区域（暗部或亮部）选择合适变换。
 
+---
+
 ### 8.6 **指数（反对数）变换**
 
 指数变换（又称反对数变换、反对数变换）是与对数变换**互补**的一类**非线性灰度变换**，其映射函数为：
@@ -1656,6 +1749,8 @@ $$
 - **亮部细节增强**：对整体偏亮、亮部信息丰富的图像（如逆光场景中的高光区、某些医学影像）做增强。
 - **曝光校正**：配合对数变换做双向调节，根据图像明暗分布选择合适的变换方向。
 - **传感器/显示非线性响应的建模**：与伽马校正配合描述成像链路的非线性特性。
+
+---
 
 ### 8.7 **阈值化（基于阈值的图像分割）**
 
@@ -1787,6 +1882,8 @@ ret, binary = cv2.threshold(gray, 0, 255,
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
 binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
 ```
+
+---
 
 ### 8.7 **直方图处理**
 
@@ -1985,8 +2082,11 @@ matched = cv2.LUT(src, lut)
 
 > 要点：`cv2.LUT()` 用于按查找表做逐像素映射，是实现任意灰度变换（含规定化）的通用工具；目标直方图可来自参考图像（先 `calcHist` 再归一化），实现"风格/色调匹配"。
 
+---
 
 ## 九、空间滤波
+
+---
 
 ### 9.1 **空间滤波基础**
 
@@ -2015,6 +2115,7 @@ $$
     - 基于排序/集合：中值滤波、最大/最小值滤波、形态学处理
     - 基于自适应权重：双边滤波
 
+---
 
 ### 9.2 **图像平滑**
 
@@ -2154,6 +2255,7 @@ dst = cv2.bilateralFilter(img, d=9, sigmaColor=75, sigmaSpace=75)
 gauss = cv2.GaussianBlur(img, (9, 9), 2.0)
 ```
 
+---
 
 ### 9.3 **图像锐化与边缘检测**
 
@@ -2554,6 +2656,8 @@ cv2.imshow("Contours", result)
 cv2.waitKey(0)
 ```
 
+---
+
 ### 9.4 **形态学处理**
 
 图像的腐蚀（Erosion）和膨胀（Dilation）是两种基本的形态学运算，主要用来寻找图像中的极小区域和极大区域。
@@ -2664,7 +2768,11 @@ cv2.waitKey(0)
     * 文字提取（暗文字、亮背景）
     * 不均匀光照下的暗细节增强
 
+---
+
 ## 十、传统图像分割
+
+---
 
 ### 10.1 **图像分割概述**
 
@@ -2687,6 +2795,7 @@ cv2.waitKey(0)
 | 传统方法 | 基于阈值、边缘、区域、聚类、图论 | 依赖手工特征与规则 |
 | 深度学习 | 语义分割、实例分割、全景分割 | 端到端学习特征 |
 
+---
 
 ### 10.2 **基于阈值的图像分割（同 8.7）**
 
@@ -2735,6 +2844,7 @@ th_gauss = cv2.adaptiveThreshold(
     img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, blockSize=11, C=2)
 ```
 
+---
 
 ### 10.3 **基于边缘检测的图像分割**
 
@@ -2779,6 +2889,8 @@ for cnt in contours:
 segmented = cv2.bitwise_and(img, img, mask=mask)
 ```
 
+---
+
 ### 10.4 **基于区域的图像分割**
 
 基于区域的图像分割**利用图像的空间局部特性，将具有相似属性（灰度、颜色、纹理等）的相邻像素合并成同一区域**，使区域内一致、区域间差异明显。
@@ -2799,6 +2911,8 @@ segmented = cv2.bitwise_and(img, img, mask=mask)
 2. 定义**相似性准则**（如灰度差小于阈值 $T$、颜色距离、纹理相似）。
 3. 从种子出发，检查其邻域像素，满足准则则并入区域，并以新并入像素继续扩张。
 4. 直到无新像素可并入，区域生长结束。
+
+---
 
 ### 10.5 **基于聚类的图像分割**
 
@@ -2861,6 +2975,7 @@ cv2.imshow("Mean Shift", shifted)
 cv2.waitKey(0)
 ```
 
+---
 
 ### 10.6 **基于图论的图像分割**
 
@@ -2904,10 +3019,23 @@ GrabCut 在 Graph Cut 基础上做了三件事：**用 GMM 替代直方图**、*
      - $T_B$：确定背景
      - $T_F$：确定前景
      - $T_U$：未知区域（待分割）
-2. **GMM 颜色建模**：分别为前景和背景各建一个含 $K$ 个高斯分量的 GMM（通常 $K=5$）：$p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)$，每个像素根据其颜色被分配到最可能的高斯分量。
-3. **能量函数**：GrabCut 最小化 Gibbs 能量：$E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)$
-     - **数据项 $U$**：像素属于前景/背景的负对数似然（由 GMM 给出）：$U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)$
-     - **平滑项 $V$**：惩罚相邻像素标签不一致，鼓励边界平滑：$V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)$
+2. **GMM 颜色建模**：分别为前景和背景各建一个含 $K$ 个高斯分量的 GMM（通常 $K=5$）：
+     $$
+     p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)
+     $$
+     - 每个像素根据其颜色被分配到最可能的高斯分量。
+3. **能量函数**：GrabCut 最小化 Gibbs 能量：
+     $$
+     E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)
+     $$
+     - **数据项 $U$**：像素属于前景/背景的负对数似然（由 GMM 给出）：
+     $$
+     U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)
+     $$
+     - **平滑项 $V$**：惩罚相邻像素标签不一致，鼓励边界平滑：
+     $$
+     V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)
+     $$
      - 其中 $\alpha$ 为标签，$\theta$ 为 GMM 参数，$z$ 为像素颜色，$\mathcal{N}$ 为邻域对，$\gamma, \beta$ 为权重参数。
 4. **迭代优化**（核心）：GrabCut 交替执行：
       1. **固定分割 $\alpha$，更新 GMM 参数 $\theta$**：用当前前景/背景像素重新估计各高斯分量。
@@ -2942,21 +3070,434 @@ cv2.imshow("GrabCut", result)
 cv2.waitKey(0)
 ```
 
+---
+
 ### 10.7 **基于特定理论的图像分割**
 
 - 主动轮廓模型（Snake、Level Set）
 - 马尔可夫随机场（MRF）
 - 遗传算法、蚁群算法等优化方法
 
-## 十一、傅里叶变换
+---
 
-### 11.1 **图像傅里叶变换和逆变换**
+## 十一、图像傅里叶变换
 
-### 11.2 **OpenCV 实现**
+---
+
+### 11.1 **傅里叶变换概述**
+
+傅里叶变换（Fourier Transform）是数学与信号处理领域最重要的工具之一，它把信号从**时域/空域**变换到**频域**，揭示信号的频率组成。
+
+**核心思想**：**任何满足一定条件的函数都可以表示为不同频率正弦/余弦波的叠加**。
+
+- 时域：信号随时间（或空间位置）变化。
+- 频域：信号由哪些频率成分组成，每个成分的幅度和相位是多少。
+    - **低频分量**：图像中变化平缓的区域（大面积平滑背景、整体亮度分布）。
+    - **高频分量**：图像中变化剧烈的区域（边缘、纹理、噪声）。
+
+**数学定义**：
+
+**连续傅里叶变换（一维）**
+
+- 正变换：
+
+$$
+F(\omega) = \int_{-\infty}^{+\infty} f(t)\, e^{-j\omega t}\, dt
+$$
+
+- 逆变换：
+
+$$
+f(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} F(\omega)\, e^{j\omega t}\, d\omega
+$$
+
+- 其中， $\omega$ 为角频率，由欧拉公式：
+
+$$
+e^{-j\omega t} = \cos(\omega t) - j\sin(\omega t)
+$$
+
+**二维傅里叶变换（图像）**
+
+- 对图像 $f(x, y)$，正变换：
+
+$$
+F(u, v) = \iint f(x, y)\, e^{-j2\pi(ux+vy)}\, dx\, dy
+$$
+
+- 逆变换：
+
+$$
+f(x, y) = \iint F(u, v)\, e^{j2\pi(ux+vy)}\, du\, dv
+$$
+
+- 其中 $(u, v)$ 为频域坐标，$F(u, v)$ 为复数，包含**幅度谱** $|F(u, v)|$ 和**相位谱** $\angle F(u, v)$。
+
+**离散傅里叶变换（DFT）**
+
+计算机处理的是离散信号，使用离散傅里叶变换（DFT）：
+
+- 一维：
+
+$$
+F(k) = \sum_{n=0}^{N-1} f(n)\, e^{-j\frac{2\pi kn}{N}}, \quad k = 0, 1, \dots, N-1
+$$
+
+- 二维：
+
+$$
+F(u, v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x, y)\, e^{-j2\pi\left(\frac{ux}{M} + \frac{vy}{N}\right)}
+$$
+
+- **计算复杂度**：直接计算 DFT 为 $O(N^2)$，数据量大时极慢。
+
+**快速傅里叶变换（FFT）**
+
+FFT（Fast Fourier Transform）是 DFT 的高效算法，利用旋转因子的对称性和周期性，将复杂度降为 $O(N \log N)$。
+
+- 常见算法：
+    - **Cooley-Tukey 算法**：按时间抽取（DIT）或按频率抽取（DIF），要求长度为 2 的幂。
+    - **混合基算法**：支持任意长度分解。
+    - OpenCV 和 NumPy 内部均使用 FFT 实现。
+
+**图像傅里叶变换的性质**：
+
+| 性质 | 说明 |
+|------|------|
+| 平移性 | 图像空间平移只改变相位谱，不改变幅度谱 |
+| 旋转性 | 图像旋转，频谱同步旋转 |
+| 卷积定理 | 空间域卷积 = 频率域乘法，是频域滤波的理论基础 |
+| 对称性 | 实图像的频谱关于原点共轭对称 |
+| 中心化 | 低频在频谱四角，需 fftshift 移到中心便于观察 |
+| 能量集中 | 自然图像能量集中在低频，高频能量小 |
+
+**卷积定理**的数学表达：
+
+$$
+f * g \;\Longleftrightarrow\; F \cdot G
+$$
+
+- 即**空间域卷积对应频域逐点相乘**，这是频域滤波高效性的理论依据。
+
+**应用场景**：
+
+| 应用 | 说明 |
+|------|------|
+| 图像去噪 | 低通滤波去除高频噪声 |
+| 图像锐化 | 高通滤波增强边缘 |
+| 周期性噪声去除 | 在频谱中定位亮点，用带阻滤波去除 |
+| 图像压缩 | JPEG 使用 DCT（傅里叶变换的实数变体） |
+| 卷积加速 | 大核卷积通过 FFT 在频域完成，降低复杂度 |
+| 图像配准 | 相位相关法利用傅里叶变换估计平移量 |
+| 纹理分析 | 频谱特征用于纹理分类 |
+| 图像复原 | 频域去卷积（维纳滤波等） |
+
+---
+
+
+### 11.2 **频域滤波**
+
+傅里叶变换最重要的应用之一是**频域滤波**，流程为：
+
+1. 对图像做 FFT，得到频谱。
+2. 将频谱中心化（fftshift）。
+3. 设计频域滤波器 $H(u, v)$，与频谱相乘。
+4. 逆中心化（ifftshift），再做逆 FFT。
+5. 取实部得到滤波后图像。
+
+滤波的数学表达：
+
+$$
+G(u, v) = F(u, v) \cdot H(u, v)
+$$
+
+**常见滤波器**：
+
+| 滤波器 | 作用 | 特点 |
+|--------|------|------|
+| 理想低通 | 保留低频，去高频 | 有振铃效应 |
+| 巴特沃斯低通 | 平滑过渡的低通 | 振铃较小，过渡带可调 |
+| 高斯低通 | 最平滑的低通 | 无振铃，常用 |
+| 理想高通 | 保留高频（边缘） | 有振铃 |
+| 高斯高通 | 锐化、边缘增强 | 平滑无振铃 |
+| 带阻/带通 | 去除/保留特定频段 | 用于去除周期性噪声 |
+
+**理想低通滤波器**（截止频率 $D_0$，$D(u,v)$ 为到中心距离）：
+
+$$
+H(u, v) =
+\begin{cases}
+1, & D(u, v) \le D_0 \\
+0, & D(u, v) > D_0
+\end{cases}
+$$
+
+**高斯低通滤波器**（$\sigma$ 控制带宽）：
+
+$$
+H(u, v) = e^{-\frac{D^2(u, v)}{2\sigma^2}}
+$$
+
+**巴特沃斯低通滤波器**（阶数 $n$）：
+
+$$
+H(u, v) = \frac{1}{1 + \left(\dfrac{D(u, v)}{D_0}\right)^{2n}}
+$$
+
+
+---
 
 ### 11.3 **OpenCV 实现**
 
+相比 NumPy 的 `np.fft`，OpenCV 的实现针对图像优化，性能更好，且能处理实数输入以减少计算量。
+
+**离散傅里叶变换函数**：`retval = cv2.dft(src, dst=None, flags=cv2.DFT_COMPLEX_OUTPUT, nonzeroRows=0)`
+
+**离散傅里叶逆变换函数**：`retval = cv2.idft(src, dst=None, flags=cv2.DFT_SCALE | cv2.DFT_REAL_OUTPUT, nonzeroRows=0)`
+
+| 参数 | 含义 |
+|------|------|
+| `src` | 输入数组，必须为 `np.float32` 或 `np.float64`，单通道或双通道 |
+| `dst` | 输出数组，一般传 None |
+| `flags` | 变换标志组合，见下表 |
+| `nonzeroRows` | 非零行数，用于优化部分变换，一般设 0 |
+
+常用 flags 组合：
+
+| 标志 | 含义 |
+|------|------|
+| `cv2.DFT_COMPLEX_OUTPUT` | 输出双通道复数（实部+虚部），最常用 |
+| `cv2.DFT_REAL_OUTPUT` | 输出单通道实数（逆变换时用） |
+| `cv2.DFT_SCALE` | 缩放结果，逆变换时常用以归一化 |
+| `cv2.DFT_INVERSE` | 执行逆变换（等价于调用 `cv2.idft`） |
+| `cv2.DFT_ROWS` | 对每一行做一维变换 |
+
+**图像傅里叶变换的典型流程**：
+
+1. **转浮点**：`np.float32(gray)`，OpenCV DFT 不接受整型。
+2. **扩展到最优尺寸**：用 `cv2.getOptimalDFTSize` 计算快速尺寸，`cv2.copyMakeBorder` 填充（常用 `BORDER_CONSTANT` 补 0）。
+3. **正变换**：`cv2.dft(..., flags=cv2.DFT_COMPLEX_OUTPUT)` 得到双通道复数。
+4. **中心化**：`np.fft.fftshift` 把低频移到中心。
+5. **计算幅度谱**：`cv2.magnitude(real, imag)` 求模，再做对数变换 `np.log(1 + mag)` 便于显示。
+6. **归一化显示**：`cv2.normalize` 到 [0, 255] 并转 `np.uint8`。
+7. **（滤波）**：构造频域掩膜与频谱相乘。
+8. **逆中心化 + 逆变换**：`np.fft.ifftshift` 后用 `cv2.idft` 还原。
+9. **取实部/裁剪**：裁剪回原尺寸得到结果图像。
+
+> **注意**：OpenCV 的 DFT 不做中心化，低频默认在频谱四角；显示和滤波前务必 `fftshift`。
+
+
+```python
+import cv2
+import numpy as np
+
+# 1. 读图并转灰度、浮点
+img = cv2.imread('image.jpg', cv2.IMREAD_GRAYSCALE)
+f = np.float32(img)
+
+# 2. 扩展到最优 DFT 尺寸
+rows, cols = f.shape
+opt_rows = cv2.getOptimalDFTSize(rows)
+opt_cols = cv2.getOptimalDFTSize(cols)
+f_padded = cv2.copyMakeBorder(f, 0, opt_rows - rows, 0, opt_cols - cols,
+                              cv2.BORDER_CONSTANT, value=0)
+
+# 3. 正变换（双通道复数）
+dft = cv2.dft(f_padded, flags=cv2.DFT_COMPLEX_OUTPUT)
+dft_shift = np.fft.fftshift(dft)
+
+# 4. 构造理想低通掩膜（半径 30）
+crow, ccol = opt_rows // 2, opt_cols // 2
+mask = np.zeros((opt_rows, opt_cols, 2), np.float32)
+cv2.circle(mask, (ccol, crow), 30, (1, 1), -1)
+
+# 5. 频域相乘
+fshift = dft_shift * mask
+
+# 6. 逆中心化 + 逆变换
+f_ishift = np.fft.ifftshift(fshift)
+img_back = cv2.idft(f_ishift)
+img_back = cv2.magnitude(img_back[:, :, 0], img_back[:, :, 1])
+
+# 7. 归一化显示并裁剪回原尺寸
+cv2.normalize(img_back, img_back, 0, 1, cv2.NORM_MINMAX)
+result = (img_back[:rows, :cols] * 255).astype(np.uint8)
+
+cv2.imshow('Low-pass', result)
+cv2.waitKey(0)
+```
+
+---
+
 ## 十二、霍夫变换
+
+---
+
+### 12.1 **霍夫变换概述**
+
+霍夫变换（Hough Transform）是一种在图像中**检测几何形状**的特征提取技术，由 Paul Hough 于 1962 年提出，后经 Duda 和 Hart 等人推广完善。
+
+**核心思想**：**参数空间投票**。将图像空间中的点映射到参数空间，用投票把几何检测问题转化为参数空间的峰值搜索。
+
+**应用场景**：**检测直线**，也可扩展到检测圆、椭圆等任意参数化形状。
+
+---
+
+### 12.2 **直线检测（霍夫直线变换）**
+
+- **图像空间**：一条直线由无数个点组成。
+- **参数空间**：每个图像点可以对应参数空间中的一条曲线（或一族直线）。
+    - 如果图像中有若干点共线，那么它们在参数空间中对应的曲线会**交于同一点**，该交点即代表这条直线的参数。
+    - 因此，统计参数空间中各点的"票数"（被多少条曲线经过），**票数最高的点就对应图像中最显著的直线**。
+
+**两种参数化方式**：
+
+- 斜截式 y = kx + b（不推荐）
+    - 图像点 (x, y) 映射到参数空间 (k, b) 上的一条直线：b = -x·k + y。
+    - **问题**：垂直线 k→∞ 无法表示，参数空间无界，实际很少使用。
+
+- **极坐标式 ρ = x·cosθ + y·sinθ（标准做法）**：
+    - **ρ**：原点到直线的垂直距离
+    - **θ**：垂线与 x 轴的夹角，通常取 [0, π)
+    - 图像中每个点 (x, y) 对应参数空间 (ρ, θ) 中的一条**正弦曲线**。共线的点在 (ρ, θ) 空间汇聚成交点。
+
+参数空间被离散化为累加器（accumulator）网格，每个格子记录票数，最终取局部极大值作为检测结果。
+
+**算法流程（标准霍夫直线变换）**：
+
+1. **边缘检测**：先用 Canny 等算子提取边缘点（只对边缘点投票，减少计算量）。
+2. **初始化累加器**：建立 ρ-θ 二维数组，初值为 0。
+3. **投票**：对每个边缘点 (x, y)，遍历所有离散 θ 值，计算 ρ = x·cosθ + y·sinθ，对应累加器单元加 1。
+4. **峰值检测**：在累加器中找超过阈值的局部极大值，每个峰值对应一条直线。
+5. **（可选）直线拟合**：将属于同一直线的点做最小二乘拟合，得到精确参数。
+
+**标准霍夫直线变换函数**：`lines = cv2.HoughLines(image, rho, theta, threshold, srn=0, stn=0, min_theta=0, max_theta=np.pi)`
+
+| 参数 | 含义 |
+|------|------|
+| `image` | 8 位单通道二值图像（通常是 Canny 边缘图） |
+| `rho` | 距离分辨率，单位像素，常用 `1` |
+| `theta` | 角度分辨率，单位弧度，常用 `np.pi/180`（1°） |
+| `threshold` | 累加器投票阈值，超过才认为是直线 |
+| `srn` / `stn` | 多尺度霍夫变换的距离/角度除数，默认 0 表示标准霍夫 |
+| `min_theta` / `max_theta` | 检测角度范围，默认 [0, π) |
+
+- 返回形如 `[[[rho, theta]], ...]` 的数组，每个元素是一条直线的极坐标参数。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 50, 150)
+
+lines = cv2.HoughLines(edges, 1, np.pi/180, threshold=150)
+
+if lines is not None:
+    for line in lines:
+        rho, theta = line[0]
+        a, b = np.cos(theta), np.sin(theta)
+        x0, y0 = a * rho, b * rho
+        # 沿直线方向延伸 1000 像素
+        x1 = int(x0 + 1000 * (-b))
+        y1 = int(y0 + 1000 * (a))
+        x2 = int(x0 - 1000 * (-b))
+        y2 = int(y0 - 1000 * (a))
+        cv2.line(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+
+cv2.imshow('HoughLines', img)
+cv2.waitKey(0)
+```
+
+> 注意：标准霍夫变换返回的是无限长直线的参数，绘制时需手动延伸。
+
+**概率霍夫直线变换函数**：`lines = cv2.HoughLinesP(image, rho, theta, threshold, minLineLength=0, maxLineGap=0)`
+
+| 参数 | 含义 |
+|------|------|
+| `image` | 8 位单通道二值图像 |
+| `rho` | 距离分辨率，常用 `1` |
+| `theta` | 角度分辨率，常用 `np.pi/180` |
+| `threshold` | 投票阈值 |
+| `minLineLength` | 线段最小长度，短于此值被丢弃 |
+| `maxLineGap` | 同一直线上允许的最大间断像素，用于合并断线 |
+
+- 返回形如 `[[[x1, y1, x2, y2]], ...]` 的数组，直接给出线段端点。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 50, 150)
+
+lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=50,
+                        minLineLength=50, maxLineGap=10)
+
+if lines is not None:
+    for line in lines:
+        x1, y1, x2, y2 = line[0]
+        cv2.line(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+cv2.imshow('HoughLinesP', img)
+cv2.waitKey(0)
+```
+
+> **推荐**：实际工程中 `HoughLinesP` 比 `HoughLines` 更常用，因为它直接输出线段且速度更快（随机采样投票）。
+
+---
+
+### 12.3 **圆检测（霍夫圆变换）**
+
+圆的参数方程为 (x - a)² + (y - b)² = r²，参数空间是三维 (a, b, r)，计算量和内存开销大。
+
+**改进方案**：
+
+- **霍夫梯度法**（OpenCV 的 `HOUGH_GRADIENT`）：利用边缘点的梯度方向，圆心必在梯度方向上，从而大幅缩小搜索范围。先投票找圆心，再确定半径。
+- 需要预先给定半径范围，对噪声和参数较敏感。
+
+**霍夫圆变换函数**：`circles = cv2.HoughCircles(image, method, dp, minDist, param1=100, param2=100, minRadius=0, maxRadius=0)`
+
+| 参数 | 含义 |
+|------|------|
+| `image` | 8 位单通道灰度图（内部会做边缘检测，无需预先 Canny） |
+| `method` | 检测方法，目前仅支持 `cv2.HOUGH_GRADIENT` |
+| `dp` | 累加器分辨率与图像分辨率的反比，`dp=1` 同分辨率，`dp=2` 累加器为一半 |
+| `minDist` | 检测到的圆心之间的最小距离，太小会检测出同心圆，太大会漏检 |
+| `param1` | Canny 边缘检测的高阈值（低阈值自动为其一半） |
+| `param2` | 圆心累加器阈值，越小检测圆越多（假阳性越高） |
+| `minRadius` / `maxRadius` | 圆半径范围，限定搜索空间可提速并减少误检 |
+
+- 返回形如 `[[[x, y, r], ...]]` 的数组，为圆心坐标与半径（浮点，需四舍五入）。
+
+```python
+import cv2
+import numpy as np
+
+img = cv2.imread('image.jpg')
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# 可选中值滤波降噪
+gray = cv2.medianBlur(gray, 5)
+
+circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, dp=1,
+                           minDist=20, param1=100, param2=30,
+                           minRadius=10, maxRadius=100)
+
+if circles is not None:
+    circles = np.uint16(np.around(circles))
+    for c in circles[0, :]:
+        cv2.circle(img, (c[0], c[1]), c[2], (0, 255, 0), 2)      # 画圆
+        cv2.circle(img, (c[0], c[1]), 2, (0, 0, 255), 3)         # 画圆心
+
+cv2.imshow('HoughCircles', img)
+cv2.waitKey(0)
+```
+
+> **注意**：`HoughCircles` 对参数非常敏感，`param2` 和半径范围是最关键的两个调参项。
+
+---
 
 ## 十三、图像复原与重建
 
@@ -3009,17 +3550,22 @@ RGB 、CMY 和 CMYK 模型适合硬件实现但是并不能很好的描述人类
 
 
 
-## 十一、图像分类
+[//]: # (## 十一、图像分类)
 
-## 十一、图像特效
+[//]: # ()
+[//]: # (## 十一、图像特效)
 
-## 十一、OpenGL 入门
+[//]: # ()
+[//]: # (## 十一、OpenGL 入门)
 
-## 十一、OpenCV 文字图像区域定位及提取分析
+[//]: # ()
+[//]: # (## 十一、OpenCV 文字图像区域定位及提取分析)
 
-## 十一、OpenCV 车牌检测及区域识别
+[//]: # ()
+[//]: # (## 十一、OpenCV 车牌检测及区域识别)
 
-## 十一、OpenCV 人脸检测及视频人脸动态识别
+[//]: # ()
+[//]: # (## 十一、OpenCV 人脸检测及视频人脸动态识别)
 
 
 
