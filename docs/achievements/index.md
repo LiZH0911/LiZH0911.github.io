@@ -79,6 +79,10 @@
 
 - **工业相机**：杭州微图视觉公司的 Mars5000-gm
 
+[//]: # (- 客户端：iCentral 客户端)
+
+[//]: # (- SDK：华睿（ImagingView / IMVApi）工业相机 SDK。来自华睿科技（大华股份子公司）。)
+
 <figure markdown="span">
   ![工业相机.png](images%2F%E5%B7%A5%E4%B8%9A%E7%9B%B8%E6%9C%BA.png){ width="640" loading="lazy" }
   <figcaption>工业相机</figcaption>
@@ -673,6 +677,11 @@ if __name__ == "__main__":
   ![路由策略和路由专家.png](images%2F%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5%E5%92%8C%E8%B7%AF%E7%94%B1%E4%B8%93%E5%AE%B6.png){ width="640" loading="lazy" }
   <figcaption>路由策略和路由专家</figcaption>
 </figure>
+
+MoE 简介：
+
+- **MoE（Mixture of Experts）**将一个大模型拆分为多个“专家”子网络（Expert），并通过一个门控网络（Router/Gating Network）为每个输入动态选择少数几个专家参与计算。 
+- 本质是通过稀疏激活实现参数量扩展。虽然**总参数较大，但每个输入只激活其中一部分参数，因此计算效率较高**。
 
 **损失函数**
 

@@ -3,7 +3,7 @@
 相关链接：
 
 - [黑马程序员 Python+AI](https://www.bilibili.com/video/BV1sHU9BmEne/?spm_id_from=333.1387.favlist.content.click&vd_source=46f99c7c1ed609a31f70615a4551767f)
-- [小白学 Python](https://walter201230.github.io/Python/)
+- [小白学 Python 在线学习网站](https://learn-py.org/)
 
 ## 一、数据存储与运算
 
