@@ -3443,6 +3443,11 @@
   <img alt="路由策略和路由专家.png" loading="lazy" src="images/%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5%E5%92%8C%E8%B7%AF%E7%94%B1%E4%B8%93%E5%AE%B6.png" width="640" />
   <figcaption>路由策略和路由专家</figcaption>
 </figure>
+<p>MoE 简介：</p>
+<ul>
+<li><strong>MoE（Mixture of Experts）</strong>将一个大模型拆分为多个“专家”子网络（Expert），并通过一个门控网络（Router/Gating Network）为每个输入动态选择少数几个专家参与计算。 </li>
+<li>本质是通过稀疏激活实现参数量扩展。虽然<strong>总参数较大，但每个输入只激活其中一部分参数，因此计算效率较高</strong>。</li>
+</ul>
 <p><strong>损失函数</strong></p>
 <figure>
   <img alt="损失函数.png" loading="lazy" src="images/%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0.png" width="640" />
