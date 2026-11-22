@@ -680,7 +680,7 @@ if __name__ == "__main__":
 
 MoE 简介：
 
-- **MoE（Mixture of Experts）**将一个大模型拆分为多个“专家”子网络（Expert），并通过一个门控网络（Router/Gating Network）为每个输入动态选择少数几个专家参与计算。 
+- **MoE（Mixture of Experts）**将一个大网络拆分为多个“专家”子网络（Expert），并通过一个门控网络（Router/Gating Network）为每个输入动态选择少数几个专家参与计算。 
 - 本质是通过稀疏激活实现参数量扩展。虽然**总参数较大，但每个输入只激活其中一部分参数，因此计算效率较高**。
 
 **损失函数**

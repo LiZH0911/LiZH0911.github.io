@@ -38,11 +38,24 @@
 
 **图像处理软件开发平台**：
 
-* Halcon
+国外：
+
+* Halcon（德国 MVTec）：算法库最全面，算子丰富，支持形状匹配、亚像素测量、OCR、3D视觉等，适合高精度复杂项目，但授权费用高、学习曲线陡。
+* VisionPro（美国康耐视 Cognex）：与康耐视硬件深度绑定，工具链成熟，QuickBuild 拖拽式开发，适合产线快速部署。
+
+国产：
+
+* 海康机器人 VisionMaster
+* 奥普特 SciVision / DeepVision
+* 凌云光 VisionWARE / F.Brain
+
+开源与深度学习框架：
+
+* OpenCV：开源与深度学习框架
 * MatLab
-* OpenCV
-* Labview
-* VisionPro
+* PyTorch / TensorFlow + 工业部署工具：用于训练缺陷检测、分类模型，再通过 TensorRT、OpenVINO 等推理加速部署到产线。
+
+
 
 **交互界面开发平台**：
 
