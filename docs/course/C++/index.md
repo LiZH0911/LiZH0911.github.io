@@ -148,7 +148,7 @@ int main() {
 
 ---
 
-### 2.3 **char 与 ASCII 码"**
+### 2.3 **char 与 ASCII 码**
 
 * `char` 类型的字符常量底层是 **1 字节整数**，可参与算术
 * 常用 ASCII 码: `'A'` 为 `65`、`'a'` 为 `97`、`'0'` 为 `48`；**大小写字母相差 32**
@@ -793,21 +793,325 @@ p->age = 19;    // p->age 等价于 (*p).age
 
 ### 7.2 **枚举：enum 与 enum class**
 
-`enum Color { RED, GREEN, BLUE };` 默认从 0 递增，可指定值。
+枚举定义一组有名字的整数常量。例如 `enum Color { RED, GREEN, BLUE };`
 
-C++11 推荐用 `enum class` 是强类型枚举：不隐式转换为 `int`，必须用 `类型::值` 访问，避免名字冲突。
+- 默认从 0 递增，也可指定值，后面接着递增。
 
-`enum class Color { RED, GREEN }; Color c = Color::RED; int n = static_cast<int>(c); // 强类型需显式转换`
+* 旧 `enum` 的枚举值会泄漏到外层作用域且能隐式转 `int`（易冲突）
+* 新代码（C++11）优先 `enum class`。
+    * `enum class` 是强类型枚举：不隐式转换为 `int`，必须用 `类型::值` 访问，避免名字冲突。
 
-易错提醒：旧 `enum` 的枚举值会泄漏到外层作用域且能隐式转 `int`（易冲突）；新代码优先 `enum class`
+```C++
+enum class Color { RED, GREEN };
+Color c = Color::RED;
+int n = static_cast<int>(c); // 强类型需显式转换
+```
+
+![枚举.png](images%2F%E6%9E%9A%E4%B8%BE.png)
+
+---
+
+### 7.3 **类型别名：typedef / using**
+
+- `typedef unsigned long ul;` 给类型 `unsigned long` 起别名 `ul`
+- C++11 推荐 `using ul = unsigned long;` 写法更清晰，且能配合模板
+
+---
+
+### 7.4 **宏与预处理指令：#define / #include / 条件编译**
+
+以 `#` 开头的指令是**预处理指令**，**在编译之前执行**。
+
+1. `#define` 定义宏（文本替换）
+    - `#define PI 3.14159` 把 `PI` 替换为 `3.14159`
+    - 文本替换的陷阱：**带参数的宏**必须整体加括号：`#define SQ(x) ((x)*(x))`。否则当 `SQ(1+2)` 会展开成 `1+2*1+2`
+    - 宏无作用域无类型，能用 `const/constexpr` 就别用宏。
+2. `#include` 把另一个文件的内容原样复制进来
+    - `#include <iostream>` 去系统目录找头文件
+    - `#include "my.h"` 先在当前目录找，找不到再到系统目录找。
+3. `#ifdef` / `#ifndef` / `#endif` **条件编译**，根据**特定的宏是否被定义**决定某部分代码是否参与编译
+    - 常用来写调试代码和跨平台代码。
+
+**条件编译的应用场景**：
+
+- 场景一：防止头文件重复包含（最常见）
+
+```C++
+// math_utils.h
+#ifndef MATH_UTILS_H  // 如果没有定义过这个宏
+#define MATH_UTILS_H  // 那么现在就定义它
+
+// 这里放你的声明和定义
+int add(int a, int b);
+
+#endif // MATH_UTILS_H 结束
+```
+
+- 场景二：调试代码的开关
+
+```C++
+#define DEBUG // 开启调试模式（如果在代码里注释掉这一行，下面的 cout 就不会被编译）
+
+#ifdef DEBUG
+    cout << "调试信息";
+#endif
+
+#undef DEBUG  // 用完就取消，防止污染后面代码
+
+#ifdef NDEBUG // No DEBUG 的缩写
+    cout << "正式版（性能最优）";
+#else
+    cout << "测试版（包含调试信息）";
+#endif
+```
+
+- 场景三：跨平台兼容代码
+
+```C++
+#ifdef _WIN32
+    // Windows 专属代码
+    #include <windows.h>
+    Sleep(1000);
+#elif __linux__
+    // Linux 专属代码
+    #include <unistd.h>
+    sleep(1);
+#else
+    // 其他平台
+    #error "不支持的操作系统"
+#endif
+```
+
+宏从哪来？—— **编译器的“命令行参数”**： 
+现代开发（比如使用 CMake、Makefile 或直接在 VS/VS Code 里配置）时，我们通常在编译选项中定义宏，而不是在代码里写。例如，使用 GCC/G++ 编译时：
+
+```bash
+# 编译测试版（包含调试信息）
+g++ main.cpp -DDEBUG -o app_debug
+
+# 编译发布版（定义 NDEBUG，这是 C++ 标准推荐的 Release 宏）
+g++ main.cpp -DNDEBUG -o app_release
+```
+
+---
+
+### 7.5 **多文件程序与头文件保护**
+
+大程序要拆成多个文件，头文件 `.h` 放声明，源文件 `.cpp` 放定义。用到的地方 `#include` 头文件。
+
+头文件保护（避免重复包含）：
+
+- `#ifndef MY_H #define MY_H ... #endif` 守卫
+- `#pragma once` 一行搞定（现代编译器普遍支持，更简洁）。
+
+![多文件程序与头文件保护.png](images%2F%E5%A4%9A%E6%96%87%E4%BB%B6%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%A4%B4%E6%96%87%E4%BB%B6%E4%BF%9D%E6%8A%A4.png)
 
 ---
 
 ## 八、类与对象
 
+### 8.1 **面向对象三大特征：封装 / 继承 / 多态**
+
+**面向对象思想**
+
+![面向对象.png](images%2F%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1.png)
+
+**面向对象三大特征**：
+
+* **封装**：把数据和操作数据的函数绑在一起，对外只暴露接口
+* **继承**：子类复用父类，is-a 关系
+* **多态**：同一接口不同实现（虚函数）。
+
+**对象是类的实例**
+
+![类与对象.png](images%2F%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1.png)
+
 ---
 
+### 8.2 **封装：访问控制**
+
+`class` 与 `struct` 唯一区别：默认访问权限
+
+- `class` 默认 `private`
+- `struct` 默认 `public`。
+
+**访问控制**：
+
+- `public` 任何地方可访问
+- `private`（默认）仅本类成员函数可访问（这是封装的关键）
+- `protected` 本类及派生类可访问
+
+![封装.png](images%2F%E5%B0%81%E8%A3%85.png)
+
+```C++
+class Student {
+private:
+    string name;
+public:
+    void setName(string n) {
+        name = n;
+    }
+};
+```
+
+在类外定义成员函数要写 `类名::`，例如 `Student::setName`。
+
+![在类外定义成员函数.png](images%2F%E5%9C%A8%E7%B1%BB%E5%A4%96%E5%AE%9A%E4%B9%89%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0.png)
+
+---
+
+### 8.3 **this 指针**
+
+`this` 是**指向“当前调用成员函数的那个对象”的指针**。成员函数访问的成员变量都是通过 `this` 找到的。
+
+- `this` 指针作用：同一份函数代码操作不同对象的数据
+- `this` 不能改指向（`const` 指针）
+- 静态成员函数没有 `this`。
+
+```C++
+void set(int age) { 
+    this->age = age; 
+} // 参数与成员同名时用 this 区分
+```
+
+返回 `*this` 还可实现链式调用：
+
+```C++
+Counter &add(int n) {
+    this->n += n; return *this; 
+}
+c.add(1).add(2).add(3); // 链式
+```
+
+---
+
+### 8.4 **对象里只存数据成员**
+
+**对象里只存成员变量**。
+
+- `sizeof(空类) = 1`：编译器给空对象占 1 字节，保证不同对象的地址不同。
+- 成员函数不占用对象空间（在代码区），所有对象共用一份
+- 只有数据成员决定对象大小（含虚函数时会多个 vptr）
+
+> 有虚函数的类会额外多一个虚表指针（8 字节）。
+
 ## 九、构造函数与析构函数
+
+### 9.1 **构造函数**
+
+构造函数在创建对象时自动调用：
+
+* 与类同名 `类名(参数){}`
+* 无返回类型
+* 可重载，可以有默认参数
+* 一般是 `public`
+* 构造函数不能调虚函数（多态未建立）。
+
+**默认构造函数**：
+
+* 没定义任何构造函数 → 编译器生成一个什么都不做的默认构造函数
+* 定义了构造函数 → 默认构造就不再自动生成
+* 定义了带参构造 → `Student s;` 不写任何参数会编译错（默认构造没了）→ **必须手动写默认构造函数**
+
+```C++
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string name;
+    int age;
+
+public:
+    // 1. 默认构造函数（无参）
+    // 因为自己写了带参构造，编译器不再自动生成，所以必须手动写出来
+    Student() {
+        name = "unknown";
+        age = 0;
+        cout << "默认构造函数被调用" << endl;
+    }
+
+    // 2. 带参数的构造函数（使用初始化列表）
+    Student(string n, int a) : name(n), age(a) {
+        cout << "带参构造函数被调用" << endl;
+    }
+
+    // 3. 带默认参数的构造函数（注意：如果同时存在 1 和 3，可能会产生二义性，这里仅作演示）
+    // Student(string n = "Tom", int a = 18) : name(n), age(a) {}
+
+    void print() {
+        cout << "姓名: " << name << ", 年龄: " << age << endl;
+    }
+};
+```
+
+---
+
+### 9.2 **初始化列表**
+
+**初始化列表**：`Student(string n, int a) : name(n), age(a) {}`。
+
+**必须用初始化列表的三种成员**：
+
+1. `const` 成员
+2. 引用成员
+3. 没有默认构造函数的成员对象
+
+![初始化列表.png](images%2F%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8.png)
+
+```C++
+class A { 
+    const int c; 
+    int& r; 
+public: 
+    A(int x, int& y) : c(x), r(y) {} 
+}; // 必须初始化列表
+```
+
+易错点：实际初始化顺序与初始化列表的书写顺序无关，只与成员声明顺序有关——声明在前先初始化!
+
+---
+
+### 9.3 **析构函数**
+
+析构函数负责释放资源：
+
+* `~类名(){}`
+* 无参数、无返回类型
+* 不能重载，一个类只有一个
+* 对象销毁时自动调用：
+    * 局部对象（栈对象）离开作用域时
+    * `new` 出来的堆对象 `delete` 时
+    * 全局对象 `main` 结束后
+
+![析构函数.png](images%2F%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0.png)
+
+```C++
+class Buf {
+    int *data;
+public:
+    Buf() { data = new int[100]; }
+    ~Buf() { delete[] data; }  // 收尾
+};
+```
+
+> 需要释放资源的类必须自己写析构；局部对象一定会被析构（哪怕函数提前 return 或抛异常）。
+
+---
+
+### 9.4 **构造与析构顺序：先构造的后析构**
+
+* 同一作用域的**局部对象先构造的后析构**
+* **全局对象**在 `main` 之前构造、`main` 之后析构
+* **静态局部对象**第一次执行到才构造、程序结束时析构
+* 对象数组逐个成员按顺序构造
+
+![构造与析构顺序.png](images%2F%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84%E9%A1%BA%E5%BA%8F.png)
+
+![构造与析构顺序案例.png](images%2F%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84%E9%A1%BA%E5%BA%8F%E6%A1%88%E4%BE%8B.png)
+
+![对象数组与new.png](images%2F%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E4%B8%8Enew.png)
 
 ---
 
