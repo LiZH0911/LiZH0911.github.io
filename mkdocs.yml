@@ -80,6 +80,7 @@ nav:
         - Web 开发: course/Python后端/Web开发/index.md
 #    - LangChain: course/LangChain/index.md
     - C++: course/C++/index.md
+    # - C#: course/C#/index.md
     - Java:
         - Java 基础-黑马: course/Java/Java基础-黑马/index.md
         - Java 基础-JavaGuide: course/Java/Java基础-JavaGuide/index.md
@@ -126,6 +127,7 @@ nav:
         - 机器视觉: course/视觉/机器视觉/index.md
         # - 视频编解码基础: course/视觉/视频编解码基础/index.md
         - 2D 目标检测: course/视觉/2D目标检测/index.md
+    # - CUDA 编程: course/CUDA编程/index.md
     - 模型部署: course/模型部署/index.md
     - 常用工具:
         - 工具列表: course/常用工具/index.md

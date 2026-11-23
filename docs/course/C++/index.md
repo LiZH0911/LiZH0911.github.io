@@ -22,7 +22,6 @@ C++ 是**编译型语言**。C++ 源码要经过四步才能变成可执行程�
 
 ![C++是怎么跑起来的.png](images%2FC%2B%2B%E6%98%AF%E6%80%8E%E4%B9%88%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84.png)
 
-
 > 直观理解：`.cpp` 只是给人看的文本，机器看不懂。编译器相当于翻译官，把整本"说明书"翻译成机器码，链接器再把它拼成能双击运行的程序。
 
 **常用编译器**：GCC、Clang、微软 MSVC。
@@ -279,11 +278,208 @@ int main() {
 
 ## 三、控制结构
 
+### 3.1 **if / else 与悬空 else**
+
+```C++
+if (条件) {语句;}
+else if {语句;}
+else {语句;}
+```
+
+**悬空 `else` 规则**：`else` 总是与最近的、尚未配对的 `if` 结合（不看缩进）
+
+![悬空 else.png](images%2F%E6%82%AC%E7%A9%BA%20else.png)
+
+---
+
+### 3.2 **switch 语句**
+
+```C++
+switch (day) {
+    case 1: cout << "Mon"; break;
+    case 2: cout << "Tue"; break;
+    case 3: cout << "Wed"; break;
+    case 4: cout << "Thu"; break;
+    case 5: cout << "Fri"; break;
+    case 6: cout << "Sat"; break;
+    case 7: cout << "Sun"; break;
+    default: cout << "?";
+}
+```
+
+- `switch (整型表达式)` 按值跳转；
+- `case` 值必须是**整型常量表达式**；`case` 里定义变量最好加 `{}` 隔离作用域；
+- 漏写 `break` 会贯穿（继续执行下一个 `case`）；
+- `default` 处理所有不匹配的情况。
+
+---
+
+### 3.3 **while / do-while / for**
+
+- `while (条件){循环体;}` 先判断（可能执行 0 次）
+- `do {循环体;} while (条件);` 先执行（至少执行 1 次）
+- `for (初始化; 条件; 更新){循环体;}` 适合已知次数
+
+> `while` 条件不更新会死循环；`do-while` 末尾的分号不能丢。
+
+示例：计算 1 到 10 的和：
+
+```C++
+// while
+int i = 1;
+while (i <= 10) {
+    sum += i;
+    ++i;
+}
+
+// for
+for (int i = 1; i <= 10; ++i) {
+    sum += i;
+}
+
+// do-while
+int i = 1;
+do {
+    sum += i;
+    ++i;
+} while (i <= 10);
+
+```
+
+---
+
+### 3.4 **break / continue 与范围 for**
+
+- `break` 立即退出当前循环/`switch`；
+- `continue` 跳过本次循环剩余语句进入下一次。
+- 范围 `for`（C++ 11）：`for (类型 变量 : 容器)` 自动遍历每个元素，是迭代器遍历的简写。
+
+
+```C++
+for (int x : v) cout << x; // 只读; 
+for (int& x : v) x *= 2; // 加引用才能改原元素
+```
+
+> 范围 `for` 想修改元素必须用引用；范围 `for` 底层依赖 `begin/end`，遍历时不要修改容器大小（迭代器失效）。
+
 ---
 
 ## 四、数组与字符串
 
 ---
+
+### 4.1 **一维数组**
+
+- **声明数组**：`int a[5];` 
+- **初始化数组**：`int a[5] = {1,2,3};`，未列出的元素自动补 0；
+- **访问数组**：`a[4]`
+- **元素个数**：`sizeof(a)/sizeof(a[0])`
+
+注意事项：
+
+- **数组下标从 0 开始**，在内存中**连续存放**
+- **C++ 不检查越界（最危险的 bug 之一）**，越界读写是未定义行为（可能不报错但很危险）
+- 数组不能整体赋值（`a = b` 非法）
+- 数组名是常量地址不能自增/赋值
+- 函数参数里数组退化为指针，`sizeof` 失效
+
+---
+
+### 4.2 **二维数组**
+
+* **声明二维数组**：`int a[3][4];` 是 3 行 4 列，**在内存中按行存放**。
+* **初始化**：`int a[2][3] = {{1,2,3},{4,5,6}};` 或平铺 `{1,2,3,4,5,6}`。
+    * 省略规则：第一维可以省略，第二维（表示每行多长）不能省。例如 `int a[][4]` 合法，`int a[3][]` 非法。
+* **访问二维数组**：`a[i][j]` 等价于 `*(*(a+i)+j)`。
+
+二维数组求和示例：
+
+```C++
+for (int i = 0; i < 3; ++i){
+    for (int j = 0; j < 4; ++j){
+        sum += a[i][j];
+    }
+}
+```
+
+### 4.3 **C 风格字符串：以 \0 结尾的字符数组**
+
+**C 风格字符串**：`char s[] = "hello";` 
+
+- 实际是 6 字节（5 个字符 + 结尾 `\0`）。
+- `sizeof` 含 `\0`。
+- `#include <cstring>`
+    - `strlen` 求长度，统计到 `\0` 为止（不含 `\0`）
+    - `strcpy` 复制
+    - `strcat` 拼接
+    - `strcmp` 逐个字符比较（相等返回 0，前者大返回正数，前者小返回负数）
+
+易错提醒：
+
+- `strcpy` 和 `strcat` 不检查目标空间，**写越界**是常见的安全漏洞；
+- `gets` 已废弃禁用；
+- `cin >>` 读字符串遇空格就停（"hello world" 只读入 hello）；
+- `strcmp` 返回 0 表示相等（不是 1）。
+- `s1 == s2` 比较的是两个地址
+
+```C++
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char s[] = "hello";              // 6 字节：'h','e','l','l','o','\0'
+    cout << strlen(s) << endl;       // 5（不含 \0）
+    cout << sizeof(s) << endl;       // 6（含 \0）
+
+    char t[20];
+    strcpy(t, s);                    // 复制 "hello"（不检查空间）
+    strcat(t, " world");             // 拼接 → "hello world"
+    cout << t << endl;               // hello world
+    cout << strcmp(s, "hello") << endl; // 0 表示相等
+
+    char name[20];
+    cin >> name;                     // 遇空格停止，"hello world" 只读入 hello
+    cout << name << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 4.4 **现代字符串：C++ string 类**
+
+**C++ string 类**：`#include <string>` 自动管理内存，不怕越界拼接
+
+- `+` 拼接
+- `==`、`>`、`<` 比较
+- `size()` / `length()` 返回长度（不含 `\0`）
+- `substr(pos, len)` 切片
+- `find(sub)` 查找子串，找不到返回 `string::npos`
+- `cin >> s` 读字符串，遇空格停止
+- `getline(cin, s)` 读整行（含空格）。
+
+```C++
+#include <string>
+string s = "hello";
+string t = s + ", world";
+s == "hello"          // true
+s < "world"           // true
+t.size()              // 12
+t[1]                  // 'e'
+s.substr(1, 3)        // "ell"
+t.find("world")       // 7
+t.find("xyz") == string::npos //`find` 用 `npos` 判断，不是用 -1。
+```
+
+`cin >>` 和 `getline` 混用要先 `cin.ignore()` 清掉残留的换行：
+
+```C++
+cin >> age;
+cin.ignore();        // 吃掉换行
+getline(cin, name);
+```
 
 ## 五、指针、引用与动态内存
 
