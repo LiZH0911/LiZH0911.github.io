@@ -760,7 +760,7 @@ int fib(int n) {
 
 ---
 
-## 七、结构体、枚举与预处理
+## 七、结构体、枚举与预处理指令
 
 ---
 
@@ -999,13 +999,13 @@ c.add(1).add(2).add(3); // 链式
 
 ### 9.1 **构造函数**
 
-构造函数在创建对象时自动调用：
+构造函数 `类名(){}` 在创建对象时自动调用：
 
-* 与类同名 `类名(参数){}`
+* 函数名为类名 
 * 无返回类型
 * 可重载，可以有默认参数
 * 一般是 `public`
-* 构造函数不能调虚函数（多态未建立）。
+* 构造函数不能调虚函数（多态未建立）
 
 **默认构造函数**：
 
@@ -1075,9 +1075,8 @@ public:
 
 ### 9.3 **析构函数**
 
-析构函数负责释放资源：
+析构函数 `~类名(){}` 负责释放资源：
 
-* `~类名(){}`
 * 无参数、无返回类型
 * 不能重载，一个类只有一个
 * 对象销毁时自动调用：
@@ -1115,15 +1114,319 @@ public:
 
 ---
 
-## 十、拷贝控制与特殊成员
+## 十、拷贝构造
 
 ---
+
+### 10.1 **拷贝构造函数**
+
+**用已有对象初始化新对象**时调用拷贝构造。
+
+- 形参必须是引用（通常 `const` 引用）：`Point(const Point &p)`
+    - 如果参数按值传 `Point(Point p)` → 会无限递归（拷贝构造又要拷贝构造）
+  
+- 什么时候调用拷贝构造：
+
+1. 用对象初始化对象 `A b = a;`
+    - `A b = a;` 与 `b = a;` 不同，前者是拷贝构造，后者是赋值。
+2. 函数按值传参 `Point(Point p)`
+3. 函数按值返回临时对象 `Point g(){return p;}`
+    - C++17 返回值优化：返回临时对象时强制省略拷贝构造，**直接在调用处构造对象**
+
+![什么时候调用拷贝构造.png](images%2F%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%B0%83%E7%94%A8%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0.png)
+
+---
+
+### 10.2 **浅拷贝 / 深拷贝 / 拷贝赋值运算符**
+
+**浅拷贝（默认）**：逐成员拷贝
+
+- `int`、`double` 类型的成员变量没问题
+- 指针成员 → 默认拷贝是浅拷贝 → 只拷贝地址 → 两个对象指向同一块堆内存 → **析构时双重释放** → 崩溃
+
+> 指针成员必须深拷贝!
+
+![浅拷贝.png](images%2F%E6%B5%85%E6%8B%B7%E8%B4%9D.png)
+
+**深拷贝**：拷贝构造里 `new` 一块新内存并复制内容，让两个对象各自持有独立资源。
+
+**拷贝赋值运算符** `A& operator=(const A& o) { 拷贝赋值 }`。标准写法：
+
+1. 自赋值检查 `if (this == &o) return *this;`
+2. 释放旧资源
+3. 分配新内存并拷贝新资源
+4. 返回 `*this` → 支持连等 `a = b = c`
+
+![深拷贝.png](images%2F%E6%B7%B1%E6%8B%B7%E8%B4%9D.png)
+
+
+### 10.3 **三法则 / 五法则 / 零法则**
+
+* **三法则**：若类需要自定义**析构函数**、**拷贝构造函数**、**拷贝赋值运算符**中的任何一个，那多半三个都需要（否则资源管理不一致）
+* **五法则**：C++11 在三法则的基础上加**移动构造**、**移动赋值**
+* **零法则**：现代 C++ 用 `string`/`vector`/智能指针 管理资源，就不用写任何特殊成员。
+
+> 现代代码优先零法则，能少写就少写。
+
+---
+
 
 ## 十一、静态成员、常量与友元
 
 ---
 
+### 11.1 **静态数据成员**
+
+`static` 数据成员属于类本身，所有对象共享一份，不占对象空间。
+
+* 在类外定义/初始化一次（如 `int Student::count = 0;`），因为它是全局生命周期。
+* C++17 起也可以在类内写 `inline static int count = 0;` 直接初始化
+* 可用类名访问：`Student::count`
+
+---
+
+### 11.2 **静态成员函数**
+
+`static` 成员函数没有 `this`，因此只能访问静态成员，不能访问非静态成员
+
+* 可用类名直接调用，不依赖对象。例如 `Student::getCount()`
+
+静态成员典型应用：**对象计数器**：
+
+```C++
+class Student {
+private:
+    static int count;
+public:
+    Student() { count++; }
+    ~Student() { count--; }
+    static int getCount() { return count; }
+};
+int Student::count = 0; // 类外定义
+// sizeof(Student) 不含 count，因为 count 是静态成员，存放在全局区
+```
+
+---
+
+### 11.3 **常对象与常成员函数**
+
+**常对象**的数据成员不能修改。如 `const A a;`
+
+- 常对象只能调用常成员函数。`const` 对象调非 `const` 函数 → 编译错
+
+**常成员函数**在参数表后加 `const` 声明“这个函数不修改对象”，如 `int getAge() const { return age; }`
+
+- 常成员函数里修改成员变量 → 编译错
+- 建议：所有不修改数据的成员函数都声明成 `const`，否则常对象调用会编译错
+- 想修改个别成员用 `mutable`
+- `const` 重载（同一函数名 `const` 与非 `const` 版本）是合法的，按对象是否 `const` 选版本
+
+```C++
+class A {
+    int age;
+    mutable int n;
+public:
+    int getAge() const { return age; }   // 常成员函数，不能改 age
+    void setAge(int a) { age = a; }      // 普通成员函数
+    void test() const { n++; }           // 想改成员需 mutable
+
+    void print() const { cout << "const"; } // const 重载
+    void print() { cout << "non-const"; }
+};
+
+const A a;
+// a.setAge(10);  // 错误：常对象不能调非 const 函数
+a.getAge();       // 正确
+a.print();        // 调用 const 版本的 print
+```
+
+---
+
+### 11.4 **友元**
+
+`friend` 声明让**外部函数/类访问本类私有成员**。
+
+**友元关系性质**：单向、不传递、不继承
+
+![友元.png](images%2F%E5%8F%8B%E5%85%83.png)
+
+友元典型用途：重载 `<<` 运算符
+
+```C++
+class A {
+    int x;
+    friend ostream& operator<<(ostream&, const A&);
+};
+```
+
+> 友元破坏封装，只在必要时用（如运算符重载）
+
+---
+
+### 11.5 **组合与对象成员**
+
+一个类的对象作为另一个类的数据成员叫**成员对象**，这种关系叫**组合**。例如 `class B { A a; };`
+
+- **成员对象先构造** （按声明顺序），再构造自己
+- **析构相反**，先析构自己再析构成员
+
+> 优先用组合而非继承（面向对象设计原则）
+
+has-a 是组合与聚合的统称，组合是强 has-a，聚合是弱 has-a
+
+---
+
 ## 十二、运算符重载
+
+---
+
+### 12.1 **重载形式与规则**
+
+重载运算符让自定义类型支持 `+ - * / == <<` 等。例如 `A operator+(const A& other) const`
+
+![运算符重载.png](images%2F%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD.png)
+
+**运算符重载的两种形式**：
+
+* 成员函数：隐含传入 `this` 指针作为左操作数
+* 友元 + 全局函数：所有操作数都要作为参数传进来
+    * 适用场景：左操作数不是本类对象。例如 `<<` / `>>` 必须重载为全局函数（友元），因为左操作数是 `ostream/istream` 对象而不是 `this` 指针
+
+**重载规则**：
+
+* 至少一个操作数是自定义类型
+* 不能改变优先级、结合性、操作数个数
+* 不能发明新运算符
+
+> 五个不能重载的运算符：`.` 成员访问、`::` 作用域、`?:` 三目、`.*` 成员指针、`sizeof`
+> 四个重载为成员函数的运算符：`=`、`[]`、`()`、`->`
+
+
+```C++
+// 算术运算符（加、减）
+// 成员函数实现：a + b 等价于 a.operator+(b)
+Complex operator+(const Complex& c) const { 
+    return Complex(real + c.real, imag + c.imag); 
+}
+
+// 复合赋值运算符（+=、-=）
+// 通常返回自身的引用（*this），因为要支持连续赋值（如 a += b += c）
+Complex& operator+=(const Complex& c) { 
+    real += c.real; 
+    imag += c.imag;
+    return *this; 
+}
+```
+
+---
+
+### 12.2 **输出运算符 << 重载**
+
+输入 / 输出运算符 `>>` / `<<` 重载必须采用 **友元 + 全局函数** 的形式
+
+* 写成全局函数并在类里声明 `friend`，因为左操作数 `ostream` 不是你的类。
+* 返回 `ostream` 引用支持连写 `cout << a << b`。
+* 输入 `>>` 与 `<<` 重载的**区别**：第二个参数绝对不能加 `const`
+
+```C++
+class A { 
+    int x; 
+    // 1. 类内声明友元（输出和输入）
+    friend ostream& operator<<(ostream&, const A&); 
+    friend istream& operator>>(istream&, A&);
+};
+
+// 2. 类外实现输出
+ostream& operator<<(ostream& os, const A& a) { 
+    return os << a.x; 
+}
+
+// 3. 类外实现输入
+istream& operator>>(istream& is, A& a) { 
+    return is >> a.x; 
+}
+```
+
+
+---
+
+### 12.3 **自增运算符 ++ 重载**
+
+- 前置 `++`：`A& operator++() { ++n; return *this; }`
+- 后置 `++` 多一个占位 `int` 参数：`A operator++(int) { A old = *this; ++n; return old; }`
+
+> 前置 `++` 返回自身引用
+> 
+> 后置 `++` 返回旧值的副本（返回对象不是引用），后缀的 `int` 参数只是占位符
+
+```C++
+#include <iostream>
+using namespace std;
+
+class Counter {
+private:
+    int n; // 成员变量
+
+public:
+    // 构造函数
+    Counter(int val) : n(val) {}
+
+    // 1. 前置 ++：先加，再返回自身引用
+    Counter& operator++() {
+        ++n;
+        return *this;
+    }
+
+    // 2. 后置 ++：先保存旧值，再加，返回旧值（必须按值返回，不能返回引用）
+    Counter operator++(int) {
+        Counter old = *this; // 拷贝当前状态
+        ++n;                 // 自身加 1
+        return old;          // 返回旧状态的副本
+    }
+
+    // 辅助打印函数
+    void print() const {
+        cout << "n = " << n << endl;
+    }
+};
+
+int main() {
+    Counter c(5);
+    
+    // 验证后置 ++
+    Counter a = c++;  
+    cout << "执行 c++ 后：" << endl;
+    cout << "a: "; a.print(); // a=5
+    cout << "c: "; c.print(); // c=6
+
+    // 验证前置 ++
+    Counter b = ++c;  
+    cout << "执行 ++c 后：" << endl;
+    cout << "b: "; b.print(); // b=7
+    cout << "c: "; c.print(); // c=7
+
+    return 0;
+}
+```
+
+---
+
+### 12.3 **赋值运算符 = / 下标运算符 [] / 调用运算符 () 重载**
+
+* 赋值运算符 `operator=`：让对象可以赋值给其他对象
+* 下标运算符 `operator[]`：让对象可以像数组一样用下标访问元素
+* 调用运算符 `operator()`：让对象可以像函数一样被调用。这种对象也叫**函数对象（仿函数）**
+
+```C++
+Arr &operator=(const Arr &o) { ...; return *this; }
+a = b = c;
+
+int &operator[](int i) { return d[i]; }
+a[1] = 5;
+
+int operator()(int a, int b) const { return a + b; }
+add(2, 3)  // 5
+```
 
 ---
 

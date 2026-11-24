@@ -933,7 +933,7 @@ print(result[0, 0])  # [136 136 136]
 
 ---
 
-### 4.5 **图像异或运算**
+### 4.6 **图像异或运算**
 
 图像的异或运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“异或”操作。
 
@@ -1856,10 +1856,19 @@ ret, dst = cv2.threshold(img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_TRIANGLE)
 | `blockSize` | 邻域窗口大小，**必须为奇数**（如 11、21） |
 | `C` | 从邻域统计量中减去的常数，用于微调阈值 |
 
-**自动求阈值 T 的原理**：根据参数 `adaptiveMethod` 的选取：
+**自动求阈值 T 的原理**：根据参数 `adaptiveMethod`：
 
-- 均值法：$T(x,y) = \text{mean}(\text{邻域}) - C$
-- 高斯法：$T(x,y) = \text{GaussianWeightedMean}(\text{邻域}) - C$
+- 均值法：
+
+$$
+T(x,y) = \text{mean}(\text{邻域}) - C
+$$
+
+- 高斯法：
+
+$$
+T(x,y) = \text{GaussianWeightedMean}(\text{邻域}) - C
+$$
 
 ```python
 import cv2
@@ -1885,9 +1894,9 @@ binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
 
 ---
 
-### 8.7 **直方图处理**
+### 8.8 **直方图处理**
 
-#### **8.7.1 灰度直方图**
+#### **8.8.1 灰度直方图**
 
 **灰度直方图**是图像灰度分布的统计描述：对每个灰度级 $k$（$k=0,1,\dots,L-1$，8 位图像 $L=256$），统计该灰度级出现的频次 $n_k$ 或频率。
 
@@ -1920,7 +1929,7 @@ $$
 - **直方图均衡化（Histogram Equalization）**：以输入图像的 CDF 作为映射函数，使输出直方图**尽量均匀分布**
 - **直方图规定化（Histogram Specification / Matching）**：指定目标直方图，构造映射使输出直方图**逼近目标分布**
 
-#### **8.7.2 直方图计算与可视化**
+#### **8.8.2 直方图计算与可视化**
 
 **直方图计算函数**：`hist = cv2.calcHist(images, channels, mask, histSize, ranges)`
 
@@ -1986,7 +1995,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-#### **8.7.3 直方图均衡化**
+#### **8.8.3 直方图均衡化**
 
 直方图均衡化（Histogram Equalization）是一种基于灰度直方图的**非线性灰度变换方法**。
 
@@ -2036,7 +2045,7 @@ clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
 dst = clahe.apply(gray)
 ```
 
-#### **8.7.4 直方图规定化（匹配）**
+#### **8.8.4 直方图规定化（匹配）**
 
 直方图规定化（Histogram Specification），又称直方图匹配（Histogram Matching）。
 
@@ -3015,32 +3024,45 @@ GrabCut 在 Graph Cut 基础上做了三件事：**用 GMM 替代直方图**、*
 
 **原理**：
 
-1. **区域标记**：用矩形框初始化时，框外像素标记为**确定背景**，框内像素标记为**可能前景**。用户也可额外涂抹标记：
-     - $T_B$：确定背景
-     - $T_F$：确定前景
-     - $T_U$：未知区域（待分割）
-2. **GMM 颜色建模**：分别为前景和背景各建一个含 $K$ 个高斯分量的 GMM（通常 $K=5$）：
-     $$
-     p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)
-     $$
-     - 每个像素根据其颜色被分配到最可能的高斯分量。
-3. **能量函数**：GrabCut 最小化 Gibbs 能量：
-     $$
-     E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)
-     $$
-     - **数据项 $U$**：像素属于前景/背景的负对数似然（由 GMM 给出）：
-     $$
-     U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)
-     $$
-     - **平滑项 $V$**：惩罚相邻像素标签不一致，鼓励边界平滑：
-     $$
-     V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)
-     $$
-     - 其中 $\alpha$ 为标签，$\theta$ 为 GMM 参数，$z$ 为像素颜色，$\mathcal{N}$ 为邻域对，$\gamma, \beta$ 为权重参数。
-4. **迭代优化**（核心）：GrabCut 交替执行：
-      1. **固定分割 $\alpha$，更新 GMM 参数 $\theta$**：用当前前景/背景像素重新估计各高斯分量。
-      2. **固定 GMM $\theta$，用图割求最优 $\alpha$**：构建 s-t 图，源点连前景、汇点连背景，边权由数据项与平滑项给出，求最小割。
-      3. 重复直到能量收敛或达到最大迭代次数。
+**1. 区域标记**：用矩形框初始化时，框外像素标记为**确定背景**，框内像素标记为**可能前景**。用户也可额外涂抹标记：
+
+- $T_B$：确定背景
+- $T_F$：确定前景
+- $T_U$：未知区域（待分割）
+
+**2. GMM 颜色建模**：分别为前景和背景各建一个含 $K$ 个高斯分量的 GMM（通常 $K=5$）：
+
+$$
+p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)
+$$
+
+- 每个像素根据其颜色被分配到最可能的高斯分量。
+
+**3. 能量函数**：GrabCut 最小化 Gibbs 能量：
+
+$$
+E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)
+$$
+
+- **数据项 $U$**：像素属于前景/背景的负对数似然（由 GMM 给出）：
+
+$$
+U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)
+$$
+
+- **平滑项 $V$**：惩罚相邻像素标签不一致，鼓励边界平滑：
+
+$$
+V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)
+$$
+
+- 其中 $\alpha$ 为标签，$\theta$ 为 GMM 参数，$z$ 为像素颜色，$\mathcal{N}$ 为邻域对，$\gamma, \beta$ 为权重参数。
+
+**4. 迭代优化**（核心）：GrabCut 交替执行：
+
+* **固定分割 $\alpha$，更新 GMM 参数 $\theta$**：用当前前景/背景像素重新估计各高斯分量。
+* **固定 GMM $\theta$，用图割求最优 $\alpha$**：构建 s-t 图，源点连前景、汇点连背景，边权由数据项与平滑项给出，求最小割。
+* 重复直到能量收敛或达到最大迭代次数。
 
 ```python
 import cv2
