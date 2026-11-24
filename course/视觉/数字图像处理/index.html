@@ -2318,10 +2318,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#45_1" class="md-nav__link">
+  <a href="#46" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 图像异或运算
+        4.6 图像异或运算
       
     </span>
   </a>
@@ -2673,22 +2673,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#87_1" class="md-nav__link">
+  <a href="#88" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7 直方图处理
+        8.8 直方图处理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8.7 直方图处理">
+    <nav class="md-nav" aria-label="8.8 直方图处理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#871_1" class="md-nav__link">
+  <a href="#881" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.1 灰度直方图
+        8.8.1 灰度直方图
       
     </span>
   </a>
@@ -2696,10 +2696,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#872_1" class="md-nav__link">
+  <a href="#882" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.2 直方图计算与可视化
+        8.8.2 直方图计算与可视化
       
     </span>
   </a>
@@ -2707,10 +2707,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#873" class="md-nav__link">
+  <a href="#883" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.3 直方图均衡化
+        8.8.3 直方图均衡化
       
     </span>
   </a>
@@ -2718,10 +2718,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#874" class="md-nav__link">
+  <a href="#884" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.4 直方图规定化（匹配）
+        8.8.4 直方图规定化（匹配）
       
     </span>
   </a>
@@ -4441,10 +4441,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#45_1" class="md-nav__link">
+  <a href="#46" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.5 图像异或运算
+        4.6 图像异或运算
       
     </span>
   </a>
@@ -4796,22 +4796,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#87_1" class="md-nav__link">
+  <a href="#88" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7 直方图处理
+        8.8 直方图处理
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8.7 直方图处理">
+    <nav class="md-nav" aria-label="8.8 直方图处理">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#871_1" class="md-nav__link">
+  <a href="#881" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.1 灰度直方图
+        8.8.1 灰度直方图
       
     </span>
   </a>
@@ -4819,10 +4819,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#872_1" class="md-nav__link">
+  <a href="#882" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.2 直方图计算与可视化
+        8.8.2 直方图计算与可视化
       
     </span>
   </a>
@@ -4830,10 +4830,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#873" class="md-nav__link">
+  <a href="#883" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.3 直方图均衡化
+        8.8.3 直方图均衡化
       
     </span>
   </a>
@@ -4841,10 +4841,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#874" class="md-nav__link">
+  <a href="#884" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7.4 直方图规定化（匹配）
+        8.8.4 直方图规定化（匹配）
       
     </span>
   </a>
@@ -6363,7 +6363,7 @@ y_{\text{dist}} &amp;= y(1 + k_1 r^2 + k_2 r^4 + k_3 r^6)
 <p><code>cv2.bitwise_not(src[, dst[, mask]])</code></p>
 <p><strong>应用场景</strong>：掩膜取反</p>
 <hr />
-<h3 id="45_1">4.5 <strong>图像异或运算</strong></h3>
+<h3 id="46">4.6 <strong>图像异或运算</strong></h3>
 <p>图像的异或运算是指两张图像（灰度图像或彩色图像均可）的每个像素值进行二进制“异或”操作。</p>
 <p><code>cv2.bitwise_xor(src1, src2[, dst[, mask]])</code></p>
 <p><strong>应用场景</strong>：二值掩膜差异对比</p>
@@ -7287,11 +7287,19 @@ s_0, &amp; r \le T
 </tr>
 </tbody>
 </table>
-<p><strong>自动求阈值 T 的原理</strong>：根据参数 <code>adaptiveMethod</code> 的选取：</p>
+<p><strong>自动求阈值 T 的原理</strong>：根据参数 <code>adaptiveMethod</code>：</p>
 <ul>
-<li>均值法：<span class="arithmatex">\(T(x,y) = \text{mean}(\text{邻域}) - C\)</span></li>
-<li>高斯法：<span class="arithmatex">\(T(x,y) = \text{GaussianWeightedMean}(\text{邻域}) - C\)</span></li>
+<li>均值法：</li>
 </ul>
+<div class="arithmatex">\[
+T(x,y) = \text{mean}(\text{邻域}) - C
+\]</div>
+<ul>
+<li>高斯法：</li>
+</ul>
+<div class="arithmatex">\[
+T(x,y) = \text{GaussianWeightedMean}(\text{邻域}) - C
+\]</div>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;input.png&quot;</span><span class="p">)</span>
@@ -7313,8 +7321,8 @@ s_0, &amp; r \le T
 <span class="n">binary</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">binary</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="87_1">8.7 <strong>直方图处理</strong></h3>
-<h4 id="871_1"><strong>8.7.1 灰度直方图</strong></h4>
+<h3 id="88">8.8 <strong>直方图处理</strong></h3>
+<h4 id="881"><strong>8.8.1 灰度直方图</strong></h4>
 <p><strong>灰度直方图</strong>是图像灰度分布的统计描述：对每个灰度级 <span class="arithmatex">\(k\)</span>（<span class="arithmatex">\(k=0,1,\dots,L-1\)</span>，8 位图像 <span class="arithmatex">\(L=256\)</span>），统计该灰度级出现的频次 <span class="arithmatex">\(n_k\)</span> 或频率。</p>
 <p><strong>非归一化直方图（统计频次）</strong>：</p>
 <div class="arithmatex">\[
@@ -7336,7 +7344,7 @@ s = T(r)
 <li><strong>直方图均衡化（Histogram Equalization）</strong>：以输入图像的 CDF 作为映射函数，使输出直方图<strong>尽量均匀分布</strong></li>
 <li><strong>直方图规定化（Histogram Specification / Matching）</strong>：指定目标直方图，构造映射使输出直方图<strong>逼近目标分布</strong></li>
 </ul>
-<h4 id="872_1"><strong>8.7.2 直方图计算与可视化</strong></h4>
+<h4 id="882"><strong>8.8.2 直方图计算与可视化</strong></h4>
 <p><strong>直方图计算函数</strong>：<code>hist = cv2.calcHist(images, channels, mask, histSize, ranges)</code></p>
 <table>
 <thead>
@@ -7419,7 +7427,7 @@ s = T(r)
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<h4 id="873"><strong>8.7.3 直方图均衡化</strong></h4>
+<h4 id="883"><strong>8.8.3 直方图均衡化</strong></h4>
 <p>直方图均衡化（Histogram Equalization）是一种基于灰度直方图的<strong>非线性灰度变换方法</strong>。</p>
 <p><strong>核心思想</strong>：通过变换函数将原图像的灰度直方图重新映射，使其<strong>近似均匀分布</strong>，从而增强图像的全局对比度。</p>
 <p>对归一化灰度 <span class="arithmatex">\(r \in [0,1]\)</span>，连续形式的均衡化映射为：</p>
@@ -7470,7 +7478,7 @@ s_k = (L-1)\sum_{j=0}^{k} p(r_j)
 <span class="n">clahe</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createCLAHE</span><span class="p">(</span><span class="n">clipLimit</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">tileGridSize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">dst</span> <span class="o">=</span> <span class="n">clahe</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="874"><strong>8.7.4 直方图规定化（匹配）</strong></h4>
+<h4 id="884"><strong>8.8.4 直方图规定化（匹配）</strong></h4>
 <p>直方图规定化（Histogram Specification），又称直方图匹配（Histogram Matching）。</p>
 <p><strong>核心思想</strong>：通过变换函数将原图像的灰度直方图映射为用户指定的目标直方图，从而实现对图像对比度的灵活控制。</p>
 <blockquote>
@@ -8331,42 +8339,44 @@ w_r(i,j) = \exp\left(-\frac{\|f(i,j) - f(x,y)\|^2}{2\sigma_r^2}\right)
 </table>
 <p>GrabCut 在 Graph Cut 基础上做了三件事：<strong>用 GMM 替代直方图</strong>、<strong>用矩形框自动初始化</strong>、<strong>引入迭代优化</strong>。</p>
 <p><strong>原理</strong>：</p>
-<ol>
-<li><strong>区域标记</strong>：用矩形框初始化时，框外像素标记为<strong>确定背景</strong>，框内像素标记为<strong>可能前景</strong>。用户也可额外涂抹标记：<ul>
+<p><strong>1. 区域标记</strong>：用矩形框初始化时，框外像素标记为<strong>确定背景</strong>，框内像素标记为<strong>可能前景</strong>。用户也可额外涂抹标记：</p>
+<ul>
 <li><span class="arithmatex">\(T_B\)</span>：确定背景</li>
 <li><span class="arithmatex">\(T_F\)</span>：确定前景</li>
 <li><span class="arithmatex">\(T_U\)</span>：未知区域（待分割）</li>
 </ul>
-</li>
-<li><strong>GMM 颜色建模</strong>：分别为前景和背景各建一个含 <span class="arithmatex">\(K\)</span> 个高斯分量的 GMM（通常 <span class="arithmatex">\(K=5\)</span>）：
-     $$
-     p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)
-     $$<ul>
+<p><strong>2. GMM 颜色建模</strong>：分别为前景和背景各建一个含 <span class="arithmatex">\(K\)</span> 个高斯分量的 GMM（通常 <span class="arithmatex">\(K=5\)</span>）：</p>
+<div class="arithmatex">\[
+p(x) = \sum_{k=1}^{K} \pi_k \cdot \mathcal{N}(x \mid \mu_k, \Sigma_k)
+\]</div>
+<ul>
 <li>每个像素根据其颜色被分配到最可能的高斯分量。</li>
 </ul>
-</li>
-<li><strong>能量函数</strong>：GrabCut 最小化 Gibbs 能量：
-     $$
-     E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)
-     $$<ul>
-<li><strong>数据项 <span class="arithmatex">\(U\)</span></strong>：像素属于前景/背景的负对数似然（由 GMM 给出）：
- $$
- U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)
- $$</li>
-<li><strong>平滑项 <span class="arithmatex">\(V\)</span></strong>：惩罚相邻像素标签不一致，鼓励边界平滑：
- $$
- V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta |z_m - z_n|^2\right)
- $$</li>
+<p><strong>3. 能量函数</strong>：GrabCut 最小化 Gibbs 能量：</p>
+<div class="arithmatex">\[
+E(\alpha, \theta, z) = U(\alpha, \theta, z) + V(\alpha, z)
+\]</div>
+<ul>
+<li><strong>数据项 <span class="arithmatex">\(U\)</span></strong>：像素属于前景/背景的负对数似然（由 GMM 给出）：</li>
+</ul>
+<div class="arithmatex">\[
+U(\alpha, \theta, z) = \sum_n -\log p(z_n \mid \alpha_n, \theta)
+\]</div>
+<ul>
+<li><strong>平滑项 <span class="arithmatex">\(V\)</span></strong>：惩罚相邻像素标签不一致，鼓励边界平滑：</li>
+</ul>
+<div class="arithmatex">\[
+V(\alpha, z) = \gamma \sum_{(m,n) \in \mathcal{N}} [\alpha_m \neq \alpha_n] \cdot \exp\left(-\beta \|z_m - z_n\|^2\right)
+\]</div>
+<ul>
 <li>其中 <span class="arithmatex">\(\alpha\)</span> 为标签，<span class="arithmatex">\(\theta\)</span> 为 GMM 参数，<span class="arithmatex">\(z\)</span> 为像素颜色，<span class="arithmatex">\(\mathcal{N}\)</span> 为邻域对，<span class="arithmatex">\(\gamma, \beta\)</span> 为权重参数。</li>
 </ul>
-</li>
-<li><strong>迭代优化</strong>（核心）：GrabCut 交替执行：<ol>
+<p><strong>4. 迭代优化</strong>（核心）：GrabCut 交替执行：</p>
+<ul>
 <li><strong>固定分割 <span class="arithmatex">\(\alpha\)</span>，更新 GMM 参数 <span class="arithmatex">\(\theta\)</span></strong>：用当前前景/背景像素重新估计各高斯分量。</li>
 <li><strong>固定 GMM <span class="arithmatex">\(\theta\)</span>，用图割求最优 <span class="arithmatex">\(\alpha\)</span></strong>：构建 s-t 图，源点连前景、汇点连背景，边权由数据项与平滑项给出，求最小割。</li>
 <li>重复直到能量收敛或达到最大迭代次数。</li>
-</ol>
-</li>
-</ol>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
