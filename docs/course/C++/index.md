@@ -1844,7 +1844,398 @@ int main() {
 
 ---
 
+### 16.1 **STL 三件套：容器 + 算法 + 迭代器**
+
+STL（标准模板库）由三部分组成：
+
+* **容器**：存储数据
+* **算法**：操作数据
+* **迭代器**：连接两者的桥梁
+
+![STL.png](images%2FSTL.png)
+
+算法通过迭代器访问容器元素，与具体容器解耦。
+
+---
+
+### 16.2 **迭代器**
+
+迭代器是**广义指针**：
+
+迭代器遍历：
+
+- `begin()` 指向第一个元素，`end()` 指向最后一个元素的下一个位置（左闭右开 `[begin, end)`）
+- `*it` 取元素
+- `++it` 前进
+- `it != end` 判断
+
+> C++11 的范围 `for` 就是迭代器遍历的简写。
+
+```C++
+for (auto it = v.begin(); it != v.end(); ++it) 
+    cout << *it; 
+
+for (auto x : v) 
+    cout << x; // 等价简写
+```
+
+> `end` 不指向任何元素，解引用 `end` 未定义行为
+> 
+> 迭代器失效后不能再使用
+
+---
+
+### 16.3 **动态数组 vector**
+
+`vector` 是连续内存的**动态数组**。
+
+* `push_back()` 末尾添加
+* `pop_back()` 删除末尾元素
+* `size()` 当前元素个数
+* `[]` 随机访问，不检查越界
+* `at(i)` 检查越界抛 `out_of_range`
+
+
+```C++
+#include <iostream>
+#include <vector>
+#include <stdexcept> // 包含 out_of_range 异常
+using namespace std;
+
+int main() {
+    vector<int> v;
+
+    // 1. 添加元素
+    v.push_back(3);
+    v.push_back(1);
+    // 此时 v 内部是：[3, 1]
+
+    // 2. 查看大小和访问
+    cout << "v.size() = " << v.size() << endl; // 输出: 2
+    cout << "v[0] = " << v[0] << endl;         // 输出: 3
+
+    // 3. 删除末尾元素
+    v.pop_back();
+    // 此时 v 内部只剩下：[3]，size 变成 1
+
+    // 4. 越界访问对比
+    // v[5] 不会报错，但属于未定义行为（可能输出垃圾值或直接崩溃），极其危险
+    // cout << v[5] << endl; 
+
+    // v.at(5) 会进行安全检查
+    try {
+        cout << v.at(5) << endl;
+    } catch (const out_of_range& e) {
+        cout << "捕获异常: " << e.what() << endl; // 输出 out_of_range 相关信息
+    }
+
+    return 0;
+}
+```
+
+**扩容机制**：容量满时，申请 1.5 倍（MSVC）或 2 倍（GCC）的新内存，拷贝旧数据，释放旧内存
+
+* `push_back` 末尾添加的时间复杂度：均摊 \(O(1)\)
+    * 偶尔一次卡顿（\(O(N)\)），被之前和之后大量极快的操作（\(O(1)\)）给平摊掉了，整体平均还是 \(O(1)\)
+* 扩容后**旧的指针、引用、迭代器全部失效**
+* 若提前知道存多少元素 → 可用 `reserve(n)` **预分配**避免多次扩容
+
+---
+
+### 16.4 **顺序容器：双向链表 list / 双端队列 deque**
+
+- `list` 双向链表：任意位置插入/删除 O(1)，但不可下标随机访问（没 `[]`）
+- `deque` 双端队列：头尾插入删除都 O(1)，支持 `[]`
+
+**容器选型**：
+
+* 尾部增删 + 随机访问用 `vector`
+* 大量中间插入删除用 `list`。`list` 遍历慢（缓存不友好）但中间插入快
+* 头尾都要操作用 `deque`
+
+---
+
+### 16.5 **容器适配器：stack / queue / priority_queue**
+
+容器适配器在容器的基础上包装出特定接口。
+
+- `stack` 栈：后进先出 LIFO，`push/pop/top`
+- `queue` 队列：先进先出 FIFO，`push/pop/front/back`
+- `priority_queue` 优先队列：每次取出最大（默认大顶堆），`push/pop/top`
+    - 默认最大堆，最小堆要传 `greater<int>`。
+
+三者都是适配器，底层默认用 `deque/vector` 实现。
+
+```C++
+#include <stack>  // 包含 std::stack
+#include <queue>  // 包含 std::queue 和 std::priority_queue
+
+int main() {
+    stack<int> s; 
+    s.push(1); 
+    s.push(2); 
+    s.top(); // 2（后进先出）
+    
+    queue<int> q; 
+    q.push(1); 
+    q.push(2); 
+    q.front(); // 1（先进先出）
+    q.pop();   // 弹出 1
+    
+    priority_queue<int> pq; 
+    pq.push(3); 
+    pq.push(1); 
+    pq.push(4); 
+    pq.top(); // 4
+    
+    return 0;
+}
+```
+
+---
+
+### 16.6 **关联容器：set / map**
+
+- `set` 集合：元素唯一、自动升序
+- `map` 映射：键值对，按键自动排序
+    - `map` 用 `[]` 访问会**插入不存在的键**
+    - 只查不增时用 `find` 或 `count` 判断，否则会悄悄插入默认值；
+
+注意：
+
+- `set/map` 底层都是红黑树，查找/插入/删除 O(log n)
+- `set/map` 元素不能直接修改键（会破坏有序性）。
+- `multiset / multimap` 允许键重复
+
+![关联容器.png](images%2F%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8.png)
+
+---
+
+### 16.7 **哈希容器：unordered_set / unordered_map**
+
+C++11 新增 `unordered_set / unordered_map`：底层哈希表，**查找/插入/删除平均 O(1)**，但元素**无序**。
+
+选型：
+
+* 要有序 → 使用 `set / map`
+* 只要快 → 使用 `unordered_set / unordered_map`
+
+```C++
+unordered_map<string, int> cnt;
+string w;
+while (cin >> w) cnt[w]++;
+```
+
+【易错提醒】`unordered_*` 遍历顺序不保证；`set/map` 是排序的、`unordered` 是无序的，选型题必考区别。
+
+---
+
+### 16.8 **排序算法：sort、自定义排序与 lambda**
+
+头文件 `<algorithm>` 提供上百个通用算法，都在迭代器区间 `[first, last)` 上工作，对数组 / `vector` / `deque` 通用。
+
+最常用的算法：`sort`
+
+* 默认升序
+* 区间 `[begin, end)` 左闭右开
+* 可传第三个比较函数用于自定义比较规则。比较函数返回 `true` 表示“前者排在前面”
+
+```C++
+sort(v.begin(), v.end()); // 升序
+sort(v.begin(), v.end(), greater<int>()); // 降序
+```
+
+**自定义排序**要写**比较函数**传给 `sort` 第三个参数。
+
+以学生按成绩排序为例：
+
+```C++
+// 自定义比较规则。学生按成绩排序
+bool byScore(const Stu &a, const Stu &b) {
+    return a.score > b.score; // 降序
+}
+sort(st.begin(), st.end(), byScore);
+```
+
+C++11 **lambda 表达式**：`[捕获列表](参数) { 函数体 }`
+
+```C++
+// 标准结构：
+// [捕获列表](参数) { 函数体 }
+[](int a, int b) { return a > b; }
+
+// 实测应用：
+sort(v.begin(), v.end(), [](int a, int b) { return a > b; });
+// 8 5 2 1
+```
+
+**捕获列表**决定 lambda 能不能用外面的变量
+
+- `[]` 不捕获
+- `[x]` 按值捕获 `x`
+    - 改了不影响外面
+- `[&x]` 按引用捕获 `x`
+    - 必须保证lambda 执行时变量必须还活着
+- `[=]` 按值捕获所有用到的变量
+- `[&]` 按引用捕获所有用到的变量
+
+```C++
+int x = 1, y = 10;
+auto byVal = [x]() { return x * 100; };
+auto byRef = [&x]() { x++; };
+
+x = 5; byRef();
+byVal();    // 100: 捕获时 x 是 1
+x;          // 6
+```
+
+---
+
+### 16.9 **其他常用算法**
+
+- `find` 查找指定值，返回指向该元素的迭代器（找不到返回 `end`）
+- `count`/`count_if` 统计等于某值的元素个数 / 统计满足特定条件（Lambda）的元素个数。
+- `reverse` 将区间内的元素**原地逆序**
+- `max_element`/`min_element` 返回指向区间内最大 / 最小元素的迭代器
+- `binary_search`/`lower_bound` 在**有序区间**进行**二分查找**（**前提必须已排序**）
+    - 前者返回 `bool` 表示是否存在
+    - 后者返回第一个 `>=` 目标值的迭代器
+- `accumulate` 对区间元素求和
+    - 包含在头文件 `<numeric>` 中
+
+![常用算法.png](images%2F%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95.png)
+
+<details>
+<summary>常用算法完整示例</summary>
+
+```C++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+using namespace std;
+
+int main() {
+    vector<int> v = {3, 7, 1, 7, 9, 4};
+    auto b = v.begin(), e = v.end();
+
+    // 1. find：查找 7 第一次出现的位置
+    auto it = find(b, e, 7);
+    if (it != e) {
+        cout << "find(7): 找到，下标为 " << (it - b) << endl; // 输出 1
+    }
+
+    // 2. find：查找不存在的 42
+    if (find(b, e, 42) == e) {
+        cout << "find(42): 没找到" << endl;
+    }
+
+    // 3. count：统计 7 出现的次数
+    cout << "count(7): " << count(b, e, 7) << endl; // 输出 2
+
+    // 4. max_element：找最大值
+    cout << "max_element: " << *max_element(b, e) << endl; // 输出 9
+
+    // 5. accumulate：求和（注意第 3 个参数是初始值，通常给 0）
+    cout << "accumulate: " << accumulate(b, e, 0) << endl; // 输出 31
+
+    // 6. reverse：反转（会修改原数组）
+    reverse(b, e);
+    cout << "reverse: ";
+    for (int x : v) cout << x << " "; // 输出 4 9 7 1 7 3
+    cout << endl;
+
+    // 7. 二分查找（前提：必须先排序！）
+    sort(v.begin(), v.end()); // 排序后: 1 3 4 7 7 9
+    cout << "binary_search(7): " << binary_search(b, e, 7) << endl; // 输出 1 (true)
+    
+    // lower_bound 返回第一个 >= 7 的元素的迭代器
+    auto low = lower_bound(b, e, 7);
+    cout << "lower_bound(7): 下标 " << (low - b) << endl; // 输出 3
+
+    return 0;
+}
+```
+
+</details>
+
+---
+
+### 16.10 **边遍历边删除**
+
+边遍历边删除的问题：`v.erase(it)` 后 `it` 失效，再 `++it` 是未定义行为
+
+三种解决方法：
+
+1. `it = v.erase(it)` 删除并返回下一个有效迭代器，没删除才 `++it` 
+2. `remove_if`：删除满足条件的元素
+3. C++20 `erase_if`
+
+```C++
+// ❌ 错误写法（未定义行为）
+for (auto it = v.begin(); it != v.end(); ++it) {
+    if (*it % 2 == 0) v.erase(it);
+}
+
+
+// ✅ 正确写法 1：利用 erase 的返回值
+for (auto it = v.begin(); it != v.end(); ) {
+    if (*it % 2 == 0) it = v.erase(it); // erase 返回下一个有效迭代器
+    else ++it;
+}
+
+// ✅ 正确写法 2：Erase-Remove 惯用法（C++20 前最推荐）
+v.erase(remove_if(v.begin(), v.end(), isEven), v.end());
+
+// ✅ 正确写法 3：C++20 引入
+erase_if(v, isEven);  // C++20
+```
+
+---
+
 ## 十七、输入输出流
+
+---
+
+### 17.1 **流的概念与继承体系**
+
+#### **17.1.1 考点：ios → istream / ostream**
+
+【定义/要点】C++ 用“流”做输入输出，数据像水流一样流动。体系：`ios` 派生出 `istream`（输入流）和 `ostream`（输出流）；`iostream` 同时继承两者。文件流 `ifstream/ofstream` 继承自它们；字符串流 `stringstream` 同理。
+
+【直观理解】流就是“水管”：`cin` 是从键盘向程序送水的管子，`cout` 是从程序向外排水的管子，文件/字符串流是接到其他水源的管子——接口完全一样。
+
+---
+
+### 17.2 **四个标准流对象**
+
+#### **17.2.1 考点：cin / cout / cerr / clog**
+
+【定义/要点】系统预定义四个流对象：`cin` 标准输入、`cout` 标准输出（带缓冲）、`cerr` 标准错误输出（不经过缓冲，立即显示）、`clog` 带缓冲的错误输出。`cerr` 用于立即看到的关键错误信息。
+
+【易错提醒】`cerr` 不缓冲、`clog` 缓冲（考试判断题常考）；`cout` 和 `cerr` 都输出到屏幕但流对象不同。
+
+---
+
+### 17.3 **插入/提取运算符**
+
+#### **17.3.1 考点：<< >> 为什么能连写**
+
+【定义/要点】`cout << a << b` 能连写，是因为 `operator<<` 返回流对象自身的引用（返回 `ostream&`），可以继续 `<<`。`cin >> a >> b` 同理。
+
+【典型应用】`cout << "x=" << x << endl; cin >> a >> b; // 都是链式调用`
+
+---
+
+### 17.4 **格式控制 (iomanip)**
+
+#### **17.4.1 考点：setw / setfill / fixed / setprecision**
+
+【定义/要点】`<iomanip>` 提供操纵符：`setw(n)` 设置下一个输出项宽度（只对下一项有效，用完即恢复）；`setfill(c)` 设置填充字符（持续有效）；`fixed` 配合 `setprecision(n)` 保留小数点后 `n` 位（持续有效）；`setprecision(n)` 不加 `fixed` 是 `n` 位有效数字；`hex/oct` 切换进制；`left/right` 对齐。
+
+【典型应用】`cout << fixed << setprecision(2) << 3.14159; // 3.14 (小数点后两位) cout << setw(6) << setfill('0') << 42; // 000042 cout << hex << 255; // ff (持续生效)`
+
+【易错提醒】`setw` 只管下一个输出项，`setfill/fixed/hex` 持续有效直到被改；`3.14159` 不加 `fixed` 输出 `3.14`（三位有效数字），加 `fixed` 输出 `3.142`（小数点后三位）——读程序写结果题高频。
 
 ---
 
@@ -1852,7 +2243,55 @@ int main() {
 
 ---
 
+### 18.1 **文件读写三步走**
+
+#### **18.1.1 考点：打开 / 读写 / 关闭**
+
+【定义/要点】文件操作分三步：打开（创建流对象关联文件）→读写→关闭。写文件用 `ofstream`，像 `cout` 一样往里写；读文件用 `ifstream`，像 `cin` 一样往外读。打开后要检查是否成功：`is_open()` 或直接 `if (fin)`。最后 `close()` 或等流对象析构自动关闭。
+
+【典型应用】`ofstream fout("a.txt"); if (!fout) return; fout << "hello"; fout.close(); ifstream fin("a.txt"); if (!fin) return; string s; fin >> s; fin.close();`
+
+【易错提醒】忘检查打开是否成功，读不存在文件会得到垃圾/崩溃；忘 `close` 可能数据未落盘（尤其写文件）。
+
+---
+
+### 18.2 **打开方式**
+
+#### **18.2.1 考点：ios::out / app / in / binary**
+
+【定义/要点】打开方式：`ios::out` 写（默认清空原文件内容）；`ios::app` 追加到文件末尾（不清空）；`ios::in` 读；`ios::binary` 二进制方式（配合 `read/write` 按字节读写）。多个方式用按位或组合：`ios::out | ios::app`。
+
+【典型应用】`ofstream fout("log.txt", ios::app); // 追加写，不清空旧内容`
+
+【易错提醒】`ios::out` 默认清空源文件，想保留旧内容必须加 `ios::app`——这是写文件最常踩的坑；二进制读写用 `read/write`，文本用 `<< >>`。
+
+---
+
+### 18.3 **读文件的标准写法**
+
+#### **18.3.1 考点：while(fin >> x) 与 while(getline)**
+
+【定义/要点】按行读：`while (getline(fin, line)) { ... };` 按“空格/换行分隔的数据”读：`while (fin >> x) { ... }`。读取失败或到达文件末尾时流对象为假，循环自然结束。不要写 `while (!fin.eof())` ——它会让最后一项被多处理一次。
+
+【典型应用】`int x; while (fin >> x) sum += x; string line; while (getline(fin, line)) cout << line << endl;`
+
+【易错提醒】`eof` 标志在读到末尾之后才置位，用 `!fin.eof()` 当条件会把最后一项处理两遍——经典坑；优先用“读取表达式作为条件”。
+
+---
+
 ## 十九、字符串流
+
+---
+
+### 19.1 **stringstream 用法**
+
+#### **19.1.1 考点：把字符串当流读写**
+
+【定义/要点】`stringstream` 把字符串当成流来读写，头文件 `<sstream>`。`istringstream` 用于读：把 "123 45" 放进去，用提取运算符逐个读出整数，完成按空格切分。`ostringstream` 用于写：拼接各种类型数据，最后 `str()` 取出结果字符串。
+
+【典型应用】`istringstream iss("123 45"); int a, b; iss >> a >> b; // a=123, b=45 (按空格切分) ostringstream oss; oss << "x=" << 42; string s = oss.str(); // "x=42"`
+
+【易错提醒】`istringstream` 按空格切分，多段文字切分非常好用；`ostringstream` 拼完必须 `.str()` 取字符串，不能直接当 `string` 用。
 
 ---
 
@@ -1860,10 +2299,161 @@ int main() {
 
 ---
 
+### 20.1 **为什么需要异常**
+
+#### **20.1.1 考点：错误码 vs 异常**
+
+【定义/要点】程序运行中会遇到各种意外：除数为零、文件打不开、内存不够、下标越界。传统做法返回错误码，但调用者容易忘检查。C++ 异常机制把“发现错误”和“处理错误”分开：`throw` 抛出、`try/catch` 捕获。
+
+【直观理解】错误码像“便签留言”：出事了贴个条，但路人不一定看；异常像“拉响警报”：不处理就一直响（沿调用链往外传），直到有人处理或程序终止。
+
+---
+
+### 20.2 **throw / try / catch**
+
+#### **20.2.1 考点：抛什么、怎么捕**
+
+【定义/要点】`try` 块放可能出错的代码；`throw` 可抛任何类型的值（整数、字符串、异常对象）；`catch` 按类型匹配，可写多个，从上往下找第一个类型匹配的。一旦 `throw`，后面语句不再执行，直接跳到匹配的 `catch`。
+
+【典型应用】`int div2(int a, int b) { if (b == 0) throw "divide by zero"; return a / b; } try { cout << div2(10, 0); } catch (const char* msg) { cout << msg; }`
+
+【易错提醒】`throw` 之后语句不再执行（读程序写结果题常考后续输出）；`catch` 按书写顺序匹配，派生类异常要写在基类异常前面，否则永远匹配不到；`catch(...)` 三个点能捕任何异常，必须放最后。
+
+---
+
+### 20.3 **栈展开**
+
+#### **20.3.1 考点：沿调用链往外传 + 局部对象自动析构**
+
+【定义/要点】当前函数没有匹配的 `catch`，异常就沿调用链一层层往外传，直到被捕获；过程中沿途每个函数已构造好的局部对象自动析构，这叫栈展开。一直传到 `main` 外面还没人捕获，则调用 `terminate` 终止程序。
+
+【易错提醒】栈展开时局部对象一定会被析构——这正是 RAII 能安全释放资源的原因；析构函数里抛异常会直接 `terminate`。
+
+---
+
+### 20.4 **标准异常体系**
+
+#### **20.4.1 考点：std::exception 与常见子类**
+
+【定义/要点】标准库定义异常类体系，基类 `std::exception` 有虚函数 `what()` 返回错误描述。常见：`vector` 的 `at` 越界抛 `out_of_range`；`new` 分配失败抛 `bad_alloc`；`stoi` 转换失败抛 `invalid_argument`。自定义异常一般继承 `exception` 或 `runtime_error`。
+
+【典型应用】`try { int x = v.at(10); } catch (const std::out_of_range& e) { cout << e.what(); }`
+
+【易错提醒】捕获异常用引用：`catch (const exception& e)`，避免拷贝和对象切片，才能通过 `.what()` 调到派生类版本；`v[10]` 越界不抛异常，只有 `v.at(10)` 抛 `out_of_range`。
+
+---
+
+### 20.5 **异常安全两条原则**
+
+#### **20.5.1 考点：析构不抛 + noexcept**
+
+【定义/要点】①析构函数不要抛异常：C++11 起析构函数默认 `noexcept`，从里面抛出会直接终止程序；②确定不会抛异常的函数可标 `noexcept` 帮助编译器优化。异常是为真正异常情况准备的，不要拿它做普通流程控制。
+
+【易错提醒】析构里抛异常 = 程序终止；把异常当 `if/else` 用是设计错误。
+
+---
+
+
 ## 二十一、智能指针
 
 ---
 
+### 21.1 **RAII 思想**
+
+#### **21.1.1 考点：资源获取即初始化**
+
+【定义/要点】回顾所有内存坑：忘了 `delete`、重复 `delete`、异常跳过 `delete`。C++ 的解决思路叫 RAII（资源获取即初始化）：把资源交给一个对象管理，构造时获取、析构时释放。因为局部对象离开作用域一定会析构（哪怕是因为异常离开），资源也就一定会被释放。
+
+【直观理解】RAII 像“钥匙托管”：把钥匙（资源）交给酒店前台（对象），你退房（离开作用域）时前台一定帮你收好（析构释放），不用你自己记着还钥匙。
+
+【典型应用】其实早就在用 RAII：`string/vector` 析构自动释放内存、`ifstream` 析构自动关闭文件、`lock_guard` 析构自动解锁。智能指针就是把这种思想用在 `new` 出来的对象上，它们在 `<memory>` 头文件里。
+
+---
+
+### 21.2 **unique_ptr**
+
+#### **21.2.1 考点：独占所有权，只能移动**
+
+【定义/要点】`unique_ptr` 独占所有权：同一时刻只有一个拥有该对象，析构时自动 `delete`。推荐用 `make_unique` 创建（异常安全）。不能拷贝，只能用 `std::move` 转移所有权，转移后原来那个变成空指针。
+
+【典型应用】`auto p = std::make_unique<int>(42); auto q = std::move(p); // p 变空，q 拥有 42`
+
+【易错提醒】`unique_ptr` 不能拷贝（`unique_ptr u2 = u1` 编译错）；移动后原指针为空，再解引用崩溃。
+
+---
+
+### 21.3 **shared_ptr**
+
+#### **21.3.1 考点：引用计数，减到 0 才释放**
+
+【定义/要点】`shared_ptr` 共享所有权：多个指针指向同一对象，内部有引用计数记录指向它的 `shared_ptr` 个数；拷贝一次计数 +1，析构一次 -1，减到 0 时才真正 `delete` 对象。用 `make_shared` 创建，`use_count()` 查看计数。
+
+【典型应用】`auto a = std::make_shared<int>(10); auto b = a; // 计数变 2 std::cout << a.use_count(); // 2`
+
+【易错提醒】`shared_ptr` 陷阱：循环引用——A 持有指向 B 的 `shared_ptr`，B 也持有指向 A 的 `shared_ptr`，两个计数永远到不了 0，内存泄漏。
+
+---
+
+### 21.4 **weak_ptr 与循环引用**
+
+#### **21.4.1 考点：不增加计数，打破循环**
+
+【定义/要点】`weak_ptr` 能指向对象但不增加引用计数，专门用来打破循环引用；使用前先调用 `lock()` 检查对象还在不在（返回 `shared_ptr`，空表示对象已释放）。
+
+【典型应用】`class B; class A { std::shared_ptr<B> b; }; class B { std::weak_ptr<A> a; }; // 把其中一个换成 weak_ptr 打破循环`
+
+【易错提醒】`weak_ptr` 不能直接解引用，必须先 `lock()` 检查；如果两个对象互相持 `shared_ptr`，谁也不会被释放（循环引用内存泄漏）。
+
+---
+
+### 21.5 **智能指针选择原则**
+
+#### **21.5.1 考点：默认 unique_ptr**
+
+【定义/要点】选择原则：默认用 `unique_ptr`（开销和裸指针几乎一样）；确实需要多处共同拥有时才用 `shared_ptr`；要打破循环引用、或者只是“看一眼”不长期持有，用 `weak_ptr`。现代 C++ 建议代码里尽量不要出现裸 `new` 和 `delete`。
+
+【典型应用】`unique_ptr<Widget> w = make_unique<Widget>(); // 首选 shared_ptr<Widget> s = make_shared<Widget>(); // 需要共享时`
+
+【易错提醒】考点速记：RAII 靠析构自动释放；`unique_ptr` 不能拷贝只能移动；`shared_ptr` 引用计数减到 0 释放；`weak_ptr` 不增加计数用来打破循环；优先 `make_unique / make_shared`。
+
+---
+
 ## 二十二、移动语义
+
+---
+
+### 22.1 **左值与右值**
+
+#### **22.1.1 考点：有名字能取地址 = 左值**
+
+【定义/要点】左值：有名字、能取地址，比如变量 `a`。右值：临时的、马上就要消失的值，比如 `a+b` 的结果、函数返回的临时对象、字面量 `42`。C++11 引入右值引用 `int&& r = 42;` 专门绑定右值。
+
+【典型应用】`int&& r = 42; // 右值引用绑定临时值 int a = 5; int& l = a; // 左值引用（普通引用）不能绑右值`
+
+【易错提醒】普通引用（左值引用）不能绑定右值；右值引用只能绑右值——判断“是左值还是右值”是移动语义的起点。
+
+---
+
+### 22.2 **移动构造与移动赋值**
+
+#### **22.2.1 考点：把资源“偷过来” O(1)**
+
+【定义/要点】为什么要移动：把一个临时的大 `vector` 拷贝给另一个要复制所有元素，可它马上就要销毁了，不如直接把它的内存偷过来。移动构造函数参数是右值引用：只把指针拿过来，再把原对象的指针置空，复制几个指针就完成，代价 O(1)。
+
+【典型应用】`class V { int* p; public: V(V&& o) noexcept : p(o.p) { o.p = nullptr; } }; // 移动构造`
+
+【易错提醒】移动后原对象必须处于“安全可析构”状态（指针置空）；移动构造一般标 `noexcept`，否则容器扩容时会退回用拷贝。
+
+---
+
+### 22.3 **std::move 本质**
+
+#### **22.3.1 考点：只是类型转换，不搬数据**
+
+【定义/要点】`std::move` 本身什么都不移动，只是把一个左值强制转换成右值，告诉编译器“这个对象我不要了，可以把它的资源拿走”。移动行为由移动构造/移动赋值函数完成。
+
+【典型应用】`vector<int> b = std::move(a); // a 的资源被偷走，a 变空`
+
+【易错提醒】被 `move` 过的对象处于“已移动但合法”状态：可以析构、可以重新赋值，但内容通常是空/未定义，不能再依赖它的旧值。
 
 ---
